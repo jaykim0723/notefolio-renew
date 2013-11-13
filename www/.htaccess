@@ -1,0 +1,19 @@
+# Customized error messages.
+ErrorDocument 404 /svc/errors/http/404
+
+# Set the default handler.
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteBase /
+  RewriteCond $1 !^/(index\.php|favicon\.ico|robots\.txt)
+  RewriteCond $1 !^/[^(captcha|css|doc|html|i|images|img|js|acp-rs|temp|profiles|thumbnails)]/(.*)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.php?/$1 [L,PT]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    ErrorDocument 404 index.php
+</IfModule> 
