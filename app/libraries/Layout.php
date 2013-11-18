@@ -1,0 +1,50 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Layout
+{
+	protected	$ci;
+	protected	$views = array(); // set_view 파라미터를 통해서 미리 셋팅이 되는 변수
+
+	public function __construct()
+	{
+        $this->ci =& get_instance();
+	}
+
+	// normal template and pjax request
+	function render($views=array()){
+		if(sizeof($views)>0){
+			$this->views[] = $views; // 미리 전달하지 않고 render할 때 개별 파라미터로 전달을 할 수도 있다.
+		}
+
+		// print header
+		if(!$this->ci->input->is_ajax_request()){
+			$this->ci->load->view('layout/header_inc_view', array());
+			$this->ci->load->view('layout/header_'.($this->ci->router->fetch_class()=='auth' ? 'auth_': '').'view');
+		}
+		if(!is_array($this->views)) // 단일 view로 들어온 경우를 위하여
+			$this->views = array($this->views);
+		foreach($this->views as $view){
+			$this->ci->load->view($view[0], $view[1]);
+		}
+		// print footer
+		if(!$this->ci->input->is_ajax_request()){
+			$this->ci->load->view('layout/footer_'.($this->ci->router->fetch_class()=='auth' ? 'auth_': '').'view');
+			$this->ci->load->view('layout/footer_inc_view');
+		}
+	}
+
+	function set_view($filename='', $data=array()){
+		$this->views[] = array($filename, $data);
+		return $this;
+	}
+
+
+	function json($data=array()){
+		$this->ci->output->set_content_type('application/json')->set_output(json_encode($data));
+	}
+	
+
+}
+
+/* End of file Layout.php */
+/* Location: .//Applications/XAMPP/xamppfiles/htdocs/notefolio_renew/app/libraries/Layout.php */
