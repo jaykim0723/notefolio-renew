@@ -21,11 +21,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->library('activerecord');
 		
-        $user = User::first(); // or User:find('all')
-        echo $user->id;
-
 		$this->load->view('welcome_message');
 	}
 }
