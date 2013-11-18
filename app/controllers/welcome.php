@@ -23,6 +23,9 @@ class Welcome extends CI_Controller {
 	{
 		$this->layout->set_view('welcome_message')->render();
 	}
+	function json(){
+		$this->layout->set_json($_SERVER)->render();
+	}
 }
 
 /* End of file welcome.php */
