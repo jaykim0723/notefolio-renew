@@ -1,2 +1,8 @@
-	<h2>normal footer</h2>
-</div> <!-- end of container -->
+<?php if (!defined('NO_CONTAINER')): ?>	
+	</div>
+</section>
+<?php endif ?>
+
+<footer id="footer">
+	copyright (c)
+</footer>
