@@ -1,8 +1,10 @@
-<?php if (!defined('NO_CONTAINER')): ?>	
-	</div>
-</section>
-<?php endif ?>
 
 <footer id="footer">
-	copyright (c)
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				copyright (c)
+			</div>
+		</div>
+	</div>
 </footer>

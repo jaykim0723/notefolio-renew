@@ -21,7 +21,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->layout->set_view('welcome_message')->render();
+		$this->layout->set_header(array('title'=> 'aoenthu'))->set_view('welcome_message')->render();
 	}
 	function json(){
 		$this->layout->set_json($_SERVER)->render();

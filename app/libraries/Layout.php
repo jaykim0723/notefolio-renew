@@ -5,6 +5,15 @@ class Layout
 	protected	$ci;
 	protected	$views = array(); // set_view 파라미터를 통해서 미리 셋팅이 되는 변수
 	protected	$json_data = NULL;
+	protected   $header = array(
+		'title'       => '',
+		'description' => '',
+		'keywords'    => '',
+		'type'        => '',
+		'url'         => '',
+		'image'       => '',
+		'site_name'   => ''
+	);
 
 	public function __construct()
 	{
@@ -24,7 +33,7 @@ class Layout
 
 		// print header
 		if(!$this->ci->input->is_ajax_request()){
-			$this->ci->load->view('layout/header_inc_view', array());
+			$this->ci->load->view('layout/header_inc_view', $this->header);
 			$this->ci->load->view('layout/header_'.($this->ci->router->fetch_class()=='auth' ? 'auth_': '').'view');
 		}
 
@@ -43,6 +52,11 @@ class Layout
 
 
 	
+	function set_header($data=array()){
+		foreach($data as $key => $value)
+			$this->header[$key] = $value;
+		return $this;
+	}
 
 	function set_view($filename='', $data=array()){
 		$this->views[] = array($filename, $data);
@@ -54,6 +68,8 @@ class Layout
 		$this->json_data = $data;
 		return $this;
 	}
+
+	
 	
 
 }
