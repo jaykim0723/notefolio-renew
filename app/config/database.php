@@ -48,11 +48,11 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'zidell';
-$db['default']['password'] = 'ps';
+$db['default']['hostname'] = 'server.notefolio.net';
+$db['default']['username'] = 'notefolio-renew';
+$db['default']['password'] = 'ay5rvX29doo25y22';
 $db['default']['database'] = 'notefolio-renew';
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
