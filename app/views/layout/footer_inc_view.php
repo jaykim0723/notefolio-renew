@@ -1,5 +1,8 @@
-<script src="/js/libs/jquery-1.10.2.min.js"></script>
-<script src="/js/libs/bootstrap.min.js.js"></script>
+<script src="/js/libs/bootstrap.min.js"></script>
+<script src="/js/libs/bootstrap.min.js"></script>
+<script src="/js/libs/waypoints.min.js"></script>
+<script src="/js/libs/waypoints-infinite.min.js"></script>
+<script src="/js/libs/waypoints-sticky.min.js"></script>
 
 </body>
 </html>
