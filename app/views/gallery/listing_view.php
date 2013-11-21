@@ -58,7 +58,7 @@
 		});
 	}
 	$(function() {
-		$('.thumbnail_list').waypoint(function(){
+		$('.more-link').waypoint(function(){
 			if(typeof noNextPage=='undefined') callPage();
 		});
 	});
