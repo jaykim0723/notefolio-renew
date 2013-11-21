@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Gallery extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,13 +18,29 @@ class Welcome extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	
-
 	public function index()
 	{
-		$this->layout->set_header(array('title'=> 'aoenthu'))->set_view('welcome_message')->render();
+		redirect('listing');
+		// $this->layout->set_header(array('title'=> 'aoenthu'))->set_view('main_view')->render();
 	}
-	function json(){
-		$this->layout->set_json($_SERVER)->render();
+	
+	function listing($page=1){
+		$data = (object)array(
+			'page' => $page,
+			'rows' => array()
+		);
+		for($i=0; $i<12; $i++){
+			$data->rows[] = array(
+				'title' => 'Lorem Ipsum',
+				'user' => (object)array(
+					'realname' => '정미나',
+					'hit_cnt' => rand(0,234),
+					'comment_cnt' => rand(0,234),
+					'like_cnt' => rand(0,234)
+				)
+			);
+		}
+		$this->layout->set_view('gallery/listing_view', $data)->render();
 	}
 }
 
