@@ -47,7 +47,7 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
 
             $data = $($.parseHTML(data));
             $more = $(options.more);
-            $newMore = $(options.more, $data);
+            $newMore = $data.find(options.more);
             $container.append($data.find(options.items));
             $container.removeClass(options.loadingClass);
             if ($newMore.length) {
