@@ -53,6 +53,9 @@
 				nextPage = false;
 				$('.more-link').remove();
 			}
+			if (history.pushState) {
+				window.history.pushState('/listing/'+(Number(match[1])+1), 'Notefolio.net', url);
+			}
 		});
 	}
 	$(function() {
