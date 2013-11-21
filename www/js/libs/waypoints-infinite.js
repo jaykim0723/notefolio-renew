@@ -50,7 +50,7 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
             $newMore = $data.find(options.more);
             $container.append($data.find(options.items));
             $container.removeClass(options.loadingClass);
-            console.log(options.items);
+            console.log(options.more);
             if ($newMore.length) {
               $more.replaceWith($newMore);
               $this.waypoint('enable');
