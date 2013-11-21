@@ -17,19 +17,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="thumbnail_list">
 <?php endif ?>
-
-				<!-- list -->
-				<?php foreach ($rows as $key => $row): ?>
-				<?php $this->load->view('gallery/thumbnail_inc_view', $row) ?>
-				<?php endforeach ?>
-
-
-
-<?php if (!$this->input->is_ajax_request()): ?>
+				<div class="thumbnail_list">
+					<!-- list -->
+					<?php foreach ($rows as $key => $row): ?>
+					<?php $this->load->view('gallery/thumbnail_inc_view', $row) ?>
+					<?php endforeach ?>
 				</div>
 				<a href="/gallery/listing/2" class="infinite-more-link">more</a>
+<?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 		</div>
 	</div>
