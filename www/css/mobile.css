@@ -21,6 +21,10 @@
 	text-align: center;
 }
 
+.thumbnail_list {
+	overflow: hidden;
+	position: relative;
+}
 
 .thumbnail_list .thumbbox {
 	float: left;
