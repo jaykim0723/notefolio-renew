@@ -1,5 +1,9 @@
 /* Put your CSS here */
 
+.stuck{
+	position: fixed;
+}
+
 
 /* override for flat */
 .well {
