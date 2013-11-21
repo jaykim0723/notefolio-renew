@@ -12,28 +12,26 @@
 		</div>
 		<div class="row">
 			<div class="col-md-9">
-				<div class="thumbnail_list infinit_scroll">
+				<div class="thumbnail_list">
 <?php endif ?>
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
-					<?php $this->load->view('gallery/thumbnail_inc_view', $row) ?>
+					<?php $this->load->view('feed/thumbnail_inc_view', $row) ?>
 					<?php endforeach ?>
 
 <?php if (!$this->input->is_ajax_request()): ?>
 				</div>
-				<a href="/gallery/listing/2" class="infinite-more-link">more</a>
 			</div>
 			<div class="col-md-3">
-				<div class="thumbnail_list infinit_scroll">
+				<ul class="feed_activity_list">
 <?php endif ?>
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
-					<?php $this->load->view('gallery/thumbnail_inc_view', $row) ?>
+					<?php $this->load->view('feed/activity_inc_view', $row) ?>
 					<?php endforeach ?>
 
 <?php if (!$this->input->is_ajax_request()): ?>
-				</div>
-				<a href="/gallery/listing/2" class="infinite-more-link">more</a>
+				</ul>
 			</div>
 		</div>
 	</div>

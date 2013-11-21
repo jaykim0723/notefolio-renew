@@ -38,7 +38,8 @@ class Feed extends CI_Controller {
 					'hit_cnt' => rand(0,234),
 					'comment_cnt' => rand(0,234),
 					'like_cnt' => rand(0,234)
-				)
+				),
+				'timestamp' => 1392792372
 			);
 		}
 		$this->layout->set_view('feed/listing_view', $data)->render();
