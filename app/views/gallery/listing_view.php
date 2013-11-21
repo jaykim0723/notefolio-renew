@@ -64,7 +64,7 @@
 		$('.thumbnail_list').waypoint('infinite', {
 			container: '.thumbnail_list',
 			items: '.thumbbox',
-  			more: '.infinite-more-link',
+  			more: '.more-link',
     		offset: 'bottom-in-view',
 			onAfterPageLoad : function(){
 				console.log($.now());
