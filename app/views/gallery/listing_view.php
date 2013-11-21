@@ -33,7 +33,7 @@
 <script>
 	$(function() {
 		$('.thumbnail_list').waypoint('infinite', {
-  			container: 'auto',
+  			container: '.thumbnail_list',
 			items: '.thumbbox',
 			onAfterPageLoad : function(){
 				console.log($.now());
