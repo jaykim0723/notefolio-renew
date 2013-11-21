@@ -24,6 +24,7 @@
 					<?php $this->load->view('gallery/thumbnail_inc_view', $row) ?>
 					<?php endforeach ?>
 				</div>
+
 				<a href="/gallery/listing/2" class="more-link">more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
@@ -31,7 +32,8 @@
 	</div>
 </section>
 <script>
-	var nextPage = true;
+
+
 	function callPage(){
 		var url = window.location.href;
 		var match = new RegExp("/listing/([0-9]+)").exec(url);
@@ -50,14 +52,14 @@
 				$('.more-link').replaceWith($('.more-link', data));
 			}
 			else {
-				nextPage = false;
+				noNextPage = null;
 				$('.more-link').remove();
 			}
 		});
 	}
 	$(function() {
 		$('.thumbnail_list').waypoint(function(){
-			if(nextPage) callPage();
+			if(typeof noNextPage=='undefined') callPage();
 		});
 	});
 </script>
