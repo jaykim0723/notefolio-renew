@@ -35,6 +35,9 @@
 				<li>
 					<a href="/feed/listing">Feed</a>
 				</li>
+				<li>
+					<a href="/alarm/listing">Alarm</a>
+				</li>
 			</ul>
 		</div>
 	</div>

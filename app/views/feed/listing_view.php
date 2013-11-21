@@ -2,7 +2,7 @@
 
 <section class="listing">
 	<div class="container">
-		<div class="row">
+		<div class="row visible-sm">
 			<div class="col-md-12">
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#">팔로워의 작품</a></li>
@@ -23,7 +23,7 @@
 				</div>
 			</div>
 			<div class="col-md-3">
-				<ul class="feed_activity_list">
+				<ul class="feed_activity_list clearfix">
 <?php endif ?>
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>

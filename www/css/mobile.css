@@ -50,7 +50,10 @@
 	display:block;
 	text-decoration: none;
 	color:black;
-	line-height: 1.3em;
+	padding: 15px 10px;
+}
+.feed_activity_list a:hover {
+	background: #eee;
 }
 .feed_activity_list a img {
 	float: left;
@@ -62,4 +65,13 @@
 }
 .feed_activity_list a small {
 	display: block;
+	margin-left: 40px;
+	color:#999;
+}
+.feed_activity_list a span {
+	display: block;
+	margin-left: 40px;
+	margin-right: 28px;
+	font-size: 12px;
+	line-height: 1em;
 }
