@@ -16,11 +16,7 @@
 	
 	<link href="/css/normalize.css" rel="stylesheet"/>
 	<link href="/css/bootstrap.min.css" rel="stylesheet"/>
-	<link href="/css/mobile.css" rel="stylesheet"/>
-	<link href="/css/web.css" rel="stylesheet" media="screen and (min-width: 992px)"/>
-
-	<script src="/js/libs/jquery-1.10.2.min.js"></script>
-
+	<link href="/css/style.css" rel="stylesheet"/>
 </head>
 
 <body>
