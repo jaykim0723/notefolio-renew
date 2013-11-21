@@ -64,7 +64,7 @@ class Accesslog {
         );
         
         if($this->ci->agent->is_referral()){
-            $param['referrer']  = $this->ci->agent->referrer();
+            $param['referer']  = $this->ci->agent->referrer();
         }
 
         if($data['memo']){
