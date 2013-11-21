@@ -45,5 +45,10 @@
 			}
 		});
 	});
+	$(function() {
+		$('.feed_activity_list').waypoint('sticky', {
+		  stuckClass: 'stuck'
+		});
+	});
 </script>
 <?php endif; ?>
