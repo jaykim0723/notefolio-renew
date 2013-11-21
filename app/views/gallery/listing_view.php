@@ -25,7 +25,7 @@
 					<?php endforeach ?>
 				</div>
 
-				<a href="/gallery/listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?>" class="infinite-more-link">more</a>
+				<a href="/gallery/listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?>" class="more-link">more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 		</div>
