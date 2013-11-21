@@ -7,8 +7,8 @@
 | These details are used in emails sent by authentication library.
 |--------------------------------------------------------------------------
 */
-$config['website_name'] = 'Your project';
-$config['webmaster_email'] = 'webmaster@your-site.com';
+$config['website_name'] = 'Notefolio';
+$config['webmaster_email'] = 'webmaster@notefolio.net';
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,7 @@ $config['webmaster_email'] = 'webmaster@your-site.com';
 | 'phpass_hash_strength' = Password hash strength.
 |--------------------------------------------------------------------------
 */
-$config['phpass_hash_portable'] = FALSE;
+$config['phpass_hash_portable'] = TRUE;
 $config['phpass_hash_strength'] = 8;
 
 /*
@@ -40,10 +40,10 @@ $config['phpass_hash_strength'] = 8;
 |--------------------------------------------------------------------------
 */
 $config['allow_registration'] = TRUE;
-$config['captcha_registration'] = TRUE;
-$config['email_activation'] = TRUE;
+$config['captcha_registration'] = FALSE;
+$config['email_activation'] = FALSE;
 $config['email_activation_expire'] = 60*60*24*2;
-$config['email_account_details'] = TRUE;
+$config['email_account_details'] = FALSE;
 $config['use_username'] = TRUE;
 
 $config['username_min_length'] = 4;
@@ -73,7 +73,7 @@ $config['login_by_email'] = TRUE;
 $config['login_record_ip'] = TRUE;
 $config['login_record_time'] = TRUE;
 $config['login_count_attempts'] = TRUE;
-$config['login_max_attempts'] = 5;
+$config['login_max_attempts'] = 99;
 $config['login_attempt_expire'] = 60*60*24;
 
 /*
@@ -109,8 +109,8 @@ $config['forgot_password_expire'] = 60*15;
 | 'captcha_case_sensitive' = Captcha case sensitive or not.
 |--------------------------------------------------------------------------
 */
-$config['captcha_path'] = 'captcha/';
-$config['captcha_fonts_path'] = 'captcha/fonts/5.ttf';
+$config['captcha_path'] = '/captcha/';
+$config['captcha_fonts_path'] = '/captcha/fonts/5.ttf';
 $config['captcha_width'] = 200;
 $config['captcha_height'] = 50;
 $config['captcha_font_size'] = 14;
