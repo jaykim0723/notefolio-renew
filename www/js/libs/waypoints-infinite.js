@@ -44,10 +44,10 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
           $container.addClass(options.loadingClass);
           return $.get($(options.more).attr('href'), function(data) {
             var $data, $more, $newMore;
-            console.log(data);
+
             $data = $($.parseHTML(data));
             $more = $(options.more);
-            $newMore = $data.find(options.more);
+            $newMore = $(options.more, $data);
             $container.append($data.find(options.items));
             $container.removeClass(options.loadingClass);
             if ($newMore.length) {
