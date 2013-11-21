@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				copyright (c) All rights reserved.
+				copyright (c)
 			</div>
 		</div>
 	</div>
