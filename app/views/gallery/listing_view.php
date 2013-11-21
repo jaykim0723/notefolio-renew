@@ -25,7 +25,7 @@
 					<?php endforeach ?>
 				</div>
 
-				<a href="/gallery/listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?>" id="more-link">more</a>
+				<a href="/gallery/listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?>" class="more-link">more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 		</div>
@@ -64,7 +64,7 @@
 		$('.thumbnail_list').waypoint('infinite', {
 			container: '.thumbnail_list',
 			items: '.thumbbox',
-  			more: '#more-link',
+  			more: '.more-link',
     		offset: 'bottom-in-view',
 			onAfterPageLoad : function(){
 				console.log($.now());

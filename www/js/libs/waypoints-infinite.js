@@ -45,7 +45,7 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
           return $.get($(options.more).attr('href'), function(data) {
             var $data, $more, $newMore;
 
-            $data = $($.parseHTML(data));
+            $data = $(data);
             $more = $(options.more);
             $newMore = $data.find(options.more);
             $container.append($data.find(options.items));
