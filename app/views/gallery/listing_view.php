@@ -58,8 +58,16 @@
 		});
 	}
 	$(function() {
-		$('.more-link').waypoint(function(){
+		/*$('.more-link').waypoint(function(){
 			if(typeof noNextPage=='undefined') callPage();
+		});*/
+		$('.thumbnail_list').waypoint('infinite', {
+			container: '.thumbnail_list',
+			items: '.thumbbox',
+  			more: '.more-link',
+			onAfterPageLoad : function(){
+				console.log($.now());
+			}
 		});
 	});
 </script>
