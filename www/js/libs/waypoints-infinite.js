@@ -50,7 +50,7 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
             
             $newMore = null;
             $data.each(function(){
-              if($(this).hasClass('more-link'))
+              if($(this).hasClass(options.more))
                 $newMore = $(this);
             });
             $container.append($data.find(options.items));
