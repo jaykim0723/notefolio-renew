@@ -53,24 +53,12 @@
 				nextPage = false;
 				$('.more-link').remove();
 			}
-			if (history.pushState) {
-				window.history.pushState('/listing/'+(Number(match[1])+1), 'Notefolio.net', url);
-			}
 		});
 	}
 	$(function() {
 		$('.thumbnail_list').waypoint(function(){
-			if(nextPage) callPage()
+			if(nextPage) callPage();
 		});
-		/*
-		$('.thumbnail_list').waypoint('infinite', {
-  			container: '.thumbnail_list',
-			items: '.thumbbox',
-			onAfterPageLoad : function(){
-				console.log($.now());
-			}
-		});
-		*/
 	});
 </script>
 <?php endif; ?>
