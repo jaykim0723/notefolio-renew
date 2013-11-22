@@ -434,9 +434,9 @@ class Auth extends CI_Controller
 	 */
 	function register()
 	{
-		$this->notefolio->_member_check(FALSE);
-		if(MY_ID > 0)
-			redirect('/');
+		//$this->notefolio->_member_check(FALSE); //member check
+		/*if(MY_ID > 0)
+			redirect('/');*/
             
         $data = array();
 		if($this->input->post('submit_uuid')!=false){
@@ -997,7 +997,7 @@ log_message('debug', ' -------- resurt ----------'.json_encode($result));
 					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
 				}
 			}
-			$this->load->view('auth/forgot_password_form', $data);
+            $this->layout->set_view('auth/forgot_password_form', $data)->render();
 		}
 	}
 
