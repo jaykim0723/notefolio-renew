@@ -6,6 +6,7 @@ class Feed extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('feed_model');
+		$this->nf->_member_check(array('update','delete'));
     }
 	
 	public function index()

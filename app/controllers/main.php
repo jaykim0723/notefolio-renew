@@ -7,6 +7,7 @@ class Main extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('work_model');
+		$this->nf->_member_check(array('update','delete'));
     }
 
 	
