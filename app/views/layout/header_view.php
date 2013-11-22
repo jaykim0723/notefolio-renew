@@ -1,8 +1,8 @@
-
 <header id="header" class="navbar-fixed-top">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+
 				<div class="pull-right btn-group">
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 						Preferences
@@ -15,6 +15,7 @@
 						<li><a href="#">Log out</a></li>
 					</ul>
 				</div>
+
 				<ul class="list-inline">
 					<li>
 						<a href="/">Main</a>
