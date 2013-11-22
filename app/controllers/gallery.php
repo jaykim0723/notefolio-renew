@@ -46,9 +46,26 @@ class Gallery extends CI_Controller {
 	}
 
 	function info($work_id=''){
+		// 현재는 가짜, work info model에서 가지고 와야함
 		$data = (object)array(
-			'page' => $page,
-			'rows' => array()
+			'row' => array(
+				'title' => 'aonethun',
+				'user' => '',
+				'regdate' => '',
+				'keywords' => '',
+				'tags' => '',
+				'user_id' => '',
+				'folder' => '',
+				'contents' => array(
+				),
+				'moddate' => '',
+				'hit_cnt' => '',
+				'note_cnt' => '',
+				'collect_cnt' => '',
+				'comment_cnt' => '',
+				'ccl' => '',
+				'discoverbility' => ''
+			)
 		);
 		$this->layout->set_view('gallery/info_view', $data)->render();
 	}
