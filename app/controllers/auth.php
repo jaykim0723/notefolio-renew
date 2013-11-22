@@ -12,6 +12,7 @@ class Auth extends CI_Controller
 		$this->load->library('tank_auth');
 		$this->lang->load('tank_auth');
 		$this->load->library('fbsdk');
+		$this->load->library('user_agent');
 	}
 
 	function index()
@@ -408,7 +409,7 @@ class Auth extends CI_Controller
 		if($this->input->is_ajax_request()){
             die(json_encode(array('status'=>'success', 'type'=>'logged_out')));
 		} else {
-			header('Location: ' . $this->input->server('HTTP_REFERER'));
+			redirect($this->agent->referrer());
 		}
 	}
 	
