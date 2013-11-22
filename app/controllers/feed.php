@@ -32,6 +32,7 @@ class Feed extends CI_Controller {
 		);
 		for($i=0; $i<12; $i++){
 			$data->rows[] = array(
+				'work_id' => 3,
 				'title' => 'Lorem Ipsum',
 				'user' => (object)array(
 					'realname' => '정미나',
