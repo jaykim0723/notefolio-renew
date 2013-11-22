@@ -12,15 +12,18 @@
 		</div>
 		<div class="row">
 			<div class="col-md-9">
-				<div class="thumbnail_list">
 <?php endif ?>
+
+				<div class="thumbnail_list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('feed/thumbnail_inc_view', $row) ?>
 					<?php endforeach ?>
 
-<?php if (!$this->input->is_ajax_request()): ?>
 				</div>
+				<a href="/gallery/listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?>" class="more-link">more</a>
+
+<?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 			<div class="col-md-3">
 				<ul class="feed_activity_list clearfix">
@@ -37,14 +40,7 @@
 	</div>
 </section>
 <script>
-	$(function() {
-		$('.thumbnail_list').waypoint('infinite', {
-			items: '.thumbbox',
-			onAfterPageLoad : function(){
-				console.log($.now());
-			}
-		});
-	});
+	
 	$(function() {
 		$('.feed_activity_list').waypoint('sticky', {
 		  stuckClass: 'stuck',

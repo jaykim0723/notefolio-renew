@@ -25,6 +25,7 @@ class Gallery extends CI_Controller {
 	}
 	
 	function listing($page=1){
+		/* 가짜 data를 생성, 모델과 연결하여야 함 */
 		$data = (object)array(
 			'page' => $page,
 			'rows' => array()
@@ -40,7 +41,16 @@ class Gallery extends CI_Controller {
 				)
 			);
 		}
+		// 가짜 데이터 끝
 		$this->layout->set_view('gallery/listing_view', $data)->render();
+	}
+
+	function info($work_id=''){
+		$data = (object)array(
+			'page' => $page,
+			'rows' => array()
+		);
+		$this->layout->set_view('gallery/info_view', $data)->render();
 	}
 }
 
