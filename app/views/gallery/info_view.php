@@ -8,6 +8,14 @@
 				<div class="work_list infinite_list">
 					<div class="work_wrapper infinite-item">
 						<div class="work_info well" style="height: 100px;">
+							<div class="btn-group pull-right">
+								<a href="/gallery/<?php echo $row->work_id ?>/mod" class="btn btn-default">
+									<i class="glyphicon glyphicon-cog"></i>
+								</a>
+								<a href="/gallery/<?php echo $row->work_id ?>/del" class="btn btn-default">
+									<i class="glyphicon glyphicon-trash"></i>
+								</a>
+							</div>
 							작품정보
 						</div>
 

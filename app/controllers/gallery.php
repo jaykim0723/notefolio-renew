@@ -32,6 +32,7 @@ class Gallery extends CI_Controller {
 		);
 		for($i=0; $i<12; $i++){
 			$data->rows[] = array(
+				'work_id' => 1,
 				'title' => 'Lorem Ipsum',
 				'user' => (object)array(
 					'realname' => '정미나',
@@ -48,7 +49,8 @@ class Gallery extends CI_Controller {
 	function info($work_id=''){
 		// 현재는 가짜, work info model에서 가지고 와야함
 		$data = (object)array(
-			'row' => array(
+			'row' => (object)array(
+				'work_id' => 1,
 				'title' => 'aonethun',
 				'user' => '',
 				'regdate' => '',

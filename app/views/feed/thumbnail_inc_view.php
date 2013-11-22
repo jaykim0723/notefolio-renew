@@ -1,3 +1,5 @@
 <div class="thumbbox infinite-item">
-	<img src="/img/thumb.gif"/>
+	<a href="/gallery/<?php echo $row->work_id ?>">
+		<img src="/img/thumb.gif"/>
+	</a>
 </div>
