@@ -26,7 +26,7 @@ class Tank_auth
 
 		$this->ci->load->config('tank_auth', TRUE);
 
-		$this->ci->load->library('session');
+//		$this->ci->load->library('session');
 		$this->ci->load->database();
 		$this->ci->load->model('tank_auth/users');
 
@@ -149,6 +149,16 @@ class Tank_auth
 		return $this->ci->session->userdata('username');
 	}
 
+    /**
+     * Get realname
+     *
+     * @return  string
+     */
+    function get_realname()
+    {
+        return $this->ci->session->userdata('realname');
+    }
+
 	/**
 	 * Create new user on the site and return some data about it:
 	 * user_id, username, password, email, new_email_key (if any).
@@ -215,6 +225,11 @@ class Tank_auth
 	 */
 	function is_email_available($email)
 	{
+	    if (!is_null($user = $this->ci->users->get_user_by_id($user_id, $activated)))
+            return FALSE;
+        if ($email == $user->email)
+            return TRUE;
+        
 		return ((strlen($email) > 0) AND $this->ci->users->is_email_available($email));
 	}
 
@@ -223,14 +238,15 @@ class Tank_auth
 	 * user_id, username, email, new_email_key.
 	 * Can be called for not activated users only.
 	 *
-	 * @param	string
+     * @param   string
+     * @param   bool
 	 * @return	array
 	 */
-	function change_email($email)
+	function change_email($email, $activated=FALSE)
 	{
 		$user_id = $this->ci->session->userdata('user_id');
 
-		if (!is_null($user = $this->ci->users->get_user_by_id($user_id, FALSE))) {
+		if (!is_null($user = $this->ci->users->get_user_by_id($user_id, $activated))) {
 
 			$data = array(
 				'user_id'	=> $user_id,
@@ -238,12 +254,12 @@ class Tank_auth
 				'email'		=> $email,
 			);
 			if (strtolower($user->email) == strtolower($email)) {		// leave activation key as is
-				$data['new_email_key'] = $user->new_email_key;
+				$data['new_email_key'] = $activated?NULL:$user->new_email_key;
 				return $data;
 
 			} elseif ($this->ci->users->is_email_available($email)) {
 				$data['new_email_key'] = md5(rand().microtime());
-				$this->ci->users->set_new_email($user_id, $email, $data['new_email_key'], FALSE);
+				$this->ci->users->set_new_email($user_id, $email, $data['new_email_key'], $activated);
 				return $data;
 
 			} else {
@@ -568,6 +584,9 @@ class Tank_auth
 								'user_id'	=> $user->id,
 								'username'	=> $user->username,
 								'status'	=> STATUS_ACTIVATED,
+								'realname'  => $user->realname,  // realname을 위해서.
+								'p_i'       => (file_exists(APPPATH.'../www/profiles/'.$user->id))?time():0,// 아이콘 출력을 위해서.
+                                'level'     => $user->level,  // magazine-level
 						));
 
 						// Renew users cookie to prevent it from expiring
