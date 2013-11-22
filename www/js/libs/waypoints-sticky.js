@@ -20,8 +20,6 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
     defaults = {
       wrapper: '<div class="sticky-wrapper" />',
       stuckClass: 'stuck'
-      onBeforePageLoad: $.noop,
-      onAfterPageLoad: $.noop
     };
     wrap = function($elements, options) {
       $elements.wrap(options.wrapper);
@@ -37,11 +35,9 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
         var $sticky, shouldBeStuck;
 
         $sticky = $(this).children(':first');
-        options.onBeforePageLoad();
         shouldBeStuck = direction === 'down' || direction === 'right';
         $sticky.toggleClass(options.stuckClass, shouldBeStuck);
         $wrap.height(shouldBeStuck ? $sticky.outerHeight() : '');
-        options.onAfterPageLoad();
         if (originalHandler != null) {
           return originalHandler.call(this, direction);
         }
