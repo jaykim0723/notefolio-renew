@@ -48,7 +48,10 @@
 	$(function() {
 		$('.feed_activity_list').waypoint('sticky', {
 		  stuckClass: 'stuck',
-		  offset: 50
+		  handler: function(){
+		  	var offset = $(this).parent().offset();
+		  	$(this).parent().css('top', offset.top+'px').css('left', offset.left+'px')
+		  }
 		});
 	});
 </script>
