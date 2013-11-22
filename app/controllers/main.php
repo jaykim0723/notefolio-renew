@@ -2,21 +2,13 @@
 
 class Main extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('work_model');
+    }
+
 	
 	public function index()
 	{
@@ -24,23 +16,10 @@ class Main extends CI_Controller {
 	}
 	
 	function listing($page=1){
-		$data = (object)array(
-			'page' => $page,
-			'rows' => array()
-		);
-		for($i=0; $i<12; $i++){
-			$data->rows[] = array(
-				'work_id' => 1,
-				'title' => 'Lorem Ipsum',
-				'user' => (object)array(
-					'realname' => '정미나',
-					'hit_cnt' => rand(0,234),
-					'comment_cnt' => rand(0,234),
-					'like_cnt' => rand(0,234)
-				)
-			);
-		}
-		$this->layout->set_view('main/listing_view', $data)->render();
+		$work_list = $this->work_model->get_list(array(
+			'page' => $page
+		));
+		$this->layout->set_view('main/listing_view', $work_list)->render();
 	}
 
 
