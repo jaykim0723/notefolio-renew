@@ -13,7 +13,7 @@
 		<div class="row">
 			<div class="col-md-9 col-sm-12 col-xs-12">
 <?php endif ?>
-				<div class="thumbnail_list">
+				<div class="thumbnail_list infinite_list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('gallery/thumbnail_inc_view', $row) ?>

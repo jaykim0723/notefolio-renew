@@ -14,7 +14,7 @@
 			<div class="col-md-9">
 <?php endif ?>
 
-				<div class="thumbnail_list">
+				<div class="thumbnail_list infinite_list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('feed/thumbnail_inc_view', $row) ?>
@@ -39,8 +39,9 @@
 		</div>
 	</div>
 </section>
+
+
 <script>
-	
 	$(function() {
 		$('.feed_activity_list').waypoint('sticky', {
 		  stuckClass: 'stuck',
