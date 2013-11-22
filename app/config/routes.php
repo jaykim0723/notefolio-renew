@@ -41,6 +41,20 @@
 $route['default_controller'] = "main";
 $route['404_override'] = '';
 
+//-- notefolio route
+
+$route['(auth|auth_other|profile|upload|invite|info|main|feed|referrer|invite2|featured|active_user)'] = "$1"; // auth결과 메시지를 출력한다.
+$route['(acp)'] = "$1/dashboard"; // acp 첫페이지.
+$route['(gallery)/(:num)'] = "$1/info/$2";
+$route['(gallery)/(:num)/(:any)'] = "$1/$3/$2";
+$route['(gallery|profile|auth|auth_other|acp|comment|upload|info|main|feed|factive_user)/(:any)'] = "$1/$2";
+$route['(gallery|profile|auth|auth_other|acp|comment|main|feed|feed_new)/(:any)/(:any)'] = "$1/$2/$3";
+
+$route['(:any)/(gallery|collection|guestbook|following|followers)/(:num)'] = "profile/$2/$1/$3"; // tabs list
+$route['(:any)/(gallery|collection|guestbook|following|followers)/(:any)'] = "$2/$3/$1"; // maxzidell/gallery/upload -> gallery/upload/maxzidell
+$route['(:any)/(gallery|collection|guestbook|following|followers)'] = "profile/$2/$1"; // tabs
+$route['(:any)'] = "profile/info/$1";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
