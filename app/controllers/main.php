@@ -20,12 +20,30 @@ class Main extends CI_Controller {
 	
 	public function index()
 	{
-		$this->layout->set_header(array('title'=> 'aoenthu'))->set_view('main_view')->render();
+		$this->listing(1);
 	}
 	
-	function json(){
-		$this->layout->set_json($_SERVER)->render();
+	function listing($page=1){
+		$data = (object)array(
+			'page' => $page,
+			'rows' => array()
+		);
+		for($i=0; $i<12; $i++){
+			$data->rows[] = array(
+				'title' => 'Lorem Ipsum',
+				'user' => (object)array(
+					'realname' => '정미나',
+					'hit_cnt' => rand(0,234),
+					'comment_cnt' => rand(0,234),
+					'like_cnt' => rand(0,234)
+				)
+			);
+		}
+		$this->layout->set_view('main/listing_view', $data)->render();
 	}
+
+
+
 }
 
 /* End of file welcome.php */

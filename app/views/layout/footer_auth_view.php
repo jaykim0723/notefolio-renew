@@ -1,2 +1,4 @@
-	<h2>auth footer</h2>
-</div> <!-- end of container -->
+	<footer id="auth_footer" class="clearfix">
+		footer
+	</footer>
+</div>

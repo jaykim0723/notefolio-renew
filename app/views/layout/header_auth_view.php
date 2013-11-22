@@ -1,5 +1,4 @@
-<div class="container">
-	
-<h1>
-	auth header
-</h1>
+<div id="auth_wrapper">
+	<header id="auth_header">
+		header
+	</header>

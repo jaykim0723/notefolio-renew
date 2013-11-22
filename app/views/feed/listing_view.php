@@ -2,7 +2,7 @@
 
 <section class="listing">
 	<div class="container">
-		<div class="row visible-sm">
+		<div class="row visible-sm visible-xs">
 			<div class="col-md-12">
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#">팔로워의 작품</a></li>
