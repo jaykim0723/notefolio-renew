@@ -69,7 +69,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language']	= 'korean';
 
 /*
 |--------------------------------------------------------------------------
@@ -356,6 +356,20 @@ $config['rewrite_short_tags'] = FALSE;
 |
 */
 $config['proxy_ips'] = '';
+
+/*
+|--------------------------------------------------------------------------
+| Facebook App ID
+|--------------------------------------------------------------------------
+|
+| If you want to integrate with Facebook Connect authentication, put your
+| Facebook App ID below.
+|
+*/
+$config['facebook_app_id'] = '512567062090848';
+$config['facebook_app_key'] = '512567062090848';
+$config['facebook_app_secret'] = 'a179b89452f1e9fff925186045692794';
+
 
 
 /* End of file config.php */
