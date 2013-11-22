@@ -47,7 +47,8 @@
 	});
 	$(function() {
 		$('.feed_activity_list').waypoint('sticky', {
-		  stuckClass: 'stuck'
+		  stuckClass: 'stuck',
+		  offset: 50
 		});
 	});
 </script>
