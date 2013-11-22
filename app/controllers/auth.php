@@ -8,7 +8,7 @@ class Auth extends CI_Controller
 
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
-		//$this->load->library('security');
+		$this->load->library('security');
 		$this->load->library('tank_auth');
 		$this->lang->load('tank_auth');
 	}
@@ -405,7 +405,7 @@ class Auth extends CI_Controller
         $this->fbsdk->destroySession(); // destory fb session
 
 		if($this->input->is_ajax_request()){
-            die(json_encode(array('status'=>'success', 'type'=>'logged_out')))
+            die(json_encode(array('status'=>'success', 'type'=>'logged_out')));
 		} else {
 			header('Location: ' . $_SERVER['HTTP_REFERER']);
 		}
