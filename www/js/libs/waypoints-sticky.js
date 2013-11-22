@@ -35,9 +35,9 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
       originalHandler = options.handler;
       options.handler = function(direction) {
         var $sticky, shouldBeStuck;
-        options.onBeforePageLoad();
 
         $sticky = $(this).children(':first');
+        options.onBeforePageLoad();
         shouldBeStuck = direction === 'down' || direction === 'right';
         $sticky.toggleClass(options.stuckClass, shouldBeStuck);
         $wrap.height(shouldBeStuck ? $sticky.outerHeight() : '');
