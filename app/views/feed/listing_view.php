@@ -49,8 +49,8 @@
 		$('.feed_activity_list').waypoint('sticky', {
 		  stuckClass: 'stuck',
 		  handler: function(){
-		  	var offset = $(this).parent().offset();
-		  	$(this).parent().css('top', offset.top+'px').css('left', offset.left+'px')
+		  	var offset = $(this).offset();
+		  	$(this).css('top', offset.top+'px').css('left', offset.left+'px')
 		  }
 		});
 	});
