@@ -1,11 +1,12 @@
-App = Ember.Application.create();
 
-App.Router.map(function() {
-  // put your routes here
-});
-
-App.IndexRoute = Ember.Route.extend({
-  model: function() {
-    return ['red', 'yellow', 'blue'];
-  }
+$(function() {
+	$('.thumbnail_list').waypoint('infinite', {
+		container: '.thumbnail_list',
+		items: '.thumbbox',
+			more: '.more-link',
+		offset: 'bottom-in-view',
+		onAfterPageLoad : function(){
+			console.log($.now());
+		}
+	});
 });
