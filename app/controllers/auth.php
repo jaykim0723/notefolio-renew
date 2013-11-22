@@ -408,7 +408,7 @@ class Auth extends CI_Controller
 		if($this->input->is_ajax_request()){
             die(json_encode(array('status'=>'success', 'type'=>'logged_out')));
 		} else {
-			header('Location: ' . $_SERVER['HTTP_REFERER']);
+			header('Location: ' . $this->input->server('HTTP_REFERER'));
 		}
 	}
 	
