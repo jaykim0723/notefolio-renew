@@ -30,7 +30,7 @@ class Main extends CI_Controller {
 		);
 		for($i=0; $i<12; $i++){
 			$data->rows[] = array(
-				'work_id' => 2
+				'work_id' => 2,
 				'title' => 'Lorem Ipsum',
 				'user' => (object)array(
 					'realname' => '정미나',
