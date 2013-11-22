@@ -434,9 +434,9 @@ class Auth extends CI_Controller
 	 */
 	function register()
 	{
-		//$this->notefolio->_member_check(FALSE); //member check
-		/*if(MY_ID > 0)
-			redirect('/');*/
+		$this->nf->_member_check(FALSE); //member check
+		if(MY_ID > 0)
+			redirect('/');
             
         $data = array();
 		if($this->input->post('submit_uuid')!=false){
@@ -621,11 +621,7 @@ class Auth extends CI_Controller
             }
             //-- end
 		}
-        
-		$this->notefolio->template(array(
-			array('profile/register_new_form_view', $data)
-		), NULL, 'auth');
-
+        $this->layout->set_view('auth/register_form_view', $data)->render();
 	}
 	/**
 	 *	가입 및 수정에서 공통으로 쓰이는 폼
@@ -826,11 +822,7 @@ log_message('debug', ' -------- resurt ----------'.json_encode($result));
 			}
 		  
 		}
-
-		$this->notefolio->template(array(
-			array('profile/'.$method.'_form_view', $data)
-		), NULL, 'auth');
-		
+        $this->layout->set_view('auth/'.$method.'_form_view', $data)->render();		
 	}
 
     /*

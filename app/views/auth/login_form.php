@@ -53,7 +53,8 @@ $captcha = array(
 		<?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('/auth/register/', 'Register'); ?>
 	</div>
 							
-	<button type="submit" class="btn btn-primary">Let me in</button>
+	<button type="submit" class="btn btn-primary">Let me in</button>				
+	<button onclick="javascript:window.location.href='/auth/fb/login'" class="btn btn-primary">Facebook</button>
 	<?php echo form_close(); ?>
 
 </section>
