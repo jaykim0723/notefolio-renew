@@ -50,7 +50,7 @@
 		  stuckClass: 'stuck',
 		  handler: function(){
 		  	var offset = $(this).offset();
-		  	$(this).css('top', offset.top+'px').css('left', offset.left+'px')
+		  	$(this).css('top', offset.top+'px').css('left', offset.left+'px').css('width', $(this).width());
 		  }
 		});
 	});

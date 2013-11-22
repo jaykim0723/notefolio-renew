@@ -47,6 +47,9 @@
 	width: 100%;
 }
 
+.sticky-wrapper {
+	overflow: hidden;
+}
 
 
 
