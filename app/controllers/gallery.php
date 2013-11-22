@@ -28,10 +28,19 @@ class Gallery extends CI_Controller {
 	}
 
 
-	function mod($work_id=''){
+	function update($work_id=''){
 		$work = $this->work_model->get_info($work_id);
+		exit(print_r($work));
+	}
+
+
+	function delete($work_id=''){
+		$work = $this->work_model->get_info($work_id);
+		exit(print_r($work));
 		
 	}
+
+
 }
 
 /* End of file welcome.php */

@@ -70,6 +70,16 @@ class work_model extends CI_Model {
     }
 
 
+    function post_info($data=array()){
+
+    }
+    function put_info($work_id, $data=array()){
+
+    }
+    function delete_info($work_id){
+
+    }
+
 }
 
 /* End of file work_model.php */
