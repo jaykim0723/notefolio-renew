@@ -46,7 +46,7 @@ $hidden_field = array(
 ?>
 <section>
 				
-	<?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
+	<?php echo form_open($this->uri->uri_string(), array('role'=>'form','id'=>'login-form')); ?>
 	<?php echo form_hidden($hidden_field); ?>
 	<div class="form-group">
 		<?php echo form_label($login_label, $login['id']); ?>
