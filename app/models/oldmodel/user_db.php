@@ -21,6 +21,7 @@ class User_db extends CI_Model
      */
     function _get_user_list ($query=array(), $field=array(), $limit=array(1, 30), $order=array('id'=>'desc'), $opt=array()){
            
+        var_export($query);
         if ($field!=array()){
             foreach($field as $k=>$v) {
                 switch($k) {
@@ -74,7 +75,7 @@ class User_db extends CI_Model
             $return = $this->db->get();
             log_message('debug', "Last Query: ".$this->db->last_query());
         }
-        var_export($opt);
+
         switch($opt['return_type']){
             case "compiled_select":
                 return $this->db->get_compiled_select();
