@@ -715,7 +715,7 @@ class User_db extends CI_Model
         
         if(isset($opt['group'])) $this->db->group_by($opt['group']);
         
-        $this->db->from('user_follow'); //set table
+        $this->db->from('user_follows'); //set table
         
         $output = array();
         if(!isset($opt['return_type'])) $opt['return_type'] = 'data_array';
@@ -762,7 +762,7 @@ class User_db extends CI_Model
         $this->db->set('follow_id',$follow);
         $this->db->set('follower_id',$follower);
         $this->db->set('regdate',date("Y-m-d H:i:s"));
-        $return = $this->db->insert('user_follow');
+        $return = $this->db->insert('user_follows');
         log_message('debug', "Last Query: ".$this->db->last_query());
         $this->db->flush_cache();
         
@@ -787,7 +787,7 @@ class User_db extends CI_Model
         
         $this->db->where('follow_id',$follow);
         $this->db->where('follower_id',$this->tank_auth->get_user_id());
-        $return = $this->db->delete('user_follow');
+        $return = $this->db->delete('user_follows');
         log_message('debug', "Last Query: ".$this->db->last_query());
         $this->db->flush_cache();
         
