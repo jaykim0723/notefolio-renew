@@ -10,7 +10,7 @@ class Member extends CI_Model
 
         $ci =& get_instance();
         
-        $this->load->model('oldmodel/db/user_db');
+        $this->load->model('oldmodel/user_db');
     }
     
     /*
@@ -20,7 +20,7 @@ class Member extends CI_Model
      * @return array
      */
     function get_user_info($user_id='', $username='', $email=''){
-        $this->load->model('oldmodel/api/auth_model');
+        $this->load->model('oldmodel/auth_model');
         return $this->auth_model->get_user_info($user_id, $username, $email);
     }
     
@@ -318,7 +318,7 @@ class Member extends CI_Model
         
         $invite_code = strtoupper(str_replace("-", "", $invite_code));
         
-        $this->load->model('oldmodel/db/user_db');
+        $this->load->model('oldmodel/user_db');
         
         $data=$this->user_db->_get_invite_code_list(array("code"=>$invite_code, "user_id"=>0 ));
         if(sizeof($data)===1) {
