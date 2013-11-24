@@ -141,11 +141,12 @@ class Auth extends CI_Controller
                 echo("<p>처리 중입니다... 잠시만 기다려 주세요...</p>");
                 
                 $fb_num_id = $this->fbsdk->getUser();// get the facebook user and save in the session
-                var_export($fb_num_id);
+                
                 if(!empty($fb_num_id))
                 {
                     try {
                         $fbme = $this->fbsdk->api('/me');
+                        var_export($fbme);
                     } catch (FacebookApiException $e) {
                         error_log($e);
                         $fb_num_id = null;
