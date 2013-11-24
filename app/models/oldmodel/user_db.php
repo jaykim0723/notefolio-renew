@@ -20,8 +20,6 @@ class User_db extends CI_Model
      * @return array
      */
     function _get_user_list ($query=array(), $field=array(), $limit=array(1, 30), $order=array('id'=>'desc'), $opt=array()){
-           
-        var_export($query);
         if ($field!=array()){
             foreach($field as $k=>$v) {
                 switch($k) {
