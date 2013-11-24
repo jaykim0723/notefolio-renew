@@ -218,12 +218,12 @@ class Auth extends CI_Controller
                         
                     } else if($this->uri->segment(4)=='for-login') { //for login
                         $this->load->model('oldmodel/auth_model');
-                        
+
 			            $user = $this->auth_model->get_user_info_by_fbid($fb_num_id);
 			            if($user['user_id']==0) //-- fb 가입자가 아님
 			            {
 			                $user_info_by_email = $this->auth_model->get_user_info("","",$fbme['email']); //-- 이메일 받아오기.
-			                var_export($user_info_by_email);
+
                             if($user_info_by_email['user_id']!=0){ //-- 이메일이 이미 가입된 회원
 			                    $this->auth_model->post_user_fb_info($user_info_by_email['user_id'], $fb_num_id);
                                 

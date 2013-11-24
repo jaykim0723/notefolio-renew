@@ -947,7 +947,7 @@ class User_db extends CI_Model
         
         if(isset($opt['group'])) $this->db->group_by($opt['group']);
         
-        $this->db->from('user_fb_info'); //set table
+        $this->db->from('user_sns_fb'); //set table
         
         $output = array();
         if(!isset($opt['return_type'])) $opt['return_type'] = 'data_array';
@@ -997,7 +997,7 @@ class User_db extends CI_Model
         }
         
         $this->db->set('regdate',date("Y-m-d H:i:s"));
-        $return = $this->db->insert('user_fb_info');
+        $return = $this->db->insert('user_sns_fb');
         log_message('debug', "Last Query: ".$this->db->last_query());
         $this->db->flush_cache();
         
@@ -1037,7 +1037,7 @@ class User_db extends CI_Model
             }
         }
         
-        $return = $this->db->update('user_fb_info');
+        $return = $this->db->update('user_sns_fb');
         log_message('debug', "Last Query: ".$this->db->last_query());
         $this->db->flush_cache();
         
@@ -1065,7 +1065,7 @@ class User_db extends CI_Model
             }
         }
         
-        $return = $this->db->delete('user_fb_info');
+        $return = $this->db->delete('user_sns_fb');
         log_message('debug', "Last Query: ".$this->db->last_query());
         $this->db->flush_cache();
         
