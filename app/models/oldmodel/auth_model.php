@@ -27,8 +27,10 @@ class Auth_model extends CI_Model
          /* your real code  */
          
         $user_query=array();
+        var_export($user_query);
         
         $user_basic_query = $this->user_db->_get_user(array(),array('last_login','created'),array(),array(),array("return_type"=>"compiled_select"));
+        var_export($user_query);
         
         $user_profile_query = $this->user_db->_get_user_profile(array(),array('user_id','location','website','facebook_id','twitter_id','gender','phone','birth','description','mailing','following_cnt','follower_cnt','moddate','regdate'),array(),array(),array("return_type"=>"compiled_select"));
         $user_query['profile_join'] =  array('table'=>"(".$user_profile_query.") profile", 'on'=>'users.id = profile.user_id', 'type'=>'left');
@@ -36,8 +38,6 @@ class Auth_model extends CI_Model
         $user_query['is_following_join'] =  array('table'=>"(".$user_is_following_query.") is_following", 'on'=>'users.id = is_following.follow_id', 'type'=>'left');
         $fb_query = $this->user_db->_get_user_fb(array(), array('id as user_id', 'fb_num_id', 'access_token', 'post_work', 'post_comment','post_note'), array(), array('id'=>'desc'), array('return_type'=>'compiled_select'));
         $user_query['fb_join'] = array('table'=>"(".$fb_query.") fb_info", 'on'=>'users.id = fb_info.user_id', 'type'=>'left');
-        
-        var_export($user_query);
         
         if(isset($opt['fb_num_id'])) {
             $user_query['fb_num_id'] = $opt['fb_num_id'];
