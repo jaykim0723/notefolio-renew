@@ -262,7 +262,7 @@ class MY_Loader extends CI_Loader
             }
         }
 	}
-    
+
     public function database($params = '', $return = FALSE, $active_record = NULL)
     {
         // Grab the super object
@@ -275,13 +275,13 @@ class MY_Loader extends CI_Loader
         }
  
         // Check if custom DB file exists, else include core one
-        if (file_exists(APPPATH.'core/'.config_item('subclass_prefix').'DB'.EXT))
+        if (file_exists(APPPATH.'core/'.config_item('subclass_prefix').'DB.php'))
         {
-            require_once(APPPATH.'core/'.config_item('subclass_prefix').'DB'.EXT);
+            require_once(APPPATH.'core/'.config_item('subclass_prefix').'DB.php');
         }
         else
         {
-            require_once(BASEPATH.'database/DB'.EXT);
+            require_once(BASEPATH.'database/DB.php');
         }
  
         if ($return === TRUE)
