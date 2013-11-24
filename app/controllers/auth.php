@@ -130,6 +130,7 @@ class Auth extends CI_Controller
      */
     function fb($method)
     {
+        $this->load->library('fbsdk');
     	parse_str( $_SERVER['QUERY_STRING'], $_REQUEST ); // for prevent $fb_num_id == 0
 		
         // load facebook library
