@@ -18,7 +18,7 @@ class Acp {
 
         $this->ci->load->config('acp', TRUE);
         $this->default_location = $this->ci->config->item('acp_default_location', 'acp');
-        $this->ci->load->model('acp/acp_users');
+        $this->ci->load->model('oldmodel/acp/acp_users');
     }
     
     /*
