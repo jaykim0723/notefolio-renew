@@ -27,10 +27,8 @@ class Auth_model extends CI_Model
          /* your real code  */
          
         $user_query=array();
-        var_export($user_query);
         
         $user_basic_query = $this->user_db->_get_user(array(),array('last_login','created'),array(),array(),array("return_type"=>"compiled_select"));
-        var_export($user_query);
         
         $user_profile_query = $this->user_db->_get_user_profile(array(),array('user_id','location','website','facebook_id','twitter_id','gender','phone','birth','description','mailing','following_cnt','follower_cnt','moddate','regdate'),array(),array(),array("return_type"=>"compiled_select"));
         $user_query['profile_join'] =  array('table'=>"(".$user_profile_query.") profile", 'on'=>'users.id = profile.user_id', 'type'=>'left');
