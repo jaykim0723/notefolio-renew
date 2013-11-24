@@ -159,7 +159,7 @@ class Auth extends CI_Controller
                         </script>
                         ");
                     }
-                    var_export($this->uri->segment(4));
+                    
                     if($this->tank_auth->get_user_id() && ($this->uri->segment(4)==false)){
                         $this->load->model('oldmodel/auth_model');
                         
@@ -218,6 +218,7 @@ class Auth extends CI_Controller
                         
                     } else if($this->uri->segment(4)=='for-login') { //for login
                         $this->load->model('oldmodel/auth_model');
+                        var_export($this->uri->segment(4));
 
 			            $user = $this->auth_model->get_user_info_by_fbid($fb_num_id);
 			            
