@@ -37,6 +37,7 @@ class Auth_model extends CI_Model
         $fb_query = $this->user_db->_get_user_fb(array(), array('id as user_id', 'fb_num_id', 'access_token', 'post_work', 'post_comment','post_note'), array(), array('id'=>'desc'), array('return_type'=>'compiled_select'));
         $user_query['fb_join'] = array('table'=>"(".$fb_query.") fb_info", 'on'=>'users.id = fb_info.user_id', 'type'=>'left');
         
+        var_export($user_query);
         
         if(isset($opt['fb_num_id'])) {
             $user_query['fb_num_id'] = $opt['fb_num_id'];
