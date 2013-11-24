@@ -24,60 +24,14 @@ class Auth_model extends CI_Model
      */
     function get_user_info($user_id='', $username='', $email='', $opt=array()){
 
-        // 완료되면 아래 변수 선언부만 주석처리
-        /*
-        $dev = TRUE;
-        if(isset($dev)){
-            return array(
-                "user_id" => 2398,
-                "realname" => "홍길동",
-                "username" => "maxzidell",
-                "profile_image" => "/images/profile_img_100?h=2349",
-                "homepage" => "http://whooing.com",
-                "twitter_screen_name" => "hong GD",
-                "facebook_url" => "maxzidell",
-                "description" => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                "categories" => array(
-                    "fine_art",
-                    "digital_art",
-                    "sound_design"
-                ),
-                "gender" => "f",
-                "birth" => "1980-07-12",
-                "ins_time" => 1323029378,
-                "mod_time" => 1323029378,
-                "level" => "normal",
-                "phone" => 01012345678,
-                "facebook_token" => "",
-                "facebook_secret" => "",
-                "following" => 10,
-                "follower" => 15
-            );
-        }
-         */
-
-        /* 
-         *  params validation
-         *  example :   return array(
-         *                  'status'=> 'error',
-         *                  'params' => array(
-         *                      'user_id' => 'required'
-         *                  )
-         *              );
-         */
-         
          /* your real code  */
          
         $user_query=array();
         
         $user_basic_query = $this->user_db->_get_user(array(),array('last_login','created'),array(),array(),array("return_type"=>"compiled_select"));
         
-        $user_profile_query = $this->user_db->_get_user_profile(array(),array('user_id','location','website','facebook_id','twitter_id','gender','realname','phone','birth','description','mailing','following_cnt','follower_cnt','moddate','regdate'),array(),array(),array("return_type"=>"compiled_select"));
+        $user_profile_query = $this->user_db->_get_user_profile(array(),array('user_id','location','website','facebook_id','twitter_id','gender','phone','birth','description','mailing','following_cnt','follower_cnt','moddate','regdate'),array(),array(),array("return_type"=>"compiled_select"));
         $user_query['profile_join'] =  array('table'=>"(".$user_profile_query.") profile", 'on'=>'users.id = profile.user_id', 'type'=>'left');
-        //$user_following_query = $this->user_db->_get_user_follow_list(array(), array('follower_id', 'count(*) as following_count'),array(),array(),array("group"=>"follower_id","return_type"=>"compiled_select"));
-        //$user_query['folloing_join'] =  array('table'=>"(".$user_following_query.") following", 'on'=>'users.id = following.follower_id', 'type'=>'left');
-        //$user_follower_query = $this->user_db->_get_user_follow_list(array(), array('follow_id', 'count(*) as follower_count'),array(),array(),array("group"=>"follow_id","return_type"=>"compiled_select"));
-        //$user_query['follower_join'] =  array('table'=>"(".$user_follower_query.") follower", 'on'=>'users.id = follower.follow_id', 'type'=>'left');
         $user_is_following_query = $this->user_db->_get_user_follow_list(array("follower_id"=>$this->tank_auth->get_user_id()), array('follow_id', 'count(`follow_id`) as following'),array(),array(),array("group"=>"follow_id", "return_type"=>"compiled_select"));
         $user_query['is_following_join'] =  array('table'=>"(".$user_is_following_query.") is_following", 'on'=>'users.id = is_following.follow_id', 'type'=>'left');
         $fb_query = $this->user_db->_get_user_fb(array(), array('id as user_id', 'fb_num_id', 'access_token', 'post_work', 'post_comment','post_note'), array(), array('id'=>'desc'), array('return_type'=>'compiled_select'));
@@ -308,43 +262,7 @@ class Auth_model extends CI_Model
             // 본인의 것에 대해서만 수정하도록.. && 관리자가 아니라면
             return FALSE;
         }
-        
-        //var_export($data);
-        //die();
-        
-        /*
-         *  array ( 
-         * 'gender' => 'f', 
-         * 'realname' => '홍길동', 
-         * 'username' => 'maxzidell', 
-         * 'categories' => '', 'description' => '', 
-         * 'homepage' => 'http://whooing.com', 
-         * 'facebook_url' => 'maxzidell', 
-         * 'twitter_screen_name' => 'hong GD', 
-         * 'birth' => '', )
-         * 
-         */
-        /*
-         *
-         *  UPDATE `notefolio`.`user_profiles`
-         *  SET
-         *  `id` = {id: },
-         *  `user_id` = {user_id: },
-         *  `location` = {location: },
-         *  `categories` = {categories: },
-         *  `website` = {website: },
-         *  `facebook_id` = {facebook_id: },
-         *  `twitter_id` = {twitter_id: },
-         *  `gender` = {gender: },
-         *  `level` = {level: },
-         *  `realname` = {realname: },
-         *  `phone` = {phone: },
-         *  `description` = {description: },
-         *  `moddate` = {moddate: CURRENT_TIMESTAMP},
-         *  `regdate` = {regdate: 0000-00-00 00:00:00}
-         *  WHERE <{where_condition}>;
-         *  
-         */
+
         foreach($data as $k=>$v){
             switch($k){
                 case 'gender':

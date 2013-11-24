@@ -146,7 +146,6 @@ class Auth extends CI_Controller
                 {
                     try {
                         $fbme = $this->fbsdk->api('/me');
-                        var_export($fbme);
                     } catch (FacebookApiException $e) {
                         error_log($e);
                         $fb_num_id = null;
