@@ -181,10 +181,9 @@ class Auth extends CI_Controller
                         ");
                     } else if($this->uri->segment(4)=='for-register') { //for register
                         $this->load->model('oldmodel/auth_model');
-                        $fb_user_info = $this->fbsdk->api('/me');
                         
                         $user = $this->auth_model->get_user_info_by_fbid($fb_num_id);
-                        $user_info_by_email = $this->auth_model->get_user_info("","",$fb_user_info['email']); //-- 이메일 받아오기.
+                        $user_info_by_email = $this->auth_model->get_user_info("","",$fbme['email']); //-- 이메일 받아오기.
                         
 			            if($user['user_id']!=0){ //-- fb 가입자
                             $this->_login_by_fb($user);
@@ -202,7 +201,7 @@ class Auth extends CI_Controller
                             ";
                         } else {
                         	//-- register 변수들 대입
-                            $this->session->set_flashdata('register_fb', json_encode($fb_user_info));
+                            $this->session->set_flashdata('register_fb', json_encode($fbme));
                             $go_to = "/auth/register";
                             $script = "
                                 window.opener.location.href='$go_to';
@@ -224,8 +223,7 @@ class Auth extends CI_Controller
 			            $user = $this->auth_model->get_user_info_by_fbid($fb_num_id);
 			            if($user['user_id']==0) //-- fb 가입자가 아님
 			            {
-			                $fb_user_info = $this->fbsdk->api('/me');
-			                $user_info_by_email = $this->auth_model->get_user_info("","",$fb_user_info['email']); //-- 이메일 받아오기.
+			                $user_info_by_email = $this->auth_model->get_user_info("","",$fbme['email']); //-- 이메일 받아오기.
 			                if($user_info_by_email['user_id']!=0){ //-- 이메일이 이미 가입된 회원
 			                    $this->auth_model->post_user_fb_info($user_info_by_email['user_id'], $fb_num_id);
                                 
@@ -273,8 +271,7 @@ class Auth extends CI_Controller
 			            $user = $this->auth_model->get_user_info_by_fbid($fb_num_id);
 			            if($user['user_id']==0) //-- fb 가입자가 아님
 			            {
-			                $fb_user_info = $this->fbsdk->api('/me');
-			                $user_info_by_email = $this->auth_model->get_user_info("","",$fb_user_info['email']); //-- 이메일 받아오기.
+			                $user_info_by_email = $this->auth_model->get_user_info("","",$fbme['email']); //-- 이메일 받아오기.
 			                if($user_info_by_email['user_id']!=0){ //-- 이메일이 이미 가입된 회원
 			                    $this->auth_model->post_user_fb_info($user_info_by_email['user_id'], $fb_num_id);
                                 
@@ -287,7 +284,7 @@ class Auth extends CI_Controller
 			                    
 			                }else {
 			                    //=- end code
-                                $this->session->set_flashdata('register_fb', json_encode($fb_user_info));
+                                $this->session->set_flashdata('register_fb', json_encode($fbme));
                                 $go_to = "/auth/register";
                                 $script = "
                                     window.opener.location.href='$go_to';
