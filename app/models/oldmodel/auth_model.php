@@ -63,7 +63,7 @@ class Auth_model extends CI_Model
                 "twitter_screen_name" => isset($user['twitter_id'])?$user['twitter_id']:'',
                 "facebook_url" => isset($user['facebook_id'])?$user['facebook_id']:'',
                 "description" => isset($user['description'])?$user['description']:'',
-                "categories" => (isset($user['id'])&&($user['id']>0))?$this->user_db->_get_user_category_list(array('user_id'=>$user['id']),array('category')):'',
+                //"categories" => (isset($user['id'])&&($user['id']>0))?$this->user_db->_get_user_category_list(array('user_id'=>$user['id']),array('category')):'',
                 "gender" => isset($user['gender'])?$user['gender']:'',
                 "birth" => isset($user['birth'])?$user['birth']:'',
                 "ins_time" => isset($user['regdate'])?$user['regdate']:'',
