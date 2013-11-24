@@ -54,7 +54,16 @@ $captcha = array(
 	</div>
 							
 	<button type="submit" class="btn btn-primary">Let me in</button>				
-	<button onclick="javascript:window.location.href='/auth/fb/login'" class="btn btn-primary">Facebook</button>
+	<span class="btn btn-primary" id="login-with-fb">Facebook</span>
 	<?php echo form_close(); ?>
 
 </section>
+
+<script>
+    $('#ogin-with-fb').on('click',function(e){
+        e.preventDefault();
+        var fb_diag = window.open('<?=$this->config->item('base_url')?>auth/fb/link/for-login','fb_diag','width=600,height=300,scrollbars=yes,resizable=no');
+        fb_diag.focus();
+        //$.fn.dialog2.helpers.alert("현재 준비중입니다.");
+    });
+</script>
