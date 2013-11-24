@@ -223,7 +223,8 @@ class Auth extends CI_Controller
 			            if($user['user_id']==0) //-- fb 가입자가 아님
 			            {
 			                $user_info_by_email = $this->auth_model->get_user_info("","",$fbme['email']); //-- 이메일 받아오기.
-			                if($user_info_by_email['user_id']!=0){ //-- 이메일이 이미 가입된 회원
+			                var_export($user_info_by_email);
+                            if($user_info_by_email['user_id']!=0){ //-- 이메일이 이미 가입된 회원
 			                    $this->auth_model->post_user_fb_info($user_info_by_email['user_id'], $fb_num_id);
                                 
                                 $this->_login_by_fb($user_info_by_email);
