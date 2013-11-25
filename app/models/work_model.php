@@ -27,7 +27,7 @@ class work_model extends CI_Model {
     		->from('works')
     		->join('users', 'users.id = works.user_id', 'left')
     		->where('works.id', $work_id)
-    		->limit($params->delimiter, (($params->page)-1)*$params->delimiter)); //set
+    		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
     	$data = $this->db->get();
 
