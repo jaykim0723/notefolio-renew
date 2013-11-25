@@ -9,7 +9,7 @@
 					<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-						<li><a href="#">Upload work</a></li>
+						<li><a href="/gallery/create">Upload work</a></li>
 						<li><a href="#">My Profile</a></li>
 						<li><a href="#">Setting</a></li>
 						<li><a href="#">Log out</a></li>
