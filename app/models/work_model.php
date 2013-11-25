@@ -118,18 +118,23 @@ class work_model extends CI_Model {
      * @param  array  $data [description]
      * @return [type]       [description]
      */
-    function put_info($input=array()){
+    function put_info($input){
         // 값을 정규식으로 검사한다.
         $input->moddate = time(); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
-        $this->db->set('work_id', $input->work_id)->update('works', $input);
+        $work_id = $input->work_id;
+        unset($input->work_id);
+        $this->db->where('work_id', $work_id)->update('works', $input);
 
+        $data = (object)array(
+            'status' => 'done'
+        );
         if($this->db->affected_rows()==0){
-            return (object)array(
-                'status' => 'fail'
-            );
+            $data->status = 'fail';
         }
-        return $this->get_info($input->work_id); // 최총 출력되는 값을 정확히 하기 위하여 정규화된 함수를 사용
+        return $data;
     }
+
+
     function delete_info($work_id){
 
     }

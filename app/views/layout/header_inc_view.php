@@ -16,10 +16,15 @@
 	
 	<link href="/css/normalize.css" rel="stylesheet"/>
 	<link href="/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="/css/util.css" rel="stylesheet"/>
 	<link href="/css/mobile.css" rel="stylesheet"/>
 	<link href="/css/web.css" rel="stylesheet" media="screen and (min-width: 992px)"/>
 	<link href="https://s3.amazonaws.com/css_sprites/543/10543/ebc4aa8095.css" rel="stylesheet"/>
 	<script src="/js/libs/jquery-1.10.2.min.js"></script>
+	<script src="/js/util.js"></script>
+	<script>
+		var common_assets = '';
+	</script>
 
 </head>
 

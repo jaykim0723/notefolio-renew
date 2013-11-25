@@ -1,5 +1,5 @@
 <section class="visible-md visible-lg">
-	<?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'class'=>'container ajax')); ?>
+	<?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'class'=>'container')); ?>
 		<div class="row">
 			<!-- 작품영역 시작 -->
 			<div class="col-md-8">
@@ -73,20 +73,29 @@
 	<?php echo form_close(); ?>
 </section>
 <script>
+	var work = <?php
+		echo json_encode($_ci_vars); // view내의 스크립트에서 편리하게 사용하기 위하여 미리 할당
+	?>;
 	$(function() {
 		// form이 전송이 되면 hook하여 ajax로 호출을 한다.
-		$('.ajax').on('submit', function(e){
+		$('#gallery_form').on('submit', function(e){
 			e.preventDefault();
 			e.stopPropagation();
+			blockPage.block();
 			$.ajax({
 				url : $(this).attr('action'),
 				data : $(this).serialize(),
 				type : 'post',
 				dataType : 'json'
 			}).done(function(d){
-				console.log(d);
+				blockPage.unblock();
+				if(d.status=='done')
+					site.redirect('/gallery/'+work.work_id);
+				else
+					formFeedback('', 'error', '전송에 실패하였습니다.');
 			}).fail(function(e){
-
+				blockPage.unblock();
+				formFeedback('', 'error', '전송에 실패하였습니다.');
 			});
 		})
 	});
