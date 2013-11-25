@@ -28,6 +28,19 @@ class work_model extends CI_Model {
     		->join('users', 'users.id = works.user_id', 'left')
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
+    	switch($params->order_by){
+    		case "newest":
+    			$this->db->order_by('moddate', 'desc');
+    		break;
+    		case "oldest":
+    			$this->db->order_by('moddate', 'asc');
+    		break;
+    		default:
+    			if(is_array($params->order_by))
+    				$this->db->order_by($params->order_by)
+    		break;
+    	}
+
     	$data = $this->db->get();
 
     	$rows = array();
