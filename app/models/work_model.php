@@ -49,7 +49,8 @@ class work_model extends CI_Model {
     		->join('users', 'users.id = works.user_id', 'left')
     		->get_where('works', array('works.id' => $work_id), 0, 1)->result(); //set table
 
-    	return (object)array( 'row' => $result[0] );
+    	return (object)array( 'row' => $result );
+    	var_export($result);
 
 		// 현재는 가짜, work info model에서 가지고 와야함
 		/*$data = (object)array(
