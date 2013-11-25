@@ -1,5 +1,5 @@
 <section class="visible-md visible-lg">
-	<form class="container">
+	<?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'class'=>'container')); ?>
 		<div class="row">
 			<!-- 작품영역 시작 -->
 			<div class="col-md-8">
@@ -62,14 +62,15 @@
 						</div>
 					</div>
 				</div>
-				<button class="btn btn-primary btn-block btn-lg">
+				<input type="hidden" name="work_id" <?php echo $work_id ?>>
+				<button type="submit" class="btn btn-primary btn-block btn-lg">
 					전송
 				</button>
 				</div>
 			</div>
 			<!-- 사이드바 끝 -->
 		</div>
-	</form>
+	<?php echo form_close(); ?>
 </section>
 <script>
 	$(function() {
@@ -81,10 +82,15 @@
 		  	$('.sticky', $(this)).css('width', $(this).width());
 		  }
 		});
+
+		// form이 전송이 되면 hook하여 ajax로 호출을 한다.
+		$('#gallery_form').on('submit', function(e){
+
+		})
 	});
 </script>
 
-
+<!-- 데스크탑 모드에서만 업로드 관련하여 작업할 수 있도록 하기 -->
 <section class="visible-xs visible-sm">
 	<div class="container">
 		<div class="row">

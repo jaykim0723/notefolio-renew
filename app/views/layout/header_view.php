@@ -12,7 +12,13 @@
 						<li><a href="/gallery/create">Upload work</a></li>
 						<li><a href="#">My Profile</a></li>
 						<li><a href="#">Setting</a></li>
-						<li><a href="#">Log out</a></li>
+						<li>
+							<?php if (USER_ID==0): ?>
+							<a href="/auth/login">Login</a>
+							<?php else: ?>
+							<a href="/auth/logout">Logout</a>
+							<?php endif ?>
+						</li>
 					</ul>
 				</div>
 

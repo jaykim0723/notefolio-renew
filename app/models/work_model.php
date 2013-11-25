@@ -23,7 +23,8 @@ class work_model extends CI_Model {
     	}
 
     	$this->db
-    		->select('works.id as work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
+            ->select('works.*, users.*')
+    		// ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
     		->join('users', 'users.id = works.user_id', 'left')
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
@@ -46,77 +47,53 @@ class work_model extends CI_Model {
     	$rows = array();
     	foreach ($data->result() as $row)
 		{
-		    $rows[count($rows)] = $row;
+            // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
+            // do stuff
+		    $rows[] = $row;
 		}
+        if(sizeof($rows)==0)
+            return NULL;
 
     	return (object)array(
 			'page' => $params->page,
 			'rows' => $rows
 		);
 
-		/* 가짜 data를 생성, 모델과 연결하여야 함 */
-		/*$data = (object)array(
-			'page' => $params->page,
-			'rows' => array()
-		);
-		for($i=0; $i<12; $i++){
-			$data->rows[] = array(
-				'work_id' => 1,
-				'title' => 'Lorem Ipsum',
-				'user' => (object)array(
-					'realname' => '정미나',
-					'hit_cnt' => rand(0,234),
-					'comment_cnt' => rand(0,234),
-					'like_cnt' => rand(0,234)
-				)
-			);
-		}
-		// 가짜 데이터 끝
-		return $data;*/
     }
 
 
     function get_info($work_id=''){
     	$this->db
-    		->select('works.id as work_id, title, realname as user, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
+            ->select('works.*, users.*')
+    		// ->select('work_id, title, realname as user, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
     		->join('users', 'users.id = works.user_id', 'left')
-    		->where('works.id', $work_id)
-    		->limit(1, 0); //set
+    		->where('works.work_id', $work_id)
+    		->limit(1); //set
+        $data = $this->db->get()->row();
+        if(!$data)
+            return NULL;
+        // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
+        // do stuff
 
-    	$data = $this->db->get();
+    	return $data;
 
-    	return (object)array( 'row' => $data->row() );
-    	
-		// 현재는 가짜, work info model에서 가지고 와야함
-		/*$data = (object)array(
-			'row' => (object)array(
-				'work_id' => 1,
-				'title' => 'aonethun',
-				'user' => '',
-				'regdate' => '',
-				'keywords' => '',
-				'tags' => '',
-				'user_id' => '',
-				'folder' => '',
-				'contents' => array(
-				),
-				'moddate' => '',
-				'hit_cnt' => '',
-				'note_cnt' => '',
-				'collect_cnt' => '',
-				'comment_cnt' => '',
-				'ccl' => '',
-				'discoverbility' => ''
-			)
-		);
-		return $data;*/
+    }
+
+
+    /**
+     * 업로드할 때에 해당 유저에 대해서 비어 있는 work_id를 생성한다.
+     * @return [type] [description]
+     */
+    function post_info(){
+        $this->db->insert('works', array(
+            'work_id' => NULL
+        ));
+        $work_id = $this->db->insert_id();
+        return $this->get_info($work_id);
     }
 
 
-    function post_info($data=array()){
-
-    }
     function put_info($work_id, $data=array()){
 
     }

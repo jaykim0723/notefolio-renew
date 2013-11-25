@@ -35,6 +35,7 @@ class Gallery extends CI_Controller {
 	 */
 	function info($work_id=''){
 		$work = $this->work_model->get_info($work_id);
+		if(is_null($work)) alert('작품이 존재하지 않습니다.');
 		$this->layout->set_view('gallery/info_view', $work)->render();
 	}
 
@@ -54,7 +55,7 @@ class Gallery extends CI_Controller {
 	function form($work=NULL){
 		$this->load->helper('form');
 		if($work==NULL)
-			return;
+			if(is_null($work)) alert('작품이 존재하지 않습니다.');
 		$this->layout->set_view('gallery/form_view', $work)->render();
 	}
 

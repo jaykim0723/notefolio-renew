@@ -9,10 +9,10 @@
 					<div class="work_wrapper infinite-item">
 						<div class="work_info well" style="height: 100px;">
 							<div class="btn-group pull-right">
-								<a href="/gallery/<?php echo $row->work_id ?>/update" class="btn btn-default">
+								<a href="/gallery/<?php echo $work_id ?>/update" class="btn btn-default">
 									<i class="glyphicon glyphicon-cog"></i>
 								</a>
-								<a href="/gallery/<?php echo $row->work_id ?>/delete" class="btn btn-default">
+								<a href="/gallery/<?php echo $work_id ?>/delete" class="btn btn-default">
 									<i class="glyphicon glyphicon-trash"></i>
 								</a>
 							</div>
