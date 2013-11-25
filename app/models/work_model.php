@@ -12,19 +12,15 @@ class work_model extends CI_Model {
     /**
      * 작품의 리스트를 불러온다.
      * @param  array  $params 
-     *                 page : 불러올 페이지
-     *                 delimiter : 한 페이지당 작품 수
-     *                 order_by : newest, oldest
-     *                 keywords : *plain으로 들어오면 이곳 모델에서 코드로 변형을 해준다.
      * @return object          상태와 데이터값을 반환한다
      */
     function get_list($params=array()){
     	$params = (object)$params;
     	$default_params = (object)array(
-    		'page' => 1,
-    		'delimiter' => 12,
-    		'order_by' => 'newest',
-    		'keywords' => '',
+    		'page' => 1, // 불러올 페이지
+    		'delimiter' => 12, // 한 페이지당 작품 수
+    		'order_by' => 'newest', // newest, oldest
+    		'keywords' => '', // *plain으로 들어오고 이곳 모델에서 코드로 변형을 해준다.
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
@@ -77,13 +73,23 @@ class work_model extends CI_Model {
      * @param  string $work_id [description]
      * @return object          상태와 데이터값을 반환한다
      */
-    function get_info($work_id=''){
+    function get_info($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'work_id' => '',
+            'folder' => '' // ''면 모든 작품
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
     	$this->db
             ->select('works.*, users.*, users.id as user_id')
     		// ->select('work_id, title, realname as user, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
     		->join('users', 'users.id = works.user_id', 'left')
-    		->where('works.work_id', $work_id)
+    		->where('works.work_id', $params->work_id)
     		->limit(1); //set
         $work = $this->db->get()->row();
         $data = (object)array(
@@ -107,10 +113,11 @@ class work_model extends CI_Model {
      */
     function post_info(){
         $this->db->insert('works', array(
-            'work_id' => NULL
+            'work_id' => NULL,
+            'user_id' => USER_ID
         ));
         $work_id = $this->db->insert_id();
-        return $this->get_info($work_id);
+        return $this->get_info(array('work_id'=>$work_id));
     }
 
     /**

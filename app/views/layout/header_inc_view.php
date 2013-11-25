@@ -16,6 +16,7 @@
 	
 	<link href="/css/normalize.css" rel="stylesheet"/>
 	<link href="/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="/css/bootstrap-dialog.css" rel="stylesheet"/>
 	<link href="/css/util.css" rel="stylesheet"/>
 	<link href="/css/mobile.css" rel="stylesheet"/>
 	<link href="/css/web.css" rel="stylesheet" media="screen and (min-width: 992px)"/>
