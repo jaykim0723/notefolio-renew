@@ -47,7 +47,7 @@ class work_model extends CI_Model {
     	$data = $this->db
     		->select('works.id as work_id, title, realname as user, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->join('users', 'users.id = works.user_id', 'left')
-    		->get_where('works', array('works.id' => $work_id), 1, 0); //set table
+    		->get_where('works', array('works.id' => $work_id)); //set table
 		var_export($data->get_compiled_select());
 
     	return (object)array( 'row' => $data->result() );
