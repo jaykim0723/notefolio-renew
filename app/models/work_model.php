@@ -26,7 +26,6 @@ class work_model extends CI_Model {
     		->select('works.id as work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
     		->join('users', 'users.id = works.user_id', 'left')
-    		->where('works.id', $work_id)
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
     	var_export($this->db->get_compiled_select());
     	exit();
