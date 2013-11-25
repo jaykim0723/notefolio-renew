@@ -51,6 +51,8 @@ class work_model extends CI_Model {
     		->where('works.id', $work_id)
     		->limit(1, 0); //set table
 
+    		var_export($data->result());
+
     	return (object)array( 'row' => $data->result() );
     	
 		// 현재는 가짜, work info model에서 가지고 와야함
