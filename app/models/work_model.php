@@ -143,7 +143,7 @@ class work_model extends CI_Model {
 
 
     function delete_info($work_id){
-
+        // 본인것인지 여부에 따라 message다르게 하기
     }
 
 }

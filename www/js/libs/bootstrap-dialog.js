@@ -545,13 +545,17 @@ var BootstrapDialog = null;
      * @param {type} callback
      * @returns {undefined}
      */
-    BootstrapDialog.confirm = function(message, callback) {
+    BootstrapDialog.confirm = function(message, callback, userType) {
+        if(typeof userType=='undefined')
+            var userType = 'primary';
+        var type = BootstrapDialog['TYPE_'+userType.toUpperCase()];
         new BootstrapDialog({
+            type : type,
             title: 'Confirmation',
             message: message,
             closable: false,
             data: {
-                'callback': callback
+                'callback' : callback
             },
             buttons: [{
                     label: 'Cancel',
@@ -561,7 +565,7 @@ var BootstrapDialog = null;
                     }
                 }, {
                     label: 'OK',
-                    cssClass: 'btn-primary',
+                    cssClass: 'btn-'+userType,
                     action: function(dialog) {
                         typeof dialog.getData('callback') === 'function' && dialog.getData('callback')(true);
                         dialog.close();

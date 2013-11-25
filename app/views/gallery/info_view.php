@@ -2,7 +2,7 @@
 <section id="search_form">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-9">
+			<div class="col-md-8">
 <?php endif ?>
 			
 				<div class="work_list infinite_list">
@@ -12,7 +12,7 @@
 								<a href="/gallery/<?php echo $work_id ?>/update" class="btn btn-default">
 									<i class="glyphicon glyphicon-cog"></i>
 								</a>
-								<a href="/gallery/<?php echo $work_id ?>/delete" class="btn btn-default">
+								<a id="btnDelete" href="/gallery/<?php echo $work_id ?>/delete" class="btn btn-default">
 									<i class="glyphicon glyphicon-trash"></i>
 								</a>
 							</div>
@@ -50,7 +50,7 @@
 
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<div class="sticky">
 					<div class="well" style="height:200px;">
 						프로필
@@ -72,6 +72,16 @@
 		  	$(this).css('top', offset.top+'px').css('left', offset.left+'px')
 		  	$('.sticky', $(this)).css('width', $(this).width());
 		  }
+		});
+
+		$('#btnDelete').on('click', function(e){
+			var url = $(this).attr('href');
+			BootstrapDialog.confirm('Hi Apple, are you sure?', function(result){
+				if(result){
+					site.redirect(url);
+				}
+			}, 'danger');
+			return false;
 		});
 	});
 </script>

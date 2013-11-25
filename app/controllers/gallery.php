@@ -73,11 +73,11 @@ class Gallery extends CI_Controller {
 
 
 	function delete($work_id=''){
-		$work = $this->work_model->get_info($work_id);
-		if($work->status==='fail') alert('작품이 존재하지 않습니다.');
-		if($work->row->user_id!==USER_ID) alert('본인의 작품만 수정할 수 있습니다.');
-		exit(print_r($work));
-		
+		$result = $this->work_model->delete_info(array('work_id'=>$work_id));
+		if($result->status==='fail')
+			alert($result->message);
+		// 삭제가 완료되면 어디로 가는가?
+		// 몰라
 	}
 
 
