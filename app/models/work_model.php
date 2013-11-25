@@ -13,7 +13,7 @@ class work_model extends CI_Model {
     	$params = (object)$params;
     	$default_params = (object)array(
     		'page' => 1,
-    		'delimiter' =>12,
+    		'delimiter' => 12,
     		'order_by' => 'newest',
     		'keywords' => '',
     	);
@@ -21,22 +21,20 @@ class work_model extends CI_Model {
     		if(!isset($params->{$key}))
     			$params->{$key} = $value;
     	}
-    	var_export($params);
+
     	$this->db
     		->select('works.id as work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
     		->join('users', 'users.id = works.user_id', 'left')
     		->where('works.id', $work_id)
-    		->limit($params->delimiter, (($params->page)-1)*$params->delimiter); //set
+    		->limit($params->delimiter, (($params->page)-1)*$params->delimiter)); //set
 
     	$data = $this->db->get();
 
-    	var $i = 0;
     	$rows = array();
     	foreach ($data->result() as $row)
 		{
-		    $rows[$i] = $row;
-		    $i++;
+		    $rows[] = $row;
 		}
 
     	return (object)array(
