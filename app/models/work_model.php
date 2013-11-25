@@ -33,7 +33,6 @@ class work_model extends CI_Model {
     	$rows = array();
     	foreach ($data->result() as $row)
 		{
-			var_export($row);
 		    $rows[count($rows)] = $row;
 		}
 
