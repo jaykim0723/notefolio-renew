@@ -31,12 +31,10 @@ class work_model extends CI_Model {
 
     	$data = $this->db->get();
 
-    	$i = 0;
     	$rows = array();
     	foreach ($data->result() as $row)
 		{
-		    $rows[$i] = $row;
-		    $i++;
+		    $rows[count($rows)] = $row;
 		}
 
     	return (object)array(
