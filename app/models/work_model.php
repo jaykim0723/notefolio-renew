@@ -50,7 +50,6 @@ class work_model extends CI_Model {
     		->join('users', 'users.id = works.user_id', 'left')
     		->where('works.id', $work_id)
     		->limit(1, 0); //set table
-		var_export($data->get_compiled_select());
 
     	return (object)array( 'row' => $data->result() );
     	
