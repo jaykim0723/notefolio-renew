@@ -52,9 +52,8 @@ class work_model extends CI_Model {
     		->limit(1, 0); //set
 
     	$data = $this->db->get();
-    	var_export($data->row());
 
-    	return (object)array( 'row' => $data->result() );
+    	return (object)array( 'row' => $data->row() );
     	
 		// 현재는 가짜, work info model에서 가지고 와야함
 		/*$data = (object)array(
