@@ -44,14 +44,15 @@ class work_model extends CI_Model {
 
 
     function get_info($work_id=''){
-    	$data = $this->db
+    	$this->db
     		->select('works.id as work_id, title, realname as user, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
     		->join('users', 'users.id = works.user_id', 'left')
     		->where('works.id', $work_id)
-    		->limit(1, 0); //set table
+    		->limit(1, 0); //set
 
-    		var_export($data->row());
+    	$data = $this->db->get();
+    	var_export($data->row());
 
     	return (object)array( 'row' => $data->result() );
     	
