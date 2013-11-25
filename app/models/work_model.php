@@ -13,6 +13,7 @@ class work_model extends CI_Model {
     	$params = (object)$params;
     	$default_params = (object)array(
     		'page' => 1,
+    		'delimiter' =>12,
     		'order_by' => 'newest',
     		'keywords' => '',
     	);
@@ -21,8 +22,29 @@ class work_model extends CI_Model {
     			$params->{$key} = $value;
     	}
 
+    	$this->db
+    		->select('works.id as work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
+    		->from('works')
+    		->join('users', 'users.id = works.user_id', 'left')
+    		->where('works.id', $work_id)
+    		->limit($params->delimiter, ($params->page-1)*$params->delimiter); //set
+
+    	$data = $this->db->get();
+
+    	$rows = array();
+
+    	foreach ($data->result() as $row)
+		{
+		    $rows[] = $row;
+		}
+
+    	return (object)array(
+			'page' => $params->page,
+			'rows' => $rows
+		);
+
 		/* 가짜 data를 생성, 모델과 연결하여야 함 */
-		$data = (object)array(
+		/*$data = (object)array(
 			'page' => $params->page,
 			'rows' => array()
 		);
@@ -39,7 +61,7 @@ class work_model extends CI_Model {
 			);
 		}
 		// 가짜 데이터 끝
-		return $data;
+		return $data;*/
     }
 
 
