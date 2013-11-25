@@ -7,7 +7,7 @@ class Gallery extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('work_model');
-		$this->nf->_member_check(array('update','delete'));
+		$this->nf->_member_check(array('create','update','delete'));
     }
 
 	
@@ -35,27 +35,32 @@ class Gallery extends CI_Controller {
 	 */
 	function info($work_id=''){
 		$work = $this->work_model->get_info($work_id);
-		if(is_null($work)) alert('작품이 존재하지 않습니다.');
-		$this->layout->set_view('gallery/info_view', $work)->render();
+		if($work->status==='failed') alert('작품이 존재하지 않습니다.');
+		$this->layout->set_view('gallery/info_view', $work->row)->render();
 	}
 
 
 	function create(){
 		$work = $this->work_model->post_info(); // 비어있는 값으로 생성하고
-		$this->form($work);
+		if($work->status==='failed') alert('작품이 존재하지 않습니다.');
+		$this->form($work->row);
 	}
 	function upload(){ // 기존의 주소를 보전하기 위하여
 		$this->create();
 	}
+
+
+
 	function update($work_id=''){
-		$work = $this->work_model->get_info($work_id); // 비어있는 값으로 생성하고
-		$this->form($work);
+		$work = $this->work_model->get_info($work_id); 
+		if($work->status==='failed') alert('작품이 존재하지 않습니다.');
+		if($work->row->user_id!==USER_ID) alert('본인의 작품만 수정할 수 있습니다.');
+
+		$this->form($work->row);
 	}
 	
 	function form($work=NULL){
 		$this->load->helper('form');
-		if($work==NULL)
-			if(is_null($work)) alert('작품이 존재하지 않습니다.');
 		$this->layout->set_view('gallery/form_view', $work)->render();
 	}
 
@@ -69,6 +74,7 @@ class Gallery extends CI_Controller {
 
 	function delete($work_id=''){
 		$work = $this->work_model->get_info($work_id);
+		if($work->status==='failed') alert('작품이 존재하지 않습니다.');
 		exit(print_r($work));
 		
 	}

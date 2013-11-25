@@ -1,5 +1,5 @@
 <section class="visible-md visible-lg">
-	<?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'class'=>'container')); ?>
+	<?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'class'=>'container ajax')); ?>
 		<div class="row">
 			<!-- 작품영역 시작 -->
 			<div class="col-md-8">
@@ -74,18 +74,21 @@
 </section>
 <script>
 	$(function() {
-		$('.sticky').waypoint('sticky', {
-		  stuckClass: 'stuck',
-		  handler: function(){
-		  	var offset = $(this).offset();
-		  	$(this).css('top', offset.top+'px').css('left', offset.left+'px')
-		  	$('.sticky', $(this)).css('width', $(this).width());
-		  }
-		});
 
 		// form이 전송이 되면 hook하여 ajax로 호출을 한다.
-		$('#gallery_form').on('submit', function(e){
+		$('.ajax').on('submit', function(e){
+			e.preventDefault();
+			e.stopPropagation();
+			$.ajax({
+				url : $(this).attr('action'),
+				data : $(this).serialize(),
+				type : 'post',
+				dataType : 'json'
+			}).done(function(d){
+				console.log(d);
+			}).failed(function(e){
 
+			});
 		})
 	});
 </script>

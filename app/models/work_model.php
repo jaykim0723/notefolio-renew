@@ -23,7 +23,7 @@ class work_model extends CI_Model {
     	}
 
     	$this->db
-            ->select('works.*, users.*')
+            ->select('works.*, users.*, users.id as user_id')
     		// ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
     		->join('users', 'users.id = works.user_id', 'left')
@@ -42,37 +42,45 @@ class work_model extends CI_Model {
     		break;
     	}
 
-    	$data = $this->db->get();
+    	$works = $this->db->get();
 
     	$rows = array();
-    	foreach ($data->result() as $row)
+    	foreach ($works->result() as $row)
 		{
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             // do stuff
 		    $rows[] = $row;
 		}
-        if(sizeof($rows)==0)
-            return NULL;
-
-    	return (object)array(
-			'page' => $params->page,
-			'rows' => $rows
-		);
-
+        $data = (object)array(
+            'status' => 'done',
+            'page' => $params->page,
+            'rows' => $rows
+        );
+        if(sizeof($rows)==0){
+            $data->status = 'failed';
+            return $data;
+        }
+        return $data;
     }
 
 
     function get_info($work_id=''){
     	$this->db
-            ->select('works.*, users.*')
+            ->select('works.*, users.*, users.id as user_id')
     		// ->select('work_id, title, realname as user, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
     		->join('users', 'users.id = works.user_id', 'left')
     		->where('works.work_id', $work_id)
     		->limit(1); //set
-        $data = $this->db->get()->row();
-        if(!$data)
-            return NULL;
+        $work = $this->db->get()->row();
+        $data = (object)array(
+            'status' => 'done',
+            'row' => $work
+        );
+        if(!$work){
+            $data->status = 'failed';
+            return $data;
+        }
         // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
         // do stuff
 
@@ -94,7 +102,7 @@ class work_model extends CI_Model {
     }
 
 
-    function put_info($work_id, $data=array()){
+    function put_info($data=array()){
 
     }
     function delete_info($work_id){
