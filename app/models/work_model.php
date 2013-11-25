@@ -9,6 +9,15 @@ class work_model extends CI_Model {
         
     }
 
+    /**
+     * 작품의 리스트를 불러온다.
+     * @param  array  $params 
+     *                 page : 불러올 페이지
+     *                 delimiter : 한 페이지당 작품 수
+     *                 order_by : newest, oldest
+     *                 keywords : *plain으로 들어오면 이곳 모델에서 코드로 변형을 해준다.
+     * @return object          상태와 데이터값을 반환한다
+     */
     function get_list($params=array()){
     	$params = (object)$params;
     	$default_params = (object)array(
@@ -63,7 +72,11 @@ class work_model extends CI_Model {
         return $data;
     }
 
-
+    /**
+     * 작품의 자세한 정보를 불러들인다.
+     * @param  string $work_id [description]
+     * @return object          상태와 데이터값을 반환한다
+     */
     function get_info($work_id=''){
     	$this->db
             ->select('works.*, users.*, users.id as user_id')
@@ -85,7 +98,6 @@ class work_model extends CI_Model {
         // do stuff
 
     	return $data;
-
     }
 
 
@@ -101,8 +113,12 @@ class work_model extends CI_Model {
         return $this->get_info($work_id);
     }
 
-
-    function put_info($data=array()){
+    /**
+     * 삽입이나 수정할 때에도 이용을 한다.
+     * @param  array  $data [description]
+     * @return [type]       [description]
+     */
+    function put_info($input=array()){
 
     }
     function delete_info($work_id){
