@@ -27,8 +27,7 @@ class work_model extends CI_Model {
     		->from('works')
     		->join('users', 'users.id = works.user_id', 'left')
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
-    	var_export($this->db->get_compiled_select());
-    	exit();
+
     	$data = $this->db->get();
 
     	$rows = array();
