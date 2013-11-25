@@ -35,14 +35,14 @@ class Gallery extends CI_Controller {
 	 */
 	function info($work_id=''){
 		$work = $this->work_model->get_info($work_id);
-		if($work->status==='failed') alert('작품이 존재하지 않습니다.');
+		if($work->status==='fail') alert('작품이 존재하지 않습니다.');
 		$this->layout->set_view('gallery/info_view', $work->row)->render();
 	}
 
 
 	function create(){
 		$work = $this->work_model->post_info(); // 비어있는 값으로 생성하고
-		if($work->status==='failed') alert('작품이 존재하지 않습니다.');
+		if($work->status==='fail') alert('작품이 존재하지 않습니다.');
 		$this->form($work->row);
 	}
 	function upload(){ // 기존의 주소를 보전하기 위하여
@@ -53,7 +53,7 @@ class Gallery extends CI_Controller {
 
 	function update($work_id=''){
 		$work = $this->work_model->get_info($work_id); 
-		if($work->status==='failed') alert('작품이 존재하지 않습니다.');
+		if($work->status==='fail') alert('작품이 존재하지 않습니다.');
 		if($work->row->user_id!==USER_ID) alert('본인의 작품만 수정할 수 있습니다.');
 
 		$this->form($work->row);
@@ -66,7 +66,7 @@ class Gallery extends CI_Controller {
 
 	function save(){
 		$input = $this->input->post();
-		$data = $this->work_model->put_info($input);
+		$data = $this->work_model->put_info((object)$input);
 		$this->layout->set_json($data)->render();
 	}
 
@@ -74,7 +74,7 @@ class Gallery extends CI_Controller {
 
 	function delete($work_id=''){
 		$work = $this->work_model->get_info($work_id);
-		if($work->status==='failed') alert('작품이 존재하지 않습니다.');
+		if($work->status==='fail') alert('작품이 존재하지 않습니다.');
 		exit(print_r($work));
 		
 	}

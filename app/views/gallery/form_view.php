@@ -62,7 +62,7 @@
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="work_id" <?php echo $work_id ?>>
+				<input type="hidden" name="work_id" value="<?php echo $work_id ?>"/>
 				<button type="submit" class="btn btn-primary btn-block btn-lg">
 					전송
 				</button>
@@ -74,7 +74,6 @@
 </section>
 <script>
 	$(function() {
-
 		// form이 전송이 되면 hook하여 ajax로 호출을 한다.
 		$('.ajax').on('submit', function(e){
 			e.preventDefault();
@@ -86,7 +85,7 @@
 				dataType : 'json'
 			}).done(function(d){
 				console.log(d);
-			}).failed(function(e){
+			}).fail(function(e){
 
 			});
 		})

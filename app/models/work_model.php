@@ -66,7 +66,7 @@ class work_model extends CI_Model {
             'rows' => $rows
         );
         if(sizeof($rows)==0){
-            $data->status = 'failed';
+            $data->status = 'fail';
             return $data;
         }
         return $data;
@@ -91,7 +91,7 @@ class work_model extends CI_Model {
             'row' => $work
         );
         if(!$work){
-            $data->status = 'failed';
+            $data->status = 'fail';
             return $data;
         }
         // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
@@ -119,7 +119,16 @@ class work_model extends CI_Model {
      * @return [type]       [description]
      */
     function put_info($input=array()){
+        // 값을 정규식으로 검사한다.
+        $input->moddate = time(); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
+        $this->db->set('work_id', $input->work_id)->update('works', $input);
 
+        if($this->db->affected_rows()==0){
+            return (object)array(
+                'status' => 'fail'
+            );
+        }
+        return $this->get_info($input->work_id); // 최총 출력되는 값을 정확히 하기 위하여 정규화된 함수를 사용
     }
     function delete_info($work_id){
 
