@@ -1,5 +1,5 @@
 <section class="visible-md visible-lg">
-	<div class="container">
+	<form class="container">
 		<div class="row">
 			<!-- 작품영역 시작 -->
 			<div class="col-md-8">
@@ -69,7 +69,7 @@
 			</div>
 			<!-- 사이드바 끝 -->
 		</div>
-	</div>
+	</form>
 </section>
 <script>
 	$(function() {
