@@ -50,7 +50,7 @@ class work_model extends CI_Model {
     		->get_where('works', array('works.id' => $work_id), 1, 0); //set table
 
     	return (object)array( 'row' => $data->result() );
-    	var_export($result);
+    	var_export($data->get_compiled_select());
 
 		// 현재는 가짜, work info model에서 가지고 와야함
 		/*$data = (object)array(
