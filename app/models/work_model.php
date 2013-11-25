@@ -31,7 +31,7 @@ class work_model extends CI_Model {
 
     	$data = $this->db->get();
 
-    	var $i = 0;
+    	$i = 0;
     	$rows = array();
     	foreach ($data->result() as $row)
 		{
