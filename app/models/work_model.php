@@ -51,7 +51,7 @@ class work_model extends CI_Model {
     		->where('works.id', $work_id)
     		->limit(1, 0); //set table
 
-    		var_export($data->result());
+    		var_export($data->row());
 
     	return (object)array( 'row' => $data->result() );
     	
