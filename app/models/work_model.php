@@ -22,6 +22,7 @@ class work_model extends CI_Model {
     			$params->{$key} = $value;
     	}
     	var_export($params);
+    	exit();
     	$this->db
     		->select('works.id as work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
