@@ -37,7 +37,7 @@ class work_model extends CI_Model {
     		break;
     		default:
     			if(is_array($params->order_by))
-    				$this->db->order_by($params->order_by)
+    				$this->db->order_by($params->order_by);
     		break;
     	}
 
