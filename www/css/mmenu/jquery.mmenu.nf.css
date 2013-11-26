@@ -146,7 +146,7 @@ html.mm-blocking #mm-blocker {
     font-size: 20px;
     line-height: 2em;
     display: block;
-    padding: 10px 10px 10px 20px;
+    padding: 10px 10px 10px 20%;
     margin: 0; }
 .mm-list > li:not(.mm-subtitle):not(.mm-label):not(.mm-noresults)::after {
   content: '';
