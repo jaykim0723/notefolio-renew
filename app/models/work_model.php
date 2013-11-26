@@ -145,7 +145,17 @@ class work_model extends CI_Model {
     }
 
 
-    function delete_info($work_id){
+    function delete_info($data=array()){
+        if($data == array()){
+            return (object)array(
+                'status' => 'fail',
+                'message' => 'no_input_data'
+            );
+
+        }
+
+        $work_id = @$data->work_id;
+
         // 본인것인지 여부에 따라 message다르게 하기
         $work = $this->db->where('id', $work_id)->get('works')->row(); 
         if($work->user_id == USER_ID){
@@ -168,7 +178,7 @@ class work_model extends CI_Model {
                 'message' => 'cannot_run_delete_sel'
             );
         }
-        
+
         return $data;
     }
 
