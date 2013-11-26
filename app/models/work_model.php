@@ -159,11 +159,12 @@ class work_model extends CI_Model {
     function delete_info($data=array()){
         // null > return fail
         if($data == array()){
-            return (object)array(
+            $data = (object)array(
                 'status' => 'fail',
                 'message' => 'no_input_data'
             );
 
+            return $data;
         }
 
         $work_id = @$data['work_id'];
