@@ -44,4 +44,4 @@
 		</div>
 	</div>
 </header>
-<div style="height:70px;"></div>
+<div id="content-wrap" class="mm-page">
