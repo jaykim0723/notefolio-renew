@@ -154,7 +154,7 @@ class work_model extends CI_Model {
 
         }
 
-        $work_id = @$data->work_id;
+        $work_id = @$data['work_id'];
 
         // 본인것인지 여부에 따라 message다르게 하기
         $work = $this->db->where('id', $work_id)->get('works')->row(); 
