@@ -158,7 +158,7 @@ html.mm-blocking #mm-blocker {
   left: 0; }
 .mm-list > li:not(.mm-subtitle):not(.mm-label):not(.mm-noresults):after {
   width: auto;
-  margin-left: 20px;
+  margin-left: 0px;
   position: relative;
   left: auto; }
 .mm-list a.mm-subopen {
@@ -259,9 +259,9 @@ html.mm-opened .mm-page {
   background: #45B8CC; }
 
 .mm-menu {
-  color: rgba(255, 255, 255, 0.6); }
+  color: #ffffff; }
   .mm-menu .mm-list > li:after {
-    border-color: rgba(0, 0, 0, 0.15); }
+    border-color: rgba(255, 255, 255, 0.6); }
   .mm-menu .mm-list > li > a.mm-subclose {
     background: rgba(0, 0, 0, 0.1);
     color: rgba(255, 255, 255, 0.3); }
