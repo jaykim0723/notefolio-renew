@@ -51,8 +51,17 @@ class Layout
 	}
 
 
-	
-	function set_header($data=array()){
+	/**
+	 * 헤더에 관한 변수를 설정한다.
+	 * @param string $data  [description]
+	 * @param string $value [description]
+	 */
+	function set_header($data='', $value=''){
+		if(!empty($value)){
+			$data = array(
+				$data => $value
+			);
+		}
 		foreach($data as $key => $value)
 			$this->header[$key] = $value;
 		return $this;

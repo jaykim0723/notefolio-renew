@@ -34,7 +34,10 @@ class Gallery extends CI_Controller {
 	 * @return [type]          [description]
 	 */
 	function info($work_id=''){
-		$work = $this->work_model->get_info(array('work_id'=>$work_id));
+		$work = $this->work_model->get_info(array(
+			'work_id' => $work_id,
+			'folder'  => ''
+		));
 		if($work->status==='fail') alert('작품이 존재하지 않습니다.');
 		$this->layout->set_view('gallery/info_view', $work->row)->render();
 	}
@@ -46,7 +49,7 @@ class Gallery extends CI_Controller {
 		$this->form($work->row);
 	}
 	function upload(){ // 기존의 주소를 보전하기 위하여
-		$this->create();
+		redirect('gallery/create');
 	}
 
 

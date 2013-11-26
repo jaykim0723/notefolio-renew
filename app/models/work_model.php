@@ -17,10 +17,11 @@ class work_model extends CI_Model {
     function get_list($params=array()){
     	$params = (object)$params;
     	$default_params = (object)array(
-    		'page' => 1, // 불러올 페이지
-    		'delimiter' => 12, // 한 페이지당 작품 수
-    		'order_by' => 'newest', // newest, oldest
-    		'keywords' => '', // *plain으로 들어오고 이곳 모델에서 코드로 변형을 해준다.
+            'page'      => 1, // 불러올 페이지
+            'delimiter' => 12, // 한 페이지당 작품 수
+            'order_by'  => 'newest', // newest, oldest
+            'keywords'  => '', // *plain으로 들어오고 이곳 모델에서 코드로 변형을 해준다.
+            'folder'    => '' // ''면 전체
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
@@ -127,6 +128,8 @@ class work_model extends CI_Model {
      */
     function put_info($input){
         // 값을 정규식으로 검사한다.
+        // do stuff
+
         $input->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
         $work_id = $input->work_id;
         unset($input->work_id);
