@@ -16,8 +16,8 @@
         	dragOpen: {
 				open:	true,
 				pageNode:	'#content-wrap',
-				threshold	50,
-				maxStartPos	150
+				threshold:	50,
+				maxStartPos:	150
 			}
         })
 	});
