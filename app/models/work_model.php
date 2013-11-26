@@ -157,8 +157,7 @@ class work_model extends CI_Model {
         $work_id = @$data['work_id'];
 
         // 본인것인지 여부에 따라 message다르게 하기
-        $work = $this->db->where('work_id', $work_id)->get('works');
-        $work = $work->row(); 
+        $work = $this->db->where('work_id', $work_id)->get('works')->row(); 
         if($work->user_id == USER_ID){
             $this->db->flush_cache();
             $this->db->trans_start();
