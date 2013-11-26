@@ -72,7 +72,7 @@ class work_model extends CI_Model {
 
     /**
      * 작품의 자세한 정보를 불러들인다.
-     * @param  string $work_id [description]
+     * @param  array $params   (work_id, folder)
      * @return object          상태와 데이터값을 반환한다
      */
     function get_info($params=array()){
@@ -111,11 +111,11 @@ class work_model extends CI_Model {
 
     /**
      * 업로드할 때에 해당 유저에 대해서 비어 있는 work_id를 생성한다.
-     * @return [type] [description]
+     * @return object       (work content data)
      */
     function post_info(){
         $this->db->insert('works', array(
-            'work_id' => NULL,
+            'work_id' => NULL, // 자동 생성
             'user_id' => USER_ID
         ));
         $work_id = $this->db->insert_id();
@@ -123,17 +123,21 @@ class work_model extends CI_Model {
     }
 
     /**
-     * 삽입이나 수정할 때에도 이용을 한다.
-     * @param  array  $data [description]
-     * @return [type]       [description]
+     * post work data when create/update.
+     * only use UPDATE query; so you must run $this->post_info() before run this func.
+     *
+     * @param  array  $data (depend by field in table `works`)
+     * @return object       (status return object. status=[done|fail])
      */
-    function put_info($input){
+    function put_info($input=array()){
         // 값을 정규식으로 검사한다.
-        // do stuff
-
+        
         $input->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
+        
+        //-- work id is not for update
         $work_id = $input->work_id;
         unset($input->work_id);
+
         $this->db->where('work_id', $work_id)->where('user_id', USER_ID)->update('works', $input);
 
         $data = (object)array(
@@ -145,14 +149,22 @@ class work_model extends CI_Model {
         return $data;
     }
 
-
+    /**
+     * delete work record.
+     * cannot undo after run this code, so you must be careful to use.
+     *
+     * @param  array  $data (depend by field in table `works` but only use `work_id`)
+     * @return object       (status return object. status=[done|fail])
+     */
     function delete_info($data=array()){
+        // null > return fail
         if($data == array()){
-            return (object)array(
+            $data = (object)array(
                 'status' => 'fail',
                 'message' => 'no_input_data'
             );
 
+            return $data;
         }
 
         $work_id = @$data['work_id'];
@@ -160,10 +172,12 @@ class work_model extends CI_Model {
         // 본인것인지 여부에 따라 message다르게 하기
         $work = $this->db->where('work_id', $work_id)->get('works')->row(); 
         if($work->user_id == USER_ID){
-            $this->db->flush_cache();
+            $this->db->flush_cache(); //clear active record
+            
             $this->db->trans_start();
             $this->db->where('work_id', $work_id)->delete('works'); 
             $this->db->trans_complete();
+
             if($this->db->trans_status()){
                 $data = (object)array(
                     'status' => 'done'
