@@ -44,8 +44,9 @@
 }
 #content-wrap{
 	margin: 70px 0;
+}
+.mm-page{
 	background-color:#fff;
-	overflow: auto;
 }
 
 
