@@ -1,4 +1,4 @@
-<div style="height:70px;"></div>
+</div>
 <footer id="footer" class="navbar-fixed-bottom visible-md visible-lg">
 	<div class="container">
 		<div class="row">
