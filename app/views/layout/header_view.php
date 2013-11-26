@@ -44,7 +44,7 @@
 		</div>
 	</div>
 </header>
-<div id="content-wrap" class="mm-page">
+<div id="content-wrap">
 	<header id="mobile-header" class="navbar-fixed-top visible-xs visible-sm">
 		<div class="container">
 			<a href="javascript:$('#mobile-menu').trigger('open');">open</a>
