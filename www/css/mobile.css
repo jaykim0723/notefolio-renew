@@ -28,7 +28,7 @@
 
 
 
-#header {
+#header, #mobile-header {
 	background: #fff;
 	width: 100%;
 	height: 50px;
@@ -47,8 +47,8 @@
 }
 .mm-page{
 	background-color:#fff;
-	z-index: 5;
 }
+
 
 
 
