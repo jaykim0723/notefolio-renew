@@ -45,6 +45,7 @@
 #content-wrap{
 	margin: 70px 0;
 	background-color:#fff;
+	overflow: auto;
 }
 
 
