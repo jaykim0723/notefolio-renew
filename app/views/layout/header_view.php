@@ -50,3 +50,19 @@
 			<a href="javascript:$('#mobile-menu').trigger('open');">open</a>
 		</div>
 	</header>
+	<nav id="mobile-menu" class="hidden-md hidden-lg">
+		<ul>
+			<li>
+				<a href="/">Main</a>
+			</li>
+			<li>
+				<a href="/gallery/listing">Gallery</a>
+			</li>
+			<li>
+				<a href="/feed/listing">Feed</a>
+			</li>
+			<li>
+				<a href="/alarm/listing">Alarm</a>
+			</li>
+		</ul>
+	</nav>
