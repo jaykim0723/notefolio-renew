@@ -1,5 +1,5 @@
 <?php if (!$this->input->is_ajax_request()): ?>
-<section id="search_form">
+<section>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">

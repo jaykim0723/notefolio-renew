@@ -21,7 +21,8 @@ class work_model extends CI_Model {
             'delimiter' => 12, // 한 페이지당 작품 수
             'order_by'  => 'newest', // newest, oldest
             'keywords'  => '', // *plain으로 들어오고 이곳 모델에서 코드로 변형을 해준다.
-            'folder'    => '' // ''면 전체
+            'folder'    => '', // ''면 전체
+            'user_id'   => '' // 프로필 등 특정 작가의 작품만을 조회할 때
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
@@ -147,6 +148,7 @@ class work_model extends CI_Model {
 
     function delete_info($work_id){
         // 본인것인지 여부에 따라 message다르게 하기
+        
     }
 
 }

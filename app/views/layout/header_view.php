@@ -5,18 +5,22 @@
 
 				<div class="pull-right btn-group">
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-						Preferences
+						<?php if (USER_ID==0): ?>
+							Proferences
+						<?php else: ?>
+							<?php echo $this->session->userdata('username') ?>
+						<?php endif ?>
 					<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
 						<li><a href="/gallery/create">Upload work</a></li>
-						<li><a href="#">My Profile</a></li>
+						<li><a href="/<?php echo $this->session->userdata('username') ?>">My Profile</a></li>
 						<li><a href="#">Setting</a></li>
 						<li>
 							<?php if (USER_ID==0): ?>
-							<a href="/auth/login">Login</a>
+								<a href="/auth/login">Login</a>
 							<?php else: ?>
-							<a href="/auth/logout">Logout</a>
+								<a href="/auth/logout">Logout</a>
 							<?php endif ?>
 						</li>
 					</ul>
