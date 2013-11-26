@@ -170,9 +170,7 @@ class work_model extends CI_Model {
         $work_id = @$data['work_id'];
 
         // 본인것인지 여부에 따라 message다르게 하기
-<<<<<<< HEAD
-        
-=======
+
         $work = $this->db->where('work_id', $work_id)->get('works')->row(); 
         if($work->user_id == USER_ID){
             $this->db->flush_cache(); //clear active record
@@ -199,7 +197,6 @@ class work_model extends CI_Model {
         }
 
         return $data;
->>>>>>> e14e317e697480792d54137b67d0df1961b1d542
     }
 
 }
