@@ -1,9 +1,9 @@
 var work = {
-	save: function(){
+	save: function(form){
 		blockPage.block();
 		$.ajax({
-			url : $(this).attr('action'),
-			data : $(this).serialize(),
+			url : $(form).attr('action'),
+			data : $(form).serialize(),
 			type : 'post',
 			dataType : 'json'
 		}).done(function(d){

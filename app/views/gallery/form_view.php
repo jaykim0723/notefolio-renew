@@ -81,7 +81,7 @@
 		$('#gallery_form').on('submit', function(e){
 			e.preventDefault();
 			e.stopPropagation();
-			work.save();
+			work.save($(this));
 		})
 	});
 </script>
