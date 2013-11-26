@@ -119,7 +119,7 @@ class work_model extends CI_Model {
             'user_id' => USER_ID
         ));
         $work_id = $this->db->insert_id();
-        return $this->get_info(array('work_id'=>$work_id));
+        return $work_id;
     }
 
     /**
@@ -158,9 +158,6 @@ class work_model extends CI_Model {
         $work_id = @$data['work_id'];
 
         // 본인것인지 여부에 따라 message다르게 하기
-<<<<<<< HEAD
-        
-=======
         $work = $this->db->where('work_id', $work_id)->get('works')->row(); 
         if($work->user_id == USER_ID){
             $this->db->flush_cache();
@@ -185,8 +182,9 @@ class work_model extends CI_Model {
         }
 
         return $data;
->>>>>>> e14e317e697480792d54137b67d0df1961b1d542
     }
+
+    
 
 }
 
