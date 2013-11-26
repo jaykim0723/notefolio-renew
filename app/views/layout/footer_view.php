@@ -17,8 +17,8 @@
 		</div>
 	</div>
 </footer>
-<div id="mobile-menu" class="visible-xs visible-sm">
-	<ul class="list-unstyled">
+<div id="mobile-menu" class="hidden-md hidden-lg">
+	<ul>
 		<li>
 			<a href="/">Main</a>
 		</li>
