@@ -44,25 +44,25 @@
 		</div>
 	</div>
 </header>
+<nav id="mobile-menu" class="hidden-md hidden-lg">
+	<ul>
+		<li>
+			<a href="/">Main</a>
+		</li>
+		<li>
+			<a href="/gallery/listing">Gallery</a>
+		</li>
+		<li>
+			<a href="/feed/listing">Feed</a>
+		</li>
+		<li>
+			<a href="/alarm/listing">Alarm</a>
+		</li>
+	</ul>
+</nav>
 <div id="content-wrap">
 	<header id="mobile-header" class="navbar-fixed-top visible-xs visible-sm">
 		<div class="container">
 			<a href="javascript:$('#mobile-menu').trigger('open');">open</a>
 		</div>
 	</header>
-	<nav id="mobile-menu" class="hidden-md hidden-lg">
-		<ul>
-			<li>
-				<a href="/">Main</a>
-			</li>
-			<li>
-				<a href="/gallery/listing">Gallery</a>
-			</li>
-			<li>
-				<a href="/feed/listing">Feed</a>
-			</li>
-			<li>
-				<a href="/alarm/listing">Alarm</a>
-			</li>
-		</ul>
-	</nav>
