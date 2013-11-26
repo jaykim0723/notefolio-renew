@@ -168,9 +168,9 @@ class work_model extends CI_Model {
                 'message' => 'cannot_run_delete_sel'
             );
         }
+        
+        return $data;
     }
-
-    return $data;
 
 }
 
