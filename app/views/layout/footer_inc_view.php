@@ -15,7 +15,7 @@
 		$('#mobile-menu').mmenu({
         	dragOpen: {
 				open:	true,
-				pageNode:	'#content-wrap',
+				pageNode:	null,
 				threshold:	50,
 				maxStartPos:	150
 			}

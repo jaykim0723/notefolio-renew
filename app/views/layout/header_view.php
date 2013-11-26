@@ -47,16 +47,16 @@
 <nav id="mobile-menu" class="hidden-md hidden-lg">
 	<ul>
 		<li>
-			<a href="/">Main</a>
+			<a href="#">Note</a>
 		</li>
 		<li>
-			<a href="/gallery/listing">Gallery</a>
+			<a href="#">Statistics</a>
 		</li>
 		<li>
-			<a href="/feed/listing">Feed</a>
+			<a href="#">My works</a>
 		</li>
 		<li>
-			<a href="/alarm/listing">Alarm</a>
+			<a href="#">Setting</a>
 		</li>
 	</ul>
 </nav>

@@ -144,7 +144,7 @@ html.mm-blocking #mm-blocker {
     overflow: hidden;
     color: inherit;
     font-size: 20px;
-    line-height: 1.5em;
+    line-height: 2em;
     display: block;
     padding: 10px 10px 10px 20px;
     margin: 0; }
@@ -297,7 +297,7 @@ html.mm-opened.mm-opening .mm-fixed-bottom {
   html.mm-opened.mm-opening .mm-fixed-top,
   html.mm-opened.mm-opening .mm-fixed-bottom {
     left: 200px; } }
-@media all and (min-width: 550px) {
+@media all and (min-width: 320px) {
   .mm-menu {
     width: 50%; }
 
