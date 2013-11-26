@@ -13,7 +13,12 @@
 
 	$(function(){
 		$('#mobile-menu').mmenu({
-        	dragOpen: true
+        	dragOpen: {
+				open:	true,
+				pageNode:	'#content-wrap',
+				threshold	50,
+				maxStartPos	150
+			}
         })
 	});
 </script>
