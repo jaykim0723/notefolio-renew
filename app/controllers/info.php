@@ -104,18 +104,18 @@ class Info extends CI_Controller
 			->render();
 	}
 
-	function term()
+	function terms()
 	{
-		$this->notefolio->template(array(
-			array('info/term_view')
-		));		
+		$this->layout
+			->set_view('info/term_view')
+			->render();
 	}
 
 	function privacy()
 	{
-		$this->notefolio->template(array(
-			array('info/privacy_view')
-		));		
+		$this->layout
+			->set_view('info/privacy_view')
+			->render();
 	}
 
 }

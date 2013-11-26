@@ -59,8 +59,8 @@ class work_model extends CI_Model {
 		}
         $data = (object)array(
             'status' => 'done',
-            'page' => $params->page,
-            'rows' => $rows
+            'page'   => $params->page,
+            'rows'   => $rows
         );
         if(sizeof($rows)==0){
             $data->status = 'fail';
@@ -78,7 +78,7 @@ class work_model extends CI_Model {
         $params = (object)$params;
         $default_params = (object)array(
             'work_id' => '',
-            'folder' => '' // ''면 모든 작품
+            'folder'  => '' // ''면 모든 작품
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))

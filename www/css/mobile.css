@@ -185,47 +185,6 @@ html.auth body {
 #side_about.info {
 	
 }
-#side_about.info > a {
-	display:block;
-	border:1px solid #e0e0e0;
-	padding:12px;
-	margin-bottom:10px;
-	cursor:pointer;
-	border-radius:5px;
-}
-#side_about.info > a:hover {	
-	background:#fafafa;
-}
-#side_about.info > a.current {
-	background:#f0f0f0;
-
-}
-#side_about.info .submenu {
-	margin-left:20px;
-	margin-bottom:30px;
-}
-#side_about.info > a > h2 {
-	text-align:center;
-	line-height:1.3em;
-	margin:0 0 5px 0;
-}
-#side_about.info > a > p {
-	text-align:center;
-	margin:0;
-	color:#999;
-	line-height:1.3em;
-}
-
-#side_about.info ul {
-	list-style:none;
-	margin:0;
-	padding:0;
-}
-#side_about.info ul > li > a {
-	padding: 8px 0 8px 15px;
-	display:block;	
-	border-bottom:1px solid #e0e0e0;
-}
 
 
 #term {
