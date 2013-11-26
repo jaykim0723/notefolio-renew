@@ -148,7 +148,7 @@ class work_model extends CI_Model {
     function delete_info($work_id){
         // 본인것인지 여부에 따라 message다르게 하기
         $work = $this->db->where('id', $work_id)->get('works')->row(); 
-        if($work->user_id){
+        if($work->user_id == USER_ID){
             $this->db->trans_start();
             $this->db->where('id', $work_id)->delete('works'); 
             $this->db->trans_complete();
