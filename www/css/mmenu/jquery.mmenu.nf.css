@@ -24,7 +24,7 @@ html.mm-opened.mm-opening #mm-blocker {
   border: 0px solid rgba(100, 100, 100, 0); }
 
 .mm-menu .mm-hidden {
-  display: none; }
+  display: none !important; }
 
 .mm-fixed-top,
 .mm-fixed-bottom {
@@ -63,7 +63,7 @@ html.mm-background .mm-page {
 #mm-blocker {
   background: #fff;
   opacity: 0;
-  display: none;
+  display: none !important;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -71,14 +71,14 @@ html.mm-background .mm-page {
 
 html.mm-opened #mm-blocker,
 html.mm-blocking #mm-blocker {
-  display: block; }
+  display: block !important; }
 
 .mm-menu.mm-current {
-  display: block; }
+  display: block !important; }
 
 .mm-menu {
   background: inherit;
-  display: none;
+  display: none !important;
   overflow: hidden;
   height: 100%;
   padding: 0;
@@ -289,22 +289,22 @@ html.mm-opened.mm-opening .mm-fixed-bottom {
 
 @media all and (max-width: 175px) {
   .mm-menu {
-    width: 140px; }
+    width: 200px; }
 
   html.mm-opened.mm-opening .mm-page,
   html.mm-opened.mm-opening #mm-blocker,
   html.mm-opened.mm-opening .mm-fixed-top,
   html.mm-opened.mm-opening .mm-fixed-bottom {
-    left: 140px; } }
+    left: 200px; } }
 @media all and (min-width: 550px) {
   .mm-menu {
-    width: 440px; }
+    width: 300px; }
 
   html.mm-opened.mm-opening .mm-page,
   html.mm-opened.mm-opening #mm-blocker,
   html.mm-opened.mm-opening .mm-fixed-top,
   html.mm-opened.mm-opening .mm-fixed-bottom {
-    left: 440px; } }
+    left: 300px; } }
 html.mm-nooverflowscrolling.mm-opened {
   height: auto;
   overflow: auto;
