@@ -147,7 +147,30 @@ class work_model extends CI_Model {
 
     function delete_info($work_id){
         // 본인것인지 여부에 따라 message다르게 하기
+        $work = $this->db->where('id', $work_id)->get('works')->row(); 
+        if($work->user_id){
+            $this->db->trans_start();
+            $this->db->where('id', $work_id)->delete('works'); 
+            $this->db->trans_complete();
+            if($this->db->trans_status()){
+                $data = (object)array(
+                    'status' => 'done'
+                );
+            } else {
+                $data = (object)array(
+                    'status' => 'fail',
+                    'msg' => 'cannot_run_delete_sel'
+                );
+            }
+        }
+    } else {
+        $data = (object)array(
+            'status' => 'fail',
+            'msg' => 'cannot_run_delete_sel'
+        );
     }
+
+    return $data;
 
 }
 
