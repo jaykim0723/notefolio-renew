@@ -159,14 +159,14 @@ class work_model extends CI_Model {
             } else {
                 $data = (object)array(
                     'status' => 'fail',
-                    'msg' => 'cannot_run_delete_sel'
+                    'message' => 'cannot_run_delete_sel'
                 );
             }
         }
     } else {
         $data = (object)array(
             'status' => 'fail',
-            'msg' => 'cannot_run_delete_sel'
+            'message' => 'cannot_run_delete_sel'
         );
     }
 
