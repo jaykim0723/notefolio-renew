@@ -5,9 +5,17 @@
 <script src="/js/libs/waypoints-infinite.js"></script>
 <script src="/js/libs/waypoints-sticky.js"></script>
 <script src="/js/libs/jquery.history.js"></script>
+<script src="/js/libs/jquery.hammer.min.js"></script>
+<script src="/js/libs/jquery.mmenu.min.all.js"></script>
 <script src="/js/site.js"></script>
 <script>
 	$('select').selectpicker();
+
+	$(function(){
+		$('#mobile-menu').mmenu({
+        	dragOpen: true
+        })
+	});
 </script>
 </body>
 </html>

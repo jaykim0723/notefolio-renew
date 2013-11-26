@@ -17,3 +17,19 @@
 		</div>
 	</div>
 </footer>
+<div id="mobile-menu" class="visible-xs visible-sm">
+	<ul class="list-unstyled">
+		<li>
+			<a href="/">Main</a>
+		</li>
+		<li>
+			<a href="/gallery/listing">Gallery</a>
+		</li>
+		<li>
+			<a href="/feed/listing">Feed</a>
+		</li>
+		<li>
+			<a href="/alarm/listing">Alarm</a>
+		</li>
+	</ul>
+</div>
