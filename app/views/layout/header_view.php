@@ -61,7 +61,7 @@
 	</ul>
 </nav>
 <div id="content-wrap">
-	<header id="mobile-header" class="navbar-fixed-top visible-xs visible-sm">
+	<header id="mobile-header" class="mm-fixed-top visible-xs visible-sm">
 		<div class="container">
 			<a href="javascript:$('#mobile-menu').trigger('open');">open</a>
 		</div>
