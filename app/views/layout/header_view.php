@@ -1,4 +1,4 @@
-<header id="header" class="navbar-fixed-top">
+<header id="header" class="navbar-fixed-top visible-md visible-lg">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
