@@ -146,9 +146,46 @@ class work_model extends CI_Model {
     }
 
 
-    function delete_info($work_id){
+    function delete_info($data=array()){
+        if($data == array()){
+            return (object)array(
+                'status' => 'fail',
+                'message' => 'no_input_data'
+            );
+
+        }
+
+        $work_id = @$data['work_id'];
+
         // 본인것인지 여부에 따라 message다르게 하기
+<<<<<<< HEAD
         
+=======
+        $work = $this->db->where('work_id', $work_id)->get('works')->row(); 
+        if($work->user_id == USER_ID){
+            $this->db->flush_cache();
+            $this->db->trans_start();
+            $this->db->where('work_id', $work_id)->delete('works'); 
+            $this->db->trans_complete();
+            if($this->db->trans_status()){
+                $data = (object)array(
+                    'status' => 'done'
+                );
+            } else {
+                $data = (object)array(
+                    'status' => 'fail',
+                    'message' => 'cannot_run_delete_sel'
+                );
+            }
+        } else {
+            $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_permission_to_delete'
+            );
+        }
+
+        return $data;
+>>>>>>> e14e317e697480792d54137b67d0df1961b1d542
     }
 
 }
