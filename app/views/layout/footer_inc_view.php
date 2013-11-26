@@ -14,7 +14,7 @@
 	$(function(){
 		$('#mobile-menu').mmenu({
         	dragOpen: {
-				open:	true,
+				open:	false,
 				pageNode:	null,
 				threshold:	50,
 				maxStartPos:	150

@@ -56,7 +56,7 @@
 			<a href="#">My works</a>
 		</li>
 		<li>
-			<a href="#">Setting</a>
+			<a href="#">Settings</a>
 		</li>
 	</ul>
 </nav>
