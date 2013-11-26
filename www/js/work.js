@@ -1,4 +1,4 @@
-var work = {
+var workUtil = {
 	save: function(form){
 		blockPage.block();
 		$.ajax({
