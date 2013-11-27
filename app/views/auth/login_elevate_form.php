@@ -38,7 +38,7 @@ $hidden_field = array(
 		  <h3 class="panel-title">관리자 기능 접근</h3>
 		</div>
 		<div class="panel-body">
-			<p>관리자 페이지에 접근하려면 다시 로그인하십시오.</p>
+			<p>관리자 권한을 얻으려면 이곳에서 다시 로그인하십시오.</p>
 			<div class="form-group">
 				<?php echo form_label('Login', 'login'); ?>
 				<p class="lead"><?=$admin['realname']?>(<?=$admin['username']?>)</p>
