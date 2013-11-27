@@ -1291,7 +1291,7 @@ log_message('debug', ' -------- resurt ----------'.json_encode($result));
      */
     function restrict()
     {
-        $this->layout->set_view('auth/restrict', $data)->render();
+        $this->layout->set_view('auth/restrict')->render();
     }
 
 	/**
