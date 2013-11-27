@@ -16,12 +16,12 @@
 ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
 <script src="/js/libs/jquery-1.10.2.min.js"></script>
-<script src="js/acp/excanvas.min.js"></script> 
-<script src="js/acp/chart.min.js" type="text/javascript"></script> 
-<script src="js/lib/bootstrap.js"></script>
-<script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
+<script src="/js/acp/excanvas.min.js"></script> 
+<script src="/js/acp/chart.min.js"></script> 
+<script src="/js/libs/bootstrap.js"></script>
+<script src="/js/acp/full-calendar/fullcalendar.min.js"></script>
  
-<script src="js/acp/base.js"></script> 
+<script src="/js/acp/base.js"></script> 
 <script>     
 
         var lineChartData = {
