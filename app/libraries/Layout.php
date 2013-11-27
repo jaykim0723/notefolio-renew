@@ -41,7 +41,7 @@ class Layout
 		// print header
 		if(!$this->ci->input->is_ajax_request()){
 			(($areaName!='acp'))?$this->ci->load->view('layout/header_inc_view', $this->header):'';
-			$this->ci->load->view('layout/header_'.$affix.'view');
+			$this->ci->load->view('layout/header_'.$affix.'view', $this->header);
 		}
 
 		if(!is_array($this->views)) // 단일 view로 들어온 경우를 위하여
