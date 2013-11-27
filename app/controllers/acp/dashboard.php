@@ -14,7 +14,7 @@ class Dashboard extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->layout->set_view('acp/dashboard')->render();
+		$this->layout->set_view('acp/dashboard_main_view')->render();
 	}
 }
 
