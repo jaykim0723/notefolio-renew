@@ -1,5 +1,5 @@
 <li class="thumbbox infinite-item">
-	<a href="/gallery/<?php echo $work_id ?>">
+	<a href="/<?php echo $user->username ?>/<?php echo $work_id ?>">
 		<img src="/img/thumb.gif"/>
 	</a>
 </li>
