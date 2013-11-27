@@ -8,7 +8,7 @@ DirectoryIndex index.php
   RewriteEngine on
   RewriteBase /
   RewriteCond $1 !^/(index\.php|favicon\.ico|robots\.txt)
-  RewriteCond $1 !^/[^(captcha|css|doc|html|i|images|img|js|acp-rs|temp|profiles|thumbnails)]/(.*)
+  RewriteCond $1 !^/[^(captcha|css|doc|html|i|images|img|js|acp-rs|temp|profiles|thumbnails|fonts)]/(.*)
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.*)$ index.php?/$1 [L,PT]
