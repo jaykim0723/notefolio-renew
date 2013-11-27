@@ -8,7 +8,9 @@
 <?php endif ?>
 				<ul class="main_thumbnail_list infinite_list">
 					<!-- list -->
-					<?php foreach ($rows as $key => $row): ?>
+					<?php foreach ($rows as $key => $row):
+					$row->key = $key;
+					?>
 					<?php $this->load->view('main/thumbnail_inc_view', $row) ?>
 					<?php endforeach ?>
 				</ul>

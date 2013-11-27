@@ -118,4 +118,11 @@ class Info extends CI_Controller
 			->render();
 	}
 
+	function groups()
+	{
+		$this->layout
+			->set_view('info/groups_view')
+			->render();
+	}
+
 }

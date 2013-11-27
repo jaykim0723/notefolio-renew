@@ -13,7 +13,10 @@
 				<a href="/info/privacy">Privacy Policy</a>
 				|
 				<a href="/info/terms">Terms of use</a>
+				|
+				<a href="/info/groups">Groups</a>
 			</div>
+
 		</div>
 	</div>
 </footer>

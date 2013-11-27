@@ -1,2 +1,3 @@
-database.php
+app/config/database.php
 .DS_Store
+app/logs/*
