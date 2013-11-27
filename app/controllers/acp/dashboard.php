@@ -5,7 +5,7 @@ class Dashboard extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-		//$this->nf->_admin_check();
+		$this->nf->admin_check();
     }
 	
     /**

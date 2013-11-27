@@ -40,7 +40,7 @@ class Nf
     function admin_check()
     {
         if(!$this->is_elevated()){
-            redirect('/auth/login?go_to='.($go_to=='' ? $this->ci->uri->uri_string() : $go_to));
+            redirect('/auth/elevated?go_to='.($go_to=='' ? $this->ci->uri->uri_string() : $go_to));
         }
     }
 
