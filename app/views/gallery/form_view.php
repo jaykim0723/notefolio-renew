@@ -1,3 +1,7 @@
+<script>
+	NFview = {};
+</script>
+
 <section class="visible-md visible-lg">
 	<?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'class'=>'container')); ?>
 		<div class="row">
@@ -73,7 +77,7 @@
 	<?php echo form_close(); ?>
 </section>
 <script>
-	var work = <?php
+	NFview = <?php
 		echo json_encode($_ci_vars); // view내의 스크립트에서 편리하게 사용하기 위하여 미리 할당
 	?>;
 	$(function() {

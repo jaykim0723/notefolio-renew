@@ -1,4 +1,7 @@
-<?php if (!$this->input->is_ajax_request()): ?>
+<?php if (!$this->input->is_ajax_request() OR $this->input->post('no_ajax')=='y'): ?>
+<script>
+	NFview = {};
+</script>
 <section>
 	<div class="container">
 		<div class="row">
@@ -48,7 +51,7 @@
 				
 
 
-<?php if (!$this->input->is_ajax_request()): ?>
+<?php if (!$this->input->is_ajax_request() OR $this->input->post('no_ajax')=='y'): ?>
 			</div>
 			<div class="col-md-4">
 				<div class="sticky">

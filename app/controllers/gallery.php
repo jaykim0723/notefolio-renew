@@ -46,7 +46,7 @@ class Gallery extends CI_Controller {
 	function create(){
 		$work_id = $this->work_model->post_info(); // 비어있는 값으로 생성하고
 		if(emptY($work_id)) alert('작품이 존재하지 않습니다.');
-		redirect('gallery/'.$work_id.'/update');
+		redirect($this->session->userdata('username').'/'.$work_id.'/update');
 	}
 	function upload(){ // 기존의 주소를 보전하기 위하여
 		redirect('gallery/create');
