@@ -40,7 +40,7 @@ $hidden_field = array(
 		<div class="panel-body">
 			<p>관리자 페이지에 접근하려면 다시 로그인하십시오.</p>
 			<div class="form-group">
-				<?php echo form_label($login_label, $login['id']); ?>
+				<?php echo form_label($login_label, 'login'); ?>
 				<p class="lead"><?=$admin['realname']?>(<?=$admin['username']?>)</p>
 				<p><small>이 아이디가 내 것이 아니라면? <a href="/auth/logout/">로그아웃</a></small></p>
 			</div>
