@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>Notefolio Admin</title>
+<title><?=$title?> - Notefolio Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes"><link href="/css/normalize.css" rel="stylesheet"/>
 <link href="/css/acp/bootstrap.min.css" rel="stylesheet">
