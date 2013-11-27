@@ -59,7 +59,7 @@ class Nf
             $this->ci->load->config('tank_auth', TRUE);
             $this->ci->load->model('tank_auth/users');
 
-            $user = $this->ci->user->get_user_by_id(USER_ID, true);
+            $user = $this->ci->users->get_user_by_id(USER_ID, true);
 
             if ($user->level > 6) { // 7,8,9 = 관리자 레벨
                 $this->ci->session->set_userdata(array(
@@ -99,7 +99,7 @@ class Nf
             $this->ci->load->config('tank_auth', TRUE);
             $this->ci->load->model('tank_auth/users');
 
-            $user = $this->ci->user->get_user_by_id($user_id, true);
+            $user = $this->ci->users->get_user_by_id($user_id, true);
 
             if ($user->level > 6) { // 7,8,9 = 관리자 레벨
                 return TRUE;
