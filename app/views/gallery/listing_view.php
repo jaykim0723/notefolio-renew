@@ -4,12 +4,15 @@
 		<div class="row">
 			<div class="col-md-12">
 				<form action="" class="well form-inline" role="form">
-					<select class="col-xs-2" name="sort_option" id="sort_option">
-						<option value="total">전체 기간</option>
-						<option value="daily">오늘</option>
-						<option value="1week">이번 주</option>
-						<option value="monthly">이번 달</option>
-					</select>
+					<div class="input-group col-xs-2">
+	  					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+						<select class="" name="sort_option" id="sort_option">
+							<option value="total">전체 기간</option>
+							<option value="daily">오늘</option>
+							<option value="1week">이번 주</option>
+							<option value="monthly">이번 달</option>
+						</select>
+					</div>
 					<select class="col-xs-6" name="work_categories" id="work_categories" multiple title="Choose one of the following...">
 						<option value="A7">가구디자인</option>
 						<option value="B7">그리픽디자인</option>
