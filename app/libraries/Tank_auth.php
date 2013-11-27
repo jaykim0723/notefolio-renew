@@ -72,6 +72,9 @@ class Tank_auth
 								'user_id'	=> $user->id,
 								'username'	=> $user->username,
 								'status'	=> ($user->activated == 1) ? STATUS_ACTIVATED : STATUS_NOT_ACTIVATED,
+								'realname'  => $user->realname,  // realname을 위해서.
+                                'p_i'       => (file_exists(APPPATH.'../www/profiles/'.$user->id))?time():0,// 아이콘 출력을 위해서.
+                                'level'  => $user->level,
 						));
 
 						if ($user->activated == 0) {							// fail - not activated
