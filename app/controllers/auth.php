@@ -197,7 +197,7 @@ class Auth extends CI_Controller
                     else {
                         // go_to에 따라 가야할 곳을 지정함.
                         $is_ajax?
-                            die(json_encode(array('status'=>'error', 'type'=>'not_elevated'))):null;
+                            die(json_encode(array('status'=>'error', 'type'=>'not_elevated'))):die();
                     }
 
                 } else {
