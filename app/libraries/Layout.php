@@ -33,7 +33,7 @@ class Layout
 
 		$affix = '';
 		$areaName = $this->ci->uri->rsegment(1);
-		var_export($areaName);
+		echo '<!--'.var_export($areaName, true).'-->';
 		if(!$this->ci->input->is_ajax_request()){
 			if(in_array($areaName, array('auth', 'acp')))
 				$affix = $areaName.'_';
