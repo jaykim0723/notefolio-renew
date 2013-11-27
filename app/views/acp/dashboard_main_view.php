@@ -2,6 +2,13 @@
   <div class="main-inner">
     <div class="container">
       <div class="row">
+        <div class="alert alert-block">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <h4>Warning!</h4>
+          Best check yo self, you're not...
+        </div>
+      </div>
+      <div class="row">
         <div class="span6">
           <div class="widget widget-nopad">
             <div class="widget-header"> <i class="icon-list-alt"></i>
