@@ -144,7 +144,7 @@ class Auth extends CI_Controller
                 die(json_encode(array('status'=>'error', 'type'=>'please_log_in')))
                 :redirect('/auth/login'.(($go_to)?'?go_to='.$go_to:''));
 
-        } elseif ($this->nf->check_can_elevate()) {                       // logged in, not activated
+        } elseif (!$this->nf->check_can_elevate()) {                       // logged in, not activated
             $is_ajax?
                 die(json_encode(array('status'=>'error', 'type'=>'you_cannot_elevate')))
                 :redirect('/auth/restrict');

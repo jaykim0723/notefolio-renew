@@ -100,7 +100,6 @@ class Nf
             $this->ci->load->model('tank_auth/users');
 
             $user = $this->ci->users->get_user_by_id($user_id, true);
-            var_export($user);
 
             if ($user->level > 6) { // 7,8,9 = 관리자 레벨
                 return TRUE;
