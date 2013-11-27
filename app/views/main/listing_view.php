@@ -6,6 +6,18 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+				<ul class="main_thumbnail_list">
+					<li class="thumbbox infinite-item wide">
+						<a class="go_to_work_info" href="/maxzidell/1004">
+							<img src="/img/thumb_wide.gif"/>
+						</a>
+					</li>
+					<li class="thumbbox infinite-item">
+						<a class="go_to_work_info" href="/maxzidell/1004">
+							<img src="/img/thumb.gif"/>
+						</a>
+					</li>
+				</ul>
 <?php endif ?>
 				<ul class="main_thumbnail_list infinite_list">
 					<!-- list -->
