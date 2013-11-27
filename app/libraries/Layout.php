@@ -32,16 +32,15 @@ class Layout
 		}
 
 		$affix = '';
-		
+		$className = $this->ci->router->fetch_class();
 		if(!$this->ci->input->is_ajax_request()){
-			$className = $this->ci->router->fetch_class();
 			if(in_array($className, array('auth', 'acp')))
 				$affix = $className.'_';
 		}
 
 		// print header
 		if(!$this->ci->input->is_ajax_request()){
-			$this->ci->load->view('layout/header_inc_view', $this->header);
+			(!($className!='acp'))?$this->ci->load->view('layout/header_inc_view', $this->header);
 			$this->ci->load->view('layout/header_'.$affix.'view');
 		}
 
@@ -54,7 +53,7 @@ class Layout
 		// print footer
 		if(!$this->ci->input->is_ajax_request()){
 			$this->ci->load->view('layout/footer_'.$affix.'view');
-			$this->ci->load->view('layout/footer_inc_view');
+			(!($className!='acp'))?$this->ci->load->view('layout/footer_inc_view');
 		}
 	}
 
