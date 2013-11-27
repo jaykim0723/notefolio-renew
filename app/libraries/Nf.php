@@ -116,7 +116,7 @@ class Nf
      */
     function admin_is_elevated()
     {
-        if(USER_ID != $this->ci->session->userdata('admin_user_level')) {
+        if(USER_ID != $this->ci->session->userdata('admin_user_id')) {
             $this->admin_unelevate();
             return false;
         }
