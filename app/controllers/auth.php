@@ -134,7 +134,27 @@ class Auth extends CI_Controller
         $go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/'; # get url to go after login
         $data['go_to'] = $go_to;
 
-        if ($this->nf->is_elevated()) {  
+        if ($this->nf->is_elevated()) {                                          // elevated
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'already_elevated')))
+                :redirect($go_to);
+
+        } elseif (!$this->tank_auth->is_logged_in()) {                           // login, first!
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'please_log_in')))
+                :redirect('/auth/login'.(($go_to)?'?go_to='.$go_to:''));
+
+        } elseif ($this->nf->is_logged_in(FALSE)) {                       // logged in, not activated
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'you_cannot_elevate')))
+                :redirect('/auth/restrict');
+
+        } elseif ($this->tank_auth->is_logged_in(FALSE)) {                       // logged in, not activated
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
+                :redirect('/auth/send_again/');
+
+        } else {
             $this->data['login_by_username'] = ($this->config->item('login_by_username', 'tank_auth') AND
                     $this->config->item('use_username', 'tank_auth'));
             $this->data['login_by_email'] = $this->config->item('login_by_email', 'tank_auth');
@@ -203,7 +223,7 @@ class Auth extends CI_Controller
             
             $data['fb'] = $this->fbsdk;
 
-            $data['admin'] = array('username' = $this->tank_auth->get_username());
+            $data['admin'] = array('username' => $this->tank_auth->get_username());
 
             $this->layout->set_view('auth/login_form', $data)->render();
             // $this->load->view('auth/login_form', $data);
