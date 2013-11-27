@@ -60,14 +60,14 @@ class Nf
             $this->ci->load->model('tank_auth/users');
 
             $user = $this->ci->users->get_user_by_id(USER_ID, true);
-            var_export($user->level > 6);
-            die();
 
             if ($user->level > 6) { // 7,8,9 = 관리자 레벨
                 $this->ci->session->set_userdata(array(
                         'admin_user_id'   => $user->id,
                         'admin_user_level'  => $user->level,
                 ));
+                var_export($user->level > 6);
+                die();
                 return TRUE;
             } else {                // fail - level is low
                 $this->error = array('login' => 'level_is_low');
