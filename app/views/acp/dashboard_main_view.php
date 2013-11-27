@@ -4,8 +4,8 @@
       <div class="row">
         <div class="alert alert-block">
           <button type="button" class="close" data-dismiss="alert">×</button>
-          <h4>Warning!</h4>
-          Best check yo self, you're not...
+          <h4>주의하세요!</h4>
+          이 페이지에 나온 기능은 전부 동작하지 않는 기능입니다.
         </div>
       </div>
       <div class="row">
