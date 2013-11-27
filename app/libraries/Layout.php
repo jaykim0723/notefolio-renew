@@ -32,7 +32,7 @@ class Layout
 		}
 
 		$affix = '';
-		$areaName = (in_array($this->uri->rsegment(1), 'acp'))?$this->uri->rsegment(1):$this->url->:$this->ci->router->fetch_class();
+		$areaName = (in_array($this->uri->rsegment(1), 'acp'))?$this->uri->rsegment(1):$this->ci->router->fetch_class();
 		if(!$this->ci->input->is_ajax_request()){
 			if(in_array($areaName, array('auth', 'acp')))
 				$affix = $areaName.'_';
