@@ -18,7 +18,7 @@ class Profile extends CI_Controller {
 	}
 	
 
-	function gallery($username='', $page=1){
+	function works($username='', $page=1){
 		log_message('debug','--------- gallery ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		$this->user_id = $this->profile_model->get_user_id_from_username($username);
 
@@ -27,7 +27,7 @@ class Profile extends CI_Controller {
 			'page' => $page,
 			'user_id' => $this->user_id
 		));
-		$this->layout->set_view('profile/gallery_listing_view', $work_list)->render();
+		$this->layout->set_view('profile/works_listing_view', $work_list)->render();
 	}
 
 	function about($username=''){

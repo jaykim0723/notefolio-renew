@@ -1,3 +1,9 @@
-.main_thumbnail_list .thumbbox:hover {
-	outline: 1px solid blue;
+
+/* profile */
+#profile_header {
+	height: 550px;
+}
+#profile_inner {
+	width: 400px;
+	top: 120px;
 }

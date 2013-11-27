@@ -18,7 +18,8 @@ class Main extends CI_Controller {
 	
 	function listing($page=1){
 		$work_list = $this->work_model->get_list(array(
-			'page' => $page
+			'page'      => $page,
+			'delimiter' => 16
 		));
 		$this->layout->set_view('main/listing_view', $work_list)->render();
 	}

@@ -52,39 +52,52 @@
 
 
 
-.main_thumbnail_list {
+.main_thumbnail_list,
+.thumbnail_list {
 	overflow: hidden;
 	position: relative;
 	list-style: none;
 	padding: 0;
-	margin: 0;
+	margin: 0 -15px;
 }
 
-.main_thumbnail_list .thumbbox {
+.main_thumbnail_list .thumbbox,
+.thumbnail_list .thumbbox {
 	float: left;
 	width: 33.3333333333%;
 	background: #eee;
 	margin: 0;
-	outline: 1px solid silver;
+}
+.thumbnail_list .thumbbox {
+	width: 25%;
 }
 .main_thumbnail_list .thumbbox.wide {
 	width: 66.6666666666%;
 }
-.main_thumbnail_list .thumbbox:hover {
-	outline: 1px solid blue;
-}
-.main_thumbnail_list .thumbbox img {
+.main_thumbnail_list .thumbbox a,
+.main_thumbnail_list .thumbbox img,
+.thumbnail_list .thumbbox a,
+.thumbnail_list .thumbbox img {
 	width: 100%;
 }
-@media (max-width:600px) {
+@media (max-width:599px) {
 	.main_thumbnail_list .thumbbox {
 		width:50%;
 	}
 	.main_thumbnail_list .thumbbox.wide {
 		width:100%;
 	}	
+	.thumbnail_list .thumbbox {
+		outline:1px solid #fff;
+		width: 33.3333333333%;
+	}
 }
-
+@media (min-width:768px) {
+	.main_thumbnail_list,
+	.thumbnail_list {
+		margin: 0;
+	}
+}
 
 
 .sticky-wrapper {
@@ -310,6 +323,29 @@ p.desc {
 
 
 /* profile */
+#profile_header {
+	width: 100%;
+	background: #ddd;
+	margin-bottom: 30px;
+	position: relative;
+}
 #profile_nav {
 	;
+}
+#profile_inner {
+	position: relative;
+	width: 100%;
+	background: pink;
+	height: 300px;
+	margin: 0 auto 0 auto;
+	opacity: 0.9;
+}
+@media (min-width:600px) {
+	#profile_header {
+		height: 400px;
+	}
+	#profile_inner {
+		width: 400px;
+		top: 50px;
+	}
 }

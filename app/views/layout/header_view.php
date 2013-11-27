@@ -64,5 +64,9 @@
 	<header id="mobile-header" class="mm-fixed-top visible-xs visible-sm">
 		<div class="container">
 			<a href="javascript:$('#mobile-menu').trigger('open');">open</a>
+			|
+			<a href="/">main</a>
+			|
+			<a href="/gallery">Gallery</a>
 		</div>
 	</header>

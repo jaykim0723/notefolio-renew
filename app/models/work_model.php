@@ -18,7 +18,7 @@ class work_model extends CI_Model {
     	$params = (object)$params;
     	$default_params = (object)array(
             'page'      => 1, // 불러올 페이지
-            'delimiter' => 16, // 한 페이지당 작품 수
+            'delimiter' => 24, // 한 페이지당 작품 수
             'order_by'  => 'newest', // newest, oldest
             'keywords'  => '', // *plain으로 들어오고 이곳 모델에서 코드로 변형을 해준다.
             'folder'    => '', // ''면 전체
