@@ -131,7 +131,7 @@ class Auth extends CI_Controller
     function elevate()
     {
         $is_ajax = $this->input->is_ajax_request();
-        $go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/'; # get url to go after login
+        $go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/acp'; # get url to go after login
         $data['go_to'] = $go_to;
 
         if ($this->nf->is_elevated()) {                                          // elevated
@@ -142,7 +142,7 @@ class Auth extends CI_Controller
         } elseif (!$this->tank_auth->is_logged_in()) {                           // login, first!
             $is_ajax?
                 die(json_encode(array('status'=>'error', 'type'=>'please_log_in')))
-                :redirect('/auth/login?go_to='.urlencode('/auth/elevate'.($go_to)?'?'.$go_to:''));
+                :redirect('/auth/login?go_to='.urlencode('/auth/elevate'.(empty($go_to))?'?go_to='.$go_to:''));
 
         } elseif (!$this->nf->check_can_elevate()) {                       // logged in, not activated
             $is_ajax?
@@ -223,9 +223,11 @@ class Auth extends CI_Controller
             
             $data['fb'] = $this->fbsdk;
 
-            $data['admin'] = array('user_id' => $this->tank_auth->get_user_id(), 'username' => $this->tank_auth->get_username());
+            $data['admin'] = array('user_id' => $this->tank_auth->get_user_id(),
+                                   'username' => $this->tank_auth->get_username(),
+                                   'realname' => $this->tank_auth->get_realname());
 
-            $this->layout->set_view('auth/login_form', $data)->render();
+            $this->layout->set_view('auth/login_elevate_form', $data)->render();
             // $this->load->view('auth/login_form', $data);
         }
     }
