@@ -12,7 +12,7 @@
 		  </p>
 		  <p>&nbsp;</p>
 		  <p class="small">
-		  	올바르게 접속했는데도 이 페이지가 표시된다면, 저희에게 <a href="/info/contact_us">알려주세요</a>.
+		  	올바르게 접속했는데도 이 페이지를 보셨다면, 저희에게 <a href="/info/contact_us">알려주세요</a>.
 		  </p>
 		</div>
 	</div>							
