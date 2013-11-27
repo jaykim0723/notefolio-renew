@@ -101,7 +101,7 @@ class work_model extends CI_Model {
         }
 
     	$this->db
-            ->select('works.*, users.*, users.id as user_id')
+            ->select('works.*, users.id as user_id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
     		// ->select('work_id, title, realname as user, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
     		->join('users', 'users.id = works.user_id', 'left')
@@ -117,7 +117,21 @@ class work_model extends CI_Model {
             return $data;
         }
         // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
-        // do stuff
+        $user = (object)array(
+            'user_id'    => $data->row->user_id,
+            'username'   => $data->row->username,
+            'email'      => $data->row->email,
+            'level'      => $data->row->level,
+            'realname'   => $data->row->realname,
+            'last_ip'    => $data->row->last_ip,
+            'last_login' => $data->row->last_login,
+            'created'    => $data->row->created,
+            'modified'   => $data->row->modified
+        );
+        foreach($user as $key=>$value){
+            unset($data->row->{$key});
+        }
+        $data->row->user = $user;
 
     	return $data;
     }
