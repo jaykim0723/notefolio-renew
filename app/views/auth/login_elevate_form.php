@@ -41,7 +41,7 @@ $hidden_field = array(
 			<p>관리자 권한을 얻으려면 이곳에서 다시 로그인하십시오.</p>
 			<div class="form-group">
 				<?php echo form_label('Login', 'login'); ?>
-				<p class="lead"><?=$admin['realname']?>(<?=$admin['username']?>)</p>
+				<p class="lead"><?=$admin['realname']?> (<?=$admin['username']?>) 님</p>
 				<p><small>이 아이디가 내 것이 아니라면? <a href="/auth/logout/">로그아웃</a></small></p>
 			</div>
 			<div class="form-group">
