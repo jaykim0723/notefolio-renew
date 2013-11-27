@@ -187,8 +187,8 @@ class Auth extends CI_Controller
                         '',
                         $this->data['login_by_username'],
                         $this->data['login_by_email'])) {                             // success
-                    die($this->nf->admin_elevate());
-                    /*{
+                    if($this->nf->admin_elevate())
+                    {
                         // go_to에 따라 가야할 곳을 지정함.
                         $is_ajax?
                             die(json_encode(array('status'=>'success', 'type'=>'elevated')))
@@ -199,7 +199,7 @@ class Auth extends CI_Controller
                         $is_ajax?
                             die(json_encode(array('status'=>'error', 'type'=>'not_elevated')))
                             :redirect('/acp/redirect');
-                    }*/
+                    }
 
                 } else {
                     $errors = $this->tank_auth->get_error_message();
