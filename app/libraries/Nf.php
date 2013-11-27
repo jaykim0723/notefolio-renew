@@ -66,8 +66,6 @@ class Nf
                         'admin_user_id'   => $user->id,
                         'admin_user_level'  => $user->level,
                 ));
-                var_export($user->level > 6);
-                die();
                 return TRUE;
             } else {                // fail - level is low
                 $this->error = array('login' => 'level_is_low');
