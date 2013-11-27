@@ -188,7 +188,7 @@ class Auth extends CI_Controller
                         $this->data['login_by_username'],
                         $this->data['login_by_email'])) {                             // success
                     $this->nf->admin_elevate();
-                    redirect(!empty($go_to)?$go_to:'/acp/dashboard/');
+                    redirect(!empty($go_to)?$go_to:'/acp');
 
                 } else {
                     $errors = $this->tank_auth->get_error_message();
