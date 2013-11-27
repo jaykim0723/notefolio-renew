@@ -32,6 +32,19 @@ class Nf
 
 
     /**
+     * for admin
+     *
+     * @return  bool
+     */
+
+    function admin_check()
+    {
+        if(!$this->is_elevated()){
+            redirect('/auth/login?go_to='.($go_to=='' ? $this->ci->uri->uri_string() : $go_to));
+        }
+    }
+
+    /**
      * elevate user to administrator level [require: tank-auth]
      *
      * @return  bool
@@ -100,9 +113,16 @@ class Nf
      */
     function is_elevated()
     {
-        if(USER_ID != $this->ci->session->userdata('admin_user_level'))
-            return $this->unelevate();
-        return $this->ci->session->userdata('admin_user_level');
+        if(USER_ID != $this->ci->session->userdata('admin_user_level')) {
+            $this->unelevate();
+            return false;
+        }
+        
+        if($this->ci->session->userdata('admin_user_level')){
+            return true;
+        }
+
+        return false;
     }
 
 
