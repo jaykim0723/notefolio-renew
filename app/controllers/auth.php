@@ -142,7 +142,7 @@ class Auth extends CI_Controller
         } elseif (!$this->tank_auth->is_logged_in()) {                           // login, first!
             $is_ajax?
                 die(json_encode(array('status'=>'error', 'type'=>'please_log_in')))
-                :redirect('/auth/login?go_to='.urlencode('/auth/elevate'.((empty($go_to))?'?go_to='.$go_to:'')));
+                :redirect('/auth/login?go_to='.urlencode('/auth/elevate'.((!empty($go_to))?'?go_to='.$go_to:'')));
 
         } elseif (!$this->nf->admin_check_can_elevate()) {                       // logged in, not activated
             $is_ajax?
