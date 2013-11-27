@@ -187,7 +187,7 @@ class Auth extends CI_Controller
                         '',
                         $this->data['login_by_username'],
                         $this->data['login_by_email'])) {                             // success
-                    if($this->nf->admin_elevate());
+                    if($this->nf->admin_elevate())
                     {
                         // go_to에 따라 가야할 곳을 지정함.
                         $is_ajax?
