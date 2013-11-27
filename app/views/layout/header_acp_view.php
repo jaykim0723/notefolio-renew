@@ -62,7 +62,7 @@
         </li>
         <li id="menu-site" class="dropdown">
         	<a href="/acp/site" class="dropdown-toggle" data-toggle="dropdown">
-        		<i class="icon-list-alt"></i>
+        		<i class="icon-sitemap"></i>
         		<span>사이트</span>
         		<b class="caret"></b>
         	</a>
@@ -72,7 +72,7 @@
         </li>
         <li id="menu-user" class="dropdown">
         	<a href="/acp/user" class="dropdown-toggle" data-toggle="dropdown">
-        		<i class="icon-list-alt"></i>
+        		<i class="icon-group"></i>
         		<span>사용자</span>
         		<b class="caret"></b>
         	</a>
@@ -82,8 +82,28 @@
         </li>
         <li id="menu-work" class="dropdown">
         	<a href="/acp/work" class="dropdown-toggle" data-toggle="dropdown">
-        		<i class="icon-list-alt"></i>
+        		<i class="icon-picture"></i>
         		<span>작품</span>
+        		<b class="caret"></b>
+        	</a>
+          <ul class="dropdown-menu">
+            <li><a href="icons.html">Icons</a></li>
+          </ul>
+        </li>
+        <li id="menu-act" class="dropdown">
+        	<a href="/acp/act" class="dropdown-toggle" data-toggle="dropdown">
+        		<i class="icon-bell"></i>
+        		<span>활동</span>
+        		<b class="caret"></b>
+        	</a>
+          <ul class="dropdown-menu">
+            <li><a href="icons.html">Icons</a></li>
+          </ul>
+        </li>
+        <li id="menu-stat" class="dropdown">
+        	<a href="/acp/stat" class="dropdown-toggle" data-toggle="dropdown">
+        		<i class="icon-bar-chart"></i>
+        		<span>통계</span>
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
