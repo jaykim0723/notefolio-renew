@@ -28,6 +28,83 @@ class Nf
         }
     }
 
+    //-- admin
+
+
+    /**
+     * elevate user to administrator level [require: tank-auth]
+     *
+     * @return  bool
+     */
+    function elevate()
+    {
+        if (USER_ID > 0) {
+
+            $this->ci->load->config('tank_auth', TRUE);
+            $this->ci->load->model('tank_auth/users');
+
+            $user = $this->ci->user->get_user_by_id(USER_ID, true);
+
+            if ($user->level > 6) { // 7,8,9 = 관리자 레벨
+                $this->ci->session->set_userdata(array(
+                        'admin_user_id'   => $user->id,
+                        'admin_user_level'  => $user->level,
+                ));
+                return TRUE;
+            } else {                // fail - level is low
+                $this->error = array('login' => 'level_is_low');
+            }
+        }
+        return FALSE;
+    }
+
+    /**
+     * unelevate administrator level
+     *
+     * @return  void
+     */
+    function unelevate()
+    {
+        $this->ci->session->unset_userdata(array('admin_user_id' => '', 'admin_user_level' => ''));
+    }
+
+    /**
+     * if user can be admin?
+     *
+     * @param int $user_id
+     * @return  int
+     */
+    function check_can_elevate($user_id=null)
+    {
+        if (empty($user_id))
+            $user_id = @USER_ID;
+        if ($user_id > 0) {
+
+            $this->ci->load->config('tank_auth', TRUE);
+            $this->ci->load->model('tank_auth/users');
+
+            $user = $this->ci->user->get_user_by_id($user_id, true);
+
+            if ($user->level > 6) { // 7,8,9 = 관리자 레벨
+                return TRUE;
+            }
+            
+        }
+        return FALSE;
+    }
+
+    /**
+     * Check if user is now elevated.
+     * 
+     * @return  bool
+     */
+    function is_elevated()
+    {
+        if(USER_ID != $this->ci->session->userdata('admin_user_level'))
+            return $this->unelevate();
+        return $this->ci->session->userdata('admin_user_level');
+    }
+
 
 	
 

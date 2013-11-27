@@ -24,75 +24,75 @@ class Auth extends CI_Controller
 		}
 	}
 
-	/**
-	 * Login user on the site
-	 *
-	 * @return void
-	 */
-	function login()
-	{
-		$is_ajax = $this->input->is_ajax_request();
-	    $go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/'; # get url to go after login
+    /**
+     * Login user on the site
+     *
+     * @return void
+     */
+    function login()
+    {
+        $is_ajax = $this->input->is_ajax_request();
+        $go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/'; # get url to go after login
         $data['go_to'] = $go_to;
 
-		if ($this->tank_auth->is_logged_in()) {											// logged in
-			$is_ajax?
-			    die(json_encode(array('status'=>'error', 'type'=>'already_logged_in')))
+        if ($this->tank_auth->is_logged_in()) {                                         // logged in
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'already_logged_in')))
                 :redirect($go_to);
 
-		} elseif ($this->tank_auth->is_logged_in(FALSE)) {	                     // logged in, not activated
+        } elseif ($this->tank_auth->is_logged_in(FALSE)) {                       // logged in, not activated
             $is_ajax?
                 die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
                 :redirect('/auth/send_again/');
 
-		} else {
-			$data['login_by_username'] = ($this->config->item('login_by_username', 'tank_auth') AND
-					$this->config->item('use_username', 'tank_auth'));
-			$data['login_by_email'] = $this->config->item('login_by_email', 'tank_auth');
+        } else {
+            $data['login_by_username'] = ($this->config->item('login_by_username', 'tank_auth') AND
+                    $this->config->item('use_username', 'tank_auth'));
+            $data['login_by_email'] = $this->config->item('login_by_email', 'tank_auth');
 
-			$this->form_validation->set_rules('login', 'Login', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('remember', 'Remember me', 'integer');
-			$this->form_validation->set_error_delimiters('<span class="error">', '</span>');
+            $this->form_validation->set_rules('login', 'Login', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('remember', 'Remember me', 'integer');
+            $this->form_validation->set_error_delimiters('<span class="error">', '</span>');
 
-			// Get login for counting attempts to login
-			if ($this->config->item('login_count_attempts', 'tank_auth') AND
-					($login = $this->input->post('login'))) {
-				$login = $this->security->xss_clean($login);
-			} else {
-				$login = '';
-			}
+            // Get login for counting attempts to login
+            if ($this->config->item('login_count_attempts', 'tank_auth') AND
+                    ($login = $this->input->post('login'))) {
+                $login = $this->security->xss_clean($login);
+            } else {
+                $login = '';
+            }
 
-			$data['use_recaptcha'] = $this->config->item('use_recaptcha', 'tank_auth');
-			if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
-				if ($data['use_recaptcha'])
-					$this->form_validation->set_rules('recaptcha_response_field', 'Confirmation Code', 'trim|xss_clean|required|callback__check_recaptcha');
-				else
-					$this->form_validation->set_rules('captcha', 'Confirmation Code', 'trim|xss_clean|required|callback__check_captcha');
-			}
-			$data['errors'] = array();
+            $data['use_recaptcha'] = $this->config->item('use_recaptcha', 'tank_auth');
+            if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
+                if ($data['use_recaptcha'])
+                    $this->form_validation->set_rules('recaptcha_response_field', 'Confirmation Code', 'trim|xss_clean|required|callback__check_recaptcha');
+                else
+                    $this->form_validation->set_rules('captcha', 'Confirmation Code', 'trim|xss_clean|required|callback__check_captcha');
+            }
+            $data['errors'] = array();
 
-			if ($this->form_validation->run()) {								// validation ok
-				if ($this->tank_auth->login(
-						$this->form_validation->set_value('login'),
-						$this->form_validation->set_value('password'),
-						$this->form_validation->set_value('remember'),
-						$data['login_by_username'],
-						$data['login_by_email'])) {			
-						
-					// go_to에 따라 가야할 곳을 지정함.
-					$is_ajax?
+            if ($this->form_validation->run()) {                                // validation ok
+                if ($this->tank_auth->login(
+                        $this->form_validation->set_value('login'),
+                        $this->form_validation->set_value('password'),
+                        $this->form_validation->set_value('remember'),
+                        $data['login_by_username'],
+                        $data['login_by_email'])) {         
+                        
+                    // go_to에 따라 가야할 곳을 지정함.
+                    $is_ajax?
                         die(json_encode(array('status'=>'success', 'type'=>'logged_in')))
                         :redirect($go_to);
 
-				} else {
-					$errors = $this->tank_auth->get_error_message();
-					if (isset($errors['banned'])) {								// banned user
-						$is_ajax?
+                } else {
+                    $errors = $this->tank_auth->get_error_message();
+                    if (isset($errors['banned'])) {                             // banned user
+                        $is_ajax?
                             die(json_encode(array('status'=>'error', 'type'=>'banned')))
                             :$this->_show_message($this->lang->line('auth_message_banned').' '.$errors['banned']);
 
-					} elseif (isset($errors['not_activated'])) {               // not activated user
+                    } elseif (isset($errors['not_activated'])) {               // not activated user
                         $is_ajax?
                             die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
                             :redirect('/auth/send_again/');
@@ -101,27 +101,134 @@ class Auth extends CI_Controller
                         foreach ($errors as $k => $v)   $data['errors'][$k] = $this->lang->line($v);
                         die(json_encode(array('status'=>'error', 'type'=>'post_data_error', 'errors'=>$data['errors'])));
 
-                    } else {													// fail
-						foreach ($errors as $k => $v)	$data['errors'][$k] = '<span class="error">'.$this->lang->line($v).'</span>';
-					}
-				}
-			}
-			$data['show_captcha'] = FALSE;
-			if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
-				$data['show_captcha'] = TRUE;
-				if ($data['use_recaptcha']) {
-					$data['recaptcha_html'] = $this->_create_recaptcha();
-				} else {
-					$data['captcha_html'] = $this->_create_captcha();
-				}
-			}
+                    } else {                                                    // fail
+                        foreach ($errors as $k => $v)   $data['errors'][$k] = '<span class="error">'.$this->lang->line($v).'</span>';
+                    }
+                }
+            }
+            $data['show_captcha'] = FALSE;
+            if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
+                $data['show_captcha'] = TRUE;
+                if ($data['use_recaptcha']) {
+                    $data['recaptcha_html'] = $this->_create_recaptcha();
+                } else {
+                    $data['captcha_html'] = $this->_create_captcha();
+                }
+            }
             
             $data['fb'] = $this->fbsdk;
 
-			$this->layout->set_view('auth/login_form', $data)->render();
-			// $this->load->view('auth/login_form', $data);
-		}
-	}
+            $this->layout->set_view('auth/login_form', $data)->render();
+            // $this->load->view('auth/login_form', $data);
+        }
+    }
+
+    /**
+     * elevate user for admin permission
+     *
+     * @return void
+     */
+    function elevate()
+    {
+        $is_ajax = $this->input->is_ajax_request();
+        $go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/'; # get url to go after login
+        $data['go_to'] = $go_to;
+
+        if ($this->nf->is_elevated()) {                                          // elevated
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'already_elevated')))
+                :redirect($go_to);
+
+        } elseif (!$this->tank_auth->is_logged_in()) {                           // login, first!
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'please_log_in')))
+                :redirect('/auth/login'.(($go_to)?'?go_to='.$go_to:''));
+
+        } elseif ($this->tank_auth->is_logged_in(FALSE)) {                       // logged in, not activated
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'you_cannot_elevate')))
+                :redirect('/auth/restrict');
+
+        } elseif ($this->tank_auth->is_logged_in(FALSE)) {                       // logged in, not activated
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
+                :redirect('/auth/send_again/');
+
+        } else {
+            $this->data['login_by_username'] = ($this->config->item('login_by_username', 'tank_auth') AND
+                    $this->config->item('use_username', 'tank_auth'));
+            $this->data['login_by_email'] = $this->config->item('login_by_email', 'tank_auth');
+            
+            $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+            
+            $this->form_validation->set_error_delimiters('<div class="alert alert-error">','</div>');
+
+            // Get login for counting attempts to login
+            if ($this->config->item('login_count_attempts', 'tank_auth') AND
+                    ($login = $this->input->post('login'))) {
+                $login = $this->security->xss_clean($login);
+            } else {
+                $login = '';
+            }
+
+            $data['use_recaptcha'] = $this->config->item('use_recaptcha', 'tank_auth');
+            if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
+                if ($data['use_recaptcha'])
+                    $this->form_validation->set_rules('recaptcha_response_field', 'Confirmation Code', 'trim|xss_clean|required|callback__check_recaptcha');
+                else
+                    $this->form_validation->set_rules('captcha', 'Confirmation Code', 'trim|xss_clean|required|callback__check_captcha');
+            }
+            $data['errors'] = array();
+
+            if ($this->form_validation->run()) {                                // validation ok
+                if ($this->tank_auth->login(
+                        $this->tank_auth->get_username(),
+                        $this->form_validation->set_value('password'),
+                        '',
+                        $this->data['login_by_username'],
+                        $this->data['login_by_email'])) {                             // success
+                    $this->nf->admin_elevate();
+                    redirect(!empty($go_to)?$go_to:'/acp/dashboard/');
+
+                } else {
+                    $errors = $this->tank_auth->get_error_message();
+                    if (isset($errors['banned'])) {                             // banned user
+                        $is_ajax?
+                            die(json_encode(array('status'=>'error', 'type'=>'banned')))
+                            :$this->_show_message($this->lang->line('auth_message_banned').' '.$errors['banned']);
+
+                    } elseif (isset($errors['not_activated'])) {               // not activated user
+                        $is_ajax?
+                            die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
+                            :redirect('/auth/send_again/');
+
+                    } elseif ($is_ajax) {                                       // fail for ajax
+                        foreach ($errors as $k => $v)   $data['errors'][$k] = $this->lang->line($v);
+                        die(json_encode(array('status'=>'error', 'type'=>'post_data_error', 'errors'=>$data['errors'])));
+
+                    } else {                                                    // fail
+                        foreach ($errors as $k => $v)   $data['errors'][$k] = '<span class="error">'.$this->lang->line($v).'</span>';
+                    }
+                }
+            }
+            $data['show_captcha'] = FALSE;
+            if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
+                $data['show_captcha'] = TRUE;
+                if ($data['use_recaptcha']) {
+                    $data['recaptcha_html'] = $this->_create_recaptcha();
+                } else {
+                    $data['captcha_html'] = $this->_create_captcha();
+                }
+            }
+            
+            $data['fb'] = $this->fbsdk;
+
+            $data['admin'] = array('username' = $this->tank_auth->get_username());
+
+            $this->layout->set_view('auth/login_form', $data)->render();
+            // $this->load->view('auth/login_form', $data);
+        }
+    }
 
     /**
      * make process for facebook
@@ -396,6 +503,24 @@ class Auth extends CI_Controller
         return $user['user_id'];
     }
 
+    /*
+     * @brief return unelevate page
+     * 
+     * @param void
+     * 
+     * @return void
+     */
+    function unelevate()
+    {
+        $this->nf->admin_unelevate();
+
+        if($this->input->is_ajax_request()){
+            die(json_encode(array('status'=>'success', 'type'=>'logged_out')));
+        } else {
+            redirect($this->agent->referrer());
+        }
+    }
+
 	/**
 	 * Logout user
 	 *
@@ -403,6 +528,7 @@ class Auth extends CI_Controller
 	 */
 	function logout()
 	{
+        $this->nf->admin_unelevate();
 		$this->tank_auth->logout();
         $this->fbsdk->destroySession(); // destory fb session
 
@@ -1157,6 +1283,16 @@ log_message('debug', ' -------- resurt ----------'.json_encode($result));
 			$this->load->view('auth/unregister_form', $data);
 		}
 	}
+
+    /**
+     * print restrict page
+     *
+     * @return void
+     */
+    function restrict()
+    {
+        $this->layout->set_view('auth/restrict', $data)->render();
+    }
 
 	/**
 	 * Show info message
