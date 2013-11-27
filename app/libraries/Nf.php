@@ -42,7 +42,7 @@ class Nf
 
     function admin_check()
     {
-        if(!$this->is_elevated()){
+        if(!$this->admin_is_elevated()){
             redirect('/auth/elevate?go_to='.($go_to=='' ? '/'.$this->ci->uri->uri_string() : $go_to));
         }
     }
@@ -52,7 +52,7 @@ class Nf
      *
      * @return  bool
      */
-    function elevate()
+    function admin_elevate()
     {
         if (USER_ID > 0) {
 
@@ -79,7 +79,7 @@ class Nf
      *
      * @return  void
      */
-    function unelevate()
+    function admin_unelevate()
     {
         $this->ci->session->unset_userdata(array('admin_user_id' => '', 'admin_user_level' => ''));
     }
@@ -90,7 +90,7 @@ class Nf
      * @param int $user_id
      * @return  int
      */
-    function check_can_elevate($user_id=null)
+    function admin_check_can_elevate($user_id=null)
     {
         if (empty($user_id))
             $user_id = @USER_ID;
@@ -114,10 +114,10 @@ class Nf
      * 
      * @return  bool
      */
-    function is_elevated()
+    function admin_is_elevated()
     {
         if(USER_ID != $this->ci->session->userdata('admin_user_level')) {
-            $this->unelevate();
+            $this->admin_unelevate();
             return false;
         }
         
