@@ -54,13 +54,13 @@
   <div class="subnavbar-inner">
     <div class="container">
       <ul class="mainnav">
-        <li id="menu-dashboard" class="active">
+        <li id="menu-dashboard"<?($this->uri->segment(2)=='dashboard')?' class="active"':''?>>
         	<a href="/acp/dashboard">
         		<i class="icon-dashboard"></i>
         		<span>대시보드</span>
         	</a>
         </li>
-        <li id="menu-site" class="dropdown">
+        <li id="menu-site" class="dropdown<?($this->uri->segment(2)=='site')?' active':''?>">
         	<a href="/acp/site" class="dropdown-toggle" data-toggle="dropdown">
         		<i class="icon-sitemap"></i>
         		<span>사이트</span>
@@ -70,7 +70,7 @@
             <li><a href="icons.html">Icons</a></li>
           </ul>
         </li>
-        <li id="menu-user" class="dropdown">
+        <li id="menu-user" class="dropdown<?($this->uri->segment(2)=='user')?' active':''?>">
         	<a href="/acp/user" class="dropdown-toggle" data-toggle="dropdown">
         		<i class="icon-group"></i>
         		<span>사용자</span>
@@ -80,7 +80,7 @@
             <li><a href="/acp/user/member"><i class="icon-user"></i> 회원</a></li>
           </ul>
         </li>
-        <li id="menu-work" class="dropdown">
+        <li id="menu-work" class="dropdown<?($this->uri->segment(2)=='work')?' active':''?>">
         	<a href="/acp/work" class="dropdown-toggle" data-toggle="dropdown">
         		<i class="icon-picture"></i>
         		<span>작품</span>
@@ -90,7 +90,7 @@
             <li><a href="icons.html">Icons</a></li>
           </ul>
         </li>
-        <li id="menu-act" class="dropdown">
+        <li id="menu-act" class="dropdown<?($this->uri->segment(2)=='act')?' active':''?>">
         	<a href="/acp/act" class="dropdown-toggle" data-toggle="dropdown">
         		<i class="icon-bell"></i>
         		<span>활동</span>
@@ -100,7 +100,7 @@
             <li><a href="icons.html">Icons</a></li>
           </ul>
         </li>
-        <li id="menu-stat" class="dropdown">
+        <li id="menu-stat" class="dropdown<?($this->uri->segment(2)=='stat')?' active':''?>">
         	<a href="/acp/stat" class="dropdown-toggle" data-toggle="dropdown">
         		<i class="icon-bar-chart"></i>
         		<span>통계</span>
