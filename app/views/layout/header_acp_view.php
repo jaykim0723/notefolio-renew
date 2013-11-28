@@ -31,11 +31,11 @@
         <ul class="nav pull-right">
           <li class="dropdown">
           	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          		<i class="icon-user"></i> notefolio <b class="caret"></b>
+          		<i class="icon-user"></i> <?=$this->tank_auth->get_username()?> <b class="caret"></b>
           	</a>
             <ul class="dropdown-menu">
-              <li><a href="javascript:;">Profile</a></li>
-              <li><a href="javascript:;">Logout</a></li>
+              <li><a href="/auth/logout">로그아웃</a></li>
+              <li><a href="/auth/unelevate">권한해제</a></li>
             </ul>
           </li>
         </ul>
