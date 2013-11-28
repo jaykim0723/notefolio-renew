@@ -60,6 +60,24 @@ class feed_model extends CI_Model {
         // 일단 야매로... 고쳐주세요!
         return $this->get_list();
     }
+
+
+
+
+
+
+    function get_unread_count($user_id=''){
+        $data = (object)array(
+            'status' => 'done',
+            'all' => 2398,
+            'unread' => 34
+        );
+        
+        // do stuff
+        // 
+        
+        return $data;
+    }
 }
 
 /* End of file work_model.php */

@@ -20,3 +20,10 @@
 		</div>
 	</div>
 </footer>
+
+
+<script>
+	$(function(){
+		site.alarm.checkUnread();
+	});
+</script>

@@ -36,6 +36,11 @@ class Feed extends CI_Controller {
 		$this->layout->set_view('feed/activity_listing_view', $feed_activity_list)->render();
 	}
 
+	function check_unread(){
+		$data = $this->feed_model->get_unread_count(USER_ID);
+		$this->layout->set_json($data)->render();
+	}
+
 
 }
 

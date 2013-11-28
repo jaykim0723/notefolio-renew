@@ -11,17 +11,6 @@
 <script src="/js/work.js"></script>
 <script>
 	$('select').selectpicker();
-
-	$(function(){
-		$('#mobile-menu').mmenu({
-        	dragOpen: {
-				open:	false,
-				pageNode:	null,
-				threshold:	50,
-				maxStartPos:	150
-			}
-        })
-	});
 </script>
 </body>
 </html>

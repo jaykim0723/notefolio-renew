@@ -37,7 +37,10 @@
 						<a href="/feed/listing">Feed</a>
 					</li>
 					<li>
-						<a href="/alarm/listing">Alarm</a>
+						<a id="btnAlarm" href="javascript:;">
+							Alarm
+							<span class="label label-default unreadAlarm"></span>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -50,13 +53,22 @@
 			<a href="#">Note</a>
 		</li>
 		<li>
-			<a href="#">Statistics</a>
+			<a href="/feed/listing">Feed</a>
 		</li>
 		<li>
-			<a href="#">My works</a>
+			<a href="/alarm/listing">
+				Alarm
+				<span class="label label-default unreadAlarm"></span>
+			</a>
 		</li>
 		<li>
-			<a href="#">Settings</a>
+			<a href="/<?php echo $this->session->userdata('username') ?>/statistics">Statistics</a>
+		</li>
+		<li>
+			<a href="/<?php echo $this->session->userdata('username') ?>/myworks">My works</a>
+		</li>
+		<li>
+			<a href="/auth/setting">Settings</a>
 		</li>
 	</ul>
 </nav>

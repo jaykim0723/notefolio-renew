@@ -11,21 +11,21 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-9">
+			<div class="col-md-9 col-sm-12 col-xs-12">
 <?php endif ?>
 
-				<div class="thumbnail_list ">
+				<ul class="thumbnail_list infinite_list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('feed/thumbnail_inc_view', $row) ?>
 					<?php endforeach ?>
 
-				</div>
+				</ul>
 				<a href="/feed/listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?>" class="more-link">more</a>
 
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3 hidden-sm hidden-xs">
 				<?php echo $this->load->view('feed/activity_listing_view', $activity); ?>
 			</div>
 		</div>
@@ -37,7 +37,7 @@
 	$(function() {
 		$('.feed_activity_list').waypoint('infinite', {
 			items: '.activity-infinite-item',
-			more: '.activity-infinite-item',
+			more: '.activity-more-link',
 			offset: 'bottom-in-view',
 			onAfterPageLoad : function(){
 				console.log($.now());

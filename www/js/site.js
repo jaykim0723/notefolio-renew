@@ -21,6 +21,22 @@ var site = {
 			}
 			localStorage.removeItem('flashMsg');
 		}
+	},
+	alarm : {
+		checkUnread : function(){
+			$.getJSON('/feed/check_unread').done(function(d){
+				console.log(d);
+				if(d.status=='done'){
+					$('.unreadAlarm').text(d.unread)[d.unread>0?'show':'hide']();
+					setTimeout(function(){
+						site.alarm.checkUnread();
+					}, 30000);
+				}
+			});
+		},
+		open : function(){
+			alert('alarm');
+		}
 	}
 };
 site.checkFlashMsg(); // 페이지가 전환된 이후에 메시지를 표시할 것이 있는지 검사
@@ -41,4 +57,17 @@ $(function() {
 			console.log($.now());
 		}
 	});
+
+	$('#mobile-menu').mmenu({
+    	dragOpen: {
+			open:	false,
+			pageNode:	null,
+			threshold:	50,
+			maxStartPos:	150
+		}
+    })
+
+    $('#btnAlarm').on('click', function(){
+    	site.alarm.open();
+    });
 });
