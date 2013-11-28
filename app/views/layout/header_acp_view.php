@@ -77,7 +77,7 @@
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
-            <li><i class="icon-user"></i><a href="/acp/user/member">회</a></li>
+            <li><a href="/acp/user/member"><i class="icon-user"></i>회원</a></li>
           </ul>
         </li>
         <li id="menu-work" class="dropdown">
