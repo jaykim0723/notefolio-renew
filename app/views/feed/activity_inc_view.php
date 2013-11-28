@@ -1,5 +1,5 @@
-<li>
-	<a href="" class="clearfix">
+<li class="activity-infinite-item clearfix">
+	<a href="" class="">
 		<i class="spi spi-menu_disc"></i>
 		<img src="http://dev.notefolio.net/profiles/2"/>
 		<span>
