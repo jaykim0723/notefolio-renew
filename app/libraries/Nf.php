@@ -31,6 +31,33 @@ class Nf
         }
     }
 
+    function print_time($ymdhis){
+        $gap = time() - strtotime($ymdhis);
+        $msg = '';
+        if($gap < 60) // 1분 이내
+            $msg = '방금 전';
+        elseif($gap < 3600){ // 1시간 이내
+            $gap = floor($gap / 60);
+            $msg = $gap.'분 전';
+        }elseif($gap < 86400){ // 1일 이내
+            $gap = floor($gap / 3600);
+            $msg = $gap.'시간 전';
+        }elseif($gap < 604800){ // 1주일 이내
+            $gap = floor($gap / 86400);
+            $msg = $gap.'일 전';
+        }elseif($gap < 2678400){ // 4주(1달) 이내
+            $gap = floor($gap / 604800);
+            $msg = $gap.'주 전';
+        }elseif($gap < 31536000){ // 1년 이내
+            $gap = floor($gap / 2678400);
+            $msg = $gap.'개월 전';
+        }else{ // 1년 이후
+            $gap = floor($gap / 31536000);
+            $msg = $gap.'년 전';
+        }
+        return $msg;
+    }
+
     //-- admin
 
 

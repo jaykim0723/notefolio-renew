@@ -26,7 +26,7 @@
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 			<div class="col-md-3">
-				<ul class="feed_activity_list infinite_list">
+				<ul class="feed_activity_list infinite_list" data-name="feed">
 <?php endif ?>
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>

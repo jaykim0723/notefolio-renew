@@ -25,14 +25,22 @@ var site = {
 };
 site.checkFlashMsg(); // 페이지가 전환된 이후에 메시지를 표시할 것이 있는지 검사
 
+
+
+
+
+
+
+
 $(function() {
-	$('.infinite_list').waypoint('infinite', {
-		container: '.infinite_list',
-		items: '.infinite-item',
-			more: '.more-link',
-		offset: 'bottom-in-view',
-		onAfterPageLoad : function(){
-			console.log($.now());
-		}
+	$('.infinite_list').each(function(){
+		$(this).waypoint('infinite', {
+			items: '.'+$(this).data('name')+'infinite-item',
+			more: '.'+$(this).data('name')+'more-link',
+			offset: 'bottom-in-view',
+			onAfterPageLoad : function(){
+				console.log($.now());
+			}
+		});
 	});
 });
