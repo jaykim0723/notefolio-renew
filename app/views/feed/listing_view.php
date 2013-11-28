@@ -26,13 +26,14 @@
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 			<div class="col-md-3">
-				<ul class="feed_activity_list clearfix">
+				<ul class="feed_activity_list infinite_list">
 <?php endif ?>
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('feed/activity_inc_view', $row) ?>
 					<?php endforeach ?>
 
+					<a href="/feed/activity_listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?>" class="more-link">more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
 				</ul>
 			</div>
