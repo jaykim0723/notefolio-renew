@@ -16,24 +16,11 @@ class Feed extends CI_Controller {
 	
 
 	function listing($page=1){
-		$data = (object)array(
+		$feed_list = $this->feed_model->get_list(array(
 			'page' => $page,
-			'rows' => array()
-		);
-		for($i=0; $i<12; $i++){
-			$data->rows[] = array(
-				'work_id' => 1,
-				'title' => 'Lorem Ipsum',
-				'user' => (object)array(
-					'realname' => '정미나',
-					'hit_cnt' => rand(0,234),
-					'comment_cnt' => rand(0,234),
-					'like_cnt' => rand(0,234)
-				),
-				'timestamp' => 1392792372
-			);
-		}
-		$this->layout->set_view('feed/listing_view', $data)->render();
+			'user_id' => USER_ID
+		));
+		$this->layout->set_view('feed/listing_view', $feed_list)->render();
 	}
 
 

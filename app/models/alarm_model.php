@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class feed_model extends CI_Model {
+class alarm_model extends CI_Model {
 
 
     public function __construct()
@@ -13,7 +13,7 @@ class feed_model extends CI_Model {
     	$params = (object)$params;
     	$default_params = (object)array(
     		'page' => 1,
-            'user_id' => '' // 필수정보(누구의 피드인지)
+            'user_id' => ''
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
@@ -23,23 +23,6 @@ class feed_model extends CI_Model {
         // DB 호출하
         // 출력값 조정하고
         // do stuff by 성수씨
-        $rows = array(
-            (object)array(
-                'user' => (object)array(
-                    'id' => 234,
-                    'realname' => '이흥현',
-                    'username' => '홍구'
-                ),
-                'work' => (object)array(
-                    'work_id' => 2398674,
-                    'title' => '노트폴리오 예제',
-                    'regdate' => '2013-01-23 11:20:12'
-                ),
-                'regdate' => '2013-01-23 11:20:12',
-                'type' => 'create',
-                'message' => '<a class="info_link" href="/gangsups">홍구</a>님이 <a class="info_link" href="#">새로운 작품</a>을 공개하였습니다.'
-            )
-        );
         
         $data = (object)array(
             'status' => 'done',
@@ -55,8 +38,7 @@ class feed_model extends CI_Model {
 
     }
 
-    function get_activity_list($params=array()){
-    }
+
 }
 
 /* End of file work_model.php */
