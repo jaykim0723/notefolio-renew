@@ -1,7 +1,3 @@
-<ol class="breadcrumb">
-  <li><a href="/acp/">관리</a></li>
-  <li class="active"><a href="/acp/dashboard/">대시보드</a></li>
-</ol>
 <div class="main">
   <div class="main-inner">
     <div class="container">
