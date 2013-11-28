@@ -14,6 +14,7 @@ class Dashboard extends CI_Controller {
 	 */
 	public function index()
 	{
+		if($this->uri->segment(2)==FALSE) redirect('/acp/dashboard');
 		$this->layout->set_header('title', '대시보드')->set_view('acp/dashboard_main_view')->render();
 	}
 }
