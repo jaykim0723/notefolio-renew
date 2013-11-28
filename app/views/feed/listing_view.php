@@ -21,7 +21,7 @@
 					<?php endforeach ?>
 
 				</div>
-				<a href="/gallery/listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?>" class="more-link">more</a>
+				<a href="/feed/listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?>" class="more-link">more</a>
 
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
@@ -43,14 +43,14 @@
 
 <script>
 	$(function() {
-		$('.feed_activity_list').waypoint('sticky', {
-		  stuckClass: 'stuck',
-		  handler: function(){
-		  	var offset = $(this).offset();
-		  	$(this).css('top', offset.top+'px').css('left', offset.left+'px')
-		  	$('.feed_activity_list', $(this)).css('width', $(this).width());
-		  }
-		});
+		// $('.feed_activity_list').waypoint('sticky', {
+		//   stuckClass: 'stuck',
+		//   handler: function(){
+		//   	var offset = $(this).offset();
+		//   	$(this).css('top', offset.top+'px').css('left', offset.left+'px')
+		//   	$('.feed_activity_list', $(this)).css('width', $(this).width());
+		//   }
+		// });
 	});
 </script>
 <?php endif; ?>
