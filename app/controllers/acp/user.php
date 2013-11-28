@@ -23,7 +23,7 @@ class User extends CI_Controller {
 	 */
 	public function member()
 	{
-		$this->layout->set_header('title', '회원')->set_view('acp/member_list_view')->render();
+		$this->layout->set_header('title', '회원')->set_view('acp/user_member_list_view')->render();
 	}
 }
 
