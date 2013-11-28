@@ -77,7 +77,7 @@
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
+            <li><i class="icon-user"></i><a href="/acp/user/member">회</a></li>
           </ul>
         </li>
         <li id="menu-work" class="dropdown">
