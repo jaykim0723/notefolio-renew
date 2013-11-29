@@ -7,14 +7,38 @@
             <h3 class="panel-title">회원 정보</h3>
           </div>
           <div class="panel-body">
-            <p>ID:   <?=$row->id?></p>
-            <p>아이디: <?=$row->username?></p>
-            <p>이메일: <?=$row->email?></p>
-            <p>실명:  <?=$row->realname?></p>
-            <p>레벨:  <?=$row->level?></p>
-            <p>가입일: <?=$row->created?></p>
-            <p>마지막 로그인: <?=$row->last_ip?> (<?=$row->last_login?>)</p>
-            <p>마지막 수정: <?=$row->modified?></p>
+            <p>
+              <label>ID</label>
+              <?=$row->id?>
+            </p>
+            <p>
+              <label>아이디</label>
+              <?=$row->username?>
+            </p>
+            <p>
+              <label>이메일</label>
+              <?=$row->email?>
+            </p>
+            <p>
+              <label>실명</label>
+              <?=$row->realname?>
+            </p>
+            <p>
+              <label>레벨</label>
+              <?=$row->level?>
+            </p>
+            <p>
+              <label>가입일</label>
+              <?=$row->created?>
+            </p>
+            <p>
+              <label>마지막 로그인</label>
+              <?=$row->last_ip?> (<?=$row->last_login?>)
+            </p>
+            <p>
+              <label>마지막 수정<label>
+              <?=$row->modified?>
+            </p>
           </div>
         </div>
       </div>
