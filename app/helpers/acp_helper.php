@@ -15,26 +15,27 @@ function get_paging($params=array()){
 	$default_params = (object)array(
         'now_page'      => 1, 
         'print_max' => 9, 
+        'last_page' => 9, 
         'url'  => '', 
-        'location'  => '/acp/', 
+        'location'  => '/acp', 
 	);
 	foreach($default_params as $key => $value){
 		if(!isset($params->{$key}))
 			$params->{$key} = $value;
 	}
-    $begin = ($params->now_page)-((($params->print_max)-1)/2);
-    $end = ($params->now_page)-((($params->print_max)-1)/2);
+    $begin = ($params->now_page)-ceil((($params->print_max)-1)/2);
+    $end = ($params->now_page)+floor((($params->print_max)-1)/2);
     if ($begin<1) {
-        if(($params->print_max)>($end-$begin+1))
+        if(($params->last_page)>($end-$begin+1))
             $end = $end - $begin+1;
-        else $end = ($params->print_max);
+        else $end = ($params->last_page);
         $begin = 1;
-    } else if ($end>($params->print_max)) {
-        $begin = $begin + ($params->print_max) - $end;
+    } else if ($end>($params->last_page)) {
+        $begin = $begin + ($params->last_page) - $end;
         if($begin<1 )
             $begin = 1;
-        else $end = ($params->print_max);
-        $end = ($params->print_max);
+        else $end = ($params->last_page);
+        $end = ($params->last_page);
     }
     
     $output = "<div class=\"pagination-note pagination-note-centered \">\n";       
@@ -53,9 +54,9 @@ function get_paging($params=array()){
        
     }
 	
-    $output .= "    <li><a href=\"{$params->location}{$params->url}/page/{$params->print_max}\"class='next_page'>...</a></li>\n";   
-    $output .= "    <li><a href=\"{$params->location}{$params->url}/page/{$params->print_max}\">{$params->print_max}</a></li>\n";    
-	$output .= "    <li><a href=\"{$params->location}{$params->url}/page/".((($params->now_page)!=($params->print_max))?($params->now_page)+1:($params->print_max))."\" class='pagination-right-arr'></a></li>\n"; 
+    $output .= "    <li><a href=\"{$params->location}{$params->url}/page/{$params->last_page}\"class='next_page'>...</a></li>\n";   
+    $output .= "    <li><a href=\"{$params->location}{$params->url}/page/{$params->last_page}\">{$params->last_page}</a></li>\n";    
+	$output .= "    <li><a href=\"{$params->location}{$params->url}/page/".((($params->now_page)!=($params->last_page))?($params->now_page)+1:($params->last_page))."\" class='pagination-right-arr'></a></li>\n"; 
 	
     $output .= "  <ul>\n";    
     $output .= "</div>\n";

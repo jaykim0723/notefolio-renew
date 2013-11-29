@@ -39,7 +39,7 @@
             </tbody>
           </table>
 
-          <?=get_paging($params=array('now_page'=>$page, 'url'=> '/acp/user/member'))?>
+          <?=get_paging($params=array('now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/user/member'))?>
         </div>
         <!-- /table-responsive --> 
       </div>
