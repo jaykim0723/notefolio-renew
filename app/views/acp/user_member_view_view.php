@@ -9,38 +9,14 @@
           </div>
           <!-- /widget-header -->
           <div class="widget-content">
-            <p>
-              <label class="control-label">ID</label>
-              <?=$row->id?>
-            </p>
-            <p>
-              <label class="control-label">아이디</label>
-              <?=$row->username?>
-            </p>
-            <p>
-              <label class="control-label">이메일</label>
-              <?=$row->email?>
-            </p>
-            <p>
-              <label class="control-label">실명</label>
-              <?=$row->realname?>
-            </p>
-            <p>
-              <label class="control-label">레벨</label>
-              <?=$row->level?>
-            </p>
-            <p>
-              <label class="control-label">가입일</label>
-              <?=$row->created?>
-            </p>
-            <p>
-              <label class="control-label">마지막 로그인</label>
-              <?=$row->last_ip?> (<?=$row->last_login?>)
-            </p>
-            <p>
-              <label class="control-label">마지막 수정<label>
-              <?=$row->modified?>
-            </p>
+            <p>ID:        <?=$row->id?></p>
+            <p>아이디:      <?=$row->username?></p>
+            <p>이메일:      <?=$row->email?></p>
+            <p>실명:       <?=$row->realname?></p>
+            <p>레벨:       <?=$row->level?></p>
+            <p>가입일:      <?=$row->created?></p>
+            <p>마지막 로그인: <?=$row->last_ip?> (<?=$row->last_login?>)</p>
+            <p>마지막 수정:  <?=$row->modified?></p>
             <p>웹사이트:    <?=$row->website?></p>
             <p>facebook:  <?=$row->facebook_id?></p>
             <p>twitter:   <?=$row->twitter_id?></p>
