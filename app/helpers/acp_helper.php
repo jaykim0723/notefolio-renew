@@ -11,7 +11,6 @@
  * @return string
  */
 function get_paging($params=array()){
-        exit();
 	$params = (object)$params;
 	$default_params = (object)array(
         'now_page'      => 1, 
