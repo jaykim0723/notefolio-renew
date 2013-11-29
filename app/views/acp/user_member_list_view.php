@@ -38,6 +38,8 @@
               <? } ?>
             </tbody>
           </table>
+
+          <?=get_paging($params=array('now_page'=>$page, 'url'=> '/acp/user/member'))?>
         </div>
         <!-- /table-responsive --> 
       </div>

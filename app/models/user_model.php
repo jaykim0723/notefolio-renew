@@ -8,7 +8,7 @@ class user_model extends CI_Model {
         parent::__construct();
 
         $this->load->model('tank_auth/users');
-        
+        $this->load->helper('acp');
     }
 
     /**
