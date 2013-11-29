@@ -17,6 +17,7 @@ class user_model extends CI_Model {
      * @return object          상태와 데이터값을 반환한다
      */
     function get_list($params=array()){
+        exit();
     	$params = (object)$params;
     	$default_params = (object)array(
             'page'      => 1, // 불러올 페이지
@@ -46,7 +47,7 @@ class user_model extends CI_Model {
                     $this->db->order_by($params->order_by);
             break;
         }
-        
+
         $count_data = $this->db->get()->row();
         $all_count = $count_data->count;
         $all_page = $count_data->page;
