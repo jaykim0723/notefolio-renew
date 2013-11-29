@@ -22,7 +22,14 @@
                 <th>실명</th>
                 <th>이메일</th>
                 <th>가입일</th>
-                <th><i class="icon-wrench"></i></th>
+                <th>
+                  <i class="icon-wrench"></i>
+                  <i class="icon-wrench"></i>
+                  <i class="icon-wrench"></i>
+                  <i class="icon-wrench"></i>
+                  <i class="icon-wrench"></i>
+                  <i class="icon-wrench"></i>
+                </th>
               </tr>
             </thead>
             <tbody>
