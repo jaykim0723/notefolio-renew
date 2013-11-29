@@ -46,8 +46,8 @@ class user_model extends CI_Model {
                     $this->db->order_by($params->order_by);
             break;
         }
-
-        exit(var_export($params, true));        $count_data = $this->db->get()->row();
+        
+        $count_data = $this->db->get()->row();
         $all_count = $count_data->count;
         $all_page = $count_data->page;
 
