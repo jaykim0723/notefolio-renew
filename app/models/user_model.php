@@ -30,7 +30,7 @@ class user_model extends CI_Model {
     	}
 
         $this->db
-            ->select('count(users.*) as count')
+            ->select('count(id) as count')
             ->from('users')
             ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
