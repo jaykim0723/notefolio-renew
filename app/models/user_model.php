@@ -31,8 +31,7 @@ class user_model extends CI_Model {
         
         $this->db
             ->select('count(id) as count, ceil(count(id)/'.$params->delimiter.') as page')
-            ->from('users')
-            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
+            ->from('users'); //set
 
         switch($params->order_by){
             case "newest":
