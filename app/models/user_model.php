@@ -31,7 +31,6 @@ class user_model extends CI_Model {
 
     	$this->db
             ->select('users.*')
-    		// ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->table('users')
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
@@ -51,7 +50,7 @@ class user_model extends CI_Model {
     	$users = $this->db->get();
 
     	$rows = array();
-    	foreach ($works->result() as $row)
+    	foreach ($users->result() as $row)
 		{
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
 		    $rows[] = $row;
@@ -85,37 +84,15 @@ class user_model extends CI_Model {
         }
 
     	$this->db
-            ->select('works.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
-    		// ->select('work_id, title, realname as user, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
-    		->from('works')
-    		->join('users', 'users.id = works.user_id', 'left')
-    		->where('works.work_id', $params->work_id)
+            ->select('users.*')
+\    		->from('users')
+    		->where('users.id', $params->work_id)
     		->limit(1); //set
-        $work = $this->db->get()->row();
+        $user = $this->db->get()->row();
         $data = (object)array(
             'status' => 'done',
-            'row' => $work
+            'row' => $user
         );
-        if(!$work){
-            $data->status = 'fail';
-            return $data;
-        }
-        // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
-        $user = (object)array(
-            'id'         => $data->row->id,
-            'username'   => $data->row->username,
-            'email'      => $data->row->email,
-            'level'      => $data->row->level,
-            'realname'   => $data->row->realname,
-            'last_ip'    => $data->row->last_ip,
-            'last_login' => $data->row->last_login,
-            'created'    => $data->row->created,
-            'modified'   => $data->row->modified
-        );
-        foreach($user as $key=>$value){
-            unset($data->row->{$key});
-        }
-        $data->row->user = $user;
 
     	return $data;
     }

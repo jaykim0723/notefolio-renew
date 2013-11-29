@@ -1,4 +1,4 @@
-<li class="activity-infinite-item <?php echo $this->uri->segments(1); ?>-item clearfix">
+<li class="activity-infinite-item <?php echo $this->uri->segment(1); ?>-item clearfix">
 	<a href="" class="">
 		<i class="spi spi-menu_disc"></i>
 		<img src="http://dev.notefolio.net/profiles/2"/>
