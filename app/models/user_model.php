@@ -31,7 +31,7 @@ class user_model extends CI_Model {
 
     	$this->db
             ->select('users.*')
-    		->table('users')
+    		->from('users')
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
     	switch($params->order_by){
