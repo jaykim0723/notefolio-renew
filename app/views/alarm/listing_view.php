@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-md-12">
 <?php endif ?>
-				<ul class="feed_activity_list alarm_list clearfix">
+				<ul class="feed-activity-list alarm-list clearfix">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('feed/activity_inc_view', $row) ?>
@@ -22,7 +22,7 @@
 <?php if ($page==1): ?>
 <script>
 	$(function(){
-		$('.alarm_list').waypoint('infinite', {
+		$('.alarm-list').waypoint('infinite', {
 			items: '.alarm-item',
 			more: '.alarm-more-link',
 			offset: 'bottom-in-view'

@@ -4,7 +4,7 @@
 		<div class="col-md-8 col-sm-12">
 <?php endif ?>
 
-			<div class="thumbnail_list infinite_list">
+			<div class="thumbnail-list infinite-list">
 				<!-- list -->
 				<?php foreach ($rows as $key => $row): ?>
 				<?php $this->load->view('gallery/thumbnail_inc_view', $row) ?>

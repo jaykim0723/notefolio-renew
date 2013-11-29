@@ -1,18 +1,18 @@
 
 /* profile */
-#profile_header {
+#profile-header {
 	height: 550px;
 }
-#profile_inner {
+#profile-inner-wrapper {
 	width: 400px;
 	top: 120px;
 }
 
 
-#alarmWrapper {
+#alarm-wrapper {
 	position: relative;
 }
-#alarmPopUp {
+#alarm-popup {
 	overflow: scroll;
 	position: absolute;
 	background: #fff;
@@ -21,7 +21,7 @@
 	width: 300px;
 	border: 3px solid silver;
 }
-#alarmPopUpList {
+#alarm-popup-list {
 	overflow: hidden;
 	-webkit-overflow-scrolling: touch;
 	overflow-scrolling: touch;

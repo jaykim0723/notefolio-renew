@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<ul class="main_thumbnail_list">
+				<ul class="main-thumbnail-list">
 					<li class="thumbbox infinite-item wide">
 						<a class="go_to_work_info" href="/maxzidell/1004">
 							<img src="/img/thumb_wide.gif"/>
@@ -19,7 +19,7 @@
 					</li>
 				</ul>
 <?php endif ?>
-				<ul class="main_thumbnail_list infinite_list">
+				<ul class="main-thumbnail-list infinite-list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row):
 					$row->key = $key;

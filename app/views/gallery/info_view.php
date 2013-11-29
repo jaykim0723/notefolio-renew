@@ -8,8 +8,8 @@
 			<div class="col-md-8">
 <?php endif ?>
 			
-				<div class="work_list infinite_list">
-					<div class="work_wrapper infinite-item">
+				<div class="work-list infinite-list">
+					<div class="work-wrapper infinite-item">
 						<div class="work_info well" style="height: 100px;">
 							<div class="btn-group pull-right">
 								<a href="/<?php echo $user->username ?>/<?php echo $work_id ?>/update" class="btn btn-default">

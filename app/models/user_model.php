@@ -97,6 +97,11 @@ class user_model extends CI_Model {
     	foreach ($users->result() as $row)
 		{
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
+            unset($row->password);
+            unset($user->new_password_key);
+            unset($user->new_password_requested);
+            unset($user->new_email_key);
+            unset($user->new_email);
 		    $rows[] = $row;
 		}
         $data = (object)array(
@@ -152,6 +157,11 @@ class user_model extends CI_Model {
         }
 
         $user = $this->db->get()->row();
+        unset($user->password);
+        unset($user->new_password_key);
+        unset($user->new_password_requested);
+        unset($user->new_email_key);
+        unset($user->new_email);
         $data = (object)array(
             'status' => 'done',
             'row' => $user

@@ -1,4 +1,3 @@
-<?php echo $this->load->view('profile/header_view') ?>
 
 <?php if (!$this->input->is_ajax_request()): ?>
 <section>

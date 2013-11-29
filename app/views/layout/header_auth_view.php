@@ -1,4 +1,4 @@
-<div id="auth_wrapper">
-	<header id="auth_header">
+<div id="auth-wrapper">
+	<header id="auth-header">
 		header
 	</header>

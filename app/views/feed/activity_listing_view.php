@@ -1,4 +1,4 @@
-<ul class="feed_activity_list">
+<ul class="feed-activity-list">
 	<!-- list -->
 	<?php foreach ($rows as $key => $row): ?>
 	<?php $this->load->view('feed/activity_inc_view', $row) ?>

@@ -1,4 +1,4 @@
-	<footer id="auth_footer" class="clearfix">
+	<footer id="auth-footer" class="clearfix">
 		footer
 	</footer>
 </div>

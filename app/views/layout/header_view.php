@@ -21,14 +21,14 @@
 						<li>
 							<a href="/feed/listing">Feed</a>
 						</li>
-						<li id="alarmWrapper">
-							<a id="btnAlarm" href="javascript:;">
+						<li id="alarm-wrapper">
+							<a id="btn-alarm" href="javascript:;">
 								Alarm
-								<span class="label label-default unreadAlarm"></span>
+								<span class="label label-default unread-alarm"></span>
 							</a>
 						</li>
 						<li class="btn-group">
-							<button class="btn btn-default" id="btnProfile">
+							<button class="btn btn-default" id="btn-profile">
 								<?php echo $this->session->userdata('username') ?>
 							</button>
 							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -57,7 +57,7 @@
 								</li>
 							</ul>
 							<script>
-								$('#btnProfile').on('click', function(){
+								$('#btn-profile').on('click', function(){
 									site.redirect(site.url+site.username);
 								})
 							</script>
@@ -97,7 +97,7 @@
 			<li>
 				<a href="/alarm/listing">
 					Alarm
-					<span class="label label-default unreadAlarm"></span>
+					<span class="label label-default unread-alarm"></span>
 				</a>
 			</li>
 			<li>

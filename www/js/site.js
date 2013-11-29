@@ -27,7 +27,7 @@ var site = {
 			$.getJSON('/feed/check_unread').done(function(d){
 				console.log(d);
 				if(d.status=='done'){
-					$('.unreadAlarm').text(d.unread)[d.unread>0?'show':'hide']();
+					$('.unread-alarm').text(d.unread)[d.unread>0?'show':'hide']();
 					setTimeout(function(){
 						site.alarm.checkUnread();
 					}, 30000);
@@ -35,28 +35,28 @@ var site = {
 			});
 		},
 		open : function(){
-			if($('#alarmPopUp').length > 0){
+			if($('#alarm-popup').length > 0){
 				this.close();
 				return;
 			}
-			$('#alarmWrapper').append([
-				'<div id="alarmPopUp">',
-					'<div id="alarmPopUpUnread"></div>',
-					'<div id="alarmPopUpList"></div>',
+			$('#alarm-wrapper').append([
+				'<div id="alarm-popup">',
+					'<div id="alarm-popup-unread"></div>',
+					'<div id="alarm-popup-list"></div>',
 				'</div>'
 			].join(''));
-			$('#alarmPopUp').on({
+			$('#alarm-popup').on({
 				mouseenter : function(){
 					site.scroll.lock();
 				},
 				mouseleave : function(){
 					site.scroll.unlock();
 				}
-			}).height($(window).height()>550 ? 500 : $(window).height()-100).children('#alarmPopUpList').load('/alarm/listing/1');
+			}).height($(window).height()>550 ? 500 : $(window).height()-100).children('#alarm-popup-list').load('/alarm/listing/1');
  		},
 		close : function(){
 			site.scroll.unlock(); // 혹시 몰라서 다시 한 번
-			$('#alarmPopUp').remove();
+			$('#alarm-popup').remove();
 		}
 	},
 	scroll : {
@@ -92,7 +92,7 @@ site.prevPage = empty(localStorage.getItem('prevPage')) ? {top:0, url:''} : JSON
 
 
 $(function() {
-	$('.infinite_list').waypoint('infinite', {
+	$('.infinite-list').waypoint('infinite', {
 		items: '.infinite-item',
 		more: '.more-link',
 		offset: 'bottom-in-view',
@@ -110,7 +110,7 @@ $(function() {
 		}
     })
 
-    $('#btnAlarm').on('click', function(){
+    $('#btn-alarm').on('click', function(){
     	site.alarm.open();
     });
 });

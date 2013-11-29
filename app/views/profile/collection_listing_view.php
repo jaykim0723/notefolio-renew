@@ -1,15 +1,12 @@
+
 <?php if (!$this->input->is_ajax_request()): ?>
-
-<?php $this->load->view('profile/header_view'); ?>
-
-
 <section class="listing">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<h1>작가의 콜렉션</h1>
 <?php endif ?>
-				<ul class="thumbnail_list infinite_list">
+				<ul class="thumbnail-list infinite-list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('gallery/thumbnail_inc_view', $row) ?>

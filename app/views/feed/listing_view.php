@@ -14,7 +14,7 @@
 			<div class="col-md-9 col-sm-12 col-xs-12">
 <?php endif ?>
 
-				<ul class="thumbnail_list infinite_list">
+				<ul class="thumbnail-list infinite-list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('feed/thumbnail_inc_view', $row) ?>
@@ -35,7 +35,7 @@
 
 <script>
 	$(function() {
-		$('.feed_activity_list').waypoint('infinite', {
+		$('.feed-activity-list').waypoint('infinite', {
 			items: '.activity-infinite-item',
 			more: '.activity-more-link',
 			offset: 'bottom-in-view',
