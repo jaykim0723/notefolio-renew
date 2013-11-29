@@ -7,6 +7,7 @@
             <h3 class="panel-title">회원 정보</h3>
           </div>
           <div class="panel-body">
+            <p><?=$this->db->last_query();?></p>
             <p>ID:   <?=$row->id?></p>
             <p>아이디: <?=$row->username?></p>
             <p>이메일: <?=$row->email?></p>
