@@ -32,7 +32,7 @@ class User extends CI_Controller {
 				$data = $this->user_model->get_list($args);
 			break;
 			case "view":
-				$args['get_profiles'] = true;
+				$args['get_profile'] = true;
 				$data = $this->user_model->get($args);
 			break;
 			default:
