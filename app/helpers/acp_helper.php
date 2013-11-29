@@ -33,7 +33,7 @@ function get_paging($params=array()){
         $begin = $begin + ($params->print_max) - $end;
         if($begin<1 )
             $begin = 1;
-        else $end = {$params->print_max};
+        else $end = ($params->print_max);
         $end = {$params->print_max};
     }
     
