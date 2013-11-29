@@ -85,7 +85,7 @@ class user_model extends CI_Model {
 
     	$this->db
             ->select('users.*')
-\    		->from('users')
+    		->from('users')
     		->where('users.id', $params->work_id)
     		->limit(1); //set
         $user = $this->db->get()->row();
