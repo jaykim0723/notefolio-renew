@@ -38,8 +38,8 @@ function get_paging($params=array()){
         $end = ($params->last_page);
     }
     
-    $output = "<div class=\"pagination \">\n";       
-    $output .= "  <ul>\n";    
+    $output = "<div id=\"pagenation-box\">\n";       
+    $output .= "  <ul class=\"pagination \">\n";    
     $output .= "    <li><a href=\"{$params->location}{$params->url}/page/".((($params->now_page)!=1)?($params->now_page)-1:1)."\" class='pagination-left-arr'></a></li>\n";
 	$output .= "    <li><a href=\"{$params->location}{$params->url}/page/1\">1</a></li>\n";
     $output .= "    <li><a href=\"{$params->location}{$params->url}/page/1\" class='prev_page'>...</a></li>\n";

@@ -38,10 +38,9 @@
               <? } ?>
             </tbody>
           </table>
-
-          <?=get_paging($params=array('now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/user/member'))?>
         </div>
-        <!-- /table-responsive --> 
+        <!-- /table-responsive -->
+        <?=get_paging($params=array('now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/user/member'))?>
       </div>
       <!-- /row --> 
     </div>
