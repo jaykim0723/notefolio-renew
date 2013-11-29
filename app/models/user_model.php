@@ -35,7 +35,7 @@ class user_model extends CI_Model {
             ->from('users'); //set
 
         if($params->get_profile){
-            $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left')
+            $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
         }
 
         switch($params->order_by){
@@ -82,7 +82,7 @@ class user_model extends CI_Model {
                                user_profiles.birth,      user_profiles.description,
                                user_profiles.mailing,    user_profiles.following_cnt,
                                user_profiles.follower_cnt  ')
-                     ->join('user_profiles', 'users.id=user_profiles.user_id', 'left')
+                     ->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
         }
 
     	$users = $this->db->get();
@@ -136,7 +136,7 @@ class user_model extends CI_Model {
                                user_profiles.birth,      user_profiles.description,
                                user_profiles.mailing,    user_profiles.following_cnt,
                                user_profiles.follower_cnt  ')
-                     ->join('user_profiles', 'users.id=user_profiles.user_id', 'left')
+                     ->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
         }
 
         $user = $this->db->get()->row();
