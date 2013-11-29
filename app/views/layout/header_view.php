@@ -36,7 +36,7 @@
 					<li>
 						<a href="/feed/listing">Feed</a>
 					</li>
-					<li>
+					<li id="alarmWrapper">
 						<a id="btnAlarm" href="javascript:;">
 							Alarm
 							<span class="label label-default unreadAlarm"></span>

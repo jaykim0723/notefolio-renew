@@ -35,7 +35,44 @@ var site = {
 			});
 		},
 		open : function(){
-			alert('alarm');
+			if($('#alarmPopUp').length > 0){
+				this.close();
+				return;
+			}
+			$('#alarmWrapper').append([
+				'<div id="alarmPopUp">',
+					'<div id="alarmPopUpUnread"></div>',
+					'<div id="alarmPopUpList"></div>',
+				'</div>'
+			].join(''));
+			$('#alarmPopUp').on({
+				mouseenter : function(){
+					site.scroll.lock();
+				},
+				mouseleave : function(){
+					site.scroll.unlock();
+				}
+			}).children('#alarmPopUpList').load('/alarm/listing/1');
+ 		},
+		close : function(){
+			site.scroll.unlock(); // 혹시 몰라서 다시 한 번
+			$('#alarmPopUp').remove();
+		}
+	},
+	scroll : {
+		lock : function(){
+			 var scrollPosition = [self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft, self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop ];      
+			 var html = jQuery('html');
+			 html.data('scroll-position', scrollPosition);
+			 html.data('previous-overflow', html.css('overflow'));
+			 html.css('overflow', 'hidden');
+			 window.scrollTo(scrollPosition[0], scrollPosition[1]);
+		},
+		unlock : function(){
+			var html = jQuery('html');
+			var scrollPosition = html.data('scroll-position');
+			html.css('overflow', html.data('previous-overflow'));
+			window.scrollTo(scrollPosition[0], scrollPosition[1]);
 		}
 	}
 };

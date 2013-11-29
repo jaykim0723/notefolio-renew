@@ -6,7 +6,7 @@ class Alarm extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model('feed_model');
+        $this->load->model('alarm_model');
 		$this->nf->_member_check(array('update','delete'));
     }
 	
@@ -17,23 +17,11 @@ class Alarm extends CI_Controller {
 	
 
 	function listing($page=1){
-		$data = (object)array(
+		$alarm_list = $this->alarm_model->get_list(array(
 			'page' => $page,
-			'rows' => array()
-		);
-		for($i=0; $i<12; $i++){
-			$data->rows[] = array(
-				'title' => 'Lorem Ipsum',
-				'user' => (object)array(
-					'realname' => '정미나',
-					'hit_cnt' => rand(0,234),
-					'comment_cnt' => rand(0,234),
-					'like_cnt' => rand(0,234)
-				),
-				'timestamp' => 1392792372
-			);
-		}
-		$this->layout->set_view('alarm/listing_view', $data)->render();
+			'user_id' => USER_ID
+		));
+		$this->layout->set_view('alarm/listing_view', $alarm_list)->render();
 	}
 
 
