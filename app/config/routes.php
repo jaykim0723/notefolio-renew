@@ -56,7 +56,7 @@ $route['(:any)/(gallery|collection|about|statistics|following|followers)/(:any)'
 $route['(:any)/(gallery|collection|about|statistics|following|followers)'] = "profile/$2/$1"; // tabs
 $route['(:any)/(:num)/(update|delete)'] = "gallery/$3/$2"; 
 $route['(:any)/(:num)'] = "gallery/info/$2";
-$route['(:any)'] = "profile/works/$1";
+$route['(:any)'] = "profile/myworks/$1";
 
 
 /* End of file routes.php */

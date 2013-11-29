@@ -50,13 +50,28 @@ class profile_model extends CI_Model {
 
     	$works = $this->db->get();
 
-    	$rows = array();
-    	foreach ($works->result() as $row)
-		{
+        $rows = array();
+        foreach ($works->result() as $row)
+        {
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
-            // do stuff
-		    $rows[] = $row;
-		}
+            $user = (object)array(
+                'id'         => $row->id,
+                'username'   => $row->username,
+                'email'      => $row->email,
+                'level'      => $row->level,
+                'realname'   => $row->realname,
+                'last_ip'    => $row->last_ip,
+                'last_login' => $row->last_login,
+                'created'    => $row->created,
+                'modified'   => $row->modified
+            );
+            foreach($user as $key=>$value){
+                unset($row->{$key});
+            }
+            $row->user = $user;
+            $rows[] = $row;
+        }
+
         $data = (object)array(
             'status' => 'done',
             'page'   => $params->page,

@@ -18,7 +18,7 @@ class Profile extends CI_Controller {
 	}
 	
 
-	function works($username='', $page=1){
+	function myworks($username='', $page=1){
 		log_message('debug','--------- gallery ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		$this->user_id = $this->profile_model->get_user_id_from_username($username);
 
@@ -27,19 +27,20 @@ class Profile extends CI_Controller {
 			'page' => $page,
 			'user_id' => $this->user_id
 		));
-		$this->layout->set_view('profile/works_listing_view', $work_list)->render();
+		$this->layout->set_view('profile/myworks_listing_view', $work_list)->render();
 	}
 
 	function about($username=''){
-		$this->user_id = $this->profile_model->get_user_id_from_username($username);
 		log_message('debug','--------- about ( params : '.print_r(get_defined_vars(),TRUE)).')';
+		$this->user_id = $this->profile_model->get_user_id_from_username($username);
 		
 		$this->layout->set_view('profile/about_view')->render();
 	}
 
 	function collection($username='', $page=1){
-		$this->user_id = $this->profile_model->get_user_id_from_username($username);
 		log_message('debug','--------- collection ( params : '.print_r(get_defined_vars(),TRUE)).')';
+
+		$this->user_id = $this->profile_model->get_user_id_from_username($username);
 		$collection_list = $this->profile_model->get_collection_list(array(
 			'page' => $page,
 			'user_id' => $this->user_id
@@ -48,8 +49,8 @@ class Profile extends CI_Controller {
 	}
 
 	function statistics($username='', $page=1){
-		$this->user_id = $this->profile_model->get_user_id_from_username($username);
 		log_message('debug','--------- statistics ( params : '.print_r(get_defined_vars(),TRUE)).')';
+		$this->user_id = $this->profile_model->get_user_id_from_username($username);
 
 		$this->layout->set_view('profile/statistics_view')->render();
 	}

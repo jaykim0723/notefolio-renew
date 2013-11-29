@@ -36,6 +36,9 @@ class work_model extends CI_Model {
     		->join('users', 'users.id = works.user_id', 'left')
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
+        if(!empty($params->user_id))
+            $this->db->where('user_id', $params->user_id);
+        
     	switch($params->order_by){
     		case "newest":
     			$this->db->order_by('moddate', 'desc');

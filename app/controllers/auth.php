@@ -6,10 +6,9 @@ class Auth extends CI_Controller
 	{
 		parent::__construct();
 
-		$this->load->helper(array('form', 'url'));
+		$this->load->helper(array('form'));
 		$this->load->library('form_validation');
 		$this->load->library('security');
-		$this->load->library('tank_auth');
 		$this->lang->load('tank_auth');
 		$this->load->library('fbsdk');
 		$this->load->library('user_agent');

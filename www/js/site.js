@@ -52,7 +52,7 @@ var site = {
 				mouseleave : function(){
 					site.scroll.unlock();
 				}
-			}).children('#alarmPopUpList').load('/alarm/listing/1');
+			}).height($(window).height()>550 ? 500 : $(window).height()-100).children('#alarmPopUpList').load('/alarm/listing/1');
  		},
 		close : function(){
 			site.scroll.unlock(); // 혹시 몰라서 다시 한 번
@@ -71,6 +71,7 @@ var site = {
 		unlock : function(){
 			var html = jQuery('html');
 			var scrollPosition = html.data('scroll-position');
+			if(empty(scrollPosition)) return;
 			html.css('overflow', html.data('previous-overflow'));
 			window.scrollTo(scrollPosition[0], scrollPosition[1]);
 		}
@@ -81,8 +82,13 @@ site.checkFlashMsg(); // 페이지가 전환된 이후에 메시지를 표시할
 
 
 
-
-
+$(window).on('beforeunload', function(){
+	localStorage.setItem('prevPage', JSON.stringify({
+		top : $(window).scrollTop(),
+		url : location.href
+	}));
+});
+site.prevPage = empty(localStorage.getItem('prevPage')) ? {top:0, url:''} : JSON.parse(localStorage.getItem('prevPage'));
 
 
 $(function() {

@@ -12,8 +12,12 @@
 	border-radius:0;
 	border:0;
 }
+.form-control,
 .input-group-addon,
-.btn {
+.input-group-lg>.form-control, .input-group-lg>.input-group-addon, .input-group-lg>.input-group-btn>.btn,
+.btn,
+.btn-sm,
+.btn-lg {
 	border-radius: 0;
 }
 

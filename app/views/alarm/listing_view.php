@@ -23,12 +23,9 @@
 <script>
 	$(function(){
 		$('.alarm_list').waypoint('infinite', {
-			items: '.activity-item',
+			items: '.alarm-item',
 			more: '.alarm-more-link',
-			offset: 'bottom-in-view',
-			onAfterPageLoad : function(){
-				console.log($.now());
-			}
+			offset: 'bottom-in-view'
 		});	
 	});
 </script>

@@ -25,8 +25,13 @@
 	<link href="https://s3.amazonaws.com/css_sprites/543/10543/ebc4aa8095.css" rel="stylesheet"/>
 	<script src="/js/libs/jquery-1.10.2.min.js"></script>
 	<script src="/js/util.js"></script>
+	<script src="/js/site.js"></script>
 	<script>
 		var common_assets = '';
+		site.user_id = <?php echo USER_ID ?>;
+		site.username = '<?php echo $this->session->userdata('username'); ?>';
+		site.url = '<?php echo site_url() ?>';
+		site.segment = ['<?php echo implode("','", $this->uri->segment_array()); ?>'];
 	</script>
 
 </head>
