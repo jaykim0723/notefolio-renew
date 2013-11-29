@@ -28,7 +28,7 @@ class user_model extends CI_Model {
     		if(!isset($params->{$key}))
     			$params->{$key} = $value;
     	}
-
+        exit(var_export($params, true));
         $this->db
             ->select('count(id) as count, ceil(count(id)/'.$params->delimiter.') as page')
             ->from('users')
