@@ -39,9 +39,9 @@ function get_paging($params=array()){
     
     $output = "<div class=\"pagination-note pagination-note-centered \">\n";       
     $output .= "  <ul>\n";    
-    $output .= "    <li><a href=\"{$params->location}{$default_url}/page/".((($params->now_page)!=1)?($params->now_page)-1:1)."\" class='pagination-left-arr'></a></li>\n";
-	$output .= "    <li><a href=\"{$params->location}{$default_url}/page/1\">1</a></li>\n";
-    $output .= "    <li><a href=\"{$params->location}{$default_url}/page/1\" class='prev_page'>...</a></li>\n";
+    $output .= "    <li><a href=\"{$params->location}{$params->url}/page/".((($params->now_page)!=1)?($params->now_page)-1:1)."\" class='pagination-left-arr'></a></li>\n";
+	$output .= "    <li><a href=\"{$params->location}{$params->url}/page/1\">1</a></li>\n";
+    $output .= "    <li><a href=\"{$params->location}{$params->url}/page/1\" class='prev_page'>...</a></li>\n";
 	
     for($i=$begin;$i<=$end;$i++) {
        if ($i == ($params->now_page)) {
@@ -49,13 +49,13 @@ function get_paging($params=array()){
        }
        else $current_class = "";
             
-       $output.="<li id=\"acp_pagenav_$i\"$current_class><a href=\"{$params->location}{$default_url}/page/{$i}\">{$i}</a></li>\n";
+       $output.="<li id=\"acp_pagenav_$i\"$current_class><a href=\"{$params->location}{$params->url}/page/{$i}\">{$i}</a></li>\n";
        
     }
 	
-    $output .= "    <li><a href=\"{$params->location}{$default_url}/page/{$params->print_max}\"class='next_page'>...</a></li>\n";   
-    $output .= "    <li><a href=\"{$params->location}{$default_url}/page/{$params->print_max}\">{$params->print_max}</a></li>\n";    
-	$output .= "    <li><a href=\"{$params->location}{$default_url}/page/".((($params->now_page)!=($params->print_max))?($params->now_page)+1:($params->print_max))."\" class='pagination-right-arr'></a></li>\n"; 
+    $output .= "    <li><a href=\"{$params->location}{$params->url}/page/{$params->print_max}\"class='next_page'>...</a></li>\n";   
+    $output .= "    <li><a href=\"{$params->location}{$params->url}/page/{$params->print_max}\">{$params->print_max}</a></li>\n";    
+	$output .= "    <li><a href=\"{$params->location}{$params->url}/page/".((($params->now_page)!=($params->print_max))?($params->now_page)+1:($params->print_max))."\" class='pagination-right-arr'></a></li>\n"; 
 	
     $output .= "  <ul>\n";    
     $output .= "</div>\n";
