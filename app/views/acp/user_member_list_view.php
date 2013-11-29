@@ -13,19 +13,23 @@
           <table class="table table-striped table-hover">
             <thead>
               <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>ID</th>
+                <th>아이디</th>
+                <th>실명</th>
+                <th>이메일</th>
+                <th>가입일</th>
+                <th><i class="icon-wrench"></i></th>
               </tr>
             </thead>
             <tbody>
               <? foreach ($rows as $key=>$row) { ?>
               <tr>
                 <td><?=$row['id']?></td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td><?=$row['username']?></td>
+                <td><?=$row['realname']?></td>
+                <td><?=$row['email']?></td>
+                <td><?=$row['created']?></td>
+                <td>보기 수정 삭제</td>
               </tr>
               <? } ?>
             </tbody>
