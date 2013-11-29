@@ -9,11 +9,11 @@
           </div>
           <!-- /widget-header -->
           <div class="widget-content">
-            <div class="row">
+            <div class="container">
               <p>전체: <?=$all_count?>개</p>
               <p>페이지: <?=$page?>/<?=$all_page?> 페이지</p>
             </div>
-            <div class="row">
+            <div class="container">
               <div class="table-responsive">
                 <table class="table table-striped table-hover">
                   <thead>
