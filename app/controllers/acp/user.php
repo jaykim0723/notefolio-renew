@@ -24,7 +24,7 @@ class User extends CI_Controller {
 	 */
 	public function member($mode='list')
 	{
-		if($this->uri->segment(4)==FALSE) redirect('/acp/dashboard');
+		if($this->uri->segment(4)==FALSE) redirect('/acp/user/member/list');
 		$args = $this->uri->uri_to_assoc(5);
 		$data = $this->user_model->get_list($args);
 
