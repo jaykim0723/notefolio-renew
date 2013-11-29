@@ -40,7 +40,7 @@ function get_paging($params=array()){
     
     $output = "<div id=\"pagenation-box\">\n";       
     $output .= "  <ul class=\"pagination \">\n";    
-    $output .= "    <li><a href=\"{$params->location}{$params->url}/page/".((($params->now_page)!=1)?($params->now_page)-1:1)."\" class='pagination-left-arr'></a></li>\n";
+    $output .= "    <li><a href=\"{$params->location}{$params->url}/page/".((($params->now_page)!=1)?($params->now_page)-1:1)."\">«</a></li>\n";
 	$output .= "    <li><a href=\"{$params->location}{$params->url}/page/1\">1</a></li>\n";
     $output .= "    <li><a href=\"{$params->location}{$params->url}/page/1\" class='prev_page'>...</a></li>\n";
 	
@@ -56,7 +56,7 @@ function get_paging($params=array()){
 	
     $output .= "    <li><a href=\"{$params->location}{$params->url}/page/{$params->last_page}\"class='next_page'>...</a></li>\n";   
     $output .= "    <li><a href=\"{$params->location}{$params->url}/page/{$params->last_page}\">{$params->last_page}</a></li>\n";    
-	$output .= "    <li><a href=\"{$params->location}{$params->url}/page/".((($params->now_page)!=($params->last_page))?($params->now_page)+1:($params->last_page))."\" class='pagination-right-arr'></a></li>\n"; 
+	$output .= "    <li><a href=\"{$params->location}{$params->url}/page/".((($params->now_page)!=($params->last_page))?($params->now_page)+1:($params->last_page))."\">»</a></li>\n"; 
 	
     $output .= "  <ul>\n";    
     $output .= "</div>\n";
