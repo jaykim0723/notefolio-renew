@@ -65,7 +65,7 @@ class user_model extends CI_Model {
                                     'description', 'mailing',
                                     'following_cnt', 'follower_cnt');
             foreach($profile_fields as $field){
-                $addr .= ', '.$profile_fields.'.'.$field;
+                $addr .= ', '.$profile_table.'.'.$field;
             }
         }
 
@@ -137,7 +137,7 @@ class user_model extends CI_Model {
                                     'description', 'mailing',
                                     'following_cnt', 'follower_cnt');
             foreach($profile_fields as $field){
-                $addr .= ', '.$profile_fields.'.'.$field;
+                $addr .= ', '.$profile_table.'.'.$field;
             }
         }
 
