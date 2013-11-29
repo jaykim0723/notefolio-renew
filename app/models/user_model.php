@@ -23,7 +23,7 @@ class user_model extends CI_Model {
             'delimiter' => 30, // 한 페이지당 작품 수
             'order_by'  => 'newest', // newest, oldest
             'keywords'  => '', // *plain으로 들어오고 이곳 모델에서 코드로 변형을 해준다.
-            'get_proflie' => false,
+            'get_profile' => false,
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
