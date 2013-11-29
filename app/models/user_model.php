@@ -142,7 +142,7 @@ class user_model extends CI_Model {
         }
 
     	$this->db
-            ->select('users.*')
+            ->select('users.*'.$addr)
     		->from('users')
     		->where('users.id', $params->id)
     		->limit(1); //set
