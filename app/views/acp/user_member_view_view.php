@@ -2,11 +2,13 @@
   <div class="main-inner">
     <div class="container">
       <div class="row">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">회원 정보</h3>
+        <div class="widget ">
+          <div class="widget-header">
+            <i class="icon-user"></i>
+            <h3>회원 정보</h3>
           </div>
-          <div class="panel-body">
+          <!-- /widget-header -->
+          <div class="widget-content">
             <p>
               <label>ID</label>
               <?=$row->id?>
@@ -40,6 +42,7 @@
               <?=$row->modified?>
             </p>
           </div>
+          <!-- /widget-content -->
         </div>
       </div>
       <div class="row">
