@@ -23,12 +23,9 @@
                 <th>이메일</th>
                 <th>가입일</th>
                 <th>
+                  <? for (var $i=0;$i<15;$i++) { ?>
                   <i class="icon-wrench"></i>
-                  <i class="icon-wrench"></i>
-                  <i class="icon-wrench"></i>
-                  <i class="icon-wrench"></i>
-                  <i class="icon-wrench"></i>
-                  <i class="icon-wrench"></i>
+                  <? } ?>
                 </th>
               </tr>
             </thead>
