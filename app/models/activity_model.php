@@ -56,7 +56,7 @@ class activity_model extends CI_Model {
         else
             return json_encode(array('code'=>'error', 'message'=>"'$type' is not allowed type."));
 
-        unset($param['type_allowed'])
+        unset($param['type_allowed']);
 
         return $param;
 
@@ -76,7 +76,7 @@ class activity_model extends CI_Model {
             unset($user_data);
         }
 
-        $param['type_allowed'] = array('view', 'follow', 'unfollow');
+        $param['type_allowed'] = array('join', 'visit_profile', 'follow', 'unfollow');
 
         return $param;
     }
@@ -96,7 +96,7 @@ class activity_model extends CI_Model {
         $param['type_allowed'] = array('add_comment', 'del_comment',
                                        'add_collect', 'del_collect',
                                        'add_note', 'del_note',
-                                        'follow');
+                                       'upload', 'open', 'close', 'delete');
 
         return $param;
     }
@@ -120,6 +120,56 @@ class activity_model extends CI_Model {
         return $param;
     }
 */
+
+    //-- type
+
+    private function _build_param_join($param=array(), &$resource=array()) {
+        
+        return $param;
+    }
+
+    private function _build_param_visit_profile($param=array(), &$resource=array()) {
+        
+        return $param;
+    }
+
+    private function _build_param_follow($param=array(), &$resource=array()) {
+        $user_data = $this->ci->users->get_user_by_id($resource['follow_user_id'], 1);
+        $data['follow_user_id'] = $user_data->user_id;
+        $data['follow_username'] = $user_data->username;
+        $data['follow_realname'] = $user_data->realname;
+        $resource['follow_user_id'] = $user_data->user_id;
+        unset($user_data);
+
+        return $param;
+    }
+
+    private function _build_param_unfollow($param=array(), &$resource=array()) {
+        $user_data = $this->ci->users->get_user_by_id($resource['follow_user_id'], 1);
+        $data['follow_user_id'] = $user_data->user_id;
+        $data['follow_username'] = $user_data->username;
+        $data['follow_realname'] = $user_data->realname;
+        $resource['follow_user_id'] = $user_data->user_id;
+        unset($user_data);
+
+        return $param;
+    }
+    
+    private function _build_param_visit_profile($param=array(), &$resource=array()) {
+                $user_data = $this->ci->users->get_user_by_id($resource['comment_user_id'], 1);
+                $data['comment_user_id'] = $user_data->user_id;
+                $data['comment_username'] = $user_data->username;
+                $data['comment_realname'] = $user_data->realname;
+                $data['comment_comment'] = $resource['comment'];
+                if(isset($resource['comment_parent_id'])){
+                    $data['comment_parent_id'] = $resource['comment_parent_id'];
+                }
+                $resource['comment_user_id'] = $user_data->user_id;
+                unset($user_data);
+        
+        return $param;
+    }
+
     /**
      * make activity parameter for user.
      * 
@@ -172,15 +222,6 @@ class activity_model extends CI_Model {
                 $resource['coworker_user_id'] = $user_data->user_id;
                 unset($user_data);
                 
-                break;
-            case "add_follow":
-                $user_data = $this->ci->users->get_user_by_id($resource['follow_user_id'], 1);
-                $data['follow_user_id'] = $user_data->user_id;
-                $data['follow_username'] = $user_data->username;
-                $data['follow_realname'] = $user_data->realname;
-                $resource['follow_user_id'] = $user_data->user_id;
-                unset($user_data);
-
                 break;
             default:
                 return array("error" => json_encode(array('code'=>'error', 'message'=>"'$type' is not allowed type.")));

@@ -6,6 +6,7 @@ class User extends CI_Controller {
     {
         parent::__construct();
 		$this->nf->admin_check();
+		$this->load->model('user_model');
     }
 	
     /**
@@ -18,12 +19,14 @@ class User extends CI_Controller {
 	}
 	
     /**
-     * index
+     * get member list
 	 *
 	 */
 	public function member()
 	{
-		$this->layout->set_header('title', '회원')->set_view('acp/user_member_list_view')->render();
+		$data = $this->user_model->get_list();
+
+		$this->layout->set_header('title', '회원')->set_view('acp/user_member_list_view',$data)->render();
 	}
 }
 

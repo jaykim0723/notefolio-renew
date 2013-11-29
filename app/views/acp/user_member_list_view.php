@@ -24,11 +24,11 @@
             <tbody>
               <? foreach ($rows as $key=>$row) { ?>
               <tr>
-                <td><?=$row['id']?></td>
-                <td><?=$row['username']?></td>
-                <td><?=$row['realname']?></td>
-                <td><?=$row['email']?></td>
-                <td><?=$row['created']?></td>
+                <td><?=$row->id?></td>
+                <td><?=$row->username?></td>
+                <td><?=$row->realname?></td>
+                <td><?=$row->email?></td>
+                <td><?=$row->created?></td>
                 <td>보기 수정 삭제</td>
               </tr>
               <? } ?>
