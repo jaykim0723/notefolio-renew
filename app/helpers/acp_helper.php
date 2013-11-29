@@ -22,15 +22,15 @@ function get_paging($params=array()){
 		if(!isset($params->{$key}))
 			$params->{$key} = $value;
 	}
-    $begin = {$params->now_page}-4;
-    $end = {$params->now_page}+4;
+    $begin = ($params->now_page)-((($params->print_max)-1)/2);
+    $end = ($params->now_page)-((($params->print_max)-1)/2);
     if ($begin<1) {
-        if({$params->print_max}>($end-$begin+1))
+        if(($params->print_max)>($end-$begin+1))
             $end = $end - $begin+1;
-        else $end = {$params->print_max};
+        else $end = ($params->print_max);
         $begin = 1;
-    } else if ($end>{$params->print_max}) {
-        $begin = $begin + {$params->print_max} - $end;
+    } else if ($end>($params->print_max)) {
+        $begin = $begin + ($params->print_max) - $end;
         if($begin<1 )
             $begin = 1;
         else $end = {$params->print_max};
