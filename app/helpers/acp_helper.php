@@ -39,7 +39,7 @@ function get_paging($params=array()){
     
     $output = "<div class=\"pagination-note pagination-note-centered \">\n";       
     $output .= "  <ul>\n";    
-    $output .= "    <li><a href=\"{$params->default_location}{$default_url}/page/".(({$params->now_page}!=1)?{$params->now_page}-1:1)."\" class='pagination-left-arr'></a></li>\n";
+    $output .= "    <li><a href=\"{$params->default_location}{$default_url}/page/".((($params->now_page)!=1)?($params->now_page)-1:1)."\" class='pagination-left-arr'></a></li>\n";
 	$output .= "    <li><a href=\"{$params->default_location}{$default_url}/page/1\">1</a></li>\n";
     $output .= "    <li><a href=\"{$params->default_location}{$default_url}/page/1\" class='prev_page'>...</a></li>\n";
 	
