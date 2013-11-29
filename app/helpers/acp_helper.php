@@ -34,7 +34,7 @@ function get_paging($params=array()){
         if($begin<1 )
             $begin = 1;
         else $end = ($params->print_max);
-        $end = {$params->print_max);
+        $end = ($params->print_max);
     }
     
     $output = "<div class=\"pagination-note pagination-note-centered \">\n";       
