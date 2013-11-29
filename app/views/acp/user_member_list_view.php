@@ -28,12 +28,16 @@
             <tbody>
               <? foreach ($rows as $key=>$row) { ?>
               <tr>
-                <td><?=$row->id?></td>
-                <td><?=$row->username?></td>
-                <td><?=$row->realname?></td>
+                <td><a href="/acp/user/member/view/<?=$row->id?>"><?=$row->id?></a></td>
+                <td><a href="/acp/user/member/view/<?=$row->id?>"><?=$row->username?></a></td>
+                <td><a href="/acp/user/member/view/<?=$row->id?>"><?=$row->realname?></a></td>
                 <td><?=$row->email?></td>
                 <td><?=$row->created?></td>
-                <td>보기 수정 삭제</td>
+                <td>
+                  <a href="/acp/user/member/view/<?=$row->id?>"><span class="btn btn-info">보기</span></a>
+                  <a href="/acp/user/member/edit/<?=$row->id?>"><span class="btn">수정</span></a>
+                  <a href="/acp/user/member/del/<?=$row->id?>"><span class="btn btn-danger">삭제</span></a>
+                </td>
               </tr>
               <? } ?>
             </tbody>
