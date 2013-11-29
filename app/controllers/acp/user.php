@@ -24,7 +24,8 @@ class User extends CI_Controller {
 	 */
 	public function member()
 	{
-		$data = $this->user_model->get_list();
+		$args = $this->uri->uri_to_assoc(5);
+		$data = $this->user_model->get_list($args);
 
 		$this->layout->set_header('title', '회원')->set_view('acp/user_member_list_view',$data)->render();
 	}
