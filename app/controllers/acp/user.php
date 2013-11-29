@@ -26,6 +26,8 @@ class User extends CI_Controller {
 	{
 		if($this->uri->segment(4)==FALSE) redirect('/acp/user/member/list');
 		$args = $this->uri->uri_to_assoc(5);
+		var_export($args);
+		exit();
 		$data = $this->user_model->get_list($args);
 
 		$this->layout->set_header('title', '회원')->set_view('acp/user_member_list_view',$data)->render();
