@@ -30,7 +30,7 @@ class user_model extends CI_Model {
     	}
 
         $this->db
-            ->select('count(id) as count')
+            ->select('count(id) as count, count(id)/'+$params->delimiter+' as page')
             ->from('users')
             ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
@@ -46,8 +46,10 @@ class user_model extends CI_Model {
                     $this->db->order_by($params->order_by);
             break;
         }
-
-        $all_count = $this->db->get()->row()->count;
+        
+        $count_data = $this->db->get()->row();
+        $all_count = $count_data->count;
+        $all_page = $count_data->page;
 
         $this->db->flush_cache(); //clear active record
 
@@ -80,6 +82,7 @@ class user_model extends CI_Model {
         $data = (object)array(
             'status' => 'done',
             'all_count'   => $all_count,
+            'all_page'   => $all_page,
             'page'   => $params->page,
             'rows'   => $rows
         );

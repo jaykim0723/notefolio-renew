@@ -2,10 +2,14 @@
   <div class="main-inner">
     <div class="container">
       <div class="row">
-        <div class="alert alert-block">
-          <button type="button" class="close" data-dismiss="alert">×</button>
-          <h4>주의하세요!</h4>
-          이 페이지에 나온 기능은 전부 동작하지 않는 기능입니다.
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">회원 목록 정보</h3>
+          </div>
+          <div class="panel-body">
+            <p>전체: <?=$all_count?>개</p>
+            <p>페이지: <?=$page?>/<?=$all_page?> 페이지</p>
+          </div>
         </div>
       </div>
       <div class="row">
