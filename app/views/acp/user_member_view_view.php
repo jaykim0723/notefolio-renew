@@ -13,7 +13,7 @@
             <p>실명:  <?=$row->realname?></p>
             <p>레벨:  <?=$row->level?></p>
             <p>가입일: <?=$row->created?></p>
-            <p>마지막 로그인: <?=$row->last_ip?>(<?=$row->last_login?>)</p>
+            <p>마지막 로그인: <?=$row->last_ip?> (<?=$row->last_login?>)</p>
             <p>마지막 수정: <?=$row->modified?></p>
           </div>
         </div>

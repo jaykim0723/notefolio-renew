@@ -57,8 +57,20 @@ class user_model extends CI_Model {
 
         $this->db->flush_cache(); //clear active record
 
+        $addr = '';
+        if($params->get_profile){
+            $profile_table = "user_profiles";
+            $profile_fields = array('user_id', 'website', 'facebook_id',
+                                    'twitter_id', 'gender', 'birth',
+                                    'description', 'mailing',
+                                    'following_cnt', 'follower_cnt');
+            foreach($profile_fields as $field){
+                $addr .= ', '.$profile_fields.'.'.$field;
+            }
+        }
+        
     	$this->db
-            ->select('users.*')
+            ->select('users.*'.$addr)
     		->from('users')
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
@@ -76,13 +88,7 @@ class user_model extends CI_Model {
     	}
 
         if($params->get_profile){
-            $this->db->select('user_profiles.user_id,    user_profiles.website,
-                               user_profiles.profile_id, user_profiles.facebook_id,
-                               user_profiles.twitter_id, user_profiles.gender, 
-                               user_profiles.birth,      user_profiles.description,
-                               user_profiles.mailing,    user_profiles.following_cnt,
-                               user_profiles.follower_cnt  ')
-                     ->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
+            $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
         }
 
     	$users = $this->db->get();
