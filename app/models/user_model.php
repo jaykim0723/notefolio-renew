@@ -116,7 +116,7 @@ class user_model extends CI_Model {
         $params = (object)$params;
         $default_params = (object)array(
             'work_id' => '',
-            'folder'  => '' // ''면 모든 작품
+            'folder'  => '', // ''면 모든 작품
             'get_proflie' => false,
         );
         foreach($default_params as $key => $value){
