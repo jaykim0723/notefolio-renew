@@ -116,7 +116,7 @@ class user_model extends CI_Model {
         $params = (object)$params;
         $default_params = (object)array(
             'id' => '',
-            'get_proflie' => false,
+            'get_profile' => false,
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
