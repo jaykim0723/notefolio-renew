@@ -115,8 +115,7 @@ class user_model extends CI_Model {
     function get($params=array()){
         $params = (object)$params;
         $default_params = (object)array(
-            'work_id' => '',
-            'folder'  => '', // ''면 모든 작품
+            'id' => '',
             'get_proflie' => false,
         );
         foreach($default_params as $key => $value){
@@ -127,7 +126,7 @@ class user_model extends CI_Model {
     	$this->db
             ->select('users.*')
     		->from('users')
-    		->where('users.id', $params->work_id)
+    		->where('users.id', $params->id)
     		->limit(1); //set
 
         if($params->get_profile){

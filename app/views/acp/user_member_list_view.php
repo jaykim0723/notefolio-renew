@@ -32,15 +32,15 @@
             <tbody>
               <? foreach ($rows as $key=>$row) { ?>
               <tr>
-                <td><a href="/acp/user/member/view/<?=$row->id?>"><?=$row->id?></a></td>
-                <td><a href="/acp/user/member/view/<?=$row->id?>"><?=$row->username?></a></td>
-                <td><a href="/acp/user/member/view/<?=$row->id?>"><?=$row->realname?></a></td>
+                <td><a href="/acp/user/member/view/id/<?=$row->id?>"><?=$row->id?></a></td>
+                <td><a href="/acp/user/member/view/id/<?=$row->id?>"><?=$row->username?></a></td>
+                <td><a href="/acp/user/member/view/id/<?=$row->id?>"><?=$row->realname?></a></td>
                 <td><?=$row->email?></td>
                 <td><?=$row->created?></td>
                 <td>
-                  <a href="/acp/user/member/view/<?=$row->id?>"><span class="btn btn-info">보기</span></a>
-                  <a href="/acp/user/member/edit/<?=$row->id?>"><span class="btn">수정</span></a>
-                  <a href="/acp/user/member/del/<?=$row->id?>"><span class="btn btn-danger">삭제</span></a>
+                  <a href="/acp/user/member/view/id/<?=$row->id?>"><span class="btn btn-info">보기</span></a>
+                  <a href="/acp/user/member/edit/id/<?=$row->id?>"><span class="btn">수정</span></a>
+                  <a href="/acp/user/member/del/id/<?=$row->id?>"><span class="btn btn-danger">삭제</span></a>
                 </td>
               </tr>
               <? } ?>

@@ -30,8 +30,8 @@
 
         <p>
           <a href="/acp/user/member/list"><span class="btn btn-info">리스트</span></a>
-          <a href="/acp/user/member/edit/<?=$row->id?>"><span class="btn">수정</span></a>
-          <a href="/acp/user/member/del/<?=$row->id?>"><span class="btn btn-danger">삭제</span></a>
+          <a href="/acp/user/member/edit/id/<?=$row->id?>"><span class="btn">수정</span></a>
+          <a href="/acp/user/member/del/id/<?=$row->id?>"><span class="btn btn-danger">삭제</span></a>
         </p>
       </div>
       <!-- /row --> 
