@@ -44,7 +44,7 @@ function get_paging($params=array()){
     $output .= "    <li><a href=\"{$params->default_location}{$default_url}/page/1\" class='prev_page'>...</a></li>\n";
 	
     for($i=$begin;$i<=$end;$i++) {
-       if ($i == {$params->now_page}) {
+       if ($i == ($params->now_page)) {
            $current_class = " class=\"active\"";
        }
        else $current_class = "";
@@ -55,7 +55,7 @@ function get_paging($params=array()){
 	
     $output .= "    <li><a href=\"{$params->default_location}{$default_url}/page/{$params->print_max}\"class='next_page'>...</a></li>\n";   
     $output .= "    <li><a href=\"{$params->default_location}{$default_url}/page/{$params->print_max}\">{$params->print_max}</a></li>\n";    
-	$output .= "    <li><a href=\"{$params->default_location}{$default_url}/page/".(({$params->now_page}!={$params->print_max})?{$params->now_page}+1:{$params->print_max})."\" class='pagination-right-arr'></a></li>\n"; 
+	$output .= "    <li><a href=\"{$params->default_location}{$default_url}/page/".((($params->now_page)!=($params->print_max))?($params->now_page)+1:($params->print_max))."\" class='pagination-right-arr'></a></li>\n"; 
 	
     $output .= "  <ul>\n";    
     $output .= "</div>\n";
