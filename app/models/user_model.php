@@ -23,6 +23,7 @@ class user_model extends CI_Model {
             'delimiter' => 30, // 한 페이지당 작품 수
             'order_by'  => 'newest', // newest, oldest
             'keywords'  => '', // *plain으로 들어오고 이곳 모델에서 코드로 변형을 해준다.
+            'get_proflie' => false,
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
@@ -32,6 +33,10 @@ class user_model extends CI_Model {
         $this->db
             ->select('count(id) as count, ceil(count(id)/'.$params->delimiter.') as page')
             ->from('users'); //set
+
+        if($params->get_profile){
+            $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left')
+        }
 
         switch($params->order_by){
             case "newest":
@@ -70,6 +75,16 @@ class user_model extends CI_Model {
     		break;
     	}
 
+        if($params->get_profile){
+            $this->db->select('user_profiles.user_id,    user_profiles.website,
+                               user_profiles.profile_id, user_profiles.facebook_id,
+                               user_profiles.twitter_id, user_profiles.gender, 
+                               user_profiles.birth,      user_profiles.description,
+                               user_profiles.mailing,    user_profiles.following_cnt,
+                               user_profiles.follower_cnt  ')
+                     ->join('user_profiles', 'users.id=user_profiles.user_id', 'left')
+        }
+
     	$users = $this->db->get();
 
     	$rows = array();
@@ -93,15 +108,16 @@ class user_model extends CI_Model {
     }
 
     /**
-     * 작품의 자세한 정보를 불러들인다.
-     * @param  array $params   (work_id, folder)
+     * 사용자의 자세한 정보를 불러들인다.
+     * @param  array $params
      * @return object          상태와 데이터값을 반환한다
      */
-    function get_info($params=array()){
+    function get($params=array()){
         $params = (object)$params;
         $default_params = (object)array(
             'work_id' => '',
             'folder'  => '' // ''면 모든 작품
+            'get_proflie' => false,
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
@@ -113,6 +129,17 @@ class user_model extends CI_Model {
     		->from('users')
     		->where('users.id', $params->work_id)
     		->limit(1); //set
+
+        if($params->get_profile){
+            $this->db->select('user_profiles.user_id,    user_profiles.website,
+                               user_profiles.profile_id, user_profiles.facebook_id,
+                               user_profiles.twitter_id, user_profiles.gender, 
+                               user_profiles.birth,      user_profiles.description,
+                               user_profiles.mailing,    user_profiles.following_cnt,
+                               user_profiles.follower_cnt  ')
+                     ->join('user_profiles', 'users.id=user_profiles.user_id', 'left')
+        }
+
         $user = $this->db->get()->row();
         $data = (object)array(
             'status' => 'done',
