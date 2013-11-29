@@ -29,6 +29,28 @@ class user_model extends CI_Model {
     			$params->{$key} = $value;
     	}
 
+        $this->db
+            ->select('count(users.*) as count')
+            ->from('users')
+            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
+
+        switch($params->order_by){
+            case "newest":
+                $this->db->order_by('created', 'desc');
+            break;
+            case "oldest":
+                $this->db->order_by('created', 'asc');
+            break;
+            default:
+                if(is_array($params->order_by))
+                    $this->db->order_by($params->order_by);
+            break;
+        }
+
+        $all_count = $this->db->get()->row()->count;
+
+        $this->db->flush_cache(); //clear active record
+
     	$this->db
             ->select('users.*')
     		->from('users')
@@ -57,6 +79,7 @@ class user_model extends CI_Model {
 		}
         $data = (object)array(
             'status' => 'done',
+            'all_count'   => $all_count,
             'page'   => $params->page,
             'rows'   => $rows
         );
