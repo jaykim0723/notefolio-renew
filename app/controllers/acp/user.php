@@ -31,6 +31,9 @@ class User extends CI_Controller {
 			case "list":
 				$data = $this->user_model->get_list($args);
 			break;
+			case "write":
+				$data = new Object();
+			break;
 			case "view":
 				$args['get_profile'] = true;
 				$data = $this->user_model->get($args);
