@@ -18,6 +18,7 @@
 	<!--[if lt IE 9]>
 	  <script src="/js/libs/html5shiv.js"></script>
 	  <script src="/js/libs/respond.min.js"></script>
+	  <script src="/js/libs/css3-mediaqueries.js"></script>
 	<![endif]-->
 
 	<link href="/css/normalize.css" rel="stylesheet"/>
