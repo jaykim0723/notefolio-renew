@@ -60,15 +60,16 @@ class user_model extends CI_Model {
         $this->db->select('users.*');
 
         if($params->get_profile){
-            $profile_table = "user_profiles";
-            $profile_fields = array('user_id', 'website', 'facebook_id',
+            $table = "user_profiles";
+            $fields = array('user_id', 'website', 'facebook_id',
                                     'twitter_id', 'gender', 'birth',
                                     'description', 'mailing',
                                     'following_cnt', 'follower_cnt');
-            foreach($profile_fields as $field){
-                $this->db->select($profile_table.'.'.$field);
+            foreach($fields as $field){
+                $this->db->select($table.'.'.$field);
             }
-            $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
+            $this->db->join($table, 'users.id='.$table.'.user_id', 'left');
+            unset($table, $fields, $field);
         }
 
     	$this->db
@@ -135,23 +136,26 @@ class user_model extends CI_Model {
         $this->db->select('users.*');
 
         if($params->get_profile){
-            $profile_table = "user_profiles";
-            $profile_fields = array('user_id', 'website', 'facebook_id',
+            $table = "user_profiles";
+            $fields = array('user_id', 'website', 'facebook_id',
                                     'twitter_id', 'gender', 'birth',
                                     'description', 'mailing',
                                     'following_cnt', 'follower_cnt');
-            foreach($profile_fields as $field){
-                $this->db->select($profile_table.'.'.$field);
+            foreach($fields as $field){
+                $this->db->select($table.'.'.$field);
             }
-            $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
+            $this->db->join($table, 'users.id='.$table.'.user_id', 'left');
+            unset($table, $fields, $field);
         }
         if($params->get_sns_fb){
-            $sns_fb_table = "user_sns_fb";
-            $sns_fb_fields = array('id', 'fb_num_id', 'access_token',
-                 'post_work', 'post_comment', 'post_note', 'regdate');
-            foreach($sns_fb_fields as $field){
-                $this->db->select($sns_fb_table.'.'.$field);
+            $table = "user_sns_fb";
+            $fields = array('fb_num_id', 'access_token',
+                 'post_work', 'post_comment', 'post_note', 'regdate as fb_regdate');
+            foreach($fields as $field){
+                $this->db->select($table.'.'.$field);
             }
+            $this->db->join($table, 'users.id='.$table.'.id', 'left');
+            unset($table, $fields, $field);
         }
 
     	$this->db
