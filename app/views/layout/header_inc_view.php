@@ -14,6 +14,7 @@
 	<meta property="og:site_name" content="<?php echo $site_name ?>"/>
 	<meta property="og:description" content="<?php echo $description ?>"/>    
 	
+	<link href="/css/css3-mediaqueries.css" rel="stylesheet"/>
 	<link href="/css/normalize.css" rel="stylesheet"/>
 	<link href="/css/bootstrap.min.css" rel="stylesheet"/>
 	<link href="/css/bootstrap-dialog.css" rel="stylesheet"/>
