@@ -10,6 +10,9 @@
 <script src="/js/work.js"></script>
 <script>
 	$('select').selectpicker();
-</script>	
+</script>
+<!--[if lt IE 9]>
+    <script src="/js/libs/modernizr-latest.js"></script>
+<![endif]-->
 </body>
 </html>
