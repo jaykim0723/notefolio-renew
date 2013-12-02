@@ -1,4 +1,4 @@
-<div id="header" class="navbar-fixed-top visible-md visible-lg">
+<header id="header" class="navbar-fixed-top visible-md visible-lg">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5">
@@ -79,7 +79,7 @@
 
 		</div>
 	</div>
-</div>
+</header>
 
 <nav id="mobile-menu" class="hidden-md hidden-lg">
 	<ul>
