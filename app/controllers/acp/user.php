@@ -33,9 +33,11 @@ class User extends CI_Controller {
 			break;
 			case "write":
 				$data = new Object();
-			break;
+			case "modify":
 			case "view":
+			case "del":
 				$args['get_profile'] = true;
+				$args['get_sns_fb'] = true;
 				$data = $this->user_model->get($args);
 			break;
 			default:

@@ -60,14 +60,16 @@ class user_model extends CI_Model {
         $this->db->select('users.*');
 
         if($params->get_profile){
-            $profile_table = "user_profiles";
-            $profile_fields = array('user_id', 'website', 'facebook_id',
+            $table = "user_profiles";
+            $fields = array('user_id', 'website', 'facebook_id',
                                     'twitter_id', 'gender', 'birth',
                                     'description', 'mailing',
                                     'following_cnt', 'follower_cnt');
-            foreach($profile_fields as $field){
-                $this->db->select($profile_table.'.'.$field);
+            foreach($fields as $field){
+                $this->db->select($table.'.'.$field);
             }
+            $this->db->join($table, 'users.id='.$table.'.user_id', 'left');
+            unset($table, $fields, $field);
         }
 
     	$this->db
@@ -86,10 +88,6 @@ class user_model extends CI_Model {
     				$this->db->order_by($params->order_by);
     		break;
     	}
-
-        if($params->get_profile){
-            $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
-        }
 
     	$users = $this->db->get();
 
@@ -128,6 +126,7 @@ class user_model extends CI_Model {
         $default_params = (object)array(
             'id' => '',
             'get_profile' => false,
+            'get_sns_fb' => false,
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
@@ -137,24 +136,32 @@ class user_model extends CI_Model {
         $this->db->select('users.*');
 
         if($params->get_profile){
-            $profile_table = "user_profiles";
-            $profile_fields = array('user_id', 'website', 'facebook_id',
+            $table = "user_profiles";
+            $fields = array('user_id', 'website', 'facebook_id',
                                     'twitter_id', 'gender', 'birth',
                                     'description', 'mailing',
                                     'following_cnt', 'follower_cnt');
-            foreach($profile_fields as $field){
-                $this->db->select($profile_table.'.'.$field);
+            foreach($fields as $field){
+                $this->db->select($table.'.'.$field);
             }
+            $this->db->join($table, 'users.id='.$table.'.user_id', 'left');
+            unset($table, $fields, $field);
+        }
+        if($params->get_sns_fb){
+            $table = "user_sns_fb";
+            $fields = array('fb_num_id', 'access_token',
+                 'post_work', 'post_comment', 'post_note', 'regdate as fb_regdate');
+            foreach($fields as $field){
+                $this->db->select($table.'.'.$field);
+            }
+            $this->db->join($table, 'users.id='.$table.'.id', 'left');
+            unset($table, $fields, $field);
         }
 
     	$this->db
     		->from('users')
     		->where('users.id', $params->id)
     		->limit(1); //set
-
-        if($params->get_profile){
-            $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
-        }
 
         $user = $this->db->get()->row();
         unset($user->password);
