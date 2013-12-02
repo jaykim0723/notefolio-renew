@@ -16,8 +16,8 @@
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-	  <script src="/js/libs/html5shiv.js"></script>
-	  <script src="/js/libs/respond.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv-printshiv.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
 
 	<link href="/css/normalize.css" rel="stylesheet"/>
