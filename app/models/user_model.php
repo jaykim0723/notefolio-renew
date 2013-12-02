@@ -57,7 +57,8 @@ class user_model extends CI_Model {
 
         $this->db->flush_cache(); //clear active record
 
-        $addr = '';
+        $this->db->select('users.*');
+
         if($params->get_profile){
             $profile_table = "user_profiles";
             $profile_fields = array('user_id', 'website', 'facebook_id',
@@ -65,12 +66,11 @@ class user_model extends CI_Model {
                                     'description', 'mailing',
                                     'following_cnt', 'follower_cnt');
             foreach($profile_fields as $field){
-                $addr .= ', '.$profile_table.'.'.$field;
+                $this->db->select($profile_table.'.'.$field);
             }
         }
 
     	$this->db
-            ->select('users.*'.$addr)
     		->from('users')
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
@@ -98,10 +98,10 @@ class user_model extends CI_Model {
 		{
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             unset($row->password);
-            unset($user->new_password_key);
-            unset($user->new_password_requested);
-            unset($user->new_email_key);
-            unset($user->new_email);
+            unset($row->new_password_key);
+            unset($row->new_password_requested);
+            unset($row->new_email_key);
+            unset($row->new_email);
 		    $rows[] = $row;
 		}
         $data = (object)array(
@@ -134,7 +134,8 @@ class user_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-        $addr = '';
+        $this->db->select('users.*');
+
         if($params->get_profile){
             $profile_table = "user_profiles";
             $profile_fields = array('user_id', 'website', 'facebook_id',
@@ -142,12 +143,11 @@ class user_model extends CI_Model {
                                     'description', 'mailing',
                                     'following_cnt', 'follower_cnt');
             foreach($profile_fields as $field){
-                $addr .= ', '.$profile_table.'.'.$field;
+                $this->db->select($profile_table.'.'.$field);
             }
         }
 
     	$this->db
-            ->select('users.*'.$addr)
     		->from('users')
     		->where('users.id', $params->id)
     		->limit(1); //set
