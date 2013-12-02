@@ -14,7 +14,15 @@ var lteIE8  = isIE && Browser.Version() <= 	8 	? 	true 	: 	false;
 var lteIE9  = isIE && Browser.Version() <= 	9 	? 	true 	: 	false;
 var lteIE10 = isIE && Browser.Version() <= 	10 	? 	true 	: 	false;
 var isAndroid = navigator.userAgent.toLowerCase().indexOf('android')!=-1 ? true : false;
-
+if(lteIE8){
+	 document.createElement('header');
+	 document.createElement('nav');
+	 document.createElement('menu');
+	 document.createElement('section');
+	 document.createElement('article');
+	 document.createElement('aside');
+	 document.createElement('footer');	
+}
 var empty = function(v){
      if(typeof v=='undefined')
           return true;
