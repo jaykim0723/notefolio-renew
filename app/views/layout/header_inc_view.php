@@ -14,11 +14,6 @@
 	<meta property="og:site_name" content="<?php echo $site_name ?>"/>
 	<meta property="og:description" content="<?php echo $description ?>"/>    
 	
-
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
 	<link href="/css/normalize.css" rel="stylesheet"/>
 	<link href="/css/bootstrap.min.css" rel="stylesheet"/>
 	<link href="/css/bootstrap-dialog.css" rel="stylesheet"/>
