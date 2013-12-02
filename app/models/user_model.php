@@ -68,6 +68,7 @@ class user_model extends CI_Model {
             foreach($profile_fields as $field){
                 $this->db->select($profile_table.'.'.$field);
             }
+            $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
         }
 
     	$this->db
@@ -86,10 +87,6 @@ class user_model extends CI_Model {
     				$this->db->order_by($params->order_by);
     		break;
     	}
-
-        if($params->get_profile){
-            $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
-        }
 
     	$users = $this->db->get();
 
@@ -128,6 +125,7 @@ class user_model extends CI_Model {
         $default_params = (object)array(
             'id' => '',
             'get_profile' => false,
+            'get_sns_fb' => false,
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
@@ -145,16 +143,21 @@ class user_model extends CI_Model {
             foreach($profile_fields as $field){
                 $this->db->select($profile_table.'.'.$field);
             }
+            $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
+        }
+        if($params->get_sns_fb){
+            $sns_fb_table = "user_sns_fb";
+            $sns_fb_fields = array('id', 'fb_num_id', 'access_token',
+                 'post_work', 'post_comment', 'post_note', 'regdate');
+            foreach($sns_fb_fields as $field){
+                $this->db->select($sns_fb_table.'.'.$field);
+            }
         }
 
     	$this->db
     		->from('users')
     		->where('users.id', $params->id)
     		->limit(1); //set
-
-        if($params->get_profile){
-            $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
-        }
 
         $user = $this->db->get()->row();
         unset($user->password);
