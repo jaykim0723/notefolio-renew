@@ -14,6 +14,10 @@
 	<meta property="og:site_name" content="<?php echo $site_name ?>"/>
 	<meta property="og:description" content="<?php echo $description ?>"/>
 
+	<!--[if lt IE 9]>
+	<script src="/js/libs/css3-mediaqueries.js"></script>
+	<![endif]-->
+
 	<link href="/css/normalize.css" rel="stylesheet"/>
 	<link href="/css/bootstrap.min.css" rel="stylesheet"/>
 	<link href="/css/bootstrap-dialog.css" rel="stylesheet"/>
