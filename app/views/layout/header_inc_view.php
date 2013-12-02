@@ -14,10 +14,11 @@
 	<meta property="og:site_name" content="<?php echo $site_name ?>"/>
 	<meta property="og:description" content="<?php echo $description ?>"/>    
 	
-
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="/js/libs/html5shiv.js"></script>
+	  <script src="/js/libs/respond.min.js"></script>
+	<![endif]-->
 
 	<link href="/css/normalize.css" rel="stylesheet"/>
 	<link href="/css/bootstrap.min.css" rel="stylesheet"/>
