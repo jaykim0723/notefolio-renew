@@ -42,6 +42,20 @@ var workUtil = {
 			}
 			$(target).droppable({
 		    	drop: function( event, ui ) {
+		    		var classNames = $(ui.draggable).attr("class").split(' ');
+					for(var i in classNames){
+						var m =(""+classNames[i]+"").match(/block-(\w+)/);
+						if(m){
+							$(ui.draggable)
+								.attr('class', classNames[i])
+								.empty()
+								.append(workUtil.content.createBlock(m[1]));
+							break;
+						}
+						else {
+							$(ui.draggable).remove();
+						}
+					}
 		    	}
 		    });
 		},
@@ -57,23 +71,7 @@ var workUtil = {
 			}
 			$(target, $(container)).draggable({
 				connectToSortable: "#content-block-list",
-				helper: "clone",
-				drag: function( event, ui ){
-		    		var classNames = $(ui.draggable).attr("class").split(' ');
-					for(var i in classNames){
-						var m =(""+classNames[i]+"").match(/block-(\w+)/);
-						if(m){
-							$(ui.draggable)
-								.attr('class', classNames[i])
-								.empty()
-								.append(workUtil.content.createBlock(m[1]));
-							break;
-						}
-						else {
-							$(ui.draggable).remove();
-						}
-					}
-				}
+				helper: "clone"
 			});
 		},
 		createBlock: function(type, position){
