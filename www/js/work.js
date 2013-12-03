@@ -53,7 +53,7 @@ var workUtil = {
 							.append(workUtil.content.createBlock(className[1]));
 					}
 					else {
-						//$(ui.draggable).remove();
+						$(ui.draggable).remove();
 					}
 		    	}
 		    });
@@ -81,7 +81,13 @@ var workUtil = {
 			}
 			$(target, $(container)).draggable({
 				connectToSortable: "#content-block-list",
-				helper: "clone"
+				helper: "clone",
+				start: function(){
+					$(sendTo).droppable("enable");
+				}
+				stop: function(){
+					$(sendTo).droppable("disable");
+				}
 			});
 		},
 		createBlock: function(type, target){
