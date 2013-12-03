@@ -46,9 +46,9 @@ var workUtil = {
 					for(var i in classNames){
 						var m =(""+classNames[i]+"").match(/block-(\w+)/);
 						if(m){
+							$(ui.draggable).empty();
 							$(ui.draggable)
 								.attr('class', classNames[i])
-								.empty()
 								.append(workUtil.content.createBlock(m[1]));
 							break;
 						}
