@@ -109,7 +109,7 @@
 		<li class="block-image"><i class="glyphicon glyphicon-picture"></i></li>
 		<li class="block-video"><i class="glyphicon glyphicon-film"></i></li>
 	</ul>
-	<div id="trash-can"><i class="glyphicon glyphicon-remove"></i></div>
+	<ul id="trash-can"><li><i class="glyphicon glyphicon-remove"></i></li></ul>
 </div>
 <script>
 	NFview = <?php
