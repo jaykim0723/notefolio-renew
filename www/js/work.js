@@ -48,12 +48,9 @@ var workUtil = {
 		},
 		setSortable: function(target, container){
 			if(typeof(target)=='undefined'){
-				var target = '.block-text, .block-image, .block-video';
+				var target = "#work-content-blockadder li";
 			}
-			if(typeof(container)=='undefined'){
-				var container = "#work-content-blockadder";
-			}
-			$(target, $(container)).draggable({ revert: "valid" });
+			$(target).draggable({ revert: "valid" });
 		},
 		createBlock: function(type, position){
 			if(typeof(type)=='undefined'){
