@@ -47,7 +47,6 @@ var workUtil = {
 		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
 					if(className){
 						$(ui.draggable)
-							.attr('class', 'block-'+className[1])
 							.empty()
 							.append(workUtil.content.createBlock(className[1]));
 					}
