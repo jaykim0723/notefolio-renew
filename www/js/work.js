@@ -53,7 +53,7 @@ var workUtil = {
 			if(typeof(container)=='undefined'){
 				var container = "#work-content-blockadder";
 			}
-			$(target, container).draggable({ revert: "valid" });
+			$(target, $(container)).draggable({ revert: "valid" });
 		},
 		createBlock: function(type, position){
 			if(typeof(type)=='undefined'){
