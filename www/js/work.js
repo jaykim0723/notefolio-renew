@@ -60,6 +60,10 @@ var workUtil = {
 				connectToSortable: "#content-block-list",
 				helper: "clone",
 				revert: "valid"
+				drop: function( event, ui ){
+					console.log($(this).attr("class"));
+					$(this).remove();
+				}
 			});
 		},
 		createBlock: function(type, position){
