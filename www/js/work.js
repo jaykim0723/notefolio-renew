@@ -59,7 +59,7 @@ var workUtil = {
 			$(target, $(container)).draggable({
 				connectToSortable: "#content-block-list",
 				helper: "clone",
-				revert: "valid"
+				revert: "valid",
 				drop: function( event, ui ){
 					console.log($(this).attr("class"));
 					$(this).remove();
