@@ -67,8 +67,8 @@ var workUtil = {
 			}
 			$(target).droppable({
 		    	drop: function( event, ui ) {
-		    		$(ui.draggable).fadeOut(100);
-		    		$(ui.draggable).remove();
+		    		$(ui.helper).fadeOut(100);
+		    		$(ui.helper).remove();
 		    	}
 		    });
 		},
