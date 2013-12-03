@@ -42,7 +42,8 @@ var workUtil = {
 			}
 			$(target).droppable({
 		      drop: function( event, ui ) {
-		        console.log($(this).attr("class"));
+				console.log($(ui).attr("class"));
+				$(ui).remove();
 		      }
 		    });
 		},
