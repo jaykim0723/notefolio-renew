@@ -84,7 +84,7 @@ var workUtil = {
 				connectToSortable: "#content-block-list",
 				helper: "clone",
 				start: function(){
-					$(sendTo).droppable("enable");
+					$(sendTo).droppable('option','enable',true);
 				},
 				stop: function(){
 					$(sendTo).droppable("disable");
