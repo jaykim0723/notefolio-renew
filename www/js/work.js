@@ -58,6 +58,7 @@ var workUtil = {
 			}
 			$(target, $(container)).draggable({
 				connectToSortable: "#content-block-list",
+				helper: "clone",
 				revert: "valid"
 			});
 		},
