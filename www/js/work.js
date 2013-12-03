@@ -30,10 +30,10 @@ var workUtil = {
 			$(target).sortable({
   				opacity: 0.6,
 				start: function(){
-					$(sendTo).droppable('option','disable',true);
+					$(this).droppable('option','disable',true);
 				},
 				stop: function(){
-					$(sendTo).droppable('option','enable',true);
+					$(this).droppable('option','enable',true);
 				},
   				receive: function(event, ui) {
 
