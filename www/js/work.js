@@ -57,6 +57,7 @@ var workUtil = {
 					}
 		    	}
 		    });
+			$(target).droppable("disable");
 		},
 		setForRemove: function(target){
 			if(typeof(target)=='undefined'){
@@ -84,7 +85,7 @@ var workUtil = {
 				helper: "clone",
 				start: function(){
 					$(sendTo).droppable("enable");
-				}
+				},
 				stop: function(){
 					$(sendTo).droppable("disable");
 				}
