@@ -63,6 +63,7 @@ var workUtil = {
 				var target = ".trash-can";
 			}
 			$(target).droppable({
+				hoverClass: "drop-hover",
 		    	drop: function( event, ui ) {
 		    		$(ui.helper).fadeOut(100);
 		    		$(ui.helper).remove();
