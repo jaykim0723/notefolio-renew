@@ -78,7 +78,7 @@ var workUtil = {
 				var container = "#work-content-blockadder";
 			}
 			if(typeof(sendTo)=='undefined'){
-				var sendTo = "#work-content-blockadder";
+				var sendTo = "#content-block-list";
 			}
 			$(target, $(container)).draggable({
 				connectToSortable: "#content-block-list",
