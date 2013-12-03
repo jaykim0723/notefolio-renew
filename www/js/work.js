@@ -34,7 +34,7 @@ var workUtil = {
 				},
 				stop: function(){
 					$(sendTo).droppable('option','enable',true);
-				}
+				},
   				receive: function(event, ui) {
 
   				},
