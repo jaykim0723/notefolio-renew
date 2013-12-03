@@ -28,7 +28,7 @@ var workUtil = {
 				var target = "#content-block-list";
 			}
 			if(typeof(trash)=='undefined'){
-				var trash = "#work-content-blockadder li.remove";
+				var trash = ".trash-can";
 			}
 			$(target).sortable({
   				opacity: 0.6,
@@ -63,7 +63,7 @@ var workUtil = {
 		},
 		setForRemove: function(target){
 			if(typeof(target)=='undefined'){
-				var target = "#work-content-blockadder li.remove";
+				var target = ".trash-can";
 			}
 			$(target).droppable({
 		    	drop: function( event, ui ) {
