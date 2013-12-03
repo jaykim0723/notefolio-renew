@@ -33,7 +33,6 @@ var workUtil = {
 			$(target).sortable({
   				opacity: 0.6,
     			connectWith: trash,
-    			handle: ".handle",
     			helper: 'clone',
 				start: function(){
 					$(target).droppable('option','disable', true);
