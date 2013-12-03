@@ -42,12 +42,13 @@ var workUtil = {
 			}
 			$(target).droppable({
 		    	drop: function( event, ui ) {
-					for(var className in $(ui.draggable).attr("class").split(' ')){
-						var m =className.match(/^block-(\s+)/);
+		    		var classNames = $(ui.draggable).attr("class").split(' ')
+					for(var i in classNames){
+						var m =classNames[i].match(/^block-(\s+)/);
 						console.log(m);
 						if(m){
 							$(ui.draggable)
-								.attr('class', className)
+								.attr('class', classNames[i])
 								.empty()
 								.append(m[1]);
 							break;
