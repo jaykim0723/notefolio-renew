@@ -46,14 +46,20 @@ var workUtil = {
 		      }
 		    });
 		},
-		setDraggable: function(target, container){
+		setDraggable: function(target, container, sendTo){
 			if(typeof(target)=='undefined'){
 				var target = '.block-text, .block-image, .block-video';
 			}
 			if(typeof(container)=='undefined'){
 				var container = "#work-content-blockadder";
 			}
-			$(target, $(container)).draggable({ revert: "valid" });
+			if(typeof(sendTo)=='undefined'){
+				var sendTo = "#work-content-blockadder";
+			}
+			$(target, $(container)).draggable({
+				connectToSortable: "#content-block-list",
+				revert: "valid"
+			});
 		},
 		createBlock: function(type, position){
 			if(typeof(type)=='undefined'){
