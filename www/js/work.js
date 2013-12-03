@@ -41,10 +41,8 @@ var workUtil = {
 				var target = "#content-block-list";
 			}
 			$(target).droppable({
-		      drop: function( event, ui ) {
-				console.log($(ui.draggable).attr("class"));
-				$(ui.draggable).remove();
-		      }
+		    	drop: function( event, ui ) {
+		    	}
 		    });
 		},
 		setDraggable: function(target, container, sendTo){
@@ -62,8 +60,14 @@ var workUtil = {
 				helper: "clone",
 				revert: "valid",
 				drop: function( event, ui ){
-					console.log($(ui.draggable).attr("class"));
-					$(ui.draggable).remove();
+					for(var className in $(ui.draggable).attr("class")){
+						if(var m =className.match(/^block-(\s+)/)){
+							$(ui.draggable)
+								.attr('class', className)
+								.empty()
+								.append(m[1]);
+						}
+					}
 				}
 			});
 		},
@@ -71,19 +75,23 @@ var workUtil = {
 			if(typeof(type)=='undefined'){
 				var type = "text";
 			}
+
+			var output = '';
 			switch(type){
 				case 'image':
-					
+					output = $('<img>').attr('src', '//www.notefolio.net/images/20121123/nf_logo.png');
 				break;
-				case 'block':
+				case 'video':
 				default:
-					
+					output = $('<img>').attr('src', '//www.notefolio.net/images/20121123/nf_logo.png');
 				break;
 				case 'text':
 				default:
-					
+					output = $('<p></p>').text('이곳을 눌러 내용을 입력하세요.');
 				break;
 			}
+
+			return output;
 		},
 		removeBlock: function(type, position){
 		},
