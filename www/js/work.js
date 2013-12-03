@@ -44,7 +44,7 @@ var workUtil = {
 		    	drop: function( event, ui ) {
 		    		var classNames = $(ui.draggable).attr("class").split(' ')
 					for(var i in classNames){
-						var m =(" " + classNames[i] + " ").match(/block-(\s+)/);
+						var m =(""+classNames[i]+"").match(/^block-(\s+)/);
 						console.log(m);
 						if(m){
 							$(ui.draggable)
