@@ -46,12 +46,11 @@ var workUtil = {
 					for(var i in classNames){
 						var m =(""+classNames[i]+"").match(/block-(\w+)/);
 						if(m){
-							var child = workUtil.content.createBlock(m[1]);
+							console.log(m[1]);
 							$(ui.draggable)
 								.attr('class', classNames[i])
 								.empty()
-								.append(child);
-
+								.append(workUtil.content.createBlock(m[1]));
 							break;
 						}
 						else {
@@ -76,7 +75,7 @@ var workUtil = {
 				helper: "clone"
 			});
 		},
-		createBlock: function(type, position){
+		createBlock: function(type, target){
 			if(typeof(type)=='undefined'){
 				var type = "text";
 			}
@@ -98,7 +97,7 @@ var workUtil = {
 
 			return output;
 		},
-		removeBlock: function(type, position){
+		removeBlock: function(type, target){
 		},
 
 	}
