@@ -123,7 +123,7 @@
 			workUtil.save($(this));
 		})
 		//Content Ground Setting 살림.
-		workUtil.content.setGroud('#content-block-list');
+		workUtil.content.setGround('#content-block-list');
 		workUtil.content.setDraggable('li', '#work-content-blockadder', '#content-block-list');
 		workUtil.content.setForRemove('#work-content-blockadder li.remove');
 	});
