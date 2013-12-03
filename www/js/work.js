@@ -81,7 +81,6 @@ var workUtil = {
 					output = $('<img>').attr('src', '//www.notefolio.net/images/20121123/nf_logo.png');
 				break;
 				case 'video':
-				default:
 					output = $('<img>').attr('src', '//www.notefolio.net/images/20121123/nf_logo.png');
 				break;
 				case 'text':
