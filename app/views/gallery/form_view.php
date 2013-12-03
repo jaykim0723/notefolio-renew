@@ -122,9 +122,8 @@
 			e.stopPropagation();
 			workUtil.save($(this));
 		})
-		//Content에 sortable 기능을 살림.
-		workUtil.content.setSortable('#content-block-list');
-		workUtil.content.setDroppable('#content-block-list');
+		//Content Ground Setting 살림.
+		workUtil.content.setGroud('#content-block-list');
 		workUtil.content.setDraggable('li', '#work-content-blockadder', '#content-block-list');
 		workUtil.content.setForRemove('#work-content-blockadder li.remove');
 	});

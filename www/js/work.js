@@ -23,7 +23,7 @@ var workUtil = {
 		});
 	},
 	content: {
-		setSortable: function(target){
+		setGround: function(target){
 			if(typeof(target)=='undefined'){
 				var target = "#content-block-list";
 			}
@@ -38,13 +38,7 @@ var workUtil = {
 				update: function(){
 					console.log('updated');
 				}
-			});
-		},
-		setDroppable: function(target){
-			if(typeof(target)=='undefined'){
-				var target = "#content-block-list";
-			}
-			$(target).droppable({
+			}).droppable({
 				addClasses: false,
 		    	drop: function( event, ui ) {
 		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
@@ -59,6 +53,10 @@ var workUtil = {
 					}
 		    	},
 		    	disable: true
+		    }).draggable({
+		        connectToSortable: "#work-content-blockadder li.remove",
+		        snap: true,
+		        revert: false
 		    });
 		},
 		setForRemove: function(target){
@@ -66,8 +64,8 @@ var workUtil = {
 				var target = "#work-content-blockadder li.remove";
 			}
 			$(target).droppable({
-		    	over: function( event, ui ) {
-		    		console.log($(ui.draggable).attr('class'));
+		    	drop: function( event, ui ) {
+		    		$(ui.draggable).fadeOut(100);
 		    		$(ui.draggable).remove();
 		    	}
 		    });
