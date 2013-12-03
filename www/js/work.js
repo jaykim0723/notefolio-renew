@@ -45,7 +45,7 @@ var workUtil = {
 		    		var classNames = $(ui.draggable).attr("class").split(' ')
 					for(var i in classNames){
 						var m =classNames[i].match(/^block-(\s+)/);
-						console.log(m[1]);
+						console.log(m);
 						if(m){
 							$(ui.draggable)
 								.attr('class', classNames[i])
