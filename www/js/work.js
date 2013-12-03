@@ -55,12 +55,6 @@ var workUtil = {
 					}
 		    	},
 		    	disable: true
-		    }).draggable({
-		        connectToSortable: trash,
-		        //helper: "clone",
-		        snap: true,
-		        revert: false
-
 		    });
 		},
 		setForRemove: function(target){
@@ -68,10 +62,9 @@ var workUtil = {
 				var target = ".trash-can";
 			}
 			$(target).droppable({
-        		hoverClass: "droppable-hover",
 		    	drop: function( event, ui ) {
-		    		$(ui.droppable).fadeOut(100);
-		    		$(ui.droppable).remove();
+		    		$(ui.draggable).fadeOut(100);
+		    		$(ui.draggable).remove();
 		    	}
 		    });
 		},
