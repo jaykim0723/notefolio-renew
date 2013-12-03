@@ -28,12 +28,11 @@ var workUtil = {
 				var target = "#content-block-list";
 			}
 			if(typeof(trash)=='undefined'){
-				var trash = ".trash-can";
+				var trash = "li.trash-can";
 			}
 			$(target).sortable({
   				opacity: 0.6,
     			connectWith: trash,
-    			helper: 'clone',
 				start: function(){
 					$(target).droppable('option','disable', true);
 				},
