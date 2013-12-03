@@ -58,7 +58,6 @@ var workUtil = {
 			$(target, $(container)).draggable({
 				connectToSortable: "#content-block-list",
 				helper: "clone",
-				revert: "valid",
 				drop: function( event, ui ){
 		    		var classNames = $(ui.draggable).attr("class").split(' ')
 					for(var i in classNames){
