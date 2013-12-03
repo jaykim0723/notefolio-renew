@@ -34,7 +34,7 @@ var workUtil = {
   				opacity: 0.6,
     			connectWith: trash,
 				start: function(){
-					$(this).droppable('option','disable', true);
+					$(target).droppable('option','disable', true);
 				},
   				receive: function(event, ui) {
 
@@ -66,7 +66,7 @@ var workUtil = {
 				var target = ".trash-can";
 			}
 			$(target).sortable().droppable({
-        		accept: $('#content-block-list li'),
+        		accept: '.block-text, .block-image, .block-video',
 			    hoverClass: "ui-state-hover",
 		    	drop: function( event, ui ) {
 		    		$(ui.draggable).fadeOut(100);
