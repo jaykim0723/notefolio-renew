@@ -33,7 +33,6 @@ var workUtil = {
 			$(target).sortable({
   				opacity: 0.6,
     			connectWith: trash,
-    			containment: "window",
 				start: function(){
 					$(this).droppable('option','disable', true);
 				},
@@ -60,7 +59,10 @@ var workUtil = {
 					}
 		    	},
 		    	disable: true
-		    }).draggable({ revert: true });
+		    }).draggable({
+    			containment: "window",
+		    	revert: true
+		   	ß});
 		},
 		setTrashBin: function(target){
 			if(typeof(target)=='undefined'){
