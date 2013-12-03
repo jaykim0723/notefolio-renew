@@ -61,7 +61,6 @@ var workUtil = {
 		    	disable: true
 		    });
 		    $('li', $(target)).draggable({
-    			containment: "window",
 		    	revert: true
 		   	});
 		},
