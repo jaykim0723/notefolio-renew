@@ -58,9 +58,8 @@ var workUtil = {
 			$(target, $(container)).draggable({
 				connectToSortable: "#content-block-list",
 				helper: "clone",
-				drop: function( event, ui ){
+				drag: function( event, ui ){
 		    		var classNames = $(ui.draggable).attr("class").split(' ');
-		    		console.log(classNames[0]);
 					for(var i in classNames){
 						var m =(""+classNames[i]+"").match(/block-(\w+)/);
 						if(m){
