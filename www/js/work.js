@@ -55,12 +55,13 @@ var workUtil = {
 		    	}
 		    });
 		},
-		setDroppableForRemove: function(target){
+		setForRemove: function(target){
 			if(typeof(target)=='undefined'){
 				var target = "#work-content-blockadder li.remove";
 			}
 			$(target).droppable({
 		    	drop: function( event, ui ) {
+		    		console.log($(ui.draggable).attr('class'));
 		    		$(ui.draggable).remove();
 		    	}
 		    });
