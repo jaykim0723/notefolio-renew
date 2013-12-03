@@ -28,6 +28,7 @@ var workUtil = {
 				var target = "#content-block-list";
 			}
 			$(target).sortable({
+  				opacity: 0.6,
   				receive: function(event, ui) {
 
   				},
