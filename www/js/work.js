@@ -45,9 +45,9 @@ var workUtil = {
 		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
 					if(className){
 						$(ui.draggable)
-							.attr('class', className)
+							.attr('class', 'block-'+className[1])
 							.empty()
-							.append(workUtil.content.createBlock(m[1]));
+							.append(workUtil.content.createBlock(className[1]));
 					}
 					else {
 						$(ui.draggable).remove();
