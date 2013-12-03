@@ -28,13 +28,53 @@ var workUtil = {
 				var target = "#content-block-list";
 			}
 			$(target).sortable({
+  				receive: function(event, ui) {
+
+  				},
 				update: function(){
 					console.log('updated');
 				}
 			});
 		},
-		create: function(type, position){
+		setDroppable: function(target){
+			if(typeof(target)=='undefined'){
+				var target = "#content-block-list";
+			}
+			$(target).droppable({
+		      drop: function( event, ui ) {
+		        console.log($(this).attr("class"));
+		      }
+		    });
+		},
+		setSortable: function(target, container){
+			if(typeof(target)=='undefined'){
+				var target = '.block-text, .block-image, .block-video';
+			}
+			if(typeof(container)=='undefined'){
+				var container = "#work-content-blockadder";
+			}
+			$(target, container).draggable({ revert: "valid" });
+		},
+		createBlock: function(type, position){
+			if(typeof(type)=='undefined'){
+				var type = "text";
+			}
+			switch(type){
+				case 'image':
+					
+				break;
+				case 'block':
+				default:
+					
+				break;
+				case 'text':
+				default:
+					
+				break;
+			}
+		},
+		removeBlock: function(type, position){
+		},
 
-		}
 	}
 }

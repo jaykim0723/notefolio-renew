@@ -1,3 +1,18 @@
+/* work */
+
+#work-content-blockadder{
+	display: block;
+	position: fixed;
+	width: 50px;
+	height: auto;
+	margin: 0px;
+	padding: 1em;
+	overflow: hidden;
+	top: 50px;
+	left: 0px;
+}
+
+
 
 /* profile */
 #profile-header {

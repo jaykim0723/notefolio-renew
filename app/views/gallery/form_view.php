@@ -103,6 +103,14 @@
 		</div>
 	<?php echo form_close(); ?>
 </section>
+<div id="work-content-blockadder">
+	<ul class="list-unstyled">
+		<li class="block-text"><i class="glyphicon-pencil"></i></li>
+		<li class="block-image"><i class="glyphicon-picture"></i></li>
+		<li class="block-video"><i class="glyphicon-film"></i></li>
+		<li class="remove"><i class="glyphicon-remove"></i></li>
+	</ul>
+</div>
 <script>
 	NFview = <?php
 		echo json_encode($_ci_vars); // view내의 스크립트에서 편리하게 사용하기 위하여 미리 할당
@@ -115,7 +123,9 @@
 			workUtil.save($(this));
 		})
 		//Content에 sortable 기능을 살림.
-		workUtil.content.setSortable($('#content-block-list'));
+		workUtil.content.setSortable('#content-block-list');
+		workUtil.content.setDroppable('#content-block-list');
+		workUtil.content.setDraggable('.block-text, .block-image, .block-video', '#work-content-blockadder');
 	});
 </script>
 
