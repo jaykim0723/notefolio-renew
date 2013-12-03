@@ -68,8 +68,7 @@ var workUtil = {
 			$(target).droppable({
 			    hoverClass: "ui-state-hover",
 		    	drop: function( event, ui ) {
-		    		$(ui.draggable).fadeOut(100);
-		    		$(ui.draggable).remove();
+		    		$( this ).text( "Dropped!" );
 		    	}
 		    });
 		},
