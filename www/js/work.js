@@ -32,7 +32,7 @@ var workUtil = {
 			}
 			$(target).sortable({
   				opacity: 0.6,
-    			connectWith: '.trash-can',
+    			connectWith: trash,
 				start: function(){
 					$(this).droppable('option','disable', true);
 				},
