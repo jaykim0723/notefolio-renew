@@ -42,8 +42,8 @@ var workUtil = {
 			}
 			$(target).droppable({
 		      drop: function( event, ui ) {
-				console.log($(ui).attr("class"));
-				$(ui).remove();
+				console.log(ui.droppable.attr("class"));
+				ui.droppable.remove();
 		      }
 		    });
 		},
@@ -62,8 +62,8 @@ var workUtil = {
 				helper: "clone",
 				revert: "valid",
 				drop: function( event, ui ){
-					console.log($(ui).attr("class"));
-					$(ui).remove();
+					console.log(ui.draggable.attr("class"));
+					ui.draggable.remove();
 				}
 			});
 		},
