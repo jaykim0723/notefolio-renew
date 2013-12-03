@@ -48,7 +48,6 @@ var workUtil = {
 							.attr('class', className)
 							.empty()
 							.append(workUtil.content.createBlock(m[1]));
-						break;
 					}
 					else {
 						$(ui.draggable).remove();
