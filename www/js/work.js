@@ -46,11 +46,14 @@ var workUtil = {
 		      }
 		    });
 		},
-		setSortable: function(target, container){
+		setDraggable: function(target, container){
 			if(typeof(target)=='undefined'){
-				var target = "#work-content-blockadder li";
+				var target = '.block-text, .block-image, .block-video';
 			}
-			$(target).draggable({ revert: "valid" });
+			if(typeof(container)=='undefined'){
+				var container = "#work-content-blockadder";
+			}
+			$(target, container).draggable({ revert: "valid" });
 		},
 		createBlock: function(type, position){
 			if(typeof(type)=='undefined'){

@@ -125,7 +125,7 @@
 		//Content에 sortable 기능을 살림.
 		workUtil.content.setSortable('#content-block-list');
 		workUtil.content.setDroppable('#content-block-list');
-		workUtil.content.setDraggable('#work-content-blockadder li');
+		workUtil.content.setDraggable('li', '#work-content-blockadder');
 	});
 </script>
 
