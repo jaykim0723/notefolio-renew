@@ -66,7 +66,7 @@ var workUtil = {
 				var target = "#work-content-blockadder li.remove";
 			}
 			$(target).droppable({
-		    	drop: function( event, ui ) {
+		    	over: function( event, ui ) {
 		    		console.log($(ui.draggable).attr('class'));
 		    		$(ui.draggable).remove();
 		    	}
