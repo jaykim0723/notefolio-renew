@@ -43,6 +43,8 @@ var workUtil = {
 			}
 			$(target).droppable({
 		    	drop: function( event, ui ) {
+		    	}
+		    	over: function( event, ui ) {
 		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
 					if(className){
 						$(ui.draggable)
@@ -51,7 +53,7 @@ var workUtil = {
 							.append(workUtil.content.createBlock(className[1]));
 					}
 					else {
-						$(ui.draggable).remove();
+						//$(ui.draggable).remove();
 					}
 		    	}
 		    });
