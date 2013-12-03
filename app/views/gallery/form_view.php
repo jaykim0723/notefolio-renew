@@ -108,8 +108,12 @@
 		<li class="block-text"><i class="glyphicon glyphicon-pencil"></i></li>
 		<li class="block-image"><i class="glyphicon glyphicon-picture"></i></li>
 		<li class="block-video"><i class="glyphicon glyphicon-film"></i></li>
+		<li class="remove">
+			<ul class="trash-can list-unstyled">
+				<li><i class="glyphicon glyphicon-remove"></i></li>
+			</ul>
+		</li>
 	</ul>
-	<ul id="trash-can"><li><i class="glyphicon glyphicon-remove"></i></li></ul>
 </div>
 <script>
 	NFview = <?php
@@ -123,9 +127,9 @@
 			workUtil.save($(this));
 		})
 		//Content Ground Setting 살림.
-		workUtil.content.setGround('#content-block-list', '#trash-can');
+		workUtil.content.setGround('#content-block-list', '.trash-can');
 		workUtil.content.setTool('li', '#work-content-blockadder', '#content-block-list');
-		workUtil.content.setForRemove('#trash-can');
+		workUtil.content.setForRemove('.trash-can');
 	});
 </script>
 
