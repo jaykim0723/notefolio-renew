@@ -62,7 +62,7 @@ var workUtil = {
 		    }).draggable({
     			containment: "window",
 		    	revert: true
-		   	ß});
+		   	});
 		},
 		setTrashBin: function(target){
 			if(typeof(target)=='undefined'){
