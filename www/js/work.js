@@ -28,11 +28,10 @@ var workUtil = {
 				var target = "#content-block-list";
 			}
 			if(typeof(trash)=='undefined'){
-				var trash = "#trash-can";
+				var trash = ".trash-can";
 			}
 			$(target).sortable({
   				opacity: 0.6,
-		        connectWith: trash,
 				start: function(){
 					$(this).droppable('option','disable', true);
 				},
@@ -57,7 +56,7 @@ var workUtil = {
 		    	},
 		    	disable: true
 		    }).draggable({
-		        connectToSortable: "#trash-can",
+		        connectToSortable: trash,
 		        //helper: "clone",
 		        snap: true,
 		        revert: false
@@ -66,7 +65,7 @@ var workUtil = {
 		},
 		setForRemove: function(target){
 			if(typeof(target)=='undefined'){
-				var target = "#trash-can";
+				var target = ".trash-can";
 			}
 			$(target).droppable({
         		hoverClass: "droppable-hover",
