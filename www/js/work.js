@@ -63,7 +63,7 @@ var workUtil = {
 			$(target).droppable({
 		    	drop: function( event, ui ) {
 		    		console.log($(ui.draggable).attr('class'));
-		    		$(ui.draggable).remove();
+		    		//$(ui.draggable).remove();
 		    	}
 		    });
 		},
