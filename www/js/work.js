@@ -60,7 +60,7 @@ var workUtil = {
 				helper: "clone",
 				revert: "valid",
 				drop: function( event, ui ){
-					for(var className in $(ui.draggable).attr("class")){
+					for(var className in $(ui.draggable).attr("class").split(' ')){
 						var m =className.match(/^block-(\s+)/);
 						console.log(m);
 						if(m){
