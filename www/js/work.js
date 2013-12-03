@@ -48,7 +48,6 @@ var workUtil = {
 		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
 					if(className){
 						$(ui.draggable)
-							.draggable('option', 'disable', 'true')
 							.empty()
 							.append(workUtil.content.createBlock(className[1]));
 					}
