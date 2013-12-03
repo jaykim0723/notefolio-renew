@@ -28,7 +28,7 @@ var workUtil = {
 				var target = "#content-block-list";
 			}
 			if(typeof(trash)=='undefined'){
-				var trash = ".trash-can";
+				var trash = "#trash-can";
 			}
 			$(target).sortable({
   				opacity: 0.6,
@@ -60,13 +60,13 @@ var workUtil = {
 		},
 		setForRemove: function(target){
 			if(typeof(target)=='undefined'){
-				var target = ".trash-can";
+				var target = "#trash-can";
 			}
 			$(target).droppable({
 				hoverClass: "drop-hover",
 		    	drop: function( event, ui ) {
-		    		$(ui.helper).fadeOut(100);
-		    		$(ui.helper).remove();
+		    		$(ui.droppable).fadeOut(100);
+		    		$(ui.droppable).remove();
 		    	}
 		    });
 		},
