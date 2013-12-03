@@ -68,7 +68,7 @@ var workUtil = {
 			if(typeof(target)=='undefined'){
 				var target = "#trash-can";
 			}
-			$(target).droppable({
+			$(target).sortable().droppable({
         		hoverClass: "droppable-hover",
 		    	drop: function( event, ui ) {
 		    		$(ui.droppable).fadeOut(100);
