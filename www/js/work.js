@@ -66,16 +66,11 @@ var workUtil = {
 				var target = ".trash-can";
 			}
 			$(target).sortable({
+				connectWith: "#content-block-list",
+      			placeholder: "ui-state-highlight",
 		    	receive: function( event, ui ) {
 		    		$(ui.item).fadeOut(100);
 		    		$(ui.item).remove();
-		    	}
-		    }).droppable({
-        		accept: '.block-text, .block-image, .block-video',
-			    hoverClass: "ui-state-hover",
-		    	drop: function( event, ui ) {
-		    		$(ui.draggable).fadeOut(100);
-		    		$(ui.draggable).remove();
 		    	}
 		    });
 		},
