@@ -32,6 +32,7 @@ var workUtil = {
 			}
 			$(target).sortable({
   				opacity: 0.6,
+		        connectWith: trash,
 				start: function(){
 					$(this).droppable('option','disable', true);
 				},
@@ -55,10 +56,6 @@ var workUtil = {
 					}
 		    	},
 		    	disable: true
-		    }).draggable({
-		        connectToSortable: trash,
-		        snap: true,
-		        revert: false
 		    });
 		},
 		setForRemove: function(target){
