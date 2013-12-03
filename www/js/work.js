@@ -33,6 +33,7 @@ var workUtil = {
 			$(target).sortable({
   				opacity: 0.6,
     			connectWith: trash,
+    			containment: "window",
 				start: function(){
 					$(this).droppable('option','disable', true);
 				},
