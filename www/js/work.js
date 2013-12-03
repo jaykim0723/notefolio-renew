@@ -60,15 +60,12 @@ var workUtil = {
 		    	},
 		    	disable: true
 		    });
-		    $('li', $(target)).draggable({
-		    	revert: true
-		   	});
 		},
 		setTrashBin: function(target){
 			if(typeof(target)=='undefined'){
 				var target = ".trash-can";
 			}
-			$(target).droppable({
+			$(target).sortable().droppable({
         		accept: '#content-block-list li',
 			    hoverClass: "ui-state-hover",
 		    	drop: function( event, ui ) {
