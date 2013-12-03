@@ -42,6 +42,7 @@ var workUtil = {
 				var target = "#content-block-list";
 			}
 			$(target).droppable({
+				addClasses: false,
 		    	drop: function( event, ui ) {
 		    	},
 		    	over: function( event, ui ) {
@@ -55,9 +56,9 @@ var workUtil = {
 					else {
 						$(ui.draggable).remove();
 					}
-		    	}
+		    	},
+		    	disable: true
 		    });
-			$(target).droppable("disable");
 		},
 		setForRemove: function(target){
 			if(typeof(target)=='undefined'){
@@ -87,7 +88,7 @@ var workUtil = {
 					$(sendTo).droppable('option','enable',true);
 				},
 				stop: function(){
-					$(sendTo).droppable("disable");
+					$(sendTo).droppable('option','disable',true);
 				}
 			});
 		},
