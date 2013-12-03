@@ -42,6 +42,17 @@ var workUtil = {
 			}
 			$(target).droppable({
 		    	drop: function( event, ui ) {
+					for(var className in $(ui.draggable).attr("class").split(' ')){
+						var m =className.match(/^block-(\s+)/);
+						console.log(m);
+						if(m){
+							$(ui.draggable)
+								.attr('class', className)
+								.empty()
+								.append(m[1]);
+							break;
+						}
+					}
 		    	}
 		    });
 		},
@@ -60,17 +71,6 @@ var workUtil = {
 				helper: "clone",
 				revert: "valid",
 				drop: function( event, ui ){
-					for(var className in $(ui.draggable).attr("class").split(' ')){
-						var m =className.match(/^block-(\s+)/);
-						console.log(m);
-						if(m){
-							$(ui.draggable)
-								.attr('class', className)
-								.empty()
-								.append(m[1]);
-							break;
-						}
-					}
 				}
 			});
 		},
