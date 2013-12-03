@@ -65,7 +65,12 @@ var workUtil = {
 			if(typeof(target)=='undefined'){
 				var target = ".trash-can";
 			}
-			$(target).sortable().droppable({
+			$(target).sortable({
+		    	receive: function( event, ui ) {
+		    		$(ui.item).fadeOut(100);
+		    		$(ui.item).remove();
+		    	}
+		    }).droppable({
         		accept: '.block-text, .block-image, .block-video',
 			    hoverClass: "ui-state-hover",
 		    	drop: function( event, ui ) {
