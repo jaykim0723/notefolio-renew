@@ -300,13 +300,13 @@ html.mm-opened.mm-opening .mm-fixed-bottom {
     left: 200px; } }
 @media all and (min-width: 320px) {
   .mm-menu {
-    width: 50%; }
+    width: 260px; }
 
   html.mm-opened.mm-opening .mm-page,
   html.mm-opened.mm-opening #mm-blocker,
   html.mm-opened.mm-opening .mm-fixed-top,
   html.mm-opened.mm-opening .mm-fixed-bottom {
-    left: 50%; } }
+    left: 260px; } }
 html.mm-nooverflowscrolling.mm-opened {
   height: auto;
   overflow: auto;
