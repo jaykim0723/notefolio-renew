@@ -32,9 +32,6 @@ var workUtil = {
 				start: function(){
 					$(this).droppable('option','disable',true);
 				},
-				stop: function(){
-					$(this).droppable('option','enable',true);
-				},
   				receive: function(event, ui) {
 
   				},
