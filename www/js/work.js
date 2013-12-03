@@ -61,7 +61,8 @@ var workUtil = {
 				revert: "valid",
 				drop: function( event, ui ){
 					for(var className in $(ui.draggable).attr("class")){
-						if(var m =className.match(/^block-(\s+)/)){
+						var m =className.match(/^block-(\s+)/);
+						if(m){
 							$(ui.draggable)
 								.attr('class', className)
 								.empty()
