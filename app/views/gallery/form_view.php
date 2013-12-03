@@ -126,6 +126,7 @@
 		workUtil.content.setSortable('#content-block-list');
 		workUtil.content.setDroppable('#content-block-list');
 		workUtil.content.setDraggable('li', '#work-content-blockadder');
+		workUtil.content.setDroppableForRemove('#work-content-blockadder li.remove');
 	});
 </script>
 

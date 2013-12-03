@@ -55,6 +55,16 @@ var workUtil = {
 		    	}
 		    });
 		},
+		setDroppableForRemove: function(target){
+			if(typeof(target)=='undefined'){
+				var target = "#work-content-blockadder li.remove";
+			}
+			$(target).droppable({
+		    	drop: function( event, ui ) {
+		    		$(ui.draggable).remove();
+		    	}
+		    });
+		},
 		setDraggable: function(target, container, sendTo){
 			if(typeof(target)=='undefined'){
 				var target = '.block-text, .block-image, .block-video';
