@@ -23,14 +23,17 @@ var workUtil = {
 		});
 	},
 	content: {
-		setGround: function(target){
+		setGround: function(target, trash){
 			if(typeof(target)=='undefined'){
 				var target = "#content-block-list";
+			}
+			if(typeof(trash)=='undefined'){
+				var trash = "#work-content-blockadder li.remove";
 			}
 			$(target).sortable({
   				opacity: 0.6,
 				start: function(){
-					$(this).droppable('option','disable',true);
+					$(this).droppable('option','disable', true);
 				},
   				receive: function(event, ui) {
 
@@ -54,7 +57,7 @@ var workUtil = {
 		    	},
 		    	disable: true
 		    }).draggable({
-		        connectToSortable: "#work-content-blockadder li.remove",
+		        connectToSortable: trash,
 		        snap: true,
 		        revert: false
 		    });
