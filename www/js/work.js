@@ -42,22 +42,6 @@ var workUtil = {
 			}
 			$(target).droppable({
 		    	drop: function( event, ui ) {
-		    		var classNames = $(ui.draggable).attr("class").split(' ')
-					for(var i in classNames){
-						console.log(classNames[i]);
-						var m =(""+classNames[i]+"").match(/block-(\w+)/);
-						console.log(m);
-						if(m){
-							$(ui.draggable)
-								.attr('class', classNames[i])
-								.empty()
-								.append(m[1]);
-							break;
-						}
-						else {
-							$(ui.draggable).remove();
-						}
-					}
 		    	}
 		    });
 		},
@@ -76,6 +60,20 @@ var workUtil = {
 				helper: "clone",
 				revert: "valid",
 				drop: function( event, ui ){
+		    		var classNames = $(ui.draggable).attr("class").split(' ')
+					for(var i in classNames){
+						var m =(""+classNames[i]+"").match(/block-(\w+)/);
+						if(m){
+							$(ui.draggable)
+								.attr('class', classNames[i])
+								.empty()
+								.append(workUtil.content.createBlock(m[1]));
+							break;
+						}
+						else {
+							$(ui.draggable).remove();
+						}
+					}
 				}
 			});
 		},
