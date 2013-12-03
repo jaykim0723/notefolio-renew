@@ -125,7 +125,7 @@
 		//Content Ground Setting 살림.
 		workUtil.content.setGround('#content-block-list', '.trash-can');
 		workUtil.content.setTool('.block-text, .block-image, .block-video', '#work-content-blockadder', '#content-block-list');
-		workUtil.content.setForRemove('.trash-can');
+		workUtil.content.setTrashBin('.trash-can');
 	});
 </script>
 

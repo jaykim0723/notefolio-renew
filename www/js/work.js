@@ -61,12 +61,11 @@ var workUtil = {
 		    	disable: true
 		    });
 		},
-		setForRemove: function(target){
+		setTrashBin: function(target){
 			if(typeof(target)=='undefined'){
 				var target = ".trash-can";
 			}
 			$(target).droppable({
-			    accept: ".ui-sortable li",
 			    hoverClass: "ui-state-hover",
 		    	drop: function( event, ui ) {
 		    		$(ui.draggable).fadeOut(100);
