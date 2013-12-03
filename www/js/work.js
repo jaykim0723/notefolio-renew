@@ -66,9 +66,11 @@ var workUtil = {
 				var target = ".trash-can";
 			}
 			$(target).droppable({
+        		accept: '#content-block-list li',
 			    hoverClass: "ui-state-hover",
 		    	drop: function( event, ui ) {
-		    		$( this ).text( "Dropped!" );
+		    		$(ui.draggable).fadeOut(100);
+		    		$(ui.draggable).remove();
 		    	}
 		    });
 		},
