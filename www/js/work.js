@@ -56,6 +56,12 @@ var workUtil = {
 					}
 		    	},
 		    	disable: true
+		    }).draggable({
+		        connectToSortable: "#trash-can",
+		        //helper: "clone",
+		        snap: true,
+		        revert: false
+
 		    });
 		},
 		setForRemove: function(target){
@@ -63,7 +69,7 @@ var workUtil = {
 				var target = "#trash-can";
 			}
 			$(target).droppable({
-				hoverClass: "drop-hover",
+        		hoverClass: "droppable-hover",
 		    	drop: function( event, ui ) {
 		    		$(ui.droppable).fadeOut(100);
 		    		$(ui.droppable).remove();
