@@ -42,20 +42,16 @@ var workUtil = {
 			}
 			$(target).droppable({
 		    	drop: function( event, ui ) {
-		    		var classNames = $(ui.draggable).attr("class").split(' ');
-					for(var i in classNames){
-						var m =(""+classNames[i]+"").match(/block-(\w+)/);
-						if(m){
-							console.log(m[1]);
-							$(ui.draggable)
-								.attr('class', classNames[i])
-								.empty()
-								.append(workUtil.content.createBlock(m[1]));
-							break;
-						}
-						else {
-							$(ui.draggable).remove();
-						}
+		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
+					if(className){
+						$(ui.draggable)
+							.attr('class', className)
+							.empty()
+							.append(workUtil.content.createBlock(m[1]));
+						break;
+					}
+					else {
+						$(ui.draggable).remove();
 					}
 		    	}
 		    });
