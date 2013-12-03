@@ -29,6 +29,12 @@ var workUtil = {
 			}
 			$(target).sortable({
   				opacity: 0.6,
+				start: function(){
+					$(sendTo).droppable('option','disable',true);
+				},
+				stop: function(){
+					$(sendTo).droppable('option','enable',true);
+				}
   				receive: function(event, ui) {
 
   				},
@@ -44,8 +50,6 @@ var workUtil = {
 			$(target).droppable({
 				addClasses: false,
 		    	drop: function( event, ui ) {
-		    	},
-		    	over: function( event, ui ) {
 		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
 					if(className){
 						$(ui.draggable)
