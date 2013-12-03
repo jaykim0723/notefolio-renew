@@ -46,10 +46,12 @@ var workUtil = {
 					for(var i in classNames){
 						var m =(""+classNames[i]+"").match(/block-(\w+)/);
 						if(m){
-							$(ui.draggable).empty();
+							var child = workUtil.content.createBlock(m[1]);
 							$(ui.draggable)
 								.attr('class', classNames[i])
-								.append(workUtil.content.createBlock(m[1]));
+								.empty()
+								.append(child);
+
 							break;
 						}
 						else {
