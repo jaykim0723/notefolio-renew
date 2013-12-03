@@ -6,10 +6,11 @@
 	width: 50px;
 	height: auto;
 	margin: 0px;
-	padding: 1em;
+	padding: 5px;
 	overflow: hidden;
-	top: 50px;
+	top: 200px;
 	left: 0px;
+	font-size: 40px;
 }
 
 
