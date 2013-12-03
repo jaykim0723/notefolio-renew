@@ -66,7 +66,7 @@ var workUtil = {
 				var target = ".trash-can";
 			}
 			$(target).sortable().droppable({
-        		accept: '#content-block-list li',
+        		accept: $('#content-block-list li'),
 			    hoverClass: "ui-state-hover",
 		    	drop: function( event, ui ) {
 		    		$(ui.draggable).fadeOut(100);
