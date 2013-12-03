@@ -124,7 +124,7 @@
 		})
 		//Content Ground Setting 살림.
 		workUtil.content.setGround('#content-block-list', '#work-content-blockadder li.remove');
-		workUtil.content.setDraggable('li', '#work-content-blockadder', '#content-block-list');
+		workUtil.content.setTool('li', '#work-content-blockadder', '#content-block-list');
 		workUtil.content.setForRemove('#work-content-blockadder li.remove');
 	});
 </script>

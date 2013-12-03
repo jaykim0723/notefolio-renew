@@ -51,7 +51,7 @@ var workUtil = {
 							.append(workUtil.content.createBlock(className[1]));
 					}
 					else {
-						$(ui.draggable).remove();
+						//$(ui.draggable).remove();
 					}
 		    	},
 		    	disable: true
@@ -72,7 +72,7 @@ var workUtil = {
 		    	}
 		    });
 		},
-		setDraggable: function(target, container, sendTo){
+		setTool: function(target, container, sendTo){
 			if(typeof(target)=='undefined'){
 				var target = '.block-text, .block-image, .block-video';
 			}
