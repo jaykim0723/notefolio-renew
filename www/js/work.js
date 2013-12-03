@@ -61,8 +61,8 @@ var workUtil = {
 				helper: "clone",
 				revert: "valid",
 				drop: function( event, ui ){
-					console.log($(this).attr("class"));
-					$(this).remove();
+					console.log($(ui).attr("class"));
+					$(ui).remove();
 				}
 			});
 		},
