@@ -50,6 +50,9 @@ var workUtil = {
 							.empty()
 							.append(workUtil.content.createBlock(className[1]));
 					}
+					else if((""+$(ui.draggable).attr("class")+"").match(/remove/)){
+						$(ui.draggable).remove();
+					}
 					else {
 						//$(ui.draggable).remove();
 					}
