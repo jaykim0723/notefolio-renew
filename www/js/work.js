@@ -28,7 +28,7 @@ var workUtil = {
 				var target = "#content-block-list";
 			}
 			if(typeof(trash)=='undefined'){
-				var trash = "#trash-bin";
+				var trash = ".trashable";
 			}
 			$(target).sortable({
   				opacity: 0.6,
