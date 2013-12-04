@@ -28,10 +28,11 @@ var workUtil = {
 				var target = "#content-block-list";
 			}
 			if(typeof(trash)=='undefined'){
-				var trash = "li.trash-can";
+				var trash = "#trash-bin";
 			}
 			$(target).sortable({
   				opacity: 0.6,
+    			cursor: 'move',
     			connectWith: trash,
 				start: function(){
 					$(target).droppable('option','disable', true);
@@ -51,9 +52,9 @@ var workUtil = {
 							.empty()
 							.append(workUtil.content.createBlock(className[1]));
 					}
-					else if((""+$(ui.draggable).attr("class")+"").match(/remove/)){
-						$(ui.draggable).remove();
-					}
+					//else if((""+$(ui.draggable).attr("class")+"").match(/remove/)){
+					//	$(ui.draggable).remove();
+					//}
 					else {
 						//$(ui.draggable).remove();
 					}
@@ -63,7 +64,7 @@ var workUtil = {
 		},
 		setTrashBin: function(target){
 			if(typeof(target)=='undefined'){
-				var target = ".trash-can";
+				var target = "#trash-bin";
 			}
 			$(target).sortable({
 				connectWith: "#content-block-list",
