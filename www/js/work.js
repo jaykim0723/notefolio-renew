@@ -39,8 +39,10 @@ var workUtil = {
 				},
 		        placeholder: {
 		            element: function(clone, ui) {
-		                return $('<li class="item-sorting">'+clone[0].innerHTML+'</li>')
+		            	var container = $('<li class="item-sorting"></li>')
 		                		.css('outline', '#00ff00 5px dotted');
+
+		                return $(container).append($('<div>'+clone[0].innerHTML+'</div>').css('opacity','0.5'));
 		            },
 		            update: function() {
 		                return;
