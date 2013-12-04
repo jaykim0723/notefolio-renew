@@ -103,10 +103,10 @@ var workUtil = {
 			var output = '';
 			switch(type){
 				case 'image':
-					output = $('<img>').attr('src', '//www.notefolio.net/images/20121123/nf_logo.png');
+					output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
 				case 'video':
-					output = $('<img>').attr('src', '//www.notefolio.net/images/20121123/nf_logo.png');
+					output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb_wide6.jpg');
 				break;
 				case 'text':
 				default:
