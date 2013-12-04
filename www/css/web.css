@@ -12,6 +12,11 @@
 	font-size: 40px;
 	z-index: 10;
 }
+#work-content-blockadder li#trash-bin{
+	display: block;
+	width:1em;
+	height:1em;
+}
 
 
 
