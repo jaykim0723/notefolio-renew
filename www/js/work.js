@@ -80,7 +80,14 @@ var workUtil = {
 			}
 			$(target).droppable({
 				tolerance: 'pointer',
+				over: function( event, ui ) {
+					$(ui.draggable).css('outline', '#ff0000 5px dotted');
+				},
+				out: function( event, ui ) {
+					$(ui.draggable).css('outline', 'none');
+				},
 		    	drop: function( event, ui ) {
+					$(ui.draggable).css('outline', 'none');
 		    		$(ui.draggable).fadeOut(100);
 		    		$(ui.draggable).remove();
 		    	}
