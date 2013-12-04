@@ -138,6 +138,7 @@ var workUtil = {
 			}
 			$(target, $(container))
 				.on('click', function(event){
+					console.log($(this).attr("class"));
 		    		var className =(""+$(this).attr("class")+"").match(/block-(\w+)/);
 					if(className){
 						$('<li></li>')
