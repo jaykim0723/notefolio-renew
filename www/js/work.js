@@ -77,7 +77,8 @@ var workUtil = {
 		    	}
 		    }).draggable({
 				helper: "clone",
-				start: function(){
+				start: function(event, ui){
+					$(ui.helper).css('width', '10px').css('height', '10px');
 					$(sendTo).droppable('option','disable',true);
 					$(sendTo).sortable('option','disable',true);
 					$('li', sendTo).droppable({
