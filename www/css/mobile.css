@@ -32,10 +32,17 @@
 
 
 
-
+#btn-feed,
+#btn-alarm {
+	position: relative;
+}
 #btn-feed .label,
 #btn-alarm .label {
-	border-radius: 50%;
+	position: absolute;
+	right: -3px;
+	bottom: -3px;
+	border-radius: 1em;
+	z-index: 4;
 }
 
 
