@@ -19,6 +19,7 @@
 	  <script src="/js/libs/es5-shim.min.js"></script>
 	  <script src="/js/libs/html5shiv.js"></script>
 	  <script src="/js/libs/respond.min.js"></script>
+	  <script src="/js/libs/respond.matchmedia.addListener.min.js"></script>
 	<![endif]-->
 
 	<link href="/css/normalize.css" rel="stylesheet"/>
