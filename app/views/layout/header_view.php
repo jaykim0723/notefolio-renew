@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<a href="http://www.notefolio.net">Home</a>
+				<a href="/">Home</a>
 				|
 				<a href="http://magazine.notefolio.net">Magazine</a>
 				|
@@ -43,12 +43,12 @@
 				<?php else: ?>
 					<a id="btn-feed" href="/feed/listing" class="btn btn-default">
 						<i class="glyphicon glyphicon-dashboard"></i>
-						<span class="label label-danger unread-feed"></span>
+						<span class="label label-danger rounded unread-feed"></span>
 					</a>
 					<span id="alarm-wrapper">
 						<a id="btn-alarm" href="javascript:;" class="btn btn-default">
 							<i class="glyphicon glyphicon-film"></i>
-							<span class="label label-danger unread-alarm"></span>
+							<span class="label label-danger rounded unread-alarm"></span>
 						</a>
 					</span>
 
@@ -86,14 +86,14 @@
 		<?php else: ?>
 			<li>
 				<a href="/feed/listing">
-					<i class="glyphicon glyphicon-dashboard"></i>
-					<span class="label label-default unread-feed"></span>
+					Feed
+					<span class="label label-danger rounded unread-feed"></span>
 				</a>
 			</li>
 			<li>
 				<a href="/alarm/listing">
 					Alarm
-					<span class="label label-default unread-alarm"></span>
+					<span class="label label-danger rounded unread-alarm"></span>
 				</a>
 			</li>
 			<li>

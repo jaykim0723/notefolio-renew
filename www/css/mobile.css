@@ -41,8 +41,10 @@
 	position: absolute;
 	right: -3px;
 	bottom: -3px;
-	border-radius: 1em;
 	z-index: 4;
+}
+.rounded {
+	border-radius: 1em;
 }
 
 
