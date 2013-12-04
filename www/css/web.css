@@ -5,6 +5,11 @@
 	width: 100%;
 	min-height:300px;
 }
+#content-block-list li{
+	display: block;
+	width: 100%;
+	overflow: hidden;
+}
 #work-content-blockadder{
 	display: block;
 	position: fixed;
