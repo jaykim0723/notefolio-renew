@@ -79,7 +79,7 @@ var workUtil = {
 				var sendTo = "#content-block-list";
 			}
 			$(target).droppable({
-				tolerance: 'touch',
+				tolerance: 'pointer',
 		    	drop: function( event, ui ) {
 		    		$(ui.draggable).fadeOut(100);
 		    		$(ui.draggable).remove();
