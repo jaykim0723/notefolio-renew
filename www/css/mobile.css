@@ -26,6 +26,9 @@
 .righted {
 	text-align:right;
 }
+.rounded {
+	border-radius: 1em;
+}
 
 
 
@@ -42,9 +45,6 @@
 	right: -3px;
 	bottom: -3px;
 	z-index: 4;
-}
-.rounded {
-	border-radius: 1em;
 }
 
 
