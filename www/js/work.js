@@ -60,7 +60,7 @@ var workUtil = {
 					}
 		    	},
 		    	disable: true
-		    });
+		    }).disableSelection();
 		},
 		setTrashBin: function(target){
 			if(typeof(target)=='undefined'){
