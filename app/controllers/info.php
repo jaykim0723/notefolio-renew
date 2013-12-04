@@ -119,5 +119,9 @@ class Info extends CI_Controller
 	}
 
 
+	function test(){
+		$this->layout->set_view('info/test_view')->render();
+	}
+
 
 }

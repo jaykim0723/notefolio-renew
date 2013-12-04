@@ -2,37 +2,14 @@
 	NFview = {};
 </script>
 
-<section class="visible-md visible-lg">
-	<?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'class'=>'container', 'role'=>'form')); ?>
-		<div class="row">
-			<!-- 작품영역 시작 -->
-			<div class="col-md-8">
-				<h4>제목</h4>
-				<input type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
-				<br>
-				<h4>내용</h4>
-				<ul id="content-block-list" class="list-unstyled">
-					<li>
-						<div class="well" style="height:600px;">
-							작품 블럭영역
-						</div>
-					</li>
-					<li>
-						<div class="well" style="height:100px;">
-							작품 블럭영역
-						</div>
-					</li>
-					<li>
-						<div class="well" style="height:200px;">
-							작품 블럭영역
-						</div>
-					</li>
-				</ul>
-				<?php echo form_open(''); ?>
-				<?php echo form_close(); ?>
-			</div>
-			<!-- 작품영역 끝 -->
+<?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'role'=>'form')); ?>
 
+<div id="work-sidebar">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<!-- empty -->
+			</div>
 
 			<!-- 사이드바 시작 -->
 			<div class="col-md-4 ">
@@ -101,8 +78,50 @@
 			</div>
 			<!-- 사이드바 끝 -->
 		</div>
-	<?php echo form_close(); ?>
+	</div>
+</div>
+
+<section class="visible-md visible-lg">
+	<div class="container">
+		<div class="row">
+			<!-- 작품영역 시작 -->
+			<div class="col-md-8">
+				<h4>제목</h4>
+				<input type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
+				<br>
+				<h4>내용</h4>
+				<ul id="content-block-list" class="list-unstyled">
+					<li>
+						<div class="well" style="height:600px;">
+							작품 블럭영역
+						</div>
+					</li>
+					<li>
+						<div class="well" style="height:100px;">
+							작품 블럭영역
+						</div>
+					</li>
+					<li>
+						<div class="well" style="height:200px;">
+							작품 블럭영역
+						</div>
+					</li>
+				</ul>
+				<?php echo form_open(''); ?>
+				<?php echo form_close(); ?>
+			</div>
+			<!-- 작품영역 끝 -->
+
+			<div class="col-md-4">
+				<!-- empty -->	
+			</div>
+		</div>
+	</div>
 </section>
+
+<?php echo form_close(); ?>
+
+
 <ul class="list-unstyled" id="work-content-blockadder">
 	<li class="block-text"><i class="glyphicon glyphicon-pencil"></i></li>
 	<li class="block-image"><i class="glyphicon glyphicon-picture"></i></li>
@@ -126,6 +145,8 @@
 		workUtil.content.setTrashBin('#trash-bin');
 	});
 </script>
+
+
 
 <!-- 데스크탑 모드에서만 업로드 관련하여 작업할 수 있도록 하기 -->
 <section class="visible-xs visible-sm">

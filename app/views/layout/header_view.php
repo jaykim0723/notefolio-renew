@@ -1,4 +1,4 @@
-<section id="top_menu" class="hidden-xs hidden-sm">
+<div id="top_menu" class="hidden-xs hidden-sm">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
@@ -15,7 +15,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</div>
 <header id="header" class="hidden-xs hidden-sm">
 	<div class="container">
 		<div class="row">

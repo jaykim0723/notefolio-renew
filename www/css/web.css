@@ -1,9 +1,9 @@
+
 #header .row > div {
 	padding-top: 9px;
 }
 
 /* work */
-
 #content-block-list{
 	display: block;
 	width: 100%;
@@ -34,9 +34,12 @@ li#trash-bin{
 	width:1em;
 	height:1em;
 }
+#work-sidebar {
+	position:fixed;
+	top:90px;
+	width:100%;
+}
 
-
->>>>>>> ba93db142c696743d9953a1fc4d83659026b6ea0
 
 /* profile */
 #profile-header {
