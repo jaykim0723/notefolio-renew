@@ -139,7 +139,6 @@ var workUtil = {
 			$(target, $(container))
 				.on('click', function(event){
 					$(this).css('outline', '#0000ff 5px dotted');
-					console.log($(this).attr("class"));
 		    		var className =(""+$(this).attr("class")+"").match(/block-(\w+)/);
 					if(className){
 						$('<li></li>')
@@ -147,7 +146,7 @@ var workUtil = {
 							.append(workUtil.content.createBlock(className[1]))
 							.appendTo(sendTo);
 					}
-					$(this).css('outline', 'none');
+					setTimeout(function(){$(this).css('outline', 'none');},500);
 				})
 				.draggable({
 					connectToSortable: "#content-block-list",
