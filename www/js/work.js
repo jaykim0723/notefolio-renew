@@ -35,11 +35,11 @@ var workUtil = {
     			cursor: 'move',
     			connectWith: trash,
 				start: function(event, ui){
-  					$(ui.sender).css('outline', '#0000ff 5px dotted');
+  					$(this).css('outline', '#00ff00 5px dotted');
 					$(target).droppable('option','disable', true);
 				},
 				stop: function(event, ui){
-					$(ui.sender).css('outline', 'none');
+					$(this).css('outline', 'none');
 				},
   				receive: function(event, ui) {
 
@@ -132,10 +132,8 @@ var workUtil = {
 				helper: "clone",
 				start: function(event, ui){
 					$(sendTo).droppable('option','enable',true);
-  					$(ui.helper).css('outline', '#00ff00 5px dotted');
 				},
 				stop: function(event, ui){
-					$(ui.helper).css('outline', 'none');
 					$(sendTo).droppable('option','disable',true);
 				}
 			});
