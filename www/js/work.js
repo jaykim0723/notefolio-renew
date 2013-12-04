@@ -45,7 +45,14 @@ var workUtil = {
 				}
 			}).droppable({
 				addClasses: false,
+				over: function(event, ui){
+  					$(ui.draggable).css('outline', '#0000ff 5px dotted');
+				},
+				out: function(event, ui){
+					$(ui.draggable).css('outline', 'none');
+				}
 		    	drop: function( event, ui ) {
+					$(ui.helper).css('outline', 'none');
 		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
 					if(className){
 						$(ui.draggable)
@@ -114,10 +121,12 @@ var workUtil = {
 			$(target, $(container)).draggable({
 				connectToSortable: "#content-block-list",
 				helper: "clone",
-				start: function(){
+				start: function(event, ui){
 					$(sendTo).droppable('option','enable',true);
+  					$(ui.helper).css('outline', '#00ff00 5px dotted');
 				},
-				stop: function(){
+				stop: function(event, ui){
+					$(ui.helper).css('outline', 'none');
 					$(sendTo).droppable('option','disable',true);
 				}
 			});
