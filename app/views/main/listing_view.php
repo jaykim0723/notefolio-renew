@@ -9,7 +9,7 @@
 							<img src="/img/dummy.png"/>
 						</a>
 					</li>
-					<li class="thumbbox infinite-item">
+					<li class="thumbbox infinite-item hidden-xs hidden-sm">
 						<a class="go_to_work_info" href="/maxzidell/1004">
 							<img src="/img/hot_creators.png"/>
 						</a>

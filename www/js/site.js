@@ -47,17 +47,22 @@ var site = {
 				'</div>'
 			].join('')).on({
 				mouseenter : function(){
-					site.scroll.lock();
 					$(document).off('click.alarm');
 				},
 				mouseleave : function(){
-					site.scroll.unlock();
 					$(document).one('click.alarm', function(){
 						site.alarm.close();
 					})
 				}
 			})
-			.children('div')
+			.children('div').on({
+				mouseenter : function(){
+					site.scroll.lock();
+				},
+				mouseleave : function(){
+					site.scroll.unlock();
+				}
+			})
 			.height($(window).height()>550 ? 500 : $(window).height()-100)
 			.children('#alarm-popup-list')
 			.load('/alarm/listing/1');
