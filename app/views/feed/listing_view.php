@@ -34,7 +34,6 @@
 
 
 <script>
-	NFview = {};
 	$(function() {
 		$('.feed-activity-list').waypoint('infinite', {
 			items: '.activity-infinite-item',

@@ -40,6 +40,7 @@
 	<script src="/js/util.js"></script>
 	<script src="/js/site.js"></script>
 	<script>
+		NFview = {};
 		var common_assets = '';
 		site.user_id = <?php echo USER_ID ?>;
 		site.username = '<?php echo $this->session->userdata('username'); ?>';

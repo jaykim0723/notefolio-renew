@@ -2,9 +2,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<a href="http://magazine.notefolio.net" target="_blank" >Magazine</a>
+				<a href="http://www.notefolio.net">Home</a>
 				|
-				<a href="http://shop.notefolio.net" target="_blank" >Shop</a>
+				<a href="http://magazine.notefolio.net">Magazine</a>
+				|
+				<a href="http://shop.notefolio.net">Shop</a>
 			</div>
 			<div class="col-md-6 righted">
 				<?php if (USER_ID==0): ?>
@@ -29,15 +31,15 @@
 						</a>
 					</li>
 					<li>
-						<a href="/gallery/listing">Gallery</a>
+						<a class="btn btn-link" href="/gallery/listing">Gallery</a>
 					</li>
 				</ul>
 			</div>
 
 			<div class="col-md-6 righted">
 				<?php if (USER_ID==0): ?>
-					<a class="btn" href="/auth/login">Login with Facebook</a>
-					<a class="btn" href="/auth/register">Sign Up</a>
+					<a class="btn btn-primary" href="/auth/login">Login with Facebook</a>
+					<a class="btn btn-info" href="/auth/register">Sign Up</a>
 				<?php else: ?>
 					<a id="btn-feed" href="/feed/listing" class="btn btn-default">
 						<i class="glyphicon glyphicon-dashboard"></i>
@@ -50,7 +52,7 @@
 						</a>
 					</span>
 
-					<a class="btn btn-default" href="/gallery/create">
+					<a class="btn btn-success" href="/gallery/create">
 						Upload work
 					</a>
 					<a class="btn btn-default" href="/<?php echo $this->session->userdata('username') ?>">My Profile</a>
@@ -112,7 +114,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-2">
-					<a href="javascript:$('#mobile-menu').trigger('open');">open</a>
+					<a href="javascript:$('#mobile-menu').trigger('open');">
+						<i class="spi spi-drowdown"></i>
+					</a>
 				</div>
 				<div class="col-xs-8 centered">
 					<a href="/"><i class="spi spi-home"></i></a>

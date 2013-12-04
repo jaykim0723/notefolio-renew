@@ -1,7 +1,4 @@
 <?php if (!$this->input->is_ajax_request()): ?>
-<script>
-	NFview = {};
-</script>
 <section class="listing">
 	<div class="container">
 		<div class="row">
@@ -9,12 +6,12 @@
 				<ul class="main-thumbnail-list">
 					<li class="thumbbox infinite-item wide">
 						<a class="go_to_work_info" href="/maxzidell/1004">
-							<img src="/img/thumb_wide.gif"/>
+							<img src="/img/dummy.png"/>
 						</a>
 					</li>
 					<li class="thumbbox infinite-item">
 						<a class="go_to_work_info" href="/maxzidell/1004">
-							<img src="/img/thumb.gif"/>
+							<img src="/img/hot_creators.png"/>
 						</a>
 					</li>
 				</ul>

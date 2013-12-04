@@ -1,4 +1,4 @@
 <div id="auth-wrapper">
 	<header id="auth-header">
-		header
+		<a href="/">home</a>
 	</header>

@@ -4,7 +4,7 @@
 		area : 'work-info'
 	};
 </script>
-<div id="work-sidebar" class="">
+<div id="work-sidebar" class="hidden-xs hidden-sm">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
@@ -50,12 +50,12 @@
 						<div class="row">
 							<div class="col-xs-4">
 								<div class="well" style="height:50px;">
-									코멘트(5)
+									<a href="" class="btn btn-default">코멘트 열기(13)</a>
 								</div>
 							</div>
 							<div class="col-xs-4">
 								<div class="well" style="height:50px;">
-									좋아요
+									<a href="" class="btn btn-default">좋아요</a>
 								</div>
 							</div>
 							<div class="col-xs-4">
@@ -64,6 +64,11 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="well visible-xs visible-sm" style="height:100px;">
+							프로필
+						</div>
+
 					</div>
 				</div>
 
