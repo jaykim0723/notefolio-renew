@@ -1,5 +1,8 @@
 <script>
-	NFview = {};
+	NFview = <?php
+		echo json_encode($_ci_vars); // view내의 스크립트에서 편리하게 사용하기 위하여 미리 할당
+	?>;
+	NFview.area = 'work-form';
 </script>
 
 <?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'role'=>'form')); ?>
@@ -13,7 +16,7 @@
 
 			<!-- 사이드바 시작 -->
 			<div class="col-md-4 ">
-				<div class="sticky">
+				<div>
 					<h4>키워드</h4>
 					<select name="work_categories" id="work_categories" multiple title="Choose one of the following..." >
 						<option value="A7">가구디자인</option>
@@ -129,9 +132,6 @@
 	<li id="trash-bin" class="glyphicon glyphicon-remove trashable">&nbsp;</li>
 </ul>
 <script>
-	NFview = <?php
-		echo json_encode($_ci_vars); // view내의 스크립트에서 편리하게 사용하기 위하여 미리 할당
-	?>;
 	$(function() {
 		// form이 전송이 되면 hook하여 ajax로 호출을 한다.
 		$('#gallery_form').on('submit', function(e){

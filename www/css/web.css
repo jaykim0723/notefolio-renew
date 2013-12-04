@@ -3,6 +3,16 @@
 	padding-top: 9px;
 }
 
+
+/* info */
+#work-sidebar {
+	position:absolute;
+	width: 100%;
+	top:20px;
+	bottom:0;
+	left:0;
+}
+
 /* work */
 #content-block-list{
 	display: block;
@@ -34,11 +44,7 @@ li#trash-bin{
 	width:1em;
 	height:1em;
 }
-#work-sidebar {
-	position:fixed;
-	top:90px;
-	width:100%;
-}
+
 
 
 /* profile */

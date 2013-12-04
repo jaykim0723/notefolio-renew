@@ -55,7 +55,8 @@
 	color: #fff;
 }
 #content-wrap{
-	padding: 0 0 70px 0;
+	padding: 20px 0 70px 0;
+	position: relative;
 }
 .mm-page{
 	background-color:#fff;

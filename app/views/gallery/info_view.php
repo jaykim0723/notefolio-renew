@@ -1,13 +1,33 @@
 <?php if (!$this->input->is_ajax_request() OR $this->input->post('no_ajax')=='y'): ?>
 <script>
-	NFview = {};
+	NFview = {
+		area : 'work-info'
+	};
 </script>
+<div id="work-sidebar" class="">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<!-- empty -->
+			</div>
+			<div class="col-md-4">
+				<div>
+					<div class="well" style="height:200px;">
+						프로필
+					</div>
+					<div class="well visible-md visible-lg">
+						최신작품
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
 <section>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
 <?php endif ?>
-			
 				<div class="work-list infinite-list">
 					<div class="work-wrapper infinite-item">
 						<div class="work_info well" style="height: 100px;">
@@ -54,14 +74,7 @@
 <?php if (!$this->input->is_ajax_request() OR $this->input->post('no_ajax')=='y'): ?>
 			</div>
 			<div class="col-md-4">
-				<div class="sticky">
-					<div class="well" style="height:200px;">
-						프로필
-					</div>
-					<div class="well visible-md visible-lg" style="height:500px;">
-						최신작품
-					</div>
-				</div>
+				<!-- empty -->
 			</div>
 		</div>
 	</div>

@@ -306,7 +306,7 @@ var blockPage = {
 			else
 				o.html(t+'.');
 		}, 200);
-		$(window).bind('pageshow', function() {	
+		$(window).on('pageshow', function() {	
 			blockPage.unblock();
 		});	
 	},
@@ -383,7 +383,7 @@ function jumpObj(tar, callback){
 jQuery.fn.extend({
  anchorTar : '',
  anchorLink: function() {
-	this.bind('click', function(e){
+	this.on('click', function(e){
 		e.preventDefault();
 		var t= $(this).attr('href').split('#');
 		if(typeof t[1]=='undefined' || $('#'+t[1]).length == 0){

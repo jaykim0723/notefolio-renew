@@ -2,7 +2,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				magazine
+				<a href="http://magazine.notefolio.net" target="_blank" >Magazine</a>
+				|
+				<a href="http://shop.notefolio.net" target="_blank" >Shop</a>
 			</div>
 			<div class="col-md-6 righted">
 				<?php if (USER_ID==0): ?>
@@ -16,7 +18,7 @@
 		</div>
 	</div>
 </div>
-<header id="header" class="hidden-xs hidden-sm">
+<header id="header" class="hidden-xs hidden-sm sticky">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">

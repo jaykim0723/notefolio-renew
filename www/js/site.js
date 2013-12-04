@@ -52,7 +52,6 @@ var site = {
 				},
 				mouseleave : function(){
 					site.scroll.unlock();
-					console.log('mouseleave');
 					$(document).one('click.alarm', function(){
 						site.alarm.close();
 					})
@@ -111,8 +110,17 @@ $(function() {
 			console.log($.now());
 		}
 	});
-	$('#header').waypoint('sticky', {
-	  stuckClass: 'stuck'
+	$('.sticky').waypoint('sticky', {
+	  stuckClass: 'stuck',
+	  handler : function(direction){
+	  	if(!empty(NFview.area) && (NFview.area=='work-info' || NFview.area=='work-form')){
+		  	var $o = $('#work-sidebar');
+		  	if(direction=='up')
+		  		$o.css({'position':'absolute', 'top':'20px'});
+		  	else
+		  		$o.css({'position':'fixed', 'top':'70px'});
+	  	}
+	  }
 	});
 
 	$('#mobile-menu').mmenu({
