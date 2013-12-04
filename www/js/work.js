@@ -62,9 +62,12 @@ var workUtil = {
 		    	disable: true
 		    }).disableSelection();
 		},
-		setTrashBin: function(target){
+		setTrashBin: function(target, sendTo){
 			if(typeof(target)=='undefined'){
 				var target = "#trash-bin";
+			}
+			if(typeof(sendTo)=='undefined'){
+				var sendTo = "#content-block-list";
 			}
 			$(target).droppable({
 				tolerance: 'touch',
@@ -72,7 +75,24 @@ var workUtil = {
 		    		$(ui.draggable).fadeOut(100);
 		    		$(ui.draggable).remove();
 		    	}
-		    });
+		    }).draggable({
+				helper: "clone",
+				start: function(){
+					$(sendTo).droppable('option','disable',true);
+					$(sendTo).sortable('option','disable',true);
+					$('li', sendTo).droppable(
+						tolerance: 'touch',
+				    	drop: function( event, ui ) {
+				    		$(this).fadeOut(100);
+				    		$(this).remove();
+				    	}
+				    );
+				},
+				stop: function(){
+					$(sendTo).sortable('option','enable',true);
+					$('li', sendTo).droppable('destroy');
+				}
+			});
 		},
 		setTool: function(target, container, sendTo){
 			if(typeof(target)=='undefined'){
