@@ -35,12 +35,18 @@ var workUtil = {
     			cursor: 'move',
     			connectWith: trash,
 				start: function(event, ui){
-  					$(ui).css('outline', '#00ff00 5px dotted');
 					$(target).droppable('option','disable', true);
 				},
-		        placeholder: 'item-moving',
+		        placeholder: {
+		            element: function(clone, ui) {
+		                return $('<li class="item-sorting">'+clone[0].innerHTML+'</li>')
+		                		.css('outline', '#00ff00 5px dotted');
+		            },
+		            update: function() {
+		                return;
+		            }
+		        },
 				stop: function(event, ui){
-					$(ui).css('outline', 'none');
 				},
   				receive: function(event, ui) {
 
