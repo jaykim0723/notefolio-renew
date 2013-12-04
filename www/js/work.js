@@ -146,7 +146,7 @@ var workUtil = {
 							.append(workUtil.content.createBlock(className[1]))
 							.appendTo(sendTo);
 					}
-					setTimeout(function(){$(this).css('outline', 'none');},500);
+					setTimeout("$(this).css('outline', 'none');",500);
 				})
 				.draggable({
 					connectToSortable: "#content-block-list",
