@@ -16,11 +16,13 @@
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
+	  <script src="/js/libs/es5-shim.min.js"></script>
 	  <script src="/js/libs/html5shiv.js"></script>
 	  <script src="/js/libs/respond.min.js"></script>
 	<![endif]-->
 
 	<link href="/css/normalize.css" rel="stylesheet"/>
+	<link href="/css/flick/jquery-ui-1.10.3.custom.min.css" rel="stylesheet"/>
 	<link href="/css/bootstrap.min.css" rel="stylesheet"/>
 	<link href="/css/bootstrap-dialog.css" rel="stylesheet"/>
 	<link href="/css/bootstrap-select.css" rel="stylesheet"/>
@@ -31,6 +33,7 @@
 	<link href="https://s3.amazonaws.com/css_sprites/543/10543/ebc4aa8095.css" rel="stylesheet"/>
 
 	<script src="/js/libs/jquery-1.10.2.min.js"></script>
+	<script src="/js/libs/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="/js/util.js"></script>
 	<script src="/js/site.js"></script>
 	<script>

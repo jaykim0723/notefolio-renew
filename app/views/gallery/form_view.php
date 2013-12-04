@@ -11,27 +11,23 @@
 				<input type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
 				<br>
 				<h4>내용</h4>
-				<div class="well" style="height:600px;">
-					작품 블럭영역
-				</div>
-				<div class="well" style="height:100px;">
-					작품 블럭영역
-				</div>
-				<div class="well" style="height:500px;">
-					작품 블럭영역
-				</div>
-				<div class="well" style="height:600px;">
-					작품 블럭영역
-				</div>
-				<div class="well" style="height:60px;">
-					작품 블럭영역
-				</div>
-				<div class="well" style="height:400px;">
-					작품 블럭영역
-				</div>
-				<div class="well" style="height:200px;">
-					작품 블럭영역
-				</div>
+				<ul id="content-block-list" class="list-unstyled">
+					<li>
+						<div class="well" style="height:600px;">
+							작품 블럭영역
+						</div>
+					</li>
+					<li>
+						<div class="well" style="height:100px;">
+							작품 블럭영역
+						</div>
+					</li>
+					<li>
+						<div class="well" style="height:200px;">
+							작품 블럭영역
+						</div>
+					</li>
+				</ul>
 				<?php echo form_open(''); ?>
 				<?php echo form_close(); ?>
 			</div>
@@ -107,6 +103,12 @@
 		</div>
 	<?php echo form_close(); ?>
 </section>
+<ul class="list-unstyled" id="work-content-blockadder">
+	<li class="block-text"><i class="glyphicon glyphicon-pencil"></i></li>
+	<li class="block-image"><i class="glyphicon glyphicon-picture"></i></li>
+	<li class="block-video"><i class="glyphicon glyphicon-film"></i></li>
+	<li id="trash-bin" class="glyphicon glyphicon-remove trashable">&nbsp;</li>
+</ul>
 <script>
 	NFview = <?php
 		echo json_encode($_ci_vars); // view내의 스크립트에서 편리하게 사용하기 위하여 미리 할당
@@ -118,6 +120,10 @@
 			e.stopPropagation();
 			workUtil.save($(this));
 		})
+		//Content Ground Setting 살림.
+		workUtil.content.setGround('#content-block-list', '.trashable');
+		workUtil.content.setTool('.block-text, .block-image, .block-video', '#work-content-blockadder', '#content-block-list');
+		workUtil.content.setTrashBin('#trash-bin');
 	});
 </script>
 

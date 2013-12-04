@@ -158,7 +158,9 @@
 	margin-bottom: 100px;
 }
 
-
+#work-content-blockadder{
+	display: none;
+}
 
 
 /* auth */

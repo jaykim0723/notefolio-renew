@@ -2,6 +2,42 @@
 	padding-top: 9px;
 }
 
+/* work */
+
+#content-block-list{
+	display: block;
+	width: 100%;
+	min-height:300px;
+}
+#content-block-list li{
+	display: block;
+	width: 100%;
+	overflow: hidden;
+}
+#work-content-blockadder{
+	display: block;
+	position: fixed;
+	width: 50px;
+	height: auto;
+	margin: 0px;
+	padding: 5px;
+	top: 200px;
+	left: 0px;
+	font-size: 40px;
+	z-index: 10;
+}
+#work-content-blockadder li{
+	cursor: pointer;
+}
+li#trash-bin{
+	display: block;
+	width:1em;
+	height:1em;
+}
+
+
+>>>>>>> ba93db142c696743d9953a1fc4d83659026b6ea0
+
 /* profile */
 #profile-header {
 	height: 550px;

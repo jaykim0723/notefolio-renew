@@ -183,22 +183,42 @@ class user_model extends CI_Model {
      * 
      * @return object       (work content data)
      */
-    function post(){
-        $this->db->insert('works', array(
-            'work_id' => NULL, // 자동 생성
-            'user_id' => USER_ID
-        ));
-        $work_id = $this->db->insert_id();
-        return $work_id;
+    function post($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'id' => '',
+            'set_profile' => false,
+            'set_sns_fb' => false,
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        // default tank auth
+        $this->tank_auth->create_user();
+
+        $user_id = $this->db->insert_id();
+        return $user_id;
     }
 
     /**
      * post user data when update.
      *
-     * @param  array  $data (depend by field in table `works`)
+     * @param  array  $params (depend by field in table `users`)
      * @return object       (status return object. status=[done|fail])
      */
-    function put($input=array()){
+    function put($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'id' => '',
+            'set_profile' => false,
+            'set_sns_fb' => false,
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
         // 값을 정규식으로 검사한다.
         
         $input->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
