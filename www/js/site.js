@@ -45,15 +45,25 @@ var site = {
 					'<div id="alarm-popup-unread"></div>',
 					'<div id="alarm-popup-list"></div>',
 				'</div>'
-			].join(''));
-			$('#alarm-popup').on({
+			].join('')).on({
 				mouseenter : function(){
 					site.scroll.lock();
+					$(document).off('click.alarm');
 				},
 				mouseleave : function(){
 					site.scroll.unlock();
+					console.log('mouseleave');
+					$(document).one('click.alarm', function(){
+						site.alarm.close();
+					})
 				}
-			}).height($(window).height()>550 ? 500 : $(window).height()-100).children('#alarm-popup-list').load('/alarm/listing/1');
+			})
+			.children('div')
+			.height($(window).height()>550 ? 500 : $(window).height()-100)
+			.children('#alarm-popup-list')
+			.load('/alarm/listing/1');
+
+
  		},
 		close : function(){
 			site.scroll.unlock(); // 혹시 몰라서 다시 한 번
