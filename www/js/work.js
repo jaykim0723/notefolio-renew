@@ -82,6 +82,12 @@ var workUtil = {
 					$(sendTo).sortable('option','disable',true);
 					$('li', sendTo).droppable({
 						tolerance: 'touch',
+  						over: function( event, ui ) {
+  							$(this).css('outline', '#ff0000 1px solid');
+  						},
+  						out: function( event, ui ) {
+  							$(this).css('outline', 'none');
+  						},
 				    	drop: function( event, ui ) {
 				    		$(this).fadeOut(100);
 				    		$(this).remove();
