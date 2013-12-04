@@ -114,7 +114,7 @@ $(function() {
 	$('#header').waypoint('sticky', {
 	  stuckClass: 'stuck'
 	});
-/*
+
 	$('#mobile-menu').mmenu({
     	dragOpen: {
 			open:	false,
@@ -123,7 +123,7 @@ $(function() {
 			maxStartPos:	150
 		}
     })
-*/
+
     $('#btn-alarm').on('click', function(){
     	site.alarm.open();
     });
