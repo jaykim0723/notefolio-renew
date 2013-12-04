@@ -1,5 +1,10 @@
 /* work */
 
+#content-block-list{
+	display: block;
+	width: 100%;
+	min-height:300px;
+}
 #work-content-blockadder{
 	display: block;
 	position: fixed;
