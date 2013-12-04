@@ -66,12 +66,11 @@ var workUtil = {
 			if(typeof(target)=='undefined'){
 				var target = "#trash-bin";
 			}
-			$(target).sortable({
-				connectWith: "#content-block-list",
-      			placeholder: "ui-state-highlight",
-		    	receive: function( event, ui ) {
-		    		$(ui.item).fadeOut(100);
-		    		$(ui.item).remove();
+			$(target).droppable({
+				tolerance: 'touch',
+		    	drop: function( event, ui ) {
+		    		$(ui.draggable).fadeOut(100);
+		    		$(ui.draggable).remove();
 		    	}
 		    });
 		},
