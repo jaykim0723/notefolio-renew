@@ -80,13 +80,13 @@ var workUtil = {
 				start: function(){
 					$(sendTo).droppable('option','disable',true);
 					$(sendTo).sortable('option','disable',true);
-					$('li', sendTo).droppable(
+					$('li', sendTo).droppable({
 						tolerance: 'touch',
 				    	drop: function( event, ui ) {
 				    		$(this).fadeOut(100);
 				    		$(this).remove();
 				    	}
-				    );
+				    });
 				},
 				stop: function(){
 					$(sendTo).sortable('option','enable',true);
