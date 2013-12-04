@@ -68,15 +68,6 @@
 </section>
 <script>
 	$(function() {
-		$('.sticky').waypoint('sticky', {
-		  stuckClass: 'stuck',
-		  handler: function(){
-		  	var offset = $(this).offset();
-		  	$(this).css('top', offset.top+'px').css('left', offset.left+'px')
-		  	$('.sticky', $(this)).css('width', $(this).width());
-		  }
-		});
-
 		$('#btnDelete').on('click', function(e){
 			var url = $(this).attr('href');
 			BootstrapDialog.confirm('Hi Apple, are you sure?', function(result){

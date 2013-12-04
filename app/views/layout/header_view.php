@@ -1,10 +1,30 @@
-<header id="header" class="navbar-fixed-top visible-md visible-lg">
+<section id="top_menu" class="hidden-xs hidden-sm">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-5">
+			<div class="col-md-6">
+				magazine
+			</div>
+			<div class="col-md-6 righted">
+				<?php if (USER_ID==0): ?>
+					<a href="/auth/login">login</a>
+				<?php else: ?>				
+					<a href="/auth/setting">setting</a>
+					|
+					<a href="/auth/logout">logout</a>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+</section>
+<header id="header" class="hidden-xs hidden-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
 				<ul class="list-inline">
 					<li>
-						<a href="/">Main</a>
+						<a href="/">
+							<i class="spi spi-home"></i>
+						</a>
 					</li>
 					<li>
 						<a href="/gallery/listing">Gallery</a>
@@ -12,77 +32,46 @@
 				</ul>
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-6 righted">
 				<?php if (USER_ID==0): ?>
-					<a href="/auth/login">Login</a>
-					<a href="/auth/register">Register</a>
+					<a class="btn" href="/auth/login">Login with Facebook</a>
+					<a class="btn" href="/auth/register">Sign Up</a>
 				<?php else: ?>
-					<ul class="list-inline">
-						<li>
-							<a href="/feed/listing">Feed</a>
-						</li>
-						<li id="alarm-wrapper">
-							<a id="btn-alarm" href="javascript:;">
-								Alarm
-								<span class="label label-default unread-alarm"></span>
-							</a>
-						</li>
-						<li class="btn-group">
-							<button class="btn btn-default" id="btn-profile">
-								<?php echo $this->session->userdata('username') ?>
-							</button>
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-								<span class="caret"></span>
-								<span class="sr-only">Toggle Dropdown</span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li>
-									<a href="/gallery/create">
-										<i class="glyphicon glyphicon-circle-arrow-up"></i>
-										Upload work
-									</a>
-								</li>
-								<!-- <li><a href="/<?php echo $this->session->userdata('username') ?>">My Profile</a></li> -->
-								<li>
-									<a href="/auth/setting">
-										<i class="glyphicon glyphicon-cog"></i>
-										Setting
-									</a>
-								</li>
-								<li>
-									<a href="/auth/logout">
-										<i class="glyphicon glyphicon-arrow-right"></i>
-										Logout
-									</a>
-								</li>
-							</ul>
-							<script>
-								$('#btn-profile').on('click', function(){
-									site.redirect(site.url+site.username);
-								})
-							</script>
-						</li>
-					</ul>
+					<a id="btn-feed" href="/feed/listing" class="btn btn-default">
+						<i class="glyphicon glyphicon-dashboard"></i>
+						<span class="label label-default unread-feed"></span>
+					</a>
+					<span id="alarm-wrapper">
+						<a id="btn-alarm" href="javascript:;" class="btn btn-default">
+							<i class="glyphicon glyphicon-film"></i>
+							<span class="label label-default unread-alarm"></span>
+						</a>
+					</span>
+
+					<a class="btn btn-default" href="/gallery/create">
+						Upload work
+					</a>
+					<a class="btn btn-default" href="/<?php echo $this->session->userdata('username') ?>">My Profile</a>
 				<?php endif ?>
 			</div>
-
-			<div class="col-md-3">
-				<form action="gallery/listing/1" role="form">
-					<div class="input-group input-group-md">
-						<input type="search" name="q" placeholder="search" class="form-control">
-						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-						</div>					
-					</div>
-				</form>
-			</div>			
 
 		</div>
 	</div>
 </header>
 
 <nav id="mobile-menu" class="hidden-md hidden-lg">
+
 	<ul>
+		<li>
+			<form action="gallery/listing/1" role="form">
+				<div class="input-group input-group-md">
+					<input type="search" name="q" placeholder="search" class="form-control">
+					<div class="input-group-btn">
+						<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+					</div>					
+				</div>
+			</form> 
+		</li>
 		<?php if (USER_ID==0): ?>
 			<li>
 				<a href="/auth/login">Login</a>
@@ -92,7 +81,10 @@
 			</li>
 		<?php else: ?>
 			<li>
-				<a href="/feed/listing">Feed</a>
+				<a href="/feed/listing">
+					<i class="glyphicon glyphicon-dashboard"></i>
+					<span class="label label-default unread-feed"></span>
+				</a>
 			</li>
 			<li>
 				<a href="/alarm/listing">
@@ -116,8 +108,16 @@
 <div id="content-wrap">
 	<div id="mobile-header" class="mm-fixed-top visible-xs visible-sm">
 		<div class="container">
-			<a href="javascript:$('#mobile-menu').trigger('open');">open</a>
-			<a href="/"><i class="spi spi-home"></i></a>
-			<a href="/gallery"><i class="spi spi-drowdown"></i></a>
+			<div class="row">
+				<div class="col-xs-2">
+					<a href="javascript:$('#mobile-menu').trigger('open');">open</a>
+				</div>
+				<div class="col-xs-8 centered">
+					<a href="/"><i class="spi spi-home"></i></a>
+				</div>
+				<div class="col-xs-2">
+					<a href="/gallery"><i class="spi spi-drowdown"></i></a>
+				</div>
+			</div>
 		</div>
 	</div>

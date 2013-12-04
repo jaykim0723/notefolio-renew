@@ -27,7 +27,8 @@ var site = {
 			$.getJSON('/feed/check_unread').done(function(d){
 				console.log(d);
 				if(d.status=='done'){
-					$('.unread-alarm').text(d.unread)[d.unread>0?'show':'hide']();
+					$('.unread-alarm').text(d.alarm_unread)[d.alarm_unread>0?'show':'hide']();
+					$('.unread-feed').text(d.feed_unread)[d.feed_unread>0?'show':'hide']();
 					setTimeout(function(){
 						site.alarm.checkUnread();
 					}, 30000);
@@ -99,6 +100,9 @@ $(function() {
 		onAfterPageLoad : function(){
 			console.log($.now());
 		}
+	});
+	$('#header').waypoint('sticky', {
+	  stuckClass: 'stuck'
 	});
 
 	$('#mobile-menu').mmenu({

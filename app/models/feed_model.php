@@ -69,8 +69,10 @@ class feed_model extends CI_Model {
     function get_unread_count($user_id=''){
         $data = (object)array(
             'status' => 'done',
-            'all' => 2398,
-            'unread' => 34
+            'alarm_all' => 2398,
+            'alarm_unread' => 34,
+            'feed_all' => 2930,
+            'feed_unread' => 3
         );
         
         // do stuff
