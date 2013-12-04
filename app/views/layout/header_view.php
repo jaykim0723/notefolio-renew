@@ -43,12 +43,12 @@
 				<?php else: ?>
 					<a id="btn-feed" href="/feed/listing" class="btn btn-default">
 						<i class="glyphicon glyphicon-dashboard"></i>
-						<span class="label label-default unread-feed"></span>
+						<span class="label label-danger unread-feed"></span>
 					</a>
 					<span id="alarm-wrapper">
 						<a id="btn-alarm" href="javascript:;" class="btn btn-default">
 							<i class="glyphicon glyphicon-film"></i>
-							<span class="label label-default unread-alarm"></span>
+							<span class="label label-danger unread-alarm"></span>
 						</a>
 					</span>
 
