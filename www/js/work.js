@@ -50,9 +50,9 @@ var workUtil = {
 				},
 				out: function(event, ui){
 					$(ui.draggable).css('outline', 'none');
-				}
+				},
 		    	drop: function( event, ui ) {
-					$(ui.helper).css('outline', 'none');
+					$(ui.draggable).css('outline', 'none');
 		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
 					if(className){
 						$(ui.draggable)
