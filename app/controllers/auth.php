@@ -12,6 +12,7 @@ class Auth extends CI_Controller
 		$this->lang->load('tank_auth');
 		$this->load->library('fbsdk');
 		$this->load->library('user_agent');
+        $this->nf->_member_check(array('setting','change_password','change_email','unregister'));
 	}
 
 	function index()
@@ -573,7 +574,7 @@ class Auth extends CI_Controller
 	function register()
 	{
 		$this->nf->_member_check(FALSE); //member check
-		if(MY_ID > 0)
+		if(USER_ID > 0)
 			redirect('/');
             
         $data = array();
@@ -766,12 +767,9 @@ class Auth extends CI_Controller
 	 */
 	function _form($method='setting')
 	{
-		$this->notefolio->_member_check($method == 'setting' ? TRUE : FALSE);
-
-		if($method=='register' && MY_ID>0)
+		if($method=='register' && USER_ID>0)
 			redirect('/'); // 회원인 상태에서 register로 접근하는 사람은 초기화면으로 강제 이동시킴
 
-		$this->load->library(array('form_validation'));
 		$this->load->model('oldmodel/auth_model');
 		
 		$data = array();
@@ -830,7 +828,7 @@ class Auth extends CI_Controller
                }
 		  }else{
 			   // update
-			   $data = $this->auth_model->get_user_info(MY_ID);
+			   $data = $this->auth_model->get_user_info(USER_ID);
 			   log_message('debug','-------------'.json_encode($data));
 		  }
 		}else{
@@ -918,7 +916,7 @@ log_message('debug', ' -------- resurt ----------'.json_encode($result));
 					OR
 					($method=='setting' && $result !== FALSE)
 				){ // 회원가입이 정상처리되어 username
-					$id = ($method=='register' ? $result['user_id'] : MY_ID);
+					$id = ($method=='register' ? $result['user_id'] : USER_ID);
 					if(strpos($this->input->post('thumbnail_url'), 'temp')){
 						// 임시로 들어온 파일이다.
 						@unlink(APPPATH.'../www/profiles/'.$id);
