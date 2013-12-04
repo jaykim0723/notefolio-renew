@@ -136,16 +136,26 @@ var workUtil = {
 			if(typeof(sendTo)=='undefined'){
 				var sendTo = "#content-block-list";
 			}
-			$(target, $(container)).draggable({
-				connectToSortable: "#content-block-list",
-				helper: "clone",
-				start: function(event, ui){
-					$(sendTo).droppable('option','enable',true);
-				},
-				stop: function(event, ui){
-					$(sendTo).droppable('option','disable',true);
-				}
-			});
+			$(target, $(container))
+				.on('click', function(event){
+		    		var className =(""+$(this).attr("class")+"").match(/block-(\w+)/);
+					if(className){
+						$('<li></li>')
+							.attr('class','block-'+className[1])
+							.append(workUtil.content.createBlock(className[1]))
+							.appendTo(sendTo);
+					}
+				})
+				.draggable({
+					connectToSortable: "#content-block-list",
+					helper: "clone",
+					start: function(event, ui){
+						$(sendTo).droppable('option','enable',true);
+					},
+					stop: function(event, ui){
+						$(sendTo).droppable('option','disable',true);
+					}
+				});
 		},
 		createBlock: function(type, target){
 			if(typeof(type)=='undefined'){
