@@ -84,7 +84,7 @@ var workUtil = {
 					$('li', sendTo).droppable({
 						tolerance: 'touch',
   						over: function( event, ui ) {
-  							$(this).css('outline', '#ff0000 1px solid');
+  							$(this).css('outline', '#ff0000 5px dotted');
   						},
   						out: function( event, ui ) {
   							$(this).css('outline', 'none');
