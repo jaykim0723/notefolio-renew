@@ -5,8 +5,8 @@
 <script src="/js/libs/waypoints-infinite.js"></script>
 <script src="/js/libs/waypoints-sticky.js"></script>
 <script src="/js/libs/jquery.history.js"></script>
-<script src="/js/libs/jquery.hammer.min.js"></script>
-<script src="/js/libs/jquery.mmenu.min.all.js"></script>
+<!-- <script src="/js/libs/jquery.hammer.min.js"></script> -->
+<!-- <script src="/js/libs/jquery.mmenu.min.all.js"></script> -->
 <script src="/js/work.js"></script>
 <script>
 	$('select').selectpicker();

@@ -58,7 +58,7 @@
 		</div>
 	</div>
 </header>
-
+<!--
 <nav id="mobile-menu" class="hidden-md hidden-lg">
 
 	<ul>
@@ -104,8 +104,8 @@
 		<?php endif; ?>
 
 	</ul>
-</nav>
-<div id="content-wrap">
+</nav> -->
+<!-- <div id="content-wrap"> -->
 	<div id="mobile-header" class="mm-fixed-top visible-xs visible-sm">
 		<div class="container">
 			<div class="row">
