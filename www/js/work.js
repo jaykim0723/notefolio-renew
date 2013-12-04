@@ -34,8 +34,12 @@ var workUtil = {
   				opacity: 0.6,
     			cursor: 'move',
     			connectWith: trash,
-				start: function(){
+				start: function(event, ui){
+  					$(ui.item).css('outline', '#0000ff 5px dotted');
 					$(target).droppable('option','disable', true);
+				},
+				stop: function(event, ui){
+					$(ui.item).css('outline', 'none');
 				},
   				receive: function(event, ui) {
 
@@ -46,10 +50,8 @@ var workUtil = {
 			}).droppable({
 				addClasses: false,
 				over: function(event, ui){
-  					$(ui.draggable).css('outline', '#0000ff 5px dotted');
 				},
 				out: function(event, ui){
-					$(ui.draggable).css('outline', 'none');
 				},
 		    	drop: function( event, ui ) {
 					$(ui.draggable).css('outline', 'none');
