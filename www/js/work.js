@@ -35,11 +35,11 @@ var workUtil = {
     			cursor: 'move',
     			connectWith: trash,
 				start: function(event, ui){
-  					$(ui.item).css('outline', '#0000ff 5px dotted');
+  					$(ui.placeholder).css('outline', '#0000ff 5px dotted');
 					$(target).droppable('option','disable', true);
 				},
 				stop: function(event, ui){
-					$(ui.item).css('outline', 'none');
+					$(ui.placeholder).css('outline', 'none');
 				},
   				receive: function(event, ui) {
 
