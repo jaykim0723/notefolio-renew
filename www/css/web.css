@@ -35,7 +35,7 @@
 }
 div.upload-guide{
 	background: rgba(200, 226, 249, 0.4) url('/img/upload-guide.png') center center no-repeat;
-	outline: #0000ff 5px dotted;
+	border: #0000ff 5px dotted;
 }
 #work-content-blockadder{
 	display: block;

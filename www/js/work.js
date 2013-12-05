@@ -173,6 +173,22 @@ var workUtil = {
 							init: function() {
 								return $(this.element).addClass('upload-guide');
 							},
+							drop: function(e) {
+								return $(this.element).css({'border': 0, 'outline':'#0000AA 5px dotted'});
+							},
+							dragstart: noop,
+							dragend: function(e) {
+								return $(this.element).css({'border': '', 'outline':''});
+							},
+							dragenter: function(e) {
+								return $(this.element).css({'border': 0, 'outline':'#0000AA 5px dotted'});
+							},
+							dragover: function(e) {
+								return $(this.element).css({'border': 0, 'outline':'#0000AA 5px dotted'});
+							},
+							dragleave: function(e) {
+								return $(this.element).css({'border': '', 'outline':''});
+							},
 							fallback: function() {
 						        var msg 	 = $('<p>Internet Explorer 9 이하 버전은 기존 업로드 기능을 그대로 이용하고 있습니다.</p>');
 						        var uploader = workUtil.content.createOldUploader;
