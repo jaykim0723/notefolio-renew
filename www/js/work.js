@@ -194,12 +194,12 @@ var workUtil = {
 							},
 							addedfile: function(file) {
 								console.log(file);
-								
+								file.previewElement = $(this.options.previewTemplate.trim());
 								$(this.previewsContainer).parent().before(
-									workUtil.content.createBlock('image', $(this.options.previewTemplate.trim()), 'list-block')
+									workUtil.content.createBlock('image', file.previewElement, 'list-block')
 								);
 
-								$('.desc')
+								$('.desc', file.previewElement)
 									.append($('<span class="name"></span>').text(file.name))
 									.append($('<span class="size"></span>').text(file.size));
 
