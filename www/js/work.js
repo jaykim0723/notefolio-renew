@@ -169,9 +169,9 @@ var workUtil = {
 							acceptedFiles: 'image/*',
 							paramName: "file", 
 							maxFilesize: 128, // MB
-							fallback: function() {
+							/*fallback: function() {
 						        return $(this.element).text('not supported');
-						    }
+						    }*/
 						});
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
