@@ -172,7 +172,7 @@ var workUtil = {
 							maxFilesize: 128, // MB
 							init: function() {
 								return $(this.element)
-									.append($('<div class="uploader-text"></div>').text('이곳을 클릭하거나 파일을 끌어오세요.'));
+									.after($('<div class="uploader-text"></div>').text('이곳을 클릭하거나 파일을 끌어오세요.'));
 							},
 							fallback: function() {
 						        var msg 	 = $('<p>Internet Explorer 9 이하 버전은 기존 업로드 기능을 그대로 이용하고 있습니다.</p>');
