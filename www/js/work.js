@@ -51,6 +51,7 @@ var workUtil = {
 			                			.clone()
 			                		)
 		                		.css('opacity','0.5'));*/
+						return $(container);
 		            },
 		            update: function() {
 		                return;
