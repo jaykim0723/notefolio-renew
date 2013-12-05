@@ -166,7 +166,10 @@ var workUtil = {
 						.addClass('image-upload-box')
 						.dropzone({
 							url: "/upload/image",
-							acceptedFiles: 'image/*'
+							acceptedFiles: 'image/*',
+							paramName: "file", 
+							maxFilesize: 128, // MB
+							fallback: 'Internet Explorer 9 이하는 끌어다 놓기를 지원하지 않습니다.'
 						});
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
