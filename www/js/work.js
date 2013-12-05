@@ -95,6 +95,7 @@ var workUtil = {
 		    	drop: function( event, ui ) {
 					$(ui.draggable).css('outline', 'none');
 		    		workUtil.content.removeBlock(ui.draggable);
+		    	}
 		    }).draggable({
 				helper: "clone",
 				start: function(event, ui){
