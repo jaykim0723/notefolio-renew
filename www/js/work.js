@@ -237,7 +237,7 @@ var workUtil = {
 					complete: function(file) {
 						workUtil.content.removeBlock($(this.previewsContainer).parent());
 					},
-					error: function(file, message) {
+/*					error: function(file, message) {
 						var node, _i, _len, _ref, _results;
 						file.previewElement.classList.add("dz-error");
 						_ref = file.previewElement.querySelectorAll("[data-dz-errormessage]");
@@ -269,7 +269,7 @@ var workUtil = {
 					},
 					canceled: function(file) {
 						return this.emit("error", file, "Upload canceled.");
-					},
+					},*/
 					previewTemplate: '<div class="preview"><div class="image"></div><div class="desc"></div><div class="progress"></div></div>'
 				});
     		return output;
