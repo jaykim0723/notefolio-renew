@@ -233,11 +233,11 @@ var workUtil = {
 										}
 									});
 									file.previewElement.appendChild(file._removeLink);
-									$(this.previewsContainer).remove();
 								}
 								return this._updateMaxFilesReachedClass();
 							},
 							complete: function(file) {
+								$(this.previewsContainer).remove();
 								if (file._removeLink) {
 									return file._removeLink.textContent = this.options.dictRemoveFile;
 								}
