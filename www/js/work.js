@@ -169,7 +169,7 @@ var workUtil = {
 							url: uploadTo,
 							acceptedFiles: 'image/*',
 							paramName: "file", 
-							maxThumbnailFilesize: 1,
+							maxThumbnailFilesize: 10,
 							thumbnailWidth: '100%',
 							thumbnailHeight: '100%',
 							maxFilesize: 128, // MB
