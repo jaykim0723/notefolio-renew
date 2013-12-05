@@ -148,7 +148,7 @@ var workUtil = {
 					    });
 					},
 					stop: function(event, ui){
-						$(sendTo).droppable('distroy');
+						$(sendTo).droppable('destroy');
 					}
 				});
 		},
