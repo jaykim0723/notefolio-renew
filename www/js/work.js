@@ -176,20 +176,14 @@ var workUtil = {
 							drop: function(e) {
 								//return $(this.element);
 							},
-							dragstart: function(e) {
-								return $(this.element).css({'border': 0, 'outline':'#0000AA 5px dotted'});
-							},
 							dragend: function(e) {
-								return $(this.element).css({'border': '', 'outline':''});
+								return $(this.element).css({'border':''});
 							},
 							dragenter: function(e) {
-								return $(this.element).css({'border': 0, 'outline':'#0000AA 5px dotted'});
-							},
-							dragover: function(e) {
-								return $(this.element).css({'border': 0, 'outline':'#0000AA 5px dotted'});
+								return $(this.element).css({'border':'#0000AA 5px dotted'});
 							},
 							dragleave: function(e) {
-								return $(this.element).css({'border': '', 'outline':''});
+								return $(this.element).css({'border':''});
 							},
 							fallback: function() {
 						        var msg 	 = $('<p>Internet Explorer 9 이하 버전은 기존 업로드 기능을 그대로 이용하고 있습니다.</p>');
