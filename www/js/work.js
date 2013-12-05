@@ -201,7 +201,8 @@ var workUtil = {
 
 								$('.desc', file.previewElement)
 									.append($('<span class="name"></span>').text(file.name))
-									.append($('<span class="size"></span>').text(this.filesize(file.size)));
+									.append('|')
+									.append($('<span class="size"></span>').html(this.filesize(file.size)));
 
 								return this._updateMaxFilesReachedClass();
 							},
