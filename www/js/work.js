@@ -35,7 +35,7 @@ var workUtil = {
     			cursor: 'move',
     			connectWith: trash,
 				start: function(event, ui){
-					$(target).droppable('disable');
+					$(target).droppable('option','disable', true);
 				},
 		        placeholder: {
 		            element: function(clone, ui) {
@@ -64,17 +64,17 @@ var workUtil = {
 				},
 		    	drop: function( event, ui ) {
 					$(ui.draggable).css('outline', 'none');
-		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
-					console.log(className);
-					if(className){
-						$(ui.draggable)
-							.empty()
-							.append(workUtil.content.createBlock(className[1]));
+					if(target != '#'+$(this).attr('id')){
+			    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
+						if(className){
+							$(ui.draggable)
+								.empty()
+								.append(workUtil.content.createBlock(className[1]));
+						}
+						else {
+							//$(ui.draggable).remove();
+						}
 					}
-					else {
-						//$(ui.draggable).remove();
-					}
-					$(this).droppable('disable');
 		    	},
 		    	disable: true
 		    }).disableSelection();
@@ -102,8 +102,8 @@ var workUtil = {
 				helper: "clone",
 				start: function(event, ui){
 					$(ui.helper).css('width', '5px').css('height', '5px');
-					$(sendTo).droppable('disable');
-					$(sendTo).sortable('disable');
+					$(sendTo).droppable('option','disable',true);
+					$(sendTo).sortable('option','disable',true);
 					$('li', sendTo).droppable({
 						tolerance: 'touch',
   						over: function( event, ui ) {
@@ -118,7 +118,7 @@ var workUtil = {
 				    });
 				},
 				stop: function(){
-					$(sendTo).sortable('enable');
+					$(sendTo).sortable('option','enable',true);
 					$('li', sendTo).droppable('destroy');
 				}
 			});
@@ -149,9 +149,10 @@ var workUtil = {
 					connectToSortable: "#content-block-list",
 					helper: "clone",
 					start: function(event, ui){
-						$(sendTo).droppable('enable');
+						$(sendTo).droppable('option','enable',true);
 					},
 					stop: function(event, ui){
+						$(sendTo).droppable('option','disable',true);
 					}
 				});
 		},
