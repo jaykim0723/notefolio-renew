@@ -169,7 +169,9 @@ var workUtil = {
 							acceptedFiles: 'image/*',
 							paramName: "file", 
 							maxFilesize: 128, // MB
-							//fallback: $('<div>Internet Explorer 9 이하는 끌어다 놓기를 지원하지 않습니다.</div>')
+							fallback: function() {
+								$('<div>Internet Explorer 9 이하는 끌어다 놓기를 지원하지 않습니다.</div>').appendTo(this);
+							}
 						});
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
