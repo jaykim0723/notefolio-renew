@@ -170,7 +170,7 @@ var workUtil = {
 							paramName: "file", 
 							maxFilesize: 128, // MB
 							fallback: function() {
-								$('<div>Internet Explorer 9 이하는 끌어다 놓기를 지원하지 않습니다.</div>').appendTo(this);
+								$('<div>Internet Explorer 9 이하는 끌어다 놓기를 지원하지 않습니다.</div>').appendTo(output);
 							}
 						});
 
