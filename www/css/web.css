@@ -33,20 +33,10 @@
 	vertical-align: middle;
 	overflow: hidden;
 }
-#content-block-list li div.uploader-text{
-	position: absolute;
-	top:0;
-	left:0;
-	z-index: -1;
-	line-height: 190px;
-	width: 100%;
-	text-align: center;
-	vertical-align: middle;
-	font-size: 2em;
+div.upload-guide{
+	background: rgba(200, 226, 249, 0.4) url('/img/upload-guide.png') center center;
 	border: #0000ff 5px dotted;
-	background: rgba(200, 226, 249, 0.4);
 }
-
 #work-content-blockadder{
 	display: block;
 	position: fixed;
