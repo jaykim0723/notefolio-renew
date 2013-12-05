@@ -43,7 +43,14 @@ var workUtil = {
 		            	var container = $('<li class="item-sorting"></li>')
 		                		.css('outline', '#00ff00 5px dotted');
 
-		                return $(container).append($(clone[0]).children().clone()).css('opacity','0.5'));
+		                return $('<li class="item-sorting"></li>')
+		                		.css('outline', '#00ff00 5px dotted')
+		                		.append(
+		                			$(clone[0])
+			                			.children()
+			                			.clone()
+			                		)
+		                		.css('opacity','0.5'));
 		            },
 		            update: function() {
 		                return;
