@@ -270,7 +270,7 @@ var workUtil = {
 					canceled: function(file) {
 						return this.emit("error", file, "Upload canceled.");
 					},*/
-					//previewTemplate: '<div class="preview"><div class="image"></div><div class="desc"></div><div class="progress"></div></div>'
+					previewTemplate: '<div class="preview"><div class="image"></div><div class="desc"></div><div class="progress"></div></div>'
 				});
     		return output;
 		},
