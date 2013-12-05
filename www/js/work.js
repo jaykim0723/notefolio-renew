@@ -59,12 +59,6 @@ var workUtil = {
 			}).droppable({
 				addClasses: false,
 				over: function(event, ui){
-				},
-				out: function(event, ui){
-				},
-		    	drop: function( event, ui ) {
-					$(ui.draggable).css('outline', 'none');
-					console.log('#'+$(this).attr('id'));
 					if(target != '#'+$(this).attr('id')){
 			    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
 						if(className){
@@ -76,6 +70,11 @@ var workUtil = {
 							//$(ui.draggable).remove();
 						}
 					}
+				},
+				out: function(event, ui){
+				},
+		    	drop: function( event, ui ) {
+					$(ui.draggable).css('outline', 'none');
 		    	},
 		    	disable: true
 		    }).disableSelection();
