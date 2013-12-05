@@ -174,9 +174,11 @@ var workUtil = {
 								return $(this.element).addClass('upload-guide');
 							},
 							drop: function(e) {
+								//return $(this.element);
+							},
+							dragstart: function(e) {
 								return $(this.element).css({'border': 0, 'outline':'#0000AA 5px dotted'});
 							},
-							dragstart: noop,
 							dragend: function(e) {
 								return $(this.element).css({'border': '', 'outline':''});
 							},
