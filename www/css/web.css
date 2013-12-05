@@ -34,11 +34,11 @@
 	overflow: hidden;
 }
 #content-block-list li div.image-upload-box div.uploader-text{
-	height: 200px;
+	line-height: 200px;
 	width: 100%;
 	text-align: center;
 	vertical-align: middle;
-	font-size: 2.5em;
+	font-size: 2em;
 	outline: #0000ff 5px dotted;
 	z-index: -1;
 }
