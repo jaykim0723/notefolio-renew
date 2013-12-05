@@ -42,7 +42,7 @@ var workUtil = {
 		            	var container = $('<li class="item-sorting"></li>')
 		                		.css('outline', '#00ff00 5px dotted');
 
-		                return $(container).append($('<div>'+clone[0].innerHTML+'</div>').css('opacity','0.5'));
+		                return $(container).append($('<div>'+$(clone[0]).html()+'</div>').css('opacity','0.5'));
 		            },
 		            update: function() {
 		                return;
