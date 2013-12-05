@@ -170,8 +170,27 @@ var workUtil = {
 							paramName: "file", 
 							maxFilesize: 128, // MB
 							fallback: function() {
-								$('<div>Internet Explorer 9 이하는 끌어다 놓기를 지원하지 않습니다.</div>').appendTo(output);
-							}
+						        var child, messageElement, span, _i, _len, _ref;
+						        this.element.className = "" + this.element.className + " dz-browser-not-supported";
+						        _ref = this.element.getElementsByTagName("div");
+						        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+						          child = _ref[_i];
+						          if (/(^| )dz-message($| )/.test(child.className)) {
+						            messageElement = child;
+						            child.className = "dz-message";
+						            continue;
+						          }
+						        }
+						        if (!messageElement) {
+						          messageElement = Dropzone.createElement("<div class=\"dz-message\"><span></span></div>");
+						          this.element.appendChild(messageElement);
+						        }
+						        span = messageElement.getElementsByTagName("span")[0];
+						        if (span) {
+						          span.textContent = this.options.dictFallbackMessage;
+						        }
+						        return this.element.appendChild(this.getFallbackForm());
+						      }
 						});
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
