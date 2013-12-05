@@ -94,9 +94,7 @@ var workUtil = {
 				},
 		    	drop: function( event, ui ) {
 					$(ui.draggable).css('outline', 'none');
-		    		$(ui.draggable).fadeOut(100);
-		    		$(ui.draggable).remove();
-		    	}
+		    		workUtil.content.removeBlock(ui.draggable);
 		    }).draggable({
 				helper: "clone",
 				start: function(event, ui){
@@ -112,8 +110,7 @@ var workUtil = {
   							$(this).css('outline', 'none');
   						},
 				    	drop: function( event, ui ) {
-				    		$(this).fadeOut(100);
-				    		$(this).remove();
+				    		workUtil.content.removeBlock(this);
 				    	}
 				    });
 				},
@@ -184,7 +181,9 @@ var workUtil = {
 
 			return output;
 		},
-		removeBlock: function(type, target){
+		removeBlock: function(target){
+    		$(target).fadeOut(100);
+    		$(target).remove();
 		},
 
 	}
