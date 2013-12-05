@@ -200,7 +200,7 @@ var workUtil = {
 								_this = this;
 								file.previewElement = Dropzone.createElement(this.options.previewTemplate.trim());
 								file.previewTemplate = file.previewElement;
-								$(this.previewsContainer).before(
+								$(this.previewsContainer).parent().before(
 									workUtil.content.createBlock('image', file.previewElement, 'list-block')
 								);
 								_ref = file.previewElement.querySelectorAll("[data-dz-name]");
@@ -237,7 +237,7 @@ var workUtil = {
 								return this._updateMaxFilesReachedClass();
 							},
 							complete: function(file) {
-								workUtil.content.removeBlock(this.previewsContainer);
+								workUtil.content.removeBlock($(this.previewsContainer).parent());
 							},
     						previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
 						});
