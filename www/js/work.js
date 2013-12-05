@@ -169,9 +169,6 @@ var workUtil = {
 							url: uploadTo,
 							acceptedFiles: 'image/*',
 							paramName: "file", 
-							maxThumbnailFilesize: 10,
-							thumbnailWidth: '100%',
-							thumbnailHeight: '100%',
 							maxFilesize: 128, // MB
 							init: function() {
 								return $(this.element).addClass('upload-guide');
