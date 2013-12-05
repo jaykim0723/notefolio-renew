@@ -170,7 +170,7 @@ var workUtil = {
 							paramName: "file", 
 							maxFilesize: 128, // MB
 							fallback: function() {
-						        return $(this).text('not supported');
+						        return $(this.element).text('not supported');
 						    }
 						});
 
