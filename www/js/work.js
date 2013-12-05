@@ -180,7 +180,7 @@ var workUtil = {
 								return $(this.element).css({'border':''});
 							},
 							dragenter: function(e) {
-								return $(this.element).css({'border':'#0000AA 5px dotted'});
+								return $(this.element).css({'border':'5px #0000AA dotted'});
 							},
 							dragleave: function(e) {
 								return $(this.element).css({'border':''});
