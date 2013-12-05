@@ -169,12 +169,12 @@ var workUtil = {
 							url: uploadTo,
 							acceptedFiles: 'image/*',
 							paramName: "file", 
+							maxThumbnailFilesize: 1,
+							thumbnailWidth: 100%,
+							thumbnailHeight: 100%,
 							maxFilesize: 128, // MB
 							init: function() {
 								return $(this.element).addClass('upload-guide');
-							},
-							drop: function(e) {
-								//return $(this.element);
 							},
 							dragenter: function(e) {
 								return $(this.element).css({'border':'#9999FF 5px dotted'});
@@ -186,6 +186,9 @@ var workUtil = {
 								return $(this.element).css({'border':''});
 							},
 							dragend: function(e) {
+								return $(this.element).css({'border':''});
+							},
+							drop: function(e) {
 								return $(this.element).css({'border':''});
 							},
 							fallback: function() {
