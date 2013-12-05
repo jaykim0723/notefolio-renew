@@ -35,7 +35,7 @@ var workUtil = {
     			cursor: 'move',
     			connectWith: trash,
 				start: function(event, ui){
-					$(target).droppable('option','disable', true);
+					$(target).droppable('disable');
 				},
 		        placeholder: {
 		            element: function(clone, ui) {
@@ -101,8 +101,8 @@ var workUtil = {
 				helper: "clone",
 				start: function(event, ui){
 					$(ui.helper).css('width', '5px').css('height', '5px');
-					$(sendTo).droppable('option','disable',true);
-					$(sendTo).sortable('option','disable',true);
+					$(sendTo).droppable('disable');
+					$(sendTo).sortable('disable');
 					$('li', sendTo).droppable({
 						tolerance: 'touch',
   						over: function( event, ui ) {
@@ -117,7 +117,7 @@ var workUtil = {
 				    });
 				},
 				stop: function(){
-					$(sendTo).sortable('option','enable',true);
+					$(sendTo).sortable('enable');
 					$('li', sendTo).droppable('destroy');
 				}
 			});
@@ -148,10 +148,10 @@ var workUtil = {
 					connectToSortable: "#content-block-list",
 					helper: "clone",
 					start: function(event, ui){
-						$(sendTo).droppable('option','enable',true);
+						$(sendTo).droppable('enable');
 					},
 					stop: function(event, ui){
-						$(sendTo).droppable('option','disable',true);
+						$(sendTo).droppable('disable');
 					}
 				});
 		},
