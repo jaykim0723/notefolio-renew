@@ -172,7 +172,6 @@ var workUtil = {
 							maxFilesize: 128, // MB
 							init: function() {
 								return $(this.element)
-									.css('outline', '#0000ff 5px dotted')
 									.append($('<div class="uploader-text"></div>').text('이곳을 클릭하거나 파일을 끌어오세요.'));
 							},
 							fallback: function() {
