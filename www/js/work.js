@@ -59,16 +59,14 @@ var workUtil = {
 			}).droppable({
 				addClasses: false,
 				over: function(event, ui){
-					if(target != '#'+$(this).attr('id')){
-			    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
-						if(className){
-							$(ui.draggable)
-								.empty()
-								.append(workUtil.content.createBlock(className[1]));
-						}
-						else {
-							//$(ui.draggable).remove();
-						}
+		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
+					if(className){
+						$(ui.draggable)
+							.empty()
+							.append(workUtil.content.createBlock(className[1]));
+					}
+					else {
+						//$(ui.draggable).remove();
 					}
 				},
 				out: function(event, ui){
