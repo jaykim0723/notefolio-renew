@@ -35,7 +35,6 @@ var workUtil = {
     			cursor: 'move',
     			connectWith: trash,
 				start: function(event, ui){
-					$(target).droppable('option','disable', true);
 				},
 		        placeholder: {
 		            element: function(clone, ui) {
@@ -56,26 +55,7 @@ var workUtil = {
 				update: function(){
 					console.log('updated');
 				}
-			}).droppable({
-				addClasses: false,
-				over: function(event, ui){
-		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
-					if(className){
-						$(ui.draggable)
-							.empty()
-							.append(workUtil.content.createBlock(className[1]));
-					}
-					else {
-						//$(ui.draggable).remove();
-					}
-				},
-				out: function(event, ui){
-				},
-		    	drop: function( event, ui ) {
-					$(ui.draggable).css('outline', 'none');
-		    	},
-		    	disable: true
-		    }).disableSelection();
+			});
 		},
 		setTrashBin: function(target, sendTo){
 			if(typeof(target)=='undefined'){
@@ -100,7 +80,6 @@ var workUtil = {
 				helper: "clone",
 				start: function(event, ui){
 					$(ui.helper).css('width', '5px').css('height', '5px');
-					$(sendTo).droppable('option','disable',true);
 					$(sendTo).sortable('option','disable',true);
 					$('li', sendTo).droppable({
 						tolerance: 'touch',
@@ -147,10 +126,29 @@ var workUtil = {
 					connectToSortable: "#content-block-list",
 					helper: "clone",
 					start: function(event, ui){
-						$(sendTo).droppable('option','enable',true);
+						$(sendTo).droppable({
+							addClasses: false,
+							over: function(event, ui){
+							},
+							out: function(event, ui){
+							},
+					    	drop: function( event, ui ) {
+								$(ui.draggable).css('outline', 'none');
+					    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
+								if(className){
+									$(ui.draggable)
+										.empty()
+										.append(workUtil.content.createBlock(className[1]));
+								}
+								else {
+									//$(ui.draggable).remove();
+								}
+					    	},
+					    	disable: true
+					    });
 					},
 					stop: function(event, ui){
-						$(sendTo).droppable('option','disable',true);
+						$(sendTo).droppable('distroy');
 					}
 				});
 		},
