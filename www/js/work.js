@@ -170,10 +170,6 @@ var workUtil = {
 							acceptedFiles: 'image/*',
 							paramName: "file", 
 							maxFilesize: 128, // MB
-							accept: function(file, done) {
-								done();
-								$(this.previewsContainer).remove();
-							},
 							init: function() {
 								if(typeof(data)=='undefined')
 									return $(this.element).addClass('upload-guide');
@@ -237,8 +233,15 @@ var workUtil = {
 										}
 									});
 									file.previewElement.appendChild(file._removeLink);
+									$(this.previewsContainer).remove();
 								}
 								return this._updateMaxFilesReachedClass();
+							},
+							complete: function(file) {
+								if (file._removeLink) {
+									return file._removeLink.textContent = this.options.dictRemoveFile;
+								}
+
 							},
     						previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
 						});
