@@ -64,6 +64,7 @@ var workUtil = {
 				},
 		    	drop: function( event, ui ) {
 					$(ui.draggable).css('outline', 'none');
+					console.log('#'+$(this).attr('id'));
 					if(target != '#'+$(this).attr('id')){
 			    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
 						if(className){
