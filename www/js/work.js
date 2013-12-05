@@ -176,13 +176,16 @@ var workUtil = {
 							drop: function(e) {
 								//return $(this.element);
 							},
-							dragend: function(e) {
-								return $(this.element).css({'border':''});
-							},
 							dragenter: function(e) {
 								return $(this.element).css({'border':'5px #0000AA dotted'});
 							},
+							dragover: function(e) {
+								return $(this.element).css({'border':'5px #0000AA dotted'});
+							},
 							dragleave: function(e) {
+								return $(this.element).css({'border':''});
+							},
+							dragend: function(e) {
 								return $(this.element).css({'border':''});
 							},
 							fallback: function() {
