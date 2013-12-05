@@ -172,7 +172,7 @@ var workUtil = {
 							maxFilesize: 128, // MB
 							accept: function(file, done) {
 								done();
-								$(this).remove();
+								$(this.previewsContainer).remove();
 							},
 							init: function() {
 								if(typeof(data)=='undefined')
