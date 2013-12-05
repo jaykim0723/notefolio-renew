@@ -24,6 +24,16 @@
 	width: 100%;
 	overflow: hidden;
 }
+#content-block-list li div.image-upload-box{
+	display: block;
+	width: 100%;
+	min-height: 200px;
+	text-align: center;
+	vertical-align: middle;
+	background: rgba(200, 226, 249, 0.4);
+	content: "이미지를 업로드하려면 이곳을 누르세요";
+	overflow: hidden;
+}
 #work-content-blockadder{
 	display: block;
 	position: fixed;

@@ -70,9 +70,6 @@ var workUtil = {
 							.empty()
 							.append(workUtil.content.createBlock(className[1]));
 					}
-					//else if((""+$(ui.draggable).attr("class")+"").match(/remove/)){
-					//	$(ui.draggable).remove();
-					//}
 					else {
 						//$(ui.draggable).remove();
 					}
@@ -167,7 +164,14 @@ var workUtil = {
 			var output = '';
 			switch(type){
 				case 'image':
-					output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
+					output = $('<div></div>')
+						.addClass('image-upload-box')
+						.dropzone({
+							url: "/upload/image",
+							acceptedFiles: 'image/*'
+						});
+
+					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
 				case 'video':
 					output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb_wide6.jpg');
