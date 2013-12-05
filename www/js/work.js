@@ -39,19 +39,10 @@ var workUtil = {
 				},
 		        placeholder: {
 		            element: function(clone, ui) {
-		            	console.log(clone);
 		            	var container = $('<li class="item-sorting"></li>')
 		                		.css('outline', '#00ff00 5px dotted');
 
-		                /*return $('<li class="item-sorting"></li>')
-		                		.css('outline', '#00ff00 5px dotted')
-		                		.append(
-		                			$(clone[0])
-			                			.children()
-			                			.clone()
-			                		)
-		                		.css('opacity','0.5'));*/
-						return $(container);
+		                return $(container).append($('<div>'+clone[0].innerHTML+'</div>').css('opacity','0.5'));
 		            },
 		            update: function() {
 		                return;
@@ -74,6 +65,7 @@ var workUtil = {
 		    	drop: function( event, ui ) {
 					$(ui.draggable).css('outline', 'none');
 		    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
+					console.log(className);
 					if(className){
 						$(ui.draggable)
 							.empty()
