@@ -161,89 +161,7 @@ var workUtil = {
 			switch(type){
 				case 'image':
 					var uploadTo = "/upload/image";
-					output = $('<div></div>')
-						.addClass('image-upload-box')
-						.dropzone({
-							url: uploadTo,
-							acceptedFiles: 'image/*',
-							paramName: "file", 
-							maxFilesize: 128, // MB
-							init: function() {
-								if(typeof(data)=='undefined')
-									return $(this.element).addClass('upload-guide');
-							},
-							dragenter: function(e) {
-								return $(this.element).css({'border':'#9999FF 5px dotted'});
-							},
-							dragover: function(e) {
-								return $(this.element).css({'border':'#9999FF 5px dotted'});
-							},
-							dragleave: function(e) {
-								return $(this.element).css({'border':''});
-							},
-							dragend: function(e) {
-								return $(this.element).css({'border':''});
-							},
-							drop: function(e) {
-								return $(this.element).css({'border':''});
-							},
-							fallback: function() {
-								var msg 	 = $('<p>Internet Explorer 9 이하 버전은 기존 업로드 기능을 이용하고 있습니다.</p>');
-								var uploader = workUtil.content.createOldUploader;
-								return $(this.element).append(msg).append(uploader);
-							},
-							addedfile: function(file) {
-								console.log(file);
-								file.previewElement = $(this.options.previewTemplate.trim());
-								$(this.previewsContainer).parent().before(
-									workUtil.content.createBlock('image', file.previewElement, 'list-block')
-								);
-
-								$('.desc', file.previewElement)
-									.append($('<span class="name"></span>').text(file.name))
-									.append('|')
-									.append($('<span class="size"></span>').html(this.filesize(file.size)));
-
-								return this._updateMaxFilesReachedClass();
-							},
-							complete: function(file) {
-								workUtil.content.removeBlock($(this.previewsContainer).parent());
-							},
-							error: function(file, message) {
-								var node, _i, _len, _ref, _results;
-								file.previewElement.classList.add("dz-error");
-								_ref = file.previewElement.querySelectorAll("[data-dz-errormessage]");
-								_results = [];
-								for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-								  node = _ref[_i];
-								  _results.push(node.textContent = message);
-								}
-								return _results;
-							},
-							processing: function(file) {
-								file.previewElement.classList.add("dz-processing");
-								if (file._removeLink) {
-								  return file._removeLink.textContent = this.options.dictCancelUpload;
-								}
-							},
-							uploadprogress: function(file, progress, bytesSent) {
-								var node, _i, _len, _ref, _results;
-								_ref = file.previewElement.querySelectorAll("[data-dz-uploadprogress]");
-								_results = [];
-								for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-								  node = _ref[_i];
-								  _results.push(node.style.width = "" + progress + "%");
-								}
-								return _results;
-							},
-							success: function(file) {
-								return file.previewElement.classList.add("dz-success");
-							},
-							canceled: function(file) {
-								return this.emit("error", file, "Upload canceled.");
-							},
-    						previewTemplate: '<div class="preview"><div class="image"></div><div class="desc"></div><div class="progress"></div></div>'
-						});
+					output = workUtil.content.createUploader(type, uploadTo, data);
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
@@ -269,6 +187,92 @@ var workUtil = {
 		removeBlock: function(target){
     		$(target).fadeOut(100);
     		$(target).remove();
+		},
+		createUploader: function(type, url, data){
+			var output = $('<div></div>')
+				.addClass('image-upload-box')
+				.dropzone({
+					url: url,
+					acceptedFiles: 'image/*',
+					paramName: "file", 
+					maxFilesize: 128, // MB
+					init: function() {
+						if(typeof(data)=='undefined')
+							return $(this.element).addClass('upload-guide');
+					},
+					dragenter: function(e) {
+						return $(this.element).css({'border':'#9999FF 5px dotted'});
+					},
+					dragover: function(e) {
+						return $(this.element).css({'border':'#9999FF 5px dotted'});
+					},
+					dragleave: function(e) {
+						return $(this.element).css({'border':''});
+					},
+					dragend: function(e) {
+						return $(this.element).css({'border':''});
+					},
+					drop: function(e) {
+						return $(this.element).css({'border':''});
+					},
+					fallback: function() {
+						var msg 	 = $('<p>Internet Explorer 9 이하 버전은 기존 업로드 기능을 이용하고 있습니다.</p>');
+						var uploader = workUtil.content.createOldUploader;
+						return $(this.element).append(msg).append(uploader);
+					},
+					addedfile: function(file) {
+						console.log(file);
+						file.previewElement = $(this.options.previewTemplate.trim());
+						$(this.previewsContainer).parent().before(
+							workUtil.content.createBlock('image', file.previewElement, 'list-block')
+						);
+
+						$('.desc', file.previewElement)
+							.append($('<span class="name"></span>').text(file.name))
+							.append('|')
+							.append($('<span class="size"></span>').html(this.filesize(file.size)));
+
+						return this._updateMaxFilesReachedClass();
+					},
+					complete: function(file) {
+						workUtil.content.removeBlock($(this.previewsContainer).parent());
+					},
+					error: function(file, message) {
+						var node, _i, _len, _ref, _results;
+						file.previewElement.classList.add("dz-error");
+						_ref = file.previewElement.querySelectorAll("[data-dz-errormessage]");
+						_results = [];
+						for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+						  node = _ref[_i];
+						  _results.push(node.textContent = message);
+						}
+						return _results;
+					},
+					processing: function(file) {
+					file.previewElement.classList.add("dz-processing");
+						if (file._removeLink) {
+						  return file._removeLink.textContent = this.options.dictCancelUpload;
+						}
+					},
+					uploadprogress: function(file, progress, bytesSent) {
+						var node, _i, _len, _ref, _results;
+						_ref = file.previewElement.querySelectorAll("[data-dz-uploadprogress]");
+						_results = [];
+						for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+						  node = _ref[_i];
+						  _results.push(node.style.width = "" + progress + "%");
+						}
+						return _results;
+					},
+					success: function(file) {
+						return file.previewElement.classList.add("dz-success");
+					},
+					canceled: function(file) {
+						return this.emit("error", file, "Upload canceled.");
+					},
+					previewTemplate: '<div class="preview"><div class="image"></div><div class="desc"></div><div class="progress"></div></div>'
+				});
+    		return output;
 		},
 		createOldUploader: function(url){
     		return $("<div></div>");
