@@ -194,22 +194,50 @@ var workUtil = {
 							},
 							addedfile: function(file) {
 								console.log(file);
-								file.previewElement = $(this.options.previewTemplate.trim());
+								var node, _i, _j, _len, _len1, _ref, _ref1,
+								_this = this;
+								file.previewElement = Dropzone.createElement(this.options.previewTemplate.trim());
+								file.previewTemplate = file.previewElement;
 								$(this.previewsContainer).parent().before(
 									workUtil.content.createBlock('image', file.previewElement, 'list-block')
 								);
-
-								$('.desc', file.previewElement)
-									.append($('<span class="name"></span>').text(file.name))
-									.append('|')
-									.append($('<span class="size"></span>').html(this.filesize(file.size)));
-
+								_ref = file.previewElement.querySelectorAll("[data-dz-name]");
+								for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+									node = _ref[_i];
+									node.textContent = file.name;
+								}
+								_ref1 = file.previewElement.querySelectorAll("[data-dz-size]");
+								for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+									node = _ref1[_j];
+									node.innerHTML = this.filesize(file.size);
+								}
+								if (this.options.addRemoveLinks) {
+									file._removeLink = Dropzone.createElement("<a class=\"dz-remove\" href=\"javascript:undefined;\">" + this.options.dictRemoveFile + "</a>");
+									file._removeLink.addEventListener("click", function(e) {
+										e.preventDefault();
+										e.stopPropagation();
+										if (file.status === Dropzone.UPLOADING) {
+											return Dropzone.confirm(_this.options.dictCancelUploadConfirmation, function() {
+												return _this.removeFile(file);
+											});
+										} else {
+											if (_this.options.dictRemoveFileConfirmation) {
+												return Dropzone.confirm(_this.options.dictRemoveFileConfirmation, function() {
+													return _this.removeFile(file);
+												});
+											} else {
+												return _this.removeFile(file);
+											}
+										}
+									});
+									file.previewElement.appendChild(file._removeLink);
+								}
 								return this._updateMaxFilesReachedClass();
 							},
 							complete: function(file) {
 								workUtil.content.removeBlock($(this.previewsContainer).parent());
 							},
-    						previewTemplate: '<div class="preview"><div class="image"></div><div class="desc"></div><div class="progress"></div></div>'
+    						previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
 						});
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
