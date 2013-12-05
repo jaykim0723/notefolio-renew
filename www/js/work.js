@@ -196,7 +196,7 @@ var workUtil = {
 								console.log(file);
 								
 								$(this.previewsContainer).parent().before(
-									workUtil.content.createBlock('image', $(this.options.previewTemplate.trim());, 'list-block')
+									workUtil.content.createBlock('image', $(this.options.previewTemplate.trim()), 'list-block')
 								);
 
 								$('.desc')
