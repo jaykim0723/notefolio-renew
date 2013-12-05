@@ -74,6 +74,7 @@ var workUtil = {
 					else {
 						//$(ui.draggable).remove();
 					}
+					$(this).droppable('disable');
 		    	},
 		    	disable: true
 		    }).disableSelection();
@@ -151,7 +152,6 @@ var workUtil = {
 						$(sendTo).droppable('enable');
 					},
 					stop: function(event, ui){
-						$(sendTo).droppable('disable');
 					}
 				});
 		},
