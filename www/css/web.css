@@ -33,6 +33,16 @@
 	background: rgba(200, 226, 249, 0.4);
 	overflow: hidden;
 }
+#content-block-list li div.image-upload-box span.upload-text{
+	display: block;
+	line-height: 200px;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 2.5em;
+	outline: #0000ff 5px dotted;
+}
+
 #work-content-blockadder{
 	display: block;
 	position: fixed;
