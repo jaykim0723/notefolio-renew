@@ -162,16 +162,19 @@ var workUtil = {
 			var output = '';
 			switch(type){
 				case 'image':
+					var uploadTo = "/upload/image";
 					output = $('<div></div>')
 						.addClass('image-upload-box')
 						.dropzone({
-							url: "/upload/image",
+							url: uploadTo,
 							acceptedFiles: 'image/*',
 							paramName: "file", 
 							maxFilesize: 128, // MB
-							/*fallback: function() {
-						        return $(this.element).text('not supported');
-						    }*/
+							fallback: function() {
+						        var msg 	 = $('<p>Internet Explorer 9 이하 버전은 기존 업로드 기능을 그대로 이용하고 있습니다.</p>');
+						        var uploader = workUtil.content.createOldUploader;
+						        return $(this.element).append(msg).append(uploader);
+						    }
 						});
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
@@ -190,6 +193,9 @@ var workUtil = {
 		removeBlock: function(target){
     		$(target).fadeOut(100);
     		$(target).remove();
+		},
+		createOldUploader: function(url){
+    		return $("<div></div>");
 		},
 
 	}
