@@ -154,7 +154,7 @@ var workUtil = {
 					}
 				});
 		},
-		createBlock: function(type, target){
+		createBlock: function(type, data, returnType){
 			if(typeof(type)=='undefined'){
 				var type = "text";
 			}
@@ -199,7 +199,9 @@ var workUtil = {
 								_this = this;
 								file.previewElement = Dropzone.createElement(this.options.previewTemplate.trim());
 								file.previewTemplate = file.previewElement;
-								this.previewsContainer.appendChild(file.previewElement);
+								$(this.previewsContainer).before(
+									workUtil.content.createBlock('image', file.previewElement, 'list-block')
+								);
 								_ref = file.previewElement.querySelectorAll("[data-dz-name]");
 								for (_i = 0, _len = _ref.length; _i < _len; _i++) {
 									node = _ref[_i];
@@ -246,7 +248,15 @@ var workUtil = {
 					output = $('<p></p>').text('이곳을 눌러 내용을 입력하세요.');
 				break;
 			}
-
+			if(typeof(data)!='undefined'){
+				$(output).append($(data));
+			}
+			if(typeof(returnType)!='undefined' 
+			&& returnType=="list-block"){
+				output =  $('<li></li>')
+							.attr('class','block-'+type)
+							.append(output);
+			}
 			return output;
 		},
 		removeBlock: function(target){
