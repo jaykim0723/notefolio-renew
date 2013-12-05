@@ -177,10 +177,10 @@ var workUtil = {
 								//return $(this.element);
 							},
 							dragenter: function(e) {
-								return $(this.element).css({'border':'#3333FF 5px dotted'});
+								return $(this.element).css({'border':'#9999FF 5px dotted'});
 							},
 							dragover: function(e) {
-								return $(this.element).css({'border':'#3333FF 5px dotted'});
+								return $(this.element).css({'border':'#9999FF 5px dotted'});
 							},
 							dragleave: function(e) {
 								return $(this.element).css({'border':''});
