@@ -194,6 +194,10 @@ var workUtil = {
 								var uploader = workUtil.content.createOldUploader;
 								return $(this.element).append(msg).append(uploader);
 							},
+							accept: function(file, done) {
+								done();
+								$(this).remove();
+							}
 							addedfile: function(file) {
 								console.log(file);
 								var node, _i, _j, _len, _len1, _ref, _ref1,
