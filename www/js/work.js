@@ -220,7 +220,7 @@ var workUtil = {
 						var uploader = workUtil.content.createOldUploader;
 						return $(this.element).append(msg).append(uploader);
 					},
-/*					addedfile: function(file) {
+					addedfile: function(file) {
 						console.log(file);
 						file.previewElement = $(this.options.previewTemplate.trim());
 						$(this.previewsContainer).parent().before(
@@ -233,7 +233,7 @@ var workUtil = {
 							.append($('<span class="size"></span>').html(this.filesize(file.size)));
 
 						return this._updateMaxFilesReachedClass();
-					},*/
+					},
 					complete: function(file) {
 						workUtil.content.removeBlock($(this.previewsContainer).parent());
 					},
