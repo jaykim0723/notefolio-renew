@@ -23,6 +23,7 @@
 	display: block;
 	width: 100%;
 	overflow: hidden;
+	position: relative;
 }
 #content-block-list li div.image-upload-box{
 	display: block;
@@ -34,13 +35,16 @@
 	overflow: hidden;
 }
 #content-block-list li div.image-upload-box div.uploader-text{
-	line-height: 200px;
+	position: absolute;
+	top:0;
+	left:0;
+	z-index: -1;
+	line-height: 190px;
 	width: 100%;
 	text-align: center;
 	vertical-align: middle;
 	font-size: 2em;
-	outline: #0000ff 5px dotted;
-	z-index: -1;
+	border: #0000ff 5px dotted;
 }
 
 #work-content-blockadder{
