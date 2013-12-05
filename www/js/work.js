@@ -171,7 +171,8 @@ var workUtil = {
 							paramName: "file", 
 							maxFilesize: 128, // MB
 							init: function() {
-								return $(this.element).addClass('upload-guide');
+								if(typeof(data)=='undefined')
+									return $(this.element).addClass('upload-guide');
 							},
 							dragenter: function(e) {
 								return $(this.element).css({'border':'#9999FF 5px dotted'});
