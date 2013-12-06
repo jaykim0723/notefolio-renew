@@ -6,12 +6,6 @@ class Upload extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-	
-		if ($this->tank_auth->is_logged_in()) {
-			define('USER_ID', $this->tank_auth->get_user_id());
-		}else{
-			define('USER_ID', 0);
-		}
 	}
 
 	function index()
@@ -321,6 +315,14 @@ class Upload extends CI_Controller
 		echo json_encode(array('status' => $status, 'msg' => $msg));		
 	}
 	
+	function image($file){
+		$json = array(
+			'status' => 'done',
+			'upload_id' => 0,
+			'filename' => 'QWERTYUIOP1234567890ASDFGHJKL.png'
+			);
 
+		$this->layout->set_json($json)->render();
+	}
 	
 }
