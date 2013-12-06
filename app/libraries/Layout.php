@@ -24,7 +24,7 @@ class Layout
 	function render($views=array()){
 		if($this->json_data!==NULL){
 			$this->ci->output->set_content_type('application/json')->set_output(json_encode($this->json_data));			
-			return;
+			exit();
 		}
 
 		if(sizeof($views)>0){
