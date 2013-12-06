@@ -316,11 +316,21 @@ class Upload extends CI_Controller
 	}
 	
 	function image($file=null){
-		$json = array(
-			'status' => 'done',
-			'upload_id' => 0,
-			'filename' => 'QWERTYUIOP1234567890ASDFGHJKL.png'
-			);
+		
+
+		if($file=null){
+			$json = array(
+				'status' => 'error',
+				'message' => 'not_file_received'
+				);
+		}
+		else{
+			$json = array(
+				'status' => 'done',
+				'upload_id' => 0,
+				'filename' => 'QWERTYUIOP1234567890ASDFGHJKL.png'
+				);
+		}
 
 		$this->layout->set_json($json)->render();
 	}
