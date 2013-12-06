@@ -43,7 +43,7 @@
 
 					
 					<h4>CCL</h4>
-					<select name="work_ccl" id="work_ccl" class="show-tick" title="Choose one of the following..." >
+					<select name="work_ccl" id="work_ccl" class="" title="Choose one of the following..." >
 						<option value="">CCL 표시 안함</option>
 						<option data-content="<img src='http://dev.notefolio.net/images/ccl/y0.png'/>저작자표시" value="BY">저작자표시</option>
 						<option value="BY-NC">저작자표시-비영리</option>
