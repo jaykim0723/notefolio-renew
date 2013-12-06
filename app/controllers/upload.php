@@ -321,15 +321,19 @@ class Upload extends CI_Controller
 		if($file==null){
 			$json = array(
 				'status' => 'fail',
-				'message' => 'not_file_received'
+				'message' => 'no_file_received'
 				);
 		}
-		else{
+		else if($file=='debug'){
 			$json = array(
 				'status' => 'done',
 				'upload_id' => 0,
 				'filename' => 'QWERTYUIOP1234567890ASDFGHJKL.png'
 				);
+		}
+		else{
+
+
 		}
 
 		$this->layout->set_json($json)->render();
