@@ -110,9 +110,15 @@
 			<li>
 				<a href="/auth/setting">Settings</a>
 			</li>
+			<li id="mobile-menu-signout">
+				<a href="btn btn-default btn-lg">
+					Sign out
+				</a>
+			</li>
 		<?php endif; ?>
 
 	</ul>
+
 </nav>
 <div id="content-wrap">
 	<div id="mobile-header" class="mm-fixed-top visible-xs visible-sm">
