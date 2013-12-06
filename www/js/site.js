@@ -133,7 +133,7 @@ $(function() {
 			open:	false,
 			pageNode:	null,
 			threshold:	50,
-			maxStartPos:	150
+			maxStartPos:	150,
 		}
     })
 

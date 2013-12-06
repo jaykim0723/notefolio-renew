@@ -12,7 +12,7 @@
 				<?php if (USER_ID==0): ?>
 					<a href="/auth/login">login</a>
 				<?php else: ?>				
-					<a href="/auth/setting">setting</a>
+					<a href="/<?php echo $this->session->userdata('username') ?>/setting">setting</a>
 					|
 					<a href="/auth/logout">logout</a>
 				<?php endif; ?>
@@ -84,6 +84,11 @@
 				<a href="/auth/register">Register</a>
 			</li>
 		<?php else: ?>
+			<li id="mobile-menu-profile" class="centered">
+				<a href="/<?php echo $this->session->userdata('username') ?>">
+					<img src="http://notefolio.net/profiles/147?h=1385655105" alt="">
+				</a>
+			</li>
 			<li>
 				<a href="/feed/listing">
 					Feed
@@ -121,7 +126,7 @@
 				<div class="col-xs-8 centered">
 					<a href="/"><i class="spi spi-home"></i></a>
 				</div>
-				<div class="col-xs-2">
+				<div class="col-xs-2 righted">
 					<a href="/gallery"><i class="spi spi-drowdown"></i></a>
 				</div>
 			</div>

@@ -24,7 +24,8 @@ html.mm-opened.mm-opening #mm-blocker {
   border: 0px solid rgba(100, 100, 100, 0); }
 
 .mm-menu .mm-hidden {
-  display: none !important; }
+  display: none !important; 
+}
 
 .mm-fixed-top,
 .mm-fixed-bottom {

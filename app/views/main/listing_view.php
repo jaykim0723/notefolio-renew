@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<ul class="main-thumbnail-list">
+				<ul id="main-list-top" class="main-thumbnail-list">
 					<li class="thumbbox infinite-item wide">
 						<a class="go_to_work_info" href="/maxzidell/1004">
 							<img src="/img/dummy.png"/>
