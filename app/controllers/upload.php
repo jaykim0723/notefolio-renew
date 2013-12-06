@@ -316,11 +316,11 @@ class Upload extends CI_Controller
 	}
 	
 	function image($file=null){
-		
+
 
 		if($file=null){
 			$json = array(
-				'status' => 'error',
+				'status' => 'fail',
 				'message' => 'not_file_received'
 				);
 		}
