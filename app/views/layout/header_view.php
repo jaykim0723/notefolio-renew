@@ -12,7 +12,7 @@
 				<?php if (USER_ID==0): ?>
 					<a href="/auth/login">login</a>
 				<?php else: ?>				
-					<a href="/<?php echo $this->session->userdata('username') ?>/setting">setting</a>
+					<a href="/auth/setting">setting</a>
 					|
 					<a href="/auth/logout">logout</a>
 				<?php endif; ?>
