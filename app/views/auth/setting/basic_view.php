@@ -24,7 +24,7 @@
 	<div class='row-fluid'>
 		<div class="span8 control-group">
 			<label>이메일</label>
-			<?php if(MY_ID==0): ?>
+			<?php if(USER_ID==0): ?>
 			<input type='text'  name='email' data-last='' id='email' value="<?php echo $email?>"/> <span class="check" id='email_checker' rel='tooltip' title="로그인시 ID로 활용됩니다."></span>
 
 		</div>
@@ -68,14 +68,14 @@
 			<?php endif; ?>
 		</div>
 		
-	<?php if(MY_ID==0): ?>
+	<?php if(USER_ID==0): ?>
 	</div>
 	<div class='row-fluid'>
 	<?php endif; ?>
 	
 		<div class="span8 control-group">
 			<label>비밀번호</label>
-			<?php if(MY_ID==0): ?>
+			<?php if(USER_ID==0): ?>
 			<input type='password' name='password' value="<?php echo $password?>"  minlength='3' maxlength='20'/>
 		</div>
 		
@@ -137,7 +137,7 @@
 	</div>
 
 
-	<?php if(MY_ID>0):?>
+	<?php if(USER_ID>0):?>
 	    <? if(isset($birth) && !empty($birth)) {
 	           $birth_temp=explode('-', $birth);
                $birth = array();
@@ -174,7 +174,7 @@
             </div>
         </div>
 	<?php endif;?>	
-	<?php if(MY_ID==0): ?>
+	<?php if(USER_ID==0): ?>
 	
 		<div class='row-fluid'>
 			<div class="span8 control-group">
