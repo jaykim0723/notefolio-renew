@@ -1,4 +1,4 @@
-<div id="profile-header">
+<div id="profile-header" style="background-image:url(http://notefolio.net/img/1312/29564_r);">
 	<div id="profile-inner-wrapper">
 		<div id="profile-inner">
 			<div id="btn-edit-inner" class="btn-group">

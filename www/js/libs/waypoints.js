@@ -236,8 +236,9 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
       }
 
       Waypoint.prototype.trigger = function(args) {
-        if($(window).width()<992) return;
-        
+        if($(this.element).hasClass('sticky-wrapper') && $(window).width()<992)
+          return;
+
         if (!this.enabled) {
           return;
         }

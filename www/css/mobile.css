@@ -72,7 +72,7 @@
 	text-align: center;
 	color: #fff;
 }
-#content-wrap{
+#content-wrap {
 	padding: 70px 0 70px 0;
 	position: relative;
 }
@@ -358,7 +358,9 @@ p.desc {
 /* profile */
 #profile-header {
 	width: 100%;
-	background: #ddd;
+	background-position:center center;
+	background-repeat : repeat;
+	background-attachment: fixed;
 	margin-bottom: 30px;
 	position: relative;
 }
@@ -380,7 +382,7 @@ p.desc {
 	background: pink;
 	height: 300px;
 	margin: 10px auto 10px auto;
-	opacity: 0.9;
+	opacity: 0.3;
 }
 #profile-inner {
 	position: relative;
