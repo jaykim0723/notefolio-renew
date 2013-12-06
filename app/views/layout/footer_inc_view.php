@@ -12,7 +12,7 @@
 <script src="/js/libs/dropzone.dict-ko.js"></script>
 <script src="/js/work.js"></script>
 <script>
-	$('select').selectpicker();
+	$('select:not(.no-jquery)').selectpicker();
 </script>
 
 </body>

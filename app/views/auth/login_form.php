@@ -40,14 +40,12 @@ if ($this->input->get('go_to')) {
 } else {
     $site_to = $this->input->server('HTTP_REFERER');
 }
-$hidden_field = array(
-    'go_to' => $site_to,
-);
 ?>
 <section>
 				
-	<?php echo form_open($this->uri->uri_string(), array('role'=>'form','id'=>'login-form')); ?>
-	<?php echo form_hidden($hidden_field); ?>
+	<?php echo form_open($this->uri->uri_string(), array('role'=>'form','id'=>'login-form'), array(
+	    'go_to' => $site_to,
+	)); ?>
 	<div class="form-group">
 		<?php echo form_label($login_label, $login['id']); ?>
 		<?php echo form_input($login); ?>

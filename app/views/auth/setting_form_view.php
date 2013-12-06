@@ -1,5 +1,13 @@
-
-<form action='/auth/setting' id='register' name='register_form' method='post'>
+<?php
+echo form_open('', array(
+	'name' => 'register_form',
+	'role' => 'form',
+	'id'   => 'register'
+), array(
+	'go_to'      => '', // $site_to ???
+	'submitting' => 1
+));
+?>
 
 	<?php echo validation_errors();  ?>	
 	<?php
@@ -10,15 +18,13 @@
 	<!--
 	<a href='/auth/unregister' class='underline'>회원탈퇴</a>
 	-->
-	
-	<input type='hidden' name='submitting' value='1'/>
 
 	<div class='center'>
 		<br/>
-		<a id='btnSubmit' class='pure-button-big pure-button'>Submit</a>
+		<button type="submit" id='btnSubmit' class='pure-button-big pure-button'>Submit</button>
 	</div>
 
-</form>
+<?php echo form_close(); ?>
 
 <script>
 	var workSpace = 'setting';
@@ -40,11 +46,6 @@
 		// 마지막 단계에서 마지막 스테이지가 에러가 없다면, 모두 에러가 없다고 가정한다.
 		// 폼을 전송한다.
 		document.register_form.submit();
-	});
-
-	$('*[rel=tooltip]').tooltip({
-		placement : 'bottom',
-		trigger : 'focus'
 	});
 	
 </script>

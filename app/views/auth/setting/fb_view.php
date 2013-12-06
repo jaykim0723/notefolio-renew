@@ -89,7 +89,7 @@ if ($fb_num_id&&$fb_num_id>0){
                     <label>Facebook과 연동되어있지 않습니다.</label>
                 </div>
                 <div class="fb_button">
-                    <a class="pure-button btn-fbconnect">Connect</a>
+                    <a class="btn btn-default btn-fbconnect">Connect</a>
                 </div>
             </div>                          
         </div>
