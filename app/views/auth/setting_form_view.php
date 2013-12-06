@@ -3,8 +3,8 @@
 
 	<?php echo validation_errors();  ?>	
 	<?php
-		$this->load->view('profile/setting/basic_view');
-        $this->load->view('profile/setting/fb_view');
+		$this->load->view('auth/setting/basic_view');
+        $this->load->view('auth/setting/fb_view');
 	?>
 
 	<!--
