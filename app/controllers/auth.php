@@ -756,7 +756,7 @@ class Auth extends CI_Controller
             }
             //-- end
 		}
-        $this->layout->set_view('auth/register_form_view', $data)->render();
+        $this->layout->set_view('auth/register_form', $data)->render();
 	}
 	/**
 	 *	가입 및 수정에서 공통으로 쓰이는 폼
