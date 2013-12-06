@@ -573,11 +573,7 @@ class Auth extends CI_Controller
 	 */
 	function register()
 	{
-		$this->nf->_member_check(FALSE); //member check
-		if(USER_ID > 0)
-			redirect('/');
-            
-        $data = array();
+		$data = array();
 		if($this->input->post('submit_uuid')!=false){
             if($this->input->post('submit_uuid')==$this->session->userdata('submit_uuid')) {
                 $this->load->library(array('form_validation'));
