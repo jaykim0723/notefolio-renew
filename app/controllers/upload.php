@@ -315,7 +315,7 @@ class Upload extends CI_Controller
 		echo json_encode(array('status' => $status, 'msg' => $msg));		
 	}
 	
-	function image($file){
+	function image($file=null){
 		$json = array(
 			'status' => 'done',
 			'upload_id' => 0,
