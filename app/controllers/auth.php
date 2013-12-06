@@ -756,6 +756,16 @@ class Auth extends CI_Controller
             }
             //-- end
 		}
+
+        //-- prevent error
+        $use_username               = $this->config->item('use_username', 'tank_auth');
+        $captcha_registration       = $this->config->item('captcha_registration', 'tank_auth');
+        $use_recaptcha              = $this->config->item('use_recaptcha', 'tank_auth');
+        $data['use_username']       = $use_username;
+        $data['captcha_registration'] = $captcha_registration;
+        $data['use_recaptcha']      = $use_recaptcha;
+        //-- end
+
         $this->layout->set_view('auth/register_form', $data)->render();
 	}
 	/**
