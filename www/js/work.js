@@ -192,24 +192,24 @@ var workUtil = {
 				acceptedFiles: 'image/*',
 				paramName: "file", 
 				maxFilesize: 128, // MB
-				init: function() {
+				init: function(e) {
 					if(isData)
-						return $(element).addClass('upload-guide');
+						return $(e).addClass('upload-guide');
 				},
 				dragenter: function(e) {
-					return $(element).css({'border':'#9999FF 5px dotted'});
+					return $(e).css({'border':'#9999FF 5px dotted'});
 				},
 				dragover: function(e) {
-					return $(element).css({'border':'#9999FF 5px dotted'});
+					return $(e).css({'border':'#9999FF 5px dotted'});
 				},
 				dragleave: function(e) {
-					return $(element).css({'border':''});
+					return $(e).css({'border':''});
 				},
 				dragend: function(e) {
-					return $(element).css({'border':''});
+					return $(e).css({'border':''});
 				},
 				drop: function(e) {
-					return $(element).css({'border':''});
+					return $(e).css({'border':''});
 				},
 				fallback: function() {
 					var msg 	 = $('<p>Internet Explorer 9 이하 버전은 기존 업로드 기능을 이용하고 있습니다.</p>');
