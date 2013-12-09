@@ -38,6 +38,16 @@ class Upload extends CI_Controller
 			$error = false;
 			
 			$filename = $this->_save('image', $file);
+			$upload_id = $this->upload_model->post(array(
+	            'work_id' => $this->input->get_post('work_id'),
+	            'type' => 'work',
+	            'filename' => $filename['original'],
+	            'org_filename' => $file['name'],
+	            'filesize' => $file['size'],
+	            'comment' => ''
+	        ));
+
+	        $json = $this->upload_model->get(array('id'=>$upload_id))->row;
 		}
 
 		if($error){
@@ -148,17 +158,6 @@ class Upload extends CI_Controller
 	 * @return array
 	 */
 	function _make_thumbnail($file=false, $name=false, $type=false, $opt=array()){
-		$size = getimagesize($file['tmp_name']);			
-
-		if ($size[2] == 1) 
-			$source = imagecreatefromgif($file['tmp_name']);
-		else if ($size[2] == 2) 
-			$source = imagecreatefromjpeg($file['tmp_name']);
-		else if ($size[2] == 3) 
-			$source = imagecreatefrompng($file['tmp_name']);
-		else 
-			return 0;
-
 		if($file){
 			list($max_width, $max_height) = $this->config->item('thumbnail_'.$type, 'upload');
 			switch($type){
@@ -179,7 +178,7 @@ class Upload extends CI_Controller
 			}
 
 			// assign ImageMagick
-			$image = new Imagick($name);
+			$image = new Imagick($file['tmp_name']);
 			$image->setImageColorspace(Imagick::COLORSPACE_SRGB);
 
 			if(in_array($todo, array('crop'))){
@@ -205,36 +204,6 @@ class Upload extends CI_Controller
 		}
 		return false;
 	}
-
-	// 원본 이미지를 넘기면 비율에 따라 썸네일 이미지를 생성함
-	function _createThumb($imgWidth, $imgHeight, $imgSource, $cropStyle, $imgThumb='') {
-
-		if (!$imgThumb)
-			$imgThumb = $imgSource;
-
-		$size = getimagesize($imgSource);
-		if ($size[2] == 1)
-			$source = imagecreatefromgif($imgSource);
-		else if ($size[2] == 2)
-			$source = imagecreatefromjpeg($imgSource);
-		else if ($size[2] == 3)
-			$source = imagecreatefrompng($imgSource);
-		else
-			return 0;
-		
-		$thumb     =     $this->_get_thumb_size($size[0], $size[1], $imgWidth, $imgHeight, $cropStyle);
-		$target = @imagecreatetruecolor($imgWidth, $imgHeight);
-		$white = @imagecolorallocate($target, 255, 255, 255);
-		imagefill($target, 0, 0, $white);
-		//@imagefilledrectangle($target, 0, 0, $thumb['w'], $thumb['h'], $white);
-		@imagecopyresampled($target, $source, $thumb['l'], $thumb['t'], $thumb['rl'], $thumb['rt'], $thumb['w'], $thumb['h'], $thumb['rw'], $thumb['rh']);
-		@imagejpeg($target, $imgThumb, 95);
-		@chmod($imgThumb, 0666);
-		  imagedestroy($source);
-		  imagedestroy($target);
-	}
-
-
 
 	function index()
 	{
