@@ -50,7 +50,7 @@ class Upload extends CI_Controller
 
 	        $json = array(
 	        	'status' => 'done',
-	        	'fileurl' => '/'.$filename['uri'],
+	        	'fileurl' => $filename['uri'],
 	        	'data' => $this->upload_model->get(array('id'=>$upload_id))->row
 	        	);
 		}
@@ -125,8 +125,6 @@ class Upload extends CI_Controller
 			case 'image':
 				$path = $this->config->item('img_upload_path', 'upload');
 				$uri  = $this->config->item('img_upload_uri',  'upload');
-				var_export($uri);
-				exit();
 				$output = array('original' =>$hashed_name.'.'.$ext,
 								'large'    =>$hashed_name.'_L.png',
 								'medium'   =>$hashed_name.'_M.png',
