@@ -163,7 +163,7 @@ var workUtil = {
 					var uploadTo = "/upload/image";
 					output = $('<div></div>')
 						.addClass('image-upload-box')
-						.dropzone(workUtil.content.createUploader(uploadTo, this.element, data));
+						.dropzone(workUtil.content.createUploader(uploadTo, this.element, (typeof(data)=='undefined')?true:false));
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
@@ -190,14 +190,14 @@ var workUtil = {
     		$(target).fadeOut(100);
     		$(target).remove();
 		},
-		createUploader: function(url, element, data){ // dropzone
+		createUploader: function(url, element, isData){ // dropzone
 			return {
 				url: url,
 				acceptedFiles: 'image/*',
 				paramName: "file", 
 				maxFilesize: 128, // MB
 				init: function() {
-					if(typeof(data)=='undefined')
+					if(isData)
 						return $(element).addClass('upload-guide');
 				},
 				dragenter: function(e) {
