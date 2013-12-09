@@ -1,4 +1,4 @@
-<?php if (!$this->input->is_ajax_request()): ?>
+<?php if (!$this->input->is_ajax_request()): ?> 
 
 <section class="listing">
 	<div class="container">
