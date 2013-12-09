@@ -159,7 +159,7 @@ var workUtil = {
 					var uploadTo = "/upload/image";
 					output = $('<div></div>')
 						.addClass('image-upload-box')
-						.dropzone(workUtil.content.createUploader(uploadTo, $(this.element), (typeof(data)=='undefined')?true:false));
+						.dropzone(workUtil.content.createUploader);
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
@@ -188,28 +188,28 @@ var workUtil = {
 		},
 		createUploader: function(url, element, isData){ // dropzone
 			return {
-				url: url,
+				url: uploadTo,
 				acceptedFiles: 'image/*',
 				paramName: "file", 
 				maxFilesize: 128, // MB
-				init: function(e) {
-					if(isData)
-						return $(e).addClass('upload-guide');
+				init: function() {
+					if((typeof(data)=='undefined')?true:false)
+						return $(this.element).addClass('upload-guide');
 				},
 				dragenter: function(e) {
-					return $(e).css({'border':'#9999FF 5px dotted'});
+					return $(this.element).css({'border':'#9999FF 5px dotted'});
 				},
 				dragover: function(e) {
-					return $(e).css({'border':'#9999FF 5px dotted'});
+					return $(this.element).css({'border':'#9999FF 5px dotted'});
 				},
 				dragleave: function(e) {
-					return $(e).css({'border':''});
+					return $(this.element).css({'border':''});
 				},
 				dragend: function(e) {
-					return $(e).css({'border':''});
+					return $(this.element).css({'border':''});
 				},
 				drop: function(e) {
-					return $(e).css({'border':''});
+					return $(this.element).css({'border':''});
 				},
 				fallback: function() {
 					var msg 	 = $('<p>Internet Explorer 9 이하 버전은 기존 업로드 기능을 이용하고 있습니다.</p>');
