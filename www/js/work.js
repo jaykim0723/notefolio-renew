@@ -159,34 +159,7 @@ var workUtil = {
 					var uploadTo = "/upload/image";
 					output = $('<div></div>')
 						.addClass('image-upload-box')
-						.dropzone(workUtil.content.uploaderOption);
-
-					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
-				break;
-				case 'video':
-					output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb_wide6.jpg');
-				break;
-				case 'text':
-				default:
-					output = $('<p></p>').text('이곳을 눌러 내용을 입력하세요.');
-				break;
-			}
-			if(typeof(data)!='undefined'){
-				$(output).append($(data));
-			}
-			if(typeof(returnType)!='undefined' 
-			&& returnType=="list-block"){
-				output =  $('<li></li>')
-							.attr('class','block-'+type)
-							.append(output);
-			}
-			return output;
-		},
-		removeBlock: function(target){
-    		$(target).fadeOut(100);
-    		$(target).remove();
-		},
-		uploaderOption: {
+						.dropzone({
 			url: uploadTo,
 			acceptedFiles: 'image/*',
 			paramName: "file", 
@@ -234,33 +207,38 @@ var workUtil = {
 					node = _ref1[_j];
 					node.innerHTML = this.filesize(file.size);
 				}
-				if (this.options.addRemoveLinks) {
-					file._removeLink = Dropzone.createElement("<a class=\"dz-remove\" href=\"javascript:undefined;\">" + this.options.dictRemoveFile + "</a>");
-					file._removeLink.addEventListener("click", function(e) {
-						e.preventDefault();
-						e.stopPropagation();
-						if (file.status === Dropzone.UPLOADING) {
-							return Dropzone.confirm(_this.options.dictCancelUploadConfirmation, function() {
-								return _this.removeFile(file);
-							});
-						} else {
-							if (_this.options.dictRemoveFileConfirmation) {
-								return Dropzone.confirm(_this.options.dictRemoveFileConfirmation, function() {
-									return _this.removeFile(file);
-								});
-							} else {
-								return _this.removeFile(file);
-							}
-						}
-					});
-					file.previewElement.appendChild(file._removeLink);
-				}
 				return this._updateMaxFilesReachedClass();
 			},
 			complete: function(file) {
 				workUtil.content.removeBlock($(this.previewsContainer).parent());
 			},
 			previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
+						});
+
+					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
+				break;
+				case 'video':
+					output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb_wide6.jpg');
+				break;
+				case 'text':
+				default:
+					output = $('<p></p>').text('이곳을 눌러 내용을 입력하세요.');
+				break;
+			}
+			if(typeof(data)!='undefined'){
+				$(output).append($(data));
+			}
+			if(typeof(returnType)!='undefined' 
+			&& returnType=="list-block"){
+				output =  $('<li></li>')
+							.attr('class','block-'+type)
+							.append(output);
+			}
+			return output;
+		},
+		removeBlock: function(target){
+    		$(target).fadeOut(100);
+    		$(target).remove();
 		},
 		createOldUploader: function(url){
     		return $("<div></div>");
