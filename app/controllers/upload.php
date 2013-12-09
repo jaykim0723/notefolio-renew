@@ -48,7 +48,10 @@ class Upload extends CI_Controller
 	            'comment' => ''
 	        ));
 
-	        $json = $this->upload_model->get(array('id'=>$upload_id))->row;
+	        $json = array(
+	        	'status' => 'done',
+	        	'data' => $this->upload_model->get(array('id'=>$upload_id))->row
+	        	);
 		}
 
 		if($error){
@@ -120,7 +123,7 @@ class Upload extends CI_Controller
 		switch($type){
 			case 'image':
 				$path = $this->config->item('img_upload_path', 'upload');
-				$output = array('original' =>$hashed_name.$ext,
+				$output = array('original' =>$hashed_name.'.'.$ext,
 								'large'    =>$hashed_name.'_L.png',
 								'medium'   =>$hashed_name.'_M.png',
 								'path'     =>$path.$hashed_path,
@@ -130,8 +133,8 @@ class Upload extends CI_Controller
 			case 'cover':
 				$path = $this->config->item('cover_upload_path', 'upload');
 				$output = array('original' =>$o_name,
-								'wide'     =>$o_name.'_W',
-								'single'   =>$o_name.'_S',
+								'wide'     =>$o_name.'_W.jpg',
+								'single'   =>$o_name.'_S.jpg',
 								'path'     =>$path,
 								'ext'	   =>($ext!='')?$ext:'jpg'
 								);
