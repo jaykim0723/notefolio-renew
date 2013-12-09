@@ -101,9 +101,9 @@ class Upload extends CI_Controller
 	 */
 	function _make_filename($type=false, $name=false){
 		if($name){
-			var_export(explode('.', $name, -1));
+			var_export(explode('.', $name, -2));
 			exit;
-			list($o_name, $ext) = explode('.', $name, -1);
+			list($o_name, $ext) = explode('.', $name, -2);
 			$ext = strtolower($ext);
 		}
 		else {
