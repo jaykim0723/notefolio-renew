@@ -172,7 +172,9 @@ class Upload extends CI_Controller
 	 */
 	function _make_thumbnail($file=false, $name=false, $type=false, $opt=array()){
 		if($file){
-			list($max_width, $max_height) = $this->config->item('thumbnail_'.$type, 'upload');
+			$maxsize = $this->config->item('thumbnail_'.$type, 'upload');
+			$max_width = $maxsize['max_width'];
+			$max_height = $maxsize['max_height'];
 			switch($type){
 				case "large":
 					$todo = array('resize');
