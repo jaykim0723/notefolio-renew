@@ -157,9 +157,38 @@ var workUtil = {
 			switch(type){
 				case 'image':
 					var uploadTo = "/upload/image";
-					output = $('<div></div>')
-						.addClass('image-upload-box')
-						.dropzone({
+					output = workUtil.content.createUploader(
+								$('<div></div>').addClass('image-upload-box'),
+								uploadTo, data
+								);
+
+					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
+				break;
+				case 'video':
+					output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb_wide6.jpg');
+				break;
+				case 'text':
+				default:
+					output = $('<p></p>').text('이곳을 눌러 내용을 입력하세요.');
+				break;
+			}
+			if(typeof(data)!='undefined'){
+				$(output).append($(data));
+			}
+			if(typeof(returnType)!='undefined' 
+			&& returnType=="list-block"){
+				output =  $('<li></li>')
+							.attr('class','block-'+type)
+							.append(output);
+			}
+			return output;
+		},
+		removeBlock: function(target){
+    		$(target).fadeOut(100);
+    		$(target).remove();
+		},
+		createUploader:function(elem, url, data){
+		  return $(elem).dropzone({
 			url: uploadTo,
 			acceptedFiles: 'image/*',
 			paramName: "file", 
@@ -213,32 +242,7 @@ var workUtil = {
 				workUtil.content.removeBlock($(this.previewsContainer).parent());
 			},
 			previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
-						});
-
-					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
-				break;
-				case 'video':
-					output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb_wide6.jpg');
-				break;
-				case 'text':
-				default:
-					output = $('<p></p>').text('이곳을 눌러 내용을 입력하세요.');
-				break;
-			}
-			if(typeof(data)!='undefined'){
-				$(output).append($(data));
-			}
-			if(typeof(returnType)!='undefined' 
-			&& returnType=="list-block"){
-				output =  $('<li></li>')
-							.attr('class','block-'+type)
-							.append(output);
-			}
-			return output;
-		},
-		removeBlock: function(target){
-    		$(target).fadeOut(100);
-    		$(target).remove();
+		  });
 		},
 		createOldUploader: function(url){
     		return $("<div></div>");
