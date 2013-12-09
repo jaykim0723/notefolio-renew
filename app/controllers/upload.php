@@ -124,7 +124,7 @@ class Upload extends CI_Controller
 		switch($type){
 			case 'image':
 				$path = $this->config->item('img_upload_path', 'upload');
-				$uri  = $this->config->item('img_upload_uri',  'upload');
+				$uri  = $this->config->item('img_upload_uri');
 				$output = array('original' =>$hashed_name.'.'.$ext,
 								'large'    =>$hashed_name.'_L.png',
 								'medium'   =>$hashed_name.'_M.png',
