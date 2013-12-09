@@ -103,6 +103,7 @@ class Upload extends CI_Controller
 		if($name){
 			$path_text = pathinfo($name);
 			var_export($path_text);
+			exit();
 			$o_name = $path_text['filename'];
 			$ext = strtolower($path_text['extension']);
 		}
