@@ -144,6 +144,8 @@ class Upload extends CI_Controller
 									);
 			break;
 		}
+
+		var_export($output);
 		
 		if(!is_dir($output['path'])) //create the folder if it's not already exists
 		{
