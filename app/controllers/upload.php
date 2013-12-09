@@ -72,9 +72,6 @@ class Upload extends CI_Controller
 		if($file){
 			$filename = $this->_make_filename($type, $file['name']);
 
-			var_export($filename);
-			exit();
-			
 			switch($type){
 				case "image":
 					$this->_make_thumbnail($file, $filename['path'].$filename['large'], 'large');
@@ -184,6 +181,9 @@ class Upload extends CI_Controller
 				default:
 				break;
 			}
+
+			var_export($todo);
+			exit();
 
 			// assign ImageMagick
 			$image = new Imagick($file['tmp_name']);
