@@ -6,7 +6,7 @@ class Upload extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		
+
 		if(USER_ID==0) // not signend in
 			exit(json_encode(array("status"=>"fail", "message"=>"not_signed_user")));
 
@@ -102,7 +102,7 @@ class Upload extends CI_Controller
 	function _make_filename($type=false, $name=false){
 		if($name){
 			list($o_name, $ext) = explode('.', $name, -1);
-			$ext = lower($ext);
+			$ext = strtolower($ext);
 		}
 		else {
 			$o_name = '';
@@ -114,7 +114,7 @@ class Upload extends CI_Controller
 					.microtime()
 					.$this->tank_auth->get_username();
 			$hashed_name = hash('sha256', $salt.$o_name);
-			$hashed_path = substr($hashed_name, 0, 2).'/'.substr($hashed_name, 0, 2).'/';
+			$hashed_path = substr($hashed_name, 0, 2).'/'.substr($hashed_name, 2, 2).'/';
 		}
 		switch($type){
 			case 'image':
@@ -123,6 +123,7 @@ class Upload extends CI_Controller
 								'large'    =>$hashed_name.'_L'.$ext,
 								'medium'   =>$hashed_name.'_M'.$ext,
 								'path'     =>$path.$hashed_path,
+								'ext'	   =>($ext!='')?$ext:'jpg'
 								);
 			break;
 			case 'cover':
@@ -131,12 +132,14 @@ class Upload extends CI_Controller
 								'wide'     =>$o_name.'_W',
 								'single'   =>$o_name.'_S',
 								'path'     =>$path,
+								'ext'	   =>($ext!='')?$ext:'jpg'
 								);
 			break;
 			default:
 				$path = $this->config->item('upload_path', 'upload');
 				$output = array('original'	   =>$name,
-									'path'     =>$path,
+								'path'	       =>$path,
+								'ext'		   =>($ext!='')?$ext:'jpg'
 									);
 			break;
 		}
