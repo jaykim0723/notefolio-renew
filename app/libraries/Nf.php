@@ -19,7 +19,8 @@ class Nf
 	}
     function get($key){
         if($key=='') return '';
-        return $this->nf_global[$key] OR '';
+        if(!isset($this->nf_global[$key])) return '';
+        return $this->nf_global[$key];
     }
     function set($key='', $value=''){
         if($key=='') return FALSE;

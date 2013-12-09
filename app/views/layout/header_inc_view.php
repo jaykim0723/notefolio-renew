@@ -26,9 +26,8 @@
 	<link href="/css/bootstrap-select.css" rel="stylesheet"/>
 	<link href="/css/flick/jquery-ui-1.10.3.custom.min.css" rel="stylesheet"/>
 	<link href="/css/util.css" rel="stylesheet"/>
-	<link href="/css/mobile.css" rel="stylesheet"/>
 	<link href="/css/mmenu/jquery.mmenu.nf.css" rel="stylesheet" /><!-- jQuery.mmenu -->
-
+	<link href="/css/mobile.css" rel="stylesheet"/>
 	<link href="/css/web.css" rel="stylesheet" media="screen and (min-width: 992px)"/>
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="/css/web.css" type="text/css" media="screen"/>

@@ -85,6 +85,7 @@
 
 
 .main-thumbnail-list,
+.profile-thumbnail-list,
 .thumbnail-list {
 	overflow: hidden;
 	position: relative;
@@ -112,6 +113,7 @@
 .thumbnail-list .thumbbox img {
 	width: 100%;
 }
+
 @media (max-width:991px) {
 	#main-list-top .wide {
 		width: 100%;
@@ -135,6 +137,28 @@
 		margin: 0;
 	}
 }
+
+
+
+
+.profile-thumbnail-list .thumbbox {
+	float: left;
+	margin: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .sticky-wrapper {

@@ -29,6 +29,7 @@ class Profile extends CI_Controller {
 			'page' => $page,
 			'user_id' => $this->user_id
 		));
+		$work_list->username = $username;
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user->row);
 		$this->layout->set_view('profile/myworks_listing_view', $work_list)->render();
