@@ -231,6 +231,7 @@ var workUtil = {
 				return this._updateMaxFilesReachedClass();
 			},
 			success: function(file) {
+				console.log(file);
 				$(file.previewElement).append('<p class="img-line"><img src="" /></p>');
 			},
 			error: function(file) {
