@@ -159,7 +159,7 @@ var workUtil = {
 					var uploadTo = "/upload/image";
 					output = $('<div></div>')
 						.addClass('image-upload-box')
-						.dropzone(workUtil.content.createUploader(uploadTo, this.element, (typeof(data)=='undefined')?true:false));
+						.dropzone(workUtil.content.createUploader(uploadTo, $(this.element), (typeof(data)=='undefined')?true:false));
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
@@ -194,7 +194,7 @@ var workUtil = {
 				maxFilesize: 128, // MB
 				init: function() {
 					if(isData)
-						return $(this).addClass('upload-guide');
+						return $(element).addClass('upload-guide');
 				},
 				dragenter: function(e) {
 					return $(element).css({'border':'#9999FF 5px dotted'});
