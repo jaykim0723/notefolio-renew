@@ -154,7 +154,7 @@
 		})
 		//Content Ground Setting 살림.
 		workUtil.content.setGround('#content-block-list', '.trashable');
-		workUtil.content.setTool('.block-text, .block-image, .block-video', '#work-content-blockadder', '#content-block-list');
+		workUtil.content.setTool('.block-text, .block-image, .block-video, .block-line', '#work-content-blockadder', '#content-block-list');
 		workUtil.content.setTrashBin('#trash-bin');
 	});
 </script>

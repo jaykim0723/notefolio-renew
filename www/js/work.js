@@ -98,7 +98,7 @@ var workUtil = {
 		},
 		setTool: function(target, container, sendTo){
 			if(typeof(target)=='undefined'){
-				var target = '.block-text, .block-image, .block-video';
+				var target = '.block-text, .block-image, .block-video, .block-line';
 			}
 			if(typeof(container)=='undefined'){
 				var container = "#work-content-blockadder";
