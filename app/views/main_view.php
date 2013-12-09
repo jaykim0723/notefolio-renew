@@ -1,7 +1,7 @@
 <?php if (!$this->input->is_ajax_request()): ?>
 <section class="container" id="cont_container">
 	<div class="row">
-		<div class="col-md-8 col-sm-12">
+		<div class="col-md-9 col-sm-12">
 <?php endif ?>
 
 			<div class="thumbnail-list infinite-list">
@@ -16,7 +16,7 @@
 <?php if (!$this->input->is_ajax_request()): ?>
 		</div>
 
-		<div class="col-md-4 hidden-sm hidden-xs">
+		<div class="col-md-3 hidden-sm hidden-xs">
 			sidebar
 		</div>
 

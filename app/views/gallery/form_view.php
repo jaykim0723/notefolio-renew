@@ -10,12 +10,12 @@
 <div id="work-sidebar">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-9">
 				<!-- empty -->
 			</div>
 
 			<!-- 사이드바 시작 -->
-			<div class="col-md-4 ">
+			<div class="col-md-3 ">
 				<h4>키워드</h4>
 				<select name="work_categories" id="work_categories" multiple title="Choose one of the following..." >
 					<option value="A7">가구디자인</option>
@@ -100,7 +100,7 @@
 	<div class="container">
 		<div class="row">
 			<!-- 작품영역 시작 -->
-			<div class="col-md-8">
+			<div class="col-md-9">
 				<h4>제목</h4>
 				<input type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
 				<br>
@@ -127,7 +127,7 @@
 			</div>
 			<!-- 작품영역 끝 -->
 
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<!-- empty -->	
 			</div>
 		</div>

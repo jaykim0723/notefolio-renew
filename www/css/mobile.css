@@ -439,9 +439,6 @@ p.desc {
 
 /* mobile menu */
 #mobile-menu-signout {
-	position: absolute;
-	bottom:5px;
-	left:0;
 	display: block;
 	width: 100%;
 }

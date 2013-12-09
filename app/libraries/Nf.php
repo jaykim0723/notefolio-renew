@@ -3,7 +3,7 @@
 class Nf
 {
 	protected	$ci;
-    protected   $nf_array = array();
+    protected   $nf_global = array();
 
 	public function __construct()
 	{
@@ -17,14 +17,13 @@ class Nf
                 define('USER_ID', 0);
         }
 	}
-
     function get($key){
         if($key=='') return '';
-        return $this->nf_array[$key] OR '';
+        return $this->nf_global[$key] OR '';
     }
     function set($key='', $value=''){
         if($key=='') return FALSE;
-        $this->nf_array[$key] = $value;
+        $this->nf_global[$key] = $value;
         return TRUE;
     }
 

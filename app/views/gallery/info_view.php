@@ -7,10 +7,10 @@
 <div id="work-sidebar" class="hidden-xs hidden-sm">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-9">
 				<!-- empty -->
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div>
 					<div class="well" style="height:200px;">
 						프로필
@@ -26,22 +26,24 @@
 <section>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-9">
 <?php endif ?>
+				<div class="well visible-xs visible-sm" style="height:100px;">
+					프로필
+				</div>
+
 				<div class="work-list infinite-list">
 					<div class="work-wrapper infinite-item">
 						<div class="work_info well" style="height: 100px;">
 							<div class="btn-group pull-right">
-								<?php if (USER_ID): ?>
-									
-								<?php endif ?>
+								<?php if (USER_ID==$user_id): ?>
 								<a href="/<?php echo $user->username ?>/<?php echo $work_id ?>/update" class="btn btn-default">
 									<i class="glyphicon glyphicon-cog"></i>
 								</a>
 								<a id="btnDelete" href="/<?php echo $user->username ?>/<?php echo $work_id ?>/delete" class="btn btn-default">
 									<i class="glyphicon glyphicon-trash"></i>
 								</a>
-
+								<?php endif ?>
 							</div>
 							작품정보
 						</div>
@@ -69,10 +71,6 @@
 							</div>
 						</div>
 
-						<div class="well visible-xs visible-sm" style="height:100px;">
-							프로필
-						</div>
-
 					</div>
 				</div>
 
@@ -82,7 +80,7 @@
 
 <?php if (!$this->input->is_ajax_request() OR $this->input->post('no_ajax')=='y'): ?>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<!-- empty -->
 			</div>
 		</div>
