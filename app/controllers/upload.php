@@ -88,7 +88,7 @@ class Upload extends CI_Controller
 	 * @param string $name
 	 * @return array
 	 */
-	function _make_filename($type=false, $name=false)){
+	function _make_filename($type=false, $name=false){
 		if($name){
 			list($o_name, $ext) = explode('.', $name, -1);
 			$ext = lower($ext);
