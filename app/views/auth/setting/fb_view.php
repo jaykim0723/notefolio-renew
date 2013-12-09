@@ -2,7 +2,7 @@
 <fieldset id='auth_facebook' <?php echo $this->uri->segment(2) == 'setting' ? 'style="margin-bottom:30px;"' : ''?>>
     <legend>페이스북 연동</legend>
 <?php
-if ($fb_num_id&&$fb_num_id>0){
+// if ($fb_num_id&&$fb_num_id>0){
 ?>    
     <div class="row-fluid">
         <div class="span12">
@@ -22,7 +22,7 @@ if ($fb_num_id&&$fb_num_id>0){
                 </div>
                 <div class="fb_button">
                     <label class='notefolio-checkbox inline'>
-                    <input type='checkbox' id='fb_post_work' name='fb_post_work' value='Y'<?=($fb_post_work=='Y')?' checked="checked"':''?>/>&nbsp;
+                        <input type='checkbox' id='fb_post_work' name='fb_post_work' value='Y'<?=($fb_post_work=='Y')?' checked="checked"':''?>/>&nbsp;
                     </label>
                 </div>
             </div>
@@ -80,7 +80,7 @@ if ($fb_num_id&&$fb_num_id>0){
         });
     </script>
 <?php
-} else {
+// } else {
 ?>      
     <div class="row-fluid">
         <div class="span12">
@@ -105,7 +105,7 @@ if ($fb_num_id&&$fb_num_id>0){
         });
     </script>
 <?php
-}
+// }
 ?>
 </fieldset>
 
