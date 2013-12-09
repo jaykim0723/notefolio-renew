@@ -101,6 +101,7 @@ class Upload extends CI_Controller
 	 */
 	function _make_filename($type=false, $name=false){
 		if($name){
+			var_export($name);
 			list($o_name, $ext) = explode('.', $name, -1);
 			$ext = strtolower($ext);
 		}
@@ -146,7 +147,7 @@ class Upload extends CI_Controller
 		
 		if(!is_dir($output['path'])) //create the folder if it's not already exists
 		{
-			mkdir($server_folder,0777,TRUE);
+			mkdir($output['path'],0777,TRUE);
 		}
 
 		return $output;
