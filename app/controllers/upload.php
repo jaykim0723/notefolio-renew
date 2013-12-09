@@ -183,9 +183,8 @@ class Upload extends CI_Controller
 			$image->setImageColorspace(Imagick::COLORSPACE_SRGB);
 
 			if(in_array($todo, array('crop'))){
-				// Resize image using the lanczos resampling algorithm based on width
-				//$image->cropImage ( int $width , int $height , int $x , int $y );
-				//resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+				// Crop Image. Resize is next block.
+				$image->cropImage($width, $height, $x, $y);
 			}
 
 			if(in_array($todo, array('resize'))){
