@@ -102,6 +102,7 @@ class Upload extends CI_Controller
 	function _make_filename($type=false, $name=false){
 		if($name){
 			$path_text = pathinfo($name);
+			var_export($path_text);
 			$o_name = $path_text['filename'];
 			$ext = strtolower($path_text['extension']);
 		}
@@ -110,7 +111,6 @@ class Upload extends CI_Controller
 			$ext = '';
 		}
 		if(in_array($type, array('image'))){
-			var_export($type);
 			$salt = $this->config->item('encryption_key')
 					.'NOTEFOLIO'
 					.microtime()
