@@ -218,6 +218,7 @@ var workUtil = {
 				return $(this.element).append(msg).append(uploader);
 			},
 			addedfile: function(file) {
+				$(this.previewsContainer).parent().class({'display': 'none'});
 				console.log(file);
 				var node, _i, _j, _len, _len1, _ref, _ref1,
 				_this = this;
