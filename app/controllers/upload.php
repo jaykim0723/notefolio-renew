@@ -5,8 +5,237 @@ class Upload extends CI_Controller
 	
 	function __construct()
 	{
+		if(USER_ID==0) // not signend in
+			exit(json_encode(array("status"=>"fail", "message"=>"not_signed_user")));
+
 		parent::__construct();
+		$this->load->config('upload', TRUE);
+		$this->load->model('upload_model');
 	}
+	
+	/**
+	 * get image and do process
+	 * 
+	 * @param file $file
+	 * @return no retun
+	 */
+	function image($file=null){
+		if($_FILES['file'])				// file name
+			$file = $_FILES['file'];
+
+		$error = true;
+
+		if($file=='debug'){
+			$error = false;
+
+			$json = array(
+				'status' => 'done',
+				'upload_id' => 0,
+				'filename' => 'QWERTYUIOP1234567890ASDFGHJKL.png'
+				);
+		}
+		else if($file!=null){
+			$error = false;
+			
+			$filename = $this->_save('image', $file);
+		}
+
+		if($error){
+			$json = array(
+				'status' => 'fail',
+				'message' => 'no_file_received'
+				);
+		}
+
+		$this->layout->set_json($json)->render();
+	}
+
+	/**
+	 * save file to disk
+	 * 
+	 * @param string $type
+	 * @param file $file
+	 * @return array/bool-false
+	 */
+	function _save($type=false, $file=false){
+		if($file){
+			$filename = $this->_make_filename($type, $file['name']);
+
+			switch($type){
+				case "image":
+					$this->_make_thumbnail($file, $filename['path'].$filename['large'], 'large');
+					$this->_make_thumbnail($file, $filename['path'].$filename['medium'], 'medium');
+				break;
+				case "cover":
+				break;
+				default:
+				break;
+			}
+
+			$output = (move_uploaded_file(
+								$file['tmp_name'], 
+								$filename['path'].$filename['original']))?
+							$filename : false;
+		}
+
+		return $output;
+	}
+
+	/**
+	 * make file name using hash(sha256)
+	 * 
+	 * @param string $type
+	 * @param string $name
+	 * @return array
+	 */
+	function _make_filename($type=false, $name=false)){
+		if($name){
+			list($o_name, $ext) = explode('.', $name, -1);
+			$ext = lower($ext);
+		}
+		else {
+			$o_name = '';
+			$ext = '';
+		}
+		if(in_array($type, array('image'))){
+			$salt = $this->config->item('encryption_key')
+					.'NOTEFOLIO'
+					.microtime()
+					.$this->tank_auth->get_username();
+			$hashed_name = hash('sha256', $salt.$o_name);
+			$hashed_path = substr($hashed_name, 0, 2).'/'.substr($hashed_name, 0, 2).'/';
+		}
+		switch($type){
+			case 'image':
+				$path = $this->config->item('img_upload_path', 'upload');
+				$output = array('original' =>$hashed_name.$ext,
+								'large'    =>$hashed_name.'_L'.$ext,
+								'medium'   =>$hashed_name.'_M'.$ext,
+								'path'     =>$path.$hashed_path,
+								);
+			break;
+			case 'cover':
+				$path = $this->config->item('cover_upload_path', 'upload');
+				$output = array('original' =>$o_name,
+								'wide'     =>$o_name.'_W',
+								'single'   =>$o_name.'_S',
+								'path'     =>$path,
+								);
+			break;
+			default:
+				$path = $this->config->item('upload_path', 'upload');
+				$output = array('original'	   =>$name,
+									'path'     =>$path,
+									);
+			break;
+		}
+		
+		if(!is_dir($output['path'])) //create the folder if it's not already exists
+		{
+			mkdir($server_folder,0777,TRUE);
+		}
+
+		return $output;
+	}
+
+	/**
+	 * make thumbnail
+	 * 
+	 * @param file $file
+	 * @param string $name
+	 * @param string $type
+	 * @param array $opt
+	 * @return array
+	 */
+	function _make_thumbnail($file=false, $name=false, $type=false, $opt=array())){
+		$size = getimagesize($file['tmp_name']);			
+
+		if ($size[2] == 1) 
+			$source = imagecreatefromgif($file['tmp_name']);
+		else if ($size[2] == 2) 
+			$source = imagecreatefromjpeg($file['tmp_name']);
+		else if ($size[2] == 3) 
+			$source = imagecreatefrompng($file['tmp_name']);
+		else 
+			return 0;
+
+		if($file){
+			list($max_width, $max_height) = $this->config->item('thumbnail_'.$type, 'upload');
+			switch($type){
+				case "large":
+					$todo = array('resize');
+				break;
+				case "medium":
+					$todo = array('resize');
+				break;
+				case "wide":
+					$todo = array('resize', 'crop');
+				break;
+				case "single":
+					$todo = array('resize', 'crop');
+				break;
+				default:
+				break;
+			}
+
+			// assign ImageMagick
+			$image = new Imagick($name);
+			$image->setImageColorspace(Imagick::COLORSPACE_SRGB);
+
+			if(in_array($todo, array('crop'))){
+				// Resize image using the lanczos resampling algorithm based on width
+				$image->cropImage ( int $width , int $height , int $x , int $y );
+				//resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+			}
+
+			if(in_array($todo, array('resize'))){
+				// Resize image using the lanczos resampling algorithm based on width
+				$image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+			}
+
+			// Set Image format n quality
+			$image->setImageFormat('png');
+			//$image->setImageFormat('jpeg');
+        	$image->setImageCompressionQuality(90);
+			
+			// Clean & Save
+			$image->stripImage();
+			$image->writeImage($name);
+			$image->destroy();
+
+		}
+		return false;
+	}
+
+	// 원본 이미지를 넘기면 비율에 따라 썸네일 이미지를 생성함
+	function _createThumb($imgWidth, $imgHeight, $imgSource, $cropStyle, $imgThumb='') {
+
+		if (!$imgThumb)
+			$imgThumb = $imgSource;
+
+		$size = getimagesize($imgSource);
+		if ($size[2] == 1)
+			$source = imagecreatefromgif($imgSource);
+		else if ($size[2] == 2)
+			$source = imagecreatefromjpeg($imgSource);
+		else if ($size[2] == 3)
+			$source = imagecreatefrompng($imgSource);
+		else
+			return 0;
+		
+		$thumb     =     $this->_get_thumb_size($size[0], $size[1], $imgWidth, $imgHeight, $cropStyle);
+		$target = @imagecreatetruecolor($imgWidth, $imgHeight);
+		$white = @imagecolorallocate($target, 255, 255, 255);
+		imagefill($target, 0, 0, $white);
+		//@imagefilledrectangle($target, 0, 0, $thumb['w'], $thumb['h'], $white);
+		@imagecopyresampled($target, $source, $thumb['l'], $thumb['t'], $thumb['rl'], $thumb['rt'], $thumb['w'], $thumb['h'], $thumb['rw'], $thumb['rh']);
+		@imagejpeg($target, $imgThumb, 95);
+		@chmod($imgThumb, 0666);
+		  imagedestroy($source);
+		  imagedestroy($target);
+	}
+
+
 
 	function index()
 	{
@@ -313,30 +542,6 @@ class Upload extends CI_Controller
 			$msg = substr($ins_id, -2).'/'.$server_filename;
 		}
 		echo json_encode(array('status' => $status, 'msg' => $msg));		
-	}
-	
-	function image($file=null){
-
-
-		if($file==null){
-			$json = array(
-				'status' => 'fail',
-				'message' => 'no_file_received'
-				);
-		}
-		else if($file=='debug'){
-			$json = array(
-				'status' => 'done',
-				'upload_id' => 0,
-				'filename' => 'QWERTYUIOP1234567890ASDFGHJKL.png'
-				);
-		}
-		else{
-
-
-		}
-
-		$this->layout->set_json($json)->render();
 	}
 	
 }
