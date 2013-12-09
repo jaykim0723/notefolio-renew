@@ -27,13 +27,9 @@ var workUtil = {
 			if(typeof(target)=='undefined'){
 				var target = "#content-block-list";
 			}
-			if(typeof(trash)=='undefined'){
-				var trash = ".trashable";
-			}
 			$(target).sortable({
   				opacity: 0.6,
     			cursor: 'move',
-    			connectWith: trash,
 				start: function(event, ui){
 				},
 		        placeholder: {
