@@ -155,6 +155,9 @@ var workUtil = {
 
 			var output = '';
 			switch(type){
+				case 'text':
+					output = $('<hr>');
+				break;
 				case 'image':
 					var uploadTo = "/upload/image";
 					output = workUtil.content.createUploader(
@@ -224,11 +227,18 @@ var workUtil = {
 				$(this.previewsContainer).parent().before(
 					workUtil.content.createBlock('image', file.previewElement, 'list-block')
 				);
-				$(file.previewElement).append('<p class="uploading">업로드 중입니다... <img src="/img/ajax-loader.gif"/></p>')
+				$(file.previewElement).append('<p class="uploading">업로드 중입니다... <img src="/img/ajax-loader.gif" /></p>');
 				return this._updateMaxFilesReachedClass();
+			},
+			success: function(file) {
+				$(file.previewElement).append('<p class="img-line"><img src="" /></p>');
+			},
+			error: function(file) {
+				$(file.previewElement).append('<p class="error">업로드 중 오류가 발생하였습니다.</p>');
 			},
 			complete: function(file) {
 				$('p.uploading', file.previewElement).remove();
+
 				workUtil.content.removeBlock($(this.previewsContainer).parent());
 			},
 			previewTemplate: '<div class="preview"></div>'
