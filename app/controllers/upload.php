@@ -110,6 +110,7 @@ class Upload extends CI_Controller
 			$ext = '';
 		}
 		if(in_array($type, array('image'))){
+			var_export($type);
 			$salt = $this->config->item('encryption_key')
 					.'NOTEFOLIO'
 					.microtime()
@@ -144,8 +145,6 @@ class Upload extends CI_Controller
 									);
 			break;
 		}
-
-		var_export($output);
 		
 		if(!is_dir($output['path'])) //create the folder if it's not already exists
 		{
