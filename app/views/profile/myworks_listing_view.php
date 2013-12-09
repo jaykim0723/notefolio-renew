@@ -16,7 +16,7 @@
 				
 				<a href="/profile/myworks/<?php echo $username ?>/<?php echo ($page)?$page+1:2; ?>" class="more-link">more</a>
 
-
+  
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 		</div>
