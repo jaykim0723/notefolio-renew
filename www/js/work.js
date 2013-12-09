@@ -224,9 +224,11 @@ var workUtil = {
 				$(this.previewsContainer).parent().before(
 					workUtil.content.createBlock('image', file.previewElement, 'list-block')
 				);
+				$(file.previewElement).append('<p class="uploading">업로드 중입니다... <img src="/img/ajax-loader.gif"/></p>')
 				return this._updateMaxFilesReachedClass();
 			},
 			complete: function(file) {
+				$('p.uploading', file.previewElement).remove();
 				workUtil.content.removeBlock($(this.previewsContainer).parent());
 			},
 			previewTemplate: '<div class="preview"></div>'
