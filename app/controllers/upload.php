@@ -184,7 +184,7 @@ class Upload extends CI_Controller
 
 			if(in_array($todo, array('crop'))){
 				// Resize image using the lanczos resampling algorithm based on width
-				$image->cropImage ( int $width , int $height , int $x , int $y );
+				//$image->cropImage ( int $width , int $height , int $x , int $y );
 				//resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
 			}
 
