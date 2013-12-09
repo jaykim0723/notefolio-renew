@@ -232,7 +232,8 @@ var workUtil = {
 			},
 			success: function(file) {
 				console.log(file);
-				$(file.previewElement).append('<p class="img-line"><img src="" /></p>');
+				var json = eval('('+file.xhr.responseText+')');
+				$(file.previewElement).append('<p class="img-line"><img src="'+json.fileurl+json.data.filename+'" /></p>');
 			},
 			error: function(file) {
 				$(file.previewElement).append('<p class="error">업로드 중 오류가 발생하였습니다.</p>');
