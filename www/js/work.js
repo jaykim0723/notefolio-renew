@@ -155,7 +155,7 @@ var workUtil = {
 
 			var output = '';
 			switch(type){
-				case 'text':
+				case 'line':
 					output = $('<hr>');
 				break;
 				case 'image':
