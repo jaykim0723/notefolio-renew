@@ -72,6 +72,9 @@ class Upload extends CI_Controller
 		if($file){
 			$filename = $this->_make_filename($type, $file['name']);
 
+			var_export($filename);
+			exit();
+			
 			switch($type){
 				case "image":
 					$this->_make_thumbnail($file, $filename['path'].$filename['large'], 'large');
@@ -144,8 +147,6 @@ class Upload extends CI_Controller
 									);
 			break;
 		}
-			var_export($output);
-			exit();
 		
 		if(!is_dir($output['path'])) //create the folder if it's not already exists
 		{
