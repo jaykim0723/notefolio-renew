@@ -50,7 +50,7 @@ class Upload extends CI_Controller
 
 	        $json = array(
 	        	'status' => 'done',
-	        	'fileurl' => $filename['uri'],
+	        	'fileurl' => '/'.$filename['uri'],
 	        	'data' => $this->upload_model->get(array('id'=>$upload_id))->row
 	        	);
 		}
