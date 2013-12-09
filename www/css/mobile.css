@@ -462,7 +462,7 @@ p.desc {
 }
 .profile-thumbnail-list .thumbbox {
 	display: inline-block;
-	margin: 20px;
+	margin: 10px;
 	vertical-align:bottom;	
 }
 @media (max-width:992px){
