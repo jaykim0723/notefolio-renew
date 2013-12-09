@@ -16,8 +16,10 @@ exit($this->nf->get('list_username'));
 					<?php $this->load->view('profile/thumbnail_inc_view', $row) ?>
 					<?php endforeach ?>
 				</ul>
-
-				<a href="/profile/myworks/<?php echo $username ?>/<?php echo ($page)?$page+1:2; ?>" class="more-link">more</a>
+				
+				<?php 
+				// <a href="/profile/myworks/<?php echo $username ?>/<?php echo ($page)?$page+1:2; ?>" class="more-link">more</a>
+				 ?>	
 
 
 <?php if (!$this->input->is_ajax_request()): ?>
