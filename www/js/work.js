@@ -189,7 +189,7 @@ var workUtil = {
 		},
 		createUploader:function(elem, url, data){
 		  return $(elem).dropzone({
-			url: uploadTo,
+			url: url,
 			acceptedFiles: 'image/*',
 			paramName: "file", 
 			maxFilesize: 128, // MB
