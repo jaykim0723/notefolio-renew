@@ -142,7 +142,7 @@
 	<li class="block-image"><i class="glyphicon glyphicon-picture"></i></li>
 	<li class="block-video"><i class="glyphicon glyphicon-film"></i></li>
 	<li class="block-line"><i class="glyphicon glyphicon-minus"></i></li>
-	<li id="trash-bin" class="glyphicon glyphicon-remove trashable">&nbsp;</li>
+	<li id="trash-bin" class="glyphicon glyphicon-remove">&nbsp;</li>
 </ul>
 <script>
 	$(function() {
