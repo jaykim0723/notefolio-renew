@@ -5,10 +5,11 @@ class Upload extends CI_Controller
 	
 	function __construct()
 	{
+		parent::__construct();
+		
 		if(USER_ID==0) // not signend in
 			exit(json_encode(array("status"=>"fail", "message"=>"not_signed_user")));
 
-		parent::__construct();
 		$this->load->config('upload', TRUE);
 		$this->load->model('upload_model');
 	}
