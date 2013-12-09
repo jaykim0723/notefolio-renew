@@ -126,6 +126,7 @@ class Upload extends CI_Controller
 				$path = $this->config->item('img_upload_path', 'upload');
 				$uri  = $this->config->item('img_upload_uri',  'upload');
 				var_export($uri);
+				exit();
 				$output = array('original' =>$hashed_name.'.'.$ext,
 								'large'    =>$hashed_name.'_L.png',
 								'medium'   =>$hashed_name.'_M.png',
