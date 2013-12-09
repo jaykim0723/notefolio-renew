@@ -147,7 +147,7 @@ class Upload extends CI_Controller
 	 * @param array $opt
 	 * @return array
 	 */
-	function _make_thumbnail($file=false, $name=false, $type=false, $opt=array())){
+	function _make_thumbnail($file=false, $name=false, $type=false, $opt=array()){
 		$size = getimagesize($file['tmp_name']);			
 
 		if ($size[2] == 1) 
