@@ -3,6 +3,8 @@
 class Nf
 {
 	protected	$ci;
+    protected   $nf_array = array();
+
 	public function __construct()
 	{
         $this->ci =& get_instance();
@@ -16,6 +18,15 @@ class Nf
         }
 	}
 
+    function get($key){
+        if($key=='') return '';
+        return $this->nf_array[$key] OR '';
+    }
+    function set($key='', $value=''){
+        if($key=='') return FALSE;
+        $this->nf_array[$key] = $value;
+        return TRUE;
+    }
 
     function _member_check($member_only=array(), $go_to='')
     {

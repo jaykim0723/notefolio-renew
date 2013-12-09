@@ -32,12 +32,16 @@
 					<div class="work-wrapper infinite-item">
 						<div class="work_info well" style="height: 100px;">
 							<div class="btn-group pull-right">
+								<?php if (USER_ID): ?>
+									
+								<?php endif ?>
 								<a href="/<?php echo $user->username ?>/<?php echo $work_id ?>/update" class="btn btn-default">
 									<i class="glyphicon glyphicon-cog"></i>
 								</a>
 								<a id="btnDelete" href="/<?php echo $user->username ?>/<?php echo $work_id ?>/delete" class="btn btn-default">
 									<i class="glyphicon glyphicon-trash"></i>
 								</a>
+
 							</div>
 							작품정보
 						</div>
