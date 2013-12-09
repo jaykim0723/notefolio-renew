@@ -219,30 +219,17 @@ var workUtil = {
 			},
 			addedfile: function(file) {
 				$(this.previewsContainer).parent().css({'display': 'none'});
-				console.log(file);
-				var node, _i, _j, _len, _len1, _ref, _ref1,
-				_this = this;
 				file.previewElement = Dropzone.createElement(this.options.previewTemplate.trim());
 				file.previewTemplate = file.previewElement;
 				$(this.previewsContainer).parent().before(
 					workUtil.content.createBlock('image', file.previewElement, 'list-block')
 				);
-				_ref = file.previewElement.querySelectorAll("[data-dz-name]");
-				for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-					node = _ref[_i];
-					node.textContent = file.name;
-				}
-				_ref1 = file.previewElement.querySelectorAll("[data-dz-size]");
-				for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-					node = _ref1[_j];
-					node.innerHTML = this.filesize(file.size);
-				}
 				return this._updateMaxFilesReachedClass();
 			},
 			complete: function(file) {
 				workUtil.content.removeBlock($(this.previewsContainer).parent());
 			},
-			previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
+			previewTemplate: '<div class="preview"></div>'
 		  });
 		},
 		createOldUploader: function(url){
