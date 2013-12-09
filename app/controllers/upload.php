@@ -182,9 +182,6 @@ class Upload extends CI_Controller
 				break;
 			}
 
-			var_export($todo);
-			exit();
-
 			// assign ImageMagick
 			$image = new Imagick($file['tmp_name']);
 			$image->setImageColorspace(Imagick::COLORSPACE_SRGB);
@@ -198,6 +195,9 @@ class Upload extends CI_Controller
 				// Resize image using the lanczos resampling algorithm based on width
 				$image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
 			}
+
+			var_export($todo);
+			exit();
 
 			// Set Image format n quality
 			$image->setImageFormat(($opt['ext']!='')?$opt['ext']:'png');
