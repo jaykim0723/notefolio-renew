@@ -48,8 +48,6 @@ class Upload extends CI_Controller
 	            'comment' => ''
 	        ));
 
-			var_export($filename);
-			exit();
 	        $json = array(
 	        	'status' => 'done',
 	        	'fileurl' => $filename['uri'],
