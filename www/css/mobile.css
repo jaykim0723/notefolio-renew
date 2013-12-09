@@ -141,10 +141,6 @@
 
 
 
-.profile-thumbnail-list .thumbbox {
-	float: left;
-	margin: 20px;
-}
 
 
 
@@ -457,6 +453,45 @@ p.desc {
 		top: 50px;
 	}
 }
+
+
+
+
+.profile-thumbnail-list {
+	text-align: center;
+}
+.profile-thumbnail-list .thumbbox {
+	display: inline-block;
+	margin: 20px;
+	vertical-align:bottom;	
+}
+@media (max-width:992px){
+	.profile-thumbnail-list .thumbbox {
+		zoom:0.7;
+	}
+}
+@media (max-width:767px){
+	.profile-thumbnail-list .thumbbox {
+		zoom:0.5;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

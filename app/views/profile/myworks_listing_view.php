@@ -1,6 +1,3 @@
-<?php 
-exit($this->nf->get('list_username'));
- ?>
 <?php if (!$this->input->is_ajax_request()): ?>
 
 <section class="listing">
@@ -17,9 +14,7 @@ exit($this->nf->get('list_username'));
 					<?php endforeach ?>
 				</ul>
 				
-				<?php 
-				// <a href="/profile/myworks/<?php echo $username ?>/<?php echo ($page)?$page+1:2; ?>" class="more-link">more</a>
-				 ?>	
+				<a href="/profile/myworks/<?php echo $username ?>/<?php echo ($page)?$page+1:2; ?>" class="more-link">more</a>
 
 
 <?php if (!$this->input->is_ajax_request()): ?>
