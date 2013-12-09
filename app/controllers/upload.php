@@ -101,8 +101,8 @@ class Upload extends CI_Controller
 	 */
 	function _make_filename($type=false, $name=false){
 		if($name){
-			var_export($name);
-			exit();
+			var_export(explode('.', $name, -1));
+			exit;
 			list($o_name, $ext) = explode('.', $name, -1);
 			$ext = strtolower($ext);
 		}
@@ -122,10 +122,10 @@ class Upload extends CI_Controller
 			case 'image':
 				$path = $this->config->item('img_upload_path', 'upload');
 				$output = array('original' =>$hashed_name.$ext,
-								'large'    =>$hashed_name.'_L'.$ext,
-								'medium'   =>$hashed_name.'_M'.$ext,
+								'large'    =>$hashed_name.'_L.png',
+								'medium'   =>$hashed_name.'_M.png',
 								'path'     =>$path.$hashed_path,
-								'ext'	   =>($ext!='')?$ext:'jpg'
+								'ext'	   =>($ext!='')?$ext:'png'
 								);
 			break;
 			case 'cover':
@@ -198,7 +198,7 @@ class Upload extends CI_Controller
 			}
 
 			// Set Image format n quality
-			$image->setImageFormat('png');
+			$image->setImageFormat(($opt['ext']!='')?$opt['ext']:'png');
 			//$image->setImageFormat('jpeg');
         	$image->setImageCompressionQuality(90);
 			
