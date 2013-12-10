@@ -19,7 +19,7 @@
 					  <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-					  <li><a href="#">사진 업로드</a></li>
+					  <li><a id="btn-upload-face" href="#">사진 업로드</a></li>
 					  <li><a href="#">작품 중 선택</a></li>
 					  <li><a href="#">삭제</a></li>
 					</ul>
@@ -75,4 +75,11 @@
 			scrollTop : site.prevPage.top
 		}, 1);
 	}
+
+	<?php if($this->session->userdata('username')==$username): ?>
+	$(function(){
+		$('#btn-upload-face').ajaxUploader({
+		});
+	});
+	<?php endif; ?>	
 </script>
