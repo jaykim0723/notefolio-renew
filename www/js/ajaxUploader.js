@@ -1,10 +1,10 @@
 (function($, window, undefined){
-$.fn.ajaxUplaoder = function(opts) {
+$.fn.ajaxUploader = function(opts) {
 	var defaults = {
 		// setting your default values for options
 		url : '/upload.php',
 		droppable : true,
-		dropActiveClass : '.drop-pactive',
+		dropActiveClass : '.drop-active',
 		multiple : true,
 		extentions : 'jpg,jpeg,gif,bmp,tiff',
 		maxSize : 2000 // KB
