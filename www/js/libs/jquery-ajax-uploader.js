@@ -5,6 +5,7 @@ $.fn.ajaxUploader = function(opts) {
 		url : '/upload.php',
 		droppable : true,
 		dropActiveClass : '.drop-active',
+		dropElement : 'self',
 		multiple : true,
 		extentions : 'jpg,jpeg,gif,bmp,tiff',
 		maxSize : 2000, // KB
@@ -35,8 +36,27 @@ $.fn.ajaxUploader = function(opts) {
 			'font-size': '200px',
 			direction: 'ltr',
 			cursor: 'pointer'
-		}).on('change', function(){
-			alert(upload ok);
+		}).on('change', function(){ // 파일 선택이 완료되었을 때에
+			alert('upload ok');
+		});
+		var $dropElement = options.dropElement=='self' ? $this : (typeof options.dropElement=='string' ? $(options.dropElement) : options.dropElement);
+		console.log('$dropElement', $dropElement);
+		$dropElement.on({
+			dragenter : function(){
+
+			},
+			dragover : function(){
+
+			},
+			dragleave : function(){
+
+			},
+			dragend : function(){
+
+			},
+			drop : function(){
+
+			}
 		});
 
 	});
