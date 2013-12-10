@@ -220,8 +220,9 @@ class Upload extends CI_Controller
 			if(in_array($todo, array('resize'))){
 				// Resize image using the lanczos resampling algorithm based on width
 				$image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+				exit();
 			}
-			
+
 			// Set Image format n quality
 			$image->setImageFormat((isset($opt['ext'])&&$opt['ext']!='')?$opt['ext']:'png');
 			//$image->setImageFormat('jpeg');
