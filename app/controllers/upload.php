@@ -207,7 +207,7 @@ class Upload extends CI_Controller
 			        unset($icc_cmyk); 
 			    } 
 			    // then we add an RGB profile 
-			    $icc_rgb = file_get_contents(APPPATH.'libraries/colorspace/sRGB_v4_ICC_preference_displayclass.icc'); 
+			    $icc_rgb = file_get_contents(APPPATH.'libraries/colorspace/sRGB_v4_ICC_preference.icc'); 
 			    $image->profileImage('icc', $icc_rgb); 
 			    unset($icc_rgb); 
 			}
