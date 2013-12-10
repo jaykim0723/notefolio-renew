@@ -207,7 +207,7 @@ class Upload extends CI_Controller
 			        unset($icc_cmyk); 
 			    } 
 			    // then we add an RGB profile 
-			    $icc_rgb = file_get_contents(APPPATH.'libraries/colorspace/sRGB_v4_ICC_preference.icc'); 
+			    $icc_rgb = file_get_contents(APPPATH.'libraries/colorspace/sRGB_v4_ICC_preference_displayclass.icc'); 
 			    $image->profileImage('icc', $icc_rgb); 
 			    unset($icc_rgb); 
 			}
@@ -232,7 +232,7 @@ class Upload extends CI_Controller
         	$image->setImageCompressionQuality((isset($opt['ext'])&&$opt['ext']!='jpg')?0:90);
 			
 			// Clean & Save
-			//$image->stripImage();
+			$image->stripImage();
 			$image->writeImage($name);
 			$image->destroy();
 
