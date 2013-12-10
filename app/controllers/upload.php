@@ -212,15 +212,14 @@ class Upload extends CI_Controller
 			    unset($icc_rgb); 
 			}
 
-			if(in_array($todo, array('crop'))){
+			if(in_array('crop', $todo)){
 				// Crop Image. Resize is next block.
 				$image->cropImage($width, $height, $x, $y);
 			}
 
-			if(in_array($todo, array('resize'))){
+			if(in_array('resize', $todo)){
 				// Resize image using the lanczos resampling algorithm based on width
 				$image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
-				exit();
 			}
 
 			// Set Image format n quality
