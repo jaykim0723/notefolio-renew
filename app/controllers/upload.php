@@ -221,7 +221,7 @@ class Upload extends CI_Controller
 				// Resize image using the lanczos resampling algorithm based on width
 		    	$image->resampleImage(72,72,imagick::FILTER_LANCZOS,1);
 				//$image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
-				$image->scaleImage($max_width,$max_height);
+				$image->adaptiveResizeImage($max_width,$max_height);
 			}
 			/*
 		    $img->setImageResolution(72,72); 
