@@ -212,21 +212,20 @@ class Upload extends CI_Controller
 			    unset($icc_rgb); 
 			}
 
+	    	$image->resampleImage(72,72,imagick::FILTER_LANCZOS,1);
+
 			if(in_array('crop', $todo)){
 				// Crop Image. Resize is next block.
 				$image->cropImage($width, $height, $x, $y);
 			}
 
 			if(in_array('resize', $todo)){
+		    	if($image->getImageWidth() > $max_width){
 				// Resize image using the lanczos resampling algorithm based on width
-		    	$image->resampleImage(72,72,imagick::FILTER_LANCZOS,1);
-				//$image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
-				$image->adaptiveResizeImage($max_width,$max_height);
+					$image->resizeImage(($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+				}
 			}
-			/*
-		    $img->setImageResolution(72,72); 
-		    $img->resampleImage(72,72,imagick::FILTER_UNDEFINED,1); 
-			*/
+			
 			// Set Image format n quality
 			$image->setImageFormat((isset($opt['ext'])&&$opt['ext']!='')?$opt['ext']:'png');
 			//$image->setImageFormat('jpeg');
