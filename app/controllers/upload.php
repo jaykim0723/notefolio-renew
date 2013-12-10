@@ -198,9 +198,9 @@ class Upload extends CI_Controller
 			//$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
 			if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
 			    $profiles = $image->getImageProfiles('*', false); 
-				exit(var_export($profile));
 			    // we're only interested if ICC profile(s) exist 
 			    $has_icc_profile = (array_search('icc', $profiles) !== false); 
+				exit(var_export($profile));
 			    // if it doesnt have a CMYK ICC profile, we add one 
 			    if ($has_icc_profile === false) { 
 			       $icc_cmyk = file_get_contents(APPPATH.'tools/colorspace/USWebUncoated.icc'); 
