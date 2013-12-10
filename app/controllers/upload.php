@@ -126,11 +126,11 @@ class Upload extends CI_Controller
 				$path = $this->config->item('img_upload_path', 'upload');
 				$uri  = $this->config->item('img_upload_uri',  'upload');
 				$output = array('original' =>$hashed_name.'.'.$ext,
-								'large'    =>$hashed_name.'_v1.png',
-								'medium'   =>$hashed_name.'_v2.png',
+								'large'    =>$hashed_name.'_v1.jpg',
+								'medium'   =>$hashed_name.'_v2.jpg',
 								'path'     =>$path.$hashed_path,
 								'uri'      =>$uri.$hashed_path,
-								'ext'	   =>($ext!='')?$ext:'png'
+								'ext'	   =>($ext!='')?$ext:'jpg'
 								);
 			break;
 			case 'cover':
@@ -227,9 +227,9 @@ class Upload extends CI_Controller
 			}
 
 			// Set Image format n quality
-			$image->setImageFormat((isset($opt['ext'])&&$opt['ext']!='')?$opt['ext']:'png');
+			$image->setImageFormat((isset($opt['ext'])&&$opt['ext']!='')?$opt['ext']:'jpg');
 			//$image->setImageFormat('jpeg');
-        	$image->setImageCompressionQuality((isset($opt['ext'])&&$opt['ext']=='jpg')?90:0);
+        	$image->setImageCompressionQuality((isset($opt['ext'])&&$opt['ext']!='jpg')?0:90);
 			
 			// Clean & Save
 			$image->stripImage();
