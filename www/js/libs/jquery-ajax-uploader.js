@@ -38,6 +38,10 @@ $.fn.ajaxUploader = function(opts) {
 			cursor: 'pointer'
 		}).on('change', function(){ // 파일 선택이 완료되었을 때에
 			alert('upload ok');
+
+			// 여기에서 파일 업로드 후 전송 시작, 성공, 실패에 따라 정해진 콜백을 호출하도록 만든다
+			// do stuff
+
 		});
 		var $dropElement = options.dropElement=='self' ? $this : (typeof options.dropElement=='string' ? $(options.dropElement) : options.dropElement);
 		console.log('$dropElement', $dropElement);
