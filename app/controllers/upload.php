@@ -222,6 +222,8 @@ class Upload extends CI_Controller
 				$image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
 			}
 
+			$image->setImageColorspace(Imagick::COLORSPACE_RGB);
+
 			// Set Image format n quality
 			$image->setImageFormat((isset($opt['ext'])&&$opt['ext']!='')?$opt['ext']:'png');
 			//$image->setImageFormat('jpeg');
