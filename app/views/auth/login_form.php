@@ -5,7 +5,8 @@ $login = array(
 	'value' => set_value('login'),
 	'maxlength'	=> 80,
 	'size'	=> 30,
-	'class' => 'form-control'
+	'class' => 'form-control',
+	'autofocus' => 'autofocus'
 );
 if ($login_by_username AND $login_by_email) {
 	$login_label = 'Email or login';

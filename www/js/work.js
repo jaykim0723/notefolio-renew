@@ -168,7 +168,7 @@ var workUtil = {
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
 				case 'video':
-					output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb_wide6.jpg');
+					output = $('<iframe></iframe>').attr('src', '//www.youtube.com/embed/wnnOf05WKEs?wmode=opaque');
 				break;
 				case 'text':
 				default:

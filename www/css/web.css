@@ -64,6 +64,11 @@ div.upload-guide{
 #work-content-blockadder li{
 	cursor: pointer;
 }
+#work-content-blockadder li.block-video {
+	padding-top: 0;
+	padding-bottom: 0;
+	height: auto;
+}
 li#trash-bin{
 	display: block;
 	width:1em;

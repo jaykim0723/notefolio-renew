@@ -106,21 +106,6 @@
 				<br>
 				<h4>내용</h4>
 				<ul id="content-block-list" class="list-unstyled">
-					<li>
-						<div class="well" style="height:600px;">
-							작품 블럭영역
-						</div>
-					</li>
-					<li>
-						<div class="well" style="height:100px;">
-							작품 블럭영역
-						</div>
-					</li>
-					<li>
-						<div class="well" style="height:200px;">
-							작품 블럭영역
-						</div>
-					</li>
 				</ul>
 				<?php echo form_open(''); ?>
 				<?php echo form_close(); ?>
