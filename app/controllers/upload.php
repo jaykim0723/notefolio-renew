@@ -210,7 +210,6 @@ class Upload extends CI_Controller
 			    $icc_rgb = file_get_contents(APPPATH.'libraries/colorspace/sRGB_v4_ICC_preference.icc'); 
 			    $image->profileImage('icc', $icc_rgb); 
 			    unset($icc_rgb); 
-					exit(var_export($profile));
 			}
 
 			if(in_array($todo, array('crop'))){
