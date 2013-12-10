@@ -126,8 +126,8 @@ class Upload extends CI_Controller
 				$path = $this->config->item('img_upload_path', 'upload');
 				$uri  = $this->config->item('img_upload_uri',  'upload');
 				$output = array('original' =>$hashed_name.'.'.$ext,
-								'large'    =>$hashed_name.'_L.png',
-								'medium'   =>$hashed_name.'_M.png',
+								'large'    =>$hashed_name.'_v1.png',
+								'medium'   =>$hashed_name.'_v2.png',
 								'path'     =>$path.$hashed_path,
 								'uri'      =>$uri.$hashed_path,
 								'ext'	   =>($ext!='')?$ext:'png'
@@ -137,8 +137,9 @@ class Upload extends CI_Controller
 				$path = $this->config->item('cover_upload_path', 'upload');
 				$uri  = $this->config->item('cover_upload_uri',  'upload');
 				$output = array('original' =>$o_name,
-								'wide'     =>$o_name.'_W.jpg',
-								'single'   =>$o_name.'_S.jpg',
+								'wide'     =>$o_name.'_t3.jpg',
+								'single'   =>$o_name.'_t2.jpg',
+								'small'    =>$o_name.'_t1.jpg',
 								'path'     =>$path,
 								'uri'      =>$uri,
 								'ext'	   =>($ext!='')?$ext:'jpg'
@@ -194,8 +195,9 @@ class Upload extends CI_Controller
 
 			// assign ImageMagick
 			$image = new Imagick($file['tmp_name']);
-			//$image->setImageColorspace(Imagick::COLORSPACE_SRGB);
+			//$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
 			if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
+				exit('aaaaaa');
 			    $profiles = $image->getImageProfiles('*', false); 
 			    // we're only interested if ICC profile(s) exist 
 			    $has_icc_profile = (array_search('icc', $profiles) !== false); 

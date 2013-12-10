@@ -26,3 +26,6 @@ $config['thumbnail_wide']= array('max_width'  => 800,  //pixel
 $config['thumbnail_single']=array('max_width' => 400,  //pixel
                                 'max_height'  => 400  //pixel
                                 );
+$config['thumbnail_small']= array('max_width' => 300,  //pixel
+                                'max_height'  => 300  //pixel
+                                );
