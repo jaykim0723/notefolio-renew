@@ -218,7 +218,7 @@ var workUtil = {
 			fallback: function() {
 				var msg 	 = $('<p>Internet Explorer 9 이하 버전은 기존 업로드 기능을 이용하고 있습니다.</p>');
 				var uploader = workUtil.content.createOldUploader;
-				return $(this.element).append(msg).append(uploader);
+				return $(this.element).append(msg).info(uploader);
 			},
 			addedfile: function(file) {
 				$(this.previewsContainer).parent().css({'display': 'none'});

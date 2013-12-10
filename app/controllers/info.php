@@ -8,7 +8,10 @@ class Info extends CI_Controller
 		$this->nf->_member_check(array());
 	}
 	
-	
+
+	function phpinfo(){
+		phpinfo();
+	}	
 	//
 	function upgrade()
 	{
