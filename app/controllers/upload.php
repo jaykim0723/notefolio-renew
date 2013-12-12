@@ -192,6 +192,8 @@ class Upload extends CI_Controller
 				default:
 				break;
 			}
+
+
 			if(class_exists('Imagick')){
 				// assign ImageMagick
 				$image = new Imagick($file['tmp_name']);
@@ -240,8 +242,70 @@ class Upload extends CI_Controller
 				return true;
 			}
 			else {
+
+				// GD 라이브러리를 이용하여 고전적인 방법으로 생성한다.
+				$size = getimagesize($file['tmp_name']);
+
+				if ($size[2] == 1)
+					$source = imagecreatefromgif($file['tmp_name']);
+				else if ($size[2] == 2){
+					$source = imagecreatefromjpeg($file['tmp_name']);
+					if(function_exists('exif_read_data')){
+						$exif = exif_read_data($file['tmp_name']);
+					    if (!empty($exif['Orientation'])) {
+					        switch ($exif['Orientation']) {
+					            case 3:
+					                $source = imagerotate($source, 180, 0);
+					                $modified = true;
+					                break;
+					            case 6:
+					                $source = imagerotate($source, -90, 0);
+					                $modified = true;
+					                break;
+					            case 8:
+					                $source = imagerotate($source, 90, 0);
+					                $modified = true;
+					                break;
+					        }
+					        if(isset($modified)){
+								@imagejpeg($source, $file['tmp_name'], 100);			        	
+					        }
+					    }
+					    imagedestroy($source);
+					}
+				}else if ($size[2] == 3)
+					$source = imagecreatefrompng($file['tmp_name']);
+				else
+					;
 				
-			}
+				if(in_array('crop', $todo)){
+					// Crop Image. Resize is next block.
+					// $image->cropImage($width, $height, $x, $y); // 미정: 위와 통일한 방법 강구하여야 함
+				}
+
+				if(in_array('resize', $todo)){
+			    	if($image->getImageWidth() > $max_width){
+						// Resize image using the lanczos resampling algorithm based on width
+						// $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,0); // 미정: 위와 통일한 방법 강구하여야 함
+					}
+				}			
+				// Set Image format n quality
+				$target = @imagecreatetruecolor($w, $h); // target 사이즈를 이곳에 도달하기 전에 미리 결정하여야 함
+				if($size[2] == 3){
+					imagesavealpha($target, true); 
+					$color = imagecolorallocatealpha($target,0x00,0x00,0x00,127); 
+					imagefill($target, 0, 0, $color); 					
+				}
+				@imagecopyresampled($target, $source, 0, 0, 0, 0, $w, $h, $size[0], $size[1]);
+				if ($size[2] == 3)
+					@imagepng($name);
+				else
+					@imagejpeg($name, 90);
+				@chmod($name, 0777); // 추후 삭제를 위하여 파일모드 변경
+				imagedestroy($source);
+				imagedestroy($target);
+
+e			}
 		}
 
 		return false;
