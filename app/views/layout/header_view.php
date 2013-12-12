@@ -43,12 +43,12 @@
 				<?php else: ?>
 					<a id="btn-feed" href="/feed/listing" class="hover-enabled">
 						<i class="spi spi-feed"></i>
-						<span class="label label-danger rounded unread-feed"></span>
+						<span class="label label-nofol rounded unread-feed"></span>
 					</a>
 					<span id="alarm-wrapper">
 						<a id="btn-alarm" href="javascript:;" class="hover-enabled">
 							<i class="spi spi-alarm"></i>
-							<span class="label label-danger rounded unread-alarm"></span>
+							<span class="label label-nofol rounded unread-alarm"></span>
 						</a>
 					</span>
 
