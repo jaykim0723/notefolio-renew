@@ -140,4 +140,13 @@ $(function() {
     $('#btn-alarm').on('click', function(){
     	site.alarm.open();
     });
+
+    $(document).on('mouseenter', '.hover-enabled', function(){
+    	$o = $(this).find('.spi');
+    	$o.attr('class', $o.attr('class')+'_hover');
+    }).on('mouseleave', '.hover-enabled', function(){
+    	$o = $(this).find('.spi');
+    	$o.attr('class', $o.attr('class').replace('_hover',''));
+    });
+
 });

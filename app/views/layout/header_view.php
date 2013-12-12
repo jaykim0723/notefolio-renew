@@ -41,13 +41,13 @@
 					<a class="btn btn-primary" href="/auth/login">Login with Facebook</a>
 					<a class="btn btn-info" href="/auth/register">Sign Up</a>
 				<?php else: ?>
-					<a id="btn-feed" href="/feed/listing" class="btn btn-default">
-						<i class="glyphicon glyphicon-dashboard"></i>
+					<a id="btn-feed" href="/feed/listing" class="hover-enabled">
+						<i class="spi spi-feed"></i>
 						<span class="label label-danger rounded unread-feed"></span>
 					</a>
 					<span id="alarm-wrapper">
-						<a id="btn-alarm" href="javascript:;" class="btn btn-default">
-							<i class="glyphicon glyphicon-film"></i>
+						<a id="btn-alarm" href="javascript:;" class="hover-enabled">
+							<i class="spi spi-alarm"></i>
 							<span class="label label-danger rounded unread-alarm"></span>
 						</a>
 					</span>
