@@ -25,17 +25,23 @@ $.fn.ajaxUploader = function(opts) {
 		$this = $(this);
 		console.log($this, options);
 		$this.css({
-			postion : 'relative'
-		}).append('<input type="file" multiple/>').children('input[type=file]').css({
+			position : 'relative',
+			overflow : 'hidden'
+		})
+		.append('<input type="file" multiple/>')
+		.children('input[type=file]').css({
 			position: 'absolute',
 			top: 0,
 			right: 0,
+			bottom : 0,
+			left : 0,
 			margin: 0,
 			opacity: 0,
 			'-ms-filter': 'alpha(opacity=0)',
 			'font-size': '200px',
 			direction: 'ltr',
 			cursor: 'pointer'
+			// visibility : 'hidden'
 		}).on('change', function(){ // 파일 선택이 완료되었을 때에
 			alert('upload ok');
 

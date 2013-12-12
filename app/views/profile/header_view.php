@@ -38,7 +38,7 @@
 		  <span class="caret"></span>
 		</button>
 		<ul class="dropdown-menu">
-		  <li><a href="#">사진 업로드</a></li>
+		  <li><a id="btn-upload-bg" href="#">사진 업로드</a></li>
 		  <li><a href="#">작품 중 선택</a></li>
 		  <li><a href="#">삭제</a></li>
 		</ul>
@@ -79,6 +79,10 @@
 	<?php if($this->session->userdata('username')==$username): ?>
 	$(function(){
 		$('#btn-upload-face').ajaxUploader({
+			url : '/upload/profile-face'
+		});
+		$('#btn-upload-bg').ajaxUploader({
+			url : '/upload/profile-bg'
 		});
 	});
 	<?php endif; ?>	

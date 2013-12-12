@@ -223,7 +223,9 @@
     height: 100%;
 }
 
-
+#content-block-list > li {
+	margin: 7px 0;
+}
 
 
 
