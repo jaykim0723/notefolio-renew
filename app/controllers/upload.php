@@ -277,18 +277,7 @@ class Upload extends CI_Controller
 					$source = imagecreatefrompng($file['tmp_name']);
 				else
 					;
-				
-				if(in_array('crop', $todo)){
-					// Crop Image. Resize is next block.
-					// $image->cropImage($width, $height, $x, $y); // 미정: 위와 통일한 방법 강구하여야 함
-				}
 
-				if(in_array('resize', $todo)){
-			    	if($image->getImageWidth() > $max_width){
-						// Resize image using the lanczos resampling algorithm based on width
-						// $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,0); // 미정: 위와 통일한 방법 강구하여야 함
-					}
-				}			
 				// Set Image format n quality
 				$target = @imagecreatetruecolor($w, $h); // target 사이즈를 이곳에 도달하기 전에 미리 결정하여야 함
 				if($size[2] == 3){
@@ -304,8 +293,7 @@ class Upload extends CI_Controller
 				@chmod($name, 0777); // 추후 삭제를 위하여 파일모드 변경
 				imagedestroy($source);
 				imagedestroy($target);
-
-e			}
+			}
 		}
 
 		return false;
