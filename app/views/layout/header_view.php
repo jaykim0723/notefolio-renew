@@ -35,8 +35,12 @@
 
 			<div class="col-md-6 righted">
 				<?php if (USER_ID==0): ?>
-					<a class="btn btn-primary" href="/auth/login">Login with Facebook</a>
-					<a class="btn btn-info" href="/auth/register">Sign Up</a>
+					<a class="btn btn-nofol btn-hover" href="/auth/login">
+						<i class="spi spi-signupfb"></i> Login with Facebook
+					</a>
+					<a class="btn btn-nofol btn-hover" href="/auth/register">
+						<i class="spi spi-signup"></i> Sign Up
+					</a>
 				<?php else: ?>
 					<a id="btn-feed" href="/feed/listing" class="btn-hover">
 						<i class="spi spi-feed"></i>
