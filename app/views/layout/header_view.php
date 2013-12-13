@@ -27,7 +27,7 @@
 				<ul class="list-inline">
 					<li>
 						<a href="/">
-							<i class="spi spi-home"></i>
+							<i class="spi spi-nflogo"></i>
 						</a>
 					</li>
 					<li>
@@ -41,19 +41,19 @@
 					<a class="btn btn-primary" href="/auth/login">Login with Facebook</a>
 					<a class="btn btn-info" href="/auth/register">Sign Up</a>
 				<?php else: ?>
-					<a id="btn-feed" href="/feed/listing" class="hover-enabled">
+					<a id="btn-feed" href="/feed/listing" class="btn-hover">
 						<i class="spi spi-feed"></i>
 						<span class="label label-nofol rounded unread-feed"></span>
 					</a>
 					<span id="alarm-wrapper">
-						<a id="btn-alarm" href="javascript:;" class="hover-enabled">
+						<a id="btn-alarm" href="javascript:;" class="btn-hover">
 							<i class="spi spi-alarm"></i>
 							<span class="label label-nofol rounded unread-alarm"></span>
 						</a>
 					</span>
 
-					<a class="btn btn-success" href="/gallery/create">
-						Upload work
+					<a class="btn btn-nofol btn-hover" href="/gallery/create">
+						<i class="spi spi-uploadworks"></i> Upload work
 					</a>
 					<a class="btn btn-default" href="/<?php echo $this->session->userdata('username') ?>">My Profile</a>
 				<?php endif ?>

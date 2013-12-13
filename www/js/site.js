@@ -141,10 +141,10 @@ $(function() {
     	site.alarm.open();
     });
 
-    $(document).on('mouseenter', '.hover-enabled', function(){
+    $(document).on('mouseenter', '.btn-hover', function(){
     	$o = $(this).find('.spi');
     	$o.attr('class', $o.attr('class')+'_hover');
-    }).on('mouseleave', '.hover-enabled', function(){
+    }).on('mouseleave', '.btn-hover', function(){
     	$o = $(this).find('.spi');
     	$o.attr('class', $o.attr('class').replace('_hover',''));
     });
