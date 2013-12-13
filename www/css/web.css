@@ -1,6 +1,14 @@
-
+body {
+	background: #f8f8f8;
+}
+#header {
+	height: 60px;
+}
 #header .row > div {
 	padding-top: 9px;
+}
+#header ul {
+	margin-bottom: 0;
 }
 #content-wrap {
 	padding-top: 20px;
@@ -13,7 +21,17 @@
 	display: inline-block;
 	text-align: center;
 }
-
+#top-menu {
+	background: #fff;
+	padding: 6px 0 3px 0;
+	border-bottom: 1px solid #eee;
+}
+#top-menu a:hover {
+	opacity: 0.5;
+}
+#top-menu .ml {
+	margin-left: 40px;
+}
 
 
 

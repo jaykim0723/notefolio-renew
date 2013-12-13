@@ -1,17 +1,17 @@
-<div id="top_menu" class="hidden-xs hidden-sm">
+<div id="top-menu" class="hidden-xs hidden-sm">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
 				<a href="/"><i class="spi spi-topbar_home"></i></a>
-				<a href="http://magazine.notefolio.net"><i class="spi spi-topbar_magazine"></i></a>
-				<a href="http://shop.notefolio.net"><i class="spi spi-topbar_shop"></i></a>
+				<a href="http://magazine.notefolio.net" class="ml"><i class="spi spi-topbar_magazine"></i></a>
+				<a href="http://shop.notefolio.net" class="ml"><i class="spi spi-topbar_shop"></i></a>
 			</div>
 			<div class="col-md-6 righted">
 				<?php if (USER_ID==0): ?>
 					<a href="/auth/login"><i class="spi spi-topbar_login"></i></a> 
 				<?php else: ?>				
 					<a href="/auth/setting"><i class="spi spi-tobar_setting"></i></a>
-					<a href="/auth/logout"><i class="spi spi-topbar_logout"></i></a>
+					<a href="/auth/logout" class="ml"><i class="spi spi-topbar_logout"></i></a>
 				<?php endif; ?>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 						</a>
 					</li>
 					<li>
-						<a class="btn btn-link" href="/gallery/listing">Gallery</a>
+						<a class="btn btn-link" href="/gallery/listing"><i class="spi spi-gallery"></i></a>
 					</li>
 				</ul>
 			</div>

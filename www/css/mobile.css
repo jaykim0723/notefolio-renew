@@ -72,7 +72,7 @@ body * {
 
 
 #header, #mobile-header {
-	background: #f0f0f0;
+	background: #fff;
 	width: 100%;
 	height: 50px;
 	box-shadow: 0 2px 2px rgba(0,0,0,0.2);
@@ -92,7 +92,7 @@ body * {
 	position: relative;
 }
 .mm-page{
-	background-color:#fff;
+	/*background-color:#fff;*/
 }
 #mobile-menu-profile a {
 	padding-left: 0;
