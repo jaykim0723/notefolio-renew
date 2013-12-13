@@ -2,19 +2,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<a href="/">Home</a>
-				|
-				<a href="http://magazine.notefolio.net">Magazine</a>
-				|
-				<a href="http://shop.notefolio.net">Shop</a>
+				<a href="/"><i class="spi spi-topbar_home"></i></a>
+				<a href="http://magazine.notefolio.net"><i class="spi spi-topbar_magazine"></i></a>
+				<a href="http://shop.notefolio.net"><i class="spi spi-topbar_shop"></i></a>
 			</div>
 			<div class="col-md-6 righted">
 				<?php if (USER_ID==0): ?>
-					<a href="/auth/login">login</a>
+					<a href="/auth/login"><i class="spi spi-topbar_login"></i></a>
 				<?php else: ?>				
-					<a href="/auth/setting">setting</a>
-					|
-					<a href="/auth/logout">logout</a>
+					<a href="/auth/setting"><i class="spi spi-tobar_setting"></i></a>
+					<a href="/auth/logout"><i class="spi spi-topbar_logout"></i></a>
 				<?php endif; ?>
 			</div>
 		</div>
