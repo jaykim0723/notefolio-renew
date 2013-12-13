@@ -8,7 +8,7 @@
 			</div>
 			<div class="col-md-6 righted">
 				<?php if (USER_ID==0): ?>
-					<a href="/auth/login"><i class="spi spi-topbar_login"></i></a>
+					<a href="/auth/login"><i class="spi spi-topbar_login"></i></a> 
 				<?php else: ?>				
 					<a href="/auth/setting"><i class="spi spi-tobar_setting"></i></a>
 					<a href="/auth/logout"><i class="spi spi-topbar_logout"></i></a>
