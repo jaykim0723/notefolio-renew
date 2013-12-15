@@ -19,8 +19,15 @@ class Main extends CI_Controller {
 	function listing($page=1){
 		$work_list = $this->work_model->get_list(array(
 			'page'      => $page,
-			'delimiter' => 16
+			'delimiter' => $page==1 ? 17 : 16 // 처음일 때에는 하나를 따로 뺀다
 		));
+		if($page==1){ // 처음 로딩될 때에
+			// 첫번째 작품을 하나 불러들인다.
+			$work_list->first = array_shift($work_list->rows);
+			$work_list->first->key = 4; // 와이드를 위해
+
+
+		}
 		$this->layout->set_view('main/listing_view', $work_list)->render();
 	}
 

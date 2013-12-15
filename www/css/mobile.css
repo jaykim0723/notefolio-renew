@@ -142,9 +142,9 @@ body * {
 	top: 10px;
 	right: 10px;
 	color: #444;
-	padding: 10px;
+	padding: 13px;
 	text-decoration: none;
-	border-radius: 5px;
+	border-radius: 7px;
 	background-image: url("https://s3.amazonaws.com/css_sprites/543/10543/ebc4aa8095.png");
 	background-repeat: no-repeat;	
 	height: auto!important;

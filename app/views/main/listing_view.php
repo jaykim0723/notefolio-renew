@@ -4,11 +4,9 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul id="main-list-top" class="main-thumbnail-list">
-					<li class="thumbbox infinite-item wide">
-						<a class="go-to-work-info" href="/maxzidell/1004">
-							<img src="/img/dummy.png"/>
-						</a>
-					</li>
+					
+					<?php $this->load->view('main/thumbnail_inc_view', $first) ?>
+
 					<li class="thumbbox infinite-item hidden-xs hidden-sm">
 						<a class="go-to-work-info" href="/maxzidell/1004">
 							<img src="/img/hot_creators.png"/>
