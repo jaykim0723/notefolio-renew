@@ -10,7 +10,13 @@ $wide = in_array($key, array(4,11));
 			<i class="spi spi-love_hover"></i> 2342
 		</span>
 		<span class="main-work-title">
-			<span class="pull-right"><?php echo $user->username; ?></span>
+			<span class="pull-right">
+				<span class="main-work-face">
+					<img src="http://notefolio.net/profiles/147?h=1385655105" alt=""/>
+					<i class="si si-work-face"></i>
+				</span>
+				<?php echo $user->username; ?>
+			</span>
 			<?php echo $title; ?>
 		</span>
 	</a>

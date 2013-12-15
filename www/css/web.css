@@ -43,7 +43,7 @@ body {
 	display: block;
 	background: #fff;
 	left: 0;
-	bottom:-40px;
+	bottom:-50px;
 	width: 100%;
 	color: #666;
 	font-size: 12px;
@@ -56,6 +56,20 @@ body {
 .main-thumbnail-list .thumbbox:hover .main-work-title {
 	bottom:0px;
 }
+.main-thumbnail-list .main-work-face {
+	position: relative;
+}
+.main-thumbnail-list .main-work-face img {
+	width: 25px;
+	height: 25px;
+}
+.main-thumbnail-list .main-work-face .si {
+	position: absolute;
+	left: 0;
+	top: -4px; /* 왜 어긋나는가? 이미지 정렬 문제인가? */
+}
+
+
 /* main hot creators */
 #main-hot-creators {
 	list-style: none;
