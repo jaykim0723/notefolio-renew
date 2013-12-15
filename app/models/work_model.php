@@ -229,6 +229,33 @@ class work_model extends CI_Model {
         return $data;
     }
 
+
+
+
+
+
+    function get_hot_creators(){
+        // dummy
+        $data = array();
+        for($i=0; $i<4; $i++){
+            $data[] = (object)array(
+                'id'         => 23498,
+                'username'   => 'maxzidell',
+                'email'      => 'zidell@gmail.com',
+                'level'      => 2,
+                'keywords'   => array(
+                    '순수미술', '영상', '웹디자인'
+                ),
+                'realname'   => '이흥현',
+                'last_ip'    => '127.0.0.1',
+                'last_login' => date('Y-m-d H:i:s'),
+                'created'    => '2013-08-24 20:10:10',
+                'modified'   => '2013-08-24 20:10:10'
+            );
+        }
+        return $data;
+    }
+
     
 
 }

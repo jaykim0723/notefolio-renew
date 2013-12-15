@@ -26,7 +26,8 @@ class Main extends CI_Controller {
 			$work_list->first = array_shift($work_list->rows);
 			$work_list->first->key = 4; // 와이드를 위해
 
-
+			// 뜨거운 작가들을 불러들인다.
+			$work_list->creators = $this->work_model->get_hot_creators();
 		}
 		$this->layout->set_view('main/listing_view', $work_list)->render();
 	}

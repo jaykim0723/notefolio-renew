@@ -7,10 +7,35 @@
 					
 					<?php $this->load->view('main/thumbnail_inc_view', $first) ?>
 
-					<li class="thumbbox infinite-item hidden-xs hidden-sm">
-						<a class="go-to-work-info" href="/maxzidell/1004">
-							<img src="/img/hot_creators.png"/>
-						</a>
+					
+					<li class="thumbbox hidden-xs hidden-sm">
+						<h2 id="main-hot-creators-title">Hot Creators</h2>
+						<ul id="main-hot-creators">
+							<?php foreach ($creators as $key => $row): ?>
+							<li>
+								<a href="<?php echo site_url($row->username) ?>" class="btn-hover">
+									<span class="hot-arrow">
+										<i class="spi spi-arrow"></i>
+									</span>
+									<span class="hot-face"> <!-- bg here -->
+										<img src="http://notefolio.net/profiles/147?h=1385655105" alt=""/>
+										<i class="si si-hot-face"></i>
+									</span>
+									<span class="hot-center">
+										<span class="hot-username">
+											<?php echo $row->username; ?>
+										</span>
+										<span class="hot-keywords">
+											<?php echo implode(', ', $row->keywords) ?>
+										</span>
+										<span class="hot-go">
+											Go To profile
+										</span>
+									</span>
+								</a>
+							</li>	
+							<?php endforeach ?>
+						</ul>
 					</li>
 				</ul>
 <?php endif ?>

@@ -141,12 +141,16 @@ $(function() {
     	site.alarm.open();
     });
 
+
     $(document).on('mouseenter', '.btn-hover', function(){
-    	$o = $(this).find('.spi');
-    	$o.attr('class', $o.attr('class')+'_hover');
+    	$(this).find('.spi, .si').each(function(){
+	    	$(this).attr('class', $(this).attr('class')+'_hover');
+    	});
     }).on('mouseleave', '.btn-hover', function(){
-    	$o = $(this).find('.spi');
-    	$o.attr('class', $o.attr('class').replace('_hover',''));
+    	$(this).find('.spi, .si').each(function(){
+	    	$(this).attr('class', $(this).attr('class').replace('_hover',''));
+    	});
     });
+
 
 });
