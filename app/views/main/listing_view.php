@@ -5,12 +5,12 @@
 			<div class="col-md-12">
 				<ul id="main-list-top" class="main-thumbnail-list">
 					<li class="thumbbox infinite-item wide">
-						<a class="go_to_work_info" href="/maxzidell/1004">
+						<a class="go-to-work-info" href="/maxzidell/1004">
 							<img src="/img/dummy.png"/>
 						</a>
 					</li>
 					<li class="thumbbox infinite-item hidden-xs hidden-sm">
-						<a class="go_to_work_info" href="/maxzidell/1004">
+						<a class="go-to-work-info" href="/maxzidell/1004">
 							<img src="/img/hot_creators.png"/>
 						</a>
 					</li>
@@ -46,7 +46,7 @@
 	}
 
 	$(function(){
-		$(document).on('click', '.go_to_work_info', function(){
+		$(document).on('click', '.go-to-work-info', function(){
 			if(lteIE9) return true; // pushStatus지원하지 않으면 그냥 페이지 이동. modernizer 등으로 보다 더 정확히 체크할 것
 
 			// 기종 정보 백업

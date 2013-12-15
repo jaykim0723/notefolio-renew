@@ -47,7 +47,12 @@ body * {
 .btn-nofol:hover {
 	color: #2ac5c6;
 }
-
+@media (max-width:767px) {
+	.container {
+		padding-left: 7px;
+		padding-right: 7px;
+	}
+}
 
 
 
@@ -100,36 +105,55 @@ body * {
 }
 
 
-.main-thumbnail-list,
-.profile-thumbnail-list,
-.thumbnail-list {
+
+
+
+
+
+
+
+/* main list */
+.main-thumbnail-list {
 	overflow: hidden;
 	position: relative;
 	list-style: none;
 	padding: 0;
-	margin: 0 -15px;
-}
-
-.main-thumbnail-list .thumbbox,
-.thumbnail-list .thumbbox {
-	float: left;
-	width: 33.3333333333%;
-	background: #eee;
 	margin: 0;
 }
-.thumbnail-list .thumbbox {
-	width: 25%;
+.main-thumbnail-list .thumbbox {
+	float: left;
+	width: 33.3333333333%;
+	display: block;
+	background: #eee;
+	margin: 0;
+	position: relative;
+	text-decoration: none;
 }
 .main-thumbnail-list .thumbbox.wide {
 	width: 66.6666666666%;
 }
 .main-thumbnail-list .thumbbox a,
-.main-thumbnail-list .thumbbox img,
-.thumbnail-list .thumbbox a,
-.thumbnail-list .thumbbox img {
+.main-thumbnail-list .thumbbox img {
 	width: 100%;
 }
-
+.main-thumbnail-list .main-work-info {
+	display: block;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #444;
+	padding: 10px;
+	text-decoration: none;
+	border-radius: 5px;
+	background-image: url("https://s3.amazonaws.com/css_sprites/543/10543/ebc4aa8095.png");
+	background-repeat: no-repeat;	
+	height: auto!important;
+	width: auto!important;
+	overflow: hidden;
+}
+.main-thumbnail-list .main-work-title {
+	display: none;
+}
 @media (max-width:991px) {
 	#main-list-top .wide {
 		width: 100%;
@@ -138,17 +162,50 @@ body * {
 @media (max-width:599px) {
 	.main-thumbnail-list .thumbbox {
 		width:50%;
+		outline:1px solid #fff;
 	}
 	.main-thumbnail-list .thumbbox.wide {
 		width:100%;
 	}	
+	.main-thumbnail-list .thumbbox .main-work-info {
+		display: none;
+	}
+}
+@media (min-width:768px) {
+	.main-thumbnail-list {
+		margin: 0;
+	}
+}
+
+
+/* normal gallery list */
+.thumbnail-list {
+	overflow: hidden;
+	position: relative;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.thumbnail-list .thumbbox {
+	float: left;
+	width: 25%;
+	background: #eee;
+	margin: 0;
+	position: relative;
+	text-decoration: none;
+}
+.thumbnail-list .thumbbox a,
+.thumbnail-list .thumbbox img {
+	width: 100%;
+}
+
+@media (max-width:599px) {
 	.thumbnail-list .thumbbox {
 		outline:1px solid #fff;
 		width: 33.3333333333%;
 	}
 }
 @media (min-width:768px) {
-	.main-thumbnail-list,
 	.thumbnail-list {
 		margin: 0;
 	}
@@ -156,6 +213,14 @@ body * {
 
 
 
+/* profile list */
+.profile-thumbnail-list {
+	overflow: hidden;
+	position: relative;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
 
 
 

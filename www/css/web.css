@@ -37,8 +37,25 @@ body {
 
 
 
-
-
+/* main list */
+.main-thumbnail-list .main-work-title {
+	position: absolute;
+	display: block;
+	background: #fff;
+	left: 0;
+	bottom:-40px;
+	width: 100%;
+	color: #666;
+	font-size: 12px;
+	padding: 10px 15px;
+	-webkit-transition: all 0.3s ease;	
+	-moz-transition: all 0.3s ease;	
+	-o-transition: all 0.3s ease;	
+	transition: all 0.3s ease;	
+}
+.main-thumbnail-list .thumbbox:hover .main-work-title {
+	bottom:0px;
+}
 
 
 

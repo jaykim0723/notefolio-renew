@@ -127,14 +127,14 @@
 			<div class="row">
 				<div class="col-xs-2">
 					<a href="javascript:$('#mobile-menu').trigger('open');">
-						<i class="spi spi-drowdown"></i>
+						<i class="spi spi-feed"></i>
 					</a>
 				</div>
 				<div class="col-xs-8 centered">
-					<a href="/"><i class="spi spi-home"></i></a>
+					<a href="/"><i class="spi spi-nflogo"></i></a>
 				</div>
 				<div class="col-xs-2 righted">
-					<a href="/gallery"><i class="spi spi-drowdown"></i></a>
+					<a href="/gallery"><i class="spi spi-feed"></i></a>
 				</div>
 			</div>
 		</div>

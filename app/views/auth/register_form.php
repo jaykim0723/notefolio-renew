@@ -77,7 +77,7 @@ $captcha = array(
 	</div>
 		
     <?php
-	$birth=array('year'=>1990,'month'=>8,'day'=>8);
+		$birth=array('year'=>1990,'month'=>8,'day'=>8);
 	?>
 	<div class="form-group">
 		<label>생년월일</label>
