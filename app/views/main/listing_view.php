@@ -6,13 +6,13 @@
 				<ul id="main-list-top" class="main-thumbnail-list">
 					
 					<?php $this->load->view('main/thumbnail_inc_view', $first) ?>
+				<?php var_export($first) ?>
 
 					
 					<li class="thumbbox hidden-xs hidden-sm">
 						<h2 id="main-hot-creators-title">Hot Creators</h2>
 						<ul id="main-hot-creators">
 							<?php foreach ($creators as $key => $row): ?>
-				<?php var_export($row) ?>
 							<li>
 								<a href="<?php echo site_url($row->username) ?>" class="btn-hover">
 									<span class="hot-arrow">
