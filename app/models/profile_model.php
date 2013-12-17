@@ -116,7 +116,7 @@ class profile_model extends CI_Model {
 
         $rows = array();
         // foreach ($works->result() as $row)
-        foreach ($i=0;$i<$params->delimiter; $i++) // 일단 dummy 정보를 이용한다.
+        for ($i=0; $i<$params->delimiter; $i++) // 일단 dummy 정보를 이용한다.
         {
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             $row = (object)array(
