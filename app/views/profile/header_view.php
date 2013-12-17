@@ -51,8 +51,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="pull-right nav nav-pills list-inline">
-					<li><a>Following</a></li>
-					<li><a>Follower</a></li>
+					<li><a href="/<?php echo $username ?>/following">Following</a></li>
+					<li><a href="/<?php echo $username ?>/followers">Follower</a></li>
 				</ul>
 				<div class="clearfix visible-xs"></div>
 				<ul id="profile_nav" class="nav nav-pills">
@@ -80,6 +80,10 @@
 	$(function(){
 		$('#btn-upload-face').ajaxUploader({
 			url : '/upload/profile-face'
+		}).done(function(){
+			
+		}).fail(function(){
+
 		});
 		$('#btn-upload-bg').ajaxUploader({
 			url : '/upload/profile-bg'

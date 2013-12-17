@@ -5,7 +5,7 @@ $.fn.ajaxUploader = function(opts) {
 		url : '/upload.php',
 		droppable : true,
 		dropActiveClass : '.drop-active',
-		dropElement : 'self',
+		clickElement : 'self',
 		multiple : true,
 		extentions : 'jpg,jpeg,gif,bmp,tiff',
 		maxSize : 2000, // KB
