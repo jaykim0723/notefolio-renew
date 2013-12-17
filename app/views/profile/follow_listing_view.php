@@ -4,12 +4,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>작가의 콜렉션</h1>
+				<h1><?php echo $mode ?></h1>
 <?php endif ?>
-				<ul class="thumbnail-list infinite-list">
+				<ul class="follow-list infinite-list mode-<?php echo $mode ?>">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
-					<?php $this->load->view('gallery/thumbnail_inc_view', $row) ?>
+					<?php $this->load->view('profile/follow_inc_view', $row) ?>
 					<?php endforeach ?>
 				</ul>
 

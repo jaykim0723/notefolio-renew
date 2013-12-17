@@ -101,7 +101,7 @@ class Profile extends CI_Controller {
 			'page' => $page,
 			'user_id' => $this->user_id
 		));
-		$this->layout->set_view('profile/following_listing_view', $following_list)->render();
+		// $this->layout->set_view('profile/follow_listing_view', $following_list)->render();
 	}
 
 }
