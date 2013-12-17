@@ -51,8 +51,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="pull-right nav nav-pills list-inline">
-					<li><a href="/<?php echo $username ?>/following">Following</a></li>
-					<li><a href="/<?php echo $username ?>/followers">Follower</a></li>
+					<li><a href="/<?php echo $username ?>/followings">Followings</a></li>
+					<li><a href="/<?php echo $username ?>/followers">Followers</a></li>
 				</ul>
 				<div class="clearfix visible-xs"></div>
 				<ul id="profile_nav" class="nav nav-pills">

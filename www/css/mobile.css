@@ -43,9 +43,13 @@ body * {
 	border-radius: 7px;
 	text-decoration: none;
 	color: gray;
+	background: #fff;
 }
-.btn-nofol:hover {
-	color: #2ac5c6;
+@media (min-width:768px) {
+	.btn-nofol:hover {
+		color: #2ac5c6;
+		border-color:#2ac5c6;
+	}
 }
 @media (max-width:767px) {
 	.container {
@@ -224,10 +228,39 @@ body * {
 
 
 
+/* follow list */
+.follow-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.follow-list li {
+	background: #fff;
+	border: 1px solid #eee;
+}
+.follow-list .follow-recent-works {
+	float: right;
 
-
-
-
+}
+.follow-list .follow-recent-works img {
+	width: 100px;
+}
+.follow-list .follow-face {
+	position: relative;
+	float: left;
+}
+.follow-list .follow-face .si {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.follow-list .follow-center {
+	margin-left: 120px;
+}
+.follow-list .btn.activated {
+	background: #2ac5c6;
+	color: #fff;
+}
 
 
 

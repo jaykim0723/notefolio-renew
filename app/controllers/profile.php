@@ -90,18 +90,34 @@ class Profile extends CI_Controller {
 
 
 
-	function following($username='', $page=1){
-		log_message('debug','--------- following ( params : '.print_r(get_defined_vars(),TRUE)).')';
+	function followings($username='', $page=1){
+		log_message('debug','--------- followings ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		$this->user_id = $this->profile_model->get_user_id_from_username($username);
 		$user = $this->user_model->get(array('id'=>$this->user_id));
 
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user->row);
-		$following_list = $this->profile_model->get_following_list(array(
+
+		$followings_list = $this->profile_model->get_followings_list(array(
 			'page' => $page,
 			'user_id' => $this->user_id
 		));
-		// $this->layout->set_view('profile/follow_listing_view', $following_list)->render();
+		$this->layout->set_view('profile/follow_listing_view', $followings_list)->render();
+	}
+
+	function followers($username='', $page=1){
+		log_message('debug','--------- followers ( params : '.print_r(get_defined_vars(),TRUE)).')';
+		$this->user_id = $this->profile_model->get_user_id_from_username($username);
+		$user = $this->user_model->get(array('id'=>$this->user_id));
+
+		if(!$this->input->is_ajax_request())
+			$this->layout->set_view('profile/header_view', $user->row);
+
+		$followers_list = $this->profile_model->get_followers_list(array(
+			'page' => $page,
+			'user_id' => $this->user_id
+		));
+		$this->layout->set_view('profile/follow_listing_view', $followers_list)->render();
 	}
 
 }
