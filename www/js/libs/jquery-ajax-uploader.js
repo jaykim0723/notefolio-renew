@@ -51,6 +51,9 @@ $.fn.ajaxUploader = function(opts) {
 		});
 		var $dropElement = options.dropElement=='self' ? $this : (typeof options.dropElement=='string' ? $(options.dropElement) : options.dropElement);
 		console.log('$dropElement', $dropElement);
+		if(typeof $dropElement!='object')
+			return;
+		
 		$dropElement.on({
 			dragenter : function(){
 

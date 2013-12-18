@@ -80,10 +80,6 @@
 	$(function(){
 		$('#btn-upload-face').ajaxUploader({
 			url : '/upload/profile-face'
-		}).done(function(){
-			
-		}).fail(function(){
-
 		});
 		$('#btn-upload-bg').ajaxUploader({
 			url : '/upload/profile-bg'
