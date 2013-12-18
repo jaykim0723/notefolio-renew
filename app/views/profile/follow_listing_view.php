@@ -19,4 +19,12 @@
 		</div>
 	</div>
 </section>
+<script>
+		alert(234);
+	$(function(){
+		$(document).on('click', '.btn-follow', function(){
+			alert(234);
+		});
+	})
+</script>
 <?php endif; ?>
