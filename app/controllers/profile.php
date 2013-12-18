@@ -120,6 +120,32 @@ class Profile extends CI_Controller {
 		$this->layout->set_view('profile/follow_listing_view', $followers_list)->render();
 	}
 
+
+
+
+
+
+	function follow_action(){
+		$user_id = (int)$this->input->post('user_id');
+		$follow = $this->input->post('follow');
+
+
+		if($follow=='y'){ // do follow
+			# code here
+			
+			$is_follow = 'y';
+		}else{ // do unfollow
+			# code here
+			
+			$is_follow = 'n';
+		}
+		
+		$this->layout->set_json(array(
+			'user_id'   => $user_id,
+			'is_follow' => $is_follow
+		))->render();
+	}
+
 }
 
 /* End of file welcome.php */

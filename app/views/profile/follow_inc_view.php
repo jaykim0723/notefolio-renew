@@ -13,9 +13,9 @@
 	<div class="follow-center">
 		<h3><?php echo $username; ?></h3>
 		<p><?php echo @implode(', ', $keywords); ?></p>
-		<button class="btn btn-follow btn-nofol btn-hover <?php echo $is_follow=='y'?'activated' : '' ?>">
+		<button data-id="<?php echo $user_id ?>" class="btn btn-follow btn-nofol btn-hover <?php echo $is_follow=='y'?'activated' : '' ?>">
 			<i class="spi spi-alarm"></i>
-			Follow<?php echo $is_follow=='y'?'ing' : '' ?>
+			<span>Follow<?php echo $is_follow=='y'?'ing' : '' ?></span>
 		</button>
 	</div>
 </li>

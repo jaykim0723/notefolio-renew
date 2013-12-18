@@ -120,7 +120,7 @@ class profile_model extends CI_Model {
         {
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             $row = (object)array(
-                'id'         => 234,
+                'user_id'         => 234,
                 'username'   => 'maxzidell',
                 'email'      => 'zidell@gmail.com',
                 'level'      => 2,
@@ -202,7 +202,7 @@ class profile_model extends CI_Model {
         {
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             $row = (object)array(
-                'id'         => 234,
+                'user_id'         => 234,
                 'username'   => 'maxzidell',
                 'email'      => 'zidell@gmail.com',
                 'level'      => 2,
