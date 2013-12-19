@@ -114,27 +114,6 @@ class profile_model extends CI_Model {
         $works = $this->db->get();
         */
 
-        $sql = "SELECT follow_id, following_users.*
-                from user_follows 
-                left join (
-                    select users.id as user_id, users.username, users.email,
-                     users.realname, users.created, users.modified,
-                     user_profiles.keywords
-                    from users
-                    left join user_profiles on users.id = user_profiles.user_id
-                ) following_users on user_follows.follow_id = following_users.user_id
-                where user_follows.follower_id = ?
-                order by user_follows.id desc
-                limit ?, ?;
-                "; 
-        var_export($sql);
-        exit();
-        $query = $this->db->query($sql, array($params->user_id, $params->delimiter, ((($params->page)-1)*$params->delimiter)));
-
-        foreach($query->result() as $row)
-            var_export($row);
-        exit();
-
         $rows = array();
         // foreach ($works->result() as $row)
         for ($i=0; $i<$params->delimiter; $i++) // 일단 dummy 정보를 이용한다.
