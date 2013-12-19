@@ -119,7 +119,7 @@ class profile_model extends CI_Model {
                     select follow_id
                     from user_follows
                     where follower_id = ?
-                ) now_following on user_follows.follow_id = now_following.follow_id
+                ) now_following on list.follow_id = now_following.follow_id
                 where user_follows.follower_id = ?
                 order by user_follows.id desc
                 limit ?, ?;
