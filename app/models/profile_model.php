@@ -123,10 +123,11 @@ class profile_model extends CI_Model {
                     from users
                     left join user_profiles on users.id = user_profiles.user_id
                 ) following_users on user_follows.follow_id = following_users.user_id
+                where user_follows.follower_id = ?
                 order by user_follows.id desc
-                limit $params->delimiter, ((($params->page)-1)*$params->delimiter);
+                limit {$params->delimiter}, {((($params->page)-1)*$params->delimiter)};
                 "; 
-        $query = $this->db->query($sql, array());
+        $query = $this->db->query($sql, array($user_id));
 
         foreach($query->result() as $row)
             var_export($row);
