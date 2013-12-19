@@ -129,7 +129,7 @@ class profile_model extends CI_Model {
                 "; 
         var_export($sql);
         exit();
-        $query = $this->db->query($sql, array($user_id));
+        $query = $this->db->query($sql, array($params->user_id));
 
         foreach($query->result() as $row)
             var_export($row);
