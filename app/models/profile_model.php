@@ -117,7 +117,7 @@ class profile_model extends CI_Model {
                 ) following_users on user_follows.follow_id = following_users.user_id
                 left join (
                     select follow_id
-                    from users
+                    from user_follows
                     where follower_id = ?
                 ) now_folowing on user_follows.follow_id = now_following.follow_id
                 where user_follows.follower_id = ?
