@@ -120,7 +120,7 @@ class profile_model extends CI_Model {
         {
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             $row = (object)array(
-                'id'         => 234,
+                'user_id'         => 234,
                 'username'   => 'maxzidell',
                 'email'      => 'zidell@gmail.com',
                 'level'      => 2,
@@ -187,7 +187,7 @@ class profile_model extends CI_Model {
 
         /* 성수씨 부탁해요~ 
         $this->db
-            ->select('works.*, users.*, users.id as user_id')
+            ->select('works.*, users.*, users.user_id as user_id')
             // ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
             ->from('works')
             ->join('users', 'users.id = works.user_id', 'left')
@@ -201,7 +201,7 @@ class profile_model extends CI_Model {
         {
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             $row = (object)array(
-                'id'         => 234,
+                'user_id'         => 234, 
                 'username'   => 'maxzidell',
                 'email'      => 'zidell@gmail.com',
                 'level'      => 2,
