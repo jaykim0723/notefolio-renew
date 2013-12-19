@@ -104,15 +104,24 @@ class profile_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-        /* 성수씨 부탁해요~ 
-        $this->db
-            ->select('works.*, users.*, users.id as user_id')
-            // ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
-            ->from('works')
-            ->join('users', 'users.id = works.user_id', 'left')
-            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
-        $works = $this->db->get();
-        */
+        $sql = "SELECT follow_id, following_users.*
+                from user_follows 
+                left join (
+                    select users.id as user_id, users.username, users.email,
+                     users.realname, users.created, users.modified,
+                     user_profiles.keywords
+                    from users
+                    left join user_profiles on users.id = user_profiles.user_id
+                ) following_users on user_follows.follow_id = following_users.user_id
+                where user_follows.follower_id = ?
+                order by user_follows.id desc
+                limit ?, ?;
+                "; 
+        $query = $this->db->query($sql, array($params->user_id, $params->delimiter, ((($params->page)-1)*$params->delimiter)));
+
+        foreach($query->result() as $row)
+            var_export($row);
+        exit();
 
         $rows = array();
         // foreach ($works->result() as $row)
