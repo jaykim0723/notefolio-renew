@@ -116,7 +116,7 @@ class profile_model extends CI_Model {
                 where user_follows.follower_id = ?
                 order by user_follows.id desc
                 limit ?, ?;
-                "; 
+                "; // raw query :)
         $query = $this->db->query($sql, array($params->user_id, $params->delimiter, ((($params->page)-1)*$params->delimiter)));
 
         foreach($query->result() as $row)
