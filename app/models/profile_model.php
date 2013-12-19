@@ -118,24 +118,18 @@ class profile_model extends CI_Model {
                 limit ?, ?;
                 "; // raw query :)
         $query = $this->db->query($sql, array($params->user_id, ((($params->page)-1)*$params->delimiter), $params->delimiter));
-        var_export($this->db->last_query());
-        foreach($query->result() as $row)
-            var_export($row);
-        exit();
-
+        
         $rows = array();
-        // foreach ($works->result() as $row)
-        for ($i=0; $i<$params->delimiter; $i++) // 일단 dummy 정보를 이용한다.
+        foreach($query->result() as $row)
         {
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             $row = (object)array(
-                'user_id'         => 234,
-                'username'   => 'maxzidell',
-                'email'      => 'zidell@gmail.com',
-                'level'      => 2,
-                'realname'   => '이흥현',
-                'created'    => '2012-01-02 10:20:10',
-                'modified'   => '2013-08-01 11:11:11', // profile 사진 갱신을 위해서 필요하다.
+                'user_id'    => $row->user_id,
+                'username'   => $row->username,
+                'email'      => $row->email,
+                'realname'   => $row->realname,
+                'created'    => $row->created,
+                'modified'   => $row->modified, // profile 사진 갱신을 위해서 필요하다.
                 'keywords' => array(
                     '파인아트', '동영상', 'UI/UX'
                 ),
