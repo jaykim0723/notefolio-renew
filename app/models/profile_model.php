@@ -114,7 +114,7 @@ class profile_model extends CI_Model {
                      user_profiles.keywords
                     from users
                     left join user_profiles on users.id = user_profiles.user_id
-                ) following_users on user_follows.follow_id = following_users.user_id
+                ) following_users on list.follow_id = following_users.user_id
                 left join (
                     select follow_id
                     from user_follows
