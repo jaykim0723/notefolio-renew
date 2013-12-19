@@ -250,6 +250,7 @@ li#trash-bin{
 }
 
 #btn-profile {
+	float: right;
 	padding: 0;
 	margin-left: 20px;
 }

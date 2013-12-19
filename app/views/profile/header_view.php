@@ -1,4 +1,4 @@
-<div id="profile-header" style="background-image:url(http://notefolio.net/img/1312/29564_r);">
+<div id="profile-header" style="background-image:url(/data/profiles/<?php echo $username ?>-bg.jpg?_=<?php echo substr($modified,-2) ?>);">
 	<div id="profile-inner-wrapper">
 		<div id="profile-inner">
 			<div id="btn-edit-inner">
@@ -16,7 +16,7 @@
 				</div>
 			</div>	
 			<div id="profile-image">
-				<img src="http://notefolio.net/profiles/147?h=1385655105" alt=""/>
+				<img src="/data/profiles/<?php echo $username ?>.jpg?_=<?php echo substr($modified,-2) ?>" alt=""/>
 				<?php if($this->session->userdata('username')==$username): ?>
 				<div id="btn-edit-profile" class="btn-group">
 					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
