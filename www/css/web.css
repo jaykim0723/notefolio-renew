@@ -32,7 +32,12 @@ body {
 #top-menu .ml {
 	margin-left: 40px;
 }
-
+#footer a {
+	text-decoration: none;
+	color: #fff;
+	margin: 5px 15px;
+	text-transform:uppercase;
+}
 
 
 
@@ -60,8 +65,8 @@ body {
 	position: relative;
 }
 .main-thumbnail-list .main-work-face img {
-	width: 25px;
-	height: 25px;
+	width: 28px;
+	height: 28px;
 }
 .main-thumbnail-list .main-work-face .si {
 	position: absolute;
@@ -214,6 +219,8 @@ li#trash-bin{
 
 /* profile */
 #profile-header {
+	top: -30px;
+	position: relative;
 	height: 550px;
 }
 #profile-inner-wrapper {
@@ -242,13 +249,30 @@ li#trash-bin{
 	overflow-scrolling: touch;
 }
 
-
-
-
-
-#footer a {
-	text-decoration: none;
-	color: #fff;
-	margin: 5px 15px;
-	text-transform:uppercase;
+#btn-profile {
+	padding: 0;
+	margin-left: 20px;
 }
+#btn-profile-icon {
+	float: right;
+	position: relative;
+}
+#btn-profile-icon img {
+	width: 50px;
+	width: 50px;
+}
+#btn-profile-icon .si {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+#btn-profile span {
+	margin-top: 10px;
+	float: right;
+	margin-right: 10px;
+	color: #444;
+}
+
+
+
+

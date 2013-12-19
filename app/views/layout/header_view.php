@@ -20,7 +20,7 @@
 <header id="header" class="hidden-xs hidden-sm sticky">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-5">
 				<ul class="list-inline">
 					<li>
 						<a href="/">
@@ -33,7 +33,7 @@
 				</ul>
 			</div>
 
-			<div class="col-md-6 righted">
+			<div class="col-md-7 righted">
 				<?php if (USER_ID==0): ?>
 					<a class="btn btn-nofol btn-hover" href="/auth/login">
 						<i class="spi spi-signupfb"></i> Login with Facebook
@@ -56,7 +56,13 @@
 					<a class="btn btn-nofol btn-hover" href="/gallery/create">
 						<i class="spi spi-uploadworks"></i> Upload work
 					</a>
-					<a class="btn btn-default" href="/<?php echo $this->session->userdata('username') ?>">My Profile</a>
+					<a id="btn-profile" href="/<?php echo $this->session->userdata('username') ?>">
+						<div id="btn-profile-icon">
+							<img src="/data/profiles/<?php echo $this->session->userdata('username') ?>.jpg" alt=""/>
+							<i class="si si-face-medium"></i>
+						</div>
+						<span><?php echo $this->session->userdata('username'); ?></span>
+					</a>
 				<?php endif ?>
 			</div>
 

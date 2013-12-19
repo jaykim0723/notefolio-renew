@@ -8,7 +8,7 @@
 	</div>
 	<div class="follow-face">
 		<img src="/data/profiles/<?php echo $username ?>.jpg?_=<?php echo substr($modified, -2); ?>" alt="">
-		<i class="si si-face-100"></i>
+		<i class="si si-face-large"></i>
 	</div>
 	<div class="follow-center">
 		<h3><?php echo $username; ?></h3>

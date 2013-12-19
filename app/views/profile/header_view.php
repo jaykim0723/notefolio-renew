@@ -1,18 +1,23 @@
 <div id="profile-header" style="background-image:url(http://notefolio.net/img/1312/29564_r);">
 	<div id="profile-inner-wrapper">
 		<div id="profile-inner">
-			<div id="btn-edit-inner" class="btn-group">
-				<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-				  이너 편집
-				  <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-				  <li><a href="#">배경색 변경</a></li>
-				  <li><a href="#">투명도 변경</a></li>
-				</ul>
+			<div id="btn-edit-inner">
+					<?php if($this->session->userdata('username')==$username): ?>
+					<div class="pull-right btn-group">
+					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+					  이너 편집
+					  <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+					  <li><a href="#">배경색 변경</a></li>
+					  <li><a href="#">투명도 변경</a></li>
+					</ul>
+					<?php endif; ?>	
+				</div>
 			</div>	
 			<div id="profile-image">
 				<img src="http://notefolio.net/profiles/147?h=1385655105" alt=""/>
+				<?php if($this->session->userdata('username')==$username): ?>
 				<div id="btn-edit-profile" class="btn-group">
 					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 					  프로필사진 편집
@@ -24,24 +29,27 @@
 					  <li><a href="#">삭제</a></li>
 					</ul>
 				</div>	
+				<?php endif; ?>
 			</div>
-			<div class="centerted">
+			<div id="profile-info">
 				<h2><?php echo $username ?></h2>
-				<h4>aoeu, aoeu, aoeu</h4>
+				<h4>aoeu · aoeu · aoeu</h4>
 			</div>
 		</div>
 	</div>
 	<?php if($this->session->userdata('username')==$username): ?>
-	<div id="btn-edit-cover" class="btn-group">
-		<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-		  커버 편집
-		  <span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu">
-		  <li><a id="btn-upload-bg" href="#">사진 업로드</a></li>
-		  <li><a href="#">작품 중 선택</a></li>
-		  <li><a href="#">삭제</a></li>
-		</ul>
+	<div id="btn-edit-cover">
+		<div class="pull-right btn-group">
+			<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+			  커버 편집
+			  <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+			  <li><a id="btn-upload-bg" href="#">사진 업로드</a></li>
+			  <li><a href="#">작품 중 선택</a></li>
+			  <li><a href="#">삭제</a></li>
+			</ul>
+		</div>
 	</div>	
 	<?php endif; ?>
 </div>
@@ -68,6 +76,8 @@
 		</div>
 	</div>
 </section>
+
+
 
 <script>
 	if(site.prevPage.url.indexOf(site.url+site.segment[0])==0){

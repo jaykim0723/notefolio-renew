@@ -19,7 +19,7 @@
 									</span>
 									<span class="hot-face"> <!-- bg here -->
 										<img src="http://notefolio.net/profiles/147?h=1385655105" alt=""/>
-										<i class="si si-hot-face"></i>
+										<i class="si si-face-medium"></i>
 									</span>
 									<span class="hot-center">
 										<span class="hot-username">

@@ -13,7 +13,7 @@ $wide = in_array($key, array(4,11));
 			<span class="pull-right">
 				<span class="main-work-face">
 					<img src="http://notefolio.net/profiles/147?h=1385655105" alt=""/>
-					<i class="si si-work-face"></i>
+					<i class="si si-face-small"></i>
 				</span>
 				<?php echo $user->username; ?>
 			</span>
