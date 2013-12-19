@@ -113,6 +113,10 @@ class profile_model extends CI_Model {
             ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
         $works = $this->db->get();
         */
+        $this->db
+            ->select('user_follows.*')
+            ->from('user_follows')
+            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
         $rows = array();
         // foreach ($works->result() as $row)

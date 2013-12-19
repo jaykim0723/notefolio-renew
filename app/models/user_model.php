@@ -61,7 +61,7 @@ class user_model extends CI_Model {
 
         if($params->get_profile){
             $table = "user_profiles";
-            $fields = array('user_id', 'website', 'facebook_id',
+            $fields = array('user_id', 'keywords', 'website', 'facebook_id',
                                     'twitter_id', 'gender', 'birth',
                                     'description', 'mailing',
                                     'following_cnt', 'follower_cnt');
@@ -137,7 +137,7 @@ class user_model extends CI_Model {
 
         if($params->get_profile){
             $table = "user_profiles";
-            $fields = array('user_id', 'website', 'facebook_id',
+            $fields = array('user_id', 'keywords', 'website', 'facebook_id',
                                     'twitter_id', 'gender', 'birth',
                                     'description', 'mailing',
                                     'following_cnt', 'follower_cnt');
