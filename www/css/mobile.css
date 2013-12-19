@@ -589,6 +589,13 @@ p.desc {
 	width: 145px;
 	height: 145px;
 }
+@media \0screen {
+	#profile-image > img {
+		width: 129px;
+		height: 129px;
+	}
+}
+
 #profile-image #btn-edit-profile {
 	display: none;
 	position: absolute;
