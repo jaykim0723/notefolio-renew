@@ -71,6 +71,7 @@ class user_model extends CI_Model {
             $this->db->join($table, 'users.id='.$table.'.user_id', 'left');
             unset($table, $fields, $field);
         }
+        //TODO: keywords : [‘파인아트’,’동영상’]
 
     	$this->db
     		->from('users')
@@ -147,6 +148,7 @@ class user_model extends CI_Model {
             $this->db->join($table, 'users.id='.$table.'.user_id', 'left');
             unset($table, $fields, $field);
         }
+        //TODO: keywords : [‘파인아트’,’동영상’]
         if($params->get_sns_fb){
             $table = "user_sns_fb";
             $fields = array('fb_num_id', 'access_token',
