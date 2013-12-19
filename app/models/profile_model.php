@@ -128,6 +128,7 @@ class profile_model extends CI_Model {
                 limit {$params->delimiter}, {((($params->page)-1)*$params->delimiter)};
                 "; 
         $query = $this->db->query($sql, array($user_id));
+        var_export($sql);
 
         foreach($query->result() as $row)
             var_export($row);
