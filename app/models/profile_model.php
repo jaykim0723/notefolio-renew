@@ -118,7 +118,7 @@ class profile_model extends CI_Model {
                 limit ?, ?;
                 "; // raw query :)
         $query = $this->db->query($sql, array($params->user_id, ((($params->page)-1)*$params->delimiter), $params->delimiter));
-        
+        var_export($this->db->last_query());
         foreach($query->result() as $row)
             var_export($row);
         exit();
