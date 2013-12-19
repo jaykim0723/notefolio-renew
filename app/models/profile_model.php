@@ -127,8 +127,9 @@ class profile_model extends CI_Model {
                 order by user_follows.id desc
                 limit {$params->delimiter}, {((($params->page)-1)*$params->delimiter)};
                 "; 
-        $query = $this->db->query($sql, array($user_id));
         var_export($sql);
+        exit();
+        $query = $this->db->query($sql, array($user_id));
 
         foreach($query->result() as $row)
             var_export($row);
