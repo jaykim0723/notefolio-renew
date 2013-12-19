@@ -120,13 +120,13 @@ class profile_model extends CI_Model {
         {
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             $row = (object)array(
-                'id'         => $row->id,
-                'username'   => $row->username,
-                'email'      => $row->email,
-                'level'      => $row->level,
-                'realname'   => $row->realname,
-                'created'    => $row->created,
-                'modified'   => $row->modified, // profile 사진 갱신을 위해서 필요하다.
+                'id'         => 234,
+                'username'   => 'maxzidell',
+                'email'      => 'zidell@gmail.com',
+                'level'      => 2,
+                'realname'   => '이흥현',
+                'created'    => '2012-01-02 10:20:10',
+                'modified'   => '2013-08-01 11:11:11', // profile 사진 갱신을 위해서 필요하다.
                 'keywords' => array(
                     '파인아트', '동영상', 'UI/UX'
                 ),
@@ -201,13 +201,13 @@ class profile_model extends CI_Model {
         {
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             $row = (object)array(
-                'id'         => $row->id,
-                'username'   => $row->username,
-                'email'      => $row->email,
-                'level'      => $row->level,
-                'realname'   => $row->realname,
-                'created'    => $row->created,
-                'modified'   => $row->modified, // profile 사진 갱신을 위해서 필요하다.
+                'id'         => 234,
+                'username'   => 'maxzidell',
+                'email'      => 'zidell@gmail.com',
+                'level'      => 2,
+                'realname'   => '이흥현',
+                'created'    => '2012-01-02 10:20:10',
+                'modified'   => '2013-08-01 11:11:11', // profile 사진 갱신을 위해서 필요하다.
                 'keywords' => array(
                     '파인아트', '동영상', 'UI/UX'
                 ),
