@@ -104,8 +104,10 @@ class profile_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-        $sql = "SELECT follow_id, following_users.*
-                from user_follows 
+        $sql = "SELECT list.follow_id,
+                     if(isnull(now_following.follow_id), 0, 1) as is_follow,
+                     following_users.*
+                from user_follows list
                 left join (
                     select users.id as user_id, users.username, users.email,
                      users.realname, users.created, users.modified,
@@ -113,11 +115,16 @@ class profile_model extends CI_Model {
                     from users
                     left join user_profiles on users.id = user_profiles.user_id
                 ) following_users on user_follows.follow_id = following_users.user_id
+                left join (
+                    select follow_id
+                    from users
+                    where follower_id = ?
+                ) now_folowing on user_follows.follow_id = now_following.follow_id
                 where user_follows.follower_id = ?
                 order by user_follows.id desc
                 limit ?, ?;
                 "; // raw query :)
-        $query = $this->db->query($sql, array($params->user_id, ((($params->page)-1)*$params->delimiter), $params->delimiter));
+        $query = $this->db->query($sql, array($params->user_id, USER_ID, ((($params->page)-1)*$params->delimiter), $params->delimiter));
         
         $rows = array();
         foreach($query->result() as $row)
@@ -155,7 +162,7 @@ class profile_model extends CI_Model {
                         'modified' => '2013-08-01 11:11:11'
                     )
                 ),
-                'is_follow' => (rand(0,1)==1 ? 'y' : 'n') // 기존에 어떤명을 했는지 잘 기억이...
+                'is_follow' => ($row->is_follow==1 ? 'y' : 'n') // 기존에 어떤명을 했는지 잘 기억이...
             );
             $rows[] = $row;
         }
