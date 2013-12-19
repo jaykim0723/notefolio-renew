@@ -172,7 +172,7 @@ class profile_model extends CI_Model {
 
 
 
-    function get_followings_list($params=array()){
+    function get_followers_list($params=array()){
         $params = (object)$params;
         $default_params = (object)array(
             'page'      => 1, // 불러올 페이지
