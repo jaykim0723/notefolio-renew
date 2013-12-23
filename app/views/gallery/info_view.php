@@ -23,6 +23,9 @@
 							Follow
 						</a>
 					</div>
+					<div id="profile-sns-link">
+						<?php print_r($user) ?>
+					</div>
 				</div>
 				<div>&nbsp;</div>
 				<div id="work-recent-works">
@@ -72,17 +75,17 @@
 								</div>
 								<div class="col-md-5">
 									<div class="work-info-icons">
-										<div class="view">
+										<div class="view bg1">
 											<i class="spi spi-view2"></i>
 											<br/>
 											<?php echo $hit_cnt ?>
 										</div>
-										<div class="comment">
+										<div class="comment bg2">
 											<i class="spi spi-comment"></i>
 											<br/>
 											<?php echo $comment_cnt ?>
 										</div>
-										<div class="love">
+										<div class="love bg3">
 											<i class="spi spi-love2"></i>
 											<br/>
 											<?php echo $note_cnt ?>
@@ -95,6 +98,7 @@
 						<div class="work-contents" style="height: 500px;">
 							작품내용
 						</div>
+
 						<div class="work-addinfo">
 							<div class="row">
 								<div class="col-xs-6">
@@ -110,21 +114,20 @@
 							</div>
 						</div>
 
-
-						<div class="row">
-							<div class="col-xs-4">
-								<div class="well" style="height:50px;">
-									<a href="" class="btn btn-default">코멘트 열기(13)</a>
+						<div class="work-actions">
+							<div class="row">
+								<div class="col-md-6 col-xs-9">
+									<a href="" class="btn btn-nofol bg2">
+										<i class="spi spi-comment"></i>
+										코멘트 열기(13)
+									</a>
+									<a href="" class="btn btn-nofol bg1">
+										<i class="spi spi-love2"></i>
+										좋아요
+									</a>
 								</div>
-							</div>
-							<div class="col-xs-4">
-								<div class="well" style="height:50px;">
-									<a href="" class="btn btn-default">좋아요</a>
-								</div>
-							</div>
-							<div class="col-xs-4">
-								<div class="well" style="height:50px;">
-									SNS 공유하기
+								<div class="col-md-6 col-xs-3 righted">
+									share
 								</div>
 							</div>
 						</div>

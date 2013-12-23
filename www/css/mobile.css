@@ -1,5 +1,6 @@
 /* Put your CSS here */
 
+
 body * {
 	font-family: 'Roboto', sans-serif;
 	/* font-family: 'PT Sans', sans-serif; */
@@ -39,16 +40,18 @@ body * {
 	background: #2ac5c6;
 }
 .btn-nofol {
-	border: 1px solid silver;
 	border-radius: 2em;
 	text-decoration: none;
 	color: gray;
 	background: #fff;
+	-webkit-transition: all 0.3s ease;	
+	-moz-transition: all 0.3s ease;	
+	-o-transition: all 0.3s ease;	
+	transition: all 0.3s ease;	
 }
 @media (min-width:768px) {
 	.btn-nofol:hover {
-		color: #2ac5c6;
-		border-color:#2ac5c6;
+		opacity: 0.5;
 	}
 }
 @media (max-width:767px) {
@@ -317,7 +320,7 @@ body * {
 }
 
 
-/* gallery - work */
+/* work */
 .work-wrapper {
 	margin-bottom: 100px;
 }
@@ -414,7 +417,12 @@ body * {
 	}
 	.work-ccl {
 	}
-
+.work-actions {
+	background: #fff;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding: 15px 0;
+}
 
 .work-recent-works {
 }
@@ -776,4 +784,35 @@ p.desc {
 	border-radius: 5px;
 	background: #fff;
 	color:#444;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* color code */
+.bg1 {
+	background: #2ac5c6;
+	color: #fff;
+}
+.bg2 {
+	background: #51c4d5;
+	color: #fff;
+}
+.bg3 {
+	background: #94e2e2;
+	color: #fff;
+}
+.bg4 {
+	background: #86d6e2;
+	color: #fff;
 }
