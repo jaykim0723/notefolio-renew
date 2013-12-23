@@ -40,6 +40,19 @@ class Nf
             }
         }
     }
+    function sns($service='', $id=''){
+        $data = (object)array();
+        switch ($service) {
+            case 'facebook':
+                $data->link = 'http://facebook.com/'.$id;
+                $data->label = 'fb.com/'.$id;
+                break;
+            case 'twitter':
+                $data->link = 'http://twitter.com/'.$id;
+                $data->label = '@'.$id;
+        }
+        return $data;
+    }
 
     function print_time($ymdhis){
         $gap = time() - strtotime($ymdhis);

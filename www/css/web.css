@@ -169,8 +169,8 @@ body {
 
 
 
-
-/* info */
+/* work */
+/* sidebar */
 #work-sidebar {
 	position:absolute;
 	width: 100%;
@@ -180,9 +180,31 @@ body {
 }
 #work-profile-image {
 	background: #999;
-	padding: 20px 0;
+	padding: 20px 0 0 0;
 }
-
+#profile-info {
+	padding-bottom: 20px;
+}
+#profile-sns-link {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#profile-sns-link li {
+	clear: both;
+}
+#profile-sns-link a {
+	background: #fff;
+	display: block;
+	padding: 20px 0;
+	padding-left: 20px;
+	color: #999;
+	border-bottom: 2px solid #f8f8f8;
+}
+#profile-sns-link a .spi {
+	margin-right: 20px;
+	float: right;
+}
 /* work */
 #content-block-list{
 	display: block;

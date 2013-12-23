@@ -23,9 +23,18 @@
 							Follow
 						</a>
 					</div>
-					<div id="profile-sns-link">
-						<?php print_r($user) ?>
-					</div>
+					<ul id="profile-sns-link">
+						<?php foreach ($user->sns as $service => $id):
+						$tmp = $this->nf->sns($service, $id);
+						?>
+						<li>
+							<a href="<?php echo $tmp->link  ?>" class="<?php echo $service ?>" class="btn-hover">
+								<i class="spi spi-fb"></i>
+								<?php echo $tmp->label ?>
+							</a>
+						</li>
+						<?php endforeach ?>
+					</ul>
 				</div>
 				<div>&nbsp;</div>
 				<div id="work-recent-works">

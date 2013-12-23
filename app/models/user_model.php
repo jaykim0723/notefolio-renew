@@ -171,9 +171,9 @@ class user_model extends CI_Model {
         $user->keywords = array( // temporary
             '파인아트', '모션그래픽', '동영상'
         );
-        $user->sns = array( // temporary
-            'facebook' => 'http://facebook.com/maxzidell',
-            'twitter' => 'http://twitter.com/maxzidell'
+        $user->sns = (object)array( // temporary
+            'facebook' => 'maxzidell',
+            'twitter' => 'maxzidell'
         );
 
 

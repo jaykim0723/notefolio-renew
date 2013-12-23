@@ -137,7 +137,11 @@ class work_model extends CI_Model {
             'last_login' => $data->row->last_login,
             'created'    => $data->row->created,
             'modified'   => $data->row->modified,
-            'keywords'   => array('파인아트', '동영상') // fake
+            'keywords'   => array('파인아트', '동영상'), // temporary
+            'sns'   => (object)array(// temporary
+                'facebook' => 'maxzidell',
+                'twitter' => 'maxzidell'
+            ) 
         );
         foreach($user as $key=>$value){
             unset($data->row->{$key});
