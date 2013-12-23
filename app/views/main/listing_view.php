@@ -9,7 +9,7 @@
 
 					
 					<li class="thumbbox hidden-xs hidden-sm">
-						<h2 id="main-hot-creators-title">Hot Creators</h2>
+						<h2 id="main-hot-creators-title" class="nofol-title">Hot Creators</h2>
 						<ul id="main-hot-creators">
 							<?php foreach ($creators as $key => $row): ?>
 							<li>

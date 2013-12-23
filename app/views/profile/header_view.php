@@ -33,7 +33,7 @@
 			</div>
 			<div id="profile-info">
 				<h2><?php echo $username ?></h2>
-				<h4>aoeu · aoeu · aoeu</h4>
+				<h4>&nbsp;<?php echo @implode('·', $keywords); ?>&nbsp;</h4>
 			</div>
 		</div>
 	</div>

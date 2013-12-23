@@ -111,6 +111,13 @@ class work_model extends CI_Model {
     		->where('works.work_id', $params->work_id)
     		->limit(1); //set
         $work = $this->db->get()->row();
+
+        // 여기에서 값을 조작한다.
+        // keywords를 array('파인아트', '어쩌구저쩌구') 와 같이 변환해준다.
+        # do stuff
+        $work->keywords = array('파인아트', 'UI/UX'); // temporary
+
+
         $data = (object)array(
             'status' => 'done',
             'row' => $work
@@ -129,7 +136,8 @@ class work_model extends CI_Model {
             'last_ip'    => $data->row->last_ip,
             'last_login' => $data->row->last_login,
             'created'    => $data->row->created,
-            'modified'   => $data->row->modified
+            'modified'   => $data->row->modified,
+            'keywords'   => array('파인아트', '동영상') // fake
         );
         foreach($user as $key=>$value){
             unset($data->row->{$key});

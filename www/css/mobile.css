@@ -40,7 +40,7 @@ body * {
 }
 .btn-nofol {
 	border: 1px solid silver;
-	border-radius: 7px;
+	border-radius: 2em;
 	text-decoration: none;
 	color: gray;
 	background: #fff;
@@ -252,8 +252,8 @@ body * {
 	float: left;
 }
 .follow-list .follow-face img {
-	width: 146px;
-	height: 146px;
+	width: 129px;
+	height: 129px;
 }
 .follow-list .follow-face .si {
 	position: absolute;
@@ -346,6 +346,82 @@ body * {
 	margin: 7px 0;
 }
 
+.work-info {
+	background: #fff;
+	color: #aaa;
+}
+	.work-info .work-info-title {
+		padding: 20px 10px 20px 20px;
+	}
+	.work-info h2 {
+		font-size: 17px;
+		margin-top: 0;
+	}
+	.work-info-time {
+		font-size: 12px;
+	}
+	.work-info-icons {
+	}
+	.work-info-icons > div {
+		float: left;
+		width: 33.333333333333333333333%;
+		text-align: center;
+		background: #6bc0d3;
+		font-size: 14px;
+		font-weight: normal;
+		color: #fff;
+		padding: 15px 0;
+	}
+	.work-info-icons .spi {
+		position: relative;
+		top: 1px;
+		margin-right: 5px;
+	}
+	.work-info-icons .comment {
+		background: #96d3e1;
+	}
+	.work-info-icons .love {
+		background: #5bc0c5;
+	}
+	.work-info-icons > div br {
+		display: none;
+	}
+@media (min-width:992px) {
+	.work-info-icons > div br {
+		display: block;
+	}
+	.work-info-icons > div {
+		font-size: 16px;
+		padding: 30px 0;
+	}	
+	.work-info-icons .spi {
+		top:0;
+		margin-right: 0;
+	}
+}
+
+
+.work-contents {
+	background: #fff;
+	margin-top: 30px;
+}
+.work-addinfo {
+	margin-top: 3px;
+	background: #fff;
+	padding: 15px 0;
+}
+	.work-tags {
+	}
+	.work-ccl {
+	}
+
+
+.work-recent-works {
+}
+
+
+
+
 
 
 
@@ -378,6 +454,23 @@ html.auth body {
 
 
 /* info */
+.work-small-profile {
+	background: #d9516a;
+	color:#fff;
+	padding: 20px 10px;
+}
+.work-small-profile .spi {
+	float: right;
+}
+.work-small-profile > * {
+	display: inline-block;
+	font-size: 17px;
+}
+.work-small-profile img {
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+}
 #side.info {
 	
 }
@@ -609,6 +702,13 @@ p.desc {
 #profile-info {
 	text-align: center;
 	color: #fff;
+}
+#profile-info h2 {
+	font-size: 20px;
+}
+#profile-info h4 {
+	font-size: 13px;
+	font-weight: normal;
 }
 @media (min-width:600px) {
 	#profile-header {

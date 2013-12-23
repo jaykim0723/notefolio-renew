@@ -42,6 +42,29 @@ body {
 
 
 
+
+
+.nofol-title {
+	background: #fff;
+	border-top: 3px solid #2ac5c6;
+	margin: 0;
+	color: #aaa;
+	padding: 20px;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* main list */
 .main-thumbnail-list .main-work-title {
 	position: absolute;
@@ -80,15 +103,6 @@ body {
 	list-style: none;
 	padding: 0;
 	margin: 0;
-}
-#main-hot-creators-title {
-	background: #fff;
-	border-top: 3px solid #2ac5c6;
-	margin: 0;
-	color: #aaa;
-	padding: 20px;
-	font-size: 18px;
-	font-weight: normal;
 }
 #main-hot-creators a {
 	float: left;
@@ -164,6 +178,10 @@ body {
 	bottom:0;
 	left:0;
 }
+#work-profile-image {
+	background: #999;
+	padding: 20px 0;
+}
 
 /* work */
 #content-block-list{
@@ -214,6 +232,16 @@ li#trash-bin{
 	width:1em;
 	height:1em;
 }
+.work-addinfo {
+}
+	.work-tags {
+		padding-left: 20px;
+	}
+	.work-ccl {
+		padding-right: 20px;
+	}
+
+
 
 
 
