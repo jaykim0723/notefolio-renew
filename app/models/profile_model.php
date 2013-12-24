@@ -159,8 +159,7 @@ class profile_model extends CI_Model {
                         'work_id' => $work_row->work_id,
                         'title' => $work_row->title,
                         'modified' => $work_row->moddate                      
-                    )
-
+                    );
             }
             //-- end
             
@@ -250,8 +249,7 @@ class profile_model extends CI_Model {
                         'work_id' => $work_row->work_id,
                         'title' => $work_row->title,
                         'modified' => $work_row->moddate                      
-                    )
-
+                    );
             }
             //-- end
 
