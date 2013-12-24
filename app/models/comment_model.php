@@ -73,6 +73,9 @@ class comment_model extends CI_Model {
     	$rows = array();
     	foreach ($comments->result() as $row)
 		{
+            $data->row->comment_id = $data->row->id;
+            unset($data->row->id);
+            
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             $user = (object)array(
                 'id'         => $row->id,
@@ -130,6 +133,10 @@ class comment_model extends CI_Model {
             'status' => 'done',
             'row' => $comment
         );
+
+        $data->row->comment_id = $data->row->id;
+        unset($data->row->id);
+
         if(!$comment){
             $data->status = 'fail';
             return $data;
