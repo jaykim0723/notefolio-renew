@@ -90,6 +90,15 @@ var site = {
 			html.css('overflow', html.data('previous-overflow'));
 			window.scrollTo(scrollPosition[0], scrollPosition[1]);
 		}
+	},
+	cache : {},
+	loadHTML : function(val){
+		return site.cache[ val ]|| $.ajax(site.url + val, {		
+        	success:function( resp ){
+        		site.cache[ val ]= resp;
+        	}
+       	});
+       	// use $.when(site.loadHTML('url')).then(function(resp){ });
 	}
 };
 site.checkFlashMsg(); // 페이지가 전환된 이후에 메시지를 표시할 것이 있는지 검사
@@ -163,39 +172,44 @@ $(function() {
 
 
 var commentUtil = {
+	// 코멘트 작업은 대부분 무한스크롤 내의 특정 블럭에서 이루어지므로, 
+	// 코멘트에 관련된 모든 작업은 해당 work-wrapper 블럭의 dom 요소에 저장해두는 방식을 취한다.
+	
 	open : function(t){
 		var $work = $(t).parents('.work-wrapper');
+		if($work.data('comment_opened')=='y'){ // 현재 코멘트창이 열려있다면 닫아준다(같은 버은으로 토글)
+			this.close($work);
+			return;
+		}
+		if($work.data('comment_loaded')=='y'){ // 이미 한 번 열린 놈이라면 그냥 단순히 보여주기만 한다.
+			$('.comment-wrapper', $work).slideDown();
+			return;
+		}
+		$work.data('comment_loaded', 'y').data('comment_opened', 'y'); // 다음의 코멘트열기 버튼에 대응하기 위하여 값을 지정해준다.
+
+		$('.comment-wrapper', $work).slideDown();
 		var work_id = $work.data('id');
-
-		// create comment wrapper block
-		$('.work-action-results', $work).html(
-			[
-				'<div class="comment-wrapper">',
-					'<a href="javascript:;" class="comment-prev btn btn-default btn-block">이전 댓글보기</a>',
-				'</div>'
-			].join('')
-		);
-
 		// call list and insert into wrapper
-		$.when(this.getList(work_id, '')).then(function(resp){
-			$('.comment-prev', $work).after(resp);
+		$.when(commentUtil.getList(work_id, '')).then(function(d){ // 리스트를 불러와서 '이전보기' 버튼 뒤에 배치하기
+			$('.comment-prev', $work).after(d);
 		});
+
 	},
 	prev : function(t){
 		var $work = $(t).parents('.work-wrapper');
 		var work_id = $work.data('id');
 		// get latest comment_id
-		var idBefore = $('.comment-block:first', $work).data('id');;
-		$.when(this.getList(work_id, idBefore)).then(function(resp){
-			$('.comment-prev', $work).after(resp);
+		var idBefore = $('.comment-block:first', $work).data('id'); // 가장 마지막에 불러들인 코멘트의 번호를 가지고 와서 작업
+		$.when(this.getList(work_id, idBefore)).then(function(d){
+			$('.comment-prev', $work).after(d);
 		});
 	},
 	getList : function(work_id, idBefore){
 		// get id_before
 		$.get(site.url+'comment/get_list/'+work_id,  {
 			id_before : idBefore
-		}, function(resp){
-			return resp;
+		}, function(d){
+			return d;
 		});
 	},
 
@@ -211,7 +225,7 @@ var commentUtil = {
 
 	},
 	update : function(o){
-
+		
 	},
 	delete : function(o){
 
@@ -227,8 +241,8 @@ var commentUtil = {
 	},
 
 
-	close : function(work_id){
-
+	close : function($work){
+		$('.comment-wrapper', $work).slideUp(); // 추후에 다시 열릴 것을 감안하여 숨겨만 준다.
 	}
 
 };

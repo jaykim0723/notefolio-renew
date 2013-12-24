@@ -141,8 +141,13 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-12">
-									<div class="work-action-results">
-										work-action-results
+									<div class="comment-wrapper">
+										<a href="javascript:;" class="comment-prev btn btn-default btn-block">이전 댓글보기</a>
+										<!-- comment-block will be displayed here -->
+										<?php echo $this->load->view('comment/comment_form_view'); ?>
+									</div>									
+									<div class="love-wrapper">
+										love에 대한 후속조치
 									</div>
 								</div>
 							</div>

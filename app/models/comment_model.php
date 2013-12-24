@@ -121,7 +121,7 @@ class comment_model extends CI_Model {
         $this->db
             ->select('work_comments.*, users.id, users.username, users.email, users.level, users.realname, use')
             ->from('work_comments')
-            ->where('id', $params->comment_id);
+            ->where('id', $params->comment_id)
             ->limit(1); //set
 
         $comment = $this->db->get()->row();

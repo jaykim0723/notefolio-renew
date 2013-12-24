@@ -20,7 +20,11 @@ class Comment extends CI_Controller {
 			'work_id' => $work_id,
 			'id_before' => $this->input->get('idBefore')
 		));
-		$this->layout->set_view('comment/comment_list_view', $comment_list)->render();
+		if(!empty($comment_list)){
+			foreach ($comment_list->rows as $key => $row) {
+				$this->load->view('comment/comment_block_view', array('row' => $row));
+			}
+		}
 	}
 
 
@@ -36,7 +40,7 @@ class Comment extends CI_Controller {
 			'work_id' => $work_id,
 			'comment_id' => $comment_id
 		));
-		$this->layout->set_view('comment/comment_info_view', $comment)->render();
+		$this->layout->set_view('comment/comment_block_view', $comment)->render();
 	}
 	
 
@@ -87,6 +91,30 @@ class Comment extends CI_Controller {
 			alert($result->message);
 		# what else?
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	function load_wrapper(){
+		$this->layout->set_view('comment/comment_wrapper_view')->render();
+	}
+	function load_form(){
+		$this->layout->set_view('comment/comment_form_view')->render();
+	}
+
+
+
+
+
 
 
 
