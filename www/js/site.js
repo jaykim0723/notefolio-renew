@@ -154,3 +154,41 @@ $(function() {
 
 
 });
+
+
+
+
+
+
+
+
+var commentUtil = {
+	open : function(work_id){
+
+	},
+	close : function(work_id){
+
+	},
+	getList : function(){
+
+	},
+	prev : function(){
+		// get latest comment_id
+	},
+	update : function(o){
+
+	},
+	delete : function(o){
+
+	},
+	reply : function(o){
+
+	},
+	create : function(){
+
+	},
+	submitComment : function(f){
+		$f = $(f);
+	}
+
+};
