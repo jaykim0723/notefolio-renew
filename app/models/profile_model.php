@@ -154,7 +154,7 @@ class profile_model extends CI_Model {
                     user_id = ?
                 order by moddate desc
                 LIMIT ?, ?;', array($row->user_id, 0, 4));
-            foreach ($work_query->result as $work_row){
+            foreach ($work_query->result() as $work_row){
                 $row->recent_works[] = (object)array(
                         'work_id' => $work_row->work_id,
                         'title' => $work_row->title,
@@ -244,7 +244,7 @@ class profile_model extends CI_Model {
                     user_id = ?
                 order by moddate desc
                 LIMIT ?, ?;', array($row->user_id, 0, 4));
-            foreach ($work_query->result as $work_row){
+            foreach ($work_query->result() as $work_row){
                 $row->recent_works[] = (object)array(
                         'work_id' => $work_row->work_id,
                         'title' => $work_row->title,
