@@ -38,6 +38,7 @@ body * {
 .label-nofol {
 	color: #fff;
 	background: #2ac5c6;
+	padding: 6px;
 }
 .btn-nofol {
 	border-radius: 2em;

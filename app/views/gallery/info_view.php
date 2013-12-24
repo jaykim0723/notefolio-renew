@@ -13,18 +13,18 @@
 			<div class="col-md-3">
 				<div id="work-profile-image">
 					<div id="profile-image">
-						<img src="/data/profiles/<?php echo $user->username ?>.jpg?_=<?php echo substr($user->modified,-2) ?>" alt=""/>
+						<img src="/data/profiles/<?php echo $row->user->username ?>.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt=""/>
 					</div>
 					<div id="profile-info">
-						<h2><?php echo $user->username ?></h2>
-						<h4>&nbsp;<?php echo @implode('·', $user->keywords); ?>&nbsp;</h4>
+						<h2><?php echo $row->user->username ?></h2>
+						<h4>&nbsp;<?php echo @implode('·', $row->user->keywords); ?>&nbsp;</h4>
 						<a href="" class="btn btn-nofol btn-follow">
 							<i class="spi spi-follow"></i>
 							Follow
 						</a>
 					</div>
 					<ul id="profile-sns-link">
-						<?php foreach ($user->sns as $service => $id):
+						<?php foreach ($row->user->sns as $service => $id):
 						$tmp = $this->nf->sns($service, $id);
 						?>
 						<li>
@@ -49,36 +49,36 @@
 		<div class="row">
 			<div class="col-md-9">
 <?php endif ?>
-				<div class="work-small-profile visible-xs visible-sm">
-					<i class="spi spi-follow"></i>
-					<img src="/data/profiles/<?php echo $user->username ?>.jpg"/>
-					<h2><?php echo $user->username ?></h2>
-					<span><?php echo @implode(', ', $user->keywords); ?></span>
-				</div>
 
 				<div class="work-list infinite-list">
-					<div class="work-wrapper infinite-item" id="work-<?php echo $work_id ?>" data-id="<?php echo $work_id ?>">
+					<div class="work-wrapper infinite-item" id="work-<?php echo $row->work_id ?>" data-id="<?php echo $row->work_id ?>">
+						<div class="work-small-profile visible-xs visible-sm">
+							<i class="spi spi-follow"></i>
+							<img src="/data/profiles/<?php echo $row->user->username ?>.jpg"/>
+							<h2><?php echo $row->user->username ?></h2>
+							<span><?php echo @implode(', ', $row->user->keywords); ?></span>
+						</div>
 						<div class="work-info">
 							<div class="row">
 								<div class="col-md-7">
 									<div class="work-info-title">
 										<div class="btn-group pull-right">
-											<?php if (USER_ID==$user_id): ?>
-											<a href="/<?php echo $user->username ?>/<?php echo $work_id ?>/update" class="btn btn-default">
+											<?php if (USER_ID==$row->user_id): ?>
+											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/update" class="btn btn-default">
 												<i class="glyphicon glyphicon-cog"></i>
 											</a>
-											<a href="/<?php echo $user->username ?>/<?php echo $work_id ?>/delete" class="btn btn-default">
+											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/delete" class="btn btn-default">
 												<i class="glyphicon glyphicon-trash"></i>
 											</a>
 											<?php endif ?>
 										</div>
 
 										<!-- 제목 -->
-										<h2><?php echo $title; ?></h2>
+										<h2><?php echo $row->title; ?></h2>
 										<div class="work-info-time">
-											<?php echo $this->nf->print_time($regdate) ?>
+											<?php echo $this->nf->print_time($row->regdate) ?>
 											/
-											<?php echo @implode(', ', $keywords); ?>
+											<?php echo @implode(', ', $row->keywords); ?>
 										</div>
 									</div>
 								</div>
@@ -87,24 +87,24 @@
 										<div class="view bg1">
 											<i class="spi spi-view2"></i>
 											<br/>
-											<?php echo $hit_cnt ?>
+											<?php echo $row->hit_cnt ?>
 										</div>
 										<div class="comment bg2">
 											<i class="spi spi-comment"></i>
 											<br/>
-											<?php echo $comment_cnt ?>
+											<?php echo $row->comment_cnt ?>
 										</div>
 										<div class="love bg3">
 											<i class="spi spi-love2"></i>
 											<br/>
-											<?php echo $note_cnt ?>
+											<?php echo $row->note_cnt ?>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<div class="work-contents" style="height: 500px;">
+						<div class="work-contents" style="height: 100px;">
 							작품내용
 						</div>
 
@@ -141,8 +141,8 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-12">
-									<div class="comment-wrapper">
-										<a href="javascript:;" class="comment-prev btn btn-default btn-block">이전 댓글보기</a>
+									<div class="comment-wrapper" data-id="<?php echo $row->work_id ?>">
+										<a href="javascript:;" class="comment-prev btn btn-link btn-block">▲ 이전 댓글보기</a>
 										<!-- comment-block will be displayed here -->
 										<?php echo $this->load->view('comment/comment_form_view'); ?>
 									</div>									

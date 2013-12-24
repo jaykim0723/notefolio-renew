@@ -39,7 +39,7 @@ class Gallery extends CI_Controller {
 			'folder'  => ''
 		));
 		if($work->status==='fail') alert('작품이 존재하지 않습니다.');
-		$this->layout->set_view('gallery/info_view', $work->row)->render();
+		$this->layout->set_view('gallery/info_view', $work)->render();
 	}
 
 
