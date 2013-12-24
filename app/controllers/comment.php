@@ -6,85 +6,89 @@ class Comment extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('work_model');
+        $this->load->model('comment_model');
 		$this->nf->_member_check(array('create','update','delete'));
     }
 
-	
-	public function index()
-	{
-		$this->listing(1);
-	}
-	
-	/**
-	 * 리스트 출력에 관한 것
-	 * @param  integer $page [description]
-	 * @return [type]        [description]
-	 */
-	function listing($page=1){
-		$work_list = $this->work_model->get_list(array(
-			'page' => $page
-		));
-		$this->layout->set_view('gallery/listing_view', $work_list)->render();
-	}
-
-	/**
-	 * 작품의 개별 정보를 불러들인다.
-	 * @param  string $work_id [description]
-	 * @return [type]          [description]
-	 */
-	function info($work_id=''){
-		$work = $this->work_model->get_info(array(
+    /**
+     * [get_list description]
+     * @param  [type] $work_id [description]
+     * @return [type]          [description]
+     */
+	function get_list($work_id){
+		$comment_list = $this->comment_model->get_list(array(
 			'work_id' => $work_id,
-			'folder'  => ''
+			'id_before' => $this->input->get('idBefore')
 		));
-		if($work->status==='fail') alert('작품이 존재하지 않습니다.');
-		$this->layout->set_view('gallery/info_view', $work->row)->render();
-	}
-
-
-	function create(){
-		$work_id = $this->work_model->post_info(); // 비어있는 값으로 생성하고
-		if(emptY($work_id)) alert('작품이 존재하지 않습니다.');
-		redirect($this->session->userdata('username').'/'.$work_id.'/update');
-	}
-	function upload(){ // 기존의 주소를 보전하기 위하여
-		redirect('gallery/create');
+		$this->layout->set_view('comment/comment_list_view', $comment_list)->render();
 	}
 
 
 
-	function update($work_id=''){
-		$work = $this->work_model->get_info(array('work_id'=>$work_id)); 
-		if($work->status==='fail') alert('작품이 존재하지 않습니다.');
-		if($work->row->user_id!==USER_ID) alert('본인의 작품만 수정할 수 있습니다.');
-
-		$this->form($work->row);
+	/**
+	 * [get_info description]
+	 * @param  [type] $work_id    [description]
+	 * @param  [type] $comment_id [description]
+	 * @return [type]             [description]
+	 */
+	function get_info($work_id, $comment_id){
+		$comment = $this->comment_model->get_info(array(
+			'work_id' => $work_id,
+			'comment_id' => $comment_id
+		));
+		$this->layout->set_view('comment/comment_info_view', $comment)->render();
 	}
 	
-	function form($work=NULL){
-		$this->load->helper('form');
-		$this->layout->set_view('gallery/form_view', $work)->render();
-	}
-
-	function save(){
-		$input = $this->input->post();
-		$data = $this->work_model->put_info((object)$input);
-		$this->layout->set_json($data)->render();
-	}
 
 
 
-	function delete($work_id=''){
-		$result = $this->work_model->delete_info(array('work_id'=>$work_id));
+	/**
+	 * [put_info description]
+	 * @param  [type] $work_id    [description]
+	 * @param  [type] $comment_id [description]
+	 * @return [type]             [description]
+	 */
+	function put_info($work_id, $comment_id){
+		$params = array(
+			'work_id' => $work_id,
+			'comment_id' => $comment_id
+		);
+		$comment = $this->comment_model->get_info($params);
+		if($comment->status==='fail') alert('코멘트가 존재하지 않습니다.');
+		if($comment->row->user_id!==USER_ID) alert('본인의 코멘트만 수정할 수 있습니다.');
+
+		$params['content'] = $this->input->post('content');
+
+		$result = $this->comment_model->put_info($params);
 		if($result->status==='fail')
 			alert($result->message);
-
-		redirect('/mypage');
-		
-		// 삭제가 완료되면 어디로 가는가?
-		// 몰라 -> 3루수였던가...(?!)
+		# what else?
 	}
+
+
+
+	/**
+	 * [delete_info description]
+	 * @param  [type] $work_id    [description]
+	 * @param  [type] $comment_id [description]
+	 * @return [type]             [description]
+	 */
+	function delete_info($work_id, $comment_id){
+		$params = array(
+			'work_id' => $work_id,
+			'comment_id' => $comment_id
+		);
+		$comment = $this->comment_model->get_info($params);
+		if($comment->status==='fail') alert('코멘트가 존재하지 않습니다.');
+		if($comment->row->user_id!==USER_ID) alert('본인의 코멘트만 삭제할 수 있습니다.');
+
+		$result = $this->comment_model->delete_info($params);
+		if($result->status==='fail')
+			alert($result->message);
+		# what else?
+	}
+
+
 
 
 }

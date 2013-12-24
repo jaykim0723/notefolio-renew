@@ -430,6 +430,37 @@ body * {
 
 
 
+/* comment */
+.comment-wrapper {
+
+}
+.comment-prev { /* more button */
+
+}
+.comment-block {
+
+}
+	.comment-profile-area {
+		float: left;
+		position: relative;
+	}
+		.comment-profile-area img {
+			width: 50px;
+			height: 50px;
+		}
+		.comment-profile-area .spi {
+			position: absolute;
+		}
+	.comment-textarea {
+
+	}
+	.comment-action-area {
+		float: right;
+	}
+
+
+
+
 
 
 

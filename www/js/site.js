@@ -170,8 +170,8 @@ var commentUtil = {
 		// create comment wrapper block
 		$('.work-action-results', $work).html(
 			[
-				'<div id="natoheu">',
-					'aoentuhaonteuh',
+				'<div class="comment-wrapper">',
+					'<a href="javascript:;" class="comment-prev btn btn-default btn-block">이전 댓글보기</a>',
 				'</div>'
 			].join('')
 		);
@@ -192,7 +192,7 @@ var commentUtil = {
 	},
 	getList : function(work_id, idBefore){
 		// get id_before
-		$.get(site.url+'comment/'+work_id,  {
+		$.get(site.url+'comment/get_list/'+work_id,  {
 			id_before : idBefore
 		}, function(resp){
 			return resp;
@@ -201,7 +201,7 @@ var commentUtil = {
 
 
 	getComment : function(){
-		$.get(site.url+'comment/'+work_id+'/'+comment_id, {
+		$.get(site.url+'comment/get_info/'+work_id+'/'+comment_id, {
 
 		}).done(function(d){
 
