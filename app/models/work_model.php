@@ -116,6 +116,7 @@ class work_model extends CI_Model {
         // keywords를 array('파인아트', '어쩌구저쩌구') 와 같이 변환해준다.
         # do stuff
         $work->keywords = array('파인아트', 'UI/UX'); // temporary
+        $work->tags = @explode(')(', trim(trim($work->tags, '('),')'));
 
 
         $data = (object)array(

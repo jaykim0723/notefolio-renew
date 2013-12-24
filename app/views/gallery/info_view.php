@@ -44,7 +44,7 @@
 		</div>
 	</div>	
 </div>
-<section>
+<section id="work-info-wrapper">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">
@@ -67,7 +67,7 @@
 											<a href="/<?php echo $user->username ?>/<?php echo $work_id ?>/update" class="btn btn-default">
 												<i class="glyphicon glyphicon-cog"></i>
 											</a>
-											<a id="btnDelete" href="/<?php echo $user->username ?>/<?php echo $work_id ?>/delete" class="btn btn-default">
+											<a href="/<?php echo $user->username ?>/<?php echo $work_id ?>/delete" class="btn btn-default">
 												<i class="glyphicon glyphicon-trash"></i>
 											</a>
 											<?php endif ?>
@@ -112,7 +112,7 @@
 							<div class="row">
 								<div class="col-xs-6">
 									<div class="work-tags">
-										<i class="spi spi-tag"></i> tags
+										<i class="spi spi-tag"></i> <?php echo @implode(', ', $tags) ?>
 									</div>
 								</div>
 								<div class="col-xs-6">
@@ -158,7 +158,7 @@
 </section>
 <script>
 	$(function() {
-		$('#btnDelete').on('click', function(e){
+		$('#work-info-wrapper').on('click', 'btn-danger', function(e){
 			var url = $(this).attr('href');
 			BootstrapDialog.confirm('Hi Apple, are you sure?', function(result){
 				if(result){
