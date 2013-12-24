@@ -57,7 +57,7 @@
 				</div>
 
 				<div class="work-list infinite-list">
-					<div class="work-wrapper infinite-item">
+					<div class="work-wrapper infinite-item" id="work-<?php echo $work_id ?>" data-id="<?php echo $work_id ?>">
 						<div class="work-info">
 							<div class="row">
 								<div class="col-md-7">
@@ -126,17 +126,24 @@
 						<div class="work-actions">
 							<div class="row">
 								<div class="col-md-6 col-xs-9">
-									<a href="" class="btn btn-nofol bg2">
+									<a href="javascript:;" class="btn btn-nofol btn-open-comment bg2">
 										<i class="spi spi-comment"></i>
 										코멘트 열기(13)
 									</a>
-									<a href="" class="btn btn-nofol bg1">
+									<a href="javascript:;" class="btn btn-nofol bg1">
 										<i class="spi spi-love2"></i>
 										좋아요
 									</a>
 								</div>
 								<div class="col-md-6 col-xs-3 righted">
 									share
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="work-action-results">
+										work-action-results
+									</div>
 								</div>
 							</div>
 						</div>
@@ -158,7 +165,7 @@
 </section>
 <script>
 	$(function() {
-		$('#work-info-wrapper').on('click', 'btn-danger', function(e){
+		$('#work-info-wrapper').on('click', '.btn-danger', function(e){
 			var url = $(this).attr('href');
 			BootstrapDialog.confirm('Hi Apple, are you sure?', function(result){
 				if(result){
@@ -166,6 +173,8 @@
 				}
 			}, 'danger');
 			return false;
+		}).on('click', '.btn-open-comment', function(){
+			commentUtil.open(this);
 		});
 	});
 </script>

@@ -163,18 +163,52 @@ $(function() {
 
 
 var commentUtil = {
-	open : function(work_id){
+	open : function(t){
+		var $work = $(t).parents('.work-wrapper');
+		var id = $work.data('id');
 
-	},
-	close : function(work_id){
+		// create comment wrapper block
+		$('.work-action-results', $work).html(
+			[
+				'<div id="natoheu">',
+				'</div>'
+			].join('')
+		);
 
+		// call list and insert into wrapper
+		$.when(this.getList('')).then(function(resp){
+			// resp
+		});
 	},
-	getList : function(){
-
-	},
-	prev : function(){
+	prev : function(t){
+		var $work = $(t).parents('.work-wrapper');
 		// get latest comment_id
+		var idBefore = '';
+		$.when(this.getList(idBefore)).then(function(resp){
+			// resp
+			
+		});
 	},
+	getList : function(idBefore){
+		// get id_before
+		$.get(site_url+'/comment/'+work_id,  {
+			id_before : idBefore
+		}, function(resp){
+			return resp;
+		});
+	},
+
+	getComment : function(){
+		$.get(site_url+'/comment/'+work_id+'/'+comment_id, {
+
+		}).done(function(d)){
+
+		}).fail(function(d){
+
+		});
+
+	},
+
 	update : function(o){
 
 	},
@@ -189,6 +223,9 @@ var commentUtil = {
 	},
 	submitComment : function(f){
 		$f = $(f);
+	},
+	close : function(work_id){
+
 	}
 
 };

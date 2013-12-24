@@ -211,6 +211,7 @@ class work_model extends CI_Model {
             return $data;
         }
 
+
         $work_id = @$data['work_id'];
 
         // 본인것인지 여부에 따라 message다르게 하기
