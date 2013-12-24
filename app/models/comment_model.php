@@ -32,7 +32,7 @@ class comment_model extends CI_Model {
     	}
 
     	$this->db
-            ->select('work_comments.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
+            ->select('work_comments.*, users.id as user_id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
     		->from('work_comments')
     		->join('users', 'users.id = work_comments.user_id', 'left')
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
@@ -78,7 +78,7 @@ class comment_model extends CI_Model {
 
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             $user = (object)array(
-                'id'         => $row->id,
+                'user_id'         => $row->user_id,
                 'username'   => $row->username,
                 'email'      => $row->email,
                 'level'      => $row->level,
@@ -122,7 +122,7 @@ class comment_model extends CI_Model {
         }
 
         $this->db
-            ->select('work_comments.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
+            ->select('work_comments.*, users.id as user_id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
             ->from('work_comments')
             ->where('id', $params->comment_id)
             ->limit(1); //set
@@ -143,7 +143,7 @@ class comment_model extends CI_Model {
         }
         // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
         $user = (object)array(
-            'id'         => $data->row->id,
+            'user_id'    => $data->row->user_id,
             'username'   => $data->row->username,
             'email'      => $data->row->email,
             'level'      => $data->row->level,
