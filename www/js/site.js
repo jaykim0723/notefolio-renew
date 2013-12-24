@@ -165,50 +165,51 @@ $(function() {
 var commentUtil = {
 	open : function(t){
 		var $work = $(t).parents('.work-wrapper');
-		var id = $work.data('id');
+		var work_id = $work.data('id');
 
 		// create comment wrapper block
 		$('.work-action-results', $work).html(
 			[
 				'<div id="natoheu">',
+					'aoentuhaonteuh',
 				'</div>'
 			].join('')
 		);
 
 		// call list and insert into wrapper
-		$.when(this.getList('')).then(function(resp){
-			// resp
+		$.when(this.getList(work_id, '')).then(function(resp){
+			$('.comment-prev', $work).after(resp);
 		});
 	},
 	prev : function(t){
 		var $work = $(t).parents('.work-wrapper');
+		var work_id = $work.data('id');
 		// get latest comment_id
-		var idBefore = '';
-		$.when(this.getList(idBefore)).then(function(resp){
-			// resp
-			
+		var idBefore = $('.comment-block:first', $work).data('id');;
+		$.when(this.getList(work_id, idBefore)).then(function(resp){
+			$('.comment-prev', $work).after(resp);
 		});
 	},
-	getList : function(idBefore){
+	getList : function(work_id, idBefore){
 		// get id_before
-		$.get(site_url+'/comment/'+work_id,  {
+		$.get(site.url+'comment/'+work_id,  {
 			id_before : idBefore
 		}, function(resp){
 			return resp;
 		});
 	},
 
-	getComment : function(){
-		$.get(site_url+'/comment/'+work_id+'/'+comment_id, {
 
-		}).done(function(d)){
+	getComment : function(){
+		$.get(site.url+'comment/'+work_id+'/'+comment_id, {
+
+		}).done(function(d){
 
 		}).fail(function(d){
 
 		});
 
 	},
-
 	update : function(o){
 
 	},
@@ -224,6 +225,8 @@ var commentUtil = {
 	submitComment : function(f){
 		$f = $(f);
 	},
+
+
 	close : function(work_id){
 
 	}

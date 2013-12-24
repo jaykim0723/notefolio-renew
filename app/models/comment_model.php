@@ -10,7 +10,7 @@ class comment_model extends CI_Model {
     }
 
     /**
-     * 작품의 리스트를 불러온다.
+     * 코멘트의 리스트를 불러온다.
      * @param  array  $params 
      * @return object          상태와 데이터값을 반환한다
      */
@@ -22,7 +22,7 @@ class comment_model extends CI_Model {
             'id_before'  => 0, // call by...
             'id_after'  => 0, // call by...
             'page'      => 1, // 불러올 페이지
-            'delimiter' => 10, // 한 페이지당 작품 수
+            'delimiter' => 10, // 한 페이지당 코멘트 수
             'order_by'  => 'newest', // newest, oldest
             'user_id'   => 0 // 프로필 등 특정 작가의 댓만을 조회할 때
     	);
