@@ -151,7 +151,7 @@
 					</div>
 				</div>
 
-				<a href="/gallery/<?php echo ($this->uri->segment(2))?$this->uri->segment(2)-1:0; ?>" class="more-link">more</a>
+				<a href="/<?php echo ($this->uri->segment(1))?>/<?php echo ($this->uri->segment(2))?$this->uri->segment(2)-1:0; ?>" class="more-link">more</a>
 				
 
 
