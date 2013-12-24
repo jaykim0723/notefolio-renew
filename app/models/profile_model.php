@@ -140,30 +140,30 @@ class profile_model extends CI_Model {
                 'keywords' => array(
                     '파인아트', '동영상', 'UI/UX'
                 ),
-                'recent_works' => array( // 최근 4개의 작품을 아래에 첨부하되,
-                    (object)array( //  각 객체는 work_list에서 쓰는 그 테이블을 그대로 쓴다. 단, 어차피 유저에 한하므로 user 정보는 필요없다.
-                        'work_id' => 239,
-                        'title' => 'Lorem ipsum natohe',
-                        'modified' => '2013-08-01 11:11:11'
-                    ),
-                    (object)array(
-                        'work_id' => 239,
-                        'title' => 'Lorem ipsum natohe',
-                        'modified' => '2013-08-01 11:11:11'
-                    ),
-                    (object)array(
-                        'work_id' => 239,
-                        'title' => 'Lorem ipsum natohe',
-                        'modified' => '2013-08-01 11:11:11'
-                    ),
-                    (object)array(
-                        'work_id' => 239,
-                        'title' => 'Lorem ipsum natohe',
-                        'modified' => '2013-08-01 11:11:11'
-                    )
-                ),
+                'recent_works' => array(), // 최근 4개의 작품을 아래에 첨부하되, 각 객체는 work_list에서 쓰는 그 테이블을 그대로 쓴다. 단, 어차피 유저에 한하므로 user 정보는 필요없다.
                 'is_follow' => ($row->is_follow==1 ? 'y' : 'n') // 기존에 어떤명을 했는지 잘 기억이...
             );
+
+            //-- user's work, recent 4, first page
+            $work_query = $this->db->query(''
+                .'SELECT 
+                    user_id, work_id, title, moddate
+                FROM
+                    works
+                WHERE
+                    user_id = ?
+                order by moddate desc
+                LIMIT ?, ?;', array($row->user_id, 0, 4));
+            foreach ($work_query->result as $work_row){,
+                $row->recent_works[] = (object)array(
+                        'work_id' => $work_row->work_id,
+                        'title' => $work_row->title,
+                        'modified' => $work_row->moddate                      
+                    )
+
+            }
+            //-- end
+            
             $rows[] = $row;
         }
 
@@ -231,31 +231,32 @@ class profile_model extends CI_Model {
                 'keywords' => array(
                     '파인아트', '동영상', 'UI/UX'
                 ),
-                'recent_works' => array( // 최근 4개의 작품을 아래에 첨부하되,
-                    (object)array( //  각 객체는 work_list에서 쓰는 그 테이블을 그대로 쓴다. 단, 어차피 유저에 한하므로 user 정보는 필요없다.
-                        'work_id' => 239,
-                        'title' => 'Lorem ipsum natohe',
-                        'modified' => '2013-08-01 11:11:11'                        
-                    ),
-                    (object)array(
-                        'work_id' => 239,
-                        'title' => 'Lorem ipsum natohe',
-                        'modified' => '2013-08-01 11:11:11'                        
-                    ),
-                    (object)array(
-                        'work_id' => 239,
-                        'title' => 'Lorem ipsum natohe',
-                        'modified' => '2013-08-01 11:11:11'                        
-                    ),
-                    (object)array(
-                        'work_id' => 239,
-                        'title' => 'Lorem ipsum natohe',
-                        'modified' => '2013-08-01 11:11:11'                        
-                    )
-                ),
+                'recent_works' => array(), // 최근 4개의 작품을 아래에 첨부하되, 각 객체는 work_list에서 쓰는 그 테이블을 그대로 쓴다. 단, 어차피 유저에 한하므로 user 정보는 필요없다.
                 'is_follow' => ($row->is_follow==1 ? 'y' : 'n') // 기존에 어떤명을 했는지 잘 기억이...
             );
+
+            //-- user's work, recent 4, first page
+            $work_query = $this->db->query(''
+                .'SELECT 
+                    user_id, work_id, title, moddate
+                FROM
+                    works
+                WHERE
+                    user_id = ?
+                order by moddate desc
+                LIMIT ?, ?;', array($row->user_id, 0, 4));
+            foreach ($work_query->result as $work_row){,
+                $row->recent_works[] = (object)array(
+                        'work_id' => $work_row->work_id,
+                        'title' => $work_row->title,
+                        'modified' => $work_row->moddate                      
+                    )
+
+            }
+            //-- end
+
             $rows[] = $row;
+
         }
 
         $data = (object)array(
