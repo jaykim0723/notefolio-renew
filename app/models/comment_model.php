@@ -78,7 +78,7 @@ class comment_model extends CI_Model {
 
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
             $user = (object)array(
-                'user_id'         => $row->user_id,
+                'user_id'    => $row->user_id,
                 'username'   => $row->username,
                 'email'      => $row->email,
                 'level'      => $row->level,
@@ -92,6 +92,13 @@ class comment_model extends CI_Model {
                 unset($row->{$key});
             }
             $row->user = $user;
+
+            if($row->children_cnt>0){
+                $children_params=$params;
+                $children_params->parent_id = $row->comment_id;
+                $row->children = $this->get_list($children_params)->rows;
+            }
+
 		    $rows[] = $row;
 		}
         $data = (object)array(
