@@ -38,7 +38,7 @@ class User extends CI_Controller {
 			case "del":
 				$args['get_profile'] = true;
 				$args['get_sns_fb'] = true;
-				$data = $this->user_model->get($args);
+				$data = $this->user_model->get_info($args);
 			break;
 			default:
 				exit('error');

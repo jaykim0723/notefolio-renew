@@ -122,7 +122,7 @@ class user_model extends CI_Model {
      * @param  array $params
      * @return object          상태와 데이터값을 반환한다
      */
-    function get($params=array()){
+    function get_info($params=array()){
         $params = (object)$params;
         $default_params = (object)array(
             'id' => '',
