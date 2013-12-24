@@ -195,6 +195,7 @@ class comment_model extends CI_Model {
         }
 
         $this->db->insert('work_comments', $params);
+        //if($para)
 
         $comment_id = $this->db->insert_id();
         return $comment_id;
@@ -207,7 +208,7 @@ class comment_model extends CI_Model {
      * @param  array  $data (depend by field in table `works`)
      * @return object       (status return object. status=[done|fail])
      */
-    function put_info($input=array()){
+    function put ($input=array()){
         $allowed_field = array('comment_id', 'user_id', 'work_id', 'parent_id', 'content');
 
         // 값을 정규식으로 검사한다.
