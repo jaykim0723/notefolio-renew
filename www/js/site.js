@@ -182,17 +182,16 @@ var commentUtil = {
 			return;
 		}
 		if($work.data('comment_loaded')=='y'){ // 이미 한 번 열린 놈이라면 그냥 단순히 보여주기만 한다.
-			$('.comment-wrapper', $work).slideDown();
+			$('.comment-wrapper', $work).show();
 			return;
 		}
 		$work.data('comment_loaded', 'y').data('comment_opened', 'y'); // 다음의 코멘트열기 버튼에 대응하기 위하여 값을 지정해준다.
 
-		$('.comment-wrapper', $work).slideDown();
+		$('.comment-wrapper', $work).show();
 		var work_id = $work.data('id');
 		// call list and insert into wrapper
 		$.when(commentUtil.getList(work_id, '')).then(function(d){ // 리스트를 불러와서 '이전보기' 버튼 뒤에 배치하기
 			$('.comment-prev', $work)[$(d).find('.comment-block').length<10?'hide':'show']().after(d);
-			;
 		});
 
 	},
@@ -243,7 +242,7 @@ var commentUtil = {
 
 
 	close : function($work){
-		$('.comment-wrapper', $work).slideUp(); // 추후에 다시 열릴 것을 감안하여 숨겨만 준다.
+		$('.comment-wrapper', $work).hide(); // 추후에 다시 열릴 것을 감안하여 숨겨만 준다.
 	}
 
 };

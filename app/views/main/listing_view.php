@@ -5,7 +5,7 @@
 			<div class="col-md-12">
 				<ul id="main-list-top" class="main-thumbnail-list">
 					
-					<?php $this->load->view('main/thumbnail_inc_view', $first) ?>
+					<?php $this->load->view('main/thumbnail_inc_view', array('row' => $first)) ?>
 
 					
 					<li class="thumbbox hidden-xs hidden-sm">
@@ -44,7 +44,7 @@
 					<?php foreach ($rows as $key => $row):
 					$row->key = $key;
 					?>
-					<?php $this->load->view('main/thumbnail_inc_view', $row) ?>
+					<?php $this->load->view('main/thumbnail_inc_view', array('row' => $row)) ?>
 					<?php endforeach ?>
 				</ul>
 

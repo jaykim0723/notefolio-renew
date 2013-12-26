@@ -58,6 +58,9 @@ class work_model extends CI_Model {
     	foreach ($works->result() as $row)
 		{
             // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
+            if(substr($row->contents, 0, 2)=='a:')
+                $row->contents = unserialize($row->contents);
+
             $user = (object)array(
                 'id'         => $row->id,
                 'username'   => $row->username,
@@ -117,6 +120,8 @@ class work_model extends CI_Model {
         # do stuff
         $work->keywords = array('파인아트', 'UI/UX'); // temporary
         $work->tags = @explode(')(', trim(trim($work->tags, '('),')'));
+        if(substr($work->contents, 0, 2)=='a:')
+            $work->contents = unserialize($work->contents);
 
 
         $data = (object)array(

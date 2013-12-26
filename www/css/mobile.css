@@ -427,8 +427,42 @@ body * {
 
 .work-recent-works {
 }
-
-
+.work-contents {
+	list-style: none;
+	padding: 0;
+	margin: 30px 0;
+}
+.block-image img {
+	width: 100%;
+}
+.work-contents > .block-image,
+.work-contents > .block-video,
+.work-contents > .block-text {
+	margin: 10px 0 0 0;
+}
+.work-contents > .block-image:first-child,
+.work-contents > .block-video:first-child,
+.work-contents > .block-text:first-child {
+	margin-top: 0;
+}
+.work-contents > .block-image:last-child,
+.work-contents > .block-video:last-child,
+.work-contents > .block-text:last-child {
+	margin-bottom: 0;
+}
+.work-contents > .block-text {
+	padding: 15px 15px;
+}
+.work-contents > .block-line {
+	margin: 0;
+	background: #f8f8f8;
+	height: 30px;
+}
+.work-contents > .block-line + .block-text,
+.work-contents > .block-line + .block-image,
+.work-contents > .block-line + .block-video {
+	margin-top: 0;
+}
 
 
 /* comment */

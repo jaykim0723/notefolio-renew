@@ -104,9 +104,11 @@
 							</div>
 						</div>
 
-						<div class="work-contents" style="height: 100px;">
-							작품내용
-						</div>
+						<ul class="work-contents">
+							<?php foreach ($row->contents as $index => $block): ?>
+								<?php echo $this->load->view('gallery/info_block_view', $block); ?>
+							<?php endforeach ?>
+						</ul>
 
 						<div class="work-addinfo">
 							<div class="row">
