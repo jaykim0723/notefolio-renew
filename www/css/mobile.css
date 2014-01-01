@@ -1,5 +1,9 @@
 /* Put your CSS here */
 
+.spi,
+.si {
+	text-indent: 3000px;
+}
 
 body * {
 	font-family: 'Roboto', sans-serif;
@@ -468,6 +472,7 @@ body * {
 /* comment */
 .comment-wrapper {
 	display: none;
+	margin-top: 30px;
 }
 .comment-prev { /* more button */
 
@@ -477,6 +482,7 @@ body * {
 }
 	.comment-profile-area {
 		float: left;
+		display: block;
 		position: relative;
 		width: 50px;
 		height: 50px;
@@ -485,13 +491,16 @@ body * {
 			width: 50px;
 			height: 50px;
 		}
-		.comment-profile-area .spi {
+		.comment-profile-area .spi,
+		.comment-profile-area .si {
 			position: absolute;
 			top: 0;
 			left: 0;
 		}
 	.comment-textarea {
-
+		margin-left: 20px;
+		background: #f8f8f8;
+		border: 0;
 	}
 	.comment-action-area {
 		float: right;
@@ -746,6 +755,7 @@ p.desc {
 }
 
 #profile-image {
+	display: block;
 	position: relative;
 	width: 145px;
 	height: 145px;
