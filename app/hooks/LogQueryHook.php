@@ -23,9 +23,9 @@ class LogQueryHook {
         $log_file = APPPATH . 'logs/';
         if($CI->config->item('log_path')!='')
             $log_file = APPPATH . $CI->config->item('log_path');
-        $logs_file .= 'log-'.date('Y-m-d').'.php';
+        $log_file .= 'log-'.date('Y-m-d').'.php';
 
-        if ( ! write_file($logs_file, $output, 'a+')){
+        if ( ! write_file($log_file, $output, 'a+')){
              log_message('debug','Unable to write query the file');
         }   
     }
