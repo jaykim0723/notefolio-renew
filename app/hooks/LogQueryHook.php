@@ -13,7 +13,7 @@ class LogQueryHook {
             $output .= "no queries\n";
         }else{
             foreach ($queries as $key=>$query){
-                $output .= $query . "\n";
+                $output .= $query . "\n\n";
             }
             $took = round(doubleval($times[$key]), 3);
             $output .= "===[took:{$took}]\n\n";
