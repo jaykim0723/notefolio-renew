@@ -144,7 +144,7 @@
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="comment-wrapper" data-id="<?php echo $row->work_id ?>">
-										<a href="javascript:;" class="comment-prev btn btn-link btn-block">▲ 이전 댓글보기</a>
+										<a href="javascript:;" class="btn-comment-prev btn btn-link btn-block">▲ 이전 댓글보기</a>
 										<!-- comment-block will be displayed here -->
 										<?php echo $this->load->view('comment/comment_form_view'); ?>
 									</div>									
@@ -184,8 +184,10 @@
 			commentUtil.open(this);
 		}).on('submit', '.comment-block', function(){
 			commentUtil.submitComment(this);
-		}).on('submit', '.btn-comment-delete', function(){
-			commentUtil.delet(this);
+		}).on('click', '.btn-comment-delete', function(){
+			commentUtil.delete(this);
+		}).on('click', '.btn-comment-prev', function(){
+			commentUtil.prev(this);
 		});
 	});
 </script>

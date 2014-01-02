@@ -478,6 +478,8 @@ body * {
 
 }
 .comment-block {
+	float: left;
+	width: 100%;
 	clear: both;
 	outline: 1px solid silver;
 }

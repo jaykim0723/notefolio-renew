@@ -192,7 +192,7 @@ var commentUtil = {
 		var work_id = $work.data('id');
 		// call list and insert into wrapper
 		$.when(commentUtil.readList(work_id, '')).then(function(responseHTML){ // 리스트를 불러와서 '이전보기' 버튼 뒤에 배치하기
-			$('.comment-prev', $work)[$('<div>'+responseHTML+'</div>').find('.comment-block').length<10?'hide':'show']().after(responseHTML);
+			$('.btn-comment-prev', $work)[$('<div>'+responseHTML+'</div>').find('.comment-block').length<10?'hide':'show']().after(responseHTML);
 		});
 
 	},
@@ -202,7 +202,7 @@ var commentUtil = {
 		// get latest comment_id
 		var idBefore = $('.comment-block:first', $work).data('id'); // 가장 마지막에 불러들인 코멘트의 번호를 가지고 와서 작업
 		$.when(this.readList(work_id, idBefore)).then(function(responseHTML){
-			$('.comment-prev', $work)[$(responseHTML).find('.comment-block').length<10?'hide':'show']().after(d);
+			$('.btn-comment-prev', $work)[$('<div>'+responseHTML+'</div>').find('.comment-block').length<10?'hide':'show']().after(responseHTML);
 		});
 	},
 	readList : function(work_id, idBefore){
