@@ -73,7 +73,6 @@ class Comment extends CI_Controller {
 		$params['work_id'] = $work_id;
 		$result = $this->comment_model->post_info($params);
 		log_message('debug','---------'.print_r($result,TRUE));
-        var_export($result);
 		if($result->status=='fail'){
 			alert($result->message);
             exit($result->query);

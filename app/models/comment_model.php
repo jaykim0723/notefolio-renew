@@ -198,11 +198,12 @@ class comment_model extends CI_Model {
 
         $this->db->trans_start();
         $this->db->insert('work_comments', $params);
+        $insert_id = $this->db->insert_id();
         $this->db->trans_complete();
 
         $data = (object)array(
             'status' => 'done',
-            'comment_id' => $this->db->insert_id()
+            'comment_id' => $insert_id
         );
         if($this->db->trans_status()==FALSE){
             $data->status = 'fail';
