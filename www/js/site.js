@@ -181,11 +181,12 @@ var commentUtil = {
 			this.close($work);
 			return;
 		}
+		$work.data('comment_opened', 'y'); // 다음의 코멘트열기 버튼에 대응하기 위하여 값을 지정해준다.
 		if($work.data('comment_loaded')=='y'){ // 이미 한 번 열린 놈이라면 그냥 단순히 보여주기만 한다.
 			$('.comment-wrapper', $work).show();
 			return;
 		}
-		$work.data('comment_loaded', 'y').data('comment_opened', 'y'); // 다음의 코멘트열기 버튼에 대응하기 위하여 값을 지정해준다.
+		$work.data('comment_loaded', 'y');
 
 		$('.comment-wrapper', $work).show();
 		var work_id = $work.data('id');
@@ -254,6 +255,7 @@ var commentUtil = {
 
 
 	close : function($work){
+		$work.data('comment_opened', 'n');
 		$('.comment-wrapper', $work).hide(); // 추후에 다시 열릴 것을 감안하여 숨겨만 준다.
 	}
 
