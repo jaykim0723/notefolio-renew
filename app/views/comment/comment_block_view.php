@@ -1,7 +1,7 @@
 <div id="comment-<?php echo $row->comment_id ?>" data-id="<?php echo $row->comment_id ?>" class="comment-block">
 	<div class="comment-control-area">
 		<a href="" class="btn btn-link">modify</a>
-		<a href="" class="btn btn-link">delete</a>
+		<a href="" class="btn btn-link btn-delete-comment">delete</a>
 		<a href="" class="btn btn-link">reply</a>
 	</div>
 	<a class="comment-profile-area" target="_blank" href="<?php echo site_url($row->user->username); ?>">

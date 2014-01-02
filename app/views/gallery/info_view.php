@@ -67,7 +67,7 @@
 											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/update" class="btn btn-default">
 												<i class="glyphicon glyphicon-cog"></i>
 											</a>
-											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/delete" class="btn btn-default">
+											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/delete" class="btn btn-delete-work btn-default">
 												<i class="glyphicon glyphicon-trash"></i>
 											</a>
 											<?php endif ?>
@@ -172,7 +172,7 @@
 </section>
 <script>
 	$(function() {
-		$('#work-info-wrapper').on('click', '.btn-danger', function(e){
+		$('#work-info-wrapper').on('click', '.btn-delete-work', function(e){
 			var url = $(this).attr('href');
 			BootstrapDialog.confirm('Hi Apple, are you sure?', function(result){
 				if(result){
@@ -182,6 +182,10 @@
 			return false;
 		}).on('click', '.btn-open-comment', function(){
 			commentUtil.open(this);
+		}).on('submit', '.comment-block', function(){
+			commentUtil.submitComment(this);
+		}).on('submit', '.btn-comment-delete', function(){
+			commentUtil.delet(this);
 		});
 	});
 </script>
