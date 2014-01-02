@@ -12,12 +12,17 @@
 
 
 $hook['post_system'][] = array(
-                                 'class'    => 'AccessLogHook',
-                                 'function' => 'post',
-                                 'filename' => 'accesslog.php',
-                                 'filepath' => 'hooks',
-                                 'params'   => null
-                                 );
-
+     'class'    => 'AccessLogHook',
+     'function' => 'post',
+     'filename' => 'accesslog.php',
+     'filepath' => 'hooks',
+     'params'   => null
+ );
+$hook['post_system'][] = array(
+    'class' => 'LogQueryHook',
+    'function' => 'log_queries',
+    'filename' => 'LogQueryHook.php',
+    'filepath' => 'hooks'
+);
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */
