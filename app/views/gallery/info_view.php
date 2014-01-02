@@ -12,9 +12,9 @@
 			</div>
 			<div class="col-md-3">
 				<div id="work-profile-image">
-					<div id="profile-image">
+					<a id="profile-image" href="<?php echo site_url($row->user->username) ?>">
 						<img src="/data/profiles/<?php echo $row->user->username ?>.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt=""/>
-					</div>
+					</a>
 					<div id="profile-info">
 						<h2><?php echo $row->user->username ?></h2>
 						<h4>&nbsp;<?php echo @implode('·', $row->user->keywords); ?>&nbsp;</h4>
@@ -67,7 +67,7 @@
 											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/update" class="btn btn-default">
 												<i class="glyphicon glyphicon-cog"></i>
 											</a>
-											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/delete" class="btn btn-default">
+											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/delete" class="btn btn-delete-work btn-default">
 												<i class="glyphicon glyphicon-trash"></i>
 											</a>
 											<?php endif ?>
@@ -85,17 +85,17 @@
 								<div class="col-md-5">
 									<div class="work-info-icons">
 										<div class="view bg1">
-											<i class="spi spi-view2"></i>
+											<i class="spi spi-view2">View</i>
 											<br/>
 											<?php echo $row->hit_cnt ?>
 										</div>
 										<div class="comment bg2">
-											<i class="spi spi-comment"></i>
+											<i class="spi spi-comment">Comment</i>
 											<br/>
 											<?php echo $row->comment_cnt ?>
 										</div>
 										<div class="love bg3">
-											<i class="spi spi-love2"></i>
+											<i class="spi spi-love2">Love</i>
 											<br/>
 											<?php echo $row->note_cnt ?>
 										</div>
@@ -172,7 +172,7 @@
 </section>
 <script>
 	$(function() {
-		$('#work-info-wrapper').on('click', '.btn-danger', function(e){
+		$('#work-info-wrapper').on('click', '.btn-delete-work', function(e){
 			var url = $(this).attr('href');
 			BootstrapDialog.confirm('Hi Apple, are you sure?', function(result){
 				if(result){
@@ -182,6 +182,10 @@
 			return false;
 		}).on('click', '.btn-open-comment', function(){
 			commentUtil.open(this);
+		}).on('submit', '.comment-block', function(){
+			commentUtil.submitComment(this);
+		}).on('submit', '.btn-comment-delete', function(){
+			commentUtil.delet(this);
 		});
 	});
 </script>

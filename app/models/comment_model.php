@@ -179,7 +179,7 @@ class comment_model extends CI_Model {
      * @param  array $params   
      * @return object       (upload content data)
      */
-    function post ($params=array()){
+    function post_info ($params=array()){
         $params = (object)$params;
         $default_params = (object)array(
             'user_id' => USER_ID,
@@ -208,7 +208,7 @@ class comment_model extends CI_Model {
      * @param  array  $data (depend by field in table `works`)
      * @return object       (status return object. status=[done|fail])
      */
-    function put ($input=array()){
+    function put_info ($input=array()){
         $allowed_field = array('comment_id', 'user_id', 'work_id', 'parent_id', 'content');
 
         // 값을 정규식으로 검사한다.

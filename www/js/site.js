@@ -227,17 +227,29 @@ var commentUtil = {
 	update : function(o){
 		
 	},
-	delete : function(o){
-
-	},
 	reply : function(o){
 		// 표준 form을 떼어다가 들어갈 위치에 삽입을 해준다.
 		var $wrapper = $(t).parents('.comment-wrapper');
-		$wrapper
+		// $wrapper
+
+	},
+	delete : function(o){
 
 	},
 	submitComment : function(f){
+		event.preventDefault();
+		event.stopPropagation();
+
 		$f = $(f);
+		var params = $f.serialize();
+
+		var $work = $f.parents('.work-wrapper');	
+		var work_id = $work.data('id');
+
+		blockObj.block('comment-form-'+work_id, $f);
+		$.post(site.url+'comment/post/'+work_id, params, function(d){
+			console.log(d);
+		}, 'json');
 	},
 
 
