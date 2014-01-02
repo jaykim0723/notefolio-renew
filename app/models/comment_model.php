@@ -198,6 +198,7 @@ class comment_model extends CI_Model {
 
         $this->db->trans_start();
         $this->db->insert('work_comments', $params);
+        var_export($this->db->last_query());
         $this->db->trans_complete();
 
         $data = (object)array(
