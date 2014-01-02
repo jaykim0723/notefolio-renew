@@ -207,6 +207,7 @@ class comment_model extends CI_Model {
         if($this->db->trans_status()==FALSE){
             $data->status = 'fail';
             $data->message = 'inserting_failed';
+            $data->query = $this->db->last_query();
         }
         return $data;
     }
