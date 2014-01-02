@@ -115,10 +115,11 @@ class comment_model extends CI_Model {
 
     /**
      * call comment seperately
-     * @param  array $params   (work_id)
+     * @param  array $params   (comment_id)
      * @return object          상태와 데이터값을 반환한다
      */
     function get_info($params=array()){
+        log_message('debug','--------- comment_model > get_info ( params : '.print_r(get_defined_vars(),TRUE)).')';
         $params = (object)$params;
         $default_params = (object)array(
             'comment_id' => ''
@@ -130,7 +131,7 @@ class comment_model extends CI_Model {
 
         $this->db
             ->select('work_comments.*, users.id as user_id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
-            ->join('users', 'left')
+            ->join('users', 'work_comments.user_id=users.id', 'left')
             ->from('work_comments')
             ->where('work_comments.id', $params->comment_id)
             ->limit(1); //set
@@ -198,17 +199,16 @@ class comment_model extends CI_Model {
 
         $this->db->trans_start();
         $this->db->insert('work_comments', $params);
-        $insert_id = $this->db->insert_id();
+        $comment_id = $this->db->insert_id();
         $this->db->trans_complete();
 
         $data = (object)array(
             'status' => 'done',
-            'comment_id' => $insert_id
+            'comment_id' => $comment_id
         );
         if($this->db->trans_status()==FALSE){
             $data->status = 'fail';
             $data->message = 'inserting_failed';
-            $data->query = $this->db->last_query();
         }
         return $data;
     }

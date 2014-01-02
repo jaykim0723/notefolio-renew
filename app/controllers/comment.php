@@ -75,13 +75,14 @@ class Comment extends CI_Controller {
 		log_message('debug','---------'.print_r($result,TRUE));
 		if($result->status=='fail'){
 			alert($result->message);
-            exit($result->query);
         }
 
 		log_message('debug','-----'.$result->comment_id);
-		$comment = $this->comment_model->get_info($work_id, $result->comment_id);
+		$comment = $this->comment_model->get_info(array(
+			'work_id' => $work_id,
+			'comment_id' => $result->comment_id
+		));
 		// 화면에 출력을 하도록 출력해주기
-		exit(print_r($comment, TRUE));
 		$this->load->view('comment/comment_block_view', $comment, FALSE);
 	}
 
