@@ -478,7 +478,8 @@ body * {
 
 }
 .comment-block {
-
+	clear: both;
+	outline: 1px solid silver;
 }
 	.comment-profile-area {
 		float: left;

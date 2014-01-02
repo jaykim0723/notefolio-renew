@@ -191,8 +191,8 @@ var commentUtil = {
 		$('.comment-wrapper', $work).show();
 		var work_id = $work.data('id');
 		// call list and insert into wrapper
-		$.when(commentUtil.getList(work_id, '')).then(function(d){ // 리스트를 불러와서 '이전보기' 버튼 뒤에 배치하기
-			$('.comment-prev', $work)[$(d).find('.comment-block').length<10?'hide':'show']().after(d);
+		$.when(commentUtil.readList(work_id, '')).then(function(responseHTML){ // 리스트를 불러와서 '이전보기' 버튼 뒤에 배치하기
+			$('.comment-prev', $work)[$('<div>'+responseHTML+'</div>').find('.comment-block').length<10?'hide':'show']().after(responseHTML);
 		});
 
 	},
@@ -201,21 +201,23 @@ var commentUtil = {
 		var work_id = $work.data('id');
 		// get latest comment_id
 		var idBefore = $('.comment-block:first', $work).data('id'); // 가장 마지막에 불러들인 코멘트의 번호를 가지고 와서 작업
-		$.when(this.getList(work_id, idBefore)).then(function(d){
-			$('.comment-prev', $work)[$(d).find('.comment-block').length<10?'hide':'show']().after(d);
+		$.when(this.readList(work_id, idBefore)).then(function(responseHTML){
+			$('.comment-prev', $work)[$(responseHTML).find('.comment-block').length<10?'hide':'show']().after(d);
 		});
 	},
-	getList : function(work_id, idBefore){
+	readList : function(work_id, idBefore){
 		// get id_before
-		$.get(site.url+'comment/get_list/'+work_id,  {
-			id_before : idBefore
-		}, function(d){
-			return d;
+		return $.ajax({
+			type : 'get',
+			url : site.url+'comment/read_list/'+work_id,
+			data : {
+				id_before : idBefore
+			}
 		});
 	},
 
 
-	getComment : function(){
+	readComment : function(){
 		$.get(site.url+'comment/get_info/'+work_id+'/'+comment_id, {
 
 		}).done(function(d){
@@ -242,15 +244,25 @@ var commentUtil = {
 		event.stopPropagation();
 
 		$f = $(f);
-		var params = $f.serialize();
-
+		var params = {
+			mode : $f.data('mode'),
+			content : $('textarea[name=content]', $f).val(),
+			parent_id : $f.data('parent_id'),
+		}
+		console.log(params);
 		var $work = $f.parents('.work-wrapper');	
 		var work_id = $work.data('id');
 
 		blockObj.block('comment-form-'+work_id, $f);
-		$.post(site.url+'comment/post/'+work_id, params, function(d){
-			console.log(d);
-		}, 'json');
+		$.post(site.url+'comment/post/'+work_id, params, function(responseHTML){
+			// 모드에 따라 대처하기
+			switch(params.mode){
+				case 'create':
+					// comment form 위에삽입하기
+					$f.before(responseHTML);
+				break;
+			}
+		});
 	},
 
 

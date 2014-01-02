@@ -15,7 +15,7 @@ class Comment extends CI_Controller {
      * @param  [type] $work_id [description]
      * @return [type]          [description]
      */
-	function get_list($work_id){
+	function read_list($work_id){
 		$comment_list = $this->comment_model->get_list(array(
 			'work_id' => $work_id,
 			'id_before' => $this->input->get('idBefore')
