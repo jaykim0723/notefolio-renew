@@ -130,8 +130,9 @@ class comment_model extends CI_Model {
 
         $this->db
             ->select('work_comments.*, users.id as user_id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
+            ->join('users', 'left')
             ->from('work_comments')
-            ->where('id', $params->comment_id)
+            ->where('work_comments.id', $params->comment_id)
             ->limit(1); //set
 
         $comment = $this->db->get()->row();
@@ -179,7 +180,8 @@ class comment_model extends CI_Model {
      * @param  array $params   
      * @return object       (upload content data)
      */
-    function post_info ($params=array()){
+    function post_info($params=array()){
+        log_message('debug','--------- comment_model > post_info ( params : '.print_r(get_defined_vars(),TRUE)).')';
         $params = (object)$params;
         $default_params = (object)array(
             'user_id' => USER_ID,
@@ -194,11 +196,19 @@ class comment_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
+        $this->db->trans_start();
         $this->db->insert('work_comments', $params);
-        //if($para)
+        $this->db->trans_complete();
 
-        $comment_id = $this->db->insert_id();
-        return $comment_id;
+        $data = (object)array(
+            'status' => 'done',
+            'comment_id' => $this->db->insert_id()
+        );
+        if($this->db->trans_status()==FALSE){
+            $data->status = 'fail';
+            $data->message = 'inserting_failed';
+        }
+        return $data;
     }
 
     /**
@@ -208,7 +218,8 @@ class comment_model extends CI_Model {
      * @param  array  $data (depend by field in table `works`)
      * @return object       (status return object. status=[done|fail])
      */
-    function put_info ($input=array()){
+    function put_info($input=array()){
+        log_message('debug','--------- comment_model > put_info ( params : '.print_r(get_defined_vars(),TRUE)).')';
         $allowed_field = array('comment_id', 'user_id', 'work_id', 'parent_id', 'content');
 
         // 값을 정규식으로 검사한다.
@@ -234,7 +245,7 @@ class comment_model extends CI_Model {
         $data = (object)array(
             'status' => 'done'
         );
-        if($this->db->affected_rows()==0){
+        if($this->db->trans_status()==FALSE){
             $data->status = 'fail';
         }
         return $data;
@@ -248,6 +259,7 @@ class comment_model extends CI_Model {
      * @return object       (status return object. status=[done|fail])
      */
     function delete_info($data=array()){
+        log_message('debug','--------- comment_model > delete_info ( params : '.print_r(get_defined_vars(),TRUE)).')';
         // null > return fail
         if($data == array()){
             $data = (object)array(

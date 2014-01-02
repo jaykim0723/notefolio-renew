@@ -35,7 +35,7 @@ class Comment extends CI_Controller {
 	 * @param  [type] $comment_id [description]
 	 * @return [type]             [description]
 	 */
-	function get_info($work_id, $comment_id){
+	function read_info($work_id, $comment_id){
 		$comment = $this->comment_model->get_info(array(
 			'work_id' => $work_id,
 			'comment_id' => $comment_id
@@ -45,6 +45,7 @@ class Comment extends CI_Controller {
 	
 
 	function post($work_id){
+		log_message('debug','--------- comment.php > post ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		// 이곳에서 값을 가지고 알아서 분기한다.
 		$data = $this->input->post();
 		$mode = $data['mode'];
@@ -52,11 +53,11 @@ class Comment extends CI_Controller {
 		switch($mode){
 			case 'create' :
 			case 'reply' :
-				$this->post_info($work_id, $data);
+				$this->create_info($work_id, $data);
 				break;
 
 			case 'update':
-				$this->put_info($work_id, $data);
+				$this->update_info($work_id, $data);
 				break;
 		}
 	}
@@ -68,12 +69,18 @@ class Comment extends CI_Controller {
 	 * @param  [type] $comment_id [description]
 	 * @return [type]             [description]
 	 */
-	function post_info($work_id, $params){
+	function create_info($work_id, $params){
 		$params['work_id'] = $work_id;
 		$result = $this->comment_model->post_info($params);
-		if($result->status==='fail')
+		log_message('debug','---------'.print_r($result,TRUE));
+		if($result->status=='fail')
 			alert($result->message);
-		# what else?
+
+		log_message('debug','-----'.$result->comment_id);
+		$comment = $this->comment_model->get_info($work_id, $result->comment_id);
+		// 화면에 출력을 하도록 출력해주기
+		exit(print_r($comment, TRUE));
+		$this->load->view('comment/comment_block_view', $comment, FALSE);
 	}
 
 	/**
@@ -82,7 +89,7 @@ class Comment extends CI_Controller {
 	 * @param  [type] $comment_id [description]
 	 * @return [type]             [description]
 	 */
-	function put_info($work_id, $params){
+	function update_info($work_id, $params){
 		$params['work_id'] = $work_id;
 		$comment = $this->comment_model->get_info($params);
 		if($comment->status==='fail') alert('코멘트가 존재하지 않습니다.');
