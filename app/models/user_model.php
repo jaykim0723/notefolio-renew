@@ -173,20 +173,8 @@ class user_model extends CI_Model {
         else
             $this->db->where('users.id', $params->id);
 
-        try{
-            $user = $this->db->get()->row();
-        }
-        catch(e){
-            exit(var_export(e, true));
-            error_log(e);
-
-            $data = (object)array(
-                'status' => 'fail'
-            );
-
-            return $data;
-        }
-
+        $user = $this->db->get()->row();
+        
         # 성수씨 
         $user->keywords = array( // temporary
             '파인아트', '모션그래픽', '동영상'
