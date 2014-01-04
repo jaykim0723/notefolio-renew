@@ -194,7 +194,7 @@ class Facebook extends CI_Controller
         
         if($user['user_id']==0) //-- fb 가입자가 아님
         {
-            $user_info_by_email = $this->auth_model->get_user_info("","",$fbme['email']); //-- 이메일 받아오기.
+            $user_info_by_email = $this->user_model->get_info(array('email'=>$fbme['email'])); //-- 이메일 받아오기.
 
             if($user_info_by_email['user_id']!=0){ //-- 이메일이 이미 가입된 회원
                 $this->auth_model->post_user_fb_info($user_info_by_email['user_id'], $fb_num_id);
