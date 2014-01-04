@@ -126,7 +126,7 @@ class user_model extends CI_Model {
         $params = (object)$params;
         $default_params = (object)array(
             'id' => '',
-            'sns_fb_num_id' = '',
+            'sns_fb_num_id' => '',
             'get_profile' => false,
             'get_sns_fb' => false,
         );
