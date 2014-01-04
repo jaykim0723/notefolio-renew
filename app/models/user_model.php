@@ -176,7 +176,7 @@ class user_model extends CI_Model {
         try{
             $user = $this->db->get()->row();
         }
-        catch($e){
+        catch(Exception $e){
             error_log($e);
 
             $data = (object)array(
