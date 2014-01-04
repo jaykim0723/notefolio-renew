@@ -177,6 +177,8 @@ class user_model extends CI_Model {
             $user = $this->db->get()->row();
         }
         catch(Exception $e){
+            var_export($e);
+            exit();
             error_log($e);
 
             $data = (object)array(
