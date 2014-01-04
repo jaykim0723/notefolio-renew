@@ -126,6 +126,7 @@ class user_model extends CI_Model {
         $params = (object)$params;
         $default_params = (object)array(
             'id' => '',
+            'sns_fb_num_id' = '',
             'get_profile' => false,
             'get_sns_fb' => false,
         );
@@ -162,8 +163,12 @@ class user_model extends CI_Model {
 
     	$this->db
     		->from('users')
-    		->where('users.id', $params->id)
     		->limit(1); //set
+        if($params->get_sns_fb && !empty($params->sns_fb_num_id)){
+            $this->db->where('fb_num_id', $params->sns_fb_num_id);
+        }
+        else
+            $this->db->where('users.id', $params->id);
 
         $user = $this->db->get()->row();
         
