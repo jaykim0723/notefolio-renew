@@ -237,7 +237,7 @@ class fbauth extends CI_Controller
             if($user->status=='done'&&count($user)>0)
                 $this->user_model->delete_sns_fb(array('id'=>USER_ID, 'fb_num_id'=>$fbme['id']));
             else
-                $this->_error('already_linked');
+                $this->_error('not_found');
         }
         return $this->_window_close();
 
@@ -289,7 +289,10 @@ class fbauth extends CI_Controller
                 $message = "에러가 발생하였습니다.<br/>페이스북에서 앱 승인을 하지 않으면 연동할 수 없습니다.";
             break;
             case "already_linked":
-                $message = "에러가 발생하였습니다.<br/>페이스북과 이미 링크되어 있습니다.";
+                $message = "에러가 발생하였습니다.<br/>페이스북과 이미 연동하고 있습니다.";
+            break;
+            case "not_found":
+                $message = "에러가 발생하였습니다.<br/>페이스북 연동 정보가 없습니다.";
             break;
             case "require_login":
                 $message = "에러가 발생하였습니다.<br/>먼저 로그인을 해주세요.";
