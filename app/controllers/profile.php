@@ -27,6 +27,8 @@ class Profile extends CI_Controller {
 		
 		$user = $this->user_model->get_info(array('username'=>$username));
 		$this->user_id = $user->row->user_id;
+		var_export($user->row);
+		exit();
 
         $this->load->model('work_model');
 		$work_list = $this->work_model->get_list(array(
