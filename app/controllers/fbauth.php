@@ -48,7 +48,7 @@ class fbauth extends CI_Controller
         
         if(!empty($fb_num_id))
         {
-            $fb_myinfo = $this->_check_fb_connection();
+            $fbme = $this->_check_fb_connection();
             if($fbme==0){
                 $fb_num_id = null;
                 $this->_go_fb_app();
@@ -64,7 +64,7 @@ class fbauth extends CI_Controller
             } 
         }
 
-        return $fb_myinfo;
+        return $fbme;
         
     }
     
