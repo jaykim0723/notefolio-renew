@@ -22,7 +22,7 @@ class comment_model extends CI_Model {
             'id_before'  => 0, // call by...
             'id_after'  => 0, // call by...
             'page'      => 1, // 불러올 페이지
-            'delimiter' => 10, // 한 페이지당 코멘트 수
+            'delimiter' => 11, // 한 페이지당 코멘트 수
             'order_by'  => 'newest', // newest, oldest
             'user_id'   => 0 // 프로필 등 특정 작가의 댓만을 조회할 때
     	);

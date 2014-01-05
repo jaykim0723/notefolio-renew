@@ -130,7 +130,7 @@
 								<div class="col-md-6 col-xs-9">
 									<a href="javascript:;" class="btn btn-nofol btn-open-comment bg2">
 										<i class="spi spi-comment"></i>
-										코멘트 열기(13)
+										코멘트 열기(<?php echo $row->comment_cnt ?>)
 									</a>
 									<a href="javascript:;" class="btn btn-nofol bg1">
 										<i class="spi spi-love2"></i>
