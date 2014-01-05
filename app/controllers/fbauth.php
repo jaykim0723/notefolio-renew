@@ -133,11 +133,11 @@ class fbauth extends CI_Controller
                                 'username'  => $user->username,
                                 'status'    => ($user->activated == 1) ? STATUS_ACTIVATED : STATUS_NOT_ACTIVATED,
                                 'realname'  => $user->realname,  // realname을 위해서.
-                                'p_i'       => (file_exists(APPPATH.'../www/profiles/'.$user->user_id))?time():0,// 아이콘 출력을 위해서.
+                                'p_i'       => (file_exists(APPPATH.'../www/profiles/'.$user->id))?time():0,// 아이콘 출력을 위해서.
                                 'level'     => $user->level,  // magazine-level
                             ));
         //$this->tank_auth->clear_login_attempts($user[0]->email); can't run this when doing FB
-        $this->users->update_login_info( $user->user_id, $this->config->item('login_record_ip', 'tank_auth'), 
+        $this->users->update_login_info( $user->id, $this->config->item('login_record_ip', 'tank_auth'), 
                                          $this->config->item('login_record_time', 'tank_auth'));
         
         return $user->id;
