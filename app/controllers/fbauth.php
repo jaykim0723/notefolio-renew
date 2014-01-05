@@ -14,7 +14,7 @@ class fbauth extends CI_Controller
 		if ($message = $this->session->flashdata('message')) {
 			$this->load->view('auth/general_message', array('message' => $message));
 		} else {
-			redirect('/facebook/login/');
+			redirect('/'.$this->uri->segment(1).'/login/');
 		}
 	}
 
@@ -51,7 +51,7 @@ class fbauth extends CI_Controller
             $fb_myinfo = $this->_check_fb_connection();
             if($fbme==0){
                 $fb_num_id = null;
-                $this->_go_fb_app('login');
+                $this->_go_fb_app();
             }
         }
         else 
@@ -60,7 +60,7 @@ class fbauth extends CI_Controller
                 return $this->_error($this->input->get('error_reason'));
             }
             else {
-                $this->_go_fb_app('login');
+                $this->_go_fb_app();
             } 
         }
 
@@ -72,15 +72,13 @@ class fbauth extends CI_Controller
     /**
      * go to facebook app - redirect
      *
-     * @param string $type
-     *
      * @return void
      */
     function _go_fb_app($type){
     
         $link = $this->fbsdk->getLoginUrl(array(
             'scope'         =>'email,user_likes,user_photos,user_birthday,offline_access,publish_stream,publish_actions',
-            'redirect_uri'  =>$this->config->item('base_url').'facebook/'.$type.'/status:complete/',
+            'redirect_uri'  =>$this->config->item('base_url').$this->uri->segment(1).'/'.$this->uri->segment(2).'/'.(($this->uri->segment(3)!=false)?$this->uri->segment(3)."/":'').'status:complete/',
             'display'       =>'popup'
         ));
         //var_export($link);
