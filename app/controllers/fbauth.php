@@ -196,7 +196,7 @@ class fbauth extends CI_Controller
         $this->load->model('user_model');
 
         if($mode=='force'){
-            $this->user_model->delete_sns_fb(USER_ID);
+            $this->user_model->delete_sns_fb(array('id'=>USER_ID, 'fb_num_id'=>$fbme['id']));
             $this->user_model->post_sns_fb(array('id'=>USER_ID, 'fb_num_id'=>$fbme['id']));
         }
         else {
@@ -217,7 +217,7 @@ class fbauth extends CI_Controller
      *
      *
      */
-    function unlink(){
+    function unlink($mode='regular'){
         $this->_prepare();
         if(USER_ID==0){
             $this->_error('require_login');
@@ -229,8 +229,16 @@ class fbauth extends CI_Controller
 
         $this->load->model('user_model');
 
-        $this->auth_model->delete_sns_fb(USER_ID);
-
+        if($mode=='force'){
+            $this->user_model->delete_sns_fb(array('id'=>USER_ID, 'fb_num_id'=>$fbme['id']));
+        }
+        else {
+            $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fbme['id'], 'get_sns_fb'=>true));
+            if($user->status=='done'&&count($user)>0)
+                $this->user_model->delete_sns_fb(array('id'=>USER_ID, 'fb_num_id'=>$fbme['id']));
+            else
+                $this->_error('already_linked');
+        }
         return $this->_window_close();
 
     }
