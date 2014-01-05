@@ -447,13 +447,16 @@ var noteUtil = {
 };
 
 var snsUtil = {
+	newPop : function(url, w, h){
+
+	},
 	twitter : function(){
 		console.log('site.js > snsUtil > twitter');
-
+		this.newPop('https://twitter.com/intent/tweet?original_referer=[접속 URL...]&text=[내용....]&url=[리턴 URL]');
 	},
 	facebook : function(){
 		console.log('site.js > snsUtil > faceboeok');
-
+		this.newPop('http://www.facebook.com/share.php?s=100&p[url]= [접속 URL ...]&p[images][0]= [미리보기이미지...] ..갯수만큼 ...&p[title]= [제목...]&p[summary]=[내용...]');
 	},
 	pinterest : function(){
 		console.log('site.js > snsUtil > pinterest');
@@ -465,6 +468,15 @@ var snsUtil = {
 	},
 	path : function(){
 		console.log('site.js > snsUtil > path');
+		
+	}
+};
+
+var collectUtil = {
+	add : function(){
+
+	},
+	delete : function(){
 		
 	}
 };

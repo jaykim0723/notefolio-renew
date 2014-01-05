@@ -141,8 +141,6 @@
 								<div class="col-md-6 col-xs-3 righted">
 									<a href="javascript:;" onclick="snsUtil.twitter();" class="spi spi-fb_hover">fb_hover</a>
 									<a href="javascript:;" onclick="snsUtil.facebook();" class="spi spi-fb_hover">fb_hover</a>
-									<a href="javascript:;" onclick="snsUtil.pinterest();" class="spi spi-fb_hover">fb_hover</a>
-									<a href="javascript:;" onclick="snsUtil.path();" class="spi spi-fb_hover">fb_hover</a>
 								</div>
 							</div>
 
