@@ -42,7 +42,7 @@ $captcha = array(
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
-		<a href="" class="btn btn-info btn-block">Signup with facebook</a>
+		<a href="" class="btn btn-info btn-block" id="signup-with-facebook">Signup with facebook</a>
 	</div>
 	<?php if ($use_username) { ?>
 	<div class="form-group">
@@ -129,3 +129,13 @@ $captcha = array(
 	} ?>
 	<button type="submit" name="register" class="btn btn-primary">Register</button>
 <?php echo form_close(); ?>
+
+
+<script>
+    $('#-with-fb').on('click',function(e){
+        e.preventDefault();
+        var fb_diag = window.open('<?=$this->config->item('base_url')?>fbauth/register','fb_diag','width=600,height=300,scrollbars=yes,resizable=no');
+        fb_diag.focus();
+        //$.fn.dialog2.helpers.alert("현재 준비중입니다.");
+    });
+</script>
