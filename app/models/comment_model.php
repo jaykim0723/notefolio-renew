@@ -223,6 +223,7 @@ class comment_model extends CI_Model {
     function put_info($input=array()){
         log_message('debug','--------- comment_model > put_info ( params : '.print_r(get_defined_vars(),TRUE)).')';
         $allowed_field = array('comment_id', 'user_id', 'work_id', 'parent_id', 'content');
+        $input= (object)$input;
 
         // 값을 정규식으로 검사한다.
         foreach($input as $key=>$val){
@@ -241,7 +242,7 @@ class comment_model extends CI_Model {
         $this->db->flush_cache(); //clear active record
         
         $this->db->trans_start();
-        $this->db->where('id', $comment_id)->where('user_id', USER_ID)->update('works', $input);
+        $this->db->where('id', $comment_id)->where('user_id', USER_ID)->update('work_comments', $input);
         $this->db->trans_complete();
 
         $data = (object)array(
@@ -286,7 +287,11 @@ class comment_model extends CI_Model {
             $this->db->flush_cache(); //clear active record
             
             $this->db->trans_start();
-            $this->db->where('id', $comment_id)->delete('work_comments'); 
+            $this->db->where('id', $comment_id)->where('user_id', USER_ID)->delete('work_comments'); 
+
+            // 하위 리플들도 모두 지워지도록 처리해주세요.
+            # do stuff
+
             $this->db->trans_complete();
 
             if($this->db->trans_status()){

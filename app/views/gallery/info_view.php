@@ -146,7 +146,9 @@
 									<div class="comment-wrapper" data-id="<?php echo $row->work_id ?>">
 										<a href="javascript:;" class="btn-comment-prev btn btn-link btn-block">▲ 이전 댓글보기</a>
 										<!-- comment-block will be displayed here -->
+										<?php if (USER_ID!=0): ?>
 										<?php echo $this->load->view('comment/comment_form_view'); ?>
+										<?php endif ?>
 									</div>									
 									<div class="love-wrapper">
 										love에 대한 후속조치
@@ -184,8 +186,14 @@
 			commentUtil.open(this);
 		}).on('submit', '.comment-block', function(){
 			commentUtil.submitComment(this);
-		}).on('click', '.btn-comment-delete', function(){
+		}).on('click', '.btn-delete-comment', function(){
 			commentUtil.delete(this);
+		}).on('click', '.btn-update-comment', function(){
+			commentUtil.update(this);
+		}).on('click', '.btn-reply-comment', function(){
+			commentUtil.reply(this);
+		}).on('click', '.btn-cancel-comment', function(){
+			commentUtil.cancel(this);
 		}).on('click', '.btn-comment-prev', function(){
 			commentUtil.prev(this);
 		});

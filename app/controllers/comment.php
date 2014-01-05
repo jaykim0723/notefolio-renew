@@ -46,8 +46,11 @@ class Comment extends CI_Controller {
 
 	function post($work_id){
 		log_message('debug','--------- comment.php > post ( params : '.print_r(get_defined_vars(),TRUE)).')';
+		if(USER_ID==0)
+			alert('회원만이 코멘트를 남길 수 있습니다.');
 		// 이곳에서 값을 가지고 알아서 분기한다.
 		$data = $this->input->post();
+		log_message('debug','------inputs : '.print_r($data,TRUE));
 		$mode = $data['mode'];
 		unset($data['mode']);
 		switch($mode){
@@ -58,6 +61,10 @@ class Comment extends CI_Controller {
 
 			case 'update':
 				$this->update_info($work_id, $data);
+				break;
+			
+			case 'delete':
+				$this->delete_info($work_id, $data);
 				break;
 		}
 	}
@@ -93,17 +100,19 @@ class Comment extends CI_Controller {
 	 * @return [type]             [description]
 	 */
 	function update_info($work_id, $params){
+		log_message('debug','--------- comment.php > update_info ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		$params['work_id'] = $work_id;
 		$comment = $this->comment_model->get_info($params);
 		if($comment->status==='fail') alert('코멘트가 존재하지 않습니다.');
-		if($comment->row->user_id!==USER_ID) alert('본인의 코멘트만 수정할 수 있습니다.');
-
-		$params['content'] = $this->input->post('content');
+		if($comment->row->user->user_id!==USER_ID) alert('본인의 코멘트만 수정할 수 있습니다.');
 
 		$result = $this->comment_model->put_info($params);
 		if($result->status==='fail')
 			alert($result->message);
-		# what else?
+
+		$comment = $this->comment_model->get_info($params);
+		// 화면에 출력을 하도록 출력해주기
+		$this->load->view('comment/comment_block_view', $comment, FALSE);
 	}
 
 
@@ -114,14 +123,12 @@ class Comment extends CI_Controller {
 	 * @param  [type] $comment_id [description]
 	 * @return [type]             [description]
 	 */
-	function delete_info($work_id, $comment_id){
-		$params = array(
-			'work_id' => $work_id,
-			'comment_id' => $comment_id
-		);
+	function delete_info($work_id, $params){
+		log_message('debug','--------- comment.php > delete_info ( params : '.print_r(get_defined_vars(),TRUE)).')';
+		$params['work_id'] = $work_id;
 		$comment = $this->comment_model->get_info($params);
 		if($comment->status==='fail') alert('코멘트가 존재하지 않습니다.');
-		if($comment->row->user_id!==USER_ID) alert('본인의 코멘트만 삭제할 수 있습니다.');
+		if($comment->row->user->user_id!==USER_ID) alert('본인의 코멘트만 삭제할 수 있습니다.');
 
 		$result = $this->comment_model->delete_info($params);
 		if($result->status==='fail')

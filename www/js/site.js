@@ -175,8 +175,11 @@ var commentUtil = {
 	// 코멘트 작업은 대부분 무한스크롤 내의 특정 블럭에서 이루어지므로, 
 	// 코멘트에 관련된 모든 작업은 해당 work-wrapper 블럭의 dom 요소에 저장해두는 방식을 취한다.
 	
-	open : function(t){
-		var $work = $(t).parents('.work-wrapper');
+	open : function(o){
+		console.log('sit.js > commentUtil > open', o);
+
+		var $work = $(o).parents('.work-wrapper');
+		var work_id = $work.data('id');
 		if($work.data('comment_opened')=='y'){ // 현재 코멘트창이 열려있다면 닫아준다(같은 버은으로 토글)
 			this.close($work);
 			return;
@@ -189,7 +192,6 @@ var commentUtil = {
 		$work.data('comment_loaded', 'y');
 
 		$('.comment-wrapper', $work).show();
-		var work_id = $work.data('id');
 		// call list and insert into wrapper
 		$.when(commentUtil.readList(work_id, '')).then(function(responseHTML){ // 리스트를 불러와서 '이전보기' 버튼 뒤에 배치하기
 			var $o = $('<div>'+responseHTML+'</div>');
@@ -197,23 +199,37 @@ var commentUtil = {
 				var mode = 'hide';
 			else{
 				var mode = 'show';
-				$o = $o.children('.comment-block:last').remove();
+				$o.children('.comment-block:last').remove();
 			}
 			console.log($o);
 			$('.btn-comment-prev', $work)[mode]().after($o);
 		});
 
 	},
-	prev : function(t){
-		var $work = $(t).parents('.work-wrapper');	
+
+	prev : function(o){
+		console.log('sit.js > commentUtil > prev', o);
+
+		var $work = $(o).parents('.work-wrapper');	
 		var work_id = $work.data('id');
 		// get latest comment_id
 		var idBefore = $('.comment-block:first', $work).data('id'); // 가장 마지막에 불러들인 코멘트의 번호를 가지고 와서 작업
 		$.when(this.readList(work_id, idBefore)).then(function(responseHTML){
-			$('.btn-comment-prev', $work)[$('<div>'+responseHTML+'</div>').find('.comment-block').length<11?'hide':'show']().after(responseHTML);
+			var $o = $('<div>'+responseHTML+'</div>');
+			if($o.find('.comment-block').length<11)
+				var mode = 'hide';
+			else{
+				var mode = 'show';
+				$o.children('.comment-block:last').remove();
+			}
+			console.log($o);
+			$('.btn-comment-prev', $work)[mode]().after($o);
 		});
 	},
+
 	readList : function(work_id, idBefore){
+		console.log('sit.js > commentUtil > readList', work_id, idBefore);
+
 		// get id_before
 		return $.ajax({
 			type : 'get',
@@ -225,37 +241,84 @@ var commentUtil = {
 	},
 
 
-	readComment : function(){
-		$.get(site.url+'comment/get_info/'+work_id+'/'+comment_id, {
+	// readComment : function(){
+	// 	$.get(site.url+'comment/get_info/'+work_id+'/'+comment_id, {
 
-		}).done(function(d){
+	// 	}).done(function(d){
 
-		}).fail(function(d){
+	// 	}).fail(function(d){
 
-		});
+	// 	});
 
-	},
+	// },
 	update : function(o){
-		
+		console.log('sit.js > commentUtil > update', o);
+		// 기존의 폼을 가지고 와서
+		var $commentBlock = $(o).parents('.comment-block');
+		var content = $.trim($commentBlock.find('.comment-textarea').html());
+		var $work = $commentBlock.parents('.work-wrapper');	
+		var work_id = $work.data('id');
+		// console.log($commentBlock, work_id);
+		var $f = $('form.comment-block', $work);
+		$f.clone().data('mode','update').data('comment_id', $commentBlock.data('id')).insertAfter($commentBlock);
+		$commentBlock.hide().next().find('textarea').val(content);
 	},
+
 	reply : function(o){
-		// 표준 form을 떼어다가 들어갈 위치에 삽입을 해준다.
-		var $wrapper = $(t).parents('.comment-wrapper');
-		// $wrapper
+		console.log('sit.js > commentUtil > reply', o);
+
+		var $commentBlock = $(o).parents('.comment-block');
+		var $work = $commentBlock.parents('.work-wrapper');	
+		var work_id = $work.data('id');
+		// 이미 form이 존재하는지 검사하기
+		$f.clone().data('mode','reply').data('parent_id', $commentBlock.data('id')).appendTo($commentBlock.find('.comment-replies'));
+
 
 	},
+
 	delete : function(o){
-
+		console.log('sit.js > commentUtil > delete', o);
+		var $work = $(o).parents('.work-wrapper');	
+		var work_id = $work.data('id');
+		var params = {
+			'mode' : 'delete',
+			'comment_id' : $(o).parents('.comment-block').data('id')
+		};
+		BootstrapDialog.confirm('Are you sure?', function(result){
+			if(result){
+				$.post(site.url+'comment/post/'+work_id, params, function(responseHTML){
+					$('#comment-'+params.comment_id).remove();
+				});			
+			}
+		}, 'danger');
+		return false;
 	},
+
+	cancel : function(o){
+		console.log('sit.js > commentUtil > cancel', o);
+
+		var $f = $(o).parents('.comment-block');
+		switch($f.data('mode')){
+			case 'update':
+				$f.prev().show();
+				$f.remove();
+			break;
+			
+			case 'reply':
+			break;
+		}
+	},
+
 	submitComment : function(f){
 		event.preventDefault();
 		event.stopPropagation();
 
-		$f = $(f);
+		var $f = $(f);
 		var params = {
 			mode : $f.data('mode'),
 			content : $('textarea[name=content]', $f).val(),
 			parent_id : $f.data('parent_id'),
+			comment_id : $f.data('comment_id')
 		}
 		console.log(params);
 		var $work = $f.parents('.work-wrapper');	
@@ -268,6 +331,13 @@ var commentUtil = {
 				case 'create':
 					// comment form 위에삽입하기
 					$f.before(responseHTML);
+					$('textarea', $f).val('');
+				break;
+
+				case 'update':
+					$f.prev().replaceWith(responseHTML);
+					$f.remove();
+
 				break;
 			}
 		});
