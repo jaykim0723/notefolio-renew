@@ -515,6 +515,12 @@ body * {
 	.comment-control-area {
 		float: right;
 	}
+	.comment-replies {
+		margin-left: 70px;
+	}
+	.comment-replies .btn-reply-comment { /* 2차 댓글은 댓글을 더이상 달 수 없음 */
+		display: none;
+	}
 
 
 

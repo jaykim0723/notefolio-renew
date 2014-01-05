@@ -182,10 +182,10 @@
 				}
 			}, 'danger');
 			return false;
+		}).on('submit', 'form.comment-block', function(){
+			commentUtil.submitComment(this);
 		}).on('click', '.btn-open-comment', function(){
 			commentUtil.open(this);
-		}).on('submit', '.comment-block', function(){
-			commentUtil.submitComment(this);
 		}).on('click', '.btn-delete-comment', function(){
 			commentUtil.delete(this);
 		}).on('click', '.btn-update-comment', function(){

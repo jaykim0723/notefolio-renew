@@ -15,8 +15,9 @@ class comment_model extends CI_Model {
      * @return object          상태와 데이터값을 반환한다
      */
     function get_list($params=array()){
-    	$params = (object)$params;
-    	$default_params = (object)array(
+        $params = (object)$params;
+        $new_params = (object)array();
+        foreach((object)array(
             'work_id'   => 0, // get by work_id
             'parent_id' => 0, // for recomment
             'id_before'  => 0, // call by...
@@ -25,11 +26,10 @@ class comment_model extends CI_Model {
             'delimiter' => 11, // 한 페이지당 코멘트 수
             'order_by'  => 'newest', // newest, oldest
             'user_id'   => 0 // 프로필 등 특정 작가의 댓만을 조회할 때
-    	);
-    	foreach($default_params as $key => $value){
-    		if(!isset($params->{$key}))
-    			$params->{$key} = $value;
-    	}
+        ) as $key => $default_value){
+            $new_params->{$key} = isset($params->{$key}) ? $params->{$key} : $default_value;
+        }
+        $params = $new_params;
 
     	$this->db
             ->select('work_comments.*, users.id as user_id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
@@ -93,6 +93,7 @@ class comment_model extends CI_Model {
             }
             $row->user = $user;
 
+            $row->children = array();
             if($row->children_cnt>0){
                 $children_params=$params;
                 $children_params->parent_id = $row->comment_id;
@@ -121,13 +122,13 @@ class comment_model extends CI_Model {
     function get_info($params=array()){
         log_message('debug','--------- comment_model > get_info ( params : '.print_r(get_defined_vars(),TRUE)).')';
         $params = (object)$params;
-        $default_params = (object)array(
-            'comment_id' => ''
-        );
-        foreach($default_params as $key => $value){
-            if(!isset($params->{$key}))
-                $params->{$key} = $value;
+        $new_params = (object)array();
+        foreach((object)array(
+            'comment_id' => '',
+        ) as $key => $default_value){
+            $new_params->{$key} = isset($params->{$key}) ? $params->{$key} : $default_value;
         }
+        $params = $new_params;
 
         $this->db
             ->select('work_comments.*, users.id as user_id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
@@ -172,6 +173,13 @@ class comment_model extends CI_Model {
         }
         $data->row->user = $user;
 
+        $data->row->children = array();
+        if($data->row->children_cnt>0){
+            $children_params=$params;
+            $children_params->parent_id = $data->row->comment_id;
+            $data->row->children = $this->get_list($children_params)->rows;
+        }
+
     	return $data;
     }
 
@@ -184,22 +192,26 @@ class comment_model extends CI_Model {
     function post_info($params=array()){
         log_message('debug','--------- comment_model > post_info ( params : '.print_r(get_defined_vars(),TRUE)).')';
         $params = (object)$params;
-        $default_params = (object)array(
+        $new_params = (object)array();
+        foreach((object)array(
             'user_id' => USER_ID,
             'work_id' => 0,
             'parent_id' => 0,
             'content' => '',
             'regdate' => date('Y-m-d H:i:s'),
             'moddate' => date('Y-m-d H:i:s'),
-        );
-        foreach($default_params as $key => $value){
-            if(!isset($params->{$key}))
-                $params->{$key} = $value;
+        ) as $key => $default_value){
+            $new_params->{$key} = isset($params->{$key}) ? $params->{$key} : $default_value;
         }
+        $params = $new_params;
 
         $this->db->trans_start();
         $this->db->insert('work_comments', $params);
+
         $comment_id = $this->db->insert_id();
+        if($params->parent_id!=0){
+            $this->db->set('children_cnt', 'children_cnt+1', FALSE)->where('id', $params->parent_id)->update('work_comments');
+        }
         $this->db->trans_complete();
 
         $data = (object)array(
@@ -220,29 +232,32 @@ class comment_model extends CI_Model {
      * @param  array  $data (depend by field in table `works`)
      * @return object       (status return object. status=[done|fail])
      */
-    function put_info($input=array()){
+    function put_info($params=array()){
         log_message('debug','--------- comment_model > put_info ( params : '.print_r(get_defined_vars(),TRUE)).')';
-        $allowed_field = array('comment_id', 'user_id', 'work_id', 'parent_id', 'content');
-        $input= (object)$input;
 
-        // 값을 정규식으로 검사한다.
-        foreach($input as $key=>$val){
-            if(!in_array($key, $allowed_field)      //-- 허용 필드가 아닐때
-                &&!$this->nf->admin_is_elevated()){ //-- 관리자가 아닐때
-                unset($input->$key);                //-- 필드 unset
-            }
+        $params = (object)$params;
+        $new_params = (object)array();
+        foreach((object)array(
+            'comment_id' => '',
+            'user_id' => USER_ID,
+            'work_id' => '',
+            'parent_id' => '',
+            'content' => '',
+        ) as $key => $default_value){
+            $new_params->{$key} = isset($params->{$key}) ? $params->{$key} : $default_value;
         }
+        $params = $new_params;
 
-        $input->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
+        $params->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
         
         //-- work id is not for update
-        $comment_id = $input->comment_id;
-        unset($input->comment_id);
+        $comment_id = $params->comment_id;
+        unset($params->comment_id);
 
         $this->db->flush_cache(); //clear active record
         
         $this->db->trans_start();
-        $this->db->where('id', $comment_id)->where('user_id', USER_ID)->update('work_comments', $input);
+        $this->db->where('id', $comment_id)->where('user_id', USER_ID)->update('work_comments', $params);
         $this->db->trans_complete();
 
         $data = (object)array(
@@ -290,7 +305,11 @@ class comment_model extends CI_Model {
             $this->db->where('id', $comment_id)->where('user_id', USER_ID)->delete('work_comments'); 
 
             // 하위 리플들도 모두 지워지도록 처리해주세요.
-            # do stuff
+            #do stuff
+            
+            // parent_id의 children_cnt도 업데이트해주세요.
+            #do stuff
+
 
             $this->db->trans_complete();
 
