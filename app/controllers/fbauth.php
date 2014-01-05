@@ -78,7 +78,7 @@ class fbauth extends CI_Controller
     
         $link = $this->fbsdk->getLoginUrl(array(
             'scope'         =>'email,user_likes,user_photos,user_birthday,offline_access,publish_stream,publish_actions',
-            'redirect_uri'  =>$this->config->item('base_url').$this->uri->segment(1).'/'.$this->uri->segment(2).'/'.(($this->uri->segment(3)!=false)?$this->uri->segment(3)."/":'regular/').'status:complete/',
+            'redirect_uri'  =>$this->config->item('base_url').$this->uri->segment(1).'/'.$this->uri->segment(2).'/'.(($this->uri->segment(3))?$this->uri->segment(3)."/":'regular/').'status:complete/',
             'display'       =>'popup'
         ));
         //var_export($link);
