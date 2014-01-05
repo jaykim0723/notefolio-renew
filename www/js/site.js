@@ -410,26 +410,29 @@ var noteUtil = {
 			work_id : work_id,
 			note : 'y'
 		}, function(responseJSON){
-			if(responseJSON.status=='done')
+			if(responseJSON.status=='done'){
+				formFeedback('', 'success', '노트되었습니다.');
 				$btnNote.addClass('noted');
-			else
-				formFeedback('', 'error', '에러가 발생했습니다.');
+			}else
+				formFeedback('', 'error', responseJSON.message);
 		}, 'json');
 	},
 
 	cancel : function($work){
 		console.log('site.js > noteUtil > cancel', $work);
 
+		var work_id = $work.data('id');
 		$btnNote = $('.btn-note', $work);
 
 		$.post(site.url+'gallery/note', {
 			work_id : work_id,
 			note : 'n'
 		}, function(responseJSON){
-			if(responseJSON.status=='done')
+			if(responseJSON.status=='done'){
+				formFeedback('', 'success', '노트가 취소되었습니다.');
 				$btnNote.removeClass('noted');
-			else
-				formFeedback('', 'error', '에러가 발생했습니다.');
+			}else
+				formFeedback('', 'error', responseJSON.message);
 		}, 'json');
 
 	},
@@ -441,4 +444,27 @@ var noteUtil = {
 		$('.note-wrapper', $work).hide(); // 추후에 다시 열릴 것을 감안하여 숨겨만 준다.
 		$work.data('note_opened', 'n');
 	}
-}
+};
+
+var snsUtil = {
+	twitter : function(){
+		console.log('site.js > snsUtil > twitter');
+
+	},
+	facebook : function(){
+		console.log('site.js > snsUtil > faceboeok');
+
+	},
+	pinterest : function(){
+		console.log('site.js > snsUtil > pinterest');
+
+	},
+	tumblr : function(){
+		console.log('site.js > snsUtil > tumblr');
+
+	},
+	path : function(){
+		console.log('site.js > snsUtil > path');
+		
+	}
+};
