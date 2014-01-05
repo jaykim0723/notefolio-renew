@@ -19,97 +19,6 @@ class Facebook extends CI_Controller
 	}
 
     /**
-     * print prepare message
-     *
-     * @return void
-     */
-    function _prepare(){
-        header('Content-Type: text/html; charset=UTF-8');
-        echo("<p>처리 중입니다... 잠시만 기다려 주세요...</p>");
-    }
-
-    /**
-     * post action
-     *
-     * @return bool
-     */
-    function _post(){
-        $result = $this->fbsdk->set_data($this->tank_auth->get_user_id(), $this->input->post());
-        echo($result?'TRUE':'FALSE');
-        return $result;
-    }
-
-    /**
-     * error message
-     *
-     * @param string $type
-     *
-     * @return void
-     */
-    function _error($type){
-        switch($type){
-            case "user_denied"):
-                $message = "에러가 발생하였습니다.<br/>페이스북에서 앱 승인을 하지 않으면 연동할 수 없습니다.");
-            break;
-        }
-
-        $this->make_error_alert($message);
-    }
-
-    /**
-     * print error alert
-     *
-     * @param string $type
-     *
-     * @return void
-     */
-    function _make_error_alert($text){
-        $tpl = "
-        <script>
-             window.opener.msg.error('{$text}');
-        </script>
-        ");
-
-        exit($tpl);
-    }
-
-    /**
-     * window reload js
-     *
-     * @return void
-     */
-    function _window_reload(){
-        $tpl = "
-        <script>
-            <!--
-            $script
-            window.location.reload();
-            -->
-        </script>
-        ");
-
-        exit($tpl);
-    }
-
-    /**
-     * window close js
-     *
-     * @return void
-     */
-    function _window_close(){
-        $tpl = "
-        <script>
-            <!--
-            $script
-            window.close();
-            -->
-        </script>
-        ");
-
-        exit($tpl);
-    }
-
-    /**
      * check if ok to connect
      *
      * @return object
@@ -184,7 +93,7 @@ class Facebook extends CI_Controller
      *
      *
      */
-    function login(){
+    function login($type='regular'){
         $this->_prepare();
         $fbme = $this->_check();
 
@@ -197,46 +106,32 @@ class Facebook extends CI_Controller
             $user = $this->user_model->get_info(array('email'=>$fbme['email'])); //-- 이메일 받아오기.
 
             if($user->status=='done'){ //-- 이메일이 이미 가입된 회원
-                $this->auth_model->post_user_fb_info($user->user_id, $fb_num_id);
+                $this->user_model->post_sns_fb(array('id'=>$user_by_email->row->id, 'fb_num_id'=>$fb_num_id));
                 
-                $this->_login_by_fb($user);
-                
-                //=- end code
-                $script = "
-                    var $ = window.opener.$;
-                    var f = $('#login-form', window.opener.document);
-                    window.opener.location.href=$('input[name=go_to]', f).val();
-                ";
-                
+                $this->_login_by_fb($user->row);
+
+                if($type=='ajax')
+                    $this->_window_opener_ajax();
+                else
+                    $this->_window_opener_move();                
             }else {
-                //=- end code
-                $this->session->set_flashdata('register_fb', json_encode($fb_user_info));
-                $go_to = "/auth/register";
-                $script = "
-                    window.opener.location.href='$go_to';
-                ";
+                return $this->register();
             }
         }
         else
         {
-            $this->_login_by_fb($user);
-            //=- end code
-            $script = "
-                var $ = window.opener.$;
-                var f = $('#login-form', window.opener.document);
-                window.opener.location.href=$('input[name=go_to]', f).val();
-            ";
+            $this->_login_by_fb($user->row);
+
+            $this->_window_opener_move(); 
         }
 
-
+        return $this->_window_close();
     }
-
-
 
     function _login_by_fb($user){
         // simulate what happens in the tank auth
         $this->session->set_userdata(array( 
-                                'user_id'   => $user->user_id,
+                                'user_id'   => $user->id,
                                 'username'  => $user->username,
                                 'status'    => ($user->activated == 1) ? STATUS_ACTIVATED : STATUS_NOT_ACTIVATED,
                                 'realname'  => $user->realname,  // realname을 위해서.
@@ -247,9 +142,90 @@ class Facebook extends CI_Controller
         $this->users->update_login_info( $user->user_id, $this->config->item('login_record_ip', 'tank_auth'), 
                                          $this->config->item('login_record_time', 'tank_auth'));
         
-        return $user['user_id'];
+        return $user->id;
     }
 
+    /**
+     * register for notefolio
+     *
+     *
+     */
+    function register($type='regular'){
+        $this->_prepare();
+        $fbme = $this->_check();
+
+        $this->load->model('user_model');
+
+        $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fb_num_id, 'get_sns_fb'=>true));
+        $user_by_email = $this->user_model->get_info(array('email'=>$fbme['email'])); //-- 이메일 받아오기.
+        
+        if($user['user_id']!=0){ //-- fb 가입자
+            $this->_login_by_fb($user);
+            $this->user_model->put_sns_fb(array('id'=>$user_by_email->row->id, 'fb_num_id'=>$fb_num_id));
+            
+            $this->_window_opener_reload();                         
+        } else if($user_by_email['user_id']!=0){ //-- fb 가입자는 아니지만 이메일이 이미 가입된 회원
+            $this->user_model->post_sns_fb(array('id'=>$user_by_email->row->id, 'fb_num_id'=>$fb_num_id));
+                
+            $this->_login_by_fb($user_by_email->row);
+            
+            $this->_window_opener_reload();
+        } else {
+            //-- register 변수들 대입
+            $this->session->set_flashdata('register_fb_info', json_encode($fbme));
+
+            $this->_window_opener_move("/auth/register");
+        }
+
+        return $this->_window_close();
+    }
+
+    /**
+     * register for notefolio
+     *
+     *
+     */
+    function link($mode='regular'){
+        $this->_prepare();
+        $fbme = $this->_check();
+
+        $this->load->model('user_model');
+
+        if($mode='force'){
+            $this->user_model->delete_sns_fb(USER_ID);
+            $this->user_model->post_sns_fb(array('id'=>USER_ID, 'fb_num_id'=>$fb_num_id));
+        }
+        else {
+            $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fb_num_id, 'get_sns_fb'=>true));
+        }
+    }
+
+    /**
+     * register for notefolio
+     *
+     *
+     */
+    function unlink(){
+        $this->_prepare();
+        $fbme = $this->_check();
+
+        $this->load->model('user_model');
+
+        $this->auth_model->delete_sns_fb(USER_ID);
+
+    }
+
+    /**
+     * debug info
+     *
+     *
+     */
+    function debug(){
+        $this->_prepare();
+        $fbme = $this->_check();
+
+        exit(var_export($fbme, true));
+    }
 
 
 
@@ -501,6 +477,172 @@ class Facebook extends CI_Controller
         
         echo("$method");
         return FALSE;
+    }
+
+    /**
+     * print prepare message
+     *
+     * @return void
+     */
+    function _prepare(){
+        header('Content-Type: text/html; charset=UTF-8');
+        echo("<p>처리 중입니다... 잠시만 기다려 주세요...</p>");
+    }
+
+    /**
+     * post action
+     *
+     * @return bool
+     */
+    function _post(){
+        $result = $this->fbsdk->set_data($this->tank_auth->get_user_id(), $this->input->post());
+        echo($result?'TRUE':'FALSE');
+        return $result;
+    }
+
+    /**
+     * error message
+     *
+     * @param string $type
+     *
+     * @return void
+     */
+    function _error($type){
+        switch($type){
+            case "user_denied"):
+                $message = "에러가 발생하였습니다.<br/>페이스북에서 앱 승인을 하지 않으면 연동할 수 없습니다.");
+            break;
+            case "already_linked"):
+                $message = "에러가 발생하였습니다.<br/>페이스북과 이미 링크되어 있습니다.");
+            break;
+        }
+
+        $this->make_error_alert($message);
+    }
+
+    /**
+     *
+     * print functions
+     *
+     */
+
+    /**
+     * print error alert
+     *
+     * @param string $type
+     *
+     * @return void
+     */
+    function _make_error_alert($text){
+        $tpl = "
+        <script>
+            <!--
+            window.opener.msg.error('{$text}');
+            -->
+        </script>
+        ");
+
+        echo($tpl);
+    }
+
+    /**
+     * window reload js
+     *
+     * @return void
+     */
+    function _window_reload(){
+        $tpl = "
+        <script>
+            <!--
+            window.location.reload();
+            -->
+        </script>
+        ");
+
+        exit($tpl);
+    }
+
+    /**
+     * window opener reload js
+     *
+     * @return void
+     */
+    function _window_opener_reload(){
+        $tpl = "
+        <script>
+            <!--
+            window.opener.location.reload();
+            -->
+        </script>
+        ");
+
+        echo($tpl);
+    }
+
+    /**
+     * window opener move js
+     *
+     * @return void
+     */
+    function _window_opener_move($go_to=null){
+        $tpl = "
+        <script>
+            <!--
+        ";
+
+        if(empty($go_to)){
+            $tpl .= "
+                var $ = window.opener.$;
+                var f = $('#login-form', window.opener.document);
+                window.opener.location.href=$('input[name=go_to]', f).val();
+            ";
+        }
+        else {
+            $tpl .= "
+                window.opener.location.href='$go_to';
+            ";
+        }
+
+        $tpl .= "
+            -->
+        </script>
+        ");
+
+        echo($tpl);
+    }
+
+    /**
+     * window opener ajax js
+     *
+     * @return void
+     */
+    function _window_opener_ajax(){
+        $tpl = "
+        <script>
+            <!--
+                window.opener.auth.afterLogin();
+            -->
+        </script>
+        ");
+
+        echo($tpl);
+    }
+
+    /**
+     * window close js
+     *
+     * @return void
+     */
+    function _window_close(){
+        $tpl = "
+        <script>
+            <!--
+            window.close();
+            -->
+        </script>
+        ");
+
+        exit($tpl);
     }
 
 }
