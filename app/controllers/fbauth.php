@@ -158,7 +158,7 @@ class fbauth extends CI_Controller
         $user_by_email = $this->user_model->get_info(array('email'=>$fbme['email'])); //-- 이메일 받아오기.
         
         if($user->status=='done'&&count($user->row)>0){ //-- fb 가입자
-            $this->_login_by_fb($user);
+            $this->_login_by_fb($user->row);
             $this->user_model->put_sns_fb(array('id'=>$user_by_email->row->id, 'fb_num_id'=>$fbme['id']));
             
             $this->_window_opener_reload();                         
