@@ -192,14 +192,14 @@ class Facebook extends CI_Controller
 
         $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fb_num_id, 'get_sns_fb'=>true));
         
-        if($user['user_id']==0) //-- fb 가입자가 아님
+        if($user->status=='fail') //-- fb 가입자가 아님
         {
-            $user_info_by_email = $this->user_model->get_info(array('email'=>$fbme['email'])); //-- 이메일 받아오기.
+            $user = $this->user_model->get_info(array('email'=>$fbme['email'])); //-- 이메일 받아오기.
 
-            if($user_info_by_email['user_id']!=0){ //-- 이메일이 이미 가입된 회원
-                $this->auth_model->post_user_fb_info($user_info_by_email['user_id'], $fb_num_id);
+            if($user->status=='done'){ //-- 이메일이 이미 가입된 회원
+                $this->auth_model->post_user_fb_info($user->user_id, $fb_num_id);
                 
-                $this->_login_by_fb($user_info_by_email);
+                $this->_login_by_fb($user);
                 
                 //=- end code
                 $script = "
@@ -236,15 +236,15 @@ class Facebook extends CI_Controller
     function _login_by_fb($user){
         // simulate what happens in the tank auth
         $this->session->set_userdata(array( 
-                                'user_id'   => $user['user_id'],
-                                'username'  => $user['username'],
-                                'status'    => ($user['activated'] == 1) ? STATUS_ACTIVATED : STATUS_NOT_ACTIVATED,
-                                'realname'  => $user['realname'],  // realname을 위해서.
-                                'p_i'       => (file_exists(APPPATH.'../www/profiles/'.$user['user_id']))?time():0,// 아이콘 출력을 위해서.
-                                'level'     => $user['level'],  // magazine-level
+                                'user_id'   => $user->user_id,
+                                'username'  => $user->username,
+                                'status'    => ($user->activated == 1) ? STATUS_ACTIVATED : STATUS_NOT_ACTIVATED,
+                                'realname'  => $user->realname,  // realname을 위해서.
+                                'p_i'       => (file_exists(APPPATH.'../www/profiles/'.$user->user_id))?time():0,// 아이콘 출력을 위해서.
+                                'level'     => $user->level,  // magazine-level
                             ));
         //$this->tank_auth->clear_login_attempts($user[0]->email); can't run this when doing FB
-        $this->users->update_login_info( $user['user_id'], $this->config->item('login_record_ip', 'tank_auth'), 
+        $this->users->update_login_info( $user->user_id, $this->config->item('login_record_ip', 'tank_auth'), 
                                          $this->config->item('login_record_time', 'tank_auth'));
         
         return $user['user_id'];
