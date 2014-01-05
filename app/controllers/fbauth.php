@@ -110,6 +110,8 @@ class fbauth extends CI_Controller
 
                 if($type=='ajax')
                     $this->_window_opener_ajax();
+                else if($type=='externel')
+                    $this->_window_opener_move('/');  
                 else
                     $this->_window_opener_move();                
             }else {
