@@ -126,6 +126,7 @@ class user_model extends CI_Model {
         $params = (object)$params;
         $default_params = (object)array(
             'id' => '',
+            'username' => '',
             'email' => '',
             'sns_fb_num_id' => '',
             'get_profile' => false,
@@ -168,6 +169,8 @@ class user_model extends CI_Model {
 
         if($params->get_sns_fb && !empty($params->sns_fb_num_id))
             $this->db->where('fb_num_id', $params->sns_fb_num_id);
+        else if(!empty($params->username))
+            $this->db->where('users.username', $params->username);
         else if(!empty($params->email))
             $this->db->where('users.email', $params->email);
         else
