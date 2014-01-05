@@ -18,15 +18,29 @@ class Profile extends CI_Controller {
 	}
 	
 
-	
+	/**
+	 * get user info
+	 * 
+	 * @param string $username
+	 * 
+	 * @return object
+	 */
+	function _get_user_info($username){
+		$user = $this->user_model->get_info(array('username'=>$username));
+		if($user->status=='fail'||count($user->row)<1)
+			redirect('/error_404');
+		else
+			$this->user_id = $user->row->id;
+
+		return $user
+	}
 
 
 
 	function myworks($username='', $page=1){
 		log_message('debug','--------- gallery ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
-		$user = $this->user_model->get_info(array('username'=>$username));
-		$this->user_id = $user->row->id;
+		$user = $this->_get_user_info($username);
 
         $this->load->model('work_model');
 		$work_list = $this->work_model->get_list(array(
@@ -45,8 +59,8 @@ class Profile extends CI_Controller {
 
 	function about($username=''){
 		log_message('debug','--------- about ( params : '.print_r(get_defined_vars(),TRUE)).')';
-		$user = $this->user_model->get_info(array('username'=>$username));
-		$this->user_id = $user->row->id;
+		
+		$user = $this->_get_user_info($username);
 		
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user->row);
@@ -59,9 +73,8 @@ class Profile extends CI_Controller {
 
 	function collection($username='', $page=1){
 		log_message('debug','--------- collection ( params : '.print_r(get_defined_vars(),TRUE)).')';
-
-		$user = $this->user_model->get_info(array('username'=>$username));
-		$this->user_id = $user->row->id;
+		
+		$user = $this->_get_user_info($username);
 
 		$collection_list = $this->profile_model->get_collection_list(array(
 			'page' => $page,
@@ -78,9 +91,8 @@ class Profile extends CI_Controller {
 
 	function statistics($username='', $page=1){
 		log_message('debug','--------- statistics ( params : '.print_r(get_defined_vars(),TRUE)).')';
-
-		$user = $this->user_model->get_info(array('username'=>$username));
-		$this->user_id = $user->row->id;
+		
+		$user = $this->_get_user_info($username);
 
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user->row);
@@ -93,9 +105,8 @@ class Profile extends CI_Controller {
 
 	function followings($username='', $page=1){
 		log_message('debug','--------- followings ( params : '.print_r(get_defined_vars(),TRUE)).')';
-
-		$user = $this->user_model->get_info(array('username'=>$username));
-		$this->user_id = $user->row->id;
+		
+		$user = $this->_get_user_info($username);
 
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user->row);
@@ -110,8 +121,7 @@ class Profile extends CI_Controller {
 	function followers($username='', $page=1){
 		log_message('debug','--------- followers ( params : '.print_r(get_defined_vars(),TRUE)).')';
 
-		$user = $this->user_model->get_info(array('username'=>$username));
-		$this->user_id = $user->row->id;
+		$user = $this->_get_user_info($username);
 
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user->row);
