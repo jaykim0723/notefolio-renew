@@ -26,8 +26,6 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- gallery ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->user_model->get_info(array('username'=>$username));
-		var_export($user);
-		exit();
 
         $this->load->model('work_model');
 		$work_list = $this->work_model->get_list(array(
