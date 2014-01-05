@@ -42,7 +42,7 @@ $captcha = array(
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
-		<a href="" class="btn btn-info btn-block" id="signup-with-facebook">Signup with facebook</a>
+		<a href="" class="btn btn-info btn-block" id="signup-with-fb">Signup with facebook</a>
 	</div>
 	<?php if ($use_username) { ?>
 	<div class="form-group">
