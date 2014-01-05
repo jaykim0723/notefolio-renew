@@ -132,7 +132,7 @@ $captcha = array(
 
 
 <script>
-    $('#-with-fb').on('click',function(e){
+    $('#signup-with-fb').on('click',function(e){
         e.preventDefault();
         var fb_diag = window.open('<?=$this->config->item('base_url')?>fbauth/register','fb_diag','width=600,height=300,scrollbars=yes,resizable=no');
         fb_diag.focus();
