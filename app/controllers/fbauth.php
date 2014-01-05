@@ -167,7 +167,7 @@ class fbauth extends CI_Controller
                 
             $this->_login_by_fb($user_by_email->row);
             
-            $this->_window_opener_reload();
+            $this->_window_opener_move('/');
         } else {
             //-- register 변수들 대입
             $this->session->set_flashdata('register_fb_info', json_encode($fbme));

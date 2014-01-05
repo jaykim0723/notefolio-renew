@@ -35,7 +35,7 @@
 
 			<div class="col-md-7 righted">
 				<?php if (USER_ID==0): ?>
-					<a class="btn btn-nofol btn-hover bg1" href="/auth/login">
+					<a class="btn btn-nofol btn-hover bg1" href="#" id="login-with-fb">
 						<i class="spi spi-signupfb"></i> Login with Facebook
 					</a>
 					<a class="btn btn-nofol btn-hover bg2" href="/auth/register">

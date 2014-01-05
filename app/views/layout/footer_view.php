@@ -25,3 +25,12 @@
 		site.alarm.checkUnread();
 	});
 </script>
+
+<script>
+    $('#login-with-fb').on('click',function(e){
+        e.preventDefault();
+        var fb_diag = window.open('<?=$this->config->item('base_url')?>fbauth/login<?=($this->input->is_ajax_request())?"ajax/":"" ?>','fb_diag','width=600,height=300,scrollbars=yes,resizable=no');
+        fb_diag.focus();
+        //$.fn.dialog2.helpers.alert("현재 준비중입니다.");
+    });
+</script>
