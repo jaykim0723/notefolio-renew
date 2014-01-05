@@ -189,25 +189,32 @@ class user_model extends CI_Model {
             return $data;
         }
 
-        # 성수씨 
-        $user->keywords = array( // temporary
-            '파인아트', '모션그래픽', '동영상'
-        );
-        $user->sns = (object)array( // temporary
-            'facebook' => 'maxzidell',
-            'twitter' => 'maxzidell'
-        );
+        if(count($user)<1){
+            $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_data'
+            );
+        }
+        else {
+            # 성수씨 
+            $user->keywords = array( // temporary
+                '파인아트', '모션그래픽', '동영상'
+            );
+            $user->sns = (object)array( // temporary
+                'facebook' => 'maxzidell',
+                'twitter' => 'maxzidell'
+            );
 
-
-        unset($user->password);
-        unset($user->new_password_key);
-        unset($user->new_password_requested);
-        unset($user->new_email_key);
-        unset($user->new_email);
-        $data = (object)array(
-            'status' => 'done',
-            'row' => $user
-        );
+            unset($user->password);
+            unset($user->new_password_key);
+            unset($user->new_password_requested);
+            unset($user->new_email_key);
+            unset($user->new_email);
+            $data = (object)array(
+                'status' => 'done',
+                'row' => $user
+            );
+        }
 
     	return $data;
     }
