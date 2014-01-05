@@ -26,12 +26,12 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- gallery ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->user_model->get_info(array('username'=>$username));
-		$this->user_id = $user->user_id;
+		$this->user_id = $user->row->user_id;
 
         $this->load->model('work_model');
 		$work_list = $this->work_model->get_list(array(
 			'page' => $page,
-			'user_id' => $user->user_id
+			'user_id' => $this->user_id
 		));
 		$work_list->username = $username;
 		if(!$this->input->is_ajax_request())
@@ -46,7 +46,7 @@ class Profile extends CI_Controller {
 	function about($username=''){
 		log_message('debug','--------- about ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		$user = $this->user_model->get_info(array('username'=>$username));
-		$this->user_id = $user->user_id;
+		$this->user_id = $user->row->user_id;
 		
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user->row);
@@ -61,11 +61,11 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- collection ( params : '.print_r(get_defined_vars(),TRUE)).')';
 
 		$user = $this->user_model->get_info(array('username'=>$username));
-		$this->user_id = $user->user_id;
+		$this->user_id = $user->row->user_id;
 
 		$collection_list = $this->profile_model->get_collection_list(array(
 			'page' => $page,
-			'user_id' => $user->user_id
+			'user_id' => $this->user_id
 		));
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user->row);
@@ -80,7 +80,7 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- statistics ( params : '.print_r(get_defined_vars(),TRUE)).')';
 
 		$user = $this->user_model->get_info(array('username'=>$username));
-		$this->user_id = $user->user_id;
+		$this->user_id = $user->row->user_id;
 
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user->row);
@@ -95,13 +95,14 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- followings ( params : '.print_r(get_defined_vars(),TRUE)).')';
 
 		$user = $this->user_model->get_info(array('username'=>$username));
+		$this->user_id = $user->row->user_id;
 
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user->row);
 
 		$followings_list = $this->profile_model->get_followings_list(array(
 			'page' => $page,
-			'user_id' => $user->user_id
+			'user_id' => $this->user_id
 		));
 		$this->layout->set_view('profile/follow_listing_view', $followings_list)->render();
 	}
