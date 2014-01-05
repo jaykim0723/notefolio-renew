@@ -28,7 +28,7 @@ class Profile extends CI_Controller {
 	function _get_user_info($username){
 		$user = $this->user_model->get_info(array('username'=>$username));
 		if($user->status=='fail'||count($user->row)<1)
-			redirect('/error_404');
+			exit("redirect('/error_404');");
 		else
 			$this->user_id = $user->row->id;
 
