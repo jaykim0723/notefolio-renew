@@ -185,6 +185,12 @@ class fbauth extends CI_Controller
      */
     function link($mode='regular'){
         $this->_prepare();
+        if(USER_ID==0){
+            $this->_error('require_login');
+
+            return $this->_window_close();
+        }
+
         $fbme = $this->_check();
 
         $this->load->model('user_model');
@@ -213,6 +219,12 @@ class fbauth extends CI_Controller
      */
     function unlink(){
         $this->_prepare();
+        if(USER_ID==0){
+            $this->_error('require_login');
+
+            return $this->_window_close();
+        }
+
         $fbme = $this->_check();
 
         $this->load->model('user_model');
@@ -270,6 +282,9 @@ class fbauth extends CI_Controller
             break;
             case "already_linked":
                 $message = "에러가 발생하였습니다.<br/>페이스북과 이미 링크되어 있습니다.";
+            break;
+            case "require_login":
+                $message = "에러가 발생하였습니다.<br/>먼저 로그인을 해주세요.";
             break;
         }
 
