@@ -97,14 +97,14 @@ class fbauth extends CI_Controller
 
         $this->load->model('user_model');
 
-        $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fb_num_id, 'get_sns_fb'=>true));
+        $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fbme['id'], 'get_sns_fb'=>true));
         
-        if($user->status=='fail') //-- fb 가입자가 아님
+        if($user->status=='fail'||count($user->row)<1) //-- fb 가입자가 아님
         {
-            $user = $this->user_model->get_info(array('email'=>$fbme['email'])); //-- 이메일 받아오기.
+            $user_by_email = $this->user_model->get_info(array('email'=>$fbme['email'])); //-- 이메일 받아오기.
 
-            if($user->status=='done'){ //-- 이메일이 이미 가입된 회원
-                $this->user_model->post_sns_fb(array('id'=>$user_by_email->row->id, 'fb_num_id'=>$fb_num_id));
+            if($user_by_email->status=='done'&&count($user_by_email->row)>0){ //-- 이메일이 이미 가입된 회원
+                $this->user_model->post_sns_fb(array('id'=>$user_by_email->row->id, 'fb_num_id'=>$fbme['id']));
                 
                 $this->_login_by_fb($user->row);
 
@@ -154,16 +154,16 @@ class fbauth extends CI_Controller
 
         $this->load->model('user_model');
 
-        $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fb_num_id, 'get_sns_fb'=>true));
+        $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fbme['id'], 'get_sns_fb'=>true));
         $user_by_email = $this->user_model->get_info(array('email'=>$fbme['email'])); //-- 이메일 받아오기.
         
-        if($user['user_id']!=0){ //-- fb 가입자
+        if($user->status=='done'&&count($user->row)>0){ //-- fb 가입자
             $this->_login_by_fb($user);
-            $this->user_model->put_sns_fb(array('id'=>$user_by_email->row->id, 'fb_num_id'=>$fb_num_id));
+            $this->user_model->put_sns_fb(array('id'=>$user_by_email->row->id, 'fb_num_id'=>$fbme['id']));
             
             $this->_window_opener_reload();                         
-        } else if($user_by_email['user_id']!=0){ //-- fb 가입자는 아니지만 이메일이 이미 가입된 회원
-            $this->user_model->post_sns_fb(array('id'=>$user_by_email->row->id, 'fb_num_id'=>$fb_num_id));
+        } else if($user_by_email->status=='done'&&count($user_by_email->row)>0){ //-- fb 가입자는 아니지만 이메일이 이미 가입된 회원
+            $this->user_model->post_sns_fb(array('id'=>$user_by_email->row->id, 'fb_num_id'=>$fbme['id']));
                 
             $this->_login_by_fb($user_by_email->row);
             
@@ -191,11 +191,19 @@ class fbauth extends CI_Controller
 
         if($mode='force'){
             $this->user_model->delete_sns_fb(USER_ID);
-            $this->user_model->post_sns_fb(array('id'=>USER_ID, 'fb_num_id'=>$fb_num_id));
+            $this->user_model->post_sns_fb(array('id'=>USER_ID, 'fb_num_id'=>$fbme['id']));
         }
         else {
-            $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fb_num_id, 'get_sns_fb'=>true));
+            $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fbme['id'], 'get_sns_fb'=>true));
+            if($user->status=='done'&&count($user)>0)
+                $this->_error('already_linked');
+            else
+                $this->user_model->post_sns_fb(array('id'=>USER_ID, 'fb_num_id'=>$fbme['id']));
+
+
         }
+
+        return $this->_window_close();
     }
 
     /**
@@ -211,6 +219,8 @@ class fbauth extends CI_Controller
 
         $this->auth_model->delete_sns_fb(USER_ID);
 
+        return $this->_window_close();
+
     }
 
     /**
@@ -223,258 +233,6 @@ class fbauth extends CI_Controller
         $fbme = $this->_check();
 
         exit(var_export($fbme, true));
-    }
-
-
-
-    /**
-     * make process for facebook
-     *
-     * @return void
-     */
-    function fb($method)
-    {
-    	parse_str( $_SERVER['QUERY_STRING'], $_REQUEST ); // for prevent $fb_num_id == 0
-		
-        // load facebook library
-        //$this->load->library('fbsdk'); // this has been loaded in autoload.php
-        switch($method) {
-            case "link":
-                
-                $fb_num_id = $this->fbsdk->getUser();// get the facebook user and save in the session
-                
-                if(!empty($fb_num_id))
-                {
-                    try {
-                        $fbme = $this->fbsdk->api('/me');
-                    } catch (FacebookApiException $e) {
-                        error_log($e);
-                        $fb_num_id = null;
-                        $this->fbsdk->destroySession(); 
-
-                        exit("
-                        <script>
-                            <!--
-                            window.location.reload();
-                            -->
-                        </script>
-                        ");
-                    }
-                    
-                    if($this->tank_auth->get_user_id() && ($this->uri->segment(4)==false)){
-                        $this->load->model('oldmodel/auth_model');
-                        
-                        $this->auth_model->delete_user_fb_info($this->tank_auth->get_user_id());
-                        $this->auth_model->post_user_fb_info($this->tank_auth->get_user_id(), $fb_num_id);
-                          
-                        $script = "
-                            window.opener.location.reload();
-                        ";
-                        
-                        exit("
-                        <script>
-                            <!--
-                            $script
-                            window.close();
-                            -->
-                        </script>
-                        ");
-                    } else if($this->uri->segment(4)=='for-register') { //for register
-                        $this->load->model('oldmodel/auth_model');
-                        
-                        $user = $this->auth_model->get_user_info_by_fbid($fb_num_id);
-                        $user_info_by_email = $this->auth_model->get_user_info("","",$fbme['email']); //-- 이메일 받아오기.
-                        
-			            if($user['user_id']!=0){ //-- fb 가입자
-                            $this->_login_by_fb($user);
-                            
-                            $script = "
-                                window.opener.location.reload();
-                            ";                            
-                        } else if($user_info_by_email['user_id']!=0){ //-- fb 가입자는 아니지만 이메일이 이미 가입된 회원
-                            $this->auth_model->post_user_fb_info($user_info_by_email['user_id'], $fb_num_id);
-                                
-                            $this->_login_by_fb($user_info_by_email);
-                            
-                            $script = "
-                                window.opener.location.reload();
-                            ";
-                        } else {
-                        	//-- register 변수들 대입
-                            $this->session->set_flashdata('register_fb', json_encode($fbme));
-                            $go_to = "/auth/register";
-                            $script = "
-                                window.opener.location.href='$go_to';
-                            ";
-                        }
-                        
-                        exit("
-                        <script>
-                            <!--
-                            $script
-                            window.close();
-                            -->
-                        </script>
-                        ");
-                        
-                    } else if($this->uri->segment(4)=='for-login') { //for login
-                        $this->load->model('oldmodel/auth_model');
-
-			            $user = $this->auth_model->get_user_info_by_fbid($fb_num_id);
-			            
-                        if($user['user_id']==0) //-- fb 가입자가 아님
-			            {
-			                $user_info_by_email = $this->auth_model->get_user_info("","",$fbme['email']); //-- 이메일 받아오기.
-
-                            if($user_info_by_email['user_id']!=0){ //-- 이메일이 이미 가입된 회원
-			                    $this->auth_model->post_user_fb_info($user_info_by_email['user_id'], $fb_num_id);
-                                
-                                $this->_login_by_fb($user_info_by_email);
-                                
-			                    //=- end code
-                                $script = "
-                                    var $ = window.opener.$;
-                                    var f = $('#login-form', window.opener.document);
-                                    window.opener.location.href=$('input[name=go_to]', f).val();
-                                ";
-			                    
-			                }else {
-			                    //=- end code
-                                $this->session->set_flashdata('register_fb', json_encode($fb_user_info));
-                                $go_to = "/auth/register";
-                                $script = "
-                                    window.opener.location.href='$go_to';
-                                ";
-			                }
-			            }
-			            else
-			            {
-                            $this->_login_by_fb($user);
-			                //=- end code
-                            $script = "
-                                var $ = window.opener.$;
-                                var f = $('#login-form', window.opener.document);
-                                window.opener.location.href=$('input[name=go_to]', f).val();
-                            ";
-			            }
-                        
-                        exit("
-                        <script>
-                            <!--
-                            $script
-                            window.close();
-                            -->
-                        </script>
-                        ");
-                        
-                    } else if($this->uri->segment(4)=='for-ajax') { //for ajax
-                        $this->load->model('oldmodel/auth_model');
-                        
-			            $user = $this->auth_model->get_user_info_by_fbid($fb_num_id);
-			            if($user['user_id']==0) //-- fb 가입자가 아님
-			            {
-			                $user_info_by_email = $this->auth_model->get_user_info("","",$fbme['email']); //-- 이메일 받아오기.
-			                if($user_info_by_email['user_id']!=0){ //-- 이메일이 이미 가입된 회원
-			                    $this->auth_model->post_user_fb_info($user_info_by_email['user_id'], $fb_num_id);
-                                
-                                $this->_login_by_fb($user_info_by_email);
-                                
-			                    //=- end code
-                                $script = "
-                                    window.opener.auth.afterLogin();
-                                ";
-			                    
-			                }else {
-			                    //=- end code
-                                $this->session->set_flashdata('register_fb', json_encode($fbme));
-                                $go_to = "/auth/register";
-                                $script = "
-                                    window.opener.location.href='$go_to';
-                                ";
-			                }
-			            }
-			            else
-			            {
-                            $this->_login_by_fb($user);
-			                //=- end code
-                            $script = "
-                                    window.opener.auth.afterLogin();
-                            ";
-			            }
-                        
-                        exit("
-                        <script>
-                            <!--
-                            $script
-                            window.close();
-                            -->
-                        </script>
-                        ");
-                        
-                    } else if($this->uri->segment(4)=='for-debug') { //for debug
-		                $fb_user_info = $this->fbsdk->api('/me');
-		                exit(var_export($fb_user_info, true));
-                        
-                        
-                    } else $go_to = "/auth/login?go_to=/auth/setting";
-
-                    exit("
-                    <script>
-                        <!--
-                        window.opener.location.href='$go_to';
-                        window.close();
-                        -->
-                    </script>
-                    ");
-                    
-                }
-                else 
-                { 
-                    header('Content-Type: text/html; charset=UTF-8');
-                    echo("<p>Facebook으로 연결하는 중입니다... 잠시만 기다려 주세요...</p>");
-                    
-                    if ($this->input->get('error_reason')=="user_denied"){
-                        echo("
-                        <script>
-                            <!--
-                            window.close();
-                            -->
-                             window.opener.msg.error('에러가 발생하였습니다.<br/>페이스북에서 앱 승인을 하지 않으면 연동할 수 없습니다.');
-                       </script>
-                        ");
-                    }
-                    else {
-                        // Login or logout url will be needed depending on current user state.
-                        if($fb_num_id) {
-                            $fb_num_id = null;
-                            $this->fbsdk->destroySession();
-
-                            exit("
-                            <script>
-                                <!--
-                                window.location.reload();
-                                -->
-                            </script>
-                            ");
-                        } else {
-                            $link = $this->fbsdk->getLoginUrl(array(
-                                'scope'         =>'email,user_likes,user_photos,user_birthday,offline_access,publish_stream,publish_actions',
-                                'redirect_uri'  =>$this->config->item('base_url').'auth/fb/link/'.(($this->uri->segment(4)!=false)?$this->uri->segment(4)."/":'').'status:complete/',
-                                'display'       =>'popup'
-                            ));
-                            //var_export($link);
-                            //exit();
-                            redirect($link);
-                        }
-                    } 
-                }
-                break;
-            case "set_action":
-                break;
-        }
-        
-        echo("$method");
-        return FALSE;
     }
 
     /**
@@ -503,7 +261,7 @@ class fbauth extends CI_Controller
      *
      * @param string $type
      *
-     * @return void
+     * @return function
      */
     function _error($type){
         switch($type){
@@ -515,7 +273,7 @@ class fbauth extends CI_Controller
             break;
         }
 
-        $this->make_error_alert($message);
+        return $this->make_error_alert($message);
     }
 
     /**
