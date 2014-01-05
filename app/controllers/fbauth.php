@@ -106,14 +106,7 @@ class fbauth extends CI_Controller
             if($user_by_email->status=='done'&&count($user_by_email->row)>0){ //-- 이메일이 이미 가입된 회원
                 $this->user_model->post_sns_fb(array('id'=>$user_by_email->row->id, 'fb_num_id'=>$fbme['id']));
                 
-                $this->_login_by_fb($user->row);
-
-                if($type=='ajax')
-                    $this->_window_opener_ajax();
-                else if($type=='externel')
-                    $this->_window_opener_reload();  
-                else
-                    $this->_window_opener_move();                
+                $this->_login_by_fb($user->row);            
             }else {
                 return $this->register();
             }
@@ -121,9 +114,14 @@ class fbauth extends CI_Controller
         else
         {
             $this->_login_by_fb($user->row);
-
-            $this->_window_opener_move(); 
         }
+
+        if($type=='ajax')
+            $this->_window_opener_ajax();
+        else if($type=='externel')
+            $this->_window_opener_reload();  
+        else
+            $this->_window_opener_move();    
 
         return $this->_window_close();
     }
