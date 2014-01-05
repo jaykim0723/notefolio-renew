@@ -296,7 +296,7 @@ class fbauth extends CI_Controller
             break;
         }
 
-        return $this->make_error_alert($message);
+        return $this->_make_error_alert($message);
     }
 
     /**
