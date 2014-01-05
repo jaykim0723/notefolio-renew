@@ -386,7 +386,7 @@ class user_model extends CI_Model {
      * @param  array  $data (depend by field in table `user_sns_fb`)
      * @return object       (status return object. status=[done|fail])
      */
-    function put_sns_fb(($data=array()){
+    function put_sns_fb($data=array()){
         // null > return fail
         if($data == array()){
             $data = (object)array(
