@@ -472,7 +472,7 @@ body * {
 /* comment */
 .comment-wrapper {
 	display: none;
-	margin-top: 30px;
+	margin-top: 10px;
 }
 .comment-prev { /* more button */
 
@@ -523,6 +523,11 @@ body * {
 	}
 
 
+/* note */
+.note-wrapper {
+	display: none;
+	margin-top: 10px;
+}
 
 
 

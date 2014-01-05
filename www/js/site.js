@@ -182,12 +182,16 @@ var commentUtil = {
 
 		var $work = $(o).parents('.work-wrapper');
 		var work_id = $work.data('id');
+		noteUtil.close($work);
 		if($work.data('comment_opened')=='y'){ // 현재 코멘트창이 열려있다면 닫아준다(같은 버은으로 토글)
+			console.log('이미 열려있다.');
 			this.close($work);
 			return;
 		}
 		$work.data('comment_opened', 'y'); // 다음의 코멘트열기 버튼에 대응하기 위하여 값을 지정해준다.
+
 		if($work.data('comment_loaded')=='y'){ // 이미 한 번 열린 놈이라면 그냥 단순히 보여주기만 한다.
+			console.log('이미 로딩되어 있다.');
 			$('.comment-wrapper', $work).show();
 			return;
 		}
@@ -197,6 +201,7 @@ var commentUtil = {
 		if(this.formHTML == null){
 			commentUtil.formHTML = $('form', $work).clone();
 		}
+		
 
 		$('.comment-wrapper', $work).show();
 		// call list and insert into wrapper
@@ -377,8 +382,63 @@ var commentUtil = {
 
 
 	close : function($work){
+		console.log('site.js > commentUtil > close', $work);
+		if($work.data('comment_opened')=='n') return;
 		$work.data('comment_opened', 'n');
 		$('.comment-wrapper', $work).hide(); // 추후에 다시 열릴 것을 감안하여 숨겨만 준다.
 	}
 
 };
+var noteUtil = {
+	open : function(o){
+		console.log('site.js > noteUtil > open', o);
+
+		var $work = $(o).parents('.work-wrapper');
+		var work_id = $work.data('id');
+		commentUtil.close($work);
+
+		$('.note-wrapper', $work).show();
+		$work.data('note_opened', 'y');
+
+		$btnNote = $('.btn-note', $work);
+		if($btnNote.hasClass('noted')){
+			// 이미 좋아요를 누른 상태라면 취소한다.
+			this.cancel($work);
+			return;
+		}
+		$.post(site.url+'gallery/note', {
+			work_id : work_id,
+			note : 'y'
+		}, function(responseJSON){
+			if(responseJSON.status=='done')
+				$btnNote.addClass('noted');
+			else
+				formFeedback('', 'error', '에러가 발생했습니다.');
+		}, 'json');
+	},
+
+	cancel : function($work){
+		console.log('site.js > noteUtil > cancel', $work);
+
+		$btnNote = $('.btn-note', $work);
+
+		$.post(site.url+'gallery/note', {
+			work_id : work_id,
+			note : 'n'
+		}, function(responseJSON){
+			if(responseJSON.status=='done')
+				$btnNote.removeClass('noted');
+			else
+				formFeedback('', 'error', '에러가 발생했습니다.');
+		}, 'json');
+
+	},
+
+	close : function($work){
+		console.log('site.js > noteUtil > close', $work);
+
+		if($work.data('note_opened')=='n') return;
+		$('.note-wrapper', $work).hide(); // 추후에 다시 열릴 것을 감안하여 숨겨만 준다.
+		$work.data('note_opened', 'n');
+	}
+}

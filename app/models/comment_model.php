@@ -15,6 +15,7 @@ class comment_model extends CI_Model {
      * @return object          상태와 데이터값을 반환한다
      */
     function get_list($params=array()){
+        log_message('debug','--------- comment_model > get_list ( params : '.print_r(get_defined_vars(),TRUE)).')';
         $params = (object)$params;
         $new_params = (object)array();
         foreach((object)array(
@@ -49,10 +50,10 @@ class comment_model extends CI_Model {
             $this->db->where('user_id', $params->user_id);
 
         if(!empty($params->id_before)   &&$params->id_before!=0)
-            $this->db->where('id<', $params->id_before);
+            $this->db->where('work_comments.id <', $params->id_before);
 
         if(!empty($params->id_after)    &&$params->id_after!=0)
-            $this->db->where('id<', $params->id_after);
+            $this->db->where('work_comments.id >', $params->id_after);
 
 
     	switch($params->order_by){

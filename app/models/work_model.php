@@ -254,6 +254,7 @@ class work_model extends CI_Model {
 
 
     function get_hot_creators(){
+        log_message('debug','--------- work_model > get_hot_creators ( params : '.print_r(get_defined_vars(),TRUE)).')';
         // dummy
         $data = array();
         for($i=0; $i<4; $i++){
@@ -275,6 +276,37 @@ class work_model extends CI_Model {
         return $data;
     }
 
+
+
+
+
+
+
+    function note($params=array()){
+        log_message('debug','--------- work_model > note ( params : '.print_r(get_defined_vars(),TRUE)).')';
+        $params = (object)$params;
+        $new_params = (object)array();
+        foreach((object)array(
+            'work_id'   => 0,
+            'note' => 'y',
+        ) as $key => $default_value){
+            $new_params->{$key} = isset($params->{$key}) ? $params->{$key} : $default_value;
+        }
+        $params = $new_params;
+
+        $data = (object)array(
+            'status' => 'done',
+            'message' => ''
+        );
+
+        $this->db->trans_start();
+        #do stuff;
+        $this->db->trans_complete();
+
+        if(!$this->db->trans_status())
+            $data->status = 'fail';
+        return $data;
+    }
     
 
 }

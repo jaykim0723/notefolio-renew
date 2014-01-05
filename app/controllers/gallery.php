@@ -87,6 +87,17 @@ class Gallery extends CI_Controller {
 	}
 
 
+
+
+
+	function note(){
+		$params = $this->input->post();
+		$result = $this->work_model->note($params);
+		$this->layout->set_json($result)->render();
+	}
+
+
+
 }
 
 /* End of file welcome.php */

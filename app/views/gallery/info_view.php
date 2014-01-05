@@ -89,15 +89,15 @@
 											<br/>
 											<?php echo $row->hit_cnt ?>
 										</div>
-										<div class="comment bg2">
-											<i class="spi spi-comment">Comment</i>
-											<br/>
-											<?php echo $row->comment_cnt ?>
-										</div>
 										<div class="love bg3">
 											<i class="spi spi-love2">Love</i>
 											<br/>
 											<?php echo $row->note_cnt ?>
+										</div>
+										<div class="comment bg2">
+											<i class="spi spi-comment">Comment</i>
+											<br/>
+											<?php echo $row->comment_cnt ?>
 										</div>
 									</div>
 								</div>
@@ -126,35 +126,43 @@
 						</div>
 
 						<div class="work-actions">
+							
 							<div class="row">
 								<div class="col-md-6 col-xs-9">
 									<a href="javascript:;" class="btn btn-nofol btn-open-comment bg2">
 										<i class="spi spi-comment"></i>
 										코멘트 열기(<?php echo $row->comment_cnt ?>)
 									</a>
-									<a href="javascript:;" class="btn btn-nofol bg1">
+									<a href="javascript:;" class="btn btn-nofol bg1 btn-note">
 										<i class="spi spi-love2"></i>
-										좋아요
+										좋아요(<?php echo $row->note_cnt ?>)
 									</a>
 								</div>
 								<div class="col-md-6 col-xs-3 righted">
 									share
 								</div>
 							</div>
+
 							<div class="row">
-								<div class="col-xs-12">
-									<div class="comment-wrapper" data-id="<?php echo $row->work_id ?>">
+								<div class="comment-wrapper" data-id="<?php echo $row->work_id ?>">
+									<div class="col-xs-12">
 										<a href="javascript:;" class="btn-comment-prev btn btn-link btn-block">▲ 이전 댓글보기</a>
 										<!-- comment-block will be displayed here -->
 										<?php if (USER_ID!=0): ?>
 										<?php echo $this->load->view('comment/comment_form_view'); ?>
 										<?php endif ?>
-									</div>									
-									<div class="love-wrapper">
-										love에 대한 후속조치
+									</div>
+								</div>									
+								<div class="note-wrapper" data-id="<?php echo $row->work_id ?>">>
+									<div class="col-xs-12">
+										이 작품을 콜렉션에 담겠습니까?
+										<a href="#">예</a>
+										/
+										<a href="#">아니오</a>
 									</div>
 								</div>
 							</div>
+
 						</div>
 
 					</div>
@@ -196,6 +204,8 @@
 			commentUtil.cancel(this);
 		}).on('click', '.btn-comment-prev', function(){
 			commentUtil.prev(this);
+		}).on('click', '.btn-note', function(){
+			noteUtil.open(this);
 		});
 	});
 </script>
