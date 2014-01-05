@@ -469,7 +469,7 @@ class user_model extends CI_Model {
             if(!empty($user_id))
                 $this->db->where('id', $user_id);
             $info = $this->db->get('user_sns_fb')->row();
-            $can_delete = ($info->user_id == USER_ID)?true:false; 
+            $can_delete = ($info->id == USER_ID)?true:false; 
         }
 
         if($can_delete){

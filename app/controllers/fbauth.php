@@ -189,7 +189,7 @@ class fbauth extends CI_Controller
 
         $this->load->model('user_model');
 
-        if($mode='force'){
+        if($mode=='force'){
             $this->user_model->delete_sns_fb(USER_ID);
             $this->user_model->post_sns_fb(array('id'=>USER_ID, 'fb_num_id'=>$fbme['id']));
         }
