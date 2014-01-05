@@ -540,7 +540,7 @@ class fbauth extends CI_Controller
             window.opener.msg.error('{$text}');
             -->
         </script>
-        ");
+        ";
 
         echo($tpl);
     }
@@ -557,7 +557,7 @@ class fbauth extends CI_Controller
             window.location.reload();
             -->
         </script>
-        ");
+        ";
 
         exit($tpl);
     }
@@ -574,7 +574,7 @@ class fbauth extends CI_Controller
             window.opener.location.reload();
             -->
         </script>
-        ");
+        ";
 
         echo($tpl);
     }
@@ -606,7 +606,7 @@ class fbauth extends CI_Controller
         $tpl .= "
             -->
         </script>
-        ");
+        ";
 
         echo($tpl);
     }
@@ -623,7 +623,7 @@ class fbauth extends CI_Controller
                 window.opener.auth.afterLogin();
             -->
         </script>
-        ");
+        ";
 
         echo($tpl);
     }
@@ -640,7 +640,7 @@ class fbauth extends CI_Controller
             window.close();
             -->
         </script>
-        ");
+        ";
 
         exit($tpl);
     }
