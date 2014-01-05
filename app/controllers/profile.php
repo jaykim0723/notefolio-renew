@@ -32,7 +32,7 @@ class Profile extends CI_Controller {
 		else
 			$this->user_id = $user->row->id;
 
-		return $user
+		return $user;
 	}
 
 
