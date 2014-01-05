@@ -201,7 +201,7 @@ class fbauth extends CI_Controller
         }
         else {
             $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fbme['id'], 'get_sns_fb'=>true));
-            if($user->status=='done'&&count($user)>0)
+            if($user->status=='done'&&count($user->row)>0)
                 $this->_error('already_linked');
             else
                 $this->user_model->post_sns_fb(array('id'=>USER_ID, 'fb_num_id'=>$fbme['id']));
@@ -234,7 +234,7 @@ class fbauth extends CI_Controller
         }
         else {
             $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fbme['id'], 'get_sns_fb'=>true));
-            if($user->status=='done'&&count($user)>0)
+            if($user->status=='done'&&count($user->row)>0)
                 $this->user_model->delete_sns_fb(array('id'=>USER_ID, 'fb_num_id'=>$fbme['id']));
             else
                 $this->_error('not_found');
