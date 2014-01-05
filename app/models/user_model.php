@@ -331,6 +331,179 @@ class user_model extends CI_Model {
         return $data;
     }
 
+    /**
+     * facebook
+     */
+
+    /**
+     * post user's facebook info
+     * 
+     * @return object       (work content data)
+     */
+    function post_sns_fb($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'id'            => '',
+            'fb_num_id'     => '',
+            'post_work'     => 'Y',
+            'post_comment'  => 'Y',
+            'post_note'     => 'Y',
+            'regdate'       => date('Y-m-d H:i:s'),
+            'moddate'       => date('Y-m-d H:i:s'),
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        $this->load->library('fbsdk');
+
+        if(empty($params->fb_num_id))
+            $params->fb_num_id = $this->fbsdk->getUser();// get the facebook user
+
+        $params->access_token = $this->fbsdk->getAccessToken();
+
+        $this->db->trans_start();
+        $this->db->insert('user_sns_fb', $params);
+        $this->db->trans_complete();
+
+        if($this->db->trans_status()){
+            $data = (object)array(
+                'status' => 'done'
+            );
+        } else {
+            $data = (object)array(
+                'status' => 'fail'
+            );
+        }
+
+        return $data;
+    }
+
+    /**
+     * put user's facebook info
+     *
+     * @param  array  $data (depend by field in table `user_sns_fb`)
+     * @return object       (status return object. status=[done|fail])
+     */
+    function put_sns_fb(($data=array()){
+        // null > return fail
+        if($data == array()){
+            $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_input_data'
+            );
+
+            return $data;
+        }
+
+        $params = (object)array(
+            'moddate' => date('Y-m-d H:i:s'),
+        );
+
+        $this->load->library('fbsdk');
+
+        $user_id = @$data['id'];
+        $fb_num_id = @$data['fb_num_id'];
+
+        if(empty($user_id)){
+
+        }
+
+        if(empty($fb_num_id))
+            $params->fb_num_id = $this->fbsdk->getUser();// get the facebook user
+        else
+            $params->fb_num_id = $fb_num_id;
+
+        $params->access_token = $this->fbsdk->getAccessToken();
+
+        $this->db->trans_start();
+        if(!empty($fb_num_id))
+            $this->db->where('fb_num_id', $fb_num_id);
+        if(!empty($user_id))
+            $this->db->where('id', $user_id);
+        if((!empty($fb_num_id)||!empty($user_id)))
+            $this->db->update('user_sns_fb', $params);
+        $this->db->trans_complete();
+
+        if($this->db->trans_status()){
+            $data = (object)array(
+                'status' => 'done'
+            );
+        } else {
+            $data = (object)array(
+                'status' => 'fail'
+            );
+        }
+
+        return $data;
+    }
+
+    /**
+     * delete user's facebook info
+     * cannot undo after run this code, so you must be careful to use.
+     *
+     * @param  array  $data (depend by field in table `user_sns_fb`)
+     * @return object       (status return object. status=[done|fail])
+     */
+    function delete_sns_fb($data=array()){
+        // null > return fail
+        if($data == array()){
+            $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_input_data'
+            );
+
+            return $data;
+        }
+
+        $user_id = @$data['id'];
+        $fb_num_id = @$data['fb_num_id'];
+
+        if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
+            $can_delete = true;
+        }
+        else { // 본인것인지 여부에 따라 message다르게 하기
+            if(!empty($fb_num_id))
+                $this->db->where('fb_num_id', $fb_num_id);
+            if(!empty($user_id))
+                $this->db->where('id', $user_id);
+            $info = $this->db->get('user_sns_fb')->row();
+            $can_delete = ($info->user_id == USER_ID)?true:false; 
+        }
+
+        if($can_delete){
+            $this->db->flush_cache(); //clear active record
+
+            $this->db->trans_start();
+            if(!empty($fb_num_id))
+                $this->db->where('fb_num_id', $fb_num_id);
+            if(!empty($user_id))
+                $this->db->where('id', $user_id);
+            if((!empty($fb_num_id)||!empty($user_id)))
+                $this->db->delete('user_sns_fb');
+            $this->db->trans_complete();
+
+            if($this->db->trans_status()){
+                $data = (object)array(
+                    'status' => 'done'
+                );
+            } else {
+                $data = (object)array(
+                    'status' => 'fail',
+                    'message' => 'cannot_run_delete_sel'
+                );
+            }
+        } else {
+            $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_permission_to_delete'
+            );
+        }
+
+        return $data;
+    }
+
     
 
 }
