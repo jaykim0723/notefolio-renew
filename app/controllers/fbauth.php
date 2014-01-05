@@ -161,10 +161,9 @@ class fbauth extends CI_Controller
             $this->_login_by_fb($user->row);
             $this->user_model->put_sns_fb(array('id'=>$user->row->id, 'fb_num_id'=>$fbme['id']));
             
-            $this->_window_opener_reload();                         
+            $this->_window_opener_move('/');
         } else if($user_by_email->status=='done'&&count($user_by_email->row)>0){ //-- fb 가입자는 아니지만 이메일이 이미 가입된 회원
             $this->user_model->post_sns_fb(array('id'=>$user_by_email->row->id, 'fb_num_id'=>$fbme['id']));
-                
             $this->_login_by_fb($user_by_email->row);
             
             $this->_window_opener_move('/');
