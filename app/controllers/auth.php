@@ -130,7 +130,7 @@ class Auth extends CI_Controller
                 $data['captcha_html'] = $this->_create_captcha();
             }
         }
-        
+
         $data['fb'] = $this->fbsdk;
 
         $this->layout->set_view('auth/login_form', $data)->render();
@@ -236,25 +236,36 @@ class Auth extends CI_Controller
                     }
                 }
             }
-            $data['show_captcha'] = FALSE;
-            if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
-                $data['show_captcha'] = TRUE;
-                if ($data['use_recaptcha']) {
-                    $data['recaptcha_html'] = $this->_create_recaptcha();
-                } else {
-                    $data['captcha_html'] = $this->_create_captcha();
-                }
-            }
-            
-            $data['fb'] = $this->fbsdk;
 
-            $data['admin'] = array('user_id' => $this->tank_auth->get_user_id(),
-                                   'username' => $this->tank_auth->get_username(),
-                                   'realname' => $this->tank_auth->get_realname());
-
-            $this->layout->set_view('auth/login_elevate_form', $data)->render();
-            // $this->load->view('auth/login_form', $data);
+            $this->_elevate_form($data, $login);
         }
+    }
+
+    /**
+     * login form
+     *
+     * @return void
+     */
+    function _login_form($data=null, $login=null){
+    
+        $data['show_captcha'] = FALSE;
+        if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
+            $data['show_captcha'] = TRUE;
+            if ($data['use_recaptcha']) {
+                $data['recaptcha_html'] = $this->_create_recaptcha();
+            } else {
+                $data['captcha_html'] = $this->_create_captcha();
+            }
+        }
+        
+        $data['fb'] = $this->fbsdk;
+
+        $data['admin'] = array('user_id' => $this->tank_auth->get_user_id(),
+                               'username' => $this->tank_auth->get_username(),
+                               'realname' => $this->tank_auth->get_realname());
+
+        $this->layout->set_view('auth/login_elevate_form', $data)->render();
+
     }
 
     /*
