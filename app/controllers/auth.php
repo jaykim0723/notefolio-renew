@@ -246,7 +246,7 @@ class Auth extends CI_Controller
      *
      * @return void
      */
-    function _login_form($data=null, $login=null){
+    function _elevate_form($data=null, $login=null){
     
         $data['show_captcha'] = FALSE;
         if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
