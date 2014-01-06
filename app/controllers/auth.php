@@ -134,8 +134,6 @@ class Auth extends CI_Controller
 
         $data['fb'] = $this->fbsdk;
 
-        $this->layout->set_view('auth/login_form', $data)->render();
-
     }
 
     /**
