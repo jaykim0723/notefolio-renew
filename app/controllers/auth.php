@@ -110,15 +110,6 @@ class Auth extends CI_Controller
                     }
                 }
             }
-            $data['show_captcha'] = FALSE;
-            if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
-                $data['show_captcha'] = TRUE;
-                if ($data['use_recaptcha']) {
-                    $data['recaptcha_html'] = $this->_create_recaptcha();
-                } else {
-                    $data['captcha_html'] = $this->_create_captcha();
-                }
-            }
             
             return $this->_login_form($data);
         }
