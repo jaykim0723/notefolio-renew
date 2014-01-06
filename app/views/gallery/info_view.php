@@ -117,34 +117,36 @@
 
 						<div class="work-addinfo">
 							<div class="row">
-								<div class="col-xs-6">
+								<div class="col-xs-12 centered">
+									<a href="javascript:;" class="btn btn-nofol bg1 btn-note">
+										<i class="spi spi-love2"></i>
+										좋아요(<?php echo $row->note_cnt ?>)
+									</a>
+									<div class="add-collection centered">
+										이 작품을 콜렉션하시겠습니까?
+										<a href="#3">예</a> / <a href="#3">아니오</a>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
 									<div class="work-tags">
 										<i class="spi spi-tag"></i> <?php echo @implode(', ', $tags) ?>
 									</div>
 								</div>
+							</div>
+							<div class="row">
 								<div class="col-xs-6">
-									<div class="work-ccl righted">
-										ccl
-									</div>
+									ccl
+								</div>
+								<div class="col-xs-6 righted">
+									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="spi spi-fb_hover">fb_hover</a>
+									<a href="javascript:;" onclick="snsUtil.facebook(this);" class="spi spi-fb_hover">fb_hover</a>
 								</div>
 							</div>
 						</div>
 
 						<div class="work-actions">
-							
-							<div class="row">
-								<div class="col-md-6 col-xs-9">
-									<a href="javascript:;" class="btn btn-nofol bg1 btn-note" title="이 작품을 콜렉션에 담으시겠어요?">
-										<i class="spi spi-love2"></i>
-										좋아요(<?php echo $row->note_cnt ?>)
-									</a>
-								</div>
-								<div class="col-md-6 col-xs-3 righted">
-									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="spi spi-fb_hover">fb_hover</a>
-									<a href="javascript:;" onclick="snsUtil.facebook(this);" class="spi spi-fb_hover">fb_hover</a>
-								</div>
-							</div>
-
 							<div class="row">
 								<div class="comment-wrapper" data-id="<?php echo $row->work_id ?>">
 									<div class="col-xs-12">
@@ -209,6 +211,7 @@
 			noteUtil.open(this);
 		});
 		NFview.infiniteCallback();
+		$('.btn-note').tooltip();
 	});
 </script>
 <?php endif ?>

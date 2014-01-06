@@ -397,7 +397,6 @@ var noteUtil = {
 		var $work = $(o).parents('.work-wrapper');
 		var work_id = $work.data('id');
 
-		$('.note-wrapper', $work).show();
 		$work.data('note_opened', 'y');
 
 		$btnNote = $('.btn-note', $work);
@@ -406,6 +405,9 @@ var noteUtil = {
 			this.cancel($work);
 			return;
 		}
+
+		$btnNote.tooltip('show');
+
 		$.post(site.url+'gallery/note', {
 			work_id : work_id,
 			note : 'y'

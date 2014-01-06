@@ -414,7 +414,7 @@ body * {
 	margin-top: 30px;
 }
 .work-addinfo {
-	margin-top: 3px;
+	margin-top: 0;
 	background: #fff;
 	padding: 15px 0;
 }
@@ -455,7 +455,7 @@ body * {
 	margin-bottom: 0;
 }
 .work-contents > .block-text {
-	padding: 15px 15px;
+	padding: 15px 25px;
 }
 .work-contents > .block-line {
 	margin: 0;
@@ -466,6 +466,16 @@ body * {
 .work-contents > .block-line + .block-image,
 .work-contents > .block-line + .block-video {
 	margin-top: 0;
+}
+@media (max-width:991px) {
+	.work-contents > .block-text {
+		padding: 15px 0;
+	}
+	.work-contents > .block-line {
+		margin: 10px 0;
+		background: #ccc;
+		height: 1px;
+	}
 }
 
 
