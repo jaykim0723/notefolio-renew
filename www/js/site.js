@@ -121,7 +121,9 @@ $(function() {
 		more: '.more-link',
 		offset: 'bottom-in-view',
 		onAfterPageLoad : function(){
-			console.log($.now());
+			if(typeof NFview.infiniteCallback!=='undefined'){
+				NFview.infiniteCallback();
+			}
 		}
 	});
 	$('.sticky').waypoint('sticky', {
@@ -177,12 +179,11 @@ var commentUtil = {
 	
 	formHTML : null,
 
-	open : function(o){
-		console.log('sit.js > commentUtil > open', o);
+	open : function($work){
+		console.log('site.js > commentUtil > open', $work);
 
-		var $work = $(o).parents('.work-wrapper');
+		// var $work = $('#work-'+work_id);
 		var work_id = $work.data('id');
-		noteUtil.close($work);
 		if($work.data('comment_opened')=='y'){ // 현재 코멘트창이 열려있다면 닫아준다(같은 버은으로 토글)
 			console.log('이미 열려있다.');
 			this.close($work);
@@ -220,7 +221,7 @@ var commentUtil = {
 	},
 
 	prev : function(o){
-		console.log('sit.js > commentUtil > prev', o);
+		console.log('site.js > commentUtil > prev', o);
 
 		var $work = $(o).parents('.work-wrapper');	
 		var work_id = $work.data('id');
@@ -240,7 +241,7 @@ var commentUtil = {
 	},
 
 	readList : function(work_id, idBefore){
-		console.log('sit.js > commentUtil > readList', work_id, idBefore);
+		console.log('site.js > commentUtil > readList', work_id, idBefore);
 
 		// get id_before
 		return $.ajax({
@@ -264,7 +265,7 @@ var commentUtil = {
 
 	// },
 	update : function(o){
-		console.log('sit.js > commentUtil > update', o);
+		console.log('site.js > commentUtil > update', o);
 		// 기존의 폼을 가지고 와서
 		var $commentInner = $(o).closest('.comment-inner');
 		var $commentBlock = $commentInner.closest('.comment-block');
@@ -282,7 +283,7 @@ var commentUtil = {
 	},
 
 	reply : function(o){
-		console.log('sit.js > commentUtil > reply', o);
+		console.log('site.js > commentUtil > reply', o);
 
 		var $commentBlock = $(o).closest('.comment-block');
 		var $commentReplies = $('.comment-replies', $commentBlock);
@@ -308,7 +309,7 @@ var commentUtil = {
 	},
 
 	delete : function(o){
-		console.log('sit.js > commentUtil > delete', o);
+		console.log('site.js > commentUtil > delete', o);
 		var $work = $(o).parents('.work-wrapper');	
 		var work_id = $work.data('id');
 		var params = {
@@ -326,7 +327,7 @@ var commentUtil = {
 	},
 
 	cancel : function(o){
-		console.log('sit.js > commentUtil > cancel', o);
+		console.log('site.js > commentUtil > cancel', o);
 
 		var $f = $(o).closest('form.comment-block');
 		switch($f.data('mode')){
@@ -395,7 +396,6 @@ var noteUtil = {
 
 		var $work = $(o).parents('.work-wrapper');
 		var work_id = $work.data('id');
-		commentUtil.close($work);
 
 		$('.note-wrapper', $work).show();
 		$work.data('note_opened', 'y');
@@ -448,24 +448,47 @@ var noteUtil = {
 
 var snsUtil = {
 	newPop : function(url, w, h){
+		encodeURI(url.split("#").join("%23"));
+		var top = ($(window).height() - h) / 2;	
+        var left = ($(window).width() - w) / 2;		
+		var options = 'toolbar=no, menubar=no, location=no, scrollbar=yes, status=no, width='+w+', height='+h+', top=' + top + ', left=' + left;
+		window.open(encodeURI(url), '', options);
+	},
 
+	getInfo : function(o){
+		var $work = $(o).parents('.work-wrapper');
+		var workInfo = {};
+		workInfo.id = $work.data('id');
+		workInfo.url = $('.work-url', $work).text();
+		workInfo.title = $('.work-title', $work).text();
+		workInfo.cover = '/data/covers/'+workInfo.cover+'-t2.jpg';
+		workInfo.summary = $.trim($('.work-contents', $work).text().substr(0,100));
+		console.log('workInfo', workInfo);
+		return workInfo;
 	},
-	twitter : function(){
+
+	twitter : function(o){
 		console.log('site.js > snsUtil > twitter');
-		this.newPop('https://twitter.com/intent/tweet?original_referer=[접속 URL...]&text=[내용....]&url=[리턴 URL]');
+		var workInfo = this.getInfo(o);
+		this.newPop('https://twitter.com/intent/tweet?original_referer='+workInfo.url+'&text='+workInfo.summary+'&url='+location.href, 620, 310);
 	},
-	facebook : function(){
-		console.log('site.js > snsUtil > faceboeok');
-		this.newPop('http://www.facebook.com/share.php?s=100&p[url]= [접속 URL ...]&p[images][0]= [미리보기이미지...] ..갯수만큼 ...&p[title]= [제목...]&p[summary]=[내용...]');
+
+	facebook : function(o){
+		console.log('site.js > snsUtil > facebook');
+		var workInfo = this.getInfo(o);
+		this.newPop('http://www.facebook.com/sharer.php?s=100&p[url]=' + workInfo.url + '&p[images][0]=' + workInfo.cover + '&p[title]=' + workInfo.title + '&p[summary]=' + workInfo.summary, 510, 368);
 	},
+
 	pinterest : function(){
 		console.log('site.js > snsUtil > pinterest');
 
 	},
+
 	tumblr : function(){
 		console.log('site.js > snsUtil > tumblr');
 
 	},
+
 	path : function(){
 		console.log('site.js > snsUtil > path');
 		

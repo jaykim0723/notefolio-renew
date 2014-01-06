@@ -1,7 +1,11 @@
 <?php if (!$this->input->is_ajax_request() OR $this->input->post('no_ajax')=='y'): ?>
 <script>
 	NFview = {
-		area : 'work-info'
+		area : 'work-info',
+		infiniteCallback : function(){
+			var $work = $('#work-list').children('.infinite-item').last();
+			commentUtil.open($work);
+		}
 	};
 </script>
 <div id="work-sidebar" class="hidden-xs hidden-sm">
@@ -50,12 +54,13 @@
 			<div class="col-md-9">
 <?php endif ?>
 
-				<div class="work-list infinite-list">
+				<div id="work-list" class="work-list infinite-list">
 					<div class="work-wrapper infinite-item" id="work-<?php echo $row->work_id ?>" data-id="<?php echo $row->work_id ?>">
 						<div class="work-small-profile visible-xs visible-sm">
 							<i class="spi spi-follow"></i>
 							<img src="/data/profiles/<?php echo $row->user->username ?>.jpg"/>
 							<h2><?php echo $row->user->username ?></h2>
+							<div class="work-url" style="display:none;"><?php echo site_url($row->user->username.'/'.$row->work_id); ?></div>
 							<span><?php echo @implode(', ', $row->user->keywords); ?></span>
 						</div>
 						<div class="work-info">
@@ -74,7 +79,7 @@
 										</div>
 
 										<!-- 제목 -->
-										<h2><?php echo $row->title; ?></h2>
+										<h2 class="work-title"><?php echo $row->title; ?></h2>
 										<div class="work-info-time">
 											<?php echo $this->nf->print_time($row->regdate) ?>
 											/
@@ -129,18 +134,14 @@
 							
 							<div class="row">
 								<div class="col-md-6 col-xs-9">
-									<a href="javascript:;" class="btn btn-nofol btn-open-comment bg2">
-										<i class="spi spi-comment"></i>
-										코멘트 열기(<?php echo $row->comment_cnt ?>)
-									</a>
-									<a href="javascript:;" class="btn btn-nofol bg1 btn-note">
+									<a href="javascript:;" class="btn btn-nofol bg1 btn-note" title="이 작품을 콜렉션에 담으시겠어요?">
 										<i class="spi spi-love2"></i>
 										좋아요(<?php echo $row->note_cnt ?>)
 									</a>
 								</div>
 								<div class="col-md-6 col-xs-3 righted">
-									<a href="javascript:;" onclick="snsUtil.twitter();" class="spi spi-fb_hover">fb_hover</a>
-									<a href="javascript:;" onclick="snsUtil.facebook();" class="spi spi-fb_hover">fb_hover</a>
+									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="spi spi-fb_hover">fb_hover</a>
+									<a href="javascript:;" onclick="snsUtil.facebook(this);" class="spi spi-fb_hover">fb_hover</a>
 								</div>
 							</div>
 
@@ -153,7 +154,7 @@
 										<?php echo $this->load->view('comment/comment_form_view'); ?>
 										<?php endif ?>
 									</div>
-								</div>									
+								</div>					
 								<div class="note-wrapper" data-id="<?php echo $row->work_id ?>">>
 									<div class="col-xs-12">
 										이 작품을 콜렉션에 담겠습니까?
@@ -163,7 +164,6 @@
 									</div>
 								</div>
 							</div>
-
 						</div>
 
 					</div>
@@ -208,6 +208,7 @@
 		}).on('click', '.btn-note', function(){
 			noteUtil.open(this);
 		});
+		NFview.infiniteCallback();
 	});
 </script>
 <?php endif ?>

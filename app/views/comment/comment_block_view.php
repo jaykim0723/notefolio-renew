@@ -2,7 +2,7 @@
 
 	<div class="comment-inner">
 		<div class="comment-control-area">
-			<?php if ($row->user->user_id==USER_ID): ?>
+			<?php if (USER_ID!=0 && $row->user->user_id==USER_ID): ?>
 			<a href="javascript:;" class="btn btn-link btn-update-comment">modify</a>
 			<a href="javascript:;" class="btn btn-link btn-delete-comment">delete</a>
 			<?php endif ?>
