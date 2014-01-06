@@ -110,7 +110,6 @@ class Auth extends CI_Controller
                     }
                 }
             }
-            exit(var_export($data, true));
             return $this->_login_form($data);
         }
     }
@@ -121,6 +120,7 @@ class Auth extends CI_Controller
      * @return void
      */
     function _login_form($data=null){
+            exit(var_export($data, true));
         
         $data['show_captcha'] = FALSE;
         if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
