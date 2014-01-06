@@ -110,7 +110,7 @@ class Auth extends CI_Controller
                     }
                 }
             }
-            return $this->_login_form($data);
+            return $this->_login_form($data, $login);
         }
     }
 
@@ -119,7 +119,7 @@ class Auth extends CI_Controller
      *
      * @return void
      */
-    function _login_form($data=null){
+    function _login_form($data=null, $login=null){
         
         $data['show_captcha'] = FALSE;
         if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
