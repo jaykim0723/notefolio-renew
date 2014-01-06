@@ -120,7 +120,6 @@ class Auth extends CI_Controller
      * @return void
      */
     function _login_form($data=null){
-            exit(var_export($data, true));
         
         $data['show_captcha'] = FALSE;
         if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
@@ -131,6 +130,7 @@ class Auth extends CI_Controller
                 $data['captcha_html'] = $this->_create_captcha();
             }
         }
+            exit(var_export($data, true));
 
         $data['fb'] = $this->fbsdk;
 
