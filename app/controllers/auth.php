@@ -130,9 +130,10 @@ class Auth extends CI_Controller
                 $data['captcha_html'] = $this->_create_captcha();
             }
         }
-            exit(var_export($data, true));
-
+        
         $data['fb'] = $this->fbsdk;
+
+        $this->layout->set_view('auth/login_form', $data)->render();
 
     }
 
