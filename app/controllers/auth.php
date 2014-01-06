@@ -2,6 +2,8 @@
 
 class Auth extends CI_Controller
 {
+    var $go_to = '/';
+
 	function __construct()
 	{
 		parent::__construct();
@@ -13,6 +15,8 @@ class Auth extends CI_Controller
 		$this->load->library('fbsdk');
 		$this->load->library('user_agent');
         $this->nf->_member_check(array('setting','change_password','change_email','unregister'));
+
+        $this->go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/'; # get url to go after login
 	}
 
 	function index()
@@ -27,7 +31,7 @@ class Auth extends CI_Controller
     /**
      * Login user on the site
      *
-     * @return void
+     * @return function
      */
     function login()
     {
@@ -116,11 +120,32 @@ class Auth extends CI_Controller
                 }
             }
             
-            $data['fb'] = $this->fbsdk;
-
-            $this->layout->set_view('auth/login_form', $data)->render();
-            // $this->load->view('auth/login_form', $data);
+            return $this->_login_form($data);
         }
+    }
+
+
+    /**
+     * login form
+     *
+     * @return void
+     */
+    function _login_form($data=null){
+        
+        $data['show_captcha'] = FALSE;
+        if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
+            $data['show_captcha'] = TRUE;
+            if ($data['use_recaptcha']) {
+                $data['recaptcha_html'] = $this->_create_recaptcha();
+            } else {
+                $data['captcha_html'] = $this->_create_captcha();
+            }
+        }
+
+        $data['fb'] = $this->fbsdk;
+
+        $this->layout->set_view('auth/login_form', $data)->render();
+
     }
 
     /**
