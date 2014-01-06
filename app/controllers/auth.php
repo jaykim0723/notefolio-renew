@@ -37,19 +37,9 @@ class Auth extends CI_Controller
     {
         $is_ajax = $this->input->is_ajax_request();
         $go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/'; # get url to go after login
-        $data['go_to'] = $go_to;
+ 
 
-        if ($this->tank_auth->is_logged_in()) {                                         // logged in
-            $is_ajax?
-                die(json_encode(array('status'=>'error', 'type'=>'already_logged_in')))
-                :redirect($go_to);
-
-        } elseif ($this->tank_auth->is_logged_in(FALSE)) {                       // logged in, not activated
-            $is_ajax?
-                die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
-                :redirect('/auth/send_again/');
-
-        } else {
+        if ($this->_login_check($go_to)) {
             $data['login_by_username'] = ($this->config->item('login_by_username', 'tank_auth') AND
                     $this->config->item('use_username', 'tank_auth'));
             $data['login_by_email'] = $this->config->item('login_by_email', 'tank_auth');
@@ -110,8 +100,37 @@ class Auth extends CI_Controller
                     }
                 }
             }
+            
+            $data['go_to'] = $go_to;
+
             return $this->_login_form($data, $login);
         }
+    }
+
+    /**
+     * check user login
+     *
+     * @return bool
+     */
+    function _login_check($go_to='/')
+    {
+        $is_ajax = $this->input->is_ajax_request();
+
+        if ($this->tank_auth->is_logged_in()) {                                         // logged in
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'already_logged_in')))
+                :redirect($go_to);
+
+        } elseif ($this->tank_auth->is_logged_in(FALSE)) {                       // logged in, not activated
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
+                :redirect('/auth/send_again/');
+
+        } else {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -146,29 +165,8 @@ class Auth extends CI_Controller
     {
         $is_ajax = $this->input->is_ajax_request();
         $go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/acp'; # get url to go after login
-        $data['go_to'] = $go_to;
 
-        if ($this->nf->admin_is_elevated()) {                                          // elevated
-            $is_ajax?
-                die(json_encode(array('status'=>'error', 'type'=>'already_elevated')))
-                :redirect($go_to);
-
-        } elseif (!$this->tank_auth->is_logged_in()) {                           // login, first!
-            $is_ajax?
-                die(json_encode(array('status'=>'error', 'type'=>'please_log_in')))
-                :redirect('/auth/login?go_to='.urlencode('/auth/elevate'.(($this->input->get_post('go_to'))?'?go_to='.$this->input->get_post('go_to'):'')));
-
-        } elseif (!$this->nf->admin_check_can_elevate()) {                       // logged in, not activated
-            $is_ajax?
-                die(json_encode(array('status'=>'error', 'type'=>'you_cannot_elevate')))
-                :redirect('/auth/restrict');
-
-        } elseif ($this->tank_auth->is_logged_in(FALSE)) {                       // logged in, not activated
-            $is_ajax?
-                die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
-                :redirect('/auth/send_again/');
-
-        } else {
+        if ($this->_elevate_check($go_to)) {
             $this->data['login_by_username'] = ($this->config->item('login_by_username', 'tank_auth') AND
                     $this->config->item('use_username', 'tank_auth'));
             $this->data['login_by_email'] = $this->config->item('login_by_email', 'tank_auth');
@@ -237,8 +235,45 @@ class Auth extends CI_Controller
                 }
             }
 
-            $this->_elevate_form($data, $login);
+            $data['go_to'] = $go_to;
+
+            return $this->_elevate_form($data, $login);
         }
+    }
+
+    /**
+     * check user can elevate admin permission
+     *
+     * @return bool
+     */
+    function _elevate_check($go_to)
+    {
+        $is_ajax = $this->input->is_ajax_request();
+
+        if ($this->nf->admin_is_elevated()) {                                          // elevated
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'already_elevated')))
+                :redirect($go_to);
+
+        } elseif (!$this->tank_auth->is_logged_in()) {                           // login, first!
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'please_log_in')))
+                :redirect('/auth/login?go_to='.urlencode('/auth/elevate'.(($this->input->get_post('go_to'))?'?go_to='.$this->input->get_post('go_to'):'')));
+
+        } elseif (!$this->nf->admin_check_can_elevate()) {                       // logged in, not activated
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'you_cannot_elevate')))
+                :redirect('/auth/restrict');
+
+        } elseif ($this->tank_auth->is_logged_in(FALSE)) {                       // logged in, not activated
+            $is_ajax?
+                die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
+                :redirect('/auth/send_again/');
+
+        } else {
+            return true;
+        }
+        return false;
     }
 
     /**
