@@ -110,11 +110,10 @@ class Auth extends CI_Controller
                     }
                 }
             }
-            
+            exit(var_export($data, true));
             return $this->_login_form($data);
         }
     }
-
 
     /**
      * login form
