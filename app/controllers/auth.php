@@ -150,29 +150,28 @@ class Auth extends CI_Controller
                     die(json_encode(array('status'=>'success', 'type'=>'logged_in')))
                     :redirect($go_to);
 
-            } else {
-                $errors = $this->tank_auth->get_error_message();
-                if (isset($errors['banned'])) {                             
-                // banned user
-                    $is_ajax?
-                        die(json_encode(array('status'=>'error', 'type'=>'banned')))
-                        :$this->_show_message($this->lang->line('auth_message_banned').' '.$errors['banned']);
+        } else {
+            $errors = $this->tank_auth->get_error_message();
+            if (isset($errors['banned'])) {                             
+            // banned user
+                $is_ajax?
+                    die(json_encode(array('status'=>'error', 'type'=>'banned')))
+                    :$this->_show_message($this->lang->line('auth_message_banned').' '.$errors['banned']);
 
-                } elseif (isset($errors['not_activated'])) {               
-                // not activated user
-                    $is_ajax?
-                        die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
-                        :redirect('/auth/send_again/');
+            } elseif (isset($errors['not_activated'])) {               
+            // not activated user
+                $is_ajax?
+                    die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
+                    :redirect('/auth/send_again/');
 
-                } elseif ($is_ajax) {                                       
-                // fail for ajax
-                    foreach ($errors as $k => $v)   $data['errors'][$k] = $this->lang->line($v);
-                    die(json_encode(array('status'=>'error', 'type'=>'post_data_error', 'errors'=>$data['errors'])));
+            } elseif ($is_ajax) {                                       
+            // fail for ajax
+                foreach ($errors as $k => $v)   $data['errors'][$k] = $this->lang->line($v);
+                die(json_encode(array('status'=>'error', 'type'=>'post_data_error', 'errors'=>$data['errors'])));
 
-                } else {                                                    
-                // fail
-                    foreach ($errors as $k => $v)   $data['errors'][$k] = '<span class="error">'.$this->lang->line($v).'</span>';
-                }
+            } else {                                                    
+            // fail
+                foreach ($errors as $k => $v)   $data['errors'][$k] = '<span class="error">'.$this->lang->line($v).'</span>';
             }
         }
     }
