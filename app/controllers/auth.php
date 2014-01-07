@@ -221,6 +221,7 @@ class Auth extends CI_Controller
                         '',
                         $this->data['login_by_username'],
                         $this->data['login_by_email']),
+                        $go_to, $data
                     );
             }
 
