@@ -67,38 +67,15 @@ class Auth extends CI_Controller
             $data['errors'] = array();
 
             if ($this->form_validation->run()) {                                // validation ok
-                if ($this->tank_auth->login(
+                $this->_login_after(
+                        $this->tank_auth->login(
                         $this->form_validation->set_value('login'),
                         $this->form_validation->set_value('password'),
                         $this->form_validation->set_value('remember'),
                         $data['login_by_username'],
-                        $data['login_by_email'])) {         
-                        
-                    // go_to에 따라 가야할 곳을 지정함.
-                    $is_ajax?
-                        die(json_encode(array('status'=>'success', 'type'=>'logged_in')))
-                        :redirect($go_to);
-
-                } else {
-                    $errors = $this->tank_auth->get_error_message();
-                    if (isset($errors['banned'])) {                             // banned user
-                        $is_ajax?
-                            die(json_encode(array('status'=>'error', 'type'=>'banned')))
-                            :$this->_show_message($this->lang->line('auth_message_banned').' '.$errors['banned']);
-
-                    } elseif (isset($errors['not_activated'])) {               // not activated user
-                        $is_ajax?
-                            die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
-                            :redirect('/auth/send_again/');
-
-                    } elseif ($is_ajax) {                                       // fail for ajax
-                        foreach ($errors as $k => $v)   $data['errors'][$k] = $this->lang->line($v);
-                        die(json_encode(array('status'=>'error', 'type'=>'post_data_error', 'errors'=>$data['errors'])));
-
-                    } else {                                                    // fail
-                        foreach ($errors as $k => $v)   $data['errors'][$k] = '<span class="error">'.$this->lang->line($v).'</span>';
-                    }
-                }
+                        $data['login_by_email']),
+                        $go_to, $data
+                        );
             }
             
             $data['go_to'] = $go_to;
@@ -116,12 +93,14 @@ class Auth extends CI_Controller
     {
         $is_ajax = $this->input->is_ajax_request();
 
-        if ($this->tank_auth->is_logged_in()) {                                         // logged in
+        if ($this->tank_auth->is_logged_in()) {                                         
+        // logged in
             $is_ajax?
                 die(json_encode(array('status'=>'error', 'type'=>'already_logged_in')))
                 :redirect($go_to);
 
-        } elseif ($this->tank_auth->is_logged_in(FALSE)) {                       // logged in, not activated
+        } elseif ($this->tank_auth->is_logged_in(FALSE)) {                       
+        // logged in, not activated
             $is_ajax?
                 die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
                 :redirect('/auth/send_again/');
@@ -157,6 +136,48 @@ class Auth extends CI_Controller
     }
 
     /**
+     * after user login
+     *
+     * @return bool
+     */
+    function _login_after($is_success, $go_to, $data)
+    {
+        $is_ajax = $this->input->is_ajax_request();
+
+        if ($is_success) {
+                // go_to에 따라 가야할 곳을 지정함.
+                $is_ajax?
+                    die(json_encode(array('status'=>'success', 'type'=>'logged_in')))
+                    :redirect($go_to);
+
+            } else {
+                $errors = $this->tank_auth->get_error_message();
+                if (isset($errors['banned'])) {                             
+                // banned user
+                    $is_ajax?
+                        die(json_encode(array('status'=>'error', 'type'=>'banned')))
+                        :$this->_show_message($this->lang->line('auth_message_banned').' '.$errors['banned']);
+
+                } elseif (isset($errors['not_activated'])) {               
+                // not activated user
+                    $is_ajax?
+                        die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
+                        :redirect('/auth/send_again/');
+
+                } elseif ($is_ajax) {                                       
+                // fail for ajax
+                    foreach ($errors as $k => $v)   $data['errors'][$k] = $this->lang->line($v);
+                    die(json_encode(array('status'=>'error', 'type'=>'post_data_error', 'errors'=>$data['errors'])));
+
+                } else {                                                    
+                // fail
+                    foreach ($errors as $k => $v)   $data['errors'][$k] = '<span class="error">'.$this->lang->line($v).'</span>';
+                }
+            }
+        }
+    }
+
+    /**
      * elevate user for admin permission
      *
      * @return void
@@ -164,7 +185,8 @@ class Auth extends CI_Controller
     function elevate()
     {
         $is_ajax = $this->input->is_ajax_request();
-        $go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/acp'; # get url to go after login
+        $go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/acp'; 
+        # get url to go after login
 
         if ($this->_elevate_check($go_to)) {
             $this->data['login_by_username'] = ($this->config->item('login_by_username', 'tank_auth') AND
@@ -193,46 +215,13 @@ class Auth extends CI_Controller
             $data['errors'] = array();
 
             if ($this->form_validation->run()) {                                // validation ok
-                if ($this->tank_auth->login(
+                $this->_elevate_after($this->tank_auth->login(
                         $this->tank_auth->get_username(),
                         $this->form_validation->set_value('password'),
                         '',
                         $this->data['login_by_username'],
-                        $this->data['login_by_email'])) {                             // success
-                    if($this->nf->admin_elevate())
-                    {
-                        // go_to에 따라 가야할 곳을 지정함.
-                        $is_ajax?
-                            die(json_encode(array('status'=>'success', 'type'=>'elevated')))
-                            :redirect(!empty($go_to)?$go_to:'/acp');
-                    }
-                    else {
-                        // go_to에 따라 가야할 곳을 지정함.
-                        $is_ajax?
-                            die(json_encode(array('status'=>'error', 'type'=>'not_elevated')))
-                            :redirect('/acp/redirect');
-                    }
-
-                } else {
-                    $errors = $this->tank_auth->get_error_message();
-                    if (isset($errors['banned'])) {                             // banned user
-                        $is_ajax?
-                            die(json_encode(array('status'=>'error', 'type'=>'banned')))
-                            :$this->_show_message($this->lang->line('auth_message_banned').' '.$errors['banned']);
-
-                    } elseif (isset($errors['not_activated'])) {               // not activated user
-                        $is_ajax?
-                            die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
-                            :redirect('/auth/send_again/');
-
-                    } elseif ($is_ajax) {                                       // fail for ajax
-                        foreach ($errors as $k => $v)   $data['errors'][$k] = $this->lang->line($v);
-                        die(json_encode(array('status'=>'error', 'type'=>'post_data_error', 'errors'=>$data['errors'])));
-
-                    } else {                                                    // fail
-                        foreach ($errors as $k => $v)   $data['errors'][$k] = '<span class="error">'.$this->lang->line($v).'</span>';
-                    }
-                }
+                        $this->data['login_by_email']),
+                    );
             }
 
             $data['go_to'] = $go_to;
@@ -301,6 +290,62 @@ class Auth extends CI_Controller
 
         $this->layout->set_view('auth/login_elevate_form', $data)->render();
 
+    }
+
+    /**
+     * after elevate admin permission
+     *
+     * @return bool
+     */
+    function _elevate_after($is_success, $go_to, $data)
+    {
+        $is_ajax = $this->input->is_ajax_request();
+        
+        if ($this->tank_auth->login(
+                $this->tank_auth->get_username(),
+                $this->form_validation->set_value('password'),
+                '',
+                $this->data['login_by_username'],
+                $this->data['login_by_email'])) {                             
+        // success
+            if($this->nf->admin_elevate())
+            {
+                // go_to에 따라 가야할 곳을 지정함.
+                $is_ajax?
+                    die(json_encode(array('status'=>'success', 'type'=>'elevated')))
+                    :redirect(!empty($go_to)?$go_to:'/acp');
+            }
+            else {
+                // go_to에 따라 가야할 곳을 지정함.
+                $is_ajax?
+                    die(json_encode(array('status'=>'error', 'type'=>'not_elevated')))
+                    :redirect('/acp/redirect');
+            }
+
+        } else {
+            $errors = $this->tank_auth->get_error_message();
+            if (isset($errors['banned'])) {                             
+            // banned user
+                $is_ajax?
+                    die(json_encode(array('status'=>'error', 'type'=>'banned')))
+                    :$this->_show_message($this->lang->line('auth_message_banned').' '.$errors['banned']);
+
+            } elseif (isset($errors['not_activated'])) {               
+            // not activated user
+                $is_ajax?
+                    die(json_encode(array('status'=>'error', 'type'=>'not_activated')))
+                    :redirect('/auth/send_again/');
+
+            } elseif ($is_ajax) {                                       
+            // fail for ajax
+                foreach ($errors as $k => $v)   $data['errors'][$k] = $this->lang->line($v);
+                die(json_encode(array('status'=>'error', 'type'=>'post_data_error', 'errors'=>$data['errors'])));
+
+            } else {                                                    
+            // fail
+                foreach ($errors as $k => $v)   $data['errors'][$k] = '<span class="error">'.$this->lang->line($v).'</span>';
+            }
+        }
     }
 
     /*

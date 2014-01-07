@@ -17,6 +17,8 @@ class work_model extends CI_Model {
     function get_list($params=array()){
     	$params = (object)$params;
     	$default_params = (object)array(
+            'id_before'  => 0, // call by...
+            'id_after'  => 0, // call by...
             'page'      => 1, // 불러올 페이지
             'delimiter' => 24, // 한 페이지당 작품 수
             'order_by'  => 'newest', // newest, oldest
@@ -38,6 +40,11 @@ class work_model extends CI_Model {
 
         if(!empty($params->user_id))
             $this->db->where('user_id', $params->user_id);
+        if(!empty($params->id_before)   &&$params->id_before!=0)
+            $this->db->where('works.work_id <', $params->id_before);
+
+        if(!empty($params->id_after)    &&$params->id_after!=0)
+            $this->db->where('works.work_id >', $params->id_after);
         
     	switch($params->order_by){
     		case "newest":
