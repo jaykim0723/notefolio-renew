@@ -1,3 +1,14 @@
+var msg = {
+	open : function(msg, type){
+		if(typeof type=='undefined')
+			type = 'success';
+		formFeedback('', type, msg);
+	},
+	close : function(){
+
+	}
+};
+
 var site = {
 	redirect : function(url, msg){
 		if(typeof msg!=='undefined'){ // 이동된 이후에 출력할 성공 메시지가 있다면 지정
@@ -17,7 +28,7 @@ var site = {
 				&& 
 				location.href.indexOf(t.url)>-1 // 목표 url을 포함하여야 한다
 			){
-				formFeedback('', 'success', t.msg);
+				msg.open(t.msg);
 			}
 			localStorage.removeItem('flashMsg');
 		}
@@ -134,7 +145,7 @@ $(function() {
 		  	if(direction=='up')
 		  		$o.css({'position':'absolute', 'top':'20px'});
 		  	else
-		  		$o.css({'position':'fixed', 'top':'70px'});
+		  		$o.css({'position':'fixed', 'top':'80px'});
 	  	}
 	  }
 	});
@@ -215,7 +226,7 @@ var commentUtil = {
 				$o.children('.comment-block:last').remove();
 			}
 			console.log($o);
-			$('.btn-comment-prev', $work)[mode]().after($o);
+			$('.btn-comment-prev', $work)[mode]().after($o.html());
 		});
 
 	},
@@ -236,7 +247,7 @@ var commentUtil = {
 				$o.children('.comment-block:last').remove();
 			}
 			console.log($o);
-			$('.btn-comment-prev', $work)[mode]().after($o);
+			$('.btn-comment-prev', $work)[mode]().after($o.html());
 		});
 	},
 
@@ -397,26 +408,27 @@ var noteUtil = {
 		var $work = $(o).parents('.work-wrapper');
 		var work_id = $work.data('id');
 
-		$work.data('note_opened', 'y');
 
 		$btnNote = $('.btn-note', $work);
-		if($btnNote.hasClass('noted')){
+		if($work.data('noted')=='y'){
 			// 이미 좋아요를 누른 상태라면 취소한다.
 			this.cancel($work);
 			return;
 		}
-
-		$btnNote.tooltip('show');
+		$work.data('noted', 'y');
+		if($work.data('collected')=='n'){ // 취소는?
+			$btnNote.next().css('visibility','visible');
+		}
 
 		$.post(site.url+'gallery/note', {
 			work_id : work_id,
 			note : 'y'
 		}, function(responseJSON){
 			if(responseJSON.status=='done'){
-				formFeedback('', 'success', '노트되었습니다.');
+				msg.open('노트되었습니다.');
 				$btnNote.addClass('noted');
 			}else
-				formFeedback('', 'error', responseJSON.message);
+				msg.open(sponseJSON.message);
 		}, 'json');
 	},
 
@@ -425,16 +437,17 @@ var noteUtil = {
 
 		var work_id = $work.data('id');
 		$btnNote = $('.btn-note', $work);
+		$btnNote.next().css('visibility','hidden');
 
 		$.post(site.url+'gallery/note', {
 			work_id : work_id,
 			note : 'n'
 		}, function(responseJSON){
 			if(responseJSON.status=='done'){
-				formFeedback('', 'success', '노트가 취소되었습니다.');
+				msg.open('노트가 취소되었습니다.');
 				$btnNote.removeClass('noted');
 			}else
-				formFeedback('', 'error', responseJSON.message);
+				msg.open(sponseJSON.message);
 		}, 'json');
 
 	},
@@ -442,9 +455,9 @@ var noteUtil = {
 	close : function($work){
 		console.log('site.js > noteUtil > close', $work);
 
-		if($work.data('note_opened')=='n') return;
+		if($work.data('noted')=='n') return;
 		$('.note-wrapper', $work).hide(); // 추후에 다시 열릴 것을 감안하여 숨겨만 준다.
-		$work.data('note_opened', 'n');
+		$work.data('noted', 'n');
 	}
 };
 
@@ -498,10 +511,88 @@ var snsUtil = {
 };
 
 var collectUtil = {
-	add : function(){
-
+	add : function(o){
+		console.log('site.js > collectUtil > add');
+		var $work = $(o).parents('.work-wrapper');
+		var work_id = $work.data('id');
+		var $btnCollect = $('.add-collection', $work);
+		$.post(site.url+'gallery/collect', {
+			work_id : work_id,
+			collect : 'y'
+		}, function(responseJSON){
+			if(responseJSON.status=='done'){
+				msg.open('콜렉션에 추가되었습니다.');
+				$work.data('collected', 'y');
+				$btnCollect.addClass('collected');
+			}else
+				msg.open(sponseJSON.message);
+		}, 'json');
 	},
-	delete : function(){
-		
+	hide : function(o){
+		console.log('site.js > collectUtil > hide');
+
+		var $work = $(o).parents('.work-wrapper');
+		$('.add-collection', $work).css('visibility','hidden');
+	},
+	cancel : function(o){
+		console.log('site.js > collectUtil > cancel');
+
+		var $work = $(o).parents('.work-wrapper');
+		var work_id = $work.data('id');
+		var $btnCollect = $('.add-collection', $work);
+		$.post(site.url+'gallery/collect', {
+			work_id : work_id,
+			collect : 'n'
+		}, function(responseJSON){
+			if(responseJSON.status=='done'){
+				msg.open('콜렉트에서 제외되었습니다.');
+				$work.data('collected', 'n');
+				$btnCollect.removeClass('collected');
+			}else
+				msg.open(sponseJSON.message);
+		}, 'json');
+	}
+};
+
+
+
+var workInfoUtil = {
+	getRecentList : function(work_id){
+		console.log('site.js > workInfoUtil > getRecentList', work_id);
+
+		// 지금 막 불러온 것이 사이드바에서 마지막인지 확인을 해보고,
+		// 마지막이라면 리스트 불러와서 추가해주기
+		var $workRecentList = $('#work-recent-list');
+		var idBefore = $workRecentList.children('li:last').data('id');
+		$workRecentList.children('.selected').removeClass('selected');
+
+		if(idBefore==null) // 아직 불려진게 없다면
+			idBefore = work_id; // 현재 열린것 이전부터 들여오기
+
+		if(idBefore==work_id){
+			$.get(site.url+'profile/my_recent_works/'+NFview.username+'/'+idBefore, {
+			}).done(function(responseHTML){
+				$workRecentList.append(responseHTML);
+				// 현재 불려진 놈을 선택하기
+				$workRecentList.children('#work-recent-'+work_id).addClass('selected');
+			});
+		}else{
+			// 현재 불려진 놈을 선택하기
+			$workRecentList.children('#work-recent-'+work_id).addClass('selected');
+		}
+	},
+	initRecentList : function(){
+		var top = $('#work-recent-works').offset().top - $(window).scrollTop();
+		top -= $('#work-recent-works > h2').outerHeight();
+		top += 14; // ? 왜 안맞는지는 모르겠지만 일단 이렇게..
+		console.log('top', top); 
+		$('#work-recent-list').on({
+			mouseenter : function(){
+				site.scroll.lock();
+			},
+			mouseleave : function(){
+				site.scroll.unlock();
+			}
+		}).css('top', top);
 	}
 };

@@ -133,6 +133,14 @@ class work_model extends CI_Model {
             return $data;
         }
         // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
+        $data->row->noted = $data->row->collected = 'n';
+        if(USER_ID>0){
+            # 로그인한 사용자라면 이 사람이 어떻게 했는지 쿼리를 여기에서 하나 날리고 아래 값을 할당한다.
+            # do stuff
+            $data->row->noted = rand(0,9)>5 ? 'y' : 'n';
+            $data->row->collected = rand(0,9)>5 ? 'y' : 'n';
+        }
+
         $user = (object)array(
             'id'         => $data->row->id,
             'username'   => $data->row->username,
@@ -300,7 +308,38 @@ class work_model extends CI_Model {
         );
 
         $this->db->trans_start();
+        
         #do stuff;
+        
+        $this->db->trans_complete();
+
+        if(!$this->db->trans_status())
+            $data->status = 'fail';
+        return $data;
+    }
+
+
+    function collect($params=array()){
+        log_message('debug','--------- work_model > collect ( params : '.print_r(get_defined_vars(),TRUE)).')';
+        $params = (object)$params;
+        $new_params = (object)array();
+        foreach((object)array(
+            'work_id'   => 0,
+            'collect' => 'y',
+        ) as $key => $default_value){
+            $new_params->{$key} = isset($params->{$key}) ? $params->{$key} : $default_value;
+        }
+        $params = $new_params;
+
+        $data = (object)array(
+            'status' => 'done',
+            'message' => ''
+        );
+
+        $this->db->trans_start();
+        
+        #do stuff;
+        
         $this->db->trans_complete();
 
         if(!$this->db->trans_status())

@@ -10,6 +10,24 @@
 			<a href="javascript:;" class="btn btn-link btn-reply-comment">reply</a>
 			<?php endif ?>
 		</div>
+		<div class="comment-control-area-mobile visible-xs visible-sm">
+			<?php if (USER_ID!=0): ?>
+			<div class="btn-group pull-right">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<?php if (USER_ID!=0 && $row->user->user_id==USER_ID): ?>
+						<li><a href="javascript:;" class="btn btn-link btn-update-comment">modify</a></li>
+						<li><a href="javascript:;" class="btn btn-link btn-delete-comment">delete</a></li>
+						<?php endif ?>
+						<?php if (USER_ID!=0): ?>
+						<li><a href="javascript:;" class="btn btn-link btn-reply-comment">reply</a></li>
+					<?php endif ?>
+				</ul>
+			</div>			
+			<?php endif; ?>
+		</div>
 		<a class="comment-profile-area" target="_blank" href="<?php echo site_url($row->user->username); ?>">
 			<img src="<?php echo site_url('data/profiles/'.$row->user->username) ?>.jpg" alt="">
 			<i class="si si-face-medium"></i>

@@ -96,6 +96,12 @@ class Gallery extends CI_Controller {
 		$this->layout->set_json($result)->render();
 	}
 
+	function collect(){
+		$params = $this->input->post();
+		$result = $this->work_model->collect($params);
+		$this->layout->set_json($result)->render();
+	}
+
 
 
 }

@@ -34,7 +34,7 @@ body {
 }
 #footer a {
 	text-decoration: none;
-	color: #fff;
+	color: #666;
 	margin: 5px 15px;
 	text-transform:uppercase;
 }
@@ -183,28 +183,45 @@ body {
 	padding: 20px 0 0 0;
 }
 #profile-info {
-	padding-bottom: 20px;
 }
-#profile-sns-link {
+#profile-info .btn-follow {
+	margin-bottom: 20px;
+}
+#work-recent-list {
 	list-style: none;
-	padding: 0;
+	padding: 0 15px;
 	margin: 0;
+	overflow:scroll;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	top:411px;
 }
-#profile-sns-link li {
-	clear: both;
-}
-#profile-sns-link a {
-	background: #fff;
+#work-recent-list li {
 	display: block;
-	padding: 20px 0;
-	padding-left: 20px;
-	color: #999;
-	border-bottom: 2px solid #f8f8f8;
+	clear: left;
 }
-#profile-sns-link a .spi {
-	margin-right: 20px;
-	float: right;
+#work-recent-list a {
 }
+#work-recent-list img {
+	float: left;
+	width: 100px;
+}
+#work-recent-list .selected {
+	background: yellow;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* work */
 #content-block-list{
 	display: block;
@@ -331,3 +348,26 @@ li#trash-bin{
 
 
 
+
+
+
+/* comment */
+.comment-wrapper {
+}
+.comment-prev { /* more button */
+}
+.comment-block {
+}
+	.comment-control-area {
+		position: absolute;
+		display: none;
+		top: 5px;
+		right:5px;
+	}
+	.comment-inner:hover .comment-control-area {
+		display: block;
+	}
+	.comment-control-area a {
+		color: #666;
+		padding: 10px 4px;
+	}

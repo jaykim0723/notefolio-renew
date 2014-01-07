@@ -38,7 +38,7 @@ class Profile extends CI_Controller {
 
 
 	function myworks($username='', $page=1){
-		log_message('debug','--------- gallery ( params : '.print_r(get_defined_vars(),TRUE)).')';
+		log_message('debug','--------- profile.php > myworks ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->_get_user_info($username);
 
@@ -49,8 +49,28 @@ class Profile extends CI_Controller {
 		));
 		$work_list->username = $username;
 		if(!$this->input->is_ajax_request())
-			$this->layout->set_view('profile/header_view', $user->row);
+			$this->layout->set_view('profile/header_view', $user);
 		$this->layout->set_view('profile/myworks_listing_view', $work_list)->render();
+	}
+
+	/**
+	 * 작품상세의 사이드바에서 출력하기 위한 용도
+	 * @param  string  $username [description]
+	 * @param  integer $page     [description]
+	 * @return [type]            [description]
+	 */
+	function my_recent_works($username='', $id_before=''){
+		log_message('debug','--------- profile.php > my_recent_works ( params : '.print_r(get_defined_vars(),TRUE)).')';
+		
+		$user = $this->_get_user_info($username);
+
+        $this->load->model('work_model');
+		$work_list = $this->work_model->get_list(array(
+			'id_before' => $id_before,
+			'user_id' => $this->user_id
+		));
+		$work_list->username = $username;
+		$this->layout->set_view('profile/my_recent_works_listing_view', $work_list)->render();
 	}
 
 	
@@ -63,7 +83,7 @@ class Profile extends CI_Controller {
 		$user = $this->_get_user_info($username);
 		
 		if(!$this->input->is_ajax_request())
-			$this->layout->set_view('profile/header_view', $user->row);
+			$this->layout->set_view('profile/header_view', $user);
 		$this->layout->set_view('profile/about_view')->render();
 	}
 
@@ -81,7 +101,7 @@ class Profile extends CI_Controller {
 			'user_id' => $this->user_id
 		));
 		if(!$this->input->is_ajax_request())
-			$this->layout->set_view('profile/header_view', $user->row);
+			$this->layout->set_view('profile/header_view', $user);
 		$this->layout->set_view('profile/collection_listing_view', $collection_list)->render();
 	}
 
@@ -95,7 +115,7 @@ class Profile extends CI_Controller {
 		$user = $this->_get_user_info($username);
 
 		if(!$this->input->is_ajax_request())
-			$this->layout->set_view('profile/header_view', $user->row);
+			$this->layout->set_view('profile/header_view', $user);
 		$this->layout->set_view('profile/statistics_view')->render();
 	}
 
@@ -109,7 +129,7 @@ class Profile extends CI_Controller {
 		$user = $this->_get_user_info($username);
 
 		if(!$this->input->is_ajax_request())
-			$this->layout->set_view('profile/header_view', $user->row);
+			$this->layout->set_view('profile/header_view', $user);
 
 		$followings_list = $this->profile_model->get_followings_list(array(
 			'page' => $page,
@@ -124,7 +144,7 @@ class Profile extends CI_Controller {
 		$user = $this->_get_user_info($username);
 
 		if(!$this->input->is_ajax_request())
-			$this->layout->set_view('profile/header_view', $user->row);
+			$this->layout->set_view('profile/header_view', $user);
 
 		$followers_list = $this->profile_model->get_followers_list(array(
 			'page' => $page,

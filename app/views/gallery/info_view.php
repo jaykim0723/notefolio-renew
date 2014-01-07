@@ -1,20 +1,24 @@
 <?php if (!$this->input->is_ajax_request() OR $this->input->post('no_ajax')=='y'): ?>
 <script>
 	NFview = {
+		username : '<?php echo $row->user->username ?>',
 		area : 'work-info',
 		infiniteCallback : function(){
 			var $work = $('#work-list').children('.infinite-item').last();
-			commentUtil.open($work);
+			commentUtil.open($work); // 코멘트 열기
+
+			// 사이드바 불러오기
+			workInfoUtil.getRecentList($work.data('id'));
 		}
 	};
 </script>
 <div id="work-sidebar" class="hidden-xs hidden-sm">
-	<div class="container">
-		<div class="row">
+	<div class="container" style="height:100%;">
+		<div class="row" style="height:100%;">
 			<div class="col-md-9">
 				<!-- empty -->
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3" style="height:100%;">
 				<div id="work-profile-image">
 					<a id="profile-image" href="<?php echo site_url($row->user->username) ?>">
 						<img src="/data/profiles/<?php echo $row->user->username ?>.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt=""/>
@@ -22,27 +26,27 @@
 					<div id="profile-info">
 						<h2><?php echo $row->user->username ?></h2>
 						<h4>&nbsp;<?php echo @implode('·', $row->user->keywords); ?>&nbsp;</h4>
+						<div id="profile-sns-link">
+							<?php foreach ($row->user->sns as $service => $id):
+							$tmp = $this->nf->sns($service, $id);
+							?>
+							<a href="<?php echo $tmp->link  ?>" class="<?php echo $service ?>" class="btn-hover">
+								<i class="spi spi-fb"></i>
+							</a>
+							<?php endforeach ?>
+						</div>
+
 						<a href="" class="btn btn-nofol btn-follow">
 							<i class="spi spi-follow"></i>
 							Follow
 						</a>
 					</div>
-					<ul id="profile-sns-link">
-						<?php foreach ($row->user->sns as $service => $id):
-						$tmp = $this->nf->sns($service, $id);
-						?>
-						<li>
-							<a href="<?php echo $tmp->link  ?>" class="<?php echo $service ?>" class="btn-hover">
-								<i class="spi spi-fb"></i>
-								<?php echo $tmp->label ?>
-							</a>
-						</li>
-						<?php endforeach ?>
-					</ul>
 				</div>
 				<div>&nbsp;</div>
 				<div id="work-recent-works">
 					<h2 class="nofol-title">Recent Works</h2>
+					<ul id="work-recent-list">
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -55,7 +59,7 @@
 <?php endif ?>
 
 				<div id="work-list" class="work-list infinite-list">
-					<div class="work-wrapper infinite-item" id="work-<?php echo $row->work_id ?>" data-id="<?php echo $row->work_id ?>">
+					<div class="work-wrapper infinite-item" id="work-<?php echo $row->work_id ?>" data-id="<?php echo $row->work_id ?>" data-noted="<?php echo $row->noted; ?>" data-collected="<?php echo $row->collected; ?>">
 						<div class="work-small-profile visible-xs visible-sm">
 							<i class="spi spi-follow"></i>
 							<img src="/data/profiles/<?php echo $row->user->username ?>.jpg"/>
@@ -118,13 +122,20 @@
 						<div class="work-addinfo">
 							<div class="row">
 								<div class="col-xs-12 centered">
-									<a href="javascript:;" class="btn btn-nofol bg1 btn-note">
+									<a href="javascript:;" class="btn btn-nofol bg1 btn-note <?php echo $row->noted=='y' ? 'noted' : '' ?>">
 										<i class="spi spi-love2"></i>
 										좋아요(<?php echo $row->note_cnt ?>)
 									</a>
-									<div class="add-collection centered">
-										이 작품을 콜렉션하시겠습니까?
-										<a href="#3">예</a> / <a href="#3">아니오</a>
+									<div class="add-collection centered <?php echo $row->collected=='y' ? 'collected' : '' ?>">
+										<div class="collect-question">
+											이 작품을 콜렉션하시겠습니까?
+											<a href="javascript:;" onclick="collectUtil.add(this);">예</a> / <a href="javascript:;" onclick="collectUtil.hide(this);">아니오</a>
+										</div>
+										<div class="collect-collected">
+											콜렉션에 추가되었습니다.
+											<a href="javascript:;" onclick="collectUtil.cancel(this);">취소</a>
+											
+										</div>
 									</div>
 								</div>
 							</div>
@@ -137,7 +148,7 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-6">
-									ccl
+									<i class="spi spi-ccl-<?php echo $row->ccl ?>">License</i>
 								</div>
 								<div class="col-xs-6 righted">
 									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="spi spi-fb_hover">fb_hover</a>
@@ -159,10 +170,16 @@
 								</div>					
 								<div class="note-wrapper" data-id="<?php echo $row->work_id ?>">>
 									<div class="col-xs-12">
-										이 작품을 콜렉션에 담겠습니까?
-										<a href="#">예</a>
-										/
-										<a href="#">아니오</a>
+										<div class="collect-question">
+											이 작품을 콜렉션에 담겠습니까?
+											<a href="#">예</a>
+											/
+											<a href="#">아니오</a>
+										</div>
+										<div class="collect-collected">
+											콜렉션에 담았습니다.
+											<a href="">취소</a>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -186,12 +203,7 @@
 <script>
 	$(function() {
 		$('#work-info-wrapper').on('click', '.btn-delete-work', function(e){
-			var url = $(this).attr('href');
-			BootstrapDialog.confirm('Hi Apple, are you sure?', function(result){
-				if(result){
-					site.redirect(url);
-				}
-			}, 'danger');
+			workUtil.delete(this);
 			return false;
 		}).on('submit', 'form.comment-block', function(){
 			commentUtil.submitComment(this);
@@ -209,9 +221,15 @@
 			commentUtil.prev(this);
 		}).on('click', '.btn-note', function(){
 			noteUtil.open(this);
+		}).on('click', '.btn-add-collect', function(){
+			collectUtil.open(this);
+		}).on('click', '.btn-cancel-collect', function(){
+			collectUtil.close(this);
 		});
 		NFview.infiniteCallback();
-		$('.btn-note').tooltip();
+
+		workInfoUtil.initRecentList();
+
 	});
 </script>
 <?php endif ?>

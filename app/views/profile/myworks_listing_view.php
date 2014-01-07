@@ -10,7 +10,7 @@
 				<ul class="profile-thumbnail-list infinite-list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
-					<?php $this->load->view('profile/thumbnail_inc_view', $row) ?>
+					<?php $this->load->view('profile/thumbnail_inc_view', array('row'=>$row)) ?>
 					<?php endforeach ?>
 				</ul>
 				

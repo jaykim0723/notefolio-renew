@@ -1,8 +1,8 @@
-<div id="profile-header" style="background-image:url(/data/profiles/<?php echo $username ?>-bg.jpg?_=<?php echo substr($modified,-2) ?>);">
+<div id="profile-header" style="background-image:url(/data/profiles/<?php echo $row->username ?>-bg.jpg?_=<?php echo substr($row->modified,-2) ?>);">
 	<div id="profile-inner-wrapper">
 		<div id="profile-inner">
 			<div id="btn-edit-inner">
-					<?php if($this->session->userdata('username')==$username): ?>
+					<?php if($this->session->userdata('username')==$row->username): ?>
 					<div class="pull-right btn-group">
 					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 					  이너 편집
@@ -16,8 +16,8 @@
 				</div>
 			</div>	
 			<div id="profile-image">
-				<img src="/data/profiles/<?php echo $username ?>.jpg?_=<?php echo substr($modified,-2) ?>" alt=""/>
-				<?php if($this->session->userdata('username')==$username): ?>
+				<img src="/data/profiles/<?php echo $row->username ?>.jpg?_=<?php echo substr($row->modified,-2) ?>" alt=""/>
+				<?php if($this->session->userdata('username')==$row->username): ?>
 				<div id="btn-edit-profile" class="btn-group">
 					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 					  프로필사진 편집
@@ -32,12 +32,23 @@
 				<?php endif; ?>
 			</div>
 			<div id="profile-info">
-				<h2><?php echo $username ?></h2>
-				<h4>&nbsp;<?php echo @implode('·', $keywords); ?>&nbsp;</h4>
+				<h2><?php echo $row->username; ?></h2>
+				<h4>&nbsp;<?php echo @implode('·', $row->keywords); ?>&nbsp;</h4>
 			</div>
+
+			<div id="profile-sns-link">
+				<?php foreach ($row->sns as $service => $id):
+				$tmp = $this->nf->sns($service, $id);
+				?>
+				<a href="<?php echo $tmp->link  ?>" class="<?php echo $service ?>" class="btn-hover">
+					<i class="spi spi-fb"></i>
+				</a>
+				<?php endforeach ?>
+			</div>
+
 		</div>
 	</div>
-	<?php if($this->session->userdata('username')==$username): ?>
+	<?php if($this->session->userdata('username')==$row->username): ?>
 	<div id="btn-edit-cover">
 		<div class="pull-right btn-group">
 			<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -59,15 +70,15 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="pull-right nav nav-pills list-inline">
-					<li><a href="/<?php echo $username ?>/followings">Followings</a></li>
-					<li><a href="/<?php echo $username ?>/followers">Followers</a></li>
+					<li><a href="/<?php echo $row->username ?>/followings">Followings</a></li>
+					<li><a href="/<?php echo $row->username ?>/followers">Followers</a></li>
 				</ul>
 				<div class="clearfix visible-xs"></div>
 				<ul id="profile_nav" class="nav nav-pills">
-					<li id="profile_nav_"><a href="/<?php echo $username ?>">작가의 작품</a></li>
-					<li id="profile_nav_collection"><a href="/<?php echo $username ?>/collection">작가의 콜렉트</a></li>
-					<li id="profile_nav_about"><a href="/<?php echo $username ?>/about">작가소개</a></li>
-					<li id="profile_nav_statistics"><a href="/<?php echo $username ?>/statistics">통계</a></li>
+					<li id="profile_nav_"><a href="/<?php echo $row->username ?>">작가의 작품</a></li>
+					<li id="profile_nav_collection"><a href="/<?php echo $row->username ?>/collection">작가의 콜렉트</a></li>
+					<li id="profile_nav_about"><a href="/<?php echo $row->username ?>/about">작가소개</a></li>
+					<li id="profile_nav_statistics"><a href="/<?php echo $row->username ?>/statistics">통계</a></li>
 				</ul>
 				<script>
 					$('#profile_nav_<?php echo $this->uri->segment(2) ?>').addClass('active');
@@ -86,7 +97,7 @@
 		}, 1);
 	}
 
-	<?php if($this->session->userdata('username')==$username): ?>
+	<?php if($this->session->userdata('username')==$row->username): ?>
 	$(function(){
 		$('#btn-upload-face').ajaxUploader({
 			url : '/upload/profile-face'

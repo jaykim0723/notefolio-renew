@@ -9,7 +9,7 @@
 				<ul class="follow-list infinite-list mode-<?php echo $mode ?>">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
-					<?php $this->load->view('profile/follow_inc_view', $row) ?>
+					<?php $this->load->view('profile/follow_inc_view', array('row'=>$row)) ?>
 					<?php endforeach ?>
 				</ul>
 

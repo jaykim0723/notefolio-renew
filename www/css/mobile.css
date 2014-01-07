@@ -97,12 +97,11 @@ body * {
 	top:0;
 }
 #footer {
-	background: #000;
-	border-top: 1px solid silver;
+	background: rgba(255, 255, 255, 0.7);
 	width: 100%;
 	padding: 10px 0;
 	text-align: center;
-	color: #fff;
+	color: #444;
 }
 #content-wrap {
 	padding: 40px 0 70px 0;
@@ -364,6 +363,7 @@ body * {
 	.work-info h2 {
 		font-size: 17px;
 		margin-top: 0;
+		color: #666;
 	}
 	.work-info-time {
 		font-size: 12px;
@@ -429,8 +429,7 @@ body * {
 	padding: 15px 0;
 }
 
-.work-recent-works {
-}
+
 .work-contents {
 	list-style: none;
 	padding: 0;
@@ -438,6 +437,25 @@ body * {
 }
 .add-collection {
 	visibility: hidden;
+	margin-top: 5px;
+}
+.add-collection .collect-collected {
+	display: none;
+}
+.add-collection.collected {
+	visibility: visible;
+}
+.add-collection.collected .collect-collected {
+	display: block;
+}
+.add-collection.collected .collect-question {
+	display: none;
+}
+.btn-note {
+	
+}
+.btn-note.noted {
+	background: orange;
 }
 .block-image img {
 	width: 100%;
@@ -480,6 +498,11 @@ body * {
 		height: 1px;
 	}
 }
+@media (max-width:767px) {
+	.work-contents > .block-text {
+		padding: 10px;
+	}
+}
 
 
 /* comment */
@@ -494,7 +517,9 @@ body * {
 	float: left;
 	width: 100%;
 	clear: both;
-	outline: 1px solid silver;
+	position: relative;
+	border-top: 1px solid #eee;
+	padding: 10px 0 0 0;
 }
 	.comment-profile-area {
 		float: left;
@@ -522,18 +547,35 @@ body * {
 		background: #f8f8f8;
 		margin-left: 20px;
 	}
-	.comment-action-area {
-		float: right;
+	.comment-control-area-mobile {
+		position: absolute;
+		top: 0;
+		right: 0;
 	}
-	.comment-control-area {
-		float: right;
+	.comment-control-area-mobile .btn-group > .btn-default {
+		border: 0;
 	}
 	.comment-replies {
-		margin-left: 70px;
+		margin-left: 0;
+		margin-top: 10px;
+	}
+	.comment-replies > .comment-block {
+		padding-left: 70px;
+		padding-bottom: 10px;
 	}
 	.comment-replies .btn-reply-comment { /* 2차 댓글은 댓글을 더이상 달 수 없음 */
 		display: none;
 	}
+
+	.comment-action-area {
+		float: right;
+	}
+
+@media (max-width:991px) {
+	.comment-control-area {
+		display: none;
+	}
+}
 
 
 /* note */
@@ -841,6 +883,15 @@ p.desc {
 		width: 400px;
 		top: 50px;
 	}
+}
+
+#profile-sns-link {
+	text-align:center;
+	margin: 5px 0px 15px 0px;
+}
+#profile-sns-link a {
+}
+#profile-sns-link a .spi {
 }
 
 
