@@ -54,6 +54,11 @@ body * {
 	-o-transition: all 0.3s ease;	
 	transition: all 0.3s ease;	
 }
+.btn-follow {
+}
+.btn-follow.activated {
+	background: orange;
+}
 @media (min-width:768px) {
 	.btn-nofol:hover {
 		opacity: 0.5;

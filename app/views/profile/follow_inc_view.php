@@ -14,7 +14,7 @@
 		<h3><?php echo $row->username; ?></h3>
 		<p><?php echo @implode(', ', $row->keywords); ?></p>
 		<button data-id="<?php echo $row->user_id ?>" class="btn btn-follow btn-nofol btn-hover <?php echo $row->is_follow=='y'?'activated' : '' ?>">
-			<i class="spi spi-alarm"></i>
+			<i class="spi spi-follow"></i>
 			<span>Follow<?php echo $row->is_follow=='y'?'ing' : '' ?></span>
 		</button>
 	</div>

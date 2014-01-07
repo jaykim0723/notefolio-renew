@@ -110,13 +110,21 @@ var site = {
         	}
        	});
        	// use $.when(site.loadHTML('url')).then(function(resp){ });
-	}
+	},
+	requireLogin : function(){
+		BootstrapDialog.confirm('회원만이 이용가능한 기능입니다. 지금 로그인 하시겠습니까?', function(result){
+            if(result) {
+                site.redirect(site.url+'auth/login?go_to='+location.href);
+            }
+        });
+   	}
 };
 site.checkFlashMsg(); // 페이지가 전환된 이후에 메시지를 표시할 것이 있는지 검사
 
 
 
 
+/* live binding */
 $(window).on('beforeunload', function(){
 	localStorage.setItem('prevPage', JSON.stringify({
 		top : $(window).scrollTop(),
@@ -124,6 +132,21 @@ $(window).on('beforeunload', function(){
 	}));
 });
 site.prevPage = empty(localStorage.getItem('prevPage')) ? {top:0, url:''} : JSON.parse(localStorage.getItem('prevPage'));
+$(document).on('click', '.btn-follow', function(){
+
+	if(site.user_id==0){
+		return site.requireLogin();
+	}
+	var $o = $(this);
+	var data = {
+		user_id : $o.data('id'),
+		follow : $o.hasClass('activated') ? 'n' : 'y'
+	};
+	$.post(site.url+'profile/follow_action', data, function(d){
+		console.log($o, d);
+		$o[(d.is_follow == 'y' ? 'add' : 'remove')+'Class']('activated').find('span').html(d.is_follow == 'y' ? 'Following' : 'Follow');
+	}, 'json');
+});
 
 
 $(function() {
@@ -492,6 +515,13 @@ var snsUtil = {
 		console.log('site.js > snsUtil > facebook');
 		var workInfo = this.getInfo(o);
 		this.newPop('http://www.facebook.com/sharer.php?s=100&p[url]=' + workInfo.url + '&p[images][0]=' + workInfo.cover + '&p[title]=' + workInfo.title + '&p[summary]=' + workInfo.summary, 510, 368);
+	},
+
+	kakaotalk : function(){
+		console.log('site.js > snsUtil > kakaotalk');
+
+		// 정책적으로 추가가 필요하다면 추가할 수 있음.
+		// https://github.com/kakao/kakaolink-web
 	},
 
 	pinterest : function(){

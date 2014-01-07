@@ -19,19 +19,5 @@
 		</div>
 	</div>
 </section>
-<script>
-	$(function(){
-		$(document).on('click', '.btn-follow', function(){
-			var $o = $(this);
-			var data = {
-				user_id : $o.data('id'),
-				follow : $o.hasClass('activated') ? 'n' : 'y'
-			};
-			$.post(site.url+'profile/follow_action', data, function(d){
-				console.log($o, d);
-				$o[(d.is_follow == 'y' ? 'add' : 'remove')+'Class']('activated').find('span').html(d.is_follow == 'y' ? 'Following' : 'Follow');
-			}, 'json');
-		});
-	})
-</script>
+
 <?php endif; ?>

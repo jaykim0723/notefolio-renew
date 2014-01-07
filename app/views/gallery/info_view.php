@@ -36,9 +36,9 @@
 							<?php endforeach ?>
 						</div>
 
-						<a href="" class="btn btn-nofol btn-follow">
+						<a href="javascript:;" data-id="<?php echo $row->user_id ?>" class="btn btn-follow btn-nofol btn-hover <?php echo $row->is_follow=='y'?'activated' : '' ?>">
 							<i class="spi spi-follow"></i>
-							Follow
+							<span>Follow<?php echo $row->is_follow=='y'?'ing' : '' ?></span>
 						</a>
 					</div>
 				</div>
@@ -153,6 +153,7 @@
 								<div class="col-xs-6 righted">
 									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="spi spi-fb_hover">fb_hover</a>
 									<a href="javascript:;" onclick="snsUtil.facebook(this);" class="spi spi-fb_hover">fb_hover</a>
+									<!-- <a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="spi spi-fb_hover visible-xs visible-sm">kakaotalk</a> -->
 								</div>
 							</div>
 						</div>
