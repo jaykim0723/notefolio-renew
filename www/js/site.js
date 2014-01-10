@@ -526,12 +526,14 @@ var snsUtil = {
 
 	pinterest : function(){
 		console.log('site.js > snsUtil > pinterest');
-
+		var workInfo = this.getInfo(o);
+		this.newPop('http://pinterest.com/pin/create/button/?url='+workInfo.url+'&media='+workInfo.cover+'&description='+workInfo.summary, 510, 368);
 	},
 
 	tumblr : function(){
 		console.log('site.js > snsUtil > tumblr');
-
+		var workInfo = this.getInfo(o);
+		this.newPop('http://www.tumblr.com/share?s=&t='+workInfo.title+'&u='+workInfo.url+'&v=3', 510, 368);
 	},
 
 	path : function(){

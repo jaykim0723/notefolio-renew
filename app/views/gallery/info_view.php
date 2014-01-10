@@ -153,6 +153,8 @@
 								<div class="col-xs-6 righted">
 									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="spi spi-fb_hover">fb_hover</a>
 									<a href="javascript:;" onclick="snsUtil.facebook(this);" class="spi spi-fb_hover">fb_hover</a>
+									<a href="javascript:;" onclick="snsUtil.pinterest(this);" class="spi spi-fb_hover">fb_hover</a>
+									<a href="javascript:;" onclick="snsUtil.tumblr(this);" class="spi spi-fb_hover">fb_hover</a>
 									<!-- <a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="spi spi-fb_hover visible-xs visible-sm">kakaotalk</a> -->
 								</div>
 							</div>
