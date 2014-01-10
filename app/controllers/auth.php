@@ -423,11 +423,10 @@ class Auth extends CI_Controller
                 'get_profile'=> true,
                 'get_sns_fb'=> true
             ));
-        var_export($user);
-        exit();
+        
         $allowed_user_key = array('id', 'username', 'realname', 'gender');
 
-        foreach($user as $key=>$val){
+        foreach($user->row as $key=>$val){
             if(in_array($key, $allowed_user_key))
                 $data[$key] = $val;
         }
