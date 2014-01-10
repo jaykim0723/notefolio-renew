@@ -395,12 +395,39 @@ class Auth extends CI_Controller
 		$data = $this->following_model->get_recommend_new($this->input->get('categories'), 24);
 		$this->load->view('profile/setting/recommend_block_view', array('row' => $data));
 	}
+
+
+    /**
+     * login form
+     *
+     * @return function
+     */
 	function setting()
 	{
         $data = array();
         $this->layout->set_view('auth/setting_form_view', $data)->render(); 
+
+        return $this->_setting_form($data);
 		//$this->_form('setting');
 	}
+
+    /**
+     * login form
+     *
+     * @return void
+     */
+    function _setting_form($data=array()){
+        $user = $this->user_model->get_info(array('id'=> USER_ID, 'get_profile'=> true, 'get_sns_fb'=> true));
+
+        $allowed_user_key = array('id', 'username', 'realname', 'gender');
+
+        foreach($user as $key=>$val){
+            if(in_array($key, $allowed_user_key))
+                $data[$key] => $val;
+        }
+
+        $this->layout->set_view('auth/setting_form_view', $data)->render(); 
+    }
 
 	/**
 	 * next version of register
@@ -798,7 +825,7 @@ log_message('debug', ' -------- resurt ----------'.json_encode($result));
 			}
 		  
 		}
-        $this->layout->set_view('auth/'.$method.'_form_view', $data)->render();		
+        $this->layout->set_view('auth/'.$method.'_form_view', $data)->render();	*	
 	}
 
     /*
