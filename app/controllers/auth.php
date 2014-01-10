@@ -825,7 +825,7 @@ log_message('debug', ' -------- resurt ----------'.json_encode($result));
 			}
 		  
 		}
-        $this->layout->set_view('auth/'.$method.'_form_view', $data)->render();	*	
+        $this->layout->set_view('auth/'.$method.'_form_view', $data)->render();	
 	}
 
     /*
