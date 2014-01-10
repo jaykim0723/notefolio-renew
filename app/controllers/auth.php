@@ -418,8 +418,13 @@ class Auth extends CI_Controller
      * @return void
      */
     function _setting_form($data=array()){
-        $user = $this->user_model->get_info(array('id'=> USER_ID, 'get_profile'=> true, 'get_sns_fb'=> true));
+        $user = $this->user_model->get_info(array(
+                'id'=> USER_ID,
+                'get_profile'=> true,
+                'get_sns_fb'=> true
+            ));
         var_export($user);
+        exit();
         $allowed_user_key = array('id', 'username', 'realname', 'gender');
 
         foreach($user as $key=>$val){
