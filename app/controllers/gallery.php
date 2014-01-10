@@ -88,8 +88,6 @@ class Gallery extends CI_Controller {
 
 
 
-
-
 	function note(){
 		$params = $this->input->post();
 		$result = $this->work_model->note($params);

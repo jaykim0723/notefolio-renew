@@ -397,7 +397,9 @@ class Auth extends CI_Controller
 	}
 	function setting()
 	{
-		$this->_form('setting');
+        $data = new Object();
+        $this->layout->set_view('auth/'.$method.'_form_view', $data)->render(); 
+		//$this->_form('setting');
 	}
 
 	/**
