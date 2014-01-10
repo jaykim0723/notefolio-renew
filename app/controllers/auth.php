@@ -15,6 +15,7 @@ class Auth extends CI_Controller
 		$this->load->library('fbsdk');
 		$this->load->library('user_agent');
         $this->nf->_member_check(array('setting','change_password','change_email','unregister'));
+        $this->load->model('user_model');
 
         $this->go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/'; # get url to go after login
 	}
