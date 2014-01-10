@@ -208,6 +208,8 @@ class fbauth extends CI_Controller
 
         }
 
+        $this->_window_opner_reload();
+
         return $this->_window_close();
     }
 
@@ -238,6 +240,9 @@ class fbauth extends CI_Controller
             else
                 $this->_error('not_found');
         }
+        
+        $this->_window_opner_reload();
+
         return $this->_window_close();
 
     }
