@@ -423,7 +423,7 @@ class Auth extends CI_Controller
 
         foreach($user as $key=>$val){
             if(in_array($key, $allowed_user_key))
-                $data[$key] => $val;
+                $data[$key] = $val;
         }
 
         $this->layout->set_view('auth/setting_form_view', $data)->render(); 
