@@ -170,6 +170,18 @@ body {
 
 
 /* work */
+.work-info-icons > div br {
+	display: block;
+}
+.work-info-icons > div {
+	font-size: 16px;
+	padding: 30px 0;
+}	
+.work-info-icons .spi {
+	top:0;
+	margin-right: 0;
+}
+
 /* sidebar */
 #work-sidebar {
 	position:absolute;
@@ -188,13 +200,14 @@ body {
 	margin-bottom: 20px;
 }
 #work-recent-list {
+	width: 100%;
 	list-style: none;
 	padding: 0 15px;
 	margin: 0;
+	margin-left: -15px;
 	overflow:scroll;
 	position: absolute;
-	right: 0;
-	bottom: 0;
+	bottom: 40px;
 	top:411px;
 }
 #work-recent-list li {
@@ -202,10 +215,15 @@ body {
 	clear: left;
 }
 #work-recent-list a {
+	color: #444;
+	font-size: 14px;
+	position: relative;
+	display: block;
 }
 #work-recent-list img {
 	float: left;
 	width: 100px;
+	height: 100px;
 }
 #work-recent-list .selected {
 	background: yellow;

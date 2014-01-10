@@ -311,6 +311,7 @@ var commentUtil = {
 		var $f = commentUtil.formHTML.clone();
 		$f.find('textarea').val(content);
 		$f.data('mode','update');
+		$f.removeClass('create');
 		$f.data('comment_id', $commentBlock.data('id'));
 		$f.insertAfter($commentInner);
 		$commentInner.hide().next().find('textarea').focus();
@@ -337,6 +338,7 @@ var commentUtil = {
 		var $f = commentUtil.formHTML.clone();
 		$f.find('textarea').val('');
 		$f.data('mode','reply');
+		$f.removeClass('create');
 		$f.data('parent_id', $commentBlock.data('id'));
 		$f.appendTo($commentReplies);
 		$commentReplies.find('textarea:last').focus();
@@ -486,19 +488,19 @@ var noteUtil = {
 
 var snsUtil = {
 	newPop : function(url, w, h){
-		encodeURI(url.split("#").join("%23"));
+		url = url.split("#").join("%23");
 		var top = ($(window).height() - h) / 2;	
         var left = ($(window).width() - w) / 2;		
 		var options = 'toolbar=no, menubar=no, location=no, scrollbar=yes, status=no, width='+w+', height='+h+', top=' + top + ', left=' + left;
-		window.open(encodeURI(url), '', options);
+		window.open(url, '', options);
 	},
 
 	getInfo : function(o){
 		var $work = $(o).parents('.work-wrapper');
 		var workInfo = {};
 		workInfo.id = $work.data('id');
-		workInfo.url = $('.work-url', $work).text();
-		workInfo.title = $('.work-title', $work).text();
+		workInfo.url = encodeURIComponent($('.work-url', $work).text());
+		workInfo.title = encodeURIComponent($('.work-title', $work).text());
 		workInfo.cover = '/data/covers/'+workInfo.cover+'-t2.jpg';
 		workInfo.summary = $.trim($('.work-contents', $work).text().substr(0,100));
 		console.log('workInfo', workInfo);

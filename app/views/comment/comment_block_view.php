@@ -25,7 +25,7 @@
 						<li><a href="javascript:;" class="btn btn-link btn-reply-comment">reply</a></li>
 					<?php endif ?>
 				</ul>
-			</div>			
+			</div>
 			<?php endif; ?>
 		</div>
 		<a class="comment-profile-area" target="_blank" href="<?php echo site_url($row->user->username); ?>">

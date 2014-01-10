@@ -5,7 +5,7 @@
 					<?php if($this->session->userdata('username')==$row->username): ?>
 					<div class="pull-right btn-group">
 					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-					  이너 편집
+					  <span class="text">이너 편집</span>
 					  <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
@@ -20,7 +20,7 @@
 				<?php if($this->session->userdata('username')==$row->username): ?>
 				<div id="btn-edit-profile" class="btn-group">
 					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-					  프로필사진 편집
+					  <span class="text">프로필사진 편집</span>
 					  <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
@@ -52,7 +52,7 @@
 	<div id="btn-edit-cover">
 		<div class="pull-right btn-group">
 			<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-			  커버 편집
+			  <span class="text">커버 편집</span>
 			  <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
@@ -70,15 +70,31 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="pull-right nav nav-pills list-inline">
-					<li><a href="/<?php echo $row->username ?>/followings">Followings</a></li>
-					<li><a href="/<?php echo $row->username ?>/followers">Followers</a></li>
+					<li><a href="/<?php echo $row->username ?>/followings">23 Followings</a></li>
+					<li><a href="/<?php echo $row->username ?>/followers">29 Followers</a></li>
 				</ul>
 				<div class="clearfix visible-xs"></div>
-				<ul id="profile_nav" class="nav nav-pills">
-					<li id="profile_nav_"><a href="/<?php echo $row->username ?>">작가의 작품</a></li>
-					<li id="profile_nav_collection"><a href="/<?php echo $row->username ?>/collection">작가의 콜렉트</a></li>
-					<li id="profile_nav_about"><a href="/<?php echo $row->username ?>/about">작가소개</a></li>
-					<li id="profile_nav_statistics"><a href="/<?php echo $row->username ?>/statistics">통계</a></li>
+				<ul id="profile-nav" class="nav nav-pills">
+					<li id="profile_nav_">
+						<a href="/<?php echo $row->username ?>">
+							<i class="spi spi-check">check</i><span class="text"> Works</span><span class="number">234</span>
+						</a>
+					</li>
+					<li id="profile_nav_collection">
+						<a href="/<?php echo $row->username ?>/collection">
+							<i class="spi spi-check">check</i><span class="text"> Collect</span><span class="number">22</span>
+						</a>
+					</li>
+					<li id="profile_nav_about">
+						<a href="/<?php echo $row->username ?>/about">
+							<i class="spi spi-check">check</i><span class="text"> About</span><span class="number">42</span>
+						</a>
+					</li>
+					<li id="profile_nav_statistics">
+						<a href="/<?php echo $row->username ?>/statistics">
+							<i class="spi spi-check">check</i><span class="text"> Statistics</span><span class="number">234</span>
+						</a>
+					</li>
 				</ul>
 				<script>
 					$('#profile_nav_<?php echo $this->uri->segment(2) ?>').addClass('active');

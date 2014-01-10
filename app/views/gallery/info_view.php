@@ -60,12 +60,11 @@
 
 				<div id="work-list" class="work-list infinite-list">
 					<div class="work-wrapper infinite-item" id="work-<?php echo $row->work_id ?>" data-id="<?php echo $row->work_id ?>" data-noted="<?php echo $row->noted; ?>" data-collected="<?php echo $row->collected; ?>">
-						<div class="work-small-profile visible-xs visible-sm">
-							<i class="spi spi-follow"></i>
+						<div class="work-small-profile bg1 visible-xs visible-sm">
 							<img src="/data/profiles/<?php echo $row->user->username ?>.jpg"/>
 							<h2><?php echo $row->user->username ?></h2>
-							<div class="work-url" style="display:none;"><?php echo site_url($row->user->username.'/'.$row->work_id); ?></div>
 							<span><?php echo @implode(', ', $row->user->keywords); ?></span>
+							<div class="work-url" style="display:none;"><?php echo site_url($row->user->username.'/'.$row->work_id); ?></div>
 						</div>
 						<div class="work-info">
 							<div class="row">

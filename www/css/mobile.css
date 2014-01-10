@@ -399,18 +399,12 @@ body * {
 	.work-info-icons > div br {
 		display: none;
 	}
-@media (min-width:992px) {
-	.work-info-icons > div br {
-		display: block;
-	}
-	.work-info-icons > div {
-		font-size: 16px;
-		padding: 30px 0;
+
+@media (max-width:991px) {
+	#work-list .work-info-icons > div {
+		background: #fff;
+		color: #444;
 	}	
-	.work-info-icons .spi {
-		top:0;
-		margin-right: 0;
-	}
 }
 
 
@@ -526,6 +520,12 @@ body * {
 	border-top: 1px solid #eee;
 	padding: 10px 0 0 0;
 }
+form.comment-block.create .btn-cancel-comment {
+	display: none;
+}
+form.comment-block.create textarea {
+	right: 60px;
+}
 	.comment-profile-area {
 		float: left;
 		display: block;
@@ -550,7 +550,9 @@ body * {
 	}
 	textarea.comment-textarea {
 		background: #f8f8f8;
-		margin-left: 20px;
+		position: absolute;
+		left: 0;
+		right: 100px;
 	}
 	.comment-control-area-mobile {
 		position: absolute;
@@ -624,7 +626,6 @@ html.auth body {
 /* info */
 .work-small-profile {
 	background: #d9516a;
-	color:#fff;
 	padding: 20px 10px;
 }
 .work-small-profile .spi {
@@ -807,19 +808,16 @@ p.desc {
 	top: 10px;
 	right: 10px;
 }
-#profile-header:hover #btn-edit-cover {
-	display: block;
-}
 
 
 #profile-inner-wrapper {
 	position: relative;
-	width: 86%;
-	top: 40px;
+	width: 100%;
+	top: 0;
 	background-color: rgba(255,0,0,0.5);
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4cff0000', endColorstr='#4cff0000'); /* IE shit */
-	height: 300px;
-	margin: 10px auto 10px auto;
+	height: 400px;
+	margin: 0 auto;
 }
 #profile-inner {
 	position: relative;
@@ -830,9 +828,6 @@ p.desc {
 	position: absolute;
 	top: 10px;
 	right: 10px;
-}
-#profile-inner:hover #btn-edit-inner {
-	display: block;
 }
 
 #profile-image {
@@ -857,16 +852,12 @@ p.desc {
 		height: 129px;
 	}
 }
-
 #profile-image #btn-edit-profile {
 	display: none;
 	position: absolute;
 	top:45%;
 	left:50%;
 	margin-left: -50px;
-}
-#profile-image:hover #btn-edit-profile {
-	display: block;
 }
 #profile-info {
 	text-align: center;
@@ -880,13 +871,21 @@ p.desc {
 	font-size: 13px;
 	font-weight: normal;
 }
-@media (min-width:600px) {
+@media (min-width:481px) {
 	#profile-header {
 		height: 400px;
 	}
 	#profile-inner-wrapper {
 		width: 400px;
 		top: 50px;
+		height: 350px;
+	}
+}
+@media (min-width:992px) {
+	#profile-header:hover #btn-edit-cover,
+	#profile-inner:hover #btn-edit-inner,
+	#profile-image:hover #btn-edit-profile {
+		display: block;
 	}
 }
 
@@ -898,8 +897,36 @@ p.desc {
 }
 #profile-sns-link a .spi {
 }
+@media (max-width:991px) {
+	#profile-header #btn-edit-cover,
+	#profile-image #btn-edit-profile {
+		display: block;
+		margin-left: -5px;
+	}
+	#profile-header #btn-edit-cover .text,
+	#profile-image #btn-edit-profile .text {
+		display: none;
+	}
+}
 
 
+#profile-nav {
+	
+} 
+#profile-nav .number {
+	display: none;
+} 
+@media (max-width:480px) {
+	#profile-nav .number {
+		display: inline-block;
+	} 
+	#profile-nav .text {
+		display: none;
+	} 
+	#profile-nav li {
+		width: 24%;
+	}
+}
 
 
 .profile-thumbnail-list {
@@ -986,4 +1013,13 @@ p.desc {
 .bg4 {
 	background: #86d6e2;
 	color: #fff;
+}
+
+.ellipsis {
+	white-space:nowrap;
+	text-overflow:ellipsis;          /* IE, Safari */
+	-o-text-overflow: ellipsis;     /* Opera under 10.7 */
+	overflow:hidden;               /* "overflow" value must be different from "visible" */
+	-moz-binding: url('ellipsis.xml#ellipsis');
+	text-overflow:ellipsis;	
 }
