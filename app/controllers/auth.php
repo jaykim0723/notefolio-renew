@@ -423,7 +423,14 @@ class Auth extends CI_Controller
                 'get_sns_fb'=> true
             ));
 
-        $allowed_user_key = array('id', 'username', 'realname', 'email', 'gender');
+        $allowed_user_key = array(
+                'id',
+                'username',
+                'realname',
+                'email',
+                'gender',
+                'birth'
+            );
 
         foreach($user->row as $key=>$val){
             if(in_array($key, $allowed_user_key))
