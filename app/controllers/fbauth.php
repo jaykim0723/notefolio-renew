@@ -208,7 +208,7 @@ class fbauth extends CI_Controller
 
         }
 
-        $this->_window_opner_reload();
+        $this->_window_opener_reload();
 
         return $this->_window_close();
     }
@@ -241,7 +241,7 @@ class fbauth extends CI_Controller
                 $this->_error('not_found');
         }
         
-        $this->_window_opner_reload();
+        $this->_window_opener_reload();
 
         return $this->_window_close();
 
