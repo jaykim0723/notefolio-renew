@@ -429,7 +429,8 @@ class Auth extends CI_Controller
                 'realname',
                 'email',
                 'gender',
-                'birth'
+                'birth',
+                'fb_num_id',
             );
 
         foreach($user->row as $key=>$val){
