@@ -406,7 +406,6 @@ class Auth extends CI_Controller
 	function setting()
 	{
         $data = array();
-        $this->layout->set_view('auth/setting_form_view', $data)->render(); 
 
         return $this->_setting_form($data);
 		//$this->_form('setting');
@@ -423,7 +422,7 @@ class Auth extends CI_Controller
                 'get_profile'=> true,
                 'get_sns_fb'=> true
             ));
-        
+
         $allowed_user_key = array('id', 'username', 'realname', 'gender');
 
         foreach($user->row as $key=>$val){
