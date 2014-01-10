@@ -430,6 +430,7 @@ class Auth extends CI_Controller
                 'email',
                 'gender',
                 'birth',
+                'mailing',
                 'fb_num_id',
             );
 
