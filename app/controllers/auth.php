@@ -433,10 +433,17 @@ class Auth extends CI_Controller
                 'mailing',
                 'fb_num_id',
             );
+        $allowed_user_key_fb = array(
+                'post_work',
+                'post_comment',
+                'post_note',
+            );
 
         foreach($user->row as $key=>$val){
             if(in_array($key, $allowed_user_key))
                 $data[$key] = $val;
+            else if(in_array($key, $allowed_user_key_fb))
+                $data['fb_'.$key] = $val;
         }
 
         $this->layout->set_view('auth/setting_form_view', $data)->render(); 
