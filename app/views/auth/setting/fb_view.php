@@ -52,6 +52,10 @@
     <script>
         $(function(){
             $('.btn-fbconnect').on('click', function() {
+                var fb_diag = window.open('<?=$ci->config->item('base_url')?>/fbauth/link','fb_diag','width=600,height=300,scrollbars=yes,resizable=no');
+                //fb_diag.focus();
+                //msg.error('에러가 발생하였습니다.');
+<?php /* ?>
                 var post_data = {action:"unlink"};
                 
                 $.post('/auth/fb/set_action', post_data, function(d){
@@ -60,6 +64,7 @@
                     else
                         msg.error('에러가 발생하였습니다.');
                 });
+<?php */ ?>
             });
             
             $('.fb_button').each(function(){                                            // 각 체크박스 버튼마다
@@ -98,7 +103,7 @@
     <script>
         $(function(){
             $('.btn-fbconnect').on('click', function() {
-                var fb_diag = window.open('<?=$ci->config->item('base_url')?>auth/fb/link','fb_diag','width=600,height=300,scrollbars=yes,resizable=no');
+                var fb_diag = window.open('<?=$ci->config->item('base_url')?>/fbauth/link','fb_diag','width=600,height=300,scrollbars=yes,resizable=no');
                 fb_diag.focus();
                 //msg.error('에러가 발생하였습니다.');
             });
