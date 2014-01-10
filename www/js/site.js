@@ -517,26 +517,26 @@ var snsUtil = {
 		this.newPop('http://www.facebook.com/sharer.php?s=100&p[url]=' + workInfo.url + '&p[images][0]=' + workInfo.cover + '&p[title]=' + workInfo.title + '&p[summary]=' + workInfo.summary, 510, 368);
 	},
 
-	kakaotalk : function(){
+	kakaotalk : function(o){
 		console.log('site.js > snsUtil > kakaotalk');
 
 		// 정책적으로 추가가 필요하다면 추가할 수 있음.
 		// https://github.com/kakao/kakaolink-web
 	},
 
-	pinterest : function(){
+	pinterest : function(o){
 		console.log('site.js > snsUtil > pinterest');
 		var workInfo = this.getInfo(o);
 		this.newPop('http://pinterest.com/pin/create/button/?url='+workInfo.url+'&media='+workInfo.cover+'&description='+workInfo.summary, 510, 368);
 	},
 
-	tumblr : function(){
+	tumblr : function(o){
 		console.log('site.js > snsUtil > tumblr');
 		var workInfo = this.getInfo(o);
 		this.newPop('http://www.tumblr.com/share?s=&t='+workInfo.title+'&u='+workInfo.url+'&v=3', 510, 368);
 	},
 
-	path : function(){
+	path : function(o){
 		console.log('site.js > snsUtil > path');
 		
 	}
