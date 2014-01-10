@@ -2,7 +2,7 @@
 <fieldset id='auth_facebook' <?php echo $this->uri->segment(2) == 'setting' ? 'style="margin-bottom:30px;"' : ''?>>
     <legend>페이스북 연동</legend>
 <?php
-// if ($fb_num_id&&$fb_num_id>0){
+ if ($fb_num_id&&$fb_num_id>0){
 ?>    
     <div class="row-fluid">
         <div class="span12">
@@ -57,7 +57,7 @@
                 //msg.error('에러가 발생하였습니다.');
 <?php /* ?>
                 var post_data = {action:"unlink"};
-                
+
                 $.post('/auth/fb/set_action', post_data, function(d){
                     if(d=='TRUE')
                         window.location.reload();
@@ -85,7 +85,7 @@
         });
     </script>
 <?php
-// } else {
+ } else {
 ?>      
     <div class="row-fluid">
         <div class="span12">
@@ -110,7 +110,7 @@
         });
     </script>
 <?php
-// }
+ }
 ?>
 </fieldset>
 
