@@ -113,7 +113,7 @@ html.mm-blocking #mm-blocker {
 .mm-menu .mm-list {
   padding: 20px 0; }
 .mm-menu > .mm-list {
-  padding: 20px 0 40px 0; }
+  padding: 0px 0 40px 0; }
 
 .mm-panel > .mm-list {
   margin-left: -20px;

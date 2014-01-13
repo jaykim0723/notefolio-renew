@@ -187,8 +187,9 @@ var workUtil = {
 			return output;
 		},
 		removeBlock: function(target){
-    		$(target).fadeOut(100);
-    		$(target).remove();
+    		$(target).fadeOut(100, function(){
+	    		$(this).remove();
+    		});
 		},
 		createUploader:function(elem, url, data){
 		  return $(elem).dropzone({

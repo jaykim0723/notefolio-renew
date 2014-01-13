@@ -95,6 +95,8 @@
 				<a href="/<?php echo $this->session->userdata('username') ?>">
 					<img src="http://notefolio.net/profiles/147?h=1385655105" alt="">
 				</a>
+				<?php echo $this->session->userdata('username') ?>
+				
 			</li>
 			<li>
 				<a href="/feed/listing">
