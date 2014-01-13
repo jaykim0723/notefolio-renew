@@ -43,9 +43,7 @@ body {
 	text-transform:uppercase;
 }
 
-#header .btn-nofol {
-	border-width:0;
-}
+
 
 
 
@@ -160,7 +158,18 @@ body {
 	color: #fff;
 	font-size: 18px;
 }
-
+#main-hot-creators a .si-face-medium_point,
+#main-hot-creators a .spi-next_white {
+	display: none;
+}
+#main-hot-creators a:hover .si-face-medium_point,
+#main-hot-creators a:hover .spi-next_white {
+	display: block;
+}
+#main-hot-creators a:hover .si-face-medium,
+#main-hot-creators a:hover .spi-next {
+	display: none;
+}
 #main-hot-creators a:hover {
 	background: #2ac5c6;
 }

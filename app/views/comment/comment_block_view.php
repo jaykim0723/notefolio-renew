@@ -3,11 +3,11 @@
 	<div class="comment-inner">
 		<div class="comment-control-area">
 			<?php if (USER_ID!=0 && $row->user->user_id==USER_ID): ?>
-			<a href="javascript:;" class="btn btn-link btn-update-comment">modify</a>
-			<a href="javascript:;" class="btn btn-link btn-delete-comment">delete</a>
+			<a href="javascript:;" class="btn btn-nofol btn-no-border btn-update-comment"><i class="spi spi-edit">edit</i></a>
+			<a href="javascript:;" class="btn btn-nofol btn-no-border btn-delete-comment"><i class="spi spi-delete">delete</i></a>
 			<?php endif ?>
 			<?php if (USER_ID!=0): ?>
-			<a href="javascript:;" class="btn btn-link btn-reply-comment">reply</a>
+			<a href="javascript:;" class="btn btn-nofol btn-no-border btn-reply-comment"><i class="spi spi-reply">reply</i></a>
 			<?php endif ?>
 		</div>
 		<div class="comment-control-area-mobile visible-xs visible-sm">
@@ -18,11 +18,11 @@
 				</button>
 				<ul class="dropdown-menu">
 					<?php if (USER_ID!=0 && $row->user->user_id==USER_ID): ?>
-						<li><a href="javascript:;" class="btn btn-link btn-update-comment">modify</a></li>
-						<li><a href="javascript:;" class="btn btn-link btn-delete-comment">delete</a></li>
+						<li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-update-comment"><i class="spi spi-edit">edit</i></a></li>
+						<li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-delete-comment"><i class="spi spi-delete">delete</i></a></li>
 						<?php endif ?>
 						<?php if (USER_ID!=0): ?>
-						<li><a href="javascript:;" class="btn btn-link btn-reply-comment">reply</a></li>
+						<li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-reply-comment"><i class="spi spi-reply">reply</i></a></li>
 					<?php endif ?>
 				</ul>
 			</div>

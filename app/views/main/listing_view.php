@@ -13,13 +13,15 @@
 						<ul id="main-hot-creators">
 							<?php foreach ($creators as $key => $row): ?>
 							<li>
-								<a href="<?php echo site_url($row->username) ?>" class="btn-hover">
+								<a href="<?php echo site_url($row->username) ?>">
 									<span class="hot-arrow">
 										<i class="spi spi-next">next</i>
+										<i class="spi spi-next_white">next</i>
 									</span>
 									<span class="hot-face"> <!-- bg here -->
 										<img src="http://notefolio.net/profiles/147?h=1385655105" alt=""/>
 										<i class="si si-face-medium"></i>
+										<i class="si si-face-medium_point"></i>
 									</span>
 									<span class="hot-center">
 										<span class="hot-username">

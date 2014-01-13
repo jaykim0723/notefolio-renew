@@ -1,5 +1,17 @@
 /* Put your CSS here */
-
+.btn-link {
+	color: #444;
+	text-decoration: none;
+}
+.btn-link:hover {
+	color: #aaa;
+	text-decoration: none;
+}
+.btn-block .spi {
+	position: relative;
+	top: -2px;
+	margin-right: 5px;
+}
 .spi,
 .si {
 	text-indent: 3000px;
@@ -55,6 +67,9 @@ body * {
 	-moz-transition: all 0.3s ease;	
 	-o-transition: all 0.3s ease;	
 	transition: all 0.3s ease;	
+}
+.btn-no-border {
+	border-width: 0;
 }
 .btn-follow {
 }
