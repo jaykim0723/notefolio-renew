@@ -189,11 +189,11 @@ $(function() {
 
     $(document).on('mouseenter', '.btn-hover', function(){
     	$(this).find('.spi, .si').each(function(){
-	    	$(this).attr('class', $(this).attr('class')+'_hover');
+	    	$(this).attr('class', $(this).attr('class')+'_point');
     	});
     }).on('mouseleave', '.btn-hover', function(){
     	$(this).find('.spi, .si').each(function(){
-	    	$(this).attr('class', $(this).attr('class').replace('_hover',''));
+	    	$(this).attr('class', $(this).attr('class').replace('_point',''));
     	});
     });
 

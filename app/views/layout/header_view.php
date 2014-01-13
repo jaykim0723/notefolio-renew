@@ -36,25 +36,25 @@
 			<div class="col-md-7 righted">
 				<?php if (USER_ID==0): ?>
 					<a class="btn btn-nofol btn-hover bg1" href="#" id="login-with-fb">
-						<i class="spi spi-signupfb"></i> Login with Facebook
+						<i class="spi spi-fb">fb</i> Login with Facebook
 					</a>
 					<a class="btn btn-nofol btn-hover bg2" href="/auth/register">
-						<i class="spi spi-signup"></i> Sign Up
+						<i class="spi spi-user">user</i> Sign Up
 					</a>
 				<?php else: ?>
-					<a id="btn-feed" href="/feed/listing" class="btn-hover">
-						<i class="spi spi-feed"></i>
-						<span class="label label-nofol rounded unread-feed"></span>
-					</a>
 					<span id="alarm-wrapper">
 						<a id="btn-alarm" href="javascript:;" class="btn-hover">
 							<i class="spi spi-alarm"></i>
 							<span class="label label-nofol rounded unread-alarm"></span>
 						</a>
 					</span>
+					<a id="btn-feed" href="/feed/listing" class="btn-hover">
+						<i class="spi spi-feed"></i>
+						<span class="label label-nofol rounded unread-feed"></span>
+					</a>
 
 					<a class="btn btn-nofol btn-hover" href="/gallery/create">
-						<i class="spi spi-uploadworks"></i> Upload work
+						<i class="spi spi-plus">plus</i> Upload work
 					</a>
 					<a id="btn-profile" href="/<?php echo $this->session->userdata('username') ?>">
 						<div id="btn-profile-icon">
@@ -102,17 +102,18 @@
 				followings <?php echo $this->nf->get('user')->follower_cnt ?>
 			</li>
 			<li>
-				<a href="/feed/listing">
-					Feed
-					<span class="label label-danger rounded unread-feed"></span>
-				</a>
-			</li>
-			<li>
 				<a href="/alarm/listing">
 					Alarm
 					<span class="label label-danger rounded unread-alarm"></span>
 				</a>
 			</li>
+			<li>
+				<a href="/feed/listing">
+					Feed
+					<span class="label label-danger rounded unread-feed"></span>
+				</a>
+			</li>
+
 			<li>
 				<a href="/<?php echo $this->session->userdata('username') ?>/myworks">My works</a>
 			</li>

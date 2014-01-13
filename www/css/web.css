@@ -38,7 +38,13 @@ body {
 	margin: 5px 15px;
 	text-transform:uppercase;
 }
-
+#header .btn-nofol {
+	background: #fff;
+	color: #666;
+}
+#header .btn-nofol:hover {
+	color: #2ac5c6;
+}
 
 
 
