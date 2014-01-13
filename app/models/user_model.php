@@ -252,36 +252,67 @@ class user_model extends CI_Model {
      * @param  array  $params (depend by field in table `users`)
      * @return object       (status return object. status=[done|fail])
      */
-    function put($params=array()){
-        $params = (object)$params;
-        $default_params = (object)array(
-            'id' => '',
-            'set_profile' => false,
-            'set_sns_fb' => false,
-        );
-        foreach($default_params as $key => $value){
-            if(!isset($params->{$key}))
-                $params->{$key} = $value;
-        }
-        // 값을 정규식으로 검사한다.
+    function put($input=array()){
+        //-- id is not for update
+        $id = isset($input->id)?$input->id:USER_ID;
+        unset($input->id);
+
+        $input_profiles = new object();
         
         $input->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
-        
-        //-- work id is not for update
-        $work_id = $input->work_id;
-        unset($input->work_id);
+        $input_profiles->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
 
-        unset($input->set_profile);
-        unset($input->set_sns_fb);
-
-        $this->db->where('work_id', $work_id)->where('user_id', USER_ID)->update('works', $input);
-
-        $data = (object)array(
-            'status' => 'done'
-        );
-        if($this->db->affected_rows()==0){
-            $data->status = 'fail';
+        //-- exclude not allowed field
+        $allowed_key            = array('username','realname','email');
+        $allowed_key_profiles   = array('gender', 'birth', 'mailing');
+        foreach($input as $key => $val){
+            if(in_array($key, $allowed_key)){
+                continue;
+            }
+            else if(in_array($key, $allowed_key_profiles)){
+                $input_profiles->{$key} = $val;
+                unset($input->{$key});
+            }
+            else{
+                unset($input->{$key});
+            }
         }
+
+        if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
+            $can_delete = true;
+        }
+        else { // 본인것인지 여부에 따라 message다르게 하기
+            $user = $this->db->where('users.id', $user_id)->get('users')->row();
+            $can_delete = ($user->id == USER_ID)?true:false; 
+        }
+
+        if($can_delete){
+            $this->db->flush_cache(); //clear active record
+
+            $this->db->trans_start();
+            if(!empty($id)){
+                $this->db->where('id', $id)->update('users', $input); // 사용자 레코드 수정.
+                $this->db->where('user_id', $id)->update('user_profiles', $input_profiles);
+            }
+            $this->db->trans_complete();
+
+            if($this->db->trans_status()){
+                $data = (object)array(
+                    'status' => 'done'
+                );
+            } else {
+                $data = (object)array(
+                    'status' => 'fail',
+                    'message' => 'cannot_run_put_sel'
+                );
+            }
+        } else {
+            $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_permission_to_put'
+            );
+        }
+
         return $data;
     }
 
@@ -317,7 +348,8 @@ class user_model extends CI_Model {
             $this->db->flush_cache(); //clear active record
 
             $this->db->trans_start();
-            $this->users->delete_user($user_id); // 사용자 레코드 삭제.
+            if(!empty($user_id))
+                $this->users->delete_user($user_id); // 사용자 레코드 삭제.
             $this->db->trans_complete();
 
             if($this->db->trans_status()){
@@ -427,6 +459,14 @@ class user_model extends CI_Model {
         $params->access_token = $this->fbsdk->getAccessToken();
 
         $this->db->trans_start();
+        //-- set
+        if(!empty($data['post_note']))
+            $this->db->set('post_note', $data['post_note']);
+        if(!empty($data['post_comment']))
+            $this->db->set('post_comment', $data['post_comment']);
+        if(!empty($data['post_work']))
+            $this->db->set('post_work', $data['post_work']);
+        //-- where
         if(!empty($fb_num_id))
             $this->db->where('fb_num_id', $fb_num_id);
         if(!empty($user_id))

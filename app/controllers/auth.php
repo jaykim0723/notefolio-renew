@@ -407,12 +407,42 @@ class Auth extends CI_Controller
 	{
         $data = array();
 
+        if($this->input->post('submitting')){
+            $data = $this->_setting_put($data);
+        }
+
         return $this->_setting_form($data);
 		//$this->_form('setting');
 	}
 
     /**
-     * login form
+     * setting put
+     *
+     * @return array
+     */
+    function _setting_put($data=array()){
+        /*
+        $allowed_user_key = array(
+                'id',
+                'username',
+                'realname',
+                'email',
+                'gender',
+                'birth',
+                'mailing',
+                'fb_num_id',
+            );
+
+        $allowed_user_key_fb = array(
+                'fb_post_work',
+                'fb_post_comment',
+                'fb_post_note',
+            );*/
+        return $data;
+    }
+
+    /**
+     * setting form
      *
      * @return void
      */
