@@ -23,7 +23,7 @@ var workUtil = {
 		});
 	},
 	content: {
-		setGround: function(target, trash){
+		setGround: function(target, trash){ // 각 블록별 소팅할 수 있도록 이벤트 바인딩
 			if(typeof(target)=='undefined'){
 				var target = "#content-block-list";
 			}
@@ -135,8 +135,7 @@ var workUtil = {
 									$(ui.draggable)
 										.empty()
 										.append(workUtil.content.createBlock(className[1]));
-								}
-								else {
+								}else{
 									//$(ui.draggable).remove();
 								}
 					    	},
@@ -159,11 +158,9 @@ var workUtil = {
 					output = $('<hr>');
 				break;
 				case 'image':
-					var uploadTo = "/upload/image";
+					console.log('data : ', data);
 					output = workUtil.content.createUploader(
-								$('<div></div>').addClass('image-upload-box'),
-								uploadTo, data
-								);
+								$('<div></div>').addClass('image-upload-box'), data	);
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
@@ -191,7 +188,22 @@ var workUtil = {
 	    		$(this).remove();
     		});
 		},
-		createUploader:function(elem, url, data){
+		createUploader:function(elem, data){
+			return $(elem).ajaxUploader({
+				url : '/upload.php?c=work',
+				clickElement : '.button-upload',
+				multiple : false,
+				done : function(){
+
+				},
+				fail : function(){
+
+				},
+				cancel : function(){
+					
+				}
+			});
+
 		  return $(elem).dropzone({
 			url: url,
 			acceptedFiles: 'image/*',
@@ -241,7 +253,6 @@ var workUtil = {
 			},
 			complete: function(file) {
 				$('p.uploading', file.previewElement).remove();
-
 				workUtil.content.removeBlock($(this.previewsContainer).parent());
 			},
 			previewTemplate: '<div class="preview"></div>'

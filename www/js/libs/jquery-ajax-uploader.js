@@ -16,6 +16,7 @@ $.fn.ajaxUploader = function(opts) {
 			console.log(res);
 		}
 	};
+	console.log('ajaxUploader', opts, this);
 
 	// extend the options from defaults with user's options
 	var options = $.extend(defaults, opts || {});
