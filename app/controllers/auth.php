@@ -421,7 +421,7 @@ class Auth extends CI_Controller
      * @return array
      */
     function _setting_put($data=array()){
-        /*
+        
         $allowed_user_key = array(
                 'id',
                 'username',
@@ -430,14 +430,31 @@ class Auth extends CI_Controller
                 'gender',
                 'birth',
                 'mailing',
-                'fb_num_id',
             );
+        $param = array();
 
-        $allowed_user_key_fb = array(
+        foreach($data as $key=>$val){
+            if(in_array($key, $allowed_user_key))
+                $param[$key] = $val;
+        }
+        $this->user_model->put($param);
+
+        
+        $allowed_user_key = array(
+                'fb_num_id',
                 'fb_post_work',
                 'fb_post_comment',
                 'fb_post_note',
-            );*/
+            );
+        $param = array('user_id'=>$data['id']);
+
+        foreach($data as $key=>$val){
+            if(in_array($key, $allowed_user_key))
+                $param[($key=='fb_num_id')?$key:str_replace('fb_', '', $key)] = $val;
+            
+        }
+        $this->user_model->put_sns_fb($param);
+        
         return $data;
     }
 

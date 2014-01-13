@@ -240,7 +240,7 @@ class user_model extends CI_Model {
         }
 
         // default tank auth
-        $this->tank_auth->create_user();
+        $this->tank_auth->create_user(); //($username, $email, $password, $email_activation)
 
         $user_id = $this->db->insert_id();
         return $user_id;
@@ -444,11 +444,14 @@ class user_model extends CI_Model {
 
         $this->load->library('fbsdk');
 
-        $user_id = @$data['id'];
+        $user_id = @$data['user_id'];
         $fb_num_id = @$data['fb_num_id'];
 
         if(empty($user_id)){
-
+            $data = (object)array(
+                'status' => 'fail'
+                'message'=> 'no_input_user_id'
+            );
         }
 
         if(empty($fb_num_id))
@@ -482,6 +485,7 @@ class user_model extends CI_Model {
         } else {
             $data = (object)array(
                 'status' => 'fail'
+                'message'=> 'cannot_write'
             );
         }
 
