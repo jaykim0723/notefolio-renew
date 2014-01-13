@@ -15,7 +15,7 @@
 							<li>
 								<a href="<?php echo site_url($row->username) ?>" class="btn-hover">
 									<span class="hot-arrow">
-										<i class="spi spi-arrow"></i>
+										<i class="spi spi-next">next</i>
 									</span>
 									<span class="hot-face"> <!-- bg here -->
 										<img src="http://notefolio.net/profiles/147?h=1385655105" alt=""/>

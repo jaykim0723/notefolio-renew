@@ -48,6 +48,7 @@ body * {
 	border-radius: 2em;
 	text-decoration: none;
 	color: gray;
+	border:1px solid gray;
 	background: #fff;
 	-webkit-transition: all 0.3s ease;	
 	-moz-transition: all 0.3s ease;	

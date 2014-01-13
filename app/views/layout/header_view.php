@@ -35,25 +35,25 @@
 
 			<div class="col-md-7 righted">
 				<?php if (USER_ID==0): ?>
-					<a class="btn btn-nofol btn-hover bg1" href="#" id="login-with-fb">
+					<a class="btn btn-nofol" href="#" id="login-with-fb">
 						<i class="spi spi-fb">fb</i> Login with Facebook
 					</a>
-					<a class="btn btn-nofol btn-hover bg2" href="/auth/register">
+					<a class="btn btn-nofol" href="/auth/register">
 						<i class="spi spi-user">user</i> Sign Up
 					</a>
 				<?php else: ?>
 					<span id="alarm-wrapper">
-						<a id="btn-alarm" href="javascript:;" class="btn-hover">
+						<a id="btn-alarm" href="javascript:;" class="btn-nofol">
 							<i class="spi spi-alarm"></i>
 							<span class="label label-nofol rounded unread-alarm"></span>
 						</a>
 					</span>
-					<a id="btn-feed" href="/feed/listing" class="btn-hover">
+					<a id="btn-feed" href="/feed/listing" class="btn-nofol">
 						<i class="spi spi-feed"></i>
 						<span class="label label-nofol rounded unread-feed"></span>
 					</a>
 
-					<a class="btn btn-nofol btn-hover" href="/gallery/create">
+					<a class="btn btn-nofol" href="/gallery/create">
 						<i class="spi spi-plus">plus</i> Upload work
 					</a>
 					<a id="btn-profile" href="/<?php echo $this->session->userdata('username') ?>">

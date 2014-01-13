@@ -187,13 +187,13 @@ $(function() {
     });
 
 
-    $(document).on('mouseenter', '.btn-hover', function(){
+    $(document).on('mouseenter', '.btn-nofol', function(){
     	$(this).find('.spi, .si').each(function(){
-	    	$(this).attr('class', $(this).attr('class')+'_point');
+	    	$(this).prop('class', $(this).prop('class')+'_point');
     	});
-    }).on('mouseleave', '.btn-hover', function(){
+    }).on('mouseleave', '.btn-nofol', function(){
     	$(this).find('.spi, .si').each(function(){
-	    	$(this).attr('class', $(this).attr('class').replace('_point',''));
+	    	$(this).prop('class', $(this).prop('class').replace('_point',''));
     	});
     });
 
