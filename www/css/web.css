@@ -1,6 +1,7 @@
 .btn-nofol:hover {
 	color: #2ac5c6;
 	border-color: #2ac5c6;
+	text-decoration: none;
 }
 body {
 	background: #f8f8f8;
