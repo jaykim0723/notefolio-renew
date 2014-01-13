@@ -197,8 +197,8 @@ class user_model extends CI_Model {
         }
         else {
             # 성수씨 
-            $user->followings = 234;
-            $user->followers = 29;
+            $user->following_cnt = 234;
+            $user->follower_cnt = 29;
             $user->keywords = array( // temporary
                 '파인아트', '모션그래픽', '동영상'
             );

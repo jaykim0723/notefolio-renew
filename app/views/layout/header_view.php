@@ -97,9 +97,9 @@
 				</a>
 				<?php echo $this->session->userdata('username') ?>
 				<br/>
-				followers <?php echo $this->nf->get('user')->followers ?>
+				followers <?php echo $this->nf->get('user')->following_cnt ?>
 				/
-				followings <?php echo $this->nf->get('user')->followings ?>
+				followings <?php echo $this->nf->get('user')->follower_cnt ?>
 			</li>
 			<li>
 				<a href="/feed/listing">
