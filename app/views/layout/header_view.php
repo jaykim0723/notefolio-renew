@@ -96,7 +96,10 @@
 					<img src="http://notefolio.net/profiles/147?h=1385655105" alt="">
 				</a>
 				<?php echo $this->session->userdata('username') ?>
-				
+				<br/>
+				followers <?php echo $this->nf->get('user')->followers ?>
+				/
+				followings <?php echo $this->nf->get('user')->followings ?>
 			</li>
 			<li>
 				<a href="/feed/listing">

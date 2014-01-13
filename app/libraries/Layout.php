@@ -38,6 +38,17 @@ class Layout
 				$affix = $areaName.'_';
 		}
 
+		if(USER_ID>0){
+			$this->ci->load->model('user_model');
+			$user = $this->ci->user_model->get_info(array('id' => USER_ID));
+			if($user->status=='done'){
+				$this->ci->nf->set('user', $user->row);
+			}
+			// 사용시
+			// $this->nf->get('user')->username;
+		}
+
+
 		// print header
 		if(!$this->ci->input->is_ajax_request()){
 			(($areaName!='acp'))?$this->ci->load->view('layout/header_inc_view', $this->header):'';
