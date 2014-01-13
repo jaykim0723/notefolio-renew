@@ -7,7 +7,7 @@ $wide = in_array($row->key, array(4,11));
 		<span class="main-work-info si-main-info-bg" style="">
 			<i class="spi spi-view">Hit</i> <?php echo $row->hit_cnt ?>
 			<i class="spi spi-love">Note</i> <?php echo $row->note_cnt ?>
-			<i class="spi spi-love_hover">Collect</i> <?php echo $row->collect_cnt ?>
+			<i class="spi spi-comment">comment</i> <?php echo $row->comment_cnt ?>
 		</span>
 		<span class="main-work-title">
 			<span class="pull-right">

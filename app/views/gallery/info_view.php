@@ -93,17 +93,17 @@
 								<div class="col-md-5">
 									<div class="work-info-icons">
 										<div class="view bg1">
-											<i class="spi spi-view2">View</i>
+											<i class="spi spi-view_white">View</i>
 											<br/>
 											<?php echo $row->hit_cnt ?>
 										</div>
 										<div class="love bg3">
-											<i class="spi spi-love2">Love</i>
+											<i class="spi spi-love_white">Love</i>
 											<br/>
 											<?php echo $row->note_cnt ?>
 										</div>
 										<div class="comment bg2">
-											<i class="spi spi-comment">Comment</i>
+											<i class="spi spi-comment_white">comment</i>
 											<br/>
 											<?php echo $row->comment_cnt ?>
 										</div>
@@ -150,10 +150,10 @@
 									<i class="spi spi-ccl-<?php echo $row->ccl ?>">License</i>
 								</div>
 								<div class="col-xs-6 righted">
-									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="spi spi-fb_hover">fb_hover</a>
-									<a href="javascript:;" onclick="snsUtil.facebook(this);" class="spi spi-fb_hover">fb_hover</a>
-									<a href="javascript:;" onclick="snsUtil.pinterest(this);" class="spi spi-fb_hover">fb_hover</a>
-									<a href="javascript:;" onclick="snsUtil.tumblr(this);" class="spi spi-fb_hover">fb_hover</a>
+									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="spi spi-fb">fb_hover</a>
+									<a href="javascript:;" onclick="snsUtil.facebook(this);" class="spi spi-twit">fb_hover</a>
+									<a href="javascript:;" onclick="snsUtil.pinterest(this);" class="spi spi-pinter">fb_hover</a>
+									<a href="javascript:;" onclick="snsUtil.tumblr(this);" class="spi spi-tumblr">fb_hover</a>
 									<!-- <a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="spi spi-fb_hover visible-xs visible-sm">kakaotalk</a> -->
 								</div>
 							</div>

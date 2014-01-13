@@ -9,6 +9,7 @@
 <script src="/js/libs/jquery.history.js"></script>
 <script src="/js/libs/jquery.hammer.min.js"></script>
 <script src="/js/libs/jquery.mmenu.min.all.js"></script>
+<script src="/js/libs/fileuploader.js"></script>
 <script src="/js/libs/dropzone.min.js"></script>
 <script src="/js/libs/dropzone.dict-ko.js"></script>
 <script src="/js/work.js"></script>
