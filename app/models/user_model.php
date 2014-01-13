@@ -449,7 +449,7 @@ class user_model extends CI_Model {
 
         if(empty($user_id)){
             $data = (object)array(
-                'status' => 'fail'
+                'status' => 'fail',
                 'message'=> 'no_input_user_id'
             );
         }
@@ -484,7 +484,7 @@ class user_model extends CI_Model {
             );
         } else {
             $data = (object)array(
-                'status' => 'fail'
+                'status' => 'fail',
                 'message'=> 'cannot_write'
             );
         }
