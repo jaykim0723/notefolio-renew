@@ -303,7 +303,7 @@ var commentUtil = {
 		// 기존의 폼을 가지고 와서
 		var $commentInner = $(o).closest('.comment-inner');
 		var $commentBlock = $commentInner.closest('.comment-block');
-		var content = $.trim($commentBlock.find('.comment-textarea').html());
+		var content = $.trim($commentBlock.find('.comment-textarea').html().replace(/<br ?\/?>/g, "\n"));
 		var $work = $commentBlock.parents('.work-wrapper');	
 		var work_id = $work.data('id');
 		// console.log($commentBlock, work_id);

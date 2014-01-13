@@ -33,7 +33,7 @@
 			<i class="si si-face-medium"></i>
 		</a>
 		<div class="comment-textarea">
-			<?php echo htmlentities($row->content, ENT_COMPAT, 'UTF-8'); ?>
+			<?php echo nl2br(htmlentities($row->content, ENT_COMPAT, 'UTF-8')); ?>
 		</div>
 	</div>
 

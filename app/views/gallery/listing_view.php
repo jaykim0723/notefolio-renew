@@ -50,7 +50,7 @@
 				<ul class="thumbnail-list infinite-list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
-					<?php $this->load->view('gallery/thumbnail_inc_view', $row) ?>
+					<?php $this->load->view('gallery/thumbnail_inc_view', array('row'=>$row)) ?>
 					<?php endforeach ?>
 				</ul>
 

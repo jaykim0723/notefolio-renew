@@ -70,13 +70,13 @@
 							<div class="row">
 								<div class="col-md-7">
 									<div class="work-info-title">
-										<div class="btn-group pull-right">
+										<div class="pull-right">
 											<?php if (USER_ID==$row->user_id): ?>
-											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/update" class="btn btn-default">
+											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/update" class="btn btn-nofol">
 												<i class="glyphicon glyphicon-cog"></i>
 											</a>
-											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/delete" class="btn btn-delete-work btn-default">
-												<i class="glyphicon glyphicon-trash"></i>
+											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/delete" class="btn btn-delete-work btn-nofol">
+												<i class="spi spi-close">delete</i>
 											</a>
 											<?php endif ?>
 										</div>
@@ -92,18 +92,18 @@
 								</div>
 								<div class="col-md-5">
 									<div class="work-info-icons">
-										<div class="view bg1">
-											<i class="spi spi-view_white">View</i>
+										<div class="view">
+											<i class="spi spi-view">View</i>
 											<br/>
 											<?php echo $row->hit_cnt ?>
 										</div>
-										<div class="love bg3">
-											<i class="spi spi-love_white">Love</i>
+										<div class="love">
+											<i class="spi spi-love">Love</i>
 											<br/>
 											<?php echo $row->note_cnt ?>
 										</div>
-										<div class="comment bg2">
-											<i class="spi spi-comment_white">comment</i>
+										<div class="comment">
+											<i class="spi spi-comment">comment</i>
 											<br/>
 											<?php echo $row->comment_cnt ?>
 										</div>
@@ -149,11 +149,19 @@
 								<div class="col-xs-6">
 									<i class="spi spi-ccl-<?php echo $row->ccl ?>">License</i>
 								</div>
-								<div class="col-xs-6 righted">
-									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="spi spi-fb">fb_hover</a>
-									<a href="javascript:;" onclick="snsUtil.facebook(this);" class="spi spi-twit">fb_hover</a>
-									<a href="javascript:;" onclick="snsUtil.pinterest(this);" class="spi spi-pinter">fb_hover</a>
-									<a href="javascript:;" onclick="snsUtil.tumblr(this);" class="spi spi-tumblr">fb_hover</a>
+								<div class="col-xs-6 righted work-sns">
+									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="btn-nofol">
+										<i class="spi spi-fb">fb_hover</i>
+									</a>
+									<a href="javascript:;" onclick="snsUtil.facebook(this);" class="btn-nofol">
+										<i class="spi spi-twit">fb_hover</i>
+									</a>
+									<a href="javascript:;" onclick="snsUtil.pinterest(this);" class="btn-nofol">
+										<i class="spi spi-pinter">fb_hover</i>
+									</a>
+									<a href="javascript:;" onclick="snsUtil.tumblr(this);" class="btn-nofol">
+										<i class="spi spi-tumblr">fb_hover</i>
+									</a>
 									<!-- <a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="spi spi-fb_hover visible-xs visible-sm">kakaotalk</a> -->
 								</div>
 							</div>

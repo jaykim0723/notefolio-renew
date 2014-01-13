@@ -43,6 +43,7 @@ body * {
 	color: #fff;
 	background: #2ac5c6;
 	padding: 6px;
+	text-decoration: none;
 }
 .btn-nofol {
 	border-radius: 2em;
@@ -380,22 +381,14 @@ body * {
 		float: left;
 		width: 33.333333333333333333333%;
 		text-align: center;
-		background: #6bc0d3;
 		font-size: 14px;
 		font-weight: normal;
-		color: #fff;
 		padding: 15px 0;
 	}
 	.work-info-icons .spi {
 		position: relative;
 		top: 1px;
 		margin-right: 5px;
-	}
-	.work-info-icons .comment {
-		background: #96d3e1;
-	}
-	.work-info-icons .love {
-		background: #5bc0c5;
 	}
 	.work-info-icons > div br {
 		display: none;
@@ -503,7 +496,9 @@ body * {
 		padding: 10px;
 	}
 }
-
+.work-sns .btn-nofol {
+	border-width: 0;
+}
 
 /* comment */
 .comment-wrapper {
