@@ -111,10 +111,7 @@ var workUtil = {
 					//$(this).css('outline', '#0000ff 5px dotted');
 		    		var className =(""+$(this).attr("class")+"").match(/block-(\w+)/);
 					if(className){
-						$('<li></li>')
-							.attr('class','block-'+className[1])
-							.append(workUtil.content.createBlock(className[1]))
-							.appendTo(sendTo);
+						workUtil.content.createBlock(className[1]).appendTo(sendTo);
 					}
 					//setTimeout("$(this).css('outline', 'none');",500);
 				})
@@ -155,32 +152,32 @@ var workUtil = {
 			var output = '';
 			switch(type){
 				case 'line':
-					output = $('<hr>');
+					output = $('<li class="block-line"></li>');
 				break;
 				case 'image':
 					console.log('data : ', data);
 					output = workUtil.content.createUploader(
-								$('<div></div>').addClass('image-upload-box'), data	);
+								$('<li class="block-image"></li>').addClass('image-upload-box'), data	);
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
 				case 'video':
-					output = $('<iframe></iframe>').attr('src', '//www.youtube.com/embed/wnnOf05WKEs?wmode=opaque');
+					output = $('<li class="block-video"><iframe></iframe></li>').children('iframe').attr('src', '//www.youtube.com/embed/wnnOf05WKEs?wmode=opaque');
 				break;
 				case 'text':
 				default:
-					output = $('<p></p>').text('이곳을 눌러 내용을 입력하세요.');
+					output = $('<li class="block-text"></li>').text('이곳을 눌러 내용을 입력하세요.');
 				break;
 			}
 			if(typeof(data)!='undefined'){
 				$(output).append($(data));
 			}
-			if(typeof(returnType)!='undefined' 
-			&& returnType=="list-block"){
-				output =  $('<li></li>')
-							.attr('class','block-'+type)
-							.append(output);
-			}
+			// if(typeof(returnType)!='undefined' 
+			// && returnType=="list-block"){
+			// 	output =  $('<li></li>')
+			// 				.attr('class','block-'+type)
+			// 				.append(output);
+			// }
 			return output;
 		},
 		removeBlock: function(target){
@@ -193,14 +190,17 @@ var workUtil = {
 				url : '/upload.php?c=work',
 				clickElement : '.button-upload',
 				multiple : false,
+				start : function(){
+
+				},
+				cancel : function(){
+					
+				},
 				done : function(){
 
 				},
 				fail : function(){
 
-				},
-				cancel : function(){
-					
 				}
 			});
 
@@ -234,7 +234,7 @@ var workUtil = {
 				return $(this.element).append(msg).info(uploader);
 			},
 			addedfile: function(file) {
-				$(this.previewsContainer).parent().css({'display': 'none'});
+				// $(this.previewsContainer).parent().css({'display': 'none'});
 				file.previewElement = Dropzone.createElement(this.options.previewTemplate.trim());
 				file.previewTemplate = file.previewElement;
 				$(this.previewsContainer).parent().before(

@@ -105,7 +105,7 @@
 				<input type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
 				<br>
 				<h4>내용</h4>
-				<ul id="content-block-list" class="list-unstyled">
+				<ul id="content-block-list" class="work-info list-unstyled">
 				</ul>
 				<?php echo form_open(''); ?>
 				<?php echo form_close(); ?>

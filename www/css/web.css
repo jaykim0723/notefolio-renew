@@ -262,12 +262,13 @@ body {
 	width: 100%;
 	min-height:300px;
 }
-#content-block-list li{
+/*#content-block-list li{
 	display: block;
 	width: 100%;
 	overflow: hidden;
 	position: relative;
 }
+*/
 #content-block-list li div.image-upload-box{
 	display: block;
 	width: 100%;
