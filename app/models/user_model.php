@@ -256,8 +256,7 @@ class user_model extends CI_Model {
         //-- id is not for update
         $id = isset($input->id)?$input->id:USER_ID;
         unset($input->id);
-
-            var_export($input);
+        
         $input = (object)$input;
         $input_profiles = new stdClass(); //create new Object;
         
