@@ -291,6 +291,7 @@ class user_model extends CI_Model {
             $this->db->flush_cache(); //clear active record
 
             $this->db->trans_start();
+            var_export($input);
             if(!empty($id)){
                 $this->db->where('id', $id)->update('users', $input); // 사용자 레코드 수정.
                 $this->db->where('user_id', $id)->update('user_profiles', $input_profiles);
