@@ -506,187 +506,227 @@ class Auth extends CI_Controller
 	{
 		$data = array();
 		if($this->input->post('submit_uuid')!=false){
-            if($this->input->post('submit_uuid')==$this->session->userdata('submit_uuid')) {
-                $this->load->library(array('form_validation'));
-                $this->load->model('oldmodel/auth_model');
-                
-                //-- form validation
-                function set_value_to_data(){
-                    $ci =& get_instance();
-                    
-                    $row = array(
-                        //-- stage 0
-                        'email'         => $ci->form_validation->set_value('email'),
-                        //'confirm_email' => $ci->form_validation->set_value('confirm_email'),
-                        'password'      => $ci->form_validation->set_value('password'),
-                        'confirm_password' => $ci->form_validation->set_value('confirm_password'),
-                        
-                        //-- stage 1
-                        'realname'      => $ci->form_validation->set_value('realname'),
-                        'gender'        => $ci->form_validation->set_value('gender'),
-                        'birth'         => implode("-", array($ci->input->post('year'),$ci->input->post('month'),$ci->input->post('day'))),
-                        'username'      => $ci->form_validation->set_value('username'),
-                        'mailing'       => ($ci->form_validation->set_value('mailing')=='1')?1:0,
-                        'term'          => $ci->form_validation->set_value('term'),
-                        
-                        //-- stage 2
-                        'categories'    => $ci->form_validation->set_value('categories'),
-                        
-                        //-- stage 3
-                        'recommend'    => $ci->form_validation->set_value('recommend'),
-                    );
-                    
-                    if($ci->input->post('fb_num_id')!=false){
-                        //-- facebook
-                        $row['fb_num_id'] = $ci->input->post('fb_num_id');
-                        //-- facebook - end
-                    }
-                    
-                    return $row;   
-                }
-                
-                $this->form_validation
-                    //-- stage 0
-                    ->set_rules('email', '이메일', 'trim|required|valid_email|max_length[100]|is_unique[users.email]')
-                    //->set_rules('confirm_email', '이메일확인', 'trim|required|matches[email]')
-                    ->set_rules('password', '비밀번호', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']')
-                    ->set_rules('confirm_password', '비밀번호 확인', 'trim|required|matches[password]')
-                    
-                    //-- stage 1
-                    ->set_rules('realname', '이름', 'trim|required')
-                    ->set_rules('gender', '성별', 'trim|required')
-                    ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean')
-                    ->set_rules('mailing', '메일링 동의', 'trim')
-                    ->set_rules('term', '약관 동의', 'trim|required')
-                    
-                    //-- stage 2
-                    ->set_rules('categories', '키워드', 'trim|required')
-                    
-                    //-- stage 3
-                    ->set_rules('recommend', '팔로우 추천', 'trim');
-                
-                //-- end
-                
-                if($this->form_validation->run() !== FALSE){
-                    $data = set_value_to_data();
-                    log_message('debug','Data Send: '.json_encode($data));
-                    // 성공한 경우..
-                    
-                    //-- 회원가입 처리. tank_auth
-                    $result = $this->auth_model->post_user_info_new($data);
-                    
-                    if($result){ // 회원가입이 정상처리
-                        $this->session->unset_userdata('submit_uuid'); // 끝났으면 쓰레기통에 꾸겨 버린다.
-                        $result = $this->auth_model->data;
-                        $id = $result['user_id'];
-                        //-- after process
-                        // 이메일을 보낸다.
-                        $data['site_name'] = $this->config->item('website_name', 'tank_auth');
-                        if ($this->config->item('email_account_details', 'tank_auth')) {    // send "welcome" email
-                            $this->auth_model->_send_email('welcome', $data['email'], $data);
-                        }
-                        
-                        // 로그인 처리
-                        $this->load->library('tank_auth');
-                        if ($this->tank_auth->login(
-                                $data['email'],
-                                $data['password'],
-                                '',
-                                TRUE,
-                                TRUE)) {								// success
-                            if($data['fb_num_id']) // facebook 등록 처리 (facebook으로 가입시)
-                                $this->auth_model->post_user_fb_info($id, $data['fb_num_id']);
-                            
-                            $this->session->set_flashdata('welcome_newmember',true); // 가입환영용
-                            
-                            exit(json_encode(array('status'=>'success', 'username'=>$result['username'])));
-                        }
-                        //-- end   
-                    }	   	
-                }else{
-                    // 실패한 경우.
-                    if ($this->form_validation->error_string()!='') {
-                        
-                        //-- 검증 check 용
-                        function set_error_data($stage){
-                            $ci =& get_instance();
-                            
-                            foreach ($stage as $v){
-                                if($ci->form_validation->error($v)!=''){
-                                    return array("name"=>$v, "errmsg"=>$ci->form_validation->error($v));
-                                }
-                            }
-                            
-                            return array();
-                        }
-                        
-                        //-- stage 0
-                        $error_data = set_error_data(array(
-                        'email',
-                        //'confirm_email',
-                        'password',
-                        'confirm_password'
-                        ));
-                        $error_stage = 0;
-                        
-                        //-- stage 1
-                        if(count($error_data)<1){
-                            $error_data = set_error_data(array(
-                                'realname',
-                                'gender',
-                                'username',
-                                'mailing',
-                                'term'
-                            ));
-                            $error_stage++;
-                        }
-                        
-                        //-- stage 2
-                        if(count($error_data)<1){
-                            $error_data = set_error_data(array(
-                                'categories'
-                            ));
-                            $error_stage++;
-                        }
-                        
-                        //-- stage 3
-                        if(count($error_data)<1){
-                            $error_data = set_error_data(array(
-                                'recommend'
-                            ));
-                            $error_stage++;
-                        }
-                        
-                        exit(json_encode(array_merge(array('status'=>'error', 'goStep'=>$error_stage), $error_data)));
-                    }
-                   
-                    $data = set_value_to_data($method);
-                }
-                
-                exit(json_encode($this->input->post()));
-            }
-            else{
-                exit(json_encode(array('status'=>'error','errmsg'=>'올바르지 않은 접근입니다')));
-            }
+            $data = $this->_register_do_process($data);
 		}
 		else {
-			//-- make subit uuid and save to session
-			$submit_uuid = hash_init('sha1');
-			hash_update($submit_uuid, time());
-			hash_update($submit_uuid, 'notefolio');
-			hash_update($submit_uuid, microtime(true));
-			$data['submit_uuid'] = hash_final($submit_uuid);
-            $this->session->set_userdata('submit_uuid', $data['submit_uuid']);
-			//-- end
-			
-			//-- join with facebook
-            $fb_info = json_decode($this->session->flashdata('register_fb'));
-            if($fb_info!=false){
-                $data['fb_info']=$fb_info;
-                $data['fb_num_id']=$fb_info->id;
-            }
-            //-- end
+			$this->_register_create_hash($data);
+            $data = $this->_register_get_facebook_info($data);
 		}
+
+        return $this->_register_form($data);
+	}
+
+    /**
+     * register do process
+     *
+     * @return void
+     */
+    function _register_do_process($data=array()){
+        
+
+
+        if($this->input->post('submit_uuid')==$this->session->userdata('submit_uuid')) {
+            $this->load->library(array('form_validation'));
+            $this->load->model('oldmodel/auth_model');
+
+            //-- form validation
+            function set_value_to_data(){
+                $ci =& get_instance();
+                
+                $row = array(
+                    //-- stage 0
+                    'email'         => $ci->form_validation->set_value('email'),
+                    //'confirm_email' => $ci->form_validation->set_value('confirm_email'),
+                    'password'      => $ci->form_validation->set_value('password'),
+                    'confirm_password' => $ci->form_validation->set_value('confirm_password'),
+                    
+                    //-- stage 1
+                    'realname'      => $ci->form_validation->set_value('realname'),
+                    'gender'        => $ci->form_validation->set_value('gender'),
+                    'birth'         => implode("-", array($ci->input->post('year'),$ci->input->post('month'),$ci->input->post('day'))),
+                    'username'      => $ci->form_validation->set_value('username'),
+                    'mailing'       => ($ci->form_validation->set_value('mailing')=='1')?1:0,
+                    'term'          => $ci->form_validation->set_value('term'),
+                    
+                    //-- stage 2
+                    'categories'    => $ci->form_validation->set_value('categories'),
+                    
+                    //-- stage 3
+                    'recommend'    => $ci->form_validation->set_value('recommend'),
+                );
+                
+                if($ci->input->post('fb_num_id')!=false){
+                    //-- facebook
+                    $row['fb_num_id'] = $ci->input->post('fb_num_id');
+                    //-- facebook - end
+                }
+                
+                return $row;   
+            }
+
+            $this->form_validation
+                //-- stage 0
+                ->set_rules('email', '이메일', 'trim|required|valid_email|max_length[100]|is_unique[users.email]')
+                //->set_rules('confirm_email', '이메일확인', 'trim|required|matches[email]')
+                ->set_rules('password', '비밀번호', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']')
+                ->set_rules('confirm_password', '비밀번호 확인', 'trim|required|matches[password]')
+                
+                //-- stage 1
+                ->set_rules('realname', '이름', 'trim|required')
+                ->set_rules('gender', '성별', 'trim|required')
+                ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean')
+                ->set_rules('mailing', '메일링 동의', 'trim')
+                ->set_rules('term', '약관 동의', 'trim|required')
+                
+                //-- stage 2
+                ->set_rules('categories', '키워드', 'trim|required')
+                
+                //-- stage 3
+                ->set_rules('recommend', '팔로우 추천', 'trim');
+
+            //-- end
+
+            if($this->form_validation->run() !== FALSE){
+                $data = set_value_to_data();
+                log_message('debug','Data Send: '.json_encode($data));
+                // 성공한 경우..
+                
+                //-- 회원가입 처리. tank_auth
+                $result = $this->auth_model->post_user_info_new($data);
+                
+                if($result){ // 회원가입이 정상처리
+                    $this->session->unset_userdata('submit_uuid'); // 끝났으면 쓰레기통에 꾸겨 버린다.
+                    $result = $this->auth_model->data;
+                    $id = $result['user_id'];
+                    //-- after process
+                    // 이메일을 보낸다.
+                    $data['site_name'] = $this->config->item('website_name', 'tank_auth');
+                    if ($this->config->item('email_account_details', 'tank_auth')) {    // send "welcome" email
+                        $this->auth_model->_send_email('welcome', $data['email'], $data);
+                    }
+                    
+                    // 로그인 처리
+                    $this->load->library('tank_auth');
+                    if ($this->tank_auth->login(
+                            $data['email'],
+                            $data['password'],
+                            '',
+                            TRUE,
+                            TRUE)) {                                // success
+                        if($data['fb_num_id']) // facebook 등록 처리 (facebook으로 가입시)
+                            $this->auth_model->post_user_fb_info($id, $data['fb_num_id']);
+                        
+                        $this->session->set_flashdata('welcome_newmember',true); // 가입환영용
+                        
+                        exit(json_encode(array('status'=>'success', 'username'=>$result['username'])));
+                    }
+                    //-- end   
+                }       
+            }else{
+                // 실패한 경우.
+                if ($this->form_validation->error_string()!='') {
+                    
+                    //-- 검증 check 용
+                    function set_error_data($stage){
+                        $ci =& get_instance();
+                        
+                        foreach ($stage as $v){
+                            if($ci->form_validation->error($v)!=''){
+                                return array("name"=>$v, "errmsg"=>$ci->form_validation->error($v));
+                            }
+                        }
+                        
+                        return array();
+                    }
+                    
+                    //-- stage 0
+                    $error_data = set_error_data(array(
+                    'email',
+                    //'confirm_email',
+                    'password',
+                    'confirm_password'
+                    ));
+                    $error_stage = 0;
+                    
+                    //-- stage 1
+                    if(count($error_data)<1){
+                        $error_data = set_error_data(array(
+                            'realname',
+                            'gender',
+                            'username',
+                            'mailing',
+                            'term'
+                        ));
+                        $error_stage++;
+                    }
+                    
+                    //-- stage 2
+                    if(count($error_data)<1){
+                        $error_data = set_error_data(array(
+                            'categories'
+                        ));
+                        $error_stage++;
+                    }
+                    
+                    //-- stage 3
+                    if(count($error_data)<1){
+                        $error_data = set_error_data(array(
+                            'recommend'
+                        ));
+                        $error_stage++;
+                    }
+                    
+                    exit(json_encode(array_merge(array('status'=>'error', 'goStep'=>$error_stage), $error_data)));
+                }
+               
+                $data = set_value_to_data($method);
+            }
+
+            exit(json_encode($this->input->post()));
+        }
+        else{
+            exit(json_encode(array('status'=>'error','errmsg'=>'올바르지 않은 접근입니다')));
+        }
+    }
+
+    /**
+     * register create hash
+     *
+     * @return void
+     */
+    function _register_create_hash($data=array()){
+        //-- make subit uuid and save to session
+        $submit_uuid = hash_init('sha1');
+        hash_update($submit_uuid, time());
+        hash_update($submit_uuid, 'notefolio');
+        hash_update($submit_uuid, microtime(true));
+        $data['submit_uuid'] = hash_final($submit_uuid);
+        $this->session->set_userdata('submit_uuid', $data['submit_uuid']);
+        //-- end
+    }
+
+    /**
+     * register get facebook info
+     *
+     * @return void
+     */
+    function _register_get_facebook_info($data=array()){
+
+        //-- join with facebook
+        $fb_info = json_decode($this->session->flashdata('register_fb'));
+        if($fb_info!=false){
+            $data['fb_info']=$fb_info;
+            $data['fb_num_id']=$fb_info->id;
+        }
+        //-- end
+    }
+
+    /**
+     * register form
+     *
+     * @return void
+     */
+    function _register_form($data=array()){
 
         //-- prevent error
         $use_username               = $this->config->item('use_username', 'tank_auth');
@@ -698,7 +738,10 @@ class Auth extends CI_Controller
         //-- end
 
         $this->layout->set_view('auth/register_form', $data)->render();
-	}
+    }
+
+
+
 	/**
 	 *	가입 및 수정에서 공통으로 쓰이는 폼
 	 */
