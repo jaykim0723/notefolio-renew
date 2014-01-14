@@ -283,7 +283,7 @@ class user_model extends CI_Model {
             $can_delete = true;
         }
         else { // 본인것인지 여부에 따라 message다르게 하기
-            $user = $this->db->where('users.id', $user_id)->get('users')->row();
+            $user = $this->db->where('users.id', $id)->get('users')->row();
             $can_delete = ($user->id == USER_ID)?true:false; 
         }
 
