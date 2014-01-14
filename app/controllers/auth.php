@@ -522,9 +522,6 @@ class Auth extends CI_Controller
      * @return void
      */
     function _register_do_process($data=array()){
-        
-
-
         if($this->input->post('submit_uuid')==$this->session->userdata('submit_uuid')) {
             $this->load->library(array('form_validation'));
             $this->load->model('oldmodel/auth_model');
