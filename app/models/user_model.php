@@ -257,6 +257,7 @@ class user_model extends CI_Model {
         $id = isset($input->id)?$input->id:USER_ID;
         unset($input->id);
 
+            var_export($input);
         $input = (object)$input;
         $input_profiles = new stdClass(); //create new Object;
         
@@ -291,7 +292,6 @@ class user_model extends CI_Model {
             $this->db->flush_cache(); //clear active record
 
             $this->db->trans_start();
-            var_export($input);
             if(!empty($id)){
                 $this->db->where('id', $id)->update('users', $input); // 사용자 레코드 수정.
                 $this->db->where('user_id', $id)->update('user_profiles', $input_profiles);
