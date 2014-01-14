@@ -35,7 +35,7 @@ class Fbsdk extends Facebook
      */
     function set_data($user_id=0, $data=array())
     {
-        if($user_id==0) return false;
+ /*       if($user_id==0) return false;
         $this->ci->load->model('api/auth_model');
         if(count($data)>0&&isset($data['action'])){
             switch($data['action']){
@@ -44,7 +44,7 @@ class Fbsdk extends Facebook
                     break;
             }
         }
-        
+*/        
         return FALSE;
     }
     
@@ -58,8 +58,10 @@ class Fbsdk extends Facebook
     function post_data($user_id=0, $data=array())
     {
         if($user_id==0) return false;
-        $this->ci->load->model('api/auth_model');
-        $fb_info = $this->ci->auth_model->get_user_fb_info($user_id);
+        $this->ci->load->model('api/user_model');
+        $fb_info = $this->ci->user_model->get_info_sns_fb(array(
+                'id'=> USER_ID
+            ))->row;
         
         if ($fb_info[$data['type']]=='Y') {
             if(count($data)>0&&isset($data['type'])){
@@ -67,19 +69,19 @@ class Fbsdk extends Facebook
                 switch($data['type']){
                     case "post_work":
                         $target = ":upload";
-                        $post['work'] = $data['base_url']."gallery/".$data['work_id'];
+                        $post['work'] = $data['base_url'].$data['work_uploader']."/".$data['work_id'];
                         break;
                     case "post_comment":
                         $target = ":comment";
-                        $post['work'] = $data['base_url']."gallery/".$data['work_id'];
+                        $post['work'] = $data['base_url'].$data['work_uploader']."/".$data['work_id'];
                         break;
                     case "post_note":
                         $target = ":note";
-                        $post['work'] = $data['base_url']."gallery/".$data['work_id'];
+                        $post['work'] = $data['base_url'].$data['work_uploader']."/".$data['work_id'];
                         break;
                     case "post_test":
                         $target = ":test";
-                        $post['work'] = $data['base_url']."gallery/".$data['work_id'];
+                        $post['work'] = $data['base_url'].$data['work_uploader']."/".$data['work_id'];
                         break;
                 }
                 try {

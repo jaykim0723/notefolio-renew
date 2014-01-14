@@ -24,7 +24,12 @@ class Fbconnect extends CI_Controller {
     public function post($data){
         parse_str($data);
         
-        $this->fbsdk->post_data($user_id, array('type'=>$post_type, 'work_id'=>$work_id, 'base_url'=>$base_url));
+        $this->fbsdk->post_data($user_id, array(
+	        	'type'=>$post_type,
+	        	'work_uploader'=>$work_uploader,
+	        	'work_id'=>$work_id,
+	        	'base_url'=>$base_url
+        	));
         
         return $this->fbsdk->last_response;
     }

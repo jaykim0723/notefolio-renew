@@ -378,6 +378,57 @@ class user_model extends CI_Model {
      */
 
     /**
+     * 사용자의 자세한 정보를 불러들인다. (facebook)
+     * @param  array $params
+     * @return object          상태와 데이터값을 반환한다
+     */
+    function get_info_sns_fb($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'id' => USER_ID,
+            'sns_fb_num_id' => '',
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        $this->db->select('user_sns_fb.*');
+
+        if(!empty($params->sns_fb_num_id))
+            $this->db->where('fb_num_id', $params->sns_fb_num_id);
+        if(!empty($params->id))
+            $this->db->where('users.id', $params->id);
+
+        try{
+            $info = $this->db->get()->row();
+        }
+        catch(Exception $e){
+            error_log($e);
+
+            $data = (object)array(
+                'status' => 'fail'
+            );
+
+            return $data;
+        }
+
+        if(count($user)<1){
+            $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_data'
+            );
+        }
+        else {
+            $data = (object)array(
+                'status' => 'done',
+                'row' => $info
+            );
+        }
+
+        return $data;
+    }
+    /**
      * post user's facebook info
      * 
      * @return object       (work content data)
