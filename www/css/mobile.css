@@ -371,10 +371,10 @@ body * {
     height: 100%;
 }
 
-#content-block-list > li {
+/*#content-block-list > li {
 	margin: 7px 0;
 }
-
+*/
 .work-info {
 	background: #fff;
 	color: #aaa;
@@ -488,7 +488,7 @@ body * {
 }
 .work-contents > .block-line {
 	margin: 0;
-	background: #f8f8f8;
+	background: #ccc;
 	height: 30px;
 }
 .work-contents > .block-line + .block-text,
