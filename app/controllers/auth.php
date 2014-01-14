@@ -410,7 +410,8 @@ class Auth extends CI_Controller
         if($this->input->post('submitting')){
             $param = $this->input->post();
             if(empty($param['id'])) $param['id'] = USER_ID;
-            $data = $this->_setting_put($param);
+            $data['form'] = $param;
+            $data = $this->_setting_put($data);
         }
 
         return $this->_setting_form($data);
@@ -435,7 +436,7 @@ class Auth extends CI_Controller
             );
         $param = array();
 
-        foreach($data as $key=>$val){
+        foreach($data['form'] as $key=>$val){
             if(in_array($key, $allowed_user_key))
                 $param[$key] = $val;
         }
@@ -450,7 +451,7 @@ class Auth extends CI_Controller
             );
         $param = array('user_id'=>$data['id']);
 
-        foreach($data as $key=>$val){
+        foreach($data['form'] as $key=>$val){
             if(in_array($key, $allowed_user_key))
                 $param[($key=='fb_num_id')?$key:str_replace('fb_', '', $key)] = $val;
             
