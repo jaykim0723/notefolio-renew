@@ -5,7 +5,7 @@
  * @author Yoon, Seongsu(soplel@snooey.net)
  */
  
-class Fbconnect extends CI_Controller {
+class activity extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -24,7 +24,7 @@ class Fbconnect extends CI_Controller {
     public function post($data){
         parse_str($data);
 
-        $this->load->library('fbsdk');
+        $this->load->library('activity');
         
         $this->fbsdk->post_data($user_id, array(
 	        	'type'=>$post_type,
@@ -37,5 +37,5 @@ class Fbconnect extends CI_Controller {
     }
 }
 
-/* End of file fbconnect.php */
-/* Location: ./application/controllers/fbconnect.php */
+/* End of file activity.php */
+/* Location: ./application/controllers/activity.php */
