@@ -264,7 +264,7 @@ class user_model extends CI_Model {
         $input_profiles->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
 
         //-- exclude not allowed field
-        $allowed_key            = array('username','realname','email');
+        $allowed_key            = array('username','realname',/*'email'*/);
         $allowed_key_profiles   = array('gender', 'birth', 'mailing');
         foreach($input as $key => $val){
             if(in_array($key, $allowed_key)){
@@ -278,6 +278,8 @@ class user_model extends CI_Model {
                 unset($input->{$key});
             }
         }
+        if(empty($input_profiles->mailing))
+            $input_profiles->mailing = 'N';
 
         if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
             $can_delete = true;
