@@ -456,8 +456,6 @@ class Auth extends CI_Controller
                 $param[($key=='fb_num_id')?$key:str_replace('fb_', '', $key)] = $val;
             
         }
-        var_export($param);
-        exit();
         $this->user_model->put_sns_fb($param);
         
         return $data;
