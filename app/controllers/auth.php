@@ -449,7 +449,7 @@ class Auth extends CI_Controller
                 'fb_post_comment',
                 'fb_post_note',
             );
-        $param = array('user_id'=>$data['id']);
+        $param = array('user_id'=>$data['form']['id']);
 
         foreach($data['form'] as $key=>$val){
             if(in_array($key, $allowed_user_key))
