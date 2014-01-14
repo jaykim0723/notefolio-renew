@@ -257,7 +257,7 @@ class user_model extends CI_Model {
         $id = isset($input->id)?$input->id:USER_ID;
         unset($input->id);
 
-        $input_profiles = new Object();
+        $input_profiles = new stdClass(); //create new Object;
         
         $input->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
         $input_profiles->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
