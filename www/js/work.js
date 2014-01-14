@@ -204,59 +204,6 @@ var workUtil = {
 				}
 			});
 
-		  return $(elem).dropzone({
-			url: url,
-			acceptedFiles: 'image/*',
-			paramName: "file", 
-			maxFilesize: 128, // MB
-			init: function() {
-				if((typeof(data)=='undefined')?true:false)
-					return $(this.element).addClass('upload-guide');
-			},
-			dragenter: function(e) {
-				return $(this.element).css({'border':'#9999FF 5px dotted'});
-			},
-			dragover: function(e) {
-				return $(this.element).css({'border':'#9999FF 5px dotted'});
-			},
-			dragleave: function(e) {
-				return $(this.element).css({'border':''});
-			},
-			dragend: function(e) {
-				return $(this.element).css({'border':''});
-			},
-			drop: function(e) {
-				return $(this.element).css({'border':''});
-			},
-			fallback: function() {
-				var msg 	 = $('<p>Internet Explorer 9 이하 버전은 기존 업로드 기능을 이용하고 있습니다.</p>');
-				var uploader = workUtil.content.createOldUploader;
-				return $(this.element).append(msg).info(uploader);
-			},
-			addedfile: function(file) {
-				// $(this.previewsContainer).parent().css({'display': 'none'});
-				file.previewElement = Dropzone.createElement(this.options.previewTemplate.trim());
-				file.previewTemplate = file.previewElement;
-				$(this.previewsContainer).parent().before(
-					workUtil.content.createBlock('image', file.previewElement, 'list-block')
-				);
-				$(file.previewElement).append('<p class="uploading">업로드 중입니다... <img src="/img/ajax-loader.gif" /></p>');
-				return this._updateMaxFilesReachedClass();
-			},
-			success: function(file) {
-				console.log(file);
-				var json = eval('('+file.xhr.responseText+')');
-				$(file.previewElement).append('<p class="img-line"><img src="'+json.fileurl+json.data.filename+'" /></p>');
-			},
-			error: function(file) {
-				$(file.previewElement).append('<p class="error">업로드 중 오류가 발생하였습니다.</p>');
-			},
-			complete: function(file) {
-				$('p.uploading', file.previewElement).remove();
-				workUtil.content.removeBlock($(this.previewsContainer).parent());
-			},
-			previewTemplate: '<div class="preview"></div>'
-		  });
 		},
 		createOldUploader: function(url){
     		return $("<div></div>");
