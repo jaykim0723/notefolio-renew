@@ -292,8 +292,8 @@ class user_model extends CI_Model {
 
             $this->db->trans_start();
             if(!empty($id)){
-                $this->db->where('id', $id)->set($input)->update('users'); // 사용자 레코드 수정.
-                $this->db->where('user_id', $id)->set($input_profiles)->update('user_profiles');
+                $this->db->where('id', $id)->update('users', $input); // 사용자 레코드 수정.
+                $this->db->where('user_id', $id)->update('user_profiles', $input_profiles);
             }
             $this->db->trans_complete();
 
