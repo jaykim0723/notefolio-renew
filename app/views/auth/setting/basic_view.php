@@ -17,13 +17,23 @@
 			$('#auth_basic :radio[name=gender]').filter('input[value=<?php echo $gender?>]').attr('checked', true).trigger('change');
 		</script>
 	</div>
-		
 
+	<div class="row">
+		<div class="col-md-6">
+			<?php echo $email?>
+			<a href="/auth/change_email" class="btn btn-link">이메일 변경하기</a>
+		</div>
+		<div class="col-md-6">
+			비밀번호
+			<a href="/auth/change_password" class="btn btn-link">비밀번호 변경하기</a>
+		</div>
+	</div>
+<!-- 
 	<div class="form-group">
 		<label>이메일</label>
 		<input type='text' class="form-control" name='email' data-last='' id='email' value="<?php echo $email?>"/>
 		<span class="check" id='email_checker' rel='tooltip' title="로그인시 ID로 활용됩니다."></span>
-	</div>
+	</div> -->
 	<script>
 		var timeout = '';
 		var check_reg_email = function(v){
@@ -59,9 +69,9 @@
 
 	
 	<div class="form-group">
-		<label>개인url</label>
+<!-- 		<label>개인url</label>
 		<span class='url_hint'>http://www.notefolio.net/</span><input type='text' class="form-control" id='username' name='username' value="<?php echo $username?>" minlength='3' maxlength='20'/>
-		<span class="check" id='checker'></span>
+		<span class="check" id='checker'></span> -->
 		<script>
 			var timeout='';
             var username_checked=false;
