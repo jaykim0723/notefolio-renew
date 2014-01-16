@@ -326,6 +326,28 @@ class work_model extends CI_Model {
         return $data;
     }
 
+    /**
+     * post note for work
+     * 
+     * @param  array  $params 
+     * @return object          상태와 데이터값을 반환한다
+     */
+    function post_note($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => '',
+            'work_id'   => '',
+            'regdate'   => date('Y-m-d H:i:s')
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+
+        #
+    }
+
 
     function collect($params=array()){
         log_message('debug','--------- work_model > collect ( params : '.print_r(get_defined_vars(),TRUE)).')';
