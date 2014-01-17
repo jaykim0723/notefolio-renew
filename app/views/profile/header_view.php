@@ -116,9 +116,11 @@
 	<?php if($this->session->userdata('username')==$row->username): ?>
 	$(function(){
 		$('#btn-upload-face').ajaxUploader({
+			multiple : false,
 			url : '/upload/profile-face'
 		});
 		$('#btn-upload-bg').ajaxUploader({
+			multiple : false,
 			url : '/upload/profile-bg'
 		});
 	});

@@ -26,13 +26,15 @@ $.fn.ajaxUploader = function(opts) {
 	// extend the options from defaults with user's options
 	var options = $.extend(defaults, opts || {});
 
-	console.log('ajaxUploader', options, this);
+	// console.log('ajaxUploader', options, this);
+	$(this).addClass('uploader-wrapper').append('<div class="uploader-area"></div>');
+
 
 	// initializing ajax uplaodify
 	// var uploader = new qq.FileUploader({
 	new qq.FileUploader({
 		// pass the dom node (ex. $(selector)[0] for jQuery users)
-		element: $(this)[0],
+		element: $(this).children('.uploader-area')[0],
 		// path to server-side upload script
 		action: options.url,
 		debug : true,

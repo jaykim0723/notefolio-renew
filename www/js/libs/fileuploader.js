@@ -485,8 +485,8 @@ qq.FileUploader = function(o){
         listElement: null,
                 
         template: '<div class="qq-uploader">' + 
-                '<div class="qq-upload-drop-area" onmouseout="this.style.display=\'none\';"><span>Drop files here to upload</span></div>' +
-                '<label class="qq-upload-button">'+(!lteIE8 ? '첨부파일(<a style="text-decoration:underline;font-weight:normal;">파일선택</a>)':'')+'</label>' +
+                '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
+                '<label class="qq-upload-button"></label>' +
                 '<ul class="qq-upload-list"></ul>' + 
              '</div>',
 
@@ -768,7 +768,7 @@ qq.UploadButton = function(o){
     
     // make button suitable container for input
     qq.css(this._element, {
-        position: 'relative',
+        // position: 'relative',
         overflow: 'hidden',
         // Make sure browse button is in the right side
         // in Internet Explorer
@@ -802,25 +802,25 @@ qq.UploadButton.prototype = {
         input.setAttribute("type", "file");
         input.setAttribute("name", this._options.name);
         
-        if(!lteIE8){
-            qq.css(input, {
-                position: 'absolute',
-                // in Opera only 'browse' button
-                // is clickable and it is located at
-                // the right side of the input
-                left: 0,
-                top: 0,
-                fontFamily: 'Arial',
-                // 4 persons reported this, the max values that worked for them were 243, 236, 236, 118
-                fontSize: '118px',
-                margin: 0,
-                padding: 0,
-                cursor: 'pointer',
-                opacity: 0,
-                visibility: lteIE8 ? 'hidden' : 'visible',
-                height : '30px'
-            });
-        }
+        // if(!lteIE8){
+        //     qq.css(input, {
+        //         position: 'absolute',
+        //         // in Opera only 'browse' button
+        //         // is clickable and it is located at
+        //         // the right side of the input
+        //         left: 0,
+        //         top: 0,
+        //         fontFamily: 'Arial',
+        //         // 4 persons reported this, the max values that worked for them were 243, 236, 236, 118
+        //         fontSize: '118px',
+        //         margin: 0,
+        //         padding: 0,
+        //         cursor: 'pointer',
+        //         opacity: 0,
+        //         visibility: lteIE8 ? 'hidden' : 'visible',
+        //         height : '30px'
+        //     });
+        // }
         
         this._element.appendChild(input);
 

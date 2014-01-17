@@ -49,3 +49,54 @@ div#modal_formFeedback > .icon48 {
 .icon48.profile {
   background-position:-350px -41px;
 }
+
+
+
+
+
+
+
+
+
+
+.uploader-wrapper {
+  position: relative;
+  overflow: hidden;
+  z-index: 100;
+}
+.uploader-area,
+.qq-uploader,
+.qq-upload-button,
+.qq-upload-drop-area {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.qq-upload-drop-area {
+    z-index: 102;
+    background: rgba(255, 255, 255, 0.5);
+}
+.qq-upload-drop-area span {
+    display: block;
+    position: absolute;
+    top: 45%;
+    text-align: center;
+    color: #000;
+    width: 100%;
+}
+.qq-upload-list {
+  display: none;
+}
+.qq-upload-button {
+    z-index: 101;    
+    cursor: pointer;
+}    
+.qq-upload-button input {
+    position: absolute;
+    display: block;
+    top: 45%;
+    opacity: 0;
+    visibility: hidden;
+}

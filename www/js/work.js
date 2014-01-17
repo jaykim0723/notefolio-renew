@@ -157,7 +157,7 @@ var workUtil = {
 				case 'image':
 					console.log('data : ', data);
 					output = workUtil.content.createUploader(
-								$('<li class="block-image"></li>').addClass('image-upload-box'), data	);
+								$('<li class="block-image"><img src="/img/thumb_wide4.jpg"/></li>'), data	);
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
@@ -187,8 +187,7 @@ var workUtil = {
 		},
 		createUploader:function(elem, data){
 			return $(elem).ajaxUploader({
-				url : '/upload.php?c=work',
-				clickElement : '.button-upload',
+				url : '/upload/work',
 				multiple : false,
 				start : function(){
 
