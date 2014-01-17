@@ -485,7 +485,7 @@ qq.FileUploader = function(o){
         listElement: null,
                 
         template: '<div class="qq-uploader">' + 
-                '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
+                '<div class="qq-upload-drop-area"><span class="qq-upload-drop-area-span">Drop files here to upload</span></div>' +
                 '<label class="qq-upload-button"></label>' +
                 '<ul class="qq-upload-list"></ul>' + 
              '</div>',
@@ -554,16 +554,23 @@ qq.extend(qq.FileUploader.prototype, {
         var dz = new qq.UploadDropZone({
             element: dropArea,
             onEnter: function(e){
+                console.log('dz.onEnter', e.target);
+                // dropArea.style.display = 'block';
                 qq.addClass(dropArea, self._classes.dropActive);
                 e.stopPropagation();
             },
             onLeave: function(e){
+                if($(e.target).hasClass('qq-upload-drop-area-span')) return;
+                dropArea.style.display = 'none';
                 e.stopPropagation();
             },
             onLeaveNotDescendants: function(e){
+                if($(e.target).hasClass('qq-upload-drop-area-span')) return;
+                dropArea.style.display = 'none';
                 qq.removeClass(dropArea, self._classes.dropActive);  
             },
             onDrop: function(e){
+                console.log('dz.onDrop');
                 dropArea.style.display = 'none';
                 qq.removeClass(dropArea, self._classes.dropActive);
                 self._uploadFileList(e.dataTransfer.files);    
@@ -573,17 +580,24 @@ qq.extend(qq.FileUploader.prototype, {
         dropArea.style.display = 'none';
 
         qq.attach(document, 'dragenter', function(e){     
+            // console.log('dragenter');
             if (!dz._isValidFileDrag(e)) return; 
-            
-            dropArea.style.display = 'block';            
+            var relatedTarget = document.elementFromPoint(e.clientX, e.clientY);
+            var targetDom = $(relatedTarget).closest('.uploader-area');
+            console.log('targetDom', targetDom);
+            if(targetDom){
+                $('.qq-upload-drop-area', targetDom).show();
+            }
         });                 
         qq.attach(document, 'dragleave', function(e){
+            // console.log('dragleave');
             if (!dz._isValidFileDrag(e)) return;            
             
             var relatedTarget = document.elementFromPoint(e.clientX, e.clientY);
+            // console.log('dragleave relatedTarget', $(relatedTarget).closest('.uploader-area'));
             // only fire when leaving document out
             if ( ! relatedTarget || relatedTarget.nodeName == "HTML"){               
-                dropArea.style.display = 'none';                                            
+                // dropArea.style.display = 'none';                                            
             }
         });                
     },

@@ -154,19 +154,23 @@ var workUtil = {
 				case 'line':
 					output = $('<li class="block-line"></li>');
 				break;
+				
 				case 'image':
 					console.log('data : ', data);
 					output = workUtil.content.createUploader(
-								$('<li class="block-image"><img src="/img/thumb_wide4.jpg"/></li>'), data	);
+								$('<li class="block-image"><img src="/img/thumb_wide4.jpg"/><button class="btn btn-primary">Upload an image</button></li>'), data	);
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
+
 				case 'video':
-					output = $('<li class="block-video"><iframe></iframe></li>').children('iframe').attr('src', '//www.youtube.com/embed/wnnOf05WKEs?wmode=opaque');
+					output = $('<li class="block-video"><iframe src="//www.youtube.com/embed/wnnOf05WKEs?wmode=opaque"></iframe></li>');
 				break;
+
 				case 'text':
 				default:
-					output = $('<li class="block-text"></li>').text('이곳을 눌러 내용을 입력하세요.');
+					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').wysihtml5();
+					output = $('<li class="block-text"></li>').html(textarea);
 				break;
 			}
 			if(typeof(data)!='undefined'){

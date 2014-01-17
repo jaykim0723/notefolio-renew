@@ -72,11 +72,11 @@ div#modal_formFeedback > .icon48 {
   left: 0;
   top: 0;
   right: 0;
-  bottom: 0;
+  bottom: -5px;
 }
 .qq-upload-drop-area {
     z-index: 6;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
 }
 .qq-upload-drop-area span {
     display: block;
@@ -102,6 +102,5 @@ div#modal_formFeedback > .icon48 {
     opacity: 0;
      -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
      filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-
     /*visibility: hidden;*/
 }

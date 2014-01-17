@@ -197,6 +197,24 @@ body {
 	top:0;
 	margin-right: 0;
 }
+.block-image button {
+	position: absolute;
+	display: none;
+	top:45%;
+	left: 50%;
+	margin-left: -50px;
+}
+.block-image:hover .qq-upload-button {
+    background: url(/img/t.png);
+}    
+.block-image:hover button {
+    display: block;
+}    
+.block-text textarea {
+	width: 100%;
+	height: 80px;
+}
+
 
 /* sidebar */
 #work-sidebar {
