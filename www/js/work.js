@@ -228,7 +228,7 @@ var workUtil = {
 
 
 
-	delete : function(o){
+	'delete' : function(o){
 		var url = $(o).attr('href');
 		BootstrapDialog.confirm('정말 삭제하시겠습니까?', function(result){
 			if(result){

@@ -344,7 +344,7 @@ var commentUtil = {
 		$commentReplies.find('textarea:last').focus();
 	},
 
-	delete : function(o){
+	'delete' : function(o){
 		console.log('site.js > commentUtil > delete', o);
 		var $work = $(o).parents('.work-wrapper');	
 		var work_id = $work.data('id');
