@@ -90,6 +90,15 @@ body * {
 
 
 
+.error .form-control {
+	border : 1px solid red;
+}
+.error .form-error {
+	margin:2px 0;
+	color: red;
+}
+
+
 #btn-feed,
 #btn-alarm {
 	position: relative;

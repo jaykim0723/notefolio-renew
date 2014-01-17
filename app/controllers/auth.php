@@ -23,7 +23,7 @@ class Auth extends CI_Controller
 	function index()
 	{
 		if ($message = $this->session->flashdata('message')) {
-			$this->load->view('auth/general_message', array('message' => $message));
+            $this->layout->set_view('auth/general_message', array('message' => $message))->render(); 
 		} else {
 			redirect('/auth/login/');
 		}
@@ -1162,24 +1162,32 @@ log_message('debug', ' -------- resurt ----------'.json_encode($result));
 			redirect('/auth/login/');
 
 		} else {
-			$this->form_validation->set_rules('old_password', 'Old Password', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('new_password', 'New Password', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']|alpha_dash');
-			$this->form_validation->set_rules('confirm_new_password', 'Confirm new Password', 'trim|required|xss_clean|matches[new_password]');
 
-			$data['errors'] = array();
+            $data = array(
+                'errors' => array()
+            );
 
-			if ($this->form_validation->run()) {								// validation ok
-				if ($this->tank_auth->change_password(
-						$this->form_validation->set_value('old_password'),
-						$this->form_validation->set_value('new_password'))) {	// success
-					$this->_show_message($this->lang->line('auth_message_password_changed'));
+            if($this->input->post('submitting')){
+    			$this->form_validation->set_rules('old_password', 'Old Password', 'trim|required|xss_clean');
+    			$this->form_validation->set_rules('new_password', 'New Password', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']|alpha_dash');
+    			$this->form_validation->set_rules('confirm_new_password', 'Confirm new Password', 'trim|required|xss_clean|matches[new_password]');
 
-				} else {														// fail
-					$errors = $this->tank_auth->get_error_message();
-					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
-				}
-			}
-			$this->load->view('auth/change_password_form', $data);
+    			if ($this->form_validation->run()) {								// validation ok
+    				if ($this->tank_auth->change_password(
+    						$this->form_validation->set_value('old_password'),
+    						$this->form_validation->set_value('new_password'))) {	// success
+    					$this->_show_message($this->lang->line('auth_message_password_changed'));
+
+    				} else {														// fail
+    					$errors = $this->tank_auth->get_error_message();
+    					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
+    				}
+                }else{
+                    // form validation failed
+                    $data['errors'] = $this->form_validation->error_array();
+                }
+            }
+            $this->layout->set_view('auth/change_password_form', $data)->render(); 
 		}
 	}
 
@@ -1194,29 +1202,36 @@ log_message('debug', ' -------- resurt ----------'.json_encode($result));
 			redirect('/auth/login/');
 
 		} else {
-			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
+            $data = array(
+                'errors' => array()
+            );
 
-			$data['errors'] = array();
+            if($this->input->post('submitting')){
+    			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+    			$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
 
-			if ($this->form_validation->run()) {								// validation ok
-				if (!is_null($data = $this->tank_auth->set_new_email(
-						$this->form_validation->set_value('email'),
-						$this->form_validation->set_value('password')))) {			// success
+    			if ($this->form_validation->run()) {								// validation ok
+    				if (!is_null($data = $this->tank_auth->set_new_email(
+    						$this->form_validation->set_value('email'),
+    						$this->form_validation->set_value('password')))) {			// success
 
-					$data['site_name'] = $this->config->item('website_name', 'tank_auth');
+    					$data['site_name'] = $this->config->item('website_name', 'tank_auth');
 
-					// Send email with new email address and its activation link
-					$this->_send_email('change_email', $data['new_email'], $data);
+    					// Send email with new email address and its activation link
+    					$this->_send_email('change_email', $data['new_email'], $data);
 
-					$this->_show_message(sprintf($this->lang->line('auth_message_new_email_sent'), $data['new_email']));
+    					$this->_show_message(sprintf($this->lang->line('auth_message_new_email_sent'), $data['new_email']));
 
-				} else {
-					$errors = $this->tank_auth->get_error_message();
-					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
-				}
-			}
-			$this->load->view('auth/change_email_form', $data);
+    				} else {
+    					$errors = $this->tank_auth->get_error_message();
+    					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
+    				}
+    			}else{
+                    // form validation failed
+                    $data['errors'] = $this->form_validation->error_array();
+                }
+            }
+            $this->layout->set_view('auth/change_email_form', $data)->render(); 
 		}
 	}
 
