@@ -164,7 +164,7 @@ var workUtil = {
 				break;
 
 				case 'video':
-					output = $('<li class="block-video"><iframe src="//www.youtube.com/embed/wnnOf05WKEs?wmode=opaque"></iframe></li>');
+					output = $('<li class="block-video"><iframe src="//www.youtube.com/embed/wnnOf05WKEs?wmode=opaque"></iframe><div class="block-video-overlay"><textarea></textarea></div></li>');
 				break;
 
 				case 'text':

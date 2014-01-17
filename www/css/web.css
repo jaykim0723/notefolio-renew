@@ -214,7 +214,30 @@ body {
 	width: 100%;
 	height: 80px;
 }
-
+.block-video {
+	position: relative;
+}
+.block-video iframe {
+	z-index: 5;
+}
+.block-video .block-video-overlay {
+	display: none;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 45px;
+	background: rgba(255, 255, 255, 0.4);
+	text-align: center;
+	z-index: 6;
+}
+.block-video textarea {
+	width: 80%;
+	height: 100px;
+}
+.block-video:hover .block-video-overlay {
+	display: block;
+}
 
 /* sidebar */
 #work-sidebar {
