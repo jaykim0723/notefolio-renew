@@ -170,7 +170,7 @@ var workUtil = {
 				case 'text':
 				default:
 					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').wysihtml5();
-					output = $('<li class="block-text"></li>').html(textarea);
+					output = $('<li class="block-text"></li>').append(textarea);
 				break;
 			}
 			if(typeof(data)!='undefined'){

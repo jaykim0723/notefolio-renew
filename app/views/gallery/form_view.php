@@ -159,6 +159,9 @@
 		</div>
 	</div>
 </section>
+
+
+
 <script>
 	$('head').append('<link rel="stylesheet" type="text/css" href="/css/bootstrap-wysihtml5-0.0.2.css"></link>');
 </script>
