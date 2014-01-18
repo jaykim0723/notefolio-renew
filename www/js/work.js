@@ -31,7 +31,7 @@ var workUtil = {
 			// 내용 블럭 셋팅하기
 			var sendTo = $('#content-block-list');
 			$.each(NFview.contents, function(k, block){
-				workUtil.content.createBlock(block.t, block).appendTo(sendTo);
+				workUtil.content.createBlock(block.t, block.c).appendTo(sendTo);
 			});
 
 
@@ -204,10 +204,14 @@ var workUtil = {
 					}
 				});
 		},
-		createBlock: function(type, data, returnType){
+		createBlock: function(type, c, returnType){
 			if(typeof(type)=='undefined'){
 				var type = "text";
 			}
+			if(typeof(c)=='undefined'){
+				var c = '';
+			}
+
 			var output = '';
 			switch(type){
 				case 'line':
@@ -215,25 +219,22 @@ var workUtil = {
 				break;
 				
 				case 'image':
-					console.log('data : ', data);
-					if(empty(data.c))
-						data.c = '/img/thumb_wide4.jpg';
-					output = workUtil.content.createUploader($('<li class="block-image"><img src="'+data.c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
+					if(c=='')
+						c = '/img/thumb_wide4.jpg';
+					output = workUtil.content.createUploader($('<li class="block-image"><img src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
 
 				case 'video':
-					if(empty(data.c))
-						data.c = '//www.youtube.com/embed/wnnOf05WKEs';
-					output = $('<li class="block-video"><iframe src="'+data.c+'?wmode=transparent" frameborder="0" wmode="Opaque"></iframe><div class="block-video-overlay"><textarea></textarea></div></li>');
+					if(c=='')
+						c = '//www.youtube.com/embed/wnnOf05WKEs';
+					output = $('<li class="block-video"><iframe src="'+c+'?wmode=transparent" frameborder="0" wmode="Opaque"></iframe><div class="block-video-overlay"><textarea></textarea></div></li>');
 				break;
 
 				case 'text':
 				default:
-					if(empty(data.c))
-						data.c = '';
-					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(data.c).wysihtml5();
+					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(c).wysihtml5();
 					output = $('<li class="block-text"></li>').append(textarea);
 				break;
 			}
@@ -253,7 +254,7 @@ var workUtil = {
 	    		$(this).remove();
     		});
 		},
-		createUploader:function(elem){
+		createUploader:function(elem, data){
 			return $(elem).ajaxUploader({
 				url : '/upload',
 				multiple : false,
