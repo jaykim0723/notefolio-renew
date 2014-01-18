@@ -1,3 +1,7 @@
+<?php if (USER_ID!=0): ?>
+	<script src="/js/member.js"></script>	
+<?php endif ?>
+
 <div id="profile-header" style="background-image:url(/data/profiles/<?php echo $row->username ?>-bg.jpg?_=<?php echo substr($row->modified,-2) ?>);">
 	<div id="profile-inner-wrapper">
 		<div id="profile-inner">

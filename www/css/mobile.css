@@ -496,7 +496,7 @@ body * {
 }
 .work-contents > .block-line {
 	margin: 0;
-	background: #ccc;
+	background: #f4f4f4;
 	height: 30px;
 }
 .work-contents > .block-line + .block-text,

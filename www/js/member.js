@@ -282,21 +282,6 @@ var workUtil = {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	'delete' : function(o){
 		var url = $(o).attr('href');
 		BootstrapDialog.confirm('정말 삭제하시겠습니까?', function(result){
@@ -305,4 +290,32 @@ var workUtil = {
 			}
 		}, 'danger');
 	}
-}
+};
+var commonUtil = {
+	popCrop : function(opts){
+		var defaults = {
+			width : 400,
+			height : 400,
+			src : '/img/thumb_wide4.jpg',
+			minWidth : 400
+		};
+		// extend the options from defaults with user's options
+		var options = $.extend(defaults, opts || {});
+		
+
+
+	},
+	popSelectMyWork : function(opts){
+		var defaults = {
+			work_id : '',
+			sub : ''
+		};
+		// extend the options from defaults with user's options
+		var options = $.extend(defaults, opts || {});
+
+	}
+};
+
+var profileUtil = {
+
+};
