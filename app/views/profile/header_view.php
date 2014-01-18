@@ -1,5 +1,10 @@
 <?php if (USER_ID!=0): ?>
 	<script src="/js/member.js"></script>	
+	<script src="/js/libs/jquery.Jcrop.min.js"></script>
+	<script>
+		if($('#style_crop').length==0)
+			$('head').append('<link id="style_crop" rel="stylesheet" type="text/css" href="/css/crop/jquery.Jcrop.css"/>');
+	</script>
 <?php endif ?>
 
 <div id="profile-header" style="background-image:url(/data/profiles/<?php echo $row->username ?>-bg.jpg?_=<?php echo substr($row->modified,-2) ?>);">

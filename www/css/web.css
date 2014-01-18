@@ -465,8 +465,30 @@ li#trash-bin{
 
 
 
+#crop-wrapper {
 
-
-.crop-dialog .modal-dialog {
-    width: 840px;
 }
+#crop-wrapper .modal-dialog {
+    width: 860px;
+}
+#crop-wrapper h2 {
+	font-size: 16px;
+	font-weight: normal;
+	margin: 0 0 10px 0;
+	text-align: left;
+}
+#crop-wrapper .crop-image-wrapper {
+	text-align: center;
+}
+#crop-wrapper .crop-image-wrapper img {
+	margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+

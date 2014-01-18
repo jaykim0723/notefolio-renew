@@ -294,14 +294,70 @@ var workUtil = {
 var commonUtil = {
 	popCrop : function(opts){
 		var defaults = {
-			width : 400,
-			height : 400,
-			src : '/img/thumb_wide4.jpg',
-			minWidth : 400
+			title : 'Crop',
+			message : ['',''],
+			width : [400, 800],
+			height : [400, 400],
+			src : '/img/dummy_big.jpg',
+			done : function(dialog){
+				console.log('commonUtil > popCrop > done', dialog);
+	            dialog.close();
+			}
 		};
+
 		// extend the options from defaults with user's options
 		var options = $.extend(defaults, opts || {});
-		
+		if(typeof options.message!='object')
+			options.message = [options.message];
+		if(typeof options.width!='object')
+			options.width = [options.width];
+		if(typeof options.height!='object')
+			options.height = [options.height];
+
+		// $content.append('')
+
+		var dialog = new BootstrapDialog({
+		    title: options.title,
+		    message: function(){
+				var $message = $('<div id="crop-wrapper"></div>');
+				for(var i in options.message){
+					var $imageWrapper = $(
+						'<div class="crop-image-wrapper">'+
+							(options.message[i]!='' ? (i==1 ? '<br/>' : '')+ '<h2>'+options.message[i]+'</h2>' : '' ) +
+							'<img class="crop-image" src="'+options.src+'"/>' +
+						'</div>'
+					);
+					$imageWrapper.children('img').Jcrop({
+						aspectRatio : (options.width[i] / options.height[i]),
+						setSelect : [0,0,options.width[i], options.height[i]]
+					});
+					$imageWrapper.appendTo($message);
+				}
+				return $message;
+		    },
+		    data: {
+                'done': options.done
+            },
+		    buttons: [
+			    {
+			        label: 'Done',
+			        cssClass: 'btn-primary',
+			        action: function(dialog){
+			        	typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);
+			        	// options.done(dialog);
+			        }
+			    },{
+			        label: 'Cancel',
+			        cssClass: 'btn-default',
+			        action: function(dialog){
+			            dialog.close();
+			        }
+			    }
+		    ]
+		});
+		dialog.realize();
+		dialog.getModal().prop('id', 'crop-wrapper'); // cssClass 버그로 인해서 이 꼼수로..
+		dialog.open();
 
 
 	},
