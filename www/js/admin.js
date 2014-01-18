@@ -2,7 +2,7 @@ var adminMenu = {
 	menuItems : [
 		{
 			'btn' : 'btn-add-to-creators',
-			'label' : '핫작가등록',
+			'label' : '핫작가토글',
 			'func' : 'addToHotCreators',
 			'inPage' : ['work-info', 'profile'] // 'all'
 		}
@@ -28,7 +28,9 @@ var adminMenu = {
 		$.post('/admin/add_to_hot_creators', {
 			username : site.segment[0]
 		},'json').done(function(d){
-			alert(d);
+			if(d.status=='done'){
+				msg.open(d.msg);
+			}
 		});
 	}
 };
