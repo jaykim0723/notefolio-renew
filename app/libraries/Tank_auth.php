@@ -151,6 +151,15 @@ class Tank_auth
 	{
 		return $this->ci->session->userdata('username');
 	}
+	/**
+	 * Get username
+	 *
+	 * @return	string
+	 */
+	function get_user_level()
+	{
+		return $this->ci->session->userdata('level');
+	}
 
     /**
      * Get realname

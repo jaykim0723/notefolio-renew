@@ -270,25 +270,20 @@ class work_model extends CI_Model {
 
     function get_hot_creators(){
         log_message('debug','--------- work_model > get_hot_creators ( params : '.print_r(get_defined_vars(),TRUE)).')';
-        // dummy
-        $data = array();
-        for($i=0; $i<4; $i++){
-            $data[] = (object)array(
-                'id'         => 23498,
-                'username'   => 'maxzidell',
-                'email'      => 'zidell@gmail.com',
-                'level'      => 2,
-                'keywords'   => array(
-                    '순수미술', '영상', '웹디자인'
-                ),
-                'realname'   => '이흥현',
-                'last_ip'    => '127.0.0.1',
-                'last_login' => date('Y-m-d H:i:s'),
-                'created'    => '2013-08-24 20:10:10',
-                'modified'   => '2013-08-24 20:10:10'
-            );
+        $result = $this->db
+            ->select('users.*, user_profiles.keywords as user_keywords')
+            ->from('hot_creators')
+            ->join('users', 'hot_creators.user_id=users.id', 'left')
+            ->join('user_profiles', 'hot_creators.user_id=user_profiles.user_id', 'left')
+            ->order_by('hot_id', 'desc')
+            ->limit(4)
+            ->get()
+            ->result();
+        
+        foreach($result as &$row){
+            $row->user_keywords = array('순수미술','영상','웹디자인'); // dummy
         }
-        return $data;
+        return $result;
     }
 
 

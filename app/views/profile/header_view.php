@@ -33,7 +33,7 @@
 			</div>
 			<div id="profile-info">
 				<h2><?php echo $row->username; ?></h2>
-				<h4>&nbsp;<?php echo @implode('·', $row->keywords); ?>&nbsp;</h4>
+				<h4>&nbsp;<?php echo @implode('·', $row->user_keywords); ?>&nbsp;</h4>
 			</div>
 
 			<div id="profile-sns-link">
@@ -123,4 +123,5 @@
 		});
 	});
 	<?php endif; ?>	
+	NFview.area = 'profile';
 </script>

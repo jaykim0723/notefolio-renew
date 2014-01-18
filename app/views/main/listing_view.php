@@ -28,7 +28,7 @@
 											<?php echo $row->username; ?>
 										</span>
 										<span class="hot-keywords">
-											<?php echo implode(', ', $row->keywords) ?>
+											<?php echo implode(', ', $row->user_keywords) ?>
 										</span>
 										<span class="hot-go">
 											Go To profile

@@ -43,6 +43,12 @@ body {
 	margin: 5px 15px;
 	text-transform:uppercase;
 }
+#footer-gap {
+	display: none;
+}
+#footer-gap a {
+	color: blue;
+}
 
 
 
@@ -369,7 +375,7 @@ li#trash-bin{
 
 /* profile */
 #profile-header {
-	top: -30px;
+	top: -20px;
 	position: relative;
 	height: 550px;
 }
