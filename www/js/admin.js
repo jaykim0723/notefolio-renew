@@ -27,7 +27,7 @@ var adminMenu = {
 	addToHotCreators : function(){
 		$.post('/admin/add_to_hot_creators', {
 			username : site.segment[0]
-		}).done(function(d){
+		},'json').done(function(d){
 			alert(d);
 		});
 	}
