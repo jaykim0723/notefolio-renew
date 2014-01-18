@@ -117,11 +117,11 @@
 	$(function(){
 		$('#btn-upload-face').ajaxUploader({
 			multiple : false,
-			url : '/upload/profile-face'
+			url : '/upload'
 		});
 		$('#btn-upload-bg').ajaxUploader({
 			multiple : false,
-			url : '/upload/profile-bg'
+			url : '/upload'
 		});
 	});
 	<?php endif; ?>	

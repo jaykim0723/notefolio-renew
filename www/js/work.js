@@ -95,6 +95,16 @@ var workUtil = {
 					$('li', sendTo).droppable('destroy');
 				}
 			});
+			$(sendTo).on('mouseenter', '.block-video', function(event){
+				$(this).find('.block-video-overlay').show().find('textarea').val($(this).find('iframe').prop('src'));
+			}).on('mouseleave', '.block-video', function(event){
+				var videoSrc = $(this).find('iframe').prop('src');
+				var textSrc = $(this).find('.block-video-overlay').hide().find('textarea').val();
+				if(videoSrc!=textSrc){
+					$(this).find('iframe').prop('src', textSrc);
+				}
+			});
+
 		},
 		setTool: function(target, container, sendTo){
 			if(typeof(target)=='undefined'){
@@ -164,7 +174,7 @@ var workUtil = {
 				break;
 
 				case 'video':
-					output = $('<li class="block-video"><iframe src="//www.youtube.com/embed/wnnOf05WKEs?wmode=opaque"></iframe><div class="block-video-overlay"><textarea></textarea></div></li>');
+					output = $('<li class="block-video"><iframe src="//www.youtube.com/embed/wnnOf05WKEs?wmode=transparent" frameborder="0" wmode="Opaque"></iframe><div class="block-video-overlay"><textarea></textarea></div></li>');
 				break;
 
 				case 'text':
@@ -191,7 +201,7 @@ var workUtil = {
 		},
 		createUploader:function(elem, data){
 			return $(elem).ajaxUploader({
-				url : '/upload/work',
+				url : '/upload',
 				multiple : false,
 				start : function(){
 
@@ -200,7 +210,7 @@ var workUtil = {
 					
 				},
 				done : function(){
-
+					// upload id와 src만 반환
 				},
 				fail : function(){
 

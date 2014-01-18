@@ -603,7 +603,7 @@ class Upload extends CI_Controller
 			$status = 'success';
 			$msg = substr($ins_id, -2).'/'.$server_filename;
 		}
-		echo json_encode(array('status' => $status, 'msg' => $msg));		
+		echo json_encode(array('status' => $status, 'msg' => $msg, 'upload_id' => '', 'src' =>'', 'org_filename' => '' ));		
 	}
 	
 }
