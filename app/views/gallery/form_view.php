@@ -38,18 +38,29 @@
 					$.getScript('/js/libs/bootstrap-tagsinput.min.js');
 					if($('#style_tagsinput').length==0)
 						$('head').append('<link id="style_tagsinput" href="/css/bootstrap-tagsinput.css" rel="stylesheet"/>');
+					$(function(){
+				        $('.bootstrap-tagsinput input').on('blur', function(){
+				            var tagsObj = $('#tags');
+				            alert(234);
+				            if($(this).val()!=''){
+				                tagsObj.tagsinput('add', $(this).val());
+				                $(this).val('');
+				            }
+				        });
+						
+					});
 				</script>
 
 				
 				<h4>CCL</h4>
 				<select name="work_ccl" id="work_ccl" class="" title="Choose one of the following..." >
 					<option value="">CCL 표시 안함</option>
-					<option data-content="<img src='http://dev.notefolio.net/images/ccl/y0.png'/>저작자표시" value="BY">저작자표시</option>
-					<option value="BY-NC">저작자표시-비영리</option>
-					<option value="BY-ND">저작자표시-변경금지</option>
-					<option value="BY-SA">저작자표시-동일조건변경허락</option>
-					<option value="BY-NC-SA">저작자표시-비영리-동일조건변경허락</option>
-					<option value="BY-NC-ND">저작자표시-비영리-변경금지</option>
+					<option data-content='<i class="spi spi-ccl-cc-by"></i>저작자표시' value="BY">저작자표시</option>
+					<option data-content='<i class="spi spi-ccl-cc-by-nc"></i>저작자표시-비영리' value="BY-NC">저작자표시-비영리</option>
+					<option data-content='<i class="spi spi-ccl-cc-by-nd"></i>저작자표시-변경금지' value="BY-ND">저작자표시-변경금지</option>
+					<option data-content='<i class="spi spi-ccl-cc-by-sa"></i>저작자표시-동일조건변경허락' value="BY-SA">저작자표시-동일조건변경허락</option>
+					<option data-content='<i class="spi spi-ccl-cc-by-nc-sa"></i>저작자표시-비영리-동일조건변경허락' value="BY-NC-SA">저작자표시-비영리-동일조건변경허락</option>
+					<option data-content='<i class="spi spi-ccl-cc-by-nc-nd"></i>저작자표시-비영리-변경금지' value="BY-NC-ND">저작자표시-비영리-변경금지</option>
 				</select>					
 
 
@@ -60,8 +71,8 @@
 						  <span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu">
-						  <li><a href="#">커버 업로드</a></li>
-						  <li><a href="#">작품 중 선택</a></li>
+						  <li><a id="btn-upload-cover" href="#">커버 업로드</a></li>
+						  <li><a id="btn-select-cover" href="#">작품 중 선택</a></li>
 						</ul>
 					</div>	
 					<h4>커버</h4>
@@ -142,6 +153,14 @@
 		workUtil.content.setTool('.block-text, .block-image, .block-video, .block-line', '#work-content-blockadder', '#content-block-list');
 		workUtil.content.setTrashBin('#trash-bin');
 		$('#footer').remove();
+
+		$('#btn-upload-cover').ajaxUploader({
+			multiple : false
+		});
+		$('#btn-select-cover').on('click', function(){
+			workUtil.selectCover();
+		});
+
 	});
 </script>
 

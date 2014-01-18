@@ -147,7 +147,7 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-6">
-									<i class="spi spi-ccl-<?php echo $row->ccl ?>">License</i>
+									<i class="spi spi-ccl-cc-<?php echo strtolower($row->ccl) ?>">CCL</i>
 								</div>
 								<div class="col-xs-6 righted work-sns">
 									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="btn-nofol">

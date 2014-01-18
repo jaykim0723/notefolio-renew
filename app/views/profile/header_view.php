@@ -116,12 +116,10 @@
 	<?php if($this->session->userdata('username')==$row->username): ?>
 	$(function(){
 		$('#btn-upload-face').ajaxUploader({
-			multiple : false,
-			url : '/upload'
+			multiple : false
 		});
 		$('#btn-upload-bg').ajaxUploader({
-			multiple : false,
-			url : '/upload'
+			multiple : false
 		});
 	});
 	<?php endif; ?>	
