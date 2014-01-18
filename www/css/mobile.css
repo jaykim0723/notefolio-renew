@@ -1042,3 +1042,44 @@ p.desc {
 	-moz-binding: url('ellipsis.xml#ellipsis');
 	text-overflow:ellipsis;	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+#ajax-dialog-wrapper .loading {
+	text-align: center;
+	padding: 100px 0;
+}
+.dialog-work-list-wrapper {
+
+}
+.dialog-work-list-wrapper ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.dialog-work-list-wrapper ul li {
+	display: inline-block;
+	width: 30%;
+	margin: 5px 1.5%;
+	cursor: pointer;
+}
+.dialog-work-list-wrapper ul li.selected {
+	outline: 2px solid #2ac5c6;
+}
+.dialog-work-list-wrapper ul li img {
+	width: 100%;
+}
+
+
+
+
+

@@ -56,8 +56,8 @@
 						</button>
 						<ul class="dropdown-menu">
 						  <li><a id="btn-upload-cover" href="#">커버 업로드</a></li>
-						  <li><a id="btn-select-cover" href="#">작품 중 선택</a></li>
-						  <li><a href="javascript:commonUtil.popCrop({'message':['정사각형 메인을 정해주세요.','직사각형 보고 커버를 정해주세요.']});">크롭테스트(임시)</a></li>
+						  <li><a id="btn-select-cover" href="#">작품내용 중 선택</a></li>
+						  <li><a href="javascript:memberUtil.popCrop({'message':['정사각형 메인을 정해주세요.','직사각형 보고 커버를 정해주세요.']});">크롭테스트(임시)</a></li>
 						</ul>
 					</div>	
 					<h4>커버</h4>
@@ -137,9 +137,14 @@
 		workUtil.content.setTrashBin('#trash-bin');
 		workUtil.content.restoreContents();
 
-
-
 	});
+	if($('#style_tagsinput').length==0)
+		$('head').append('<link id="style_tagsinput" href="/css/bootstrap-tagsinput.css" rel="stylesheet"/>');
+	if($('#style_wysihtml').length==0)
+		$('head').append('<link id="style_wysihtml" rel="stylesheet" type="text/css" href="/css/bootstrap-wysihtml5-0.0.2.css"/>');
+	if($('#style_crop').length==0)
+		$('head').append('<link id="style_crop" rel="stylesheet" type="text/css" href="/css/crop/jquery.Jcrop.css"/>');
+
 </script>
 
 
@@ -159,14 +164,6 @@
 
 
 
-<script>
-	if($('#style_tagsinput').length==0)
-		$('head').append('<link id="style_tagsinput" href="/css/bootstrap-tagsinput.css" rel="stylesheet"/>');
-	if($('#style_wysihtml').length==0)
-		$('head').append('<link id="style_wysihtml" rel="stylesheet" type="text/css" href="/css/bootstrap-wysihtml5-0.0.2.css"/>');
-	if($('#style_crop').length==0)
-		$('head').append('<link id="style_crop" rel="stylesheet" type="text/css" href="/css/crop/jquery.Jcrop.css"/>');
-</script>
 <script src="/js/member.js"></script>
 <script src="/js/libs/jquery.Jcrop.min.js"></script>
 <script src="/js/libs/bootstrap-tagsinput.min.js"></script>

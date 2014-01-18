@@ -65,7 +65,25 @@ var workUtil = {
 				multiple : false
 			});
 			$('#btn-select-cover').on('click', function(){
-				workUtil.selectCover();
+				var selectCover = memberUtil.popLoading({
+					title : '작품내용 중 선택하기',
+					done : function(dialog){
+						var src = dialog.getModalBody().find('.selected').children('img').attr('src');
+						if(typeof src=='undefined'){
+							msg.open('이미지를 선택해주세요.', 'error');
+							return;
+						}
+						alert('selected : '+src);
+						// dialog.close();
+					}
+				});
+				// call current images
+				selectCover.getModal().addClass('dialog-work-list-wrapper');
+				$list = $('<ul></ul>');
+				$('#content-block-list .block-image').each(function(index){
+					$list.append('<li><img src="'+$(this).children('img').prop('src')+'"/></li>');
+				});
+				selectCover.getModalBody().html($list);
 			});
 
 			
@@ -280,8 +298,6 @@ var workUtil = {
 	},
 
 
-
-
 	'delete' : function(o){
 		var url = $(o).attr('href');
 		BootstrapDialog.confirm('정말 삭제하시겠습니까?', function(result){
@@ -291,7 +307,23 @@ var workUtil = {
 		}, 'danger');
 	}
 };
-var commonUtil = {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var memberUtil = {
 	popCrop : function(opts){
 		var defaults = {
 			title : 'Crop',
@@ -314,7 +346,6 @@ var commonUtil = {
 		if(typeof options.height!='object')
 			options.height = [options.height];
 
-		// $content.append('')
 
 		var dialog = new BootstrapDialog({
 		    title: options.title,
@@ -358,20 +389,67 @@ var commonUtil = {
 		dialog.realize();
 		dialog.getModal().prop('id', 'crop-wrapper'); // cssClass 버그로 인해서 이 꼼수로..
 		dialog.open();
-
-
+		return dialog;
 	},
-	popSelectMyWork : function(opts){
+
+
+	popLoading : function(opts){
 		var defaults = {
-			work_id : '',
-			sub : ''
+			title : 'Loading',
+			id : 'ajax-dialog-wrapper',
+			done : function(dialog){
+				console.log('commonUtil > popLoading > done', dialog);
+	            dialog.close();
+			}
 		};
 		// extend the options from defaults with user's options
 		var options = $.extend(defaults, opts || {});
 
+		var dialog = new BootstrapDialog({
+		    title: options.title,
+		    message: '<div class="loading"><img src="/img/loading.gif"/></div>',
+		    data: {
+                'done': options.done
+            },
+		    buttons: [
+			    {
+			        label: 'Done',
+			        cssClass: 'btn-primary',
+			        action: function(dialog){
+			        	typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);
+			        }
+			    },{
+			        label: 'Cancel',
+			        cssClass: 'btn-default',
+			        action: function(dialog){
+			            dialog.close();
+			        }
+			    }
+		    ]
+		});
+		dialog.realize();
+		dialog.getModal().prop('id', options.id); // cssClass 버그로 인해서 이 꼼수로..
+		dialog.open();
+		return dialog;
 	}
 };
 
 var profileUtil = {
 
 };
+
+
+
+
+
+
+
+
+
+
+$(function(){
+	$(document).on('click', '.dialog-work-list-wrapper li', function(){
+		$(this).parent().children('.selected').removeClass('selected');
+		$(this).addClass('selected');
+	})
+});
