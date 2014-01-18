@@ -23,6 +23,56 @@ var workUtil = {
 		});
 	},
 	content: {
+		restoreContents : function(){ // create든 update든 NFView의 값을 가지고 폼들에 반영을 해준다.
+			// 제목 셋팅해주기
+			$('#work_title').val(NFview.title);
+
+
+			// 내용 블럭 셋팅하기
+			var sendTo = $('#content-block-list');
+			$.each(NFview.contents, function(k, block){
+				workUtil.content.createBlock(block.t, block).appendTo(sendTo);
+			});
+
+
+			// 키워드 셋팅하기
+			$('#work_keywords').selectpicker('val', NFview.keywords);
+
+
+			// 태그 셋팅하기
+			var tagsObj = $('#work_tags');
+			tagsObj.tagsinput({
+				maxTags : 50,
+				confirmKeys: [13, 9, 188]
+			})
+			$.each(NFview.tags, function(k,v){
+				tagsObj.tagsinput('add', v);
+			});
+	        $('.bootstrap-tagsinput input').on('blur', function(){
+	            if($(this).val()!=''){
+	                tagsObj.tagsinput('add', $(this).val());
+	                $(this).val('');
+	            }
+	        });
+
+        
+			// CCL 셋팅하기
+			$('#work_ccl').selectpicker('val', NFview.ccl);
+
+
+			// 커버 셋팅하기
+			$('#btn-upload-cover').ajaxUploader({
+				multiple : false
+			});
+			$('#btn-select-cover').on('click', function(){
+				workUtil.selectCover();
+			});
+
+			
+			// footer 버리기
+			$('#footer').remove();
+			
+		},
 		setGround: function(target, trash){ // 각 블록별 소팅할 수 있도록 이벤트 바인딩
 			if(typeof(target)=='undefined'){
 				var target = "#content-block-list";
@@ -158,7 +208,6 @@ var workUtil = {
 			if(typeof(type)=='undefined'){
 				var type = "text";
 			}
-
 			var output = '';
 			switch(type){
 				case 'line':
@@ -167,19 +216,24 @@ var workUtil = {
 				
 				case 'image':
 					console.log('data : ', data);
-					output = workUtil.content.createUploader(
-								$('<li class="block-image"><img src="/img/thumb_wide4.jpg"/><button class="btn btn-primary">Upload an image</button></li>'), data	);
+					if(empty(data.c))
+						data.c = '/img/thumb_wide4.jpg';
+					output = workUtil.content.createUploader($('<li class="block-image"><img src="'+data.c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
 
 				case 'video':
-					output = $('<li class="block-video"><iframe src="//www.youtube.com/embed/wnnOf05WKEs?wmode=transparent" frameborder="0" wmode="Opaque"></iframe><div class="block-video-overlay"><textarea></textarea></div></li>');
+					if(empty(data.c))
+						data.c = '//www.youtube.com/embed/wnnOf05WKEs';
+					output = $('<li class="block-video"><iframe src="'+data.c+'?wmode=transparent" frameborder="0" wmode="Opaque"></iframe><div class="block-video-overlay"><textarea></textarea></div></li>');
 				break;
 
 				case 'text':
 				default:
-					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').wysihtml5();
+					if(empty(data.c))
+						data.c = '';
+					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(data.c).wysihtml5();
 					output = $('<li class="block-text"></li>').append(textarea);
 				break;
 			}
@@ -199,7 +253,7 @@ var workUtil = {
 	    		$(this).remove();
     		});
 		},
-		createUploader:function(elem, data){
+		createUploader:function(elem){
 			return $(elem).ajaxUploader({
 				url : '/upload',
 				multiple : false,

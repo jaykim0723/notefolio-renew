@@ -1,6 +1,6 @@
 <script>
 	NFview = <?php
-		echo json_encode($_ci_vars); // view내의 스크립트에서 편리하게 사용하기 위하여 미리 할당
+		echo json_encode($row); // view내의 스크립트에서 편리하게 사용하기 위하여 미리 할당
 	?>;
 	NFview.area = 'work-form';
 </script>
@@ -17,39 +17,23 @@
 			<!-- 사이드바 시작 -->
 			<div class="col-md-3 ">
 				<h4>키워드</h4>
-				<select name="work_categories" id="work_categories" multiple title="Choose one of the following..." >
-					<option value="A7">가구디자인</option>
-					<option value="B7">그리픽디자인</option>
-					<option value="C7">디지털아</option>
-					<option value="D7">산업디자인</option>
-					<option value="E7">실내디자인</option>
-					<option value="F7">웹디자인</option>
-					<option value="G7">제품디자인</option>
-					<option value="H7">페인팅</option>
-					<option value="I7">건축디자인</option>
-					<option value="J7">금속디자인</option>
-					<option value="K7">모션그래픽</option>
-					<option value="L7">설치</option>
+				<select name="work_keywords" id="work_keywords" multiple title="Choose one of the following..." >
+					<option value="가구디자인">가구디자인</option>
+					<option value="그리픽디자인">그리픽디자인</option>
+					<option value="디지털아">디지털아</option>
+					<option value="산업디자인">산업디자인</option>
+					<option value="실내디자인">실내디자인</option>
+					<option value="웹디자인">웹디자인</option>
+					<option value="제품디자인">제품디자인</option>
+					<option value="페인팅">페인팅</option>
+					<option value="건축디자인">건축디자인</option>
+					<option value="금속디자인">금속디자인</option>
+					<option value="UI/UX">UI/UX</option>
+					<option value="파인아트">파인아트</option>
 				</select>
 
 				<h4>태그</h4>
-				<input id="tags" name="" type="text" class="form-control" data-role="tagsinput">
-				<script>
-					$.getScript('/js/libs/bootstrap-tagsinput.min.js');
-					if($('#style_tagsinput').length==0)
-						$('head').append('<link id="style_tagsinput" href="/css/bootstrap-tagsinput.css" rel="stylesheet"/>');
-					$(function(){
-				        $('.bootstrap-tagsinput input').on('blur', function(){
-				            var tagsObj = $('#tags');
-				            alert(234);
-				            if($(this).val()!=''){
-				                tagsObj.tagsinput('add', $(this).val());
-				                $(this).val('');
-				            }
-				        });
-						
-					});
-				</script>
+				<input id="work_tags" name="work_tags" type="text" class="form-control">
 
 				
 				<h4>CCL</h4>
@@ -97,7 +81,7 @@
 				</div>
 
 
-				<input type="hidden" name="work_id" value="<?php echo $work_id ?>"/>
+				<input type="hidden" name="work_id" value="<?php echo $row->work_id ?>"/>
 				<button type="submit" class="btn btn-primary btn-block btn-lg">
 					전송
 				</button>
@@ -113,13 +97,11 @@
 			<!-- 작품영역 시작 -->
 			<div class="col-md-9">
 				<h4>제목</h4>
-				<input type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
+				<input id="work_title" type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
 				<br>
 				<h4>내용</h4>
 				<ul id="content-block-list" class="work-info list-unstyled work-contents">
 				</ul>
-				<?php echo form_open(''); ?>
-				<?php echo form_close(); ?>
 			</div>
 			<!-- 작품영역 끝 -->
 
@@ -152,14 +134,9 @@
 		workUtil.content.setGround('#content-block-list', '.trashable');
 		workUtil.content.setTool('.block-text, .block-image, .block-video, .block-line', '#work-content-blockadder', '#content-block-list');
 		workUtil.content.setTrashBin('#trash-bin');
-		$('#footer').remove();
+		workUtil.content.restoreContents();
 
-		$('#btn-upload-cover').ajaxUploader({
-			multiple : false
-		});
-		$('#btn-select-cover').on('click', function(){
-			workUtil.selectCover();
-		});
+
 
 	});
 </script>
@@ -182,7 +159,11 @@
 
 
 <script>
-	$('head').append('<link rel="stylesheet" type="text/css" href="/css/bootstrap-wysihtml5-0.0.2.css"></link>');
+	if($('#style_tagsinput').length==0)
+		$('head').append('<link id="style_tagsinput" href="/css/bootstrap-tagsinput.css" rel="stylesheet"/>');
+	if($('#style_wysihtml').length==0)
+		$('head').append('<link id="style_wysihtml" rel="stylesheet" type="text/css" href="/css/bootstrap-wysihtml5-0.0.2.css"/>');
 </script>
+<script src="/js/libs/bootstrap-tagsinput.min.js"></script>
 <script src="/js/libs/wysihtml5-0.3.0.min.js"></script>
 <script src="/js/libs/bootstrap-wysihtml5-0.0.2.min.js"></script>

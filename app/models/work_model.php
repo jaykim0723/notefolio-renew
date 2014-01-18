@@ -114,10 +114,11 @@ class work_model extends CI_Model {
         }
 
     	$this->db
-            ->select('works.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
+            ->select('works.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified, user_profiles.keywords as user_keywords')
     		// ->select('work_id, title, realname as user, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
-    		->join('users', 'users.id = works.user_id', 'left')
+            ->join('users', 'users.id = works.user_id', 'left')
+    		->join('user_profiles', 'user_profiles.user_id = works.user_id', 'left')
     		->where('works.work_id', $params->work_id)
     		->limit(1); //set
         $work = $this->db->get()->row();
@@ -129,7 +130,6 @@ class work_model extends CI_Model {
         $work->tags = @explode(')(', trim(trim($work->tags, '('),')'));
         if(substr($work->contents, 0, 2)=='a:')
             $work->contents = unserialize($work->contents);
-
 
         $data = (object)array(
             'status' => 'done',
@@ -159,7 +159,7 @@ class work_model extends CI_Model {
             'last_login' => $data->row->last_login,
             'created'    => $data->row->created,
             'modified'   => $data->row->modified,
-            'keywords'   => array('파인아트', '동영상'), // temporary
+            'user_keywords'   => array('파인아트', '동영상'), // temporary
             'sns'   => (object)array(// temporary
                 'facebook' => 'maxzidell',
                 'twitter' => 'maxzidell'
@@ -169,7 +169,6 @@ class work_model extends CI_Model {
             unset($data->row->{$key});
         }
         $data->row->user = $user;
-
     	return $data;
     }
 
