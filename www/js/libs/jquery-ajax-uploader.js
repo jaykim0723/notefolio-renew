@@ -2,7 +2,7 @@
 $.fn.ajaxUploader = function(opts) {
 	var defaults = {
 		// setting your default values for options
-		url : '/upload.php',
+		url : '/upload',
 		droppable : true,
 		dropActiveClass : '.drop-active',
 		clickElement : 'self',
