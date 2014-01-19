@@ -568,7 +568,7 @@ var collectUtil = {
 				$work.data('collected', 'y');
 				$btnCollect.addClass('collected');
 			}else
-				msg.open(sponseJSON.message);
+				msg.open(responseJSON.message);
 		}, 'json');
 	},
 	hide : function(o){
