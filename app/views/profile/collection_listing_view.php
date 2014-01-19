@@ -8,7 +8,6 @@
 <?php endif ?>
 				<ul class="thumbnail-list infinite-list">
 					<!-- list -->
-					<?php var_export($rows); ?>
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('gallery/thumbnail_inc_view', array('row'=>$row)) ?>
 					<?php endforeach ?>
