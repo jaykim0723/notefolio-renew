@@ -285,41 +285,7 @@ class work_model extends CI_Model {
         }
         return $result;
     }
-
-
-
-
-
-
-
-    function note($params=array()){
-        log_message('debug','--------- work_model > note ( params : '.print_r(get_defined_vars(),TRUE)).')';
-        $params = (object)$params;
-        $new_params = (object)array();
-        foreach((object)array(
-            'work_id'   => 0,
-            'note' => 'y',
-        ) as $key => $default_value){
-            $new_params->{$key} = isset($params->{$key}) ? $params->{$key} : $default_value;
-        }
-        $params = $new_params;
-
-        $data = (object)array(
-            'status' => 'done',
-            'message' => ''
-        );
-
-        $this->db->trans_start();
-        
-        #do stuff;
-        
-        $this->db->trans_complete();
-
-        if(!$this->db->trans_status())
-            $data->status = 'fail';
-        return $data;
-    }
-
+    
     /**
      * post note for work
      * 
@@ -329,8 +295,9 @@ class work_model extends CI_Model {
     function post_note($params=array()){
         $params = (object)$params;
         $default_params = (object)array(
-            'user_id'   => '',
+            'user_id'   => USER_ID,
             'work_id'   => '',
+            'comment'   => '',
             'regdate'   => date('Y-m-d H:i:s')
         );
         foreach($default_params as $key => $value){
@@ -338,7 +305,115 @@ class work_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-        #
+        $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_process'
+            );
+
+        if(!empty($params->user_id) && $params->user_id>0){
+            
+            $query = $this->db
+                ->where(array(
+                    'user_id'=>$params->user_id,
+                    'work_id'=>$params->work_id
+                    ))
+                ->get('log_work_note');
+            if($query->num_rows()>0){
+                $data->status = 'fail';
+                $data->message = 'already_noted';
+
+                return $data;
+            }
+            $query->free_result();
+
+            $this->db->trans_start();
+            try{ 
+                $this->db->insert('log_work_note', $params);
+            }
+            catch(Exception $e){
+                $data->status = 'fail';
+                $data->message = 'no_db_insert';
+
+                return $data;
+            } 
+            $this->db->trans_complete();
+
+            $data->status = 'done';
+            $data->message = 'successed';
+
+        }
+        else{
+
+        }
+        return $data;
+    }
+
+    
+    /**
+     * delete note for work
+     * 
+     * @param  array  $params 
+     * @return object          상태와 데이터값을 반환한다
+     */
+    function delete_note($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => USER_ID,
+            'work_id'   => ''
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_process'
+            );
+
+        if(!empty($params->user_id) && $params->user_id>0
+            && !empty($params->work_id) && $params->work_id>0
+            ){
+            
+            $query = $this->db
+                ->where(array(
+                    'user_id'=>$params->user_id,
+                    'work_id'=>$params->work_id
+                    ))
+                ->get('log_work_note');
+            if($query->num_rows()==0){
+                $data->status = "fail";
+                $data->message = 'no_noted';
+
+                return $data;
+            }
+            $query->free_result();
+            
+            $this->db->trans_start();
+            try{ 
+                $this->db
+                    ->where(array(
+                        'user_id'=>$params->user_id,
+                        'work_id'=>$params->work_id
+                        ))
+                    ->delete('log_work_note');
+            }
+            catch(Exception $e){
+                $data->status = "fail";
+                $data->message = 'no_db_delete';
+
+                return $data;
+            } 
+            $this->db->trans_complete();
+
+            $data->status = "done";
+            $data->message = 'successed';
+
+        }
+        else{
+
+        }
+        return $data;
     }
     
     /**
