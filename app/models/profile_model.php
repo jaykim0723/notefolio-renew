@@ -304,7 +304,7 @@ class profile_model extends CI_Model {
                     'follower_id'=>$params->follower_id,
                     'follow_id'=>$params->follow_id
                     ))
-                ->get('user_work_follow');
+                ->get('user_follows');
             if($query->num_rows()>0){
                 $data->status = 'fail';
                 $data->message = 'already_followed';
