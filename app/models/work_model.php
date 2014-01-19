@@ -331,6 +331,7 @@ class work_model extends CI_Model {
                     'remote_addr' like '$params->remote_addr'
                     )")
                 ->get('log_work_note');
+                var_export($this->db->last_query());
 
         }
         if($query->num_rows()>0){
