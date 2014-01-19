@@ -20,6 +20,15 @@ var site = {
 		}
 		location.href = url;
 	},
+	scrollToBottom : function(obj){
+		if(typeof obj!='undefined')
+			var top = $(obj).offset().top - 40;
+		else{
+			var top = $(document).height();
+		}
+		var delay = 0.5 * Math.abs(top - document.body.scrollTop);
+		return $('html,body').animate({scrollTop: top}, delay);
+	},
 	checkFlashMsg : function(){
 		if(!empty(localStorage.getItem('flashMsg'))){
 			var t = JSON.parse(localStorage.getItem('flashMsg'));

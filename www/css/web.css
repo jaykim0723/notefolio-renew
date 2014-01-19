@@ -370,7 +370,23 @@ li#trash-bin{
 	margin-top: 10px;
 	padding: 20px 20px;
 }
-
+#work-submit {
+	position: relative;
+}
+#work-discoverbility {
+	display: block;
+	position: absolute;
+	background: #888;
+	height: 10px;
+	top: -10px;
+	left:0;
+	width:100%;
+}
+#work-discoverbility span {
+	display: block;
+	background: #2ac5c6;
+	height: 10px;
+}
 
 
 /* profile */
