@@ -31,8 +31,9 @@ class profile_model extends CI_Model {
     	$this->db
             ->select('works.*, users.*, users.id as user_id')
     		// ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
-    		->from('works')
-    		->join('users', 'users.id = works.user_id', 'left')
+    		->from('user_work_collect')
+            ->join('works', 'user_work_collect.work_id = works.work_id', 'left')
+            ->join('users', 'users.id = works.user_id', 'left')
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
     	switch($params->order_by){
