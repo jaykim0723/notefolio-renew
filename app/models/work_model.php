@@ -366,6 +366,7 @@ class work_model extends CI_Model {
             );
 
         if(!empty($params->user_id) && $params->user_id>0){
+            exit('aaa');
             
             $row = $this->db
                 ->where(array(
@@ -380,7 +381,7 @@ class work_model extends CI_Model {
                 return $data;
             }
             $row->free_result();
-            exit('aaa');
+            
             $this->db->trans_start();
             try{ 
                 $this->db->insert('user_work_collect', $params);
