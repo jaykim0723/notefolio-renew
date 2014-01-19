@@ -332,6 +332,7 @@ class work_model extends CI_Model {
                     )")
                 ->get('log_work_note');
                 var_export($this->db->last_query());
+                exit();
 
         }
         if($query->num_rows()>0){
