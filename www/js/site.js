@@ -592,7 +592,7 @@ var collectUtil = {
 				$work.data('collected', 'n');
 				$btnCollect.removeClass('collected');
 			}else
-				msg.open(sponseJSON.message);
+				msg.open(responseJSON.message);
 		}, 'json');
 	}
 };
