@@ -31,8 +31,8 @@ $.fn.ajaxUploader = function(opts) {
 
 
 	// initializing ajax uplaodify
-	// var uploader = new qq.FileUploader({
-	new qq.FileUploader({
+	var $(this).uploader = new qq.FileUploader({
+	//new qq.FileUploader({
 		// pass the dom node (ex. $(selector)[0] for jQuery users)
 		element: $(this).children('.uploader-area')[0],
 		// path to server-side upload script

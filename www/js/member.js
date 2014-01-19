@@ -278,7 +278,7 @@ var workUtil = {
 		},
 		createUploader:function(elem, data){
 			return $(elem).ajaxUploader({
-				url : '/upload',
+				url : '/upload/image',
 				multiple : false,
 				start : function(){
 
