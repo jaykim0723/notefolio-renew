@@ -176,7 +176,6 @@ class Profile extends CI_Controller {
 						$result = $this->profile_model->post_follow($params);
 					break;
 				}
-				exit(var_export($result, true));
 			}
 			else {
 				$result = (object)array(
