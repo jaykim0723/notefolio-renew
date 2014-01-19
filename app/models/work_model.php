@@ -376,7 +376,7 @@ class work_model extends CI_Model {
             if($query->num_rows()>0){
                 echo $query->num_rows();
                 exit('$query->num_rows()');
-                $data->status = "fail";
+                $data->status = 'fail';
                 $data->message = 'already_collected';
 
                 return $data;
@@ -388,16 +388,14 @@ class work_model extends CI_Model {
                 $this->db->insert('user_work_collect', $params);
             }
             catch(Exception $e){
-                $data->status = "fail";
+                $data->status = 'fail';
                 $data->message = 'no_db_insert';
 
                 return $data;
             } 
             $this->db->trans_complete();
-                echo $this->db->trans_status();
-                exit('$this->db->trans_status()');
 
-            $data->status = "done";
+            $data->status = 'done';
             $data->message = 'successed';
 
         }
