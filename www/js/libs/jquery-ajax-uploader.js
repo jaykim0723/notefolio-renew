@@ -31,7 +31,7 @@ $.fn.ajaxUploader = function(opts) {
 
 
 	// initializing ajax uplaodify
-	var $(this).uploader = new qq.FileUploader({
+	$(this).uploader = new qq.FileUploader({
 	//new qq.FileUploader({
 		// pass the dom node (ex. $(selector)[0] for jQuery users)
 		element: $(this).children('.uploader-area')[0],
