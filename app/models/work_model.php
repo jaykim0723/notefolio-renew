@@ -366,22 +366,22 @@ class work_model extends CI_Model {
             );
 
         if(!empty($params->user_id) && $params->user_id>0){
-            exit('aaa');
             
-            $row = $this->db
+            $query = $this->db
                 ->where(array(
                     'user_id'=>$params->user_id,
                     'work_id'=>$params->work_id
                     ))
                 ->get('user_work_collect');
-            if($row->num_rows()>0){
+            if($query->num_rows()>0){
+                exit('a');
                 $data->status = "fail";
                 $data->message = 'already_collected';
 
                 return $data;
             }
-            $row->free_result();
-            
+            $query->free_result();
+
             $this->db->trans_start();
             try{ 
                 $this->db->insert('user_work_collect', $params);
@@ -431,19 +431,19 @@ class work_model extends CI_Model {
             && !empty($params->work_id) && $params->work_id>0
             ){
             
-            $row = $this->db
+            $query = $this->db
                 ->where(array(
                     'user_id'=>$params->user_id,
                     'work_id'=>$params->work_id
                     ))
                 ->get('user_work_collect');
-            if($row->num_rows()==0){
+            if($query->num_rows()==0){
                 $data->status = "fail";
                 $data->message = 'no_collected';
 
                 return $data;
             }
-            $row->free_result();
+            $query->free_result();
             
             $this->db->trans_start();
             try{ 
