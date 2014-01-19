@@ -338,39 +338,133 @@ class work_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-
         #
     }
-
-
-    function collect($params=array()){
-        log_message('debug','--------- work_model > collect ( params : '.print_r(get_defined_vars(),TRUE)).')';
+    
+    /**
+     * post collect for work
+     * 
+     * @param  array  $params 
+     * @return object          상태와 데이터값을 반환한다
+     */
+    function post_collect($params=array()){
         $params = (object)$params;
-        $new_params = (object)array();
-        foreach((object)array(
-            'work_id'   => 0,
-            'collect' => 'y',
-        ) as $key => $default_value){
-            $new_params->{$key} = isset($params->{$key}) ? $params->{$key} : $default_value;
+        $default_params = (object)array(
+            'user_id'   => USER_ID,
+            'work_id'   => '',
+            'comment'   => '',
+            'regdate'   => date('Y-m-d H:i:s')
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
         }
-        $params = $new_params;
 
         $data = (object)array(
-            'status' => 'done',
-            'message' => ''
-        );
+                'status' => 'fail',
+                'message' => 'no_process'
+            );
 
-        $this->db->trans_start();
-        
-        #do stuff;
-        
-        $this->db->trans_complete();
+        if(!empty($params->user_id) && $params->user_id>0){
+            
+            $row = $this->db
+                ->where(array(
+                    'user_id'=>$params->user_id,
+                    'work_id'=>$params->work_id
+                    ))
+                ->get('work_collect');
+            if($row->num_rows()>0){
+                $data->status = "fail";
+                $data->message = 'already_collected';
 
-        if(!$this->db->trans_status())
-            $data->status = 'fail';
+                return $data;
+            }
+            $row->free_result();
+            
+            $this->db->trans_start();
+            try{ 
+                $this->db->insert('work_collect', $params);
+            }
+            catch(Exception e){
+                $data->status = "fail";
+                $data->message = 'no_db_insert';
+
+                return $data;
+            } 
+            $this->db->trans_complete();
+
+            $data->status = "done";
+            $data->message = 'successed';
+
+        }
+        else{
+
+        }
         return $data;
     }
+
     
+    /**
+     * delete collect for work
+     * 
+     * @param  array  $params 
+     * @return object          상태와 데이터값을 반환한다
+     */
+    function delete_collect($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => USER_ID,
+            'work_id'   => ''
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_process'
+            );
+
+        if(!empty($params->user_id) && $params->user_id>0
+            && !empty($params->work_id) && $params->work_id>0
+            ){
+            
+            $row = $this->db
+                ->where(array(
+                    'user_id'=>$params->user_id,
+                    'work_id'=>$params->work_id
+                    ))
+                ->get('work_collect');
+            if($row->num_rows()==0){
+                $data->status = "fail";
+                $data->message = 'no_collected';
+
+                return $data;
+            }
+            $row->free_result();
+            
+            $this->db->trans_start();
+            try{ 
+                $this->db->delete('work_collect', $params);
+            }
+            catch(Exception e){
+                $data->status = "fail";
+                $data->message = 'no_db_delete';
+
+                return $data;
+            } 
+            $this->db->trans_complete();
+
+            $data->status = "done";
+            $data->message = 'successed';
+
+        }
+        else{
+
+        }
+        return $data;
+    }
 
 }
 

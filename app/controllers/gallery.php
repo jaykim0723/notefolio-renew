@@ -95,8 +95,34 @@ class Gallery extends CI_Controller {
 	}
 
 	function collect(){
-		$params = $this->input->post();
-		$result = $this->work_model->collect($params);
+		$params = (object)$this->input->post();
+		//$result = $this->work_model->collect($params);
+		if(USER_ID>0){
+			if(!empty($params->work_id) && $params->work_id>0){
+				switch($params->collect){
+					case 'n':
+						$this->work_model->delete_collect($params);
+					break;
+					case 'y':
+					default:
+						$this->work_model->post_collect($params);
+					break;
+				}
+			}
+			else {
+				$result = (object)array(
+						'status' => 'fail',
+						'message' => 'no_work_id'
+					);
+			}	
+		}
+		else{
+			$result = (object)array(
+					'status' => 'fail',
+					'message' => 'not_logged_id'
+				);
+		}
+
 		$this->layout->set_json($result)->render();
 	}
 
