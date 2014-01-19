@@ -324,11 +324,11 @@ class work_model extends CI_Model {
                 ->where(array(
                     'work_id'=>$params->work_id
                     ))
-                ->where("
+                ->where("(
                     'phpsessid'='$params->phpsessid'
                     OR
                     'remote_addr'='$params->remote_addr'
-                    ")
+                    )")
                 ->get('log_work_note');
 
         }
