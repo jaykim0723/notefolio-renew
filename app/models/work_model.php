@@ -340,15 +340,14 @@ class work_model extends CI_Model {
         }
         else if($params->user_id==0){
             $query->free_result();
-            $query = $this->db->query(
-                "SELECT count(id)
-                 from log_work_note
-                 where remote_addr = '{$params->remote_addr}'
-                    and user_id = 0
-                    and work_id = '$params->work_id'
-                    and regdate >= SUBDATE(now(),INTERVAL 5 minute)
-                ;"
-                );
+            $query = $this->db
+                ->where(array(
+                    'user_id'=>0,
+                    'work_id'=>$params->work_id,
+                    'remote_addr'=>$params->remote_addr
+                    ))
+                ->where('regdate >= SUBDATE(now(),INTERVAL 5 minute)')
+                ->get('log_work_note');
             if($query->num_rows()>10){
                 $data->status = 'fail';
                 $data->message = 'too_many_with_same_ip';
