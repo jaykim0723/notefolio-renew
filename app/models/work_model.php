@@ -385,7 +385,7 @@ class work_model extends CI_Model {
             try{ 
                 $this->db->insert('work_collect', $params);
             }
-            catch(Exception e){
+            catch(Exception $e){
                 $data->status = "fail";
                 $data->message = 'no_db_insert';
 
@@ -448,7 +448,7 @@ class work_model extends CI_Model {
             try{ 
                 $this->db->delete('work_collect', $params);
             }
-            catch(Exception e){
+            catch(Exception $e){
                 $data->status = "fail";
                 $data->message = 'no_db_delete';
 
