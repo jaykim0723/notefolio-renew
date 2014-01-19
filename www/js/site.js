@@ -481,7 +481,7 @@ var noteUtil = {
 				msg.open('노트가 취소되었습니다.');
 				$btnNote.removeClass('noted');
 			}else
-				msg.open(sponseJSON.message);
+				msg.open(responseJSON.message);
 		}, 'json');
 
 	},
