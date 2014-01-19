@@ -328,11 +328,11 @@ class profile_model extends CI_Model {
 
             if($this->db->trans_status()){
                 $this->db->query("UPDATE user_profiles 
-                    set follow_cnt = following_cnt + {$affected} 
+                    set following_cnt = following_cnt + {$affected} 
                     where user_id = {$params->follower_id};
                     ");
                 $this->db->query("UPDATE user_profiles 
-                    set follow_cnt = follower_cnt + {$affected} 
+                    set follower_cnt = follower_cnt + {$affected} 
                     where user_id = {$params->follow_id};
                     ");
                 $data->status = 'done';
@@ -407,11 +407,11 @@ class profile_model extends CI_Model {
 
             if($this->db->trans_status()){
                 $this->db->query("UPDATE user_profiles 
-                    set follow_cnt = following_cnt - {$affected} 
+                    set following_cnt = following_cnt - {$affected} 
                     where user_id = {$params->follower_id};
                     ");
                 $this->db->query("UPDATE user_profiles 
-                    set follow_cnt = follower_cnt - {$affected} 
+                    set follower_cnt = follower_cnt - {$affected} 
                     where user_id = {$params->follow_id};
                     ");
                 $data->status = 'done';
