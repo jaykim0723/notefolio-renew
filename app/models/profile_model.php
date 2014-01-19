@@ -34,6 +34,7 @@ class profile_model extends CI_Model {
     		->from('user_work_collect')
             ->join('works', 'user_work_collect.work_id = works.work_id', 'left')
             ->join('users', 'users.id = works.user_id', 'left')
+            ->where('user_work_collect.user_id', $params->user_id)
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
     	switch($params->order_by){
