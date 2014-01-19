@@ -380,7 +380,7 @@ class work_model extends CI_Model {
                 return $data;
             }
             $row->free_result();
-            
+            exit('aaa');
             $this->db->trans_start();
             try{ 
                 $this->db->insert('user_work_collect', $params);
