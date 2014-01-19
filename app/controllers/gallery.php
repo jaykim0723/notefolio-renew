@@ -89,7 +89,7 @@ class Gallery extends CI_Controller {
 
 
 	function note(){
-		$params = $this->input->post();
+		$params = (object)$this->input->post();
 		//$result = $this->work_model->note($params);
 		$params->user_id = USER_ID;
 		if(!empty($params->work_id) && $params->work_id>0){
