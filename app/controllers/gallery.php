@@ -98,6 +98,7 @@ class Gallery extends CI_Controller {
 		$params = (object)$this->input->post();
 		//$result = $this->work_model->collect($params);
 		if(USER_ID>0){
+			$params->user_id = USER_ID;
 			if(!empty($params->work_id) && $params->work_id>0){
 				switch($params->collect){
 					case 'n':
