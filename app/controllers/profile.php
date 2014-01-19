@@ -167,8 +167,6 @@ class Profile extends CI_Controller {
 			$params->follower_id = USER_ID;
 			$params->follow_id = $user_id;
 			if(!empty($params->follow_id) && $params->follow_id>0){
-				$follow = $params->follow;
-				unset($params->follow);
 				switch($follow){
 					case 'n':
 						$result = $this->profile_model->delete_follow($params);
