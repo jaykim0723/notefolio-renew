@@ -344,6 +344,7 @@ class work_model extends CI_Model {
                 "SELECT count(id)
                  from log_work_note
                  where remote_addr = '{$params->remote_addr}'
+                    and user_id = 0
                     and work_id = '$params->work_id'
                     and regdate >= SUBDATE(now(),INTERVAL 5 minute)
                 ;"
