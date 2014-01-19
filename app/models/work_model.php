@@ -297,7 +297,7 @@ class work_model extends CI_Model {
         $default_params = (object)array(
             'user_id'   => USER_ID,
             'work_id'   => '',
-            'comment'   => '',
+            'remote_addr'   => $this->input->server('REMOTE_ADDR'),
             'regdate'   => date('Y-m-d H:i:s')
         );
         foreach($default_params as $key => $value){

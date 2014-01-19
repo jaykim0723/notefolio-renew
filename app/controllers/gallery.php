@@ -112,7 +112,7 @@ class Gallery extends CI_Controller {
 				);
 		}	
 
-		//$this->layout->set_json($result)->render();
+		$this->layout->set_json($result)->render();
 	}
 
 	function collect(){
