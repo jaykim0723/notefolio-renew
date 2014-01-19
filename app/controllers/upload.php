@@ -34,7 +34,7 @@ class Upload extends CI_Controller
 				'upload_id' => 0,
 				'filename' => 'QWERTYUIOP1234567890ASDFGHJKL.png'
 				);
-			exit(var_export($this->input->post, true));
+			exit(var_export($this->input->post(), true));
 		}
 		else if($file!=null){
 			$error = false;
