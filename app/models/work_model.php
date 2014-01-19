@@ -326,13 +326,11 @@ class work_model extends CI_Model {
                     'work_id'=>$params->work_id
                     ))
                 ->where("(
-                    'phpsessid' like '$params->phpsessid'
+                    phpsessid like '$params->phpsessid'
                     OR
-                    'remote_addr' like '$params->remote_addr'
+                    remote_addr like '$params->remote_addr'
                     )")
                 ->get('log_work_note');
-                var_export($this->db->last_query());
-                exit();
 
         }
         if($query->num_rows()>0){
