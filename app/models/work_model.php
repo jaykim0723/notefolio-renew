@@ -374,7 +374,7 @@ class work_model extends CI_Model {
                     ))
                 ->get('user_work_collect');
             if($query->num_rows()>0){
-                exit('a');
+                exit($query->num_rows());
                 $data->status = "fail";
                 $data->message = 'already_collected';
 
