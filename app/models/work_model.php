@@ -395,8 +395,8 @@ class work_model extends CI_Model {
             } 
             $this->db->trans_complete();
 
-            $data->status = 'done';
-            $data->message = 'successed';
+            //$data->status = 'done';
+            //$data->message = 'successed';
 
         }
         else{
