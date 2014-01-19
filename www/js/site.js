@@ -462,7 +462,7 @@ var noteUtil = {
 				msg.open('노트되었습니다.');
 				$btnNote.addClass('noted');
 			}else
-				msg.open(sponseJSON.message);
+				msg.open(responseJSON.message);
 		}, 'json');
 	},
 
