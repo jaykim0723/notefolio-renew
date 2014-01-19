@@ -298,6 +298,7 @@ class work_model extends CI_Model {
             'user_id'   => USER_ID,
             'work_id'   => '',
             'remote_addr'   => $this->input->server('REMOTE_ADDR'),
+            'phesessid'   => $this->input->cookie('PHPSESSID'),
             'regdate'   => date('Y-m-d H:i:s')
         );
         foreach($default_params as $key => $value){
