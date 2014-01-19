@@ -104,11 +104,11 @@ class Gallery extends CI_Controller {
 				unset($params->collect);
 				switch($collect){
 					case 'n':
-						$this->work_model->delete_collect($params);
+						$result = $this->work_model->delete_collect($params);
 					break;
 					case 'y':
 					default:
-						$this->work_model->post_collect($params);
+						$result = $this->work_model->post_collect($params);
 					break;
 				}
 			}
