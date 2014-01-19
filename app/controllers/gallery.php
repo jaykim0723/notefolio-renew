@@ -93,15 +93,15 @@ class Gallery extends CI_Controller {
 		//$result = $this->work_model->note($params);
 		$params->user_id = USER_ID;
 		if(!empty($params->work_id) && $params->work_id>0){
-			$collect = $params->collect;
-			unset($params->collect);
-			switch($collect){
+			$note = $params->note;
+			unset($params->note);
+			switch($note){
 				case 'n':
-					$result = $this->work_model->delete_collect($params);
+					$result = $this->work_model->delete_note($params);
 				break;
 				case 'y':
 				default:
-					$result = $this->work_model->post_collect($params);
+					$result = $this->work_model->post_note($params);
 				break;
 			}
 		}
