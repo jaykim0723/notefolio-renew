@@ -367,11 +367,17 @@ class work_model extends CI_Model {
 
             return $data;
         } 
+        $affected = $this->db->affected_rows();
         $this->db->trans_complete();
 
-        $data->status = 'done';
-        $data->message = 'successed';
-
+        if($this->db->trans_status()){
+            $this->db->query("UPDATE works 
+                set note_cnt = note_cnt + {$affected} 
+                where work_id = {$params->work_id};
+                ");
+            $data->status = 'done';
+            $data->message = 'successed';
+        }
         return $data;
     }
 
@@ -431,10 +437,17 @@ class work_model extends CI_Model {
 
                 return $data;
             } 
+            $affected = $this->db->affected_rows();
             $this->db->trans_complete();
 
-            $data->status = "done";
-            $data->message = 'successed';
+            if($this->db->trans_status()){
+                $this->db->query("UPDATE works 
+                    set note_cnt = note_cnt - {$affected} 
+                    where work_id = {$params->work_id};
+                    ");
+                $data->status = 'done';
+                $data->message = 'successed';
+            }
 
         }
         else{
@@ -493,10 +506,17 @@ class work_model extends CI_Model {
 
                 return $data;
             } 
+            $affected = $this->db->affected_rows();
             $this->db->trans_complete();
 
-            $data->status = 'done';
-            $data->message = 'successed';
+            if($this->db->trans_status()){
+                $this->db->query("UPDATE works 
+                    set collect_cnt = collect_cnt + {$affected} 
+                    where work_id = {$params->work_id};
+                    ");
+                $data->status = 'done';
+                $data->message = 'successed';
+            }
 
         }
         else{
@@ -561,10 +581,17 @@ class work_model extends CI_Model {
 
                 return $data;
             } 
+            $affected = $this->db->affected_rows();
             $this->db->trans_complete();
 
-            $data->status = "done";
-            $data->message = 'successed';
+            if($this->db->trans_status()){
+                $this->db->query("UPDATE works 
+                    set collect_cnt = collect_cnt - {$affected} 
+                    where work_id = {$params->work_id};
+                    ");
+                $data->status = 'done';
+                $data->message = 'successed';
+            }
 
         }
         else{
