@@ -311,19 +311,51 @@ class work_model extends CI_Model {
                 'message' => 'no_process'
             );
 
-        if(!empty($params->user_id) && $params->user_id>0){
-            
-            $query = $this->db
-                ->where(array(
-                    'user_id'=>$params->user_id,
-                    'work_id'=>$params->work_id
-                    ))
-                ->get('log_work_note');
+        if(!empty($params->user_id)){
+
+            if($params->user_id>0){
+                $query = $this->db
+                    ->where(array(
+                        'user_id'=>$params->user_id,
+                        'work_id'=>$params->work_id
+                        ))
+                    ->get('log_work_note');
+            }
+            else{
+                $query = $this->db
+                    ->where(array(
+                        'work_id'=>$params->work_id
+                        ))
+                    ->where("
+                        'phpsessid'='$params->phpsessid'
+                        OR
+                        'remote_addr'='$params->remote_addr'
+                        ")
+                    ->get('log_work_note');
+
+            }
             if($query->num_rows()>0){
                 $data->status = 'fail';
                 $data->message = 'already_noted';
 
                 return $data;
+            }
+            else if($params->user_id==0){
+                $query->free_result();
+                $query = $this->db->query(
+                    "SELECT count(id)
+                     from log_work_note
+                     where remote_addr = '{$params->remote_addr}'
+                        and work_id = '$params->work_id'
+                        and regdate >= SUBDATE(now(),INTERVAL 5 minute)
+                    ;"
+                    );
+                if($query->num_rows()>10){
+                    $data->status = 'fail';
+                    $data->message = 'too_many_with_same_ip';
+
+                    return $data;
+                }
             }
             $query->free_result();
 
