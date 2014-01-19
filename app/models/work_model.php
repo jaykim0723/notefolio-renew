@@ -372,7 +372,7 @@ class work_model extends CI_Model {
                     'user_id'=>$params->user_id,
                     'work_id'=>$params->work_id
                     ))
-                ->get('work_collect');
+                ->get('user_work_collect');
             if($row->num_rows()>0){
                 $data->status = "fail";
                 $data->message = 'already_collected';
@@ -383,7 +383,7 @@ class work_model extends CI_Model {
             
             $this->db->trans_start();
             try{ 
-                $this->db->insert('work_collect', $params);
+                $this->db->insert('user_work_collect', $params);
             }
             catch(Exception $e){
                 $data->status = "fail";
@@ -435,7 +435,7 @@ class work_model extends CI_Model {
                     'user_id'=>$params->user_id,
                     'work_id'=>$params->work_id
                     ))
-                ->get('work_collect');
+                ->get('user_work_collect');
             if($row->num_rows()==0){
                 $data->status = "fail";
                 $data->message = 'no_collected';
@@ -446,7 +446,7 @@ class work_model extends CI_Model {
             
             $this->db->trans_start();
             try{ 
-                $this->db->delete('work_collect', $params);
+                $this->db->delete('user_work_collect', $params);
             }
             catch(Exception $e){
                 $data->status = "fail";
