@@ -322,12 +322,13 @@ class work_model extends CI_Model {
         else{
             $query = $this->db
                 ->where(array(
+                    'user_id'=>0,
                     'work_id'=>$params->work_id
                     ))
                 ->where("(
-                    'phpsessid'='$params->phpsessid'
+                    'phpsessid' like '$params->phpsessid'
                     OR
-                    'remote_addr'='$params->remote_addr'
+                    'remote_addr' like '$params->remote_addr'
                     )")
                 ->get('log_work_note');
 
