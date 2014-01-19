@@ -446,7 +446,7 @@ class work_model extends CI_Model {
             
             $this->db->trans_start();
             try{ 
-                $this->db->delete('user_work_collect', $params);
+                $this->db->where($params)->delete('user_work_collect');
             }
             catch(Exception $e){
                 $data->status = "fail";
