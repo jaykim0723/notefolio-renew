@@ -100,7 +100,9 @@ class Gallery extends CI_Controller {
 		if(USER_ID>0){
 			$params->user_id = USER_ID;
 			if(!empty($params->work_id) && $params->work_id>0){
-				switch($params->collect){
+				$collect = $params->collect;
+				unset($params->collect);
+				switch($collect){
 					case 'n':
 						$this->work_model->delete_collect($params);
 					break;
