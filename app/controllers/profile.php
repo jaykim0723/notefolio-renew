@@ -161,18 +161,45 @@ class Profile extends CI_Controller {
 	function follow_action(){
 		$user_id = (int)$this->input->post('user_id');
 		$follow = $this->input->post('follow');
-
-
-		if($follow=='y'){ // do follow
-			# code here
-			
-			$is_follow = 'y';
-		}else{ // do unfollow
-			# code here
-			
-			$is_follow = 'n';
-		}
 		
+		if(USER_ID>0){
+			$params = new stdClass();
+			$params->follower_id = USER_ID;
+			$params->follow_id = $user_id;
+			if(!empty($params->follow_id) && $params->follow_id>0){
+				$follow = $params->follow;
+				unset($params->follow);
+				switch($follow){
+					case 'n':
+						$result = $this->profile_model->delete_follow($params);
+					break;
+					case 'y':
+					default:
+						$result = $this->profile_model->post_follow($params);
+					break;
+				}
+			}
+			else {
+				$result = (object)array(
+						'status' => 'fail',
+						'message' => 'no_follow_id'
+					);
+			}	
+		}
+		else{
+			$result = (object)array(
+					'status' => 'fail',
+					'message' => 'not_logged_id'
+				);
+		}
+
+		if($result->status=="done"){
+			$is_follow = $follow;
+		}
+		else {
+			$is_follow = ($follow=='n')?'y':'n';
+		}
+
 		$this->layout->set_json(array(
 			'user_id'   => $user_id,
 			'is_follow' => $is_follow

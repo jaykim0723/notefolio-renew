@@ -273,6 +273,157 @@ class profile_model extends CI_Model {
     }
 
 
+    
+    /**
+     * post follow for work
+     * 
+     * @param  array  $params 
+     * @return object          상태와 데이터값을 반환한다
+     */
+    function post_follow($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'follower_id'   => USER_ID,
+            'follow_id'   => '',
+            'regdate'   => date('Y-m-d H:i:s')
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_process'
+            );
+
+        if(!empty($params->follower_id) && $params->follower_id>0){
+            
+            $query = $this->db
+                ->where(array(
+                    'follower_id'=>$params->follower_id
+                    'follow_id'=>$params->follow_id
+                    ))
+                ->get('user_work_follow');
+            if($query->num_rows()>0){
+                $data->status = 'fail';
+                $data->message = 'already_followed';
+
+                return $data;
+            }
+            $query->free_result();
+
+            $this->db->trans_start();
+            try{ 
+                $this->db->insert('user_follows', $params);
+            }
+            catch(Exception $e){
+                $data->status = 'fail';
+                $data->message = 'no_db_insert';
+
+                return $data;
+            } 
+            $affected = $this->db->affected_rows();
+            $this->db->trans_complete();
+
+            if($this->db->trans_status()){
+                $this->db->query("UPDATE user_profiles 
+                    set follow_cnt = following_cnt + {$affected} 
+                    where user_id = {$params->$follower_id};
+                    ");
+                $this->db->query("UPDATE user_profiles 
+                    set follow_cnt = follower_cnt + {$affected} 
+                    where user_id = {$params->$follow_id};
+                    ");
+                $data->status = 'done';
+                $data->message = 'successed';
+            }
+
+        }
+        else{
+
+        }
+        return $data;
+    }
+
+    
+    /**
+     * delete follow for work
+     * 
+     * @param  array  $params 
+     * @return object          상태와 데이터값을 반환한다
+     */
+    function delete_follow($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'follower_id'   => USER_ID,
+            'follow_id'   => '',
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_process'
+            );
+
+        if(!empty($params->follower_id) && $params->follower_id>0
+            && !empty($params->follow_id) && $params->follow_id>0
+            ){
+            
+            $query = $this->db
+                ->where(array(
+                    'follower_id'=>$params->follower_id
+                    'follow_id'=>$params->follow_id
+                    ))
+                ->get('user_follows');
+            if($query->num_rows()==0){
+                $data->status = "fail";
+                $data->message = 'no_followed';
+
+                return $data;
+            }
+            $query->free_result();
+            
+            $this->db->trans_start();
+            try{ 
+                $this->db
+                    ->where(array(
+                        'follower_id'=>$params->follower_id
+                        'follow_id'=>$params->follow_id
+                        ))
+                    ->delete('user_follows');
+            }
+            catch(Exception $e){
+                $data->status = "fail";
+                $data->message = 'no_db_delete';
+
+                return $data;
+            } 
+            $affected = $this->db->affected_rows();
+            $this->db->trans_complete();
+
+            if($this->db->trans_status()){
+                $this->db->query("UPDATE user_profiles 
+                    set follow_cnt = following_cnt - {$affected} 
+                    where user_id = {$params->$follower_id};
+                    ");
+                $this->db->query("UPDATE user_profiles 
+                    set follow_cnt = follower_cnt - {$affected} 
+                    where user_id = {$params->$follow_id};
+                    ");
+                $data->status = 'done';
+                $data->message = 'successed';
+            }
+
+        }
+        else{
+
+        }
+        return $data;
+    }
 
 
 }
