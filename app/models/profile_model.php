@@ -301,7 +301,7 @@ class profile_model extends CI_Model {
             
             $query = $this->db
                 ->where(array(
-                    'follower_id'=>$params->follower_id
+                    'follower_id'=>$params->follower_id,
                     'follow_id'=>$params->follow_id
                     ))
                 ->get('user_work_follow');
@@ -375,7 +375,7 @@ class profile_model extends CI_Model {
             
             $query = $this->db
                 ->where(array(
-                    'follower_id'=>$params->follower_id
+                    'follower_id'=>$params->follower_id,
                     'follow_id'=>$params->follow_id
                     ))
                 ->get('user_follows');
@@ -391,7 +391,7 @@ class profile_model extends CI_Model {
             try{ 
                 $this->db
                     ->where(array(
-                        'follower_id'=>$params->follower_id
+                        'follower_id'=>$params->follower_id,
                         'follow_id'=>$params->follow_id
                         ))
                     ->delete('user_follows');
