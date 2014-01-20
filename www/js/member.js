@@ -335,7 +335,8 @@ var memberUtil = {
 			height : [400, 400],
 			src : '/img/dummy_big.jpg',
 			done : function(dialog){
-				console.log('commonUtil > popCrop > done', dialog);
+				console.log('commonUtil > popCrop > done', dialog, NFview.popCrop);
+				NFview.popCrop = null;
 	            dialog.close();
 			}
 		};
@@ -350,6 +351,7 @@ var memberUtil = {
 			options.height = [options.height];
 
 
+		NFview.popCrop = ['', ''];
 		var dialog = new BootstrapDialog({
 		    title: options.title,
 		    message: function(){
@@ -364,6 +366,8 @@ var memberUtil = {
 					$imageWrapper.children('img').Jcrop({
 						aspectRatio : (options.width[i] / options.height[i]),
 						setSelect : [0,0,options.width[i], options.height[i]]
+					}, function(){
+						NFview.popCrop[i] = this; // 나중에 값을 계산하기 위함
 					});
 					$imageWrapper.appendTo($message);
 				}
@@ -378,12 +382,12 @@ var memberUtil = {
 			        cssClass: 'btn-primary',
 			        action: function(dialog){
 			        	typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);
-			        	// options.done(dialog);
 			        }
 			    },{
 			        label: 'Cancel',
 			        cssClass: 'btn-default',
 			        action: function(dialog){
+						NFview.popCrop = null;
 			            dialog.close();
 			        }
 			    }

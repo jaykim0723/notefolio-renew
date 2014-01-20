@@ -123,6 +123,7 @@
 	}
 
 	<?php if($this->session->userdata('username')==$row->username): ?>
+	// 본인의 프로필일 경우에는 관리자에 관한 메뉴들을 활성화시켜준다.
 	$(function(){
 		$('#btn-upload-face').ajaxUploader({
 			multiple : false
@@ -131,11 +132,50 @@
 			multiple : false
 		});
 		$('#btn-select-face, #btn-select-bg').on('click', function(){
+			var _actionTarget = this.id == 'btn-select-bg' ? 'bg' : 'face';
 			site.popWorkList({
 				username :site.segment[0],
-				done : function(d){
-					console.log('profile header done', d);
-				}	
+				done : function(dialog){
+					console.log('profile headialoger done', dialog);
+					var work_id = dialog.getModalBody().find('.selected').prop('id').replace('work-recent-', '');
+					console.log('work_id : ', work_id);
+					dialog.close();
+					
+					// work_id에 대한 이미지 원본을 가지고 와서 크롭창을 띄워준다.
+					var src = '';
+					if(_actionTarget=='face'){
+						// change profile face
+						memberUtil.popCrop({
+							message : '프로필 사진으로 쓸 영역을 지정해주세요.',
+							width : 400,
+							height: 400,
+							done : function(){
+								var crop = NFview.popCrop[0].tellSelect();
+								// 이미지 src, crop 정보를 토대로 사진을 잘라내는 명령을 내린다.
+								$.post('/profile/change_profile_face', {
+									src : src,
+									x : crop.x,
+									y : crop.y,
+									h : crop.h,
+									h : crop.h
+								}, 'json').done(function(responseJSON){
+									console.log('crop profile face done > responseJSON', responseJSON);
+									// 프로필 이미지를 응답받은 주소로 갱신을 해준다.
+									// #do stuff
+								});
+							}
+						});
+					}else{
+						// change profile bg
+						$.post('/profile/change_profile_bg', {
+							src : src
+						}, 'json').done(function(responseJSON)){
+							console.log('crop profile bg done > responseJSON', responseJSON);
+							// 프로필 배경을 응답받은 주소로 갱신을 해준다.
+							// #do stuff
+						});
+					}
+				}
 			});
 		})
 	});
