@@ -99,6 +99,8 @@ class Upload extends CI_Controller
 				break;
 			}
 
+			var_export($filename);
+
 			$output = (move_uploaded_file(
 								$file['tmp_name'], 
 								$filename['path'].$filename['original']))?
