@@ -373,7 +373,7 @@ class work_model extends CI_Model {
 
         if($this->db->trans_status()){
             $this->db->query("UPDATE works 
-                set view_cnt = view_cnt + {$affected} 
+                set hit_cnt = hit_cnt + {$affected} 
                 where work_id = {$params->work_id};
                 ");
             $data->status = 'done';

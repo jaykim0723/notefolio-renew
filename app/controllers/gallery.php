@@ -40,7 +40,7 @@ class Gallery extends CI_Controller {
 		));
 		if($work->status==='fail') alert('작품이 존재하지 않습니다.');
 
-		$work->row->view_cnt++;
+		$work->row->hit_cnt++;
 		$this->layout->set_view('gallery/info_view', $work)->render();
 
 		//-- view count up
