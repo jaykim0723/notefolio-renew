@@ -57,8 +57,8 @@ class qqUploadedFileXhr {
     }
 
     function toFileArray() {
-        list($width, $height, $type) = getimagesize($this->tmpfile);
         $tmp_file = stream_get_meta_data($this->tmpfile);
+        list($width, $height, $type, $attr) = getimagesize($tmp_file['uri']);
         return array(
           'type' => $type,
           'size' => $this->getSize(),
