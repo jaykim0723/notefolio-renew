@@ -59,6 +59,8 @@ class Upload extends CI_Controller
 	            'comment' => ''
 	        ));
 
+	        exit($upload_id);
+
 	        $json = array(
 	        	'status' => 'done',
 	        	'message'	=> 'successed',
