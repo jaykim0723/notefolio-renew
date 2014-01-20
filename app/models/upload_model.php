@@ -138,9 +138,14 @@ class upload_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-        $this->db->insert('uploads', $params);
-
-        $upload_id = $this->db->insert_id();
+        try{
+            $this->db->insert('uploads', $params);
+            $upload_id = $this->db->insert_id();
+        }
+        catch(Exception $e){
+            $upload_id = 0;
+        }
+        
         return $upload_id;
     }
 
