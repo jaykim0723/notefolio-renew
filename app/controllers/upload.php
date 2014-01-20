@@ -59,7 +59,7 @@ class Upload extends CI_Controller
 	            'comment' => ''
 	        ));
 
-	        exit($upload_id);
+	        exit(var_export($upload_id));
 
 	        $json = array(
 	        	'status' => 'done',
@@ -241,7 +241,6 @@ class Upload extends CI_Controller
 					// Crop Image. Resize is next block.
 					if($opt['autocrop']){
 						$crop_to = $this->_get_auto_crop_opt($image, $type);
-						var_export($crop_to);
 					}else{
 						$crop_to = $opt['crop_to'];
 					}
