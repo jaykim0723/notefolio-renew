@@ -237,6 +237,7 @@ class Upload extends CI_Controller
 					// Crop Image. Resize is next block.
 					if($opt['autocrop']){
 						$crop_to = $this->_get_auto_crop_opt($image, $type);
+						var_export($crop_to);
 					}else{
 						$crop_to = $opt['crop_to'];
 					}
