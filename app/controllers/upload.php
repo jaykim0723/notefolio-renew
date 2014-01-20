@@ -25,7 +25,7 @@ class Upload extends CI_Controller
 			$file = $_FILES['file'];
 
 		$error = true;
-			exit(var_export($_FILES, true));
+			exit(var_export($this->input->post(), true));
 
 		if($file=='debug'){
 			$error = false;
