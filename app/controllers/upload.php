@@ -25,16 +25,16 @@ class Upload extends CI_Controller
 		    // XMLHttpRequest stream'd upload
 
 		    include_once(APPPATH.'libraries/qqUploadedFileXhr.php');
-		    var_export(stream_get_meta_data(tmpfile()));
+		    
 		    $xhrUpload = new qqUploadedFileXhr();
-		    $tmp_file = tmpfile();
+		    $tmp_file = stream_get_meta_data(tmpfile());
 		    $xhrUpload->save($tmp_file);
-		    list($width, $height, $type) = getimagesize($tmp_file);
+		    list($width, $height, $type) = getimagesize($tmp_file['uri']);
 		    $file = array(
 		      'type' => $type,
 		      'size' => $xhrUpload->getSize(),
 		      'name' => $filename,
-		      'tmp_name' => $tmp_file
+		      'tmp_name' => $tmp_file['uri']
 		    );
 		} elseif (count($_FILES)) {
 		    // Normal file upload
