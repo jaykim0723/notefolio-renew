@@ -36,6 +36,8 @@ class Upload extends CI_Controller
 		    throw new Exception("Did not receive uploaded file.");
 		}
 		$error = true;
+
+		exit(var_export($file,true));
 		
 		if($file=='debug'){
 			$error = false;
