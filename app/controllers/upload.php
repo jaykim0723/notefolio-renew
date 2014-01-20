@@ -27,7 +27,6 @@ class Upload extends CI_Controller
 		    include_once(APPPATH.'libraries/qqUploadedFileXhr.php');
 
 		    $xhrUpload = new qqUploadedFileXhr();
-		    $tmp_name = 'tmp_creative_'.microtime(true);
 		    $tmp_file = tmpfile();
 		    $xhrUpload->save($tmp_file);
 		    list($width, $height, $type) = getimagesize($tmp_file);
