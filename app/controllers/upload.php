@@ -36,8 +36,6 @@ class Upload extends CI_Controller
 		    throw new Exception("Did not receive uploaded file.");
 		}
 		$error = true;
-
-		exit(var_export($file,true));
 		
 		if($file=='debug'){
 			$error = false;
@@ -52,6 +50,7 @@ class Upload extends CI_Controller
 			$error = false;
 			
 			$filename = $this->_save('image', $file);
+		exit(var_export($filename,true));
 			$upload_id = $this->upload_model->post(array(
 	            'work_id' => $this->input->get_post('work_id'),
 	            'type' => 'work',
