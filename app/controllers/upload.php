@@ -140,6 +140,9 @@ class Upload extends CI_Controller
 				$output = array('original' =>$hashed_name.'.'.$ext,
 								'large'    =>$hashed_name.'_v1.jpg',
 								'medium'   =>$hashed_name.'_v2.jpg',
+								'wide'     =>$hashed_name.'_t3.jpg',
+								'single'   =>$hashed_name.'_t2.jpg',
+								'small'    =>$hashed_name.'_t1.jpg',
 								'path'     =>$path.$hashed_path,
 								'uri'      =>$uri.$hashed_path,
 								'ext'	   =>($ext!='')?$ext:'jpg'
@@ -183,7 +186,7 @@ class Upload extends CI_Controller
 	 * @param array $opt
 	 * @return array
 	 */
-	function _make_thumbnail($tmp_name='', $name=false, $type=false, $opt=array()){
+	function _make_thumbnail($tmp_name=false, $name=false, $type=false, $opt=array()){
 		if($tmp_name){
 			$maxsize = $this->config->item('thumbnail_'.$type, 'upload');
 			$max_width = $maxsize['max_width'];
@@ -230,7 +233,12 @@ class Upload extends CI_Controller
 
 				if(in_array('crop', $todo)){
 					// Crop Image. Resize is next block.
-					$crop_to = $opt['crop_to'];
+					if($opt['autocrop']){
+						$crop_to = $this->_get_auto_crop_opt($image, $type);
+					}else{
+						$crop_to = $opt['crop_to'];
+					}
+
 					$image->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
 				}
 
@@ -309,6 +317,43 @@ class Upload extends CI_Controller
 		}
 
 		return false;
+	}
+
+	/**
+	 * get auto crop rect opt
+	 * 
+	 * @param Imagck $image
+	 * @param string $type
+	 * @return array/bool-false
+	 */
+	function _get_auto_crop_opt($image=false, $type=false){
+		$maxsize = $this->config->item('thumbnail_'.$type, 'upload');
+		$max_width = $maxsize['max_width'];
+		$max_height = $maxsize['max_height'];
+
+		//-- get TO_MAKE_THUMBNAIL ratio
+		$ratio = $max_width/$max_height;
+
+		$width = $image->getImageWidth();
+		$height = $image->getImageHeight();
+
+		//-- get image ratio
+		$img_ratio = $width/$height;
+
+		if($ratio>$image_ratio){ //이미지가 기준 가로폭보다 작다
+			$pos_x = 0;
+			$pos_y = (int)(($height-$max_height)/2);
+		}
+		else if($ratio<$image_ratio){
+			$pos_x = (int)(($width-$max_width)/2);
+			$pos_y = 0;
+		}
+		else{
+			$pos_x = 0;
+			$pos_y = 0;
+		}
+
+		return array('width'=>$width, 'height'=>$height, 'pos_x'=>$pos_x, 'pos_y'=>$pos_y);
 	}
 		//echo json_encode(array('status' => $status, 'msg' => $msg, 'upload_id' => '', 'src' =>'', 'org_filename' => '' ));		
 	
