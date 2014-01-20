@@ -32,9 +32,8 @@ class Upload extends CI_Controller
 		    // Normal file upload
 		    //$file = array_shift($_FILES);
 			$file = $_FILES['qqfile'];
-		} else {
-		    throw new Exception("Did not receive uploaded file.");
 		}
+
 		$error = true;
 		
 		if($file=='debug'){
@@ -50,7 +49,7 @@ class Upload extends CI_Controller
 			$error = false;
 			
 			$filename = $this->_save('image', $file);
-		exit(var_export($filename,true));
+
 			$upload_id = $this->upload_model->post(array(
 	            'work_id' => $this->input->get_post('work_id'),
 	            'type' => 'work',
@@ -62,7 +61,10 @@ class Upload extends CI_Controller
 
 	        $json = array(
 	        	'status' => 'done',
-	        	'fileurl' => $filename['uri'],
+	        	'message'	=> 'successed',
+	        	'upload_id' => $upload_id,
+	        	'src' => $filename['uri'],
+	            'org_filename' => $file['name'],
 	        	'data' => $this->upload_model->get(array('id'=>$upload_id))->row
 	        	);
 		}
@@ -365,6 +367,5 @@ class Upload extends CI_Controller
 		return array('width'=>$crop_width, 'height'=>$crop_height, 
 			'pos_x'=>$pos_x, 'pos_y'=>$pos_y);
 	}
-		//echo json_encode(array('status' => $status, 'msg' => $msg, 'upload_id' => '', 'src' =>'', 'org_filename' => '' ));		
 	
 }
