@@ -102,7 +102,7 @@ class Upload extends CI_Controller
 			var_export($file);
 			var_export($filename);
 
-			$output = (move_uploaded_file(
+			$output = (rename(
 								$file['tmp_name'], 
 								$filename['path'].$filename['original']))?
 							$filename : false;
