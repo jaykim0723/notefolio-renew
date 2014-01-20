@@ -25,7 +25,7 @@ class Upload extends CI_Controller
 		    // XMLHttpRequest stream'd upload
 
 		    include_once(APPPATH.'libraries/qqUploadedFileXhr.php');
-		    
+
 		    $xhrUpload = new qqUploadedFileXhr();
 		    $tmp_file = stream_get_meta_data(tmpfile());
 		    $xhrUpload->save($tmp_file);
@@ -38,19 +38,13 @@ class Upload extends CI_Controller
 		    );
 		} elseif (count($_FILES)) {
 		    // Normal file upload
-		    $file = array_shift($_FILES);
+		    //$file = array_shift($_FILES);
+			$file = $_FILES['qqfile'];
 		} else {
 		    throw new Exception("Did not receive uploaded file.");
 		}
-
-		exit(var_export($file,true));
-
-		if($_FILES['file'])				// file name
-			$file = $_FILES['file'];
-
 		$error = true;
-			exit(var_export($_FILES, true));
-
+		
 		if($file=='debug'){
 			$error = false;
 
