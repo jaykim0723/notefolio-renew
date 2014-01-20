@@ -21,7 +21,7 @@ class Upload extends CI_Controller
 	 * @return no retun
 	 */
 	function image($file=null){
-		if ($filename = $request->getParameter('qqfile', false)) {
+		if ($filename = $this->input->get_post('qqfile')) {
 		    // XMLHttpRequest stream'd upload
 
 		    include_once(APPPATH.'libraries/qqUploadedFileXhr.php');
