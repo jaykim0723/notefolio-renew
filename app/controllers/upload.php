@@ -92,6 +92,8 @@ class Upload extends CI_Controller
 				case "image":
 					$this->_make_thumbnail($file['tmp_name'], $filename['path'].$filename['large'], 'large');
 					$this->_make_thumbnail($file['tmp_name'], $filename['path'].$filename['medium'], 'medium');
+					$this->_make_thumbnail($file['tmp_name'], $filename['path'].$filename['medium'], 'wide', array('autocrop'=>true));
+					$this->_make_thumbnail($file['tmp_name'], $filename['path'].$filename['medium'], 'single', array('autocrop'=>true));
 				break;
 				case "cover":
 				break;
