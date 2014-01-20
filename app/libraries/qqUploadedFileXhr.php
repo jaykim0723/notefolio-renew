@@ -62,7 +62,7 @@ class qqUploadedFileXhr {
         return array(
           'type' => $type,
           'size' => $this->getSize(),
-          'name' => $filename,
+          'name' => $this->getName(),
           'tmp_name' => $tmp_file['uri']
         );
     }
