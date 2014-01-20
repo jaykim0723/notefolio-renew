@@ -466,6 +466,7 @@ var profileUtil = {
 			}
 		});
 	},
+
 	changeBackground : function(src){
 		// change profile bg
 		$.post('/profile/change_profile_bg', {
@@ -476,12 +477,19 @@ var profileUtil = {
 			// #do stuff
 		});
 	},
+
 	setGround :  function(){
 		$('#btn-upload-face').ajaxUploader({
 			multiple : false
 		});
 		$('#btn-upload-bg').ajaxUploader({
 			multiple : false
+		});
+		$('#btn-delete-face').on('click', function(){
+
+		});
+		$('#btn-delete-bg').on('click', function(){
+
 		});
 		$('#btn-select-face, #btn-select-bg').on('click', function(){
 			var _actionTarget = this.id == 'btn-select-bg' ? 'bg' : 'face';
@@ -502,8 +510,7 @@ var profileUtil = {
 					}
 				}
 			});
-		})
-
+		});
 	}
 };
 

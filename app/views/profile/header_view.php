@@ -35,7 +35,7 @@
 					<ul class="dropdown-menu">
 					  <li><a id="btn-upload-face" href="#">사진 업로드</a></li>
 					  <li><a id="btn-select-face">작품 중 선택</a></li>
-					  <li><a href="#">삭제</a></li>
+					  <li><a id="btn-delete-face" href="#">삭제</a></li>
 					</ul>
 				</div>	
 				<?php endif; ?>
@@ -67,7 +67,7 @@
 			<ul class="dropdown-menu">
 			  <li><a id="btn-upload-bg" href="#">사진 업로드</a></li>
 			  <li><a id="btn-select-bg">작품 중 선택</a></li>
-			  <li><a href="#">삭제</a></li>
+			  <li><a id="btn-delete-bg" href="#">삭제</a></li>
 			</ul>
 		</div>
 	</div>	
