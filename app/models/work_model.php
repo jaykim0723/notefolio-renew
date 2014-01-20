@@ -287,6 +287,102 @@ class work_model extends CI_Model {
     }
     
     /**
+     * post view for work
+     * 
+     * @param  array  $params 
+     * @return object          상태와 데이터값을 반환한다
+     */
+    function post_view($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => USER_ID,
+            'work_id'   => '',
+            'remote_addr'   => $this->input->server('REMOTE_ADDR'),
+            'phpsessid'   => $this->input->cookie('PHPSESSID'),
+            'regdate'   => date('Y-m-d H:i:s')
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_process'
+            );
+
+        if($params->user_id>0){
+            $query = $this->db
+                ->where(array(
+                    'user_id'=>$params->user_id,
+                    'work_id'=>$params->work_id
+                    ))
+                ->get('log_work_view');
+        }
+        else{
+            $query = $this->db
+                ->where(array(
+                    'user_id'=>0,
+                    'work_id'=>$params->work_id
+                    ))
+                ->where("(
+                    phpsessid like '$params->phpsessid'
+                    OR
+                    remote_addr like '$params->remote_addr'
+                    )")
+                ->get('log_work_view');
+
+        }
+        if($query->num_rows()>0){
+            $data->status = 'fail';
+            $data->message = 'already_viewd';
+
+            return $data;
+        }
+        else if($params->user_id==0){
+            $query->free_result();
+            $query = $this->db
+                ->where(array(
+                    'user_id'=>0,
+                    'work_id'=>$params->work_id,
+                    'remote_addr'=>$params->remote_addr
+                    ))
+                ->where('regdate >= SUBDATE(now(),INTERVAL 5 minute)')
+                ->get('log_work_view');
+            if($query->num_rows()>10){
+                $data->status = 'fail';
+                $data->message = 'too_many_with_same_ip';
+
+                return $data;
+            }
+        }
+        $query->free_result();
+
+        $this->db->trans_start();
+        try{ 
+            $this->db->insert('log_work_view', $params);
+        }
+        catch(Exception $e){
+            $data->status = 'fail';
+            $data->message = 'no_db_insert';
+
+            return $data;
+        } 
+        $affected = $this->db->affected_rows();
+        $this->db->trans_complete();
+
+        if($this->db->trans_status()){
+            $this->db->query("UPDATE works 
+                set view_cnt = view_cnt + {$affected} 
+                where work_id = {$params->work_id};
+                ");
+            $data->status = 'done';
+            $data->message = 'successed';
+        }
+        return $data;
+    }
+    
+    /**
      * post note for work
      * 
      * @param  array  $params 
