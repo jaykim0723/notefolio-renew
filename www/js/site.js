@@ -174,9 +174,34 @@ var site = {
 
 		// call list
 		$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+options.id_before, {}, function(d){return d;})).done(function(d){
-			dialog.getModalBody().html('<div class="dialog-work-list-wrapper"><ul>'+d+'</ul></div>');
+			dialog.getModalBody().html(
+				$('<div>').addClass('dialog-work-list-wrapper').html(
+					$('<ul>')
+					.addClass('work-list-ul')
+					.addClass('dialog-work-list')
+					.html(
+						d
+					)
+				).append(
+					$('<button class="btn btn-default btn-block">')
+					.html('more...')
+					.on('click', function(){
+						var id_before = $('li:last', '#'+options.id).prop('id').replace('work-recent-', '');
+						$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+id_before, {}, function(d){return d;})).done(function(d){
+							if(d==''){
+								$('button', '#'+options.id).remove();
+							}else{
+								$(d).appendTo('#'+options.id+' ul');
+							}
+						});
+					})
+				)
+			);
 			return dialog;
 		});
+
+
+
 	}   	
 };
 site.checkFlashMsg(); // 페이지가 전환된 이후에 메시지를 표시할 것이 있는지 검사
