@@ -340,7 +340,7 @@ class Upload extends CI_Controller
 		$height = $image->getImageHeight();
 
 		//-- get image ratio
-		$img_ratio = $width/$height;
+		$image_ratio = $width/$height;
 
 		if($ratio>$image_ratio){ //이미지가 기준 가로폭보다 작다
 			$pos_x = 0;
