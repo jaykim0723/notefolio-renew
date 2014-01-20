@@ -21,6 +21,31 @@ class Upload extends CI_Controller
 	 * @return no retun
 	 */
 	function image($file=null){
+		if ($filename = $request->getParameter('qqfile', false)) {
+		    // XMLHttpRequest stream'd upload
+
+		    include_once(APPPATH.'libraries/qqUploadedFileXhr.php');
+
+		    $xhrUpload = new qqUploadedFileXhr();
+		    $tmp_name = 'tmp_creative_'.microtime(true);
+		    $tmp_file = tmpfile();
+		    $xhrUpload->save($tmp_file);
+		    list($width, $height, $type) = getimagesize($tmp_file);
+		    $file = array(
+		      'type' => $type,
+		      'size' => $xhrUpload->getSize(),
+		      'name' => $filename,
+		      'tmp_name' => $tmp_file
+		    );
+		} elseif (count($_FILES)) {
+		    // Normal file upload
+		    $file = array_shift($_FILES);
+		} else {
+		    throw new Exception("Did not receive uploaded file.");
+		}
+
+		exit(var_export($file,true));
+
 		if($_FILES['file'])				// file name
 			$file = $_FILES['file'];
 
