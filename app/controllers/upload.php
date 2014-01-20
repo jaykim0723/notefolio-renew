@@ -25,7 +25,7 @@ class Upload extends CI_Controller
 		    // XMLHttpRequest stream'd upload
 
 		    include_once(APPPATH.'libraries/qqUploadedFileXhr.php');
-		    var_export(tmpfile());
+		    var_export(stream_get_meta_data(tmpfile()));
 		    $xhrUpload = new qqUploadedFileXhr();
 		    $tmp_file = tmpfile();
 		    $xhrUpload->save($tmp_file);
