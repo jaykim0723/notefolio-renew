@@ -27,7 +27,7 @@ class Upload extends CI_Controller
 		    include_once(APPPATH.'libraries/qqUploadedFileXhr.php');
 
 		    $xhrUpload = new qqUploadedFileXhr();
-		    $file = $xhrUpload->save($tmp_file)->toFileArray();
+		    $file = $xhrUpload->makeTempFile()->toFileArray();
 		} elseif (count($_FILES)) {
 		    // Normal file upload
 		    //$file = array_shift($_FILES);

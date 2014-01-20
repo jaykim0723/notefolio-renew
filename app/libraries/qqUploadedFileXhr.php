@@ -32,7 +32,7 @@ class qqUploadedFileXhr {
     
 
     function save($path) {
-        $temp = $this->makeTempFile()->$tmpfile;
+        $temp = $this->makeTempFile()->tmpfile;
         
         $target = fopen($path, "w");
         fseek($temp, 0, SEEK_SET);
