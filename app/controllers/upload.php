@@ -343,11 +343,13 @@ class Upload extends CI_Controller
 		$image_ratio = $width/$height;
 
 		if($ratio>$image_ratio){ //이미지가 기준 가로폭보다 작다
+			$crop_height = ($height * $max_width) / $max_height;
 			$pos_x = 0;
-			$pos_y = (int)(($height-$max_height)/2);
+			$pos_y = (int)(($height-$crop_height)/2);
 		}
 		else if($ratio<$image_ratio){
-			$pos_x = (int)(($width-$max_width)/2);
+			$crop_width = ($width * $max_height) / $max_width;
+			$pos_x = (int)(($width-$crop_width)/2);
 			$pos_y = 0;
 		}
 		else{
