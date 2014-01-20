@@ -229,7 +229,7 @@ class Upload extends CI_Controller
 				    unset($icc_rgb); 
 				}
 
-		    	$image->resampleImage(72,72,imagick::FILTER_LANCZOS,1);
+		    	$image->resampleImage(150,150,imagick::FILTER_LANCZOS,1);
 
 				if(in_array('crop', $todo)){
 					// Crop Image. Resize is next block.
