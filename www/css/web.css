@@ -504,7 +504,9 @@ li#trash-bin{
 
 
 
-
+.dialog-work-list-wrapper ul li:hover {
+	background: #f4f4f4;
+}
 
 
 

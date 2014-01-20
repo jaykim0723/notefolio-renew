@@ -186,16 +186,15 @@ var workUtil = {
 			}
 			$(target, $(container))
 				.on('click', function(event){
-					//$(this).css('outline', '#0000ff 5px dotted');
+		    		if($('html').is(':animated')) return;
 		    		var className =(""+$(this).attr("class")+"").match(/block-(\w+)/);
 					if(className){
 						$newBlock = workUtil.content.createBlock(className[1]).fadeTo(0, 0.01);
 						$newBlock.appendTo(sendTo);
 						$.when(site.scrollToBottom()).done(function(){
-							$newBlock.fadeTo(500, 1);
+							$newBlock.fadeTo(300, 1);
 						});
 					}
-					//setTimeout("$(this).css('outline', 'none');",500);
 				})
 				.draggable({
 					connectToSortable: "#content-block-list",
@@ -375,7 +374,7 @@ var memberUtil = {
             },
 		    buttons: [
 			    {
-			        label: 'Done',
+			        label: 'Crop',
 			        cssClass: 'btn-primary',
 			        action: function(dialog){
 			        	typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);
@@ -417,7 +416,7 @@ var memberUtil = {
             },
 		    buttons: [
 			    {
-			        label: 'Done',
+			        label: 'Select',
 			        cssClass: 'btn-primary',
 			        action: function(dialog){
 			        	typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);

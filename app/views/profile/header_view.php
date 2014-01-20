@@ -34,7 +34,7 @@
 					</button>
 					<ul class="dropdown-menu">
 					  <li><a id="btn-upload-face" href="#">사진 업로드</a></li>
-					  <li><a href="#">작품 중 선택</a></li>
+					  <li><a id="btn-select-face">작품 중 선택</a></li>
 					  <li><a href="#">삭제</a></li>
 					</ul>
 				</div>	
@@ -66,7 +66,7 @@
 			</button>
 			<ul class="dropdown-menu">
 			  <li><a id="btn-upload-bg" href="#">사진 업로드</a></li>
-			  <li><a href="#">작품 중 선택</a></li>
+			  <li><a id="btn-select-bg">작품 중 선택</a></li>
 			  <li><a href="#">삭제</a></li>
 			</ul>
 		</div>
@@ -130,6 +130,14 @@
 		$('#btn-upload-bg').ajaxUploader({
 			multiple : false
 		});
+		$('#btn-select-face, #btn-select-bg').on('click', function(){
+			site.popWorkList({
+				username :site.segment[0],
+				done : function(d){
+					console.log('profile header done', d);
+				}	
+			});
+		})
 	});
 	<?php endif; ?>	
 	NFview.area = 'profile';

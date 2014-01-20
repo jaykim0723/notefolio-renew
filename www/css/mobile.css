@@ -1073,10 +1073,11 @@ p.desc {
 	cursor: pointer;
 }
 .dialog-work-list-wrapper ul li.selected {
-	outline: 2px solid #2ac5c6;
+	background: #2ac5c6!important;
 }
 .dialog-work-list-wrapper ul li img {
-	width: 100%;
+	width: 90%;
+	margin: 5%;
 }
 
 

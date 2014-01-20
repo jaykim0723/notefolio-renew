@@ -27,7 +27,7 @@ var site = {
 			var top = $(document).height();
 		}
 		var delay = 0.5 * Math.abs(top - document.body.scrollTop);
-		return $('html,body').animate({scrollTop: top}, delay);
+		return $('html,body').stop().animate({scrollTop: top}, delay);
 	},
 	checkFlashMsg : function(){
 		if(!empty(localStorage.getItem('flashMsg'))){
@@ -126,7 +126,55 @@ var site = {
                 site.redirect(site.url+'auth/login?go_to='+location.href);
             }
         });
-   	}
+   	},
+	popWorkList : function(opts){
+		var defaults = {
+			title : 'Someone\'s gallery',
+			username : '',
+			work_id : '',
+			sub : '',
+			id_before : '',
+			id : 'ajax-dialog-wrapper',
+			done : function(dialog){
+				console.log('site > popWorkList > done', dialog);
+	            dialog.close();
+			}
+		};
+		// extend the options from defaults with user's options
+		var options = $.extend(defaults, opts || {});
+
+		var dialog = new BootstrapDialog({
+		    title: options.title,
+		    message: '<div class="loading"><img src="/img/loading.gif"/></div>',
+		    data: {
+                'done': options.done
+            },
+		    buttons: [
+			    {
+			        label: 'Select',
+			        cssClass: 'btn-primary',
+			        action: function(dialog){
+			        	typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);
+			        }
+			    },{
+			        label: 'Cancel',
+			        cssClass: 'btn-default',
+			        action: function(dialog){
+			            dialog.close();
+			        }
+			    }
+		    ]
+		});
+		dialog.realize();
+		dialog.getModal().prop('id', options.id); // cssClass 버그로 인해서 이 꼼수로..
+		dialog.open();
+
+		// call list
+		$.when($.get('/profile/my_recent_works/'+options.username+'/'+options.id_before, {}, function(d){return d;})).done(function(d){
+			dialog.getModalBody().html(d);
+			return dialog;
+		});
+	}   	
 };
 site.checkFlashMsg(); // 페이지가 전환된 이후에 메시지를 표시할 것이 있는지 검사
 
