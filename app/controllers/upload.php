@@ -90,17 +90,14 @@ class Upload extends CI_Controller
 
 			switch($type){
 				case "image":
-					$this->_make_thumbnail($file, $filename['path'].$filename['large'], 'large');
-					$this->_make_thumbnail($file, $filename['path'].$filename['medium'], 'medium');
+					$this->_make_thumbnail($file['tmp_name'], $filename['path'].$filename['large'], 'large');
+					$this->_make_thumbnail($file['tmp_name'], $filename['path'].$filename['medium'], 'medium');
 				break;
 				case "cover":
 				break;
 				default:
 				break;
 			}
-
-			var_export($file);
-			var_export($filename);
 
 			$output = (rename(
 								$file['tmp_name'], 
@@ -186,8 +183,8 @@ class Upload extends CI_Controller
 	 * @param array $opt
 	 * @return array
 	 */
-	function _make_thumbnail($file=false, $name=false, $type=false, $opt=array()){
-		if($file){
+	function _make_thumbnail($tmp_name='', $name=false, $type=false, $opt=array()){
+		if($tmp_name){
 			$maxsize = $this->config->item('thumbnail_'.$type, 'upload');
 			$max_width = $maxsize['max_width'];
 			$max_height = $maxsize['max_height'];
@@ -211,7 +208,7 @@ class Upload extends CI_Controller
 
 			if(class_exists('Imagick')){
 				// assign ImageMagick
-				$image = new Imagick($file['tmp_name']);
+				$image = new Imagick($tmp_name);
 				//$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
 				if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
 				    $profiles = $image->getImageProfiles('*', false); 
@@ -259,14 +256,14 @@ class Upload extends CI_Controller
 			else {
 
 				// GD 라이브러리를 이용하여 고전적인 방법으로 생성한다.
-				$size = getimagesize($file['tmp_name']);
+				$size = getimagesize($tmp_name);
 
 				if ($size[2] == 1)
-					$source = imagecreatefromgif($file['tmp_name']);
+					$source = imagecreatefromgif($tmp_name);
 				else if ($size[2] == 2){
-					$source = imagecreatefromjpeg($file['tmp_name']);
+					$source = imagecreatefromjpeg($tmp_name);
 					if(function_exists('exif_read_data')){
-						$exif = exif_read_data($file['tmp_name']);
+						$exif = exif_read_data($tmp_name);
 					    if (!empty($exif['Orientation'])) {
 					        switch ($exif['Orientation']) {
 					            case 3:
@@ -283,13 +280,13 @@ class Upload extends CI_Controller
 					                break;
 					        }
 					        if(isset($modified)){
-								@imagejpeg($source, $file['tmp_name'], 100);			        	
+								@imagejpeg($source, $tmp_name, 100);			        	
 					        }
 					    }
 					    imagedestroy($source);
 					}
 				}else if ($size[2] == 3)
-					$source = imagecreatefrompng($file['tmp_name']);
+					$source = imagecreatefrompng($tmp_name);
 				else
 					;
 
