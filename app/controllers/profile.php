@@ -72,6 +72,25 @@ class Profile extends CI_Controller {
 		$work_list->username = $username;
 		$this->layout->set_view('profile/my_recent_works_listing_view', $work_list)->render();
 	}
+	/**
+	 * 작품고르기 팝업에서 호출할 용도
+	 * @param  string  $username [description]
+	 * @param  integer $page     [description]
+	 * @return [type]            [description]
+	 */
+	function my_pop_recent_works($username='', $id_before=''){
+		log_message('debug','--------- profile.php > my_pop_recent_works ( params : '.print_r(get_defined_vars(),TRUE)).')';
+		
+		$user = $this->_get_user_info($username);
+
+        $this->load->model('work_model');
+		$work_list = $this->work_model->get_list(array(
+			'id_before' => $id_before,
+			'user_id' => $this->user_id
+		));
+		$work_list->username = $username;
+		$this->layout->set_view('profile/my_pop_recent_works_listing_view', $work_list)->render();
+	}
 
 	
 

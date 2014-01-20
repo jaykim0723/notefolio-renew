@@ -1069,8 +1069,11 @@ p.desc {
 .dialog-work-list-wrapper ul li {
 	display: inline-block;
 	width: 30%;
-	margin: 5px 1.5%;
+	margin: 5px 1.4% 20px 1.4%;
 	cursor: pointer;
+	text-align: center;
+	line-height: 1.3em;
+	padding-bottom:10px;
 }
 .dialog-work-list-wrapper ul li.selected {
 	background: #2ac5c6!important;

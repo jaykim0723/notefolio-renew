@@ -138,6 +138,7 @@ var site = {
 			done : function(dialog){
 				console.log('site > popWorkList > done', dialog);
 	            dialog.close();
+				site.scroll.unlock();
 			}
 		};
 		// extend the options from defaults with user's options
@@ -161,6 +162,7 @@ var site = {
 			        cssClass: 'btn-default',
 			        action: function(dialog){
 			            dialog.close();
+						site.scroll.unlock();
 			        }
 			    }
 		    ]
@@ -168,10 +170,11 @@ var site = {
 		dialog.realize();
 		dialog.getModal().prop('id', options.id); // cssClass 버그로 인해서 이 꼼수로..
 		dialog.open();
+		site.scroll.lock();
 
 		// call list
-		$.when($.get('/profile/my_recent_works/'+options.username+'/'+options.id_before, {}, function(d){return d;})).done(function(d){
-			dialog.getModalBody().html(d);
+		$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+options.id_before, {}, function(d){return d;})).done(function(d){
+			dialog.getModalBody().html('<div class="dialog-work-list-wrapper"><ul>'+d+'</ul></div>');
 			return dialog;
 		});
 	}   	
