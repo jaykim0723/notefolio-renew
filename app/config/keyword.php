@@ -38,19 +38,19 @@ $config['keyword'] = array(
         'key'=>'H7',
         'name'=>'페인팅',
         ),
-	array(a
+	array(
         'key'=>'I7',
         'name'=>'건축디자인',
         ),
-	array(a
+	array(
         'key'=>'J7',
         'name'=>'금속디자인',
         ),
-	array(a
+	array(
         'key'=>'K7',
         'name'=>'모션그래픽',
         ),
-	array(a
+	array(
         'key'=>'L7',
         'name'=>'설치',
         ),
