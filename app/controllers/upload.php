@@ -89,8 +89,8 @@ class Upload extends CI_Controller
 		else if($file!=null){
 			$error = false;
 			
-			exit(var_export($file));
 			$filename = $this->_save('image', $file);
+			exit(var_export($file));
 
 			$upload_id = $this->upload_model->post(array(
 	            'work_id' => $this->input->get_post('work_id'),
