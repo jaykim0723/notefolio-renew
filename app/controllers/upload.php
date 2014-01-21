@@ -448,7 +448,7 @@ class Upload extends CI_Controller
 		$max_width = $maxsize['max_width'];
 
 		//-- get ratio
-		$ratio = $size['width']/$max_width;
+		$ratio = $size['width']/$max_width*2;
 
 
 
