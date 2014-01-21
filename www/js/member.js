@@ -469,7 +469,7 @@ var profileUtil = {
 
 	changeBg : function(upload_id, src){
 		// change profile bg
-		$.post('/profile/change_background', {
+		$.post('/upload/profile_background', {
 			upload_id : upload_id
 		}, 'json').done(function(responseJSON){
 			console.log('crop profile bg done > responseJSON', responseJSON);
