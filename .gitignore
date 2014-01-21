@@ -1,3 +1,4 @@
 app/config/database.php
 .DS_Store
 app/logs/*
+www/data/img/*
