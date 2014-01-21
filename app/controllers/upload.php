@@ -262,6 +262,9 @@ class Upload extends CI_Controller
 				case "single":
 					$todo = array('resize', 'crop');
 				break;
+				case "profile_face":
+					$todo = array('resize', 'crop');
+				break;
 				default:
 				break;
 			}
