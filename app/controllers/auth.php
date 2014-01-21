@@ -1248,12 +1248,16 @@ log_message('debug', ' -------- resurt ----------'.json_encode($result));
 		$new_email_key	= $this->uri->segment(4);
 
 		// Reset email
-		if ($this->tank_auth->activate_new_email($user_id, $new_email_key)) {	// success
+		if ($this->tank_auth->activate_new_email($user_id, $new_email_key)) {
+        	// success
 			$this->tank_auth->logout();
-			$this->_show_message($this->lang->line('auth_message_new_email_activated').' '.anchor('/auth/login/', 'Login'));
+            $this->layout->set_view('auth/change_email_complete', array('is_success'=>true))->render(); 
+			//$this->_show_message($this->lang->line('auth_message_new_email_activated').' '.anchor('/auth/login/', 'Login'));
 
-		} else {																// fail
-			$this->_show_message($this->lang->line('auth_message_new_email_failed'));
+		} else {
+            // fail
+            $this->layout->set_view('auth/change_email_complete', array('is_success'=>false))->render();
+			//$this->_show_message($this->lang->line('auth_message_new_email_failed'));
 		}
 	}
 
