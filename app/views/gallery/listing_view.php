@@ -17,6 +17,7 @@
 						<?php 
 						$this->load->config('keyword', TRUE);
 						$keyword_list = $this->config->item('thumbnail_'.$type, 'keyword');
+						var_export($keyword_list);
 
 						foreach ($keyword_list as $keyword) {
 						?>
