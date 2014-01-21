@@ -293,7 +293,7 @@ class Upload extends CI_Controller
 
 				if(in_array('crop', $todo)){
 					// Crop Image. Resize is next block.
-					if($opt['autocrop']){
+					if(isset($opt['autocrop'])&&$opt['autocrop']){
 						$image_size = array(
 							'width'  => $image->getImageWidth(),
 							'height' => $image->getImageHeight(),
