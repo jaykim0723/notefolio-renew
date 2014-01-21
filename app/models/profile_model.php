@@ -9,6 +9,16 @@ class profile_model extends CI_Model {
         
     }
 
+    function set_change_color($user_id, $color){
+        $this->db->set('face_color', $color)->where('user_id', $user_id)->update('user_profiles');
+        $data = (object)array(
+            'status' => 'done'
+        );
+        if($this->db->affected_rows() == 0){
+            $data->status = 'fail';
+        }
+        return $data;
+    }
     function get_user_id_from_username($username=''){
         return $this->db->select('id as user_id')->where('username', $username)->get('users')->row()->user_id;
     }

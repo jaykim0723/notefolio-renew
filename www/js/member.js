@@ -452,7 +452,7 @@ var profileUtil = {
 			done : function(){
 				var crop = NFview.popCrop[0].tellSelect();
 				// 이미지 src, crop 정보를 토대로 사진을 잘라내는 명령을 내린다.
-				$.post('/upload/profile_face', {
+				$.post('/profile/change_face', {
 					upload_id : upload_id,
 					x : crop.x,
 					y : crop.y,
@@ -467,9 +467,9 @@ var profileUtil = {
 		});
 	},
 
-	changeBackground : function(upload_id, src){
+	changeBg : function(upload_id, src){
 		// change profile bg
-		$.post('/upload/profile_background', {
+		$.post('/profile/change_background', {
 			upload_id : upload_id
 		}, 'json').done(function(responseJSON){
 			console.log('crop profile bg done > responseJSON', responseJSON);
@@ -492,7 +492,7 @@ var profileUtil = {
 			multiple : false,
 			droppable : false,
 			done : function(responseJSON){
-				profileUtil.changeBackground(responseJSON.upload_id, responseJSON.src);
+				profileUtil.changeBg(responseJSON.upload_id, responseJSON.src);
 			}
 		});
 		$('#btn-delete-face').on('click', function(){
@@ -517,13 +517,66 @@ var profileUtil = {
 						if(_actionTarget=='face'){
 							profileUtil.changeFace(responseJSON.upload_id, responseJSON.src);
 						}else{
-							profileUtil.changeBackground(responseJSON.upload_id, responseJSON.src);
+							profileUtil.changeBg(responseJSON.upload_id, responseJSON.src);
 						}
 					}, 'json');
 				}
 			});
 		});
+		$('#btn-change-color').on('click', function(){
+			var dialog = new BootstrapDialog({
+			    title: '프로필 배경색 변경',
+			    message: function(){
+			    	return $('<input type="text" id="input-change-color" style="display:none;">');
+			    },
+			    data : {
+			    	done : function(dialog){
+			    		var color = $('.sp-input').val();
+			    		$.post('/profile/change_color', {color: color}, function(responseJSON){
+			    			$('#profile-inner-wrapper').css('background-color', responseJSON.color);
+				            dialog.close();
+							site.scroll.unlock();
+			    			msg.open('배경색 변경 완료');
+			    		}, 'json');
+			    	}
+			    },
+			    onshow: function(dialogRef){
+			    	setTimeout(function(){
+						$('#input-change-color').spectrum({
+							flat: true,
+							color: $('#profile-inner-wrapper').css('background-color'),
+							showInitial: true,
+							showInput: true,
+							showAlpha : true
+						});
+					}, 500);
+	            },
+			    buttons: [
+				    {
+				        label: 'Change',
+				        cssClass: 'btn-primary',
+				        action: function(dialog){
+				        	typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);
+				        }
+				    },{
+				        label: 'Cancel',
+				        cssClass: 'btn-default',
+				        action: function(dialog){
+				            dialog.close();
+							site.scroll.unlock();
+				        }
+				    }
+			    ]
+			});
+			dialog.realize();
+			dialog.getModal().prop('id', 'dialog-change-color'); // cssClass 버그로 인해서 이 꼼수로..
+			dialog.open();
+			site.scroll.lock();
+		});
 	}
+
+
+
 };
 
 

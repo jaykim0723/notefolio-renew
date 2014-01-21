@@ -18,6 +18,89 @@ class Profile extends CI_Controller {
 	}
 	
 
+	function change_color(){
+		$color = $this->input->post('color');
+
+		# 이 유저에 대한 배경색을 변경해준다.
+		$result = $this->profile_model->set_change_color(USER_ID, $color);
+		if($result->status!='done')
+			exit('fail');
+
+		$data = array(
+			'color' => $color
+		);
+		$this->layout->set_json($data)->render();
+	}
+	
+	/**
+	 * 프로필사진을 선정하고 크롭까지 지정하고 넘어온다.
+	 * @return [type] [description]
+	 */
+	function change_face(){
+		$input = $this->input->post(); // upload_id, x, y, w, h : 최대폭 800짜리를 기준으로 들어오므로, 원본크기에서 크롭할 때에는 좌표와 크기 조정을 다시, 800보다 작을 때에도 고려할 것
+
+		#do stuff by 성수
+
+		$data = array(
+			'status' => 'done',
+			'modified' => '',
+		);
+		$this->layout->set_json($data)->render();
+	}
+
+	/**
+	 * 프로필 사진을 기본으로 돌리려고 하는 것이다.
+	 * @return [type] [description]
+	 */
+	function delete_face(){
+		// data/profiles/username_face.jpg 파일을 원래의 파일로 돌려둔다.
+		#do stuff by 성수
+
+		$data = array(
+			'status' => 'done'
+			'modified' => '',
+		);
+		$this->layout->set_json($data)->render();
+	}
+
+	/**
+	 * 프로필의 배경사진을 바꾸는 것
+	 * @return [type] [description]
+	 */
+	function change_bg(){
+		$upload_id = $this->input->post('upload_id');
+	}
+
+
+	/**
+	 * 프로필 배경 사진을 기본으로 돌리려고 하는 것이다.
+	 * @return [type] [description]
+	 */
+	function delete_bg(){
+		// data/profiles/username_bg.jpg 파일을 원래의 파일로 돌려둔다.
+
+		#do stuff by 성수
+
+		$data = array(
+			'status' => 'done'
+			'modified' => '',
+		);
+		$this->layout->set_json($data)->render();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	/**
 	 * get user info
 	 * 
@@ -26,7 +109,10 @@ class Profile extends CI_Controller {
 	 * @return object
 	 */
 	function _get_user_info($username){
-		$user = $this->user_model->get_info(array('username'=>$username));
+		$user = $this->user_model->get_info(array(
+			'username'=>$username,
+			'get_profile' => TRUE
+		));
 		if($user->status=='fail'||count($user->row)<1)
 			exit("redirect('/error_404');");
 		else

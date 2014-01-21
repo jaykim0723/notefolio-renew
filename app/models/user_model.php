@@ -64,7 +64,7 @@ class user_model extends CI_Model {
             $fields = array('user_id', 'keywords', 'website', 'facebook_id',
                                     'twitter_id', 'gender', 'birth',
                                     'description', 'mailing',
-                                    'following_cnt', 'follower_cnt');
+                                    'following_cnt', 'follower_cnt', 'face_color');
             foreach($fields as $field){
                 $this->db->select($table.'.'.$field);
             }
@@ -144,7 +144,7 @@ class user_model extends CI_Model {
             $fields = array('user_id', 'keywords', 'website', 'facebook_id',
                                     'twitter_id', 'gender', 'birth',
                                     'description', 'mailing',
-                                    'following_cnt', 'follower_cnt');
+                                    'following_cnt', 'follower_cnt', 'face_color');
             foreach($fields as $field){
                 $this->db->select($table.'.'.$field);
             }

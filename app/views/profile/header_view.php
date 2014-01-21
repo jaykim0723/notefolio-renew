@@ -1,29 +1,18 @@
-<?php if (USER_ID!=0): ?>
+<?php if($this->session->userdata('username')==$row->username): ?>
 	<script src="/js/member.js"></script>	
 	<script src="/js/libs/jquery.Jcrop.min.js"></script>
+	<script src="/js/libs/spectrum.js"></script>
 	<script>
 		if($('#style_crop').length==0)
 			$('head').append('<link id="style_crop" rel="stylesheet" type="text/css" href="/css/crop/jquery.Jcrop.css"/>');
+		if($('#style_spectrum').length==0)
+			$('head').append('<link id="style_spectrum" rel="stylesheet" type="text/css" href="/css/spectrum.css"/>');
 	</script>
 <?php endif ?>
 
 <div id="profile-header" style="background-image:url(/data/profiles/<?php echo $row->username ?>-bg.jpg?_=<?php echo substr($row->modified,-2) ?>);">
-	<div id="profile-inner-wrapper">
+	<div id="profile-inner-wrapper" style="background-color:<?php echo $row->face_color ?>">
 		<div id="profile-inner">
-			<div id="btn-edit-inner">
-					<?php if($this->session->userdata('username')==$row->username): ?>
-					<div class="pull-right btn-group">
-					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-					  <span class="text">이너 편집</span>
-					  <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-					  <li><a href="#">배경색 변경</a></li>
-					  <li><a href="#">투명도 변경</a></li>
-					</ul>
-					<?php endif; ?>	
-				</div>
-			</div>	
 			<div id="profile-image">
 				<img src="/data/profiles/<?php echo $row->username ?>.jpg?_=<?php echo substr($row->modified,-2) ?>" alt=""/>
 				<?php if($this->session->userdata('username')==$row->username): ?>
@@ -33,9 +22,11 @@
 					  <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-					  <li><a id="btn-upload-face" href="#">사진 업로드</a></li>
-					  <li><a id="btn-select-face">작품 중 선택</a></li>
-					  <li><a id="btn-delete-face" href="#">삭제</a></li>
+					  <li><a id="btn-upload-face" href="#3">사진 업로드</a></li>
+					  <li><a id="btn-select-face" href="#3">작품 중 선택</a></li>
+					  <li><a id="btn-delete-face" href="#3">삭제</a></li>
+					  <li class="divider"></li>
+					  <li><a id="btn-change-color" href="#3">배경색 변경</a></li>
 					</ul>
 				</div>	
 				<?php endif; ?>
@@ -61,13 +52,13 @@
 	<div id="btn-edit-cover">
 		<div class="pull-right btn-group">
 			<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-			  <span class="text">커버 편집</span>
+			  <span class="text">배경 편집</span>
 			  <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-			  <li><a id="btn-upload-bg" href="#">사진 업로드</a></li>
-			  <li><a id="btn-select-bg">작품 중 선택</a></li>
-			  <li><a id="btn-delete-bg" href="#">삭제</a></li>
+			  <li><a id="btn-upload-bg" href="#3">사진 업로드</a></li>
+			  <li><a id="btn-select-bg" href="#3">작품 중 선택</a></li>
+			  <li><a id="btn-delete-bg" href="#3">삭제</a></li>
 			</ul>
 		</div>
 	</div>	
