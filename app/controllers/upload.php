@@ -37,6 +37,9 @@ class Upload extends CI_Controller
 		if($upload->status=='done')
 			$upload = $upload->row;
 
+		$filename = $upload->filename;
+		$filename = substr($filename, 0,2).'/'.substr($filename, 2, 2).'/'.$filename;
+
         list($width, $height) = getimagesize($filename);
 
 		$to_crop = $this->_get_crop_opt(
@@ -47,9 +50,6 @@ class Upload extends CI_Controller
 				'pos_x'=>$this->input->get_post('x'),
 				'pos_y'=>$this->input->get_post('y'))
 			);
-
-		$filename = $upload->filename;
-		$filename = substr($filename, 0,2).'/'.substr($filename, 2, 2).'/'.$filename;
 
 		$result = $this->_make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,
