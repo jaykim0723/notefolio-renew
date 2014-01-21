@@ -314,9 +314,9 @@ class Upload extends CI_Controller
 				log_message('debug','--------- imagecopyresampled ( params : '.print_r(array($target, $source, 0, 0, 0, 0, $max_width, $max_height, $size[0], $size[1]),TRUE)).')';
 				@imagecopyresampled($target, $source, 0, 0, 0, 0, $max_width, $max_height, $size[0], $size[1]);
 				if ($size[2] == 3)
-					@imagepng($name);
+					@imagepng($target, $name);
 				else
-					@imagejpeg($name, 90);
+					@imagejpeg($target, $name, 90);
 				@chmod($name, 0777); // 추후 삭제를 위하여 파일모드 변경
 				imagedestroy($source);
 				imagedestroy($target);

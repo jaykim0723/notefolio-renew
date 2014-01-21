@@ -26,6 +26,9 @@
 .jcrop-vline.right {
   right: 0;
 }
+.jcrop-keymgr {
+  visibility: hidden;
+}
 .jcrop-hline {
   height: 1px !important;
   width: 100%;
