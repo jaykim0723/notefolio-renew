@@ -297,6 +297,7 @@ class Upload extends CI_Controller
 				}
 
 		    	$image->resampleImage(150,150,imagick::FILTER_LANCZOS,1);
+			exit(var_export($tmp_name));
 
 				if(in_array('crop', $todo)){
 					// Crop Image. Resize is next block.
@@ -329,7 +330,6 @@ class Upload extends CI_Controller
 				$image->stripImage();
 				$image->writeImage($name);
 				$image->destroy();
-			exit(var_export($tmp_name));
 
 				return true;
 			}
