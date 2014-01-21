@@ -55,7 +55,7 @@ class Upload extends CI_Controller
 			$this->config->item('img_upload_path', 'upload').$filename,
 			$this->config->item('profile_upload_path', 'upload').$user_id.'_face.jpg',
 			'profile_face', 
-			$to_crop
+			array('crop_to'=>$to_crop)
 			);
 
 
