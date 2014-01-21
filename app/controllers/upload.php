@@ -295,8 +295,6 @@ class Upload extends CI_Controller
 				    unset($icc_rgb); 
 				}
 
-		    	$image->resampleImage(150,150,imagick::FILTER_LANCZOS,1);
-
 				if(in_array('crop', $todo)){
 					// Crop Image. Resize is next block.
 					if(isset($opt['autocrop'])&&$opt['autocrop']){
@@ -311,6 +309,8 @@ class Upload extends CI_Controller
 
 					$image->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
 				}
+
+		    	$image->resampleImage(150,150,imagick::FILTER_LANCZOS,1);
 
 				if(in_array('resize', $todo)){
 			    	if($image->getImageWidth() > $max_width){
