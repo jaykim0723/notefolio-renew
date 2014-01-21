@@ -72,7 +72,19 @@ class Upload extends CI_Controller
 	 */
 	function image($file=null){
 		if(empty($file)){
-			$file = $this->_get_file();
+			//$file = $this->_get_file();
+			if ($filename = $this->input->get_post('qqfile')) {
+			    // XMLHttpRequest stream'd upload
+
+			    include_once(APPPATH.'libraries/qqUploadedFileXhr.php');
+
+			    $xhrUpload = new qqUploadedFileXhr();
+			    $file = $xhrUpload->makeTempFile()->toFileArray();
+			} elseif (count($_FILES)) {
+			    // Normal file upload
+			    //$file = array_shift($_FILES);
+				$file = $_FILES['qqfile'];
+			}
 		}
 
 		$error = true;
