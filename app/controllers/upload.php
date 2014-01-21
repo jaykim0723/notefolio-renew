@@ -40,7 +40,7 @@ class Upload extends CI_Controller
 		$filename = $upload->filename;
 		$filename = substr($filename, 0,2).'/'.substr($filename, 2, 2).'/'.$filename;
 
-        list($width, $height) = getimagesize($filename);
+        list($width, $height) = getimagesize($this->config->item('img_upload_path', 'upload').$filename);
 
 		$to_crop = $this->_get_crop_opt(
 			array('width'=> $width, 'height'=> $height),
