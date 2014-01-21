@@ -86,19 +86,22 @@ var workUtil = {
 				selectCover.getModalBody().html($list);
 			});
 
-			//cover delete
+			/**
+			 * 왜 안되나요 ㄷㄷ
+			 */
+			/*			
+			//face delete
 			$('#btn-delete-face').on('click', function(e){
 				e.preventDefault();
 				$.get('/profile/delete_face/');
 			});
-
-
-			//cover delete
+			//bg delete
 			$('#btn-delete-bg').on('click', function(){
 				e.preventDefault();
 				$.get('/profile/delete_bg/');
 			});
-			
+			*/
+
 			// footer 버리기
 			$('#footer').remove();
 			
