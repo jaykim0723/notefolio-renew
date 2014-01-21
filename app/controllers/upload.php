@@ -51,7 +51,7 @@ class Upload extends CI_Controller
 				'height'=>$this->input->get_post('h'),
 				'pos_x'=>$this->input->get_post('x'),
 				'pos_y'=>$this->input->get_post('y')
-			)
+			);
 
 		$to_crop = $this->_get_crop_opt($size, $o_crop);
 
