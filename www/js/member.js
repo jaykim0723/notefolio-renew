@@ -500,6 +500,7 @@ var profileUtil = {
 					var work_id = dialog.getModalBody().find('.selected').prop('id').replace('work-recent-', '');
 					console.log('work_id : ', work_id);
 					dialog.close();
+					site.scroll.unlock();
 					
 					// work_id에 대한 이미지 원본을 가지고 와서 크롭창을 띄워준다.
 					var src = '';

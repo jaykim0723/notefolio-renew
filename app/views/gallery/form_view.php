@@ -16,6 +16,12 @@
 
 			<!-- 사이드바 시작 -->
 			<div class="col-md-3 ">
+				<h4>공개여부</h4>
+				<div class="radio">
+					<label for=""><input type="radio"/>공개</label>
+					<label for=""><input type="radio"/>비공개</label>
+				</div>
+
 				<h4>키워드</h4>
 				<select name="work_keywords" id="work_keywords" multiple title="Choose one of the following..." >
 					<option value="가구디자인">가구디자인</option>
