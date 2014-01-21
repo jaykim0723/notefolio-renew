@@ -37,8 +37,10 @@ class Upload extends CI_Controller
 		if($upload->status=='done')
 			$upload = $upload->row;
 
+        list($width, $height) = getimagesize($filename);
+
 		$to_crop = $this->_get_crop_opt(
-			array(),
+			array('width'=> $width, 'height'=> $height),
 			array(
 				'width'=>$this->input->get_post('w'),
 				'height'=>$this->input->get_post('h'),
@@ -72,7 +74,6 @@ class Upload extends CI_Controller
 	 */
 	function image($file=null){
 		if(empty($file)){
-			//$file = $this->_get_file();
 			if ($filename = $this->input->get_post('qqfile')) {
 			    // XMLHttpRequest stream'd upload
 
@@ -130,29 +131,6 @@ class Upload extends CI_Controller
 		}
 
 		$this->layout->set_json($json)->render();
-	}
-
-	/**
-	 * get file
-	 * 
-	 * @param file $file
-	 * @return array $file
-	 */
-	function _get_file($file=null){
-		if ($filename = $this->input->get_post('qqfile')) {
-		    // XMLHttpRequest stream'd upload
-
-		    include_once(APPPATH.'libraries/qqUploadedFileXhr.php');
-
-		    $xhrUpload = new qqUploadedFileXhr();
-		    $file = $xhrUpload->makeTempFile()->toFileArray();
-		} elseif (count($_FILES)) {
-		    // Normal file upload
-		    //$file = array_shift($_FILES);
-			$file = $_FILES['qqfile'];
-		}
-
-		return $file;
 	}
 
 	/**
