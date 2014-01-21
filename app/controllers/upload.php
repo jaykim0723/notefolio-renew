@@ -90,7 +90,6 @@ class Upload extends CI_Controller
 			$error = false;
 			
 			$filename = $this->_save('image', $file);
-			exit(var_export($file));
 
 			$upload_id = $this->upload_model->post(array(
 	            'work_id' => $this->input->get_post('work_id'),
@@ -163,9 +162,11 @@ class Upload extends CI_Controller
 					$this->_make_thumbnail($file['tmp_name'], $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
 				break;
 				case "cover":
+				break;
 				default:
 				break;
 			}
+			exit(var_export($file));
 
 			$output = (rename(
 								$file['tmp_name'], 
