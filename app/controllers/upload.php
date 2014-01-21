@@ -224,9 +224,9 @@ class Upload extends CI_Controller
 				    // if it doesnt have a CMYK ICC profile, we add one 
 				    if ($has_icc_profile === false) { 
 				        $icc_cmyk = file_get_contents(APPPATH.'libraries/colorspace/USWebUncoated.icc');  
-				        $image->profileImage('icc', $icc_cmyk); 
-				        unset($icc_cmyk); 
-				    } 
+				        $image->profileImage('icc', $icc_cmyk);
+				        unset($icc_cmyk);
+				    }
 				    // then we add an RGB profile 
 				    $icc_rgb = file_get_contents(APPPATH.'libraries/colorspace/sRGB_v4_ICC_preference.icc'); 
 				    $image->profileImage('icc', $icc_rgb); 
@@ -238,6 +238,10 @@ class Upload extends CI_Controller
 				if(in_array('crop', $todo)){
 					// Crop Image. Resize is next block.
 					if($opt['autocrop']){
+						$image_size = array(
+							'width'  => $image->getImageWidth(),
+							'height' => $image->getImageHeight(),
+							);
 						$crop_to = $this->_get_auto_crop_opt($image, $type);
 					}else{
 						$crop_to = $opt['crop_to'];
@@ -333,7 +337,7 @@ class Upload extends CI_Controller
 	 * @param string $type
 	 * @return array/bool-false
 	 */
-	function _get_auto_crop_opt($image=false, $type=false){
+	function _get_auto_crop_opt($size=array(), $type=false){
 		$maxsize = $this->config->item('thumbnail_'.$type, 'upload');
 		$max_width = $maxsize['max_width'];
 		$max_height = $maxsize['max_height'];
@@ -341,8 +345,8 @@ class Upload extends CI_Controller
 		//-- get TO_MAKE_THUMBNAIL ratio
 		$ratio = $max_width/$max_height;
 
-		$width = $image->getImageWidth();
-		$height = $image->getImageHeight();
+		$width = $size['width'];
+		$height = $size['height'];
 
 		//-- get image ratio
 		$image_ratio = $width/$height;
