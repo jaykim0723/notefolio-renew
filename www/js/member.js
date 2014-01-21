@@ -87,7 +87,7 @@ var workUtil = {
 			});
 
 			//cover delete
-			$('#btn-delete-cover').on('click', function(e){
+			$('#btn-delete-face').on('click', function(e){
 				e.preventDefault();
 				$.get('/profile/delete_face/');
 			});
