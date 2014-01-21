@@ -242,7 +242,7 @@ class Upload extends CI_Controller
 							'width'  => $image->getImageWidth(),
 							'height' => $image->getImageHeight(),
 							);
-						$crop_to = $this->_get_auto_crop_opt($image, $type);
+						$crop_to = $this->_get_auto_crop_opt($image_size, $type);
 					}else{
 						$crop_to = $opt['crop_to'];
 					}
