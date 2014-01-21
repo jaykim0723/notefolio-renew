@@ -40,7 +40,8 @@ class Profile extends CI_Controller {
 	function change_face(){
 		$input = $this->input->post(); // upload_id, x, y, w, h : 최대폭 800짜리를 기준으로 들어오므로, 원본크기에서 크롭할 때에는 좌표와 크기 조정을 다시, 800보다 작을 때에도 고려할 것
 
-		#do stuff by 성수
+		#do stuff
+		// -> controller->upload->profile_face()
 
 		$data = array(
 			'status' => 'done',
@@ -55,11 +56,18 @@ class Profile extends CI_Controller {
 	 */
 	function delete_face(){
 		// data/profiles/username_face.jpg 파일을 지운다.
-		#do stuff by 성수
+
+		if(empty($username)){
+			$username = $this->tank_auth->get_username();
+		}
+
+		$this->load->config('upload', TRUE);
+		$result = unlink($this->config->item('profile_upload_path', 'upload').$username.'_face.jpg');
 
 		$data = array(
-			'status' => 'done'
-		);
+			'status'=>($result)?'done':'fail'
+			);
+
 		$this->layout->set_json($data)->render();
 	}
 
@@ -70,7 +78,8 @@ class Profile extends CI_Controller {
 	function change_bg(){
 		$upload_id = $this->input->post('upload_id');
 
-		#do stuff by 성수
+		#do stuff
+		// -> controller->upload->profile_background()
 
 		$data = array(
 			'status' => 'done',
@@ -87,11 +96,17 @@ class Profile extends CI_Controller {
 	function delete_bg(){
 		// data/profiles/username_bg.jpg 파일을 지운다.
 
-		#do stuff by 성수
+		if(empty($username)){
+			$username = $this->tank_auth->get_username();
+		}
+
+		$this->load->config('upload', TRUE);
+		$result = unlink($this->config->item('profile_upload_path', 'upload').$username.'_bg.jpg');
 
 		$data = array(
-			'status' => 'done'
-		);
+			'status'=>($result)?'done':'fail'
+			);
+
 		$this->layout->set_json($data)->render();
 	}
 
