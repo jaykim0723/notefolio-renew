@@ -484,7 +484,7 @@ var profileUtil = {
 			multiple : false,
 			droppable : false,
 			done : function(responseJSON){
-				profileUtil.changeFace(responseJSON.src+'_v2');
+				profileUtil.changeFace(responseJSON.src);
 			}
 		});
 		$('#btn-upload-bg').ajaxUploader({
@@ -492,7 +492,7 @@ var profileUtil = {
 			multiple : false,
 			droppable : false,
 			done : function(responseJSON){
-				profileUtil.changeBackground(responseJSON.src+'_v2');
+				profileUtil.changeBackground(responseJSON.src);
 			}
 		});
 		$('#btn-delete-face').on('click', function(){
