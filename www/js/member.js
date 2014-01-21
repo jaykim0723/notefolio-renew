@@ -483,7 +483,7 @@ var profileUtil = {
 			url : '/upload/image',
 			multiple : false,
 			droppable : false,
-			done : function(id, fileName, responseJSON){
+			done : function(responseJSON){
 				profileUtil.changeFace(responseJSON.src);
 			}
 		});
@@ -491,7 +491,7 @@ var profileUtil = {
 			url : '/upload/image',
 			multiple : false,
 			droppable : false,
-			done : function(id, fileName, responseJSON){
+			done : function(responseJSON){
 				profileUtil.changeBackground(responseJSON.src);
 			}
 		});

@@ -41,9 +41,9 @@ $.fn.ajaxUploader = function(opts) {
 		debug : true,
 		onComplete: function(id, fileName, responseJSON){
 		    if(responseJSON.status=='done')
-		    	options.done(id, fileName, responseJSON);
+		    	options.done(responseJSON, id, fileName);
 		    else
-		    	options.fail(id, fileName, responseJSON);
+		    	options.fail(responseJSON, id, fileName);
 		},              
 		onSubmit: function(id, fileName){
 		    options.start(id, fileName);
