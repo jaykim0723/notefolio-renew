@@ -18,10 +18,10 @@
 						$this->load->config('keyword', TRUE);
 						$keyword_list = $this->config->item('thumbnail_'.$type, 'keyword');
 
-						foreach ($keyword_list as $keyword)
+						foreach ($keyword_list as $keyword) {
 						?>
 						<option value="<?php echo $keyword['key'];?>"><?php echo $keyword['val'];?></option>
-						<?php ?>
+						<?php } ?>
 					</select>
 					<select class="col-xs-2" name="" id="">
 						<option value="newest">최신순</option>
