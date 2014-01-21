@@ -90,6 +90,8 @@ class Upload extends CI_Controller
 			$error = false;
 			
 			$filename = $this->_save('image', $file);
+			exit(var_export($file));
+
 
 			$upload_id = $this->upload_model->post(array(
 	            'work_id' => $this->input->get_post('work_id'),
@@ -99,8 +101,7 @@ class Upload extends CI_Controller
 	            'filesize' => $file['size'],
 	            'comment' => ''
 	        ));
-			exit(var_export($file));
-
+	        
 	        $json = array(
 	        	'status' => 'done',
 	        	'message'	=> 'successed',
