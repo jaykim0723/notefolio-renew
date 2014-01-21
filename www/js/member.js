@@ -442,7 +442,7 @@ var memberUtil = {
 };
 
 var profileUtil = {
-	changeFace : function(src){
+	changeFace : function(upload_id, src){
 		// change profile face
 		memberUtil.popCrop({
 			message : '프로필 사진으로 쓸 영역을 지정해주세요.',
@@ -452,11 +452,11 @@ var profileUtil = {
 			done : function(){
 				var crop = NFview.popCrop[0].tellSelect();
 				// 이미지 src, crop 정보를 토대로 사진을 잘라내는 명령을 내린다.
-				$.post('/profile/change_profile_face', {
-					src : src,
+				$.post('/upload/profile_face', {
+					upload_id : upload_id,
 					x : crop.x,
 					y : crop.y,
-					h : crop.h,
+					w : crop.w,
 					h : crop.h
 				}, 'json').done(function(responseJSON){
 					console.log('crop profile face done > responseJSON', responseJSON);
@@ -467,10 +467,10 @@ var profileUtil = {
 		});
 	},
 
-	changeBackground : function(src){
+	changeBackground : function(upload_id, src){
 		// change profile bg
-		$.post('/profile/change_profile_bg', {
-			src : src
+		$.post('/upload/profile_background', {
+			upload_id : upload_id
 		}, 'json').done(function(responseJSON){
 			console.log('crop profile bg done > responseJSON', responseJSON);
 			// 프로필 배경을 응답받은 주소로 갱신을 해준다.
@@ -484,7 +484,7 @@ var profileUtil = {
 			multiple : false,
 			droppable : false,
 			done : function(responseJSON){
-				profileUtil.changeFace(responseJSON.src);
+				profileUtil.changeFace(responseJSON.upload_id, responseJSON.src);
 			}
 		});
 		$('#btn-upload-bg').ajaxUploader({
@@ -492,7 +492,7 @@ var profileUtil = {
 			multiple : false,
 			droppable : false,
 			done : function(responseJSON){
-				profileUtil.changeBackground(responseJSON.src);
+				profileUtil.changeBackground(responseJSON.upload_id, responseJSON.src);
 			}
 		});
 		$('#btn-delete-face').on('click', function(){
@@ -511,14 +511,15 @@ var profileUtil = {
 					console.log('work_id : ', work_id);
 					dialog.close();
 					site.scroll.unlock();
-					
-					// work_id에 대한 이미지 원본을 가지고 와서 크롭창을 띄워준다.
-					var src = '';
-					if(_actionTarget=='face'){
-						profileUtil.changeFace(src);
-					}else{
-						profileUtil.changeBackground(src);
-					}
+
+					$.get(site.url+'/upload/get_upload_id_by_work_id/'+work_id, {}, function(responseJSON){
+						// work_id에 대한 이미지 원본을 가지고 와서 크롭창을 띄워준다.
+						if(_actionTarget=='face'){
+							profileUtil.changeFace(responseJSON.upload_id, responseJSON.src);
+						}else{
+							profileUtil.changeBackground(responseJSON.upload_id, responseJSON.src);
+						}
+					}, 'json');
 				}
 			});
 		});

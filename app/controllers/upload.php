@@ -14,6 +14,13 @@ class Upload extends CI_Controller
 		$this->load->model('upload_model');
 	}
 	
+	function get_upload_id_by_work_id($work_id){
+		$data = array(
+			'upload_id' =>  '',
+			'src' => ''
+		);
+		$this->layout->set_json($data)->render();
+	}
 	/**
 	 * get image and do process
 	 * 
