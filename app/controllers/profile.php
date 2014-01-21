@@ -32,6 +32,7 @@ class Profile extends CI_Controller {
 		$this->layout->set_json($data)->render();
 	}
 	
+
 	/**
 	 * 프로필사진을 선정하고 크롭까지 지정하고 넘어온다.
 	 * @return [type] [description]
@@ -53,7 +54,7 @@ class Profile extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	function delete_face(){
-		// data/profiles/username_face.jpg 파일을 원래의 파일로 돌려둔다.
+		// data/profiles/username_face.jpg 파일을 지운다.
 		#do stuff by 성수
 
 		$data = array(
@@ -77,7 +78,7 @@ class Profile extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	function delete_bg(){
-		// data/profiles/username_bg.jpg 파일을 원래의 파일로 돌려둔다.
+		// data/profiles/username_bg.jpg 파일을 지운다.
 
 		#do stuff by 성수
 

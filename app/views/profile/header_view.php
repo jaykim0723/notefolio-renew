@@ -14,7 +14,7 @@
 	<div id="profile-inner-wrapper" style="background-color:<?php echo $row->face_color ?>">
 		<div id="profile-inner">
 			<div id="profile-image">
-				<img src="/data/profiles/<?php echo $row->username ?>.jpg?_=<?php echo substr($row->modified,-2) ?>" alt=""/>
+				<img src="/data/profiles/<?php echo $row->username ?>.jpg?_=<?php echo substr($row->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
 				<?php if($this->session->userdata('username')==$row->username): ?>
 				<div id="btn-edit-profile" class="btn-group">
 					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -119,5 +119,6 @@
 		profileUtil.setGround();
 	});
 	<?php endif; ?>	
+
 	NFview.area = 'profile';
 </script>
