@@ -449,14 +449,13 @@ class Upload extends CI_Controller
 
 		//-- get ratio
 		$ratio = $size['width']/$max_width;
-		echo $ratio;
-
 
 		return array(
 			'width'  =>round($crop['width']*$ratio), 
 			'height' =>round($crop['height']*$ratio), 
 			'pos_x'  =>round($crop['pos_x']*$ratio), 
-			'pos_y'  =>round($crop['pos_y']*$ratio)
+			'pos_y'  =>round($crop['pos_y']*$ratio),
+			'ratio'	 =>$ratio
 			);
 	}
 	
