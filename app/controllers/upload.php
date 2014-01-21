@@ -443,8 +443,8 @@ class Upload extends CI_Controller
 
 
 
-		return array('width'=>$size['width']*$ratio, 'height'=>$size['height']*$ratio, 
-			'pos_x'=>$crop['x']*$ratio, 'pos_y'=>$crop['y']*$ratio);
+		return array('width'=>$crop['width']*$ratio, 'height'=>$crop['height']*$ratio, 
+			'pos_x'=>$crop['pos_x']*$ratio, 'pos_y'=>$crop['pos_y']*$ratio);
 	}
 	
 }
