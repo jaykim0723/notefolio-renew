@@ -9,8 +9,10 @@ $config['upload_path']       = APPPATH.'../www/data/';
 $config['upload_uri']        = '/data/';
 $config['img_upload_path']   = $config['upload_path'].'img/';
 $config['img_upload_uri']    = $config['upload_uri'].'img/';
-$config['cover_upload_path'] = $config['upload_path'].'cover/';
-$config['cover_upload_uri']  = $config['upload_uri'].'cover/';
+$config['cover_upload_path'] = $config['upload_path'].'covers/';
+$config['cover_upload_uri']  = $config['upload_uri'].'covers/';
+$config['profile_upload_path'] = $config['upload_path'].'profiles/';
+$config['profile_upload_uri']  = $config['upload_uri'].'profiles/';
 $config['img_allowed_types'] = 'gif|jpg|jpeg|png|bmp';
 
 //manage size
@@ -28,4 +30,9 @@ $config['thumbnail_single']=array('max_width' => 400,  //pixel
                                 );
 $config['thumbnail_small']= array('max_width' => 300,  //pixel
                                 'max_height'  => 300  //pixel
+                                );
+
+
+$config['thumbnail_profile_face']= array('max_width' => 127,  //pixel
+                                'max_height'  => 127  //pixel
                                 );

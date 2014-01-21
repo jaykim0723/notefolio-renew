@@ -21,6 +21,49 @@ class Upload extends CI_Controller
 		);
 		$this->layout->set_json($data)->render();
 	}
+
+	/**
+	 * crop image for profile face
+	 * 
+	 * @param int $upload_id
+	 * @return no retun
+	 */
+	function profile_face($upload_id=0, $user_id=USER_ID){
+		if(empty($upload_id)){
+			$upload_id = $this->input->get_post('upload_id');
+		}
+
+		$upload = $this->upload_model->get(array('id'=>$upload_id));
+		if($upload->status=='done')
+			$upload = $upload->row;
+
+		$to_crop = $this->_get_crop_opt(
+			array(),
+			array(
+				'width'=>$this->input->get_post('w'),
+				'height'=>$this->input->get_post('h'),
+				'pos_x'=>$this->input->get_post('x'),
+				'pos_y'=>$this->input->get_post('y'))
+			);
+
+		$filename = $upload->filename;
+		$filename = substr($filename, 0,2).'/'.substr($filename, 2, 2).'/'.$filename;
+
+		$result = $this->_make_thumbnail(
+			$this->config->item('img_upload_path', 'upload').$filename,
+			$this->config->item('profile_upload_path', 'upload').$user_id.'_face.jpg',
+			'profile_face', 
+			$to_crop
+			);
+
+
+		//upload_id=111&x=98&y=0&w=293&h=293
+		$json = array(
+			'status'=>($result)?'done':'fail'
+			);
+		$this->layout->set_json($json)->render();
+	}
+
 	/**
 	 * get image and do process
 	 * 
@@ -28,17 +71,8 @@ class Upload extends CI_Controller
 	 * @return no retun
 	 */
 	function image($file=null){
-		if ($filename = $this->input->get_post('qqfile')) {
-		    // XMLHttpRequest stream'd upload
-
-		    include_once(APPPATH.'libraries/qqUploadedFileXhr.php');
-
-		    $xhrUpload = new qqUploadedFileXhr();
-		    $file = $xhrUpload->makeTempFile()->toFileArray();
-		} elseif (count($_FILES)) {
-		    // Normal file upload
-		    //$file = array_shift($_FILES);
-			$file = $_FILES['qqfile'];
+		if(empty($file)){
+			$this->_get_file();
 		}
 
 		$error = true;
@@ -87,6 +121,29 @@ class Upload extends CI_Controller
 	}
 
 	/**
+	 * get file
+	 * 
+	 * @param file $file
+	 * @return array $file
+	 */
+	function _get_file($file=null){
+		if ($filename = $this->input->get_post('qqfile')) {
+		    // XMLHttpRequest stream'd upload
+
+		    include_once(APPPATH.'libraries/qqUploadedFileXhr.php');
+
+		    $xhrUpload = new qqUploadedFileXhr();
+		    $file = $xhrUpload->makeTempFile()->toFileArray();
+		} elseif (count($_FILES)) {
+		    // Normal file upload
+		    //$file = array_shift($_FILES);
+			$file = $_FILES['qqfile'];
+		}
+
+		return $file;
+	}
+
+	/**
 	 * save file to disk
 	 * 
 	 * @param string $type
@@ -105,7 +162,6 @@ class Upload extends CI_Controller
 					$this->_make_thumbnail($file['tmp_name'], $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
 				break;
 				case "cover":
-				break;
 				default:
 				break;
 			}
@@ -379,6 +435,26 @@ class Upload extends CI_Controller
 
 		return array('width'=>$crop_width, 'height'=>$crop_height, 
 			'pos_x'=>$pos_x, 'pos_y'=>$pos_y);
+	}
+
+	/**
+	 * get crop rect opt
+	 * 
+	 * @param Imagck $image
+	 * @param string $type
+	 * @return array/bool-false
+	 */
+	function _get_crop_opt($size=array(), $crop=array()){
+		$maxsize = $this->config->item('thumbnail_medium', 'upload');
+		$max_width = $maxsize['max_width'];
+
+		//-- get ratio
+		$ratio = $size['width']/$max_width;
+
+
+
+		return array('width'=>$size['width']*$ratio, 'height'=>$size['height']*$ratio, 
+			'pos_x'=>$crop['x']*$ratio, 'pos_y'=>$crop['y']*$ratio);
 	}
 	
 }
