@@ -275,6 +275,7 @@ class Upload extends CI_Controller
 				default:
 				break;
 			}
+			exit(var_export($tmp_name));
 
 			if(class_exists('Imagick')){
 				// assign ImageMagick
@@ -297,7 +298,6 @@ class Upload extends CI_Controller
 				}
 
 		    	$image->resampleImage(150,150,imagick::FILTER_LANCZOS,1);
-			exit(var_export($tmp_name));
 
 				if(in_array('crop', $todo)){
 					// Crop Image. Resize is next block.
