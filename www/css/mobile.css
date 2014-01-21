@@ -1086,10 +1086,10 @@ p.desc {
 
 
 #dialog-change-color .modal-dialog {	
-	width: 215px;
+	width: 235px;
 }
 #dialog-change-color .modal-body {	
-	padding: 10px 10px 0 10px;
+	padding: 10px 20px 0 20px;
 }
 #dialog-change-color .modal-footer {	
 	margin-top: 0;
