@@ -58,8 +58,7 @@ class Profile extends CI_Controller {
 		#do stuff by 성수
 
 		$data = array(
-			'status' => 'done',
-			'modified' => ''
+			'status' => 'done'
 		);
 		$this->layout->set_json($data)->render();
 	}
@@ -70,6 +69,14 @@ class Profile extends CI_Controller {
 	 */
 	function change_bg(){
 		$upload_id = $this->input->post('upload_id');
+
+		#do stuff by 성수
+
+		$data = array(
+			'status' => 'done',
+			'modified' => ''
+		);
+		$this->layout->set_json($data)->render();
 	}
 
 
@@ -83,8 +90,7 @@ class Profile extends CI_Controller {
 		#do stuff by 성수
 
 		$data = array(
-			'status' => 'done',
-			'modified' => ''
+			'status' => 'done'
 		);
 		$this->layout->set_json($data)->render();
 	}
