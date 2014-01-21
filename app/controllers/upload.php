@@ -269,7 +269,7 @@ class Upload extends CI_Controller
 
 				// GD 라이브러리를 이용하여 고전적인 방법으로 생성한다.
 				$size = getimagesize($tmp_name);
-
+				log_message('debug','--------- getimagezie ( params : '.print_r($size,TRUE)).')';
 				if ($size[2] == 1)
 					$source = imagecreatefromgif($tmp_name);
 				else if ($size[2] == 2){
@@ -291,11 +291,11 @@ class Upload extends CI_Controller
 					                $modified = true;
 					                break;
 					        }
-					        if(isset($modified)){
-								@imagejpeg($source, $tmp_name, 100);			        	
-					        }
+					   //      if(isset($modified)){
+								// @imagejpeg($source, $tmp_name, 100);			        	
+					   //      }
 					    }
-					    imagedestroy($source);
+					    // imagedestroy($source);
 					}
 				}else if ($size[2] == 3)
 					$source = imagecreatefrompng($tmp_name);
@@ -303,13 +303,16 @@ class Upload extends CI_Controller
 					;
 
 				// Set Image format n quality
-				$target = @imagecreatetruecolor($w, $h); // target 사이즈를 이곳에 도달하기 전에 미리 결정하여야 함
+				// $max_height 는 임의로 계산을 한다.
+				$max_height = floor($size[1] * ($max_width / $size[0]));
+				$target = @imagecreatetruecolor($max_width, $max_height); // target 사이즈를 이곳에 도달하기 전에 미리 결정하여야 함
 				if($size[2] == 3){
 					imagesavealpha($target, true); 
 					$color = imagecolorallocatealpha($target,0x00,0x00,0x00,127); 
 					imagefill($target, 0, 0, $color); 					
 				}
-				@imagecopyresampled($target, $source, 0, 0, 0, 0, $w, $h, $size[0], $size[1]);
+				log_message('debug','--------- imagecopyresampled ( params : '.print_r(array($target, $source, 0, 0, 0, 0, $max_width, $max_height, $size[0], $size[1]),TRUE)).')';
+				@imagecopyresampled($target, $source, 0, 0, 0, 0, $max_width, $max_height, $size[0], $size[1]);
 				if ($size[2] == 3)
 					@imagepng($name);
 				else
