@@ -452,7 +452,7 @@ var profileUtil = {
 			done : function(){
 				var crop = NFview.popCrop[0].tellSelect();
 				// 이미지 src, crop 정보를 토대로 사진을 잘라내는 명령을 내린다.
-				$.post('/profile/change_face', {
+				$.post('/upload/profile_face', {
 					upload_id : upload_id,
 					x : crop.x,
 					y : crop.y,
