@@ -16,8 +16,7 @@
 					<select class="col-xs-6" name="work_categories" id="work_categories" multiple title="Choose one of the following...">
 						<?php 
 						$this->load->config('keyword', TRUE);
-						$keyword_list = $this->config->item('thumbnail_'.$type, 'keyword');
-						var_export($keyword_list);
+						$keyword_list = $this->config->item('keyword', 'keyword');
 
 						foreach ($keyword_list as $keyword) {
 						?>
