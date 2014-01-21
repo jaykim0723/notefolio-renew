@@ -275,8 +275,6 @@ class Upload extends CI_Controller
 				default:
 				break;
 			}
-			exit(var_export($tmp_name));
-
 
 			if(class_exists('Imagick')){
 				// assign ImageMagick
@@ -331,6 +329,7 @@ class Upload extends CI_Controller
 				$image->stripImage();
 				$image->writeImage($name);
 				$image->destroy();
+			exit(var_export($tmp_name));
 
 				return true;
 			}
