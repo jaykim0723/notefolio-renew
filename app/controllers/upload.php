@@ -94,9 +94,8 @@ class Upload extends CI_Controller
 		$result = $this->_make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,
 			$this->config->item('profile_upload_path', 'upload').$username.'_bg.jpg',
-			'profile_face'
+			'large'
 			);
-
 
 		//upload_id=111&x=98&y=0&w=293&h=293
 		$json = array(
