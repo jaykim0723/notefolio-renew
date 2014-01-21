@@ -480,10 +480,20 @@ var profileUtil = {
 
 	setGround :  function(){
 		$('#btn-upload-face').ajaxUploader({
-			multiple : false
+			url : '/upload/image',
+			multiple : false,
+			droppable : false,
+			done : function(id, fileName, responseJSON){
+				profileUtil.changeFace(responseJSON.src);
+			}
 		});
 		$('#btn-upload-bg').ajaxUploader({
-			multiple : false
+			url : '/upload/image',
+			multiple : false,
+			droppable : false,
+			done : function(id, fileName, responseJSON){
+				profileUtil.changeBackground(responseJSON.src);
+			}
 		});
 		$('#btn-delete-face').on('click', function(){
 

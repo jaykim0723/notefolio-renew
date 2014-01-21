@@ -16,7 +16,7 @@ $.fn.ajaxUploader = function(opts) {
 			console.log(id, fileName);
 		},
 		done : function(id, fileName, responseJSON){
-			console.log(id, fileName, responseJSON);
+			console.log('default', id, fileName, responseJSON);
 		},
 		fail : function(id, fileName, responseJSON){
 			console.log(id, fileName, responseJSON);
@@ -25,6 +25,7 @@ $.fn.ajaxUploader = function(opts) {
 
 	// extend the options from defaults with user's options
 	var options = $.extend(defaults, opts || {});
+	console.log('options >done', options.done);
 
 	// console.log('ajaxUploader', options, this);
 	$(this).addClass('uploader-wrapper').append('<div class="uploader-area"></div>');
@@ -39,10 +40,10 @@ $.fn.ajaxUploader = function(opts) {
 		action: options.url,
 		debug : true,
 		onComplete: function(id, fileName, responseJSON){
-		    if(typeof(responseJSON.success)=='undefined')
-		    	options.fail(id, fileName, responseJSON);
-		    else
+		    if(responseJSON.status=='done')
 		    	options.done(id, fileName, responseJSON);
+		    else
+		    	options.fail(id, fileName, responseJSON);
 		},              
 		onSubmit: function(id, fileName){
 		    options.start(id, fileName);
