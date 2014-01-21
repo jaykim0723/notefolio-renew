@@ -417,12 +417,12 @@ class Upload extends CI_Controller
 			$crop_width = $width;
 			$crop_height = $width / $ratio;
 			$pos_x = 0;
-			$pos_y = (int)(($height-$crop_height)/2);
+			$pos_y = round(($height-$crop_height)/2);
 		}
 		else if($ratio<$image_ratio){
 			$crop_width = $height / $ratio;
 			$crop_height = $height;
-			$pos_x = (int)(($width-$crop_width)/2);
+			$pos_x = round(($width-$crop_width)/2);
 			$pos_y = 0;
 		}
 		else{
@@ -452,8 +452,12 @@ class Upload extends CI_Controller
 
 
 
-		return array('width'=>$crop['width']*$ratio, 'height'=>$crop['height']*$ratio, 
-			'pos_x'=>$crop['pos_x']*$ratio, 'pos_y'=>$crop['pos_y']*$ratio);
+		return array(
+			'width'  =>round($crop['width']*$ratio), 
+			'height' =>round($crop['height']*$ratio), 
+			'pos_x'  =>round($crop['pos_x']*$ratio), 
+			'pos_y'  =>round($crop['pos_y']*$ratio)
+			);
 	}
 	
 }
