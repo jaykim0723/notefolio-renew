@@ -156,7 +156,6 @@ class Upload extends CI_Controller
 
 			switch($type){
 				case "image":
-			exit(var_export($file));
 					$this->_make_thumbnail($file['tmp_name'], $filename['path'].$filename['large'], 'large');
 					$this->_make_thumbnail($file['tmp_name'], $filename['path'].$filename['medium'], 'medium');
 					$this->_make_thumbnail($file['tmp_name'], $filename['path'].$filename['wide'], 'wide', array('autocrop'=>true));
@@ -276,6 +275,7 @@ class Upload extends CI_Controller
 				default:
 				break;
 			}
+			exit(var_export($tmp_name));
 
 
 			if(class_exists('Imagick')){
