@@ -14,18 +14,14 @@
 						</select>
 					</div>
 					<select class="col-xs-6" name="work_categories" id="work_categories" multiple title="Choose one of the following...">
-						<option value="A7">가구디자인</option>
-						<option value="B7">그리픽디자인</option>
-						<option value="C7">디지털아</option>
-						<option value="D7">산업디자인</option>
-						<option value="E7">실내디자인</option>
-						<option value="F7">웹디자인</option>
-						<option value="G7">제품디자인</option>
-						<option value="H7">페인팅</option>
-						<option value="I7">건축디자인</option>
-						<option value="J7">금속디자인</option>
-						<option value="K7">모션그래픽</option>
-						<option value="L7">설치</option>
+						<?php 
+						$this->load->config('keyword', TRUE);
+						$keyword_list = $this->config->item('thumbnail_'.$type, 'keyword');
+
+						foreach ($keyword_list as $keyword)
+						?>
+						<option value="<?php echo $keyword['key'];?>"><?php echo $keyword['val'];?></option>
+						<?php ?>
 					</select>
 					<select class="col-xs-2" name="" id="">
 						<option value="newest">최신순</option>

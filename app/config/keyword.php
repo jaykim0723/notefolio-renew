@@ -6,8 +6,52 @@
  */
  
 $config['keyword'] = array(
-    array(
-        'key'=>'a',
-        'name'=>'a',
+	array(
+        'key'=>'A7',
+        'name'=>'가구디자인',
+        ),
+	array(
+        'key'=>'B7',
+        'name'=>'그리픽디자인',
+        ),
+	array(
+        'key'=>'C7',
+        'name'=>'디지털아',
+        ),
+	array(
+        'key'=>'D7',
+        'name'=>'산업디자인',
+        ),
+	array(
+        'key'=>'E7',
+        'name'=>'실내디자인',
+        ),
+	array(
+        'key'=>'F7',
+        'name'=>'웹디자인',
+        ),
+	array(
+        'key'=>'G7',
+        'name'=>'제품디자인',
+        ),
+	array(
+        'key'=>'H7',
+        'name'=>'페인팅',
+        ),
+	array(a
+        'key'=>'I7',
+        'name'=>'건축디자인',
+        ),
+	array(a
+        'key'=>'J7',
+        'name'=>'금속디자인',
+        ),
+	array(a
+        'key'=>'K7',
+        'name'=>'모션그래픽',
+        ),
+	array(a
+        'key'=>'L7',
+        'name'=>'설치',
         ),
     );

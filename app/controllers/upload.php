@@ -63,7 +63,7 @@ class Upload extends CI_Controller
 	        	'status' => 'done',
 	        	'message'	=> 'successed',
 	        	'upload_id' => $upload_id,
-	        	'src' => $filename['uri'].$file['name'],
+	        	'src' => $filename['uri'].$filename['original'],
 	            'org_filename' => $file['name'],
 	        	'data' => $this->upload_model->get(array('id'=>$upload_id))->row
 	        	);
