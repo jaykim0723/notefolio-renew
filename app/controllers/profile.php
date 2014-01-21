@@ -57,8 +57,8 @@ class Profile extends CI_Controller {
 		#do stuff by 성수
 
 		$data = array(
-			'status' => 'done'
-			'modified' => '',
+			'status' => 'done',
+			'modified' => ''
 		);
 		$this->layout->set_json($data)->render();
 	}
@@ -82,8 +82,8 @@ class Profile extends CI_Controller {
 		#do stuff by 성수
 
 		$data = array(
-			'status' => 'done'
-			'modified' => '',
+			'status' => 'done',
+			'modified' => ''
 		);
 		$this->layout->set_json($data)->render();
 	}
