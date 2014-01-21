@@ -277,11 +277,11 @@ class Upload extends CI_Controller
 			}
 
 			if(class_exists('Imagick')){
+			exit(var_export($tmp_name));
 				// assign ImageMagick
 				$image = new Imagick($tmp_name);
 				//$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
 				if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
-			exit(var_export($tmp_name));
 				    $profiles = $image->getImageProfiles('*', false); 
 				    // we're only interested if ICC profile(s) exist 
 				    $has_icc_profile = (array_search('icc', $profiles) !== false);
