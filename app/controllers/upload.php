@@ -72,7 +72,7 @@ class Upload extends CI_Controller
 	 */
 	function image($file=null){
 		if(empty($file)){
-			$this->_get_file();
+			$file = $this->_get_file();
 		}
 
 		$error = true;
