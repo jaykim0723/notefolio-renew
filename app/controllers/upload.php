@@ -28,9 +28,12 @@ class Upload extends CI_Controller
 	 * @param int $upload_id
 	 * @return no retun
 	 */
-	function profile_face($upload_id=0, $user_id=USER_ID){
+	function profile_face($upload_id=0, $username=''){
 		if(empty($upload_id)){
 			$upload_id = $this->input->get_post('upload_id');
+		}
+		if(empty($username)){
+			$username = $this->tank_auth->get_username();
 		}
 
 		$upload = $this->upload_model->get(array('id'=>$upload_id));
@@ -53,7 +56,7 @@ class Upload extends CI_Controller
 
 		$result = $this->_make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,
-			$this->config->item('profile_upload_path', 'upload').$user_id.'_face.jpg',
+			$this->config->item('profile_upload_path', 'upload').$username.'_face.jpg',
 			'profile_face', 
 			array('crop_to'=>$to_crop)
 			);
