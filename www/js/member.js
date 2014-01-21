@@ -86,6 +86,18 @@ var workUtil = {
 				selectCover.getModalBody().html($list);
 			});
 
+			//cover delete
+			$('#btn-delete-cover').on('click', function(e){
+				e.preventDefault();
+				$.get('/profile/delete_face/');
+			});
+
+
+			//cover delete
+			$('#btn-delete-bg').on('click', function(){
+				e.preventDefault();
+				$.get('/profile/delete_bg/');
+			});
 			
 			// footer 버리기
 			$('#footer').remove();
