@@ -17,11 +17,10 @@
 						<?php 
 						$this->load->config('keyword', TRUE);
 						$keyword_list = $this->config->item('keyword', 'keyword');
-						var_export($keyword_list);
 
 						foreach ($keyword_list as $keyword) {
 						?>
-						<option value="<?php echo $keyword['key'];?>"><?php echo $keyword['val'];?></option>
+						<option value="<?php echo $keyword['key'];?>"><?php echo $keyword['name'];?></option>
 						<?php } ?>
 					</select>
 					<select class="col-xs-2" name="" id="">
