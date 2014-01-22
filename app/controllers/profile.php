@@ -47,6 +47,7 @@ class Profile extends CI_Controller {
 			$username = $this->tank_auth->get_username();
 		}
 
+		$this->load->model('upload_model');
 		$upload = $this->upload_model->get(array('id'=>$upload_id));
 		if($upload->status=='done')
 			$upload = $upload->row;
@@ -113,7 +114,7 @@ class Profile extends CI_Controller {
 		if(empty($username)){
 			$username = $this->tank_auth->get_username();
 		}
-
+		$this->load->model('upload_model');
 		$upload = $this->upload_model->get(array('id'=>$upload_id));
 		if($upload->status=='done')
 			$upload = $upload->row;

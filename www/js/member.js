@@ -492,7 +492,7 @@ var profileUtil = {
 				}, 'json').done(function(responseJSON){
 					console.log('crop profile face done > responseJSON', responseJSON);
 					// 프로필 이미지를 응답받은 주소로 갱신을 해준다.
-					// #do stuff
+					$('#profile-image').children('img').prop('src', responseJSON.src);
 				});
 			}
 		});
@@ -505,7 +505,7 @@ var profileUtil = {
 		}, 'json').done(function(responseJSON){
 			console.log('crop profile bg done > responseJSON', responseJSON);
 			// 프로필 배경을 응답받은 주소로 갱신을 해준다.
-			// #do stuff
+			$('#profile-header').css('background-image', responseJSON.src);
 		});
 	},
 
