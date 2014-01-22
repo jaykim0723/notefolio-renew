@@ -611,7 +611,7 @@ class work_model extends CI_Model {
                     'work_id'=>$params->work_id
                     ))
                 ->get('user_work_collect');
-            $status = ($query->num_rows()>0): true: false;
+            $status = ($query->num_rows()>0)? true: false;
             $query->free_result();
 
             return $status;
