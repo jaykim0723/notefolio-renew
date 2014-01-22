@@ -54,7 +54,7 @@ class Profile extends CI_Controller {
 
 		$filename = $upload->filename;
 		$filename = substr($filename, 0,2).'/'.substr($filename, 2, 2).'/'.$filename;
-
+		var_export($this->config->item('img_upload_path', 'upload').$filename);
         list($width, $height) = getimagesize($this->config->item('img_upload_path', 'upload').$filename);
 
         $size = array('width'=> $width, 'height'=> $height);
