@@ -424,7 +424,10 @@ class work_model extends CI_Model {
                 ->get('log_work_note');
 
         }
-        return ($query->num_rows()>0)?true:false;
+        $status = ($query->num_rows()>0)?true:false;
+        $query->free_result();
+
+        return $status;
     }
 
     /**
@@ -452,7 +455,7 @@ class work_model extends CI_Model {
                 'message' => 'no_process'
             );
 
-        if($this->get_note($params)){
+        if(!$this->get_note($params)){
             $data->status = 'fail';
             $data->message = 'already_noted';
 
@@ -582,7 +585,7 @@ class work_model extends CI_Model {
      * @param  array  $params 
      * @return object          상태와 데이터값을 반환한다
      */
-    function post_collect($params=array()){
+    function get_collect($params=array()){
         $params = (object)$params;
         $default_params = (object)array(
             'user_id'   => USER_ID,
@@ -608,13 +611,47 @@ class work_model extends CI_Model {
                     'work_id'=>$params->work_id
                     ))
                 ->get('user_work_collect');
-            if($query->num_rows()>0){
+            $status = ($query->num_rows()>0): true: false;
+            $query->free_result();
+
+            return $status;
+        }
+
+        return false;
+    }
+    
+    /**
+     * post collect for work
+     * 
+     * @param  array  $params 
+     * @return object          상태와 데이터값을 반환한다
+     */
+    function post_collect($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => USER_ID,
+            'work_id'   => '',
+            'comment'   => '',
+            'regdate'   => date('Y-m-d H:i:s')
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_process'
+            );
+
+        if(!empty($params->user_id) && $params->user_id>0){
+
+            if(!$this->get_collect($params)){
                 $data->status = 'fail';
                 $data->message = 'already_collected';
 
                 return $data;
             }
-            $query->free_result();
 
             $this->db->trans_start();
             try{ 
