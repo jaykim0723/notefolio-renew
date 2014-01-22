@@ -35,13 +35,23 @@ class Activity {
     /**
      * make activity parameter for user.
      * 
-     * @param string $work
+     * @param string $workType
      * @param array $resource
      * 
      * @return bool
      */
-    private function make_param($work, $resource=array())
+    private function make_param($workType, $resource=array())
     {
+        $workType = strtolower($workType);
+        $type_array = array('create' => 'C','read' => 'R','update' => 'U','delete' => 'D',);
+        if (array_key_exists($workType, $type_array)) {
+            $resource['workType'] = $type_array[$workType];
+        }
+        else {
+            $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_work_type'));
+        }
+
+        
     }
     
     /**
