@@ -17,9 +17,14 @@
 			<!-- 사이드바 시작 -->
 			<div class="col-md-3 ">
 				<h4>공개여부</h4>
-				<div class="radio">
-					<label for=""><input type="radio"/>공개</label>
-					<label for=""><input type="radio"/>비공개</label>
+				<div class="control-group">
+                    <label class="notefolio-radio inline<?if($row->status=='enabled'){?> checked<?}?>">
+                        <input type="radio" name="status" value="enabled" <?if($row->status=='enabled'){?> checked<?}?>> 여
+                    </label>
+                    &nbsp; &nbsp; &nbsp;
+                    <label class="notefolio-radio inline<?if($row->status=='disabled'){?> checked<?}?>">
+                        <input type="radio" name="status" value="disabled" <?if($row->status=='enabled'){?> checked<?}?>> 아니오
+                    </label>
 				</div>
 
 				<h4>키워드</h4>
