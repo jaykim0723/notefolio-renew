@@ -144,7 +144,7 @@ class work_model extends CI_Model {
         if(USER_ID>0){
             # 로그인한 사용자라면 이 사람이 어떻게 했는지 쿼리를 여기에서 하나 날리고 아래 값을 할당한다.
             # do stuff
-            $data->row->noted = rand(0,9)>5 ? 'y' : 'n';
+            $data->row->noted = ($this->get_note(array('work_id'=> $data->row->id,'user_id'=>USER_ID)))? 'y': 'n';
             $data->row->collected = rand(0,9)>5 ? 'y' : 'n';
             $data->row->is_follow = rand(0,9)>5 ? 'y' : 'n';
         }
@@ -383,6 +383,51 @@ class work_model extends CI_Model {
     }
     
     /**
+     * get note status for work
+     * 
+     * @param  array  $params 
+     * @return bool
+     */
+    function get_note($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => USER_ID,
+            'work_id'   => '',
+            'remote_addr'   => $this->input->server('REMOTE_ADDR'),
+            'phpsessid'   => $this->input->cookie('PHPSESSID'),
+            'regdate'   => date('Y-m-d H:i:s')
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        if($params->user_id>0){
+            $query = $this->db
+                ->where(array(
+                    'user_id'=>$params->user_id,
+                    'work_id'=>$params->work_id
+                    ))
+                ->get('log_work_note');
+        }
+        else{
+            $query = $this->db
+                ->where(array(
+                    'user_id'=>0,
+                    'work_id'=>$params->work_id
+                    ))
+                ->where("(
+                    phpsessid like '$params->phpsessid'
+                    OR
+                    remote_addr like '$params->remote_addr'
+                    )")
+                ->get('log_work_note');
+
+        }
+        return ($query->num_rows()>0)?true:false;
+    }
+
+    /**
      * post note for work
      * 
      * @param  array  $params 
@@ -407,29 +452,7 @@ class work_model extends CI_Model {
                 'message' => 'no_process'
             );
 
-        if($params->user_id>0){
-            $query = $this->db
-                ->where(array(
-                    'user_id'=>$params->user_id,
-                    'work_id'=>$params->work_id
-                    ))
-                ->get('log_work_note');
-        }
-        else{
-            $query = $this->db
-                ->where(array(
-                    'user_id'=>0,
-                    'work_id'=>$params->work_id
-                    ))
-                ->where("(
-                    phpsessid like '$params->phpsessid'
-                    OR
-                    remote_addr like '$params->remote_addr'
-                    )")
-                ->get('log_work_note');
-
-        }
-        if($query->num_rows()>0){
+        if($this->get_note($params)){
             $data->status = 'fail';
             $data->message = 'already_noted';
 

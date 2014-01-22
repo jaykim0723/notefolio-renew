@@ -42,6 +42,7 @@ class Activity {
      */
     private function make_param($workType, $resource=array())
     {
+        //-- make work type
         $workType = strtolower($workType);
         $type_array = array('create' => 'C','read' => 'R','update' => 'U','delete' => 'D',);
         if (array_key_exists($workType, $type_array)) {
@@ -50,8 +51,13 @@ class Activity {
         else {
             $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_work_type'));
         }
+        //-- end
 
-        
+        //-- get for insert info
+            
+        //--
+
+
     }
     
     /**
