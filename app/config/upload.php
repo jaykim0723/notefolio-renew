@@ -33,6 +33,6 @@ $config['thumbnail_small']= array('max_width' => 300,  //pixel
                                 );
 
 
-$config['thumbnail_profile_face']= array('max_width' => 127,  //pixel
-                                'max_height'  => 127  //pixel
+$config['thumbnail_profile_face']= array('max_width' => 145,  //pixel
+                                'max_height'  => 145  //pixel
                                 );
