@@ -1,12 +1,44 @@
 var workUtil = {
-	save: function(form, returnType){
+	save : function(form, returnType){
 		if(typeof(returnType)=='undefined'){
 			var returnType = true;
 		}
+
+		var data = $(form).serialize();
+		var contents = [];
+		$('#content-block-list li').each(function(index){
+			var o = {
+				t : '', 
+				i : '', 
+				c : ''
+			};
+    		var type =(""+$(this).attr("class")+"").match(/block-(\w+)/)[0].replace('block-', '');
+    		o.t = type;
+    		switch(type){
+    			case 'image':
+    				o.c = $(this).children('img').attr('src');
+    				o.i = $(this).children('img').data('id');
+    			break;
+
+    			case 'video':
+    				o.c = $(this).children('iframe').attr('src');
+    			break;
+
+    			case 'text':
+    				o.c = $(this).children('textarea').val();
+    			break;
+
+    			case 'line':
+    			break;
+    		}
+    		contents.push(o);
+		});
+		data += '&contents='+array2json(contents);
+
 		blockPage.block();
 		$.ajax({
 			url : $(form).attr('action'),
-			data : $(form).serialize(),
+			data : data,
 			type : 'post',
 			dataType : 'json'
 		}).done(function(d){
@@ -25,7 +57,7 @@ var workUtil = {
 	content: {
 		restoreContents : function(){ // create든 update든 NFView의 값을 가지고 폼들에 반영을 해준다.
 			// 제목 셋팅해주기
-			$('#work_title').val(NFview.title);
+			$('#title').val(NFview.title);
 
 
 			// 내용 블럭 셋팅하기
@@ -36,11 +68,11 @@ var workUtil = {
 
 
 			// 키워드 셋팅하기
-			$('#work_keywords').selectpicker('val', NFview.keywords);
+			$('#keywords').selectpicker('val', NFview.keywords);
 
 
 			// 태그 셋팅하기
-			var tagsObj = $('#work_tags');
+			var tagsObj = $('#tags');
 			tagsObj.tagsinput({
 				maxTags : 50,
 				confirmKeys: [13, 9, 188]
@@ -57,7 +89,7 @@ var workUtil = {
 
         
 			// CCL 셋팅하기
-			$('#work_ccl').selectpicker('val', NFview.ccl);
+			$('#ccl').selectpicker('val', NFview.ccl);
 
 
 			// 커버 셋팅하기
@@ -85,22 +117,6 @@ var workUtil = {
 				});
 				selectCover.getModalBody().html($list);
 			});
-
-			/**
-			 * 왜 안되나요 ㄷㄷ
-			 */
-			/*			
-			//face delete
-			$('#btn-delete-face').on('click', function(e){
-				e.preventDefault();
-				$.get('/profile/delete_face/');
-			});
-			//bg delete
-			$('#btn-delete-bg').on('click', function(){
-				e.preventDefault();
-				$.get('/profile/delete_bg/');
-			});
-			*/
 
 			// footer 버리기
 			$('#footer').remove();

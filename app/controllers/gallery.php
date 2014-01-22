@@ -78,9 +78,9 @@ class Gallery extends CI_Controller {
 	}
 
 	function save(){
-		$input = $this->input->post();
-		$data = $this->work_model->put_info((object)$input);
-		$this->layout->set_json($data)->render();
+		// $input = $this->input->post();
+		// $data = $this->work_model->put_info((object)$input);
+		// $this->layout->set_json($data)->render();
 	}
 
 

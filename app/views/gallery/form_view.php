@@ -23,12 +23,12 @@
                     </label>
                     &nbsp; &nbsp; &nbsp;
                     <label class="notefolio-radio inline<?if($row->status=='disabled'){?> checked<?}?>">
-                        <input type="radio" name="status" value="disabled" <?if($row->status=='enabled'){?> checked<?}?>> 아니오
+                        <input type="radio" name="status" value="disabled" <?if($row->status=='disabled'){?> checked<?}?>> 아니오
                     </label>
 				</div>
 
 				<h4>키워드</h4>
-				<select name="work_keywords" id="work_keywords" multiple title="Choose one of the following..." >
+				<select name="keywords" id="keywords" multiple title="Choose one of the following..." >
 					<option value="가구디자인">가구디자인</option>
 					<option value="그리픽디자인">그리픽디자인</option>
 					<option value="디지털아">디지털아</option>
@@ -44,11 +44,11 @@
 				</select>
 
 				<h4>태그</h4>
-				<input id="work_tags" name="work_tags" type="text" class="form-control">
+				<input id="tags" name="tags" type="text" class="form-control">
 
 				
 				<h4>CCL</h4>
-				<select name="work_ccl" id="work_ccl" class="" title="Choose one of the following..." >
+				<select name="ccl" id="ccl" class="" title="Choose one of the following..." >
 					<option value="">CCL 표시 안함</option>
 					<option data-content='<i class="spi spi-ccl-cc-by"></i>저작자표시' value="BY">저작자표시</option>
 					<option data-content='<i class="spi spi-ccl-cc-by-nc"></i>저작자표시-비영리' value="BY-NC">저작자표시-비영리</option>
@@ -111,7 +111,7 @@
 			<!-- 작품영역 시작 -->
 			<div class="col-md-9">
 				<h4>제목</h4>
-				<input id="work_title" type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
+				<input id="title" type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
 				<br>
 				<h4>내용</h4>
 				<ul id="content-block-list" class="work-info list-unstyled work-contents">
