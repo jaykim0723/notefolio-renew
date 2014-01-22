@@ -169,7 +169,8 @@ class work_model extends CI_Model {
             unset($data->row->{$key});
         }
         $data->row->user = $user;
-    	return $data;
+    	var_export($data->row);
+        return $data;
     }
 
 
