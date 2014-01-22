@@ -9,6 +9,7 @@ class Profile extends CI_Controller {
         parent::__construct();
         $this->load->model(array('profile_model','user_model'));
 		$this->nf->_member_check(array('statistics'));
+		$this->load->library('file_save');
     }
 
 	
@@ -37,17 +38,46 @@ class Profile extends CI_Controller {
 	 * 프로필사진을 선정하고 크롭까지 지정하고 넘어온다.
 	 * @return [type] [description]
 	 */
-	function change_face(){
-		$input = $this->input->post(); // upload_id, x, y, w, h : 최대폭 800짜리를 기준으로 들어오므로, 원본크기에서 크롭할 때에는 좌표와 크기 조정을 다시, 800보다 작을 때에도 고려할 것
+	function change_face($upload_id=0, $username=''){
+		if(empty($upload_id)){
+			$upload_id = $this->input->get_post('upload_id');
+		}
+		if(empty($username)){
+			$username = $this->tank_auth->get_username();
+		}
 
-		#do stuff
-		// -> controller->upload->profile_face()
+		$upload = $this->upload_model->get(array('id'=>$upload_id));
+		if($upload->status=='done')
+			$upload = $upload->row;
 
-		$data = array(
-			'status' => 'done',
-			'modified' => '',
-		);
-		$this->layout->set_json($data)->render();
+		$filename = $upload->filename;
+		$filename = substr($filename, 0,2).'/'.substr($filename, 2, 2).'/'.$filename;
+
+        list($width, $height) = getimagesize($this->config->item('img_upload_path', 'upload').$filename);
+
+        $size = array('width'=> $width, 'height'=> $height);
+        $o_crop = array(
+				'width'=>$this->input->get_post('w'),
+				'height'=>$this->input->get_post('h'),
+				'pos_x'=>$this->input->get_post('x'),
+				'pos_y'=>$this->input->get_post('y')
+			);
+
+		$to_crop = $this->file_save->get_crop_opt($size, $o_crop);
+
+		$result = $this->file_save->make_thumbnail(
+			$this->config->item('img_upload_path', 'upload').$filename,
+			$this->config->item('profile_upload_path', 'upload').$username.'_face.jpg',
+			'profile_face', 
+			array('crop_to'=>$to_crop)
+			);
+
+
+		//upload_id=111&x=98&y=0&w=293&h=293
+		$json = array(
+			'status'=>($result)?'done':'fail'
+			);
+		$this->layout->set_json($json)->render();
 	}
 
 	/**
@@ -75,17 +105,32 @@ class Profile extends CI_Controller {
 	 * 프로필의 배경사진을 바꾸는 것
 	 * @return [type] [description]
 	 */
-	function change_bg(){
-		$upload_id = $this->input->post('upload_id');
+	function change_bg($upload_id=0, $username=''){
+		if(empty($upload_id)){
+			$upload_id = $this->input->get_post('upload_id');
+		}
+		if(empty($username)){
+			$username = $this->tank_auth->get_username();
+		}
 
-		#do stuff
-		// -> controller->upload->profile_background()
+		$upload = $this->upload_model->get(array('id'=>$upload_id));
+		if($upload->status=='done')
+			$upload = $upload->row;
 
-		$data = array(
-			'status' => 'done',
-			'modified' => ''
-		);
-		$this->layout->set_json($data)->render();
+		$filename = $upload->filename;
+		$filename = substr($filename, 0,2).'/'.substr($filename, 2, 2).'/'.$filename;
+
+		$result = $this->file_save->make_thumbnail(
+			$this->config->item('img_upload_path', 'upload').$filename,
+			$this->config->item('profile_upload_path', 'upload').$username.'_bg.jpg',
+			'large'
+			);
+
+		//upload_id=111&x=98&y=0&w=293&h=293
+		$json = array(
+			'status'=>($result)?'done':'fail'
+			);
+		$this->layout->set_json($json)->render();
 	}
 
 
