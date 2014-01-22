@@ -38,8 +38,8 @@ class Profile extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	function change_face($upload_id=0, $username=''){
-		$this->load->library('file_save');
 		$this->load->model('upload_model');
+		$this->load->library('file_save');
 		
 		if(empty($upload_id)){
 			$upload_id = $this->input->get_post('upload_id');
