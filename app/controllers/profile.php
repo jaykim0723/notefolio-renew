@@ -38,6 +38,7 @@ class Profile extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	function change_face($upload_id=0, $username=''){
+		$this->load->config('upload', TRUE);
 		$this->load->model('upload_model');
 		$this->load->library('file_save');
 		
@@ -54,7 +55,7 @@ class Profile extends CI_Controller {
 
 		$filename = $upload->filename;
 		$filename = substr($filename, 0,2).'/'.substr($filename, 2, 2).'/'.$filename;
-		var_export($this->config->item('img_upload_path', 'upload').$filename);
+
         list($width, $height) = getimagesize($this->config->item('img_upload_path', 'upload').$filename);
 
         $size = array('width'=> $width, 'height'=> $height);
@@ -108,6 +109,7 @@ class Profile extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	function change_bg($upload_id=0, $username=''){
+		$this->load->config('upload', TRUE);
 		$this->load->model('upload_model');
 		$this->load->library('file_save');
 

@@ -15,6 +15,7 @@ class file_save {
     function __construct($config=null) {
         $this->ci =& get_instance();
 
+        $this->ci->load->config('upload', TRUE);
     }
 
     /**
