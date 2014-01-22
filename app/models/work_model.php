@@ -459,7 +459,6 @@ class work_model extends CI_Model {
             return $data;
         }
         else if($params->user_id==0){
-            $query->free_result();
             $query = $this->db
                 ->where(array(
                     'user_id'=>0,
@@ -474,9 +473,10 @@ class work_model extends CI_Model {
 
                 return $data;
             }
+            $query->free_result();
         }
-        $query->free_result();
 
+        
         $this->db->trans_start();
         try{ 
             $this->db->insert('log_work_note', $params);
