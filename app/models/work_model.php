@@ -395,7 +395,6 @@ class work_model extends CI_Model {
             'work_id'   => '',
             'remote_addr'   => $this->input->server('REMOTE_ADDR'),
             'phpsessid'   => $this->input->cookie('PHPSESSID'),
-            'regdate'   => date('Y-m-d H:i:s')
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
@@ -417,9 +416,9 @@ class work_model extends CI_Model {
                     'work_id'=>$params->work_id
                     ))
                 ->where("(
-                    phpsessid like '$params->phpsessid'
+                    phpsessid like '{$params->phpsessid}'
                     OR
-                    remote_addr like '$params->remote_addr'
+                    remote_addr like '{$params->remote_addr}'
                     )")
                 ->get('log_work_note');
 
@@ -590,8 +589,6 @@ class work_model extends CI_Model {
         $default_params = (object)array(
             'user_id'   => USER_ID,
             'work_id'   => '',
-            'comment'   => '',
-            'regdate'   => date('Y-m-d H:i:s')
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
