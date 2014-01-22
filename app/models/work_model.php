@@ -454,7 +454,7 @@ class work_model extends CI_Model {
                 'message' => 'no_process'
             );
 
-        if(!$this->get_note($params)){
+        if($this->get_note($params)){
             $data->status = 'fail';
             $data->message = 'already_noted';
 
@@ -643,7 +643,7 @@ class work_model extends CI_Model {
 
         if(!empty($params->user_id) && $params->user_id>0){
 
-            if(!$this->get_collect($params)){
+            if($this->get_collect($params)){
                 $data->status = 'fail';
                 $data->message = 'already_collected';
 
