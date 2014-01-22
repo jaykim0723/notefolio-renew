@@ -92,10 +92,10 @@
 			</li>
 		<?php else: ?>
 			<li id="mobile-menu-profile" class="centered">
-				<a href="/<?php echo $this->session->userdata('username') ?>">
-					<img src="http://notefolio.net/profiles/147?h=1385655105" alt="">
+				<a href="/<?php echo $this->nf->get('user')->username ?>">
+					<img src="/data/profiles/<?php echo $this->nf->get('user')->username ?>_face.jpg?_=<?php echo substr($this->nf->get('user')->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
 				</a>
-				<?php echo $this->session->userdata('username') ?>
+				<?php echo $this->nf->get('user')->username ?>
 				<br/>
 				followers <?php echo $this->nf->get('user')->following_cnt ?>
 				/
