@@ -9,8 +9,6 @@ class Profile extends CI_Controller {
         parent::__construct();
         $this->load->model(array('profile_model','user_model'));
 		$this->nf->_member_check(array('statistics'));
-		$this->load->library('file_save');
-		$this->load->model('upload_model');
     }
 
 	
@@ -40,6 +38,9 @@ class Profile extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	function change_face($upload_id=0, $username=''){
+		$this->load->library('file_save');
+		$this->load->model('upload_model');
+		
 		if(empty($upload_id)){
 			$upload_id = $this->input->get_post('upload_id');
 		}
@@ -47,7 +48,6 @@ class Profile extends CI_Controller {
 			$username = $this->tank_auth->get_username();
 		}
 
-		$this->load->model('upload_model');
 		$upload = $this->upload_model->get(array('id'=>$upload_id));
 		if($upload->status=='done')
 			$upload = $upload->row;
@@ -108,13 +108,16 @@ class Profile extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	function change_bg($upload_id=0, $username=''){
+		$this->load->library('file_save');
+		$this->load->model('upload_model');
+
 		if(empty($upload_id)){
 			$upload_id = $this->input->get_post('upload_id');
 		}
 		if(empty($username)){
 			$username = $this->tank_auth->get_username();
 		}
-		$this->load->model('upload_model');
+
 		$upload = $this->upload_model->get(array('id'=>$upload_id));
 		if($upload->status=='done')
 			$upload = $upload->row;
