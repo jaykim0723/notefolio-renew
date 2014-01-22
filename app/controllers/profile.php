@@ -10,6 +10,7 @@ class Profile extends CI_Controller {
         $this->load->model(array('profile_model','user_model'));
 		$this->nf->_member_check(array('statistics'));
 		$this->load->library('file_save');
+		$this->load->model('upload_model');
     }
 
 	
