@@ -265,6 +265,8 @@ class file_save {
                 @chmod($name, 0777); // 추후 삭제를 위하여 파일모드 변경
                 imagedestroy($source);
                 imagedestroy($target);
+                
+                return true;
             }
         }
 
