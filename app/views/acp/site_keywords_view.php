@@ -94,7 +94,6 @@ $keyword = array(
               }
             }
             
-        }
         
         $(function(){
         });
