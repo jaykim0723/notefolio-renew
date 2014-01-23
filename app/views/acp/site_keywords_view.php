@@ -30,9 +30,44 @@ $j_insert_button = array(
 );
 
 ?>
+    <h2>키워드</h2>
+    <div class="info">
+      <p>키워드를 추가 및 삭제할 수 있습니다.</p>
+      <p>저장을 누를 때까지 반영하지 않습니다.</p>
+    </div>
+
+    <table class="table table-bordered">
+      <caption></caption>
+      <thead>
+        <tr>
+          <th>식별기호</th>
+          <th>한글출력</th>
+          <th>수정/삭제</th>
+        </tr>
+      </thead>
+        <tr id="keyword-insert">
+          <td><?=form_input()?></td>
+          <td><?=form_input()?></td>
+          <td>
+            <a href=""><span class="btn btn-success">추가</span></a>
+          </td>
+        </tr>
+      <tbody>
+        <?php foreach($keyword_list as $key => $val): ?>
+        <tr id="keyword-<?=$key?>">
+          <td><?=$key?></td>
+          <td><?=$val?></td>
+          <td>
+            <a href=""><span class="btn btn-primary">수정</span></a>
+            <a href=""><span class="btn btn-danger">삭제</span></a>
+          </td>
+        </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+
+
 <?php echo form_open("acp/site/keyword/save", $form_attr); ?>
-    <h2>메인배너</h2>
-    <div class="info"><p>메인에 띄울 배너를 설정할 수 있습니다. </p></div>
     <p>target url:<?php echo form_input($j_target_url);?>
      / img url:<?php echo form_input($j_img_url);?>
      <?php echo form_button($j_insert_button); ?></p>
@@ -63,26 +98,3 @@ $j_insert_button = array(
             });
         });
     </script>
-
-    <table class="table table-bordered">
-      <caption></caption>
-      <thead>
-        <tr>
-          <th>식별기호</th>
-          <th>한글출력</th>
-          <th>수정/삭제</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach($keyword_list as $key => $val): ?>
-        <tr id="keyword-<?=$key?>">
-          <td><?=$key?></td>
-          <td><?=$val?></td>
-          <td>
-            <a href=""><span class="btn btn-primary">수정</span></a>
-            <a href=""><span class="btn btn-danger">수정</span></a>
-          </td>
-        </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
