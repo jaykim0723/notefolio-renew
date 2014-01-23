@@ -18,10 +18,9 @@
 						$this->load->config('keyword', TRUE);
 						$keyword_list = $this->config->item('keyword', 'keyword');
 
-						foreach ($keyword_list as $keyword) {
-						?>
-						<option value="<?php echo $keyword['key'];?>"><?php echo $keyword['name'];?></option>
-						<?php } ?>
+						foreach ($keyword_list as $key => $keyword) { ?>
+							<option value="<?php echo $key?>"><?php echo $keyword;?></option>
+						<?php }	?>
 					</select>
 					<select class="col-xs-2" name="" id="">
 						<option value="newest">최신순</option>

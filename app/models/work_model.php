@@ -159,7 +159,7 @@ class work_model extends CI_Model {
             'last_login' => $data->row->last_login,
             'created'    => $data->row->created,
             'modified'   => $data->row->modified,
-            'user_keywords'   => array('파인아트', '동영상'), // temporary
+            'user_keywords'   => 'A7B7',
             'sns'   => (object)array(// temporary
                 'facebook' => 'maxzidell',
                 'twitter' => 'maxzidell'
@@ -282,7 +282,7 @@ class work_model extends CI_Model {
             ->result();
         
         foreach($result as &$row){
-            $row->user_keywords = array('순수미술','영상','웹디자인'); // dummy
+            $row->user_keywords = 'A7B7'; // dummy
         }
         return $result;
     }

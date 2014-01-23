@@ -28,19 +28,11 @@
 				</div>
 
 				<h4>키워드</h4>
+
 				<select name="keywords" id="keywords" multiple title="Choose one of the following..." >
-					<option value="가구디자인">가구디자인</option>
-					<option value="그리픽디자인">그리픽디자인</option>
-					<option value="디지털아">디지털아</option>
-					<option value="산업디자인">산업디자인</option>
-					<option value="실내디자인">실내디자인</option>
-					<option value="웹디자인">웹디자인</option>
-					<option value="제품디자인">제품디자인</option>
-					<option value="페인팅">페인팅</option>
-					<option value="건축디자인">건축디자인</option>
-					<option value="금속디자인">금속디자인</option>
-					<option value="UI/UX">UI/UX</option>
-					<option value="파인아트">파인아트</option>
+					<?php foreach ($keyword_list as $key => $keyword) { ?>
+						<option value="<?php echo $key?>"><?php echo $keyword;?></option>
+					<?php }	?>
 				</select>
 
 				<h4>태그</h4>
@@ -94,6 +86,7 @@
 
 
 				<input type="hidden" name="work_id" value="<?php echo $row->work_id ?>"/>
+				<input type="hidden" name="cover_upload_id" value="<?php echo $row->work_id ?>"/>
 
 				<button id="work-submit" type="submit" class="btn btn-primary btn-block btn-lg">
 					<span id="work-discoverbility"><span style="width:70%;"></span></span>
