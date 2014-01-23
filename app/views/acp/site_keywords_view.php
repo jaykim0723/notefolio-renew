@@ -49,7 +49,7 @@ $keyword = array(
           <td><?=$key?></td>
           <td><?=$val?></td>
           <td>
-            <a href="javascript:keywordUtil.update('')">
+            <a href="javascript:keywordUtil.update('<?=$key?>')">
               <span class="btn btn-primary">수정</span>
             </a>
             <a href="">
@@ -63,35 +63,53 @@ $keyword = array(
     </table>
 
 <?php echo form_open("acp/site/keyword/save", $form_attr); ?>
-    <p>target url:<?php echo form_input($j_target_url);?>
-     / img url:<?php echo form_input($j_img_url);?>
-     <?php echo form_button($j_insert_button); ?></p>
     <p>for debug:</p>
     <p><?php echo form_textarea($keyword); ?></p>
     <?php if($save_result!='') {?><p class="info">결과: <?php echo $save_result; ?></p><?php }?>
     <button class="btn btn-large btn-primary" type="submit">전송</button>
 <?php echo form_close(); ?>
 
+    <script type="text/javascript" src="/libs/json2.js"></script>
     <script type="text/javascript">
-        var bannerUtil = {
-            make: function(target, image){
-                var origData = JSON.parse($('#<?=$keyword['id']?>').val());
-                var newData = [{ target: target, image: image }];
-                newData = newData.concat(origData);
-                
-                $('#<?=$keyword['id']?>').val(JSON.stringify(newData).replace('[','[\n').replace(']','\n]').replace(/{/gi,'    {').replace(/},/gi,'},\n'));
-                
+        var keywordUtil = {
+              insert: function(){
+                  var key = $('#keyword-key').val();
+                  var val = $('#keyword-val').val();
+                  if(key==''){
+                    alert('식별기호를 입력해주세요.');
+                    $('#keyword-key').val();
+
+                    return;
+                  }
+                  if(val==''){
+                    alert('한글출력을 입력해주세요.');
+                    $('#keyword-val').val();
+
+                    return;
+                  }
+
+                  var json = '{"'+ key +'":"'+ val +'"}';
+
+                  var node = $('<tr></tr>').html('
+          <td>'+ key +'</td>
+          <td>'+ val +'</td>
+          <td>
+            <a href="javascript:keywordUtil.update('+ key +')">
+              <span class="btn btn-primary">수정</span>
+            </a>
+            <a href="">
+              <span class="btn btn-danger">삭제</span>
+            </a>
+            <input type="hidden" name="keyword[]" value="'+ json +'" />
+          </td>
+
+                    ');
+              }
             }
             
         }
         
         $(function(){
-            $('#<?=$j_insert_button['id']?>').on('click', function(e){
-                e.preventDefault(); // cancel default behavior
-                var target = $('#<?=$j_target_url['id']?>').val();
-                var image = $('#<?=$j_img_url['id']?>').val();
-                bannerUtil.make(target, image);
-            });
         });
     </script>
 
