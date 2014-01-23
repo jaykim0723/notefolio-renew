@@ -480,7 +480,7 @@ var profileUtil = {
 			src : src,
 			width : 400,
 			height: 400,
-			done : function(){
+			done : function(dialog){
 				var crop = NFview.popCrop[0].tellSelect();
 				// 이미지 src, crop 정보를 토대로 사진을 잘라내는 명령을 내린다.
 				$.post('/profile/change_face', {
@@ -493,6 +493,7 @@ var profileUtil = {
 					console.log('crop profile face done > responseJSON', responseJSON);
 					// 프로필 이미지를 응답받은 주소로 갱신을 해준다.
 					$('#profile-image').children('img').prop('src', responseJSON.src);
+					dialog.close();
 				});
 			}
 		});
