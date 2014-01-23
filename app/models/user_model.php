@@ -326,6 +326,7 @@ class user_model extends CI_Model {
      * @return object       (status return object. status=[done|fail])
      */
     function put_timestamp($input=array()){
+        exit('a');
         $input = (object)$input;
 
         //-- id is not for update
@@ -346,7 +347,6 @@ class user_model extends CI_Model {
                 unset($input->{$key});
             }
         }
-        exit('a');
         if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
             $can_delete = true;
         }
