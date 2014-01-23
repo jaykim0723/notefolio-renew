@@ -36,7 +36,7 @@ $j_insert_button = array(
       <p>저장을 누를 때까지 반영하지 않습니다.</p>
     </div>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="keyword-list">
       <caption></caption>
       <thead>
         <tr>
@@ -55,7 +55,9 @@ $j_insert_button = array(
             'name'=>'keyword-val', 
             'placeholder'=>'value'))?></td>
           <td>
-            <a href=""><span class="btn btn-success">추가</span></a>
+            <a href="javascript:keywordUtil.insert()">
+              <span class="btn btn-success">추가</span>
+            </a>
           </td>
         </tr>
       <tbody>
@@ -64,8 +66,13 @@ $j_insert_button = array(
           <td><?=$key?></td>
           <td><?=$val?></td>
           <td>
-            <a href=""><span class="btn btn-primary">수정</span></a>
-            <a href=""><span class="btn btn-danger">삭제</span></a>
+            <a href="javascript:keywordUtil.update('')">
+              <span class="btn btn-primary">수정</span>
+            </a>
+            <a href="">
+              <span class="btn btn-danger">삭제</span>
+            </a>
+            <?=form_hidden(array('a'=>'b'))?>
           </td>
         </tr>
         <?php endforeach; ?>
