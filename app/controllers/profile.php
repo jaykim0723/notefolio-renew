@@ -75,9 +75,9 @@ class Profile extends CI_Controller {
 			array('crop_to'=>$to_crop, 'spanning'=>true)
 			);
 
-		// if($status=='done'){
-		// 	$this->user_model->post_timestamp(array('id'=>USER_ID));
-		// }
+		if($status=='done'){
+			$this->user_model->put_timestamp(array('id'=>USER_ID));
+		}
 
 		//upload_id=111&x=98&y=0&w=293&h=293
 		$json = array(
@@ -137,9 +137,9 @@ class Profile extends CI_Controller {
 			'large', array('spanning'=>true)
 			);
 
-		// if($status=='done'){
-		// 	$this->user_model->post_timestamp(array('id'=>USER_ID));
-		// }
+		if($status=='done'){
+			$this->user_model->put_timestamp(array('id'=>USER_ID));
+		}
 
 		//upload_id=111&x=98&y=0&w=293&h=293
 		$json = array(
