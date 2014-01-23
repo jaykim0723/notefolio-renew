@@ -7,6 +7,8 @@
  
 $config['upload_path']       = APPPATH.'../www/data/';
 $config['upload_uri']        = '/data/';
+$config['temp_upload_path']   = $config['upload_path'].'temp/';
+$config['temp_upload_uri']    = $config['upload_uri'].'temp/';
 $config['img_upload_path']   = $config['upload_path'].'img/';
 $config['img_upload_uri']    = $config['upload_uri'].'img/';
 $config['cover_upload_path'] = $config['upload_path'].'covers/';
