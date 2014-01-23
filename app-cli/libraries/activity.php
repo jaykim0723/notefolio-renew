@@ -50,6 +50,7 @@ class Activity {
         }
         else {
             $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_work_type'));
+            return false;
         }
         //-- end
 
