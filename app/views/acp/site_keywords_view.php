@@ -30,6 +30,11 @@ $j_insert_button = array(
 );
 
 ?>
+<div class="main">
+  <div class="main-inner">
+      <div class="container">
+
+
     <h2>키워드</h2>
     <div class="info">
       <p>키워드를 추가 및 삭제할 수 있습니다.</p>
@@ -79,7 +84,6 @@ $j_insert_button = array(
       </tbody>
     </table>
 
-
 <?php echo form_open("acp/site/keyword/save", $form_attr); ?>
     <p>target url:<?php echo form_input($j_target_url);?>
      / img url:<?php echo form_input($j_img_url);?>
@@ -89,6 +93,7 @@ $j_insert_button = array(
     <?php if($save_result!='') {?><p class="info">결과: <?php echo $save_result; ?></p><?php }?>
     <button class="btn btn-large btn-primary" type="submit">전송</button>
 <?php echo form_close(); ?>
+
     <script type="text/javascript">
         var bannerUtil = {
             make: function(target, image){
@@ -111,3 +116,11 @@ $j_insert_button = array(
             });
         });
     </script>
+
+
+    
+
+  
+      </div> <!-- /container -->
+  </div> <!-- /main-inner -->
+</div>
