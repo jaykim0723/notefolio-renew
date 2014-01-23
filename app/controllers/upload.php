@@ -66,7 +66,8 @@ class Upload extends CI_Controller
 
 		//upload_id=111&x=98&y=0&w=293&h=293
 		$json = array(
-			'status'=>($result)?'done':'fail'
+			'status'=>($result)?'done':'fail',
+			'src'=>$this->config->item('profile_upload_uri', 'upload').$username.'_face.jpg'
 			);
 		$this->layout->set_json($json)->render();
 	}
@@ -100,7 +101,8 @@ class Upload extends CI_Controller
 
 		//upload_id=111&x=98&y=0&w=293&h=293
 		$json = array(
-			'status'=>($result)?'done':'fail'
+			'status'=>($result)?'done':'fail',
+			'src'=>$this->config->item('profile_upload_uri', 'upload').$username.'_bg.jpg'
 			);
 		$this->layout->set_json($json)->render();
 	}
