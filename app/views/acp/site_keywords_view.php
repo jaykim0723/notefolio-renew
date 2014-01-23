@@ -46,8 +46,14 @@ $j_insert_button = array(
         </tr>
       </thead>
         <tr id="keyword-insert">
-          <td><?=form_input()?></td>
-          <td><?=form_input()?></td>
+          <td><?=form_input(array(
+            'id'=>'keyword-key', 
+            'name'=>'keyword-key', 
+            'placeholder'=>'key'))?></td>
+          <td><?=form_input(array(
+            'id'=>'keyword-val', 
+            'name'=>'keyword-val', 
+            'placeholder'=>'value'))?></td>
           <td>
             <a href=""><span class="btn btn-success">추가</span></a>
           </td>
