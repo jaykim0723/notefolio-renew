@@ -90,18 +90,7 @@ $keyword = array(
 
                   var json = '{"'+ key +'":"'+ val +'"}';
 
-                  var node = $('<tr></tr>').html(
-          '<td>'+ key +'</td>'+
-          '<td>'+ val +'</td>'+
-          '<td>'+
-            '<a href="javascript:keywordUtil.update('+ key +')">'+
-              '<span class="btn btn-primary">수정</span>'+
-            '</a>'+
-            '<a href="">'+
-              '<span class="btn btn-danger">삭제</span>'+
-            '</a>'+
-            '<input type="hidden" name="keyword[]" value="'+ json +'" />'+
-          '</td>');
+                  var node = $('<tr></tr>').html('<td>'+ key +'</td>'+'<td>'+ val +'</td>'+'<td>'+'<a href="javascript:keywordUtil.update('+ key +')">'+'<span class="btn btn-primary">수정</span>'+'</a>'+'<a href="">'+'<span class="btn btn-danger">삭제</span>'+'</a>'+'<input type="hidden" name="keyword[]" value="'+ json +'" />'+'</td>');
               }
             }
             
