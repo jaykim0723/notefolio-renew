@@ -1,9 +1,9 @@
 <?php 
-$mainbanner = array(
-    'name'  => 'mainbanner',
-    'id'    => 'mainbanner',
-    'value' => $default_mainbanner,
-    'placeholder'   => "mainbanner",
+$keyword = array(
+    'name'  => 'keyword',
+    'id'    => 'keyword',
+    'value' => $default_keyword,
+    'placeholder'   => "keyword",
     'style' =>  "width: 100%; height: 20em;"
 );
 $j_target_url = array(
@@ -37,18 +37,18 @@ $j_insert_button = array(
      / img url:<?php echo form_input($j_img_url);?>
      <?php echo form_button($j_insert_button); ?></p>
     <p>for debug:</p>
-    <p><?php echo form_textarea($mainbanner); ?></p>
+    <p><?php echo form_textarea($keyword); ?></p>
     <?php if($save_result!='') {?><p class="info">결과: <?php echo $save_result; ?></p><?php }?>
     <button class="btn btn-large btn-primary" type="submit">전송</button>
 <?php echo form_close(); ?>
     <script type="text/javascript">
         var bannerUtil = {
             make: function(target, image){
-                var origData = JSON.parse($('#<?=$mainbanner['id']?>').val());
+                var origData = JSON.parse($('#<?=$keyword['id']?>').val());
                 var newData = [{ target: target, image: image }];
                 newData = newData.concat(origData);
                 
-                $('#<?=$mainbanner['id']?>').val(JSON.stringify(newData).replace('[','[\n').replace(']','\n]').replace(/{/gi,'    {').replace(/},/gi,'},\n'));
+                $('#<?=$keyword['id']?>').val(JSON.stringify(newData).replace('[','[\n').replace(']','\n]').replace(/{/gi,'    {').replace(/},/gi,'},\n'));
                 
             }
             
