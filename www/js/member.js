@@ -488,8 +488,7 @@ var profileUtil = {
 					x : crop.x,
 					y : crop.y,
 					w : crop.w,
-					h : crop.h,
-					min_x : 400
+					h : crop.h
 				}, 'json').done(function(responseJSON){
 					console.log('crop profile face done > responseJSON', responseJSON);
 					// 프로필 이미지를 응답받은 주소로 갱신을 해준다.
