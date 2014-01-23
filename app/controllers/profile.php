@@ -72,12 +72,12 @@ class Profile extends CI_Controller {
 			$this->config->item('img_upload_path', 'upload').$filename,
 			$this->config->item('profile_upload_path', 'upload').$username.'_face.jpg',
 			'profile_face', 
-			array('crop_to'=>$to_crop)
+			array('crop_to'=>$to_crop, 'spanning'=>true)
 			);
 
-		if($status=='done'){
-			$this->user_model->post_timestamp(array('id'=>USER_ID));
-		}
+		// if($status=='done'){
+		// 	$this->user_model->post_timestamp(array('id'=>USER_ID));
+		// }
 
 		//upload_id=111&x=98&y=0&w=293&h=293
 		$json = array(
@@ -134,13 +134,13 @@ class Profile extends CI_Controller {
 		$result = $this->file_save->make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,
 			$this->config->item('profile_upload_path', 'upload').$username.'_bg.jpg',
-			'large'
+			'large', array('spanning'=>true)
 			);
 
-		if($status=='done'){
-			$this->user_model->post_timestamp(array('id'=>USER_ID));
-		}
-		
+		// if($status=='done'){
+		// 	$this->user_model->post_timestamp(array('id'=>USER_ID));
+		// }
+
 		//upload_id=111&x=98&y=0&w=293&h=293
 		$json = array(
 			'status'=>($result)?'done':'fail',
