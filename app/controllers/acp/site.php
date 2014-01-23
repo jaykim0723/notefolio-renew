@@ -6,6 +6,8 @@ class site extends CI_Controller {
     {
         parent::__construct();
 		$this->nf->admin_check();
+
+		$this->load->helper('form');
     }
 	
     /**
