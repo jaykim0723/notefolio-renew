@@ -67,7 +67,9 @@
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
+            <li><a href="/acp/site/keywords">키워드</a></li>
+            <li><a href="/acp/site/main_banner">메인배너</a></li>
+            <li><a href="/acp/site/access_log">접속로그</a></li>
           </ul>
         </li>
         <li id="menu-user" class="dropdown<?=($this->uri->segment(2)=='user')?' active':''?>">
@@ -87,7 +89,8 @@
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
+            <li><a href="icons.html">목록</a></li>
+            <li><a href="icons.html">업로드</a></li>
           </ul>
         </li>
         <li id="menu-act" class="dropdown<?=($this->uri->segment(2)=='act')?' active':''?>">
@@ -97,7 +100,7 @@
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
+            <li><a href="icons.html"></a></li>
           </ul>
         </li>
         <li id="menu-stat" class="dropdown<?=($this->uri->segment(2)=='stat')?' active':''?>">
@@ -107,6 +110,8 @@
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
+            <li><a href="icons.html">분석</a></li>
+            <li><a href="icons.html">Icons</a></li>
             <li><a href="icons.html">Icons</a></li>
           </ul>
         </li>
