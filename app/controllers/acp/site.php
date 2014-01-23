@@ -42,7 +42,7 @@ class site extends CI_Controller {
             //-- call config manage library
             $this->load->library('manage_config');
             
-            $this->data['save_result'] = var_export( $this->manage_config->write("keyword", 
+            $data['save_result'] = var_export( $this->manage_config->write("keyword", 
                 array(  'keyword'=>$default_keyword,
                     )
             ), true );
