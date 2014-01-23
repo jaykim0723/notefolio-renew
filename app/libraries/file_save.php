@@ -249,6 +249,12 @@ class file_save {
 
                 // Set Image format n quality
                 // $max_height 는 임의로 계산을 한다.
+                
+                if($size[0]<$max_width)
+                    $max_width = $size[0];
+                if($size[1]<$max_height)
+                    $max_height = $size[1];
+
                 $max_height = floor($size[1] * ($max_width / $size[0]));
                 $target = @imagecreatetruecolor($max_width, $max_height); // target 사이즈를 이곳에 도달하기 전에 미리 결정하여야 함
                 if($size[2] == 3){
