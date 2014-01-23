@@ -72,7 +72,7 @@ $j_insert_button = array(
             <a href="">
               <span class="btn btn-danger">삭제</span>
             </a>
-            <?=form_hidden(array('a'=>'b'))?>
+            <?=form_hidden(array('keyword[]'=>json_encode(array($key=>$val))))?>
           </td>
         </tr>
         <?php endforeach; ?>
