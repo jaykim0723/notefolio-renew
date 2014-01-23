@@ -75,7 +75,7 @@ class Profile extends CI_Controller {
 			array('crop_to'=>$to_crop, 'spanning'=>true)
 			);
 
-		if($status=='done'){
+		if($result=='done'){
 			$this->user_model->put_timestamp(array('id'=>USER_ID));
 		}
 
@@ -137,7 +137,7 @@ class Profile extends CI_Controller {
 			'large', array('spanning'=>true)
 			);
 
-		if($status=='done'){
+		if($result=='done'){
 			$this->user_model->put_timestamp(array('id'=>USER_ID));
 		}
 
