@@ -4,29 +4,7 @@ $keyword = array(
     'id'    => 'keyword',
     'value' => $default_keyword,
     'placeholder'   => "keyword",
-    'style' =>  "width: 100%; height: 20em;"
-);
-$j_target_url = array(
-    'name'        => 'j_target_url',
-    'id'          => 'j_target_url',
-    'value'       => '',
-    'style'       => 'width:30%',
-    'placeholder'   => "Enter Target URL",
-);
-$j_img_url = array(
-    'name'        => 'j_img_url',
-    'id'          => 'j_img_url',
-    'value'       => '',
-    'style'       => 'width:30%',
-    'placeholder'   => "Enter Image URL",
-);
-$j_insert_button = array(
-    'name' => 'j_insert',
-    'id' => 'j_insert',
-    'class' => 'btn',
-    'value' => '삽입',
-    'type' => 'j_insert',
-    'content' => '삽입'
+    'style' =>  "width: 100%; height: 5em;"
 );
 
 ?>
@@ -118,7 +96,7 @@ $j_insert_button = array(
     </script>
 
 
-    
+
 
   
       </div> <!-- /container -->
