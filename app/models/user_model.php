@@ -326,6 +326,8 @@ class user_model extends CI_Model {
      * @return object       (status return object. status=[done|fail])
      */
     function put_timestamp($input=array()){
+        $input = (object)$input;
+
         //-- id is not for update
         $id = isset($input->id)?$input->id:USER_ID;
         unset($input->id);
