@@ -192,7 +192,7 @@ class file_save {
                 $image->resampleImage(150,150,imagick::FILTER_LANCZOS,1);
 
                 if(in_array('resize', $todo)){
-                    if(($image->getImageWidth() > $max_width)||(isset($opt['spanning'])&&$opt['spanning'])){
+                    if(($image->getImageWidth() > $max_width)){
                     // Resize image using the lanczos resampling algorithm based on width
                         $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
                     }
