@@ -78,7 +78,8 @@ class Profile extends CI_Controller {
 
 		//upload_id=111&x=98&y=0&w=293&h=293
 		$json = array(
-			'status'=>($result)?'done':'fail'
+			'status'=>($result)?'done':'fail',
+			'src' => ''
 			);
 		$this->layout->set_json($json)->render();
 	}
