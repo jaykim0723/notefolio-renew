@@ -30,7 +30,7 @@ $j_insert_button = array(
 );
 
 ?>
-<?php echo form_open("acp/site/mainbanner/save", $form_attr); ?>
+<?php echo form_open("acp/site/keyword/save", $form_attr); ?>
     <h2>메인배너</h2>
     <div class="info"><p>메인에 띄울 배너를 설정할 수 있습니다. </p></div>
     <p>target url:<?php echo form_input($j_target_url);?>
@@ -63,7 +63,7 @@ $j_insert_button = array(
             });
         });
     </script>
-    
+
     <table class="table table-bordered">
       <caption></caption>
       <thead>
