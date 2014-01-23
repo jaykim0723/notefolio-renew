@@ -32,7 +32,7 @@ class User extends CI_Controller {
 				$data = $this->user_model->get_list($args);
 			break;
 			case "write":
-				$data = new Object();
+				$data = new stdClass();
 			case "modify":
 			case "view":
 			case "del":
