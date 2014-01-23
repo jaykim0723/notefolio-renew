@@ -331,7 +331,6 @@ class user_model extends CI_Model {
         unset($input->id);
 
         $input = (object)$input;
-        $input_profiles = new stdClass(); //create new Object;
         
         $input->modified = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
 
@@ -345,9 +344,7 @@ class user_model extends CI_Model {
                 unset($input->{$key});
             }
         }
-        if(empty($input_profiles->mailing))
-            $input_profiles->mailing = 'N';
-
+        
         if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
             $can_delete = true;
         }
