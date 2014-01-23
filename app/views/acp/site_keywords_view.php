@@ -68,17 +68,20 @@ $j_insert_button = array(
       <caption></caption>
       <thead>
         <tr>
-          <th>key</th>
-          <th>val</th>
+          <th>식별기호</th>
+          <th>한글출력</th>
           <th>수정/삭제</th>
         </tr>
       </thead>
       <tbody>
         <?php foreach($keyword_list as $key => $val): ?>
-        <tr>
+        <tr id="keyword-<?=$key?>">
           <td><?=$key?></td>
           <td><?=$val?></td>
-          <td><?=$key?></td>
+          <td>
+            <a href=""><span class="btn btn-primary">수정</span></a>
+            <a href=""><span class="btn btn-danger">수정</span></a>
+          </td>
         </tr>
         <?php endforeach; ?>
       </tbody>
