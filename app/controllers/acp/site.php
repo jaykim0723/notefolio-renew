@@ -48,8 +48,8 @@ class site extends CI_Controller {
             ), true );
         }
         
-        $this->data['keyword_list'] = $defaut_keyword;
-        $this->data['default_keyword'] = json_encode(($default_keyword!=false)?$default_keyword:array());
+        $data['keyword_list'] = $defaut_keyword;
+        $data['default_keyword'] = json_encode(($default_keyword!=false)?$default_keyword:array());
 
 		$this->layout->set_header('title', '회원')->set_view('acp/site_keywords_view',$data)->render();
 	}
