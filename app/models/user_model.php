@@ -260,7 +260,7 @@ class user_model extends CI_Model {
         $input = (object)$input;
         $input_profiles = new stdClass(); //create new Object;
         
-        $input->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
+        $input->modified = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
         $input_profiles->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
 
         //-- exclude not allowed field
@@ -296,6 +296,72 @@ class user_model extends CI_Model {
             if(!empty($id)){
                 $this->db->where('id', $id)->update('users', $input); // 사용자 레코드 수정.
                 $this->db->where('user_id', $id)->update('user_profiles', $input_profiles);
+            }
+            $this->db->trans_complete();
+
+            if($this->db->trans_status()){
+                $data = (object)array(
+                    'status' => 'done'
+                );
+            } else {
+                $data = (object)array(
+                    'status' => 'fail',
+                    'message' => 'cannot_run_put_sel'
+                );
+            }
+        } else {
+            $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_permission_to_put'
+            );
+        }
+
+        return $data;
+    }
+
+    /**
+     * post timestamp to user info when update.
+     *
+     * @param  array  $input (depend by field in table `users`)
+     * @return object       (status return object. status=[done|fail])
+     */
+    function put_timestamp($input=array()){
+        //-- id is not for update
+        $id = isset($input->id)?$input->id:USER_ID;
+        unset($input->id);
+
+        $input = (object)$input;
+        $input_profiles = new stdClass(); //create new Object;
+        
+        $input->modified = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
+
+        //-- exclude not allowed field
+        $allowed_key            = array('modified',);
+        foreach($input as $key => $val){
+            if(in_array($key, $allowed_key)){
+                continue;
+            }
+            else{
+                unset($input->{$key});
+            }
+        }
+        if(empty($input_profiles->mailing))
+            $input_profiles->mailing = 'N';
+
+        if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
+            $can_delete = true;
+        }
+        else { // 본인것인지 여부에 따라 message다르게 하기
+            $user = $this->db->where('users.id', $id)->get('users')->row();
+            $can_delete = ($user->id == USER_ID)?true:false; 
+        }
+
+        if($can_delete){
+            $this->db->flush_cache(); //clear active record
+
+            $this->db->trans_start();
+            if(!empty($id)){
+                $this->db->where('id', $id)->update('users', $input); // 사용자 레코드 수정.\
             }
             $this->db->trans_complete();
 
