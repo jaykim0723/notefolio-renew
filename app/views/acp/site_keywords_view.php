@@ -62,7 +62,7 @@ $keyword = array(
       </tbody>
     </table>
 
-<?php echo form_open("acp/site/keyword/save", $form_attr); ?>
+<?php echo form_open("acp/site/keywords/save", $form_attr); ?>
     <p>for debug:</p>
     <p><?php echo form_textarea($keyword); ?></p>
     <?php if($save_result!='') {?><p class="info">결과: <?php echo $save_result; ?></p><?php }?>
