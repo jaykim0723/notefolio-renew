@@ -1,4 +1,21 @@
   var keywordUtil = {
+        getRowHtml: function(key,val){
+            var json = JSON.stringfy(JSON.parse('{"'+ key +'":"'+ val +'"}'));
+
+            var html = '<td>'+ key +'</td>';
+            html    += '<td>'+ val +'</td>';
+            html    += '<td>';
+            html    +=  '<a href="javascript:keywordUtil.update('+ key +')">';
+            html    +=   '<span class="btn btn-primary">수정</span>';
+            html    +=  '</a>';
+            html    +=  '<a href="">';
+            html    +=   '<span class="btn btn-danger">삭제</span>';
+            html    +=  '</a>';
+            html    +=  '<input type="hidden" name="keyword[]" value="'+ json +'" />';
+            html    += '</td>';
+
+            return html;
+        }
         insert: function(){
             var key = $('#keyword-key').val();
             var val = $('#keyword-val').val();
@@ -18,19 +35,7 @@
               return;
             }
 
-            var json = '{"'+ key +'":"'+ val +'"}';
-
-            var html = '<td>'+ key +'</td>';
-            html    += '<td>'+ val +'</td>';
-            html    += '<td>';
-            html    +=  '<a href="javascript:keywordUtil.update('+ key +')">';
-            html    +=   '<span class="btn btn-primary">수정</span>';
-            html    +=  '</a>';
-            html    +=  '<a href="">';
-            html    +=   '<span class="btn btn-danger">삭제</span>';
-            html    +=  '</a>';
-            html    +=  '<input type="hidden" name="keyword[]" value="'+ json +'" />';
-            html    += '</td>';
+            var html = keywordUtil.getLineHtml(key, val);
             $('<tr></tr>').html(html).prependTo($('tbody', '#keyword-list'));
         }
       }
