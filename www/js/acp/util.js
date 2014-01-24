@@ -57,10 +57,9 @@
         keywordUtil.proc.refreshForm();
       },
       refreshForm: function(){
-        var text = $('input[name=keyword').map(function(){
+        var text = concat($('input[name=keyword').map(function(){
           return JSON.parse($(this).val());
-        })
-        .concat()
+        }))
         .toString();
 
         $('#keyword').text('{'+JSON.stringify(text)+'}');
