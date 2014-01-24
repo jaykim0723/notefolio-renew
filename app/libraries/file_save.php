@@ -381,14 +381,14 @@ class file_save {
         $image_ratio = $size['width']/$size['height'];
 
         if($image_ratio<1){ //이미지가 기준 가로폭보다 작다
-            $width = 0;
+            $size['width'] = 0;
         }
         else if($image_ratio>1){
-            $height = 0;
+            $size['height'] = 0;
         }
         else{
         }
 
-        return array('width'=>$width, 'height'=>$height, 'ratio'=>$image_ratio);
+        return array('width'=>$size['width'], 'height'=>$size['height'], 'ratio'=>$image_ratio);
     }
 }
