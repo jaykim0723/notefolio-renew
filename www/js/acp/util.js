@@ -41,7 +41,7 @@
         .prependTo($('tbody', '#keyword-list'));
     },
     delete: function(key){
-      #('tr#keyword-'+key).remove();
+      #('#keyword-'+key).remove();
     }
   }
       
