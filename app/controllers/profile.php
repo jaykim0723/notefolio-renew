@@ -73,7 +73,7 @@ class Profile extends CI_Controller {
         	$opt = array();
         }
 
-		$to_crop = $this->file_save->get_crop_opt('medium', $size, $o_crop, $opt);
+		$to_crop = $this->file_save->get_crop_opt($size, $o_crop, $opt);
 
 		$result = $this->file_save->make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,

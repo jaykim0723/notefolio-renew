@@ -348,8 +348,8 @@ class file_save {
      * @param array $crop
      * @return array
      */
-    function get_crop_opt($type='medium', $size=array(), $crop=array(), $opt=array()){
-        $maxsize = $this->ci->config->item('thumbnail_'.$type, 'upload');
+    function get_crop_opt($size=array(), $crop=array(), $opt=array()){
+        $maxsize = $this->ci->config->item('thumbnail_medium', 'upload'); //기준크기
         if(isset($opt['width'])){
             $max_width = $opt['width'];
         } else {
