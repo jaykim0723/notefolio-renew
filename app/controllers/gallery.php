@@ -77,6 +77,29 @@ class Gallery extends CI_Controller {
 		$this->layout->set_view('gallery/form_view', $work)->render();
 	}
 
+	function save_cover(){
+		// 커버사진을 각 work_id에 임시폴더를 할당해서 저장한다.
+		// 그리고 아래의 폼이 전송완료되었을 때에 대체한다.
+		// upload_id:184
+		// t2[x]:0
+		// t2[y]:0
+		// t2[w]:800
+		// t2[h]:400
+		// t3[x]:0
+		// t3[y]:0
+		// t3[w]:400
+		// t3[h]:400
+
+
+		$json = array(
+			'status'=>($result)?'done':'fail',
+			'src'=>$this->config->item('profile_upload_uri', 'upload').$username.'_face.jpg?_='.time()
+			);
+		$this->layout->set_json($json)->render();
+	}
+
+
+
 	function save(){
 		$input = $this->input->post();
 		$data = $this->work_model->put_info((object)$input);
