@@ -80,6 +80,60 @@ class feed_model extends CI_Model {
         
         return $data;
     }
+
+    function get_count($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id' => '' // 필수정보(누구의 피드인지)
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        $this->db
+            ->select('count(id) as all, sum(if(isnull(readdate), 0, 1)) as unread')
+            ->from('user_feeds')
+            ->where('user_id', $params->user_id)
+            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
+
+        switch($params->order_by){
+            case "newest":
+                $this->db->order_by('moddate', 'desc');
+            break;
+            case "oldest":
+                $this->db->order_by('moddate', 'asc');
+            break;
+            default:
+                if(is_array($params->order_by))
+                    $this->db->order_by($params->order_by);
+            break;
+        }
+
+        try{
+            $info = $this->db->get()->row();
+        }
+        catch (Exception e) {
+            $data = (object)array(
+                'status' => 'fail',
+                'alarm_all' => 0,
+                'alarm_unread' => 0,
+            );
+
+            return $data;
+        }
+
+
+
+        $data = (object)array(
+            'status' => 'done',
+            'alarm_all' => $info->all,
+            'alarm_unread' => $info->unread,
+        );
+
+        return $data;
+
+    }
 }
 
 /* End of file work_model.php */
