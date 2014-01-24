@@ -65,7 +65,7 @@
           }
         });
 
-        $('#keyword').text('{'+JSON.stringify(obj)+'}');
+        $('#keyword').text(JSON.stringify(obj));
       },
     }
 
