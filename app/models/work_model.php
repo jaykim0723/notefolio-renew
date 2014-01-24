@@ -22,7 +22,7 @@ class work_model extends CI_Model {
             'page'      => 1, // 불러올 페이지
             'delimiter' => 24, // 한 페이지당 작품 수
             'order_by'  => 'newest', // newest, oldest
-            'keywords'  => '', // *plain으로 들어오고 이곳 모델에서 코드로 변형을 해준다.
+            'keywords'  => '', 
             'folder'    => '', // ''면 전체
             'user_id'   => '' // 프로필 등 특정 작가의 작품만을 조회할 때
     	);
@@ -124,9 +124,8 @@ class work_model extends CI_Model {
         $work = $this->db->get()->row();
 
         // 여기에서 값을 조작한다.
-        // keywords를 array('파인아트', '어쩌구저쩌구') 와 같이 변환해준다.
         # do stuff
-        $work->keywords = array('파인아트', 'UI/UX'); // temporary
+        $work->keywords = 'A7B7'; // temporary
         $work->tags = @explode(')(', trim(trim($work->tags, '('),')'));
         if(substr($work->contents, 0, 2)=='a:')
             $work->contents = unserialize($work->contents);
@@ -159,7 +158,7 @@ class work_model extends CI_Model {
             'last_login' => $data->row->last_login,
             'created'    => $data->row->created,
             'modified'   => $data->row->modified,
-            'user_keywords'   => 'A7B7',
+            'user_keywords'   => $data->row->user_keywords,
             'sns'   => (object)array(// temporary
                 'facebook' => 'maxzidell',
                 'twitter' => 'maxzidell'

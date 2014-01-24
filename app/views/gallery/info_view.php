@@ -25,7 +25,7 @@
 					</a>
 					<div id="profile-info">
 						<h2><?php echo $row->user->username ?></h2>
-						<h4>&nbsp;<?php echo @implode('·', $row->user->keywords); ?>&nbsp;</h4>
+						<h4>&nbsp;<?php echo $row->user->user_keywords; ?>&nbsp;</h4>
 						<div id="profile-sns-link">
 							<?php foreach ($row->user->sns as $service => $id):
 							$tmp = $this->nf->sns($service, $id);

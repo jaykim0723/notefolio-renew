@@ -27,6 +27,24 @@ class Nf
         return TRUE;
     }
 
+    function category_to_string($category_code){
+        return @implode(' · ', $this->category_to_array($category_code));
+    }
+    function category_to_array($category_code){
+        $categories = array();
+        if(empty($category_code))
+            return $categories;
+        $this->ci->load->config('keyword', TRUE);
+        $keyword_list = $this->ci->config->item('keyword', 'keyword');
+        foreach($keyword_list as $key => $value){
+            if(strpos($category_code, $key)!==FALSE){
+                $categories[] = $value;
+                $category_code = str_replace($key, '', $category_code);
+            }
+        }
+        return $categories;
+    }
+
     function _member_check($member_only=array(), $go_to='')
     {
         $this->ci =& get_instance();
