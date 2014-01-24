@@ -77,7 +77,7 @@ class Gallery extends CI_Controller {
 		$this->layout->set_view('gallery/form_view', $work)->render();
 	}
 
-	function save_cover(){
+	function save_cover($work_id, $upload_id){
 		// 커버사진을 각 work_id에 임시폴더를 할당해서 저장한다.
 		// 그리고 아래의 폼이 전송완료되었을 때에 대체한다.
 		// upload_id:184
@@ -98,8 +98,8 @@ class Gallery extends CI_Controller {
 		if(empty($upload_id)){
 			$upload_id = $this->input->get_post('upload_id');
 		}
-		if(empty($username)){
-			$username = $this->tank_auth->get_username();
+		if(empty($work_id)){
+			$work_id = $this->input->get_post('work_id');
 		}
 
 		$upload = $this->upload_model->get(array('id'=>$upload_id));
@@ -112,14 +112,23 @@ class Gallery extends CI_Controller {
         list($width, $height) = getimagesize($this->config->item('img_upload_path', 'upload').$filename);
 
         $size = array('width'=> $width, 'height'=> $height);
-        $o_crop = array(
-				'width'=>$this->input->get_post('w'),
-				'height'=>$this->input->get_post('h'),
-				'pos_x'=>$this->input->get_post('x'),
-				'pos_y'=>$this->input->get_post('y')
+        
+        $crop_param_t2 = $this->input->get_post('t2');
+        $crop_param_t3 = $this->input->get_post('t3');
+
+		$to_crop_t2 = $this->file_save->get_crop_opt($size, array(
+				'width'=>$crop_param_t2['w'],
+				'height'=>$crop_param_t2['h'],
+				'pos_x'=>$crop_param_t2['x'],
+				'pos_y'=>$crop_param_t2['y']
 			);
 
-		$to_crop = $this->file_save->get_crop_opt($size, $o_crop);
+		$to_crop_t3 = $this->file_save->get_crop_opt($size, array(
+				'width'=>$crop_param_t3['w'],
+				'height'=>$crop_param_t3['h'],
+				'pos_x'=>$crop_param_t3['x'],
+				'pos_y'=>$crop_param_t3['y']
+			);
 
         $result_t1 = $this->make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,
@@ -136,9 +145,9 @@ class Gallery extends CI_Controller {
 		$json = array(
 			'status'=>($result)?'done':'fail',
 			'src'=> array(
-				$this->config->item('profile_upload_uri', 'upload').$username.'_t1.jpg?_='.time(),
-				$this->config->item('profile_upload_uri', 'upload').$username.'_t2.jpg?_='.time(),
-				$this->config->item('profile_upload_uri', 'upload').$username.'_t3.jpg?_='.time()
+				$this->config->item('profile_upload_uri', 'upload').$work_id.'_t1.jpg?_='.time(),
+				$this->config->item('profile_upload_uri', 'upload').$work_id.'_t2.jpg?_='.time(),
+				$this->config->item('profile_upload_uri', 'upload').$work_id.'_t3.jpg?_='.time()
 			);
 		);
 		$this->layout->set_json($json)->render();
