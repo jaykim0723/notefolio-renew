@@ -35,24 +35,35 @@
         return;
       }
 
-      var html = keywordUtil.getRowHtml(key, val);
-      $('<tr id="keyword-'+key+'"></tr>')
-        .html(html)
-        .prependTo($('tbody', '#keyword-list'));
+      keywordUtil.proc.insert(key, val);
 
-      keywordUtil.refreshForm();
     },
     delete: function(key){
-      $('tr#keyword-'+key).remove();
+      keywordUtil.proc.delete(key);
     },
-    refreshForm: function(){
-      var text = $('input[name=keyword').map(function(){
-        return $(this).val();
-      })
-      .get()
-      .join(',');
+    proc: {
+      insert: function(key, val){
 
-      $('#keyword').text('{'+text+'}');
+        var html = keywordUtil.getRowHtml(key, val);
+        $('<tr id="keyword-'+key+'"></tr>')
+          .html(html)
+          .prependTo($('tbody', '#keyword-list'));
+
+        keywordUtil.proc.refreshForm();
+      },
+      delete: function(){
+        $('tr#keyword-'+key).remove();
+
+        keywordUtil.proc.refreshForm();
+      },
+      refreshForm: function(){
+        var text = $('input[name=keyword').map(function(){
+          return $(this).val().toJSON();
+        })
+        .concat();
+
+        $('#keyword').text('{'+JSON.stringify(text)+'}');
+      },
     }
 
   }
