@@ -330,9 +330,13 @@ class file_save {
      * @param array $crop
      * @return array
      */
-    function get_crop_opt($size=array(), $crop=array()){
-        $maxsize = $this->ci->config->item('thumbnail_medium', 'upload');
-        $max_width = $maxsize['max_width'];
+    function get_crop_opt($type='medium', $size=array(), $crop=array(), $opt=array()){
+        $maxsize = $this->ci->config->item('thumbnail_'$type, 'upload');
+        if(isset($opt['width'])){
+            $max_width = $opt['width'];
+        } else {
+            $max_width = $maxsize['max_width'];
+        }
 
         //-- get ratio
         $ratio = $size['width']/$max_width;

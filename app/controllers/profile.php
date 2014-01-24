@@ -65,8 +65,15 @@ class Profile extends CI_Controller {
 				'pos_x'=>$this->input->get_post('x'),
 				'pos_y'=>$this->input->get_post('y')
 			);
+    	
+    	$maxsize = $this->config->item('thumbnail_medium', 'upload');
+        if($size['width']<$maxsize['width']){
+        	$opt['width'] = $size['width'];
+        } else {
+        	$opt = array();
+        }
 
-		$to_crop = $this->file_save->get_crop_opt($size, $o_crop);
+		$to_crop = $this->file_save->get_crop_opt('medium', $size, $o_crop, $opt);
 
 		$result = $this->file_save->make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,
