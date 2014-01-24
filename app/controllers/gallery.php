@@ -145,9 +145,10 @@ class Gallery extends CI_Controller {
 		$json = array(
 			'status'=>($result)?'done':'fail',
 			'src'=> array(
-				$this->config->item('profile_upload_uri', 'upload').$work_id.'_t1.jpg?_='.time(),
-				$this->config->item('profile_upload_uri', 'upload').$work_id.'_t2.jpg?_='.time(),
-				$this->config->item('profile_upload_uri', 'upload').$work_id.'_t3.jpg?_='.time()
+<<<<<<< HEAD
+				$this->config->item('temp_upload_uri', 'upload').$work_id.'_t1.jpg?_='.time(),
+				$this->config->item('temp_upload_uri', 'upload').$work_id.'_t2.jpg?_='.time(),
+				$this->config->item('temp_upload_uri', 'upload').$work_id.'_t3.jpg?_='.time()
 			);
 		);
 		$this->layout->set_json($json)->render();
