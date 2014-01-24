@@ -25,8 +25,13 @@ var workUtil = {
 					}
 				}, 'json').done(function(responseJSON){
 					console.log('crop cover done > responseJSON', responseJSON);
+					
+					$('[name=cover_upload_id]').val(upload_id);
 
-					$('[name=cover_upload_id]').val(responseJSON.upload_id);
+					$('#cover-preview .well').each(function(index){
+						$(this).html('<img src="'.responseJSON.src[index]+"'/>");
+					});
+
 					dialog.close();
 					site.scroll.unlock();
 				});

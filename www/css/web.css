@@ -387,7 +387,11 @@ li#trash-bin{
 	background: #2ac5c6;
 	height: 10px;
 }
-
+#cover-preview .well {
+	display: table-cell;
+	vertical-align: middle;
+	background: #fff;
+}
 
 /* profile */
 #profile-header {
