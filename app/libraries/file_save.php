@@ -153,10 +153,10 @@ class file_save {
                         ));
                     
                     if($size_data['width']==0){
-                        $max_width  = $max_width *($max_width /$o_height);
+                        $max_width  = $o_width *($max_height/$o_height);
                     }
                     else if($size_data['height']==0){
-                        $max_height = $max_height*($max_height/$o_width );
+                        $max_height = $o_height*($max_width /$o_width );
                     }
                 break;
                 case "wide":
