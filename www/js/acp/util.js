@@ -17,7 +17,7 @@
       return html;
     },
     insert: function(){
-      var key = toUpperCase($('#keyword-key').val());
+      var key = $('#keyword-key').val().toUpperCase();
       var val = $('#keyword-val').val();
 
       $('#keyword-key').val('');
