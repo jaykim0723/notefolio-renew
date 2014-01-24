@@ -349,7 +349,7 @@ class file_save {
      * @return array
      */
     function get_crop_opt($type='medium', $size=array(), $crop=array(), $opt=array()){
-        $maxsize = $this->ci->config->item('thumbnail_'$type, 'upload');
+        $maxsize = $this->ci->config->item('thumbnail_'.$type, 'upload');
         if(isset($opt['width'])){
             $max_width = $opt['width'];
         } else {
