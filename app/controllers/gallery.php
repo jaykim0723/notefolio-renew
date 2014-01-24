@@ -77,7 +77,7 @@ class Gallery extends CI_Controller {
 		$this->layout->set_view('gallery/form_view', $work)->render();
 	}
 
-	function save_cover($work_id, $upload_id){
+	function save_cover($work_id=0, $upload_id=0){
 		// 커버사진을 각 work_id에 임시폴더를 할당해서 저장한다.
 		// 그리고 아래의 폼이 전송완료되었을 때에 대체한다.
 		// upload_id:184
@@ -115,6 +115,7 @@ class Gallery extends CI_Controller {
         
         $crop_param_t2 = $this->input->get_post('t2');
         $crop_param_t3 = $this->input->get_post('t3');
+        var_export($this->input->get_post());
 
 		$to_crop_t2 = $this->file_save->get_crop_opt($size, array(
 					'width'=>$crop_param_t2['w'],
