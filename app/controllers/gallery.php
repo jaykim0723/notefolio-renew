@@ -121,16 +121,17 @@ class Gallery extends CI_Controller {
 
 		$to_crop = $this->file_save->get_crop_opt($size, $o_crop);
 
-		$result = $this->file_save->make_thumbnail(
+        $result_t1 = $this->make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,
-			$this->config->item('temp_upload_path', 'upload').$username.'_t2.jpg',
-			'profile_face', 
-			array('crop_to'=>$to_crop, 'spanning'=>true)
-			);
-
-		if($result=='done'){
-			$this->user_model->put_timestamp(array('id'=>USER_ID));
-		}
+			$this->config->item('temp_upload_path', 'upload').$work_id.'_t1.jpg', 'small');
+        $result_t2 = $this->make_thumbnail(
+			$this->config->item('img_upload_path', 'upload').$filename,
+			$this->config->item('temp_upload_path', 'upload').$work_id.'_t2.jpg', 'single',
+			array('crop_to'=>$to_crop_t2, 'spanning'=>true));
+        $result_t3 = $this->make_thumbnail(
+			$this->config->item('img_upload_path', 'upload').$filename,
+			$this->config->item('temp_upload_path', 'upload').$work_id.'_t3.jpg', 'wide', 
+			array('crop_to'=>$to_crop_t3, 'spanning'=>true));
 
 		$json = array(
 			'status'=>($result)?'done':'fail',
