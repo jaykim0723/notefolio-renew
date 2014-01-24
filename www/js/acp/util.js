@@ -2,6 +2,9 @@
         insert: function(){
             var key = $('#keyword-key').val();
             var val = $('#keyword-val').val();
+
+            $('#keyword-key').val('');
+            $('#keyword-val').val('');
             if(key==''){
               alert('식별기호를 입력해주세요.');
               $('#keyword-key').val();
