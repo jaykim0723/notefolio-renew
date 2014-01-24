@@ -60,7 +60,8 @@
         var text = $('input[name=keyword').map(function(){
           return $(this).val().toJSON();
         })
-        .concat();
+        .concat()
+        .toString();
 
         $('#keyword').text('{'+JSON.stringify(text)+'}');
       },
