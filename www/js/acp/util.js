@@ -39,6 +39,8 @@
       $('<tr id="keyword-'+key+'"></tr>')
         .html(html)
         .prependTo($('tbody', '#keyword-list'));
+
+      keywordUtil.refreshForm();
     },
     delete: function(key){
       $('tr#keyword-'+key).remove();
@@ -50,7 +52,7 @@
       .get()
       .join(',');
 
-      $('#keyword').text(text);
+      $('#keyword').text('{'+text+'}');
     }
 
   }
