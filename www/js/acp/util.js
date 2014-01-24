@@ -51,7 +51,7 @@
 
         keywordUtil.proc.refreshForm();
       },
-      delete: function(){
+      delete: function(key){
         $('tr#keyword-'+key).remove();
 
         keywordUtil.proc.refreshForm();
