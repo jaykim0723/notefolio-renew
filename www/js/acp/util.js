@@ -58,7 +58,7 @@
       },
       refreshForm: function(){
         var text = $('input[name=keyword').map(function(){
-          return $(this).val().toJSON();
+          return $(this).val();
         })
         .concat()
         .toString();
