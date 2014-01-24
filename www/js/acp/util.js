@@ -36,7 +36,9 @@
             }
 
             var html = keywordUtil.getRowHtml(key, val);
-            $('<tr></tr>').html(html).prependTo($('tbody', '#keyword-list'));
+            $('<tr id="keyword-'+key+'"></tr>')
+              .html(html)
+              .prependTo($('tbody', '#keyword-list'));
         }
       }
       
