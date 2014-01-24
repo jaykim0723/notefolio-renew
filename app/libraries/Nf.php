@@ -30,7 +30,7 @@ class Nf
     function category_to_string($category_code){
         return @implode(' · ', $this->category_to_array($category_code));
     }
-    function category_to_array($category_code, $return_key = TRUE){
+    function category_to_array($category_code, $return_key = FALSE){
         $categories = array();
         if(empty($category_code))
             return $categories;

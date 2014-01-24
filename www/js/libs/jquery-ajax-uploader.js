@@ -41,7 +41,7 @@ $.fn.ajaxUploader = function(opts) {
 		action: options.url,
 		multiple: options.multiple,
 		debug : options.debug,
-		sizeLimit : options.sizeLimit,
+		sizeLimit : options.sizeLimit*1024,
 		allowedExtensions : options.allowedExtensions,
 		onComplete: function(id, fileName, responseJSON){
 			var elem = $(this.element).closest('.uploader-wrapper');

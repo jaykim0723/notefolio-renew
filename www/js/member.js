@@ -213,6 +213,7 @@ var workUtil = {
 			$(target).sortable({
   				opacity: 0.6,
     			cursor: 'move',
+    			distance: 15,
 				start: function(event, ui){
 				},
 		        // placeholder: {
@@ -228,13 +229,17 @@ var workUtil = {
 		        // },
 				// placeholder: "ui-state-highlight",
 			    // forcePlaceholderSize: false,
-				helper: 'clone',
+				// helper: 'clone',
 				stop: function(event, ui){
+					if($(ui.item[0]).hasClass('block-text')==false) return;
+					var c = $(ui.item[0]).find('textarea').val();
+					var $a = workUtil.content.createBlock('text', c);
+					$(ui.item[0]).replaceWith($a);
+					$a.find('textarea').wysihtml5();
 				},
   				receive: function(event, ui) {
   				},
-				update: function(){
-					console.log('updated');
+				update: function(event, ui){
 				}
 			});
 		},
@@ -306,16 +311,20 @@ var workUtil = {
 		    		if($('html').is(':animated')) return;
 		    		var className =(""+$(this).attr("class")+"").match(/block-(\w+)/);
 					if(className){
-						$newBlock = workUtil.content.createBlock(className[1]).fadeTo(0, 0.01);
+						className = className[1];
+						$newBlock = workUtil.content.createBlock(className).fadeTo(0, 0.01);
 						$newBlock.appendTo(sendTo);
 						$.when(site.scrollToBottom()).done(function(){
 							$newBlock.fadeTo(300, 1);
 						});
+						if(className =='text')
+							$newBlock.find('textarea').wysihtml5();
 					}
 				})
 				.draggable({
 					connectToSortable: "#content-block-list",
 					helper: "clone",
+					distance: 15,
 					start: function(event, ui){
 						$(sendTo).droppable({
 							addClasses: false,
@@ -327,9 +336,12 @@ var workUtil = {
 								$(ui.draggable).css('outline', 'none');
 					    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
 								if(className){
+									$newBlock = workUtil.content.createBlock(className[1]);
 									$(ui.draggable)
 										.empty()
-										.append(workUtil.content.createBlock(className[1]));
+										.append($newBlock);
+									if(className =='text')
+										$newBlock.find('textarea').wysihtml5();
 								}else{
 									//$(ui.draggable).remove();
 								}
@@ -359,7 +371,7 @@ var workUtil = {
 				case 'image':
 					if(c=='')
 						c = '/img/thumb_wide4.jpg';
-					output = workUtil.content.createUploader($('<li class="block-image" id="image-'+(new Date().getTime())+'"><img src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
+					output = workUtil.content.createUploader($('<li class="block-image"><img src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
@@ -372,7 +384,7 @@ var workUtil = {
 
 				case 'text':
 				default:
-					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(c);//.wysihtml5();
+					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(c);
 					output = $('<li class="block-text"></li>').append(textarea);
 				break;
 			}
@@ -395,16 +407,18 @@ var workUtil = {
 		createUploader:function(elem, data){
 			return $(elem).ajaxUploader({
 				url : '/upload/image',
-				multiple : false,
+				multiple : true,
 				start : function(elem, id, fileName){
+					elem.hide();
 					console.log(elem, id, fileName);
+					elem.after($('<li class="block-image" id="temp-'+id+'"><img/><button class="btn btn-primary">Upload an image</button></li>'));
 				},
 				cancel : function(elem, id, fileName){
 					console.log(elem, id, fileName);
 				},
 				done : function(responseJSON, elem, id, fileName){
 					console.log('createUploader > done', responseJSON, elem, id, fileName);
-					elem.children('img').prop('src', responseJSON.src);
+					workUtil.content.createUploader($('#temp-'+id)).children('img').prop('src', responseJSON.src);
 				},
 				fail : function(responseJSON, elem, id, fileName){
 					console.log(responseJSON, elem, id, fileName);
