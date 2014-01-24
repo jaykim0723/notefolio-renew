@@ -34,6 +34,7 @@ class file_save {
                     $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['large'], 'large');
                     $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['medium'], 'medium');
                     $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['small'], 'small');
+                    exit(var_export($filename['path'].$filename['small']));
                     $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['wide'], 'wide', array('autocrop'=>true));
                     $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
                 break;
