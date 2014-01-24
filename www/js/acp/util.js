@@ -1,6 +1,6 @@
   var keywordUtil = {
         getRowHtml: function(key,val){
-            var json = JSON.stringfy(JSON.parse('{"'+ key +'":"'+ val +'"}'));
+            var json = JSON.stringify(JSON.parse('{"'+ key +'":"'+ val +'"}'));
 
             var html = '<td>'+ key +'</td>';
             html    += '<td>'+ val +'</td>';
