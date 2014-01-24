@@ -61,7 +61,7 @@
         var text = $('input[name=keyword]').each(function(){
           var json = JSON.parse($(this).val());
           for (i in json){
-            eval('obj.'+i+'='+json[i]);
+            eval('obj.'+i+'="'+json[i]+'"');
           }
         });
 
