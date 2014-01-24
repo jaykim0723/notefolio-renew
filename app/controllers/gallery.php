@@ -90,6 +90,7 @@ class Gallery extends CI_Controller {
 		// t3[w]:400
 		// t3[h]:400
 
+		# do stuff
 
 		$json = array(
 			'status'=>($result)?'done':'fail',
