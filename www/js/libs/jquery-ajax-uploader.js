@@ -3,23 +3,24 @@ $.fn.ajaxUploader = function(opts) {
 	var defaults = {
 		// setting your default values for options
 		url : '/upload',
+		debug : true,
 		droppable : true,
 		dropActiveClass : '.drop-active',
 		clickElement : 'self',
 		multiple : true,
-		extentions : 'jpg,jpeg,gif,bmp,tiff',
-		maxSize : 10000, // KB
-		start : function(id, fileName){
-			console.log(id, fileName);
+		allowedExtensions : ['jpg','jpeg','gif','bmp','tiff'],
+		sizeLimit : 10000, // KB
+		start : function(elem, id, fileName){
+			console.log(elem, id, fileName);
 		},
-		cancel : function(){
-			console.log(id, fileName);
+		cancel : function(elem, id, fileName){
+			console.log(elem, id, fileName);
 		},
-		done : function(id, fileName, responseJSON){
-			console.log('default', id, fileName, responseJSON);
+		done : function(responseJSON, elem, id, fileName){
+			console.log('default', responseJSON, elem, id, fileName);
 		},
-		fail : function(id, fileName, responseJSON){
-			console.log(id, fileName, responseJSON);
+		fail : function(responseJSON, elem, id, fileName){
+			console.log(responseJSON, elem, id, fileName);
 		}
 	};
 
@@ -38,18 +39,24 @@ $.fn.ajaxUploader = function(opts) {
 		element: $(this).children('.uploader-area')[0],
 		// path to server-side upload script
 		action: options.url,
-		debug : true,
+		multiple: options.multiple,
+		debug : options.debug,
+		sizeLimit : options.sizeLimit,
+		allowedExtensions : options.allowedExtensions,
 		onComplete: function(id, fileName, responseJSON){
+			var elem = $(this.element).closest('.uploader-wrapper');
 		    if(responseJSON.status=='done')
-		    	options.done(responseJSON, id, fileName);
+		    	options.done(responseJSON, elem, id, fileName);
 		    else
-		    	options.fail(responseJSON, id, fileName);
+		    	options.fail(responseJSON, elem, id, fileName);
 		},              
 		onSubmit: function(id, fileName){
-		    options.start(id, fileName);
+			var elem = $(this.element).closest('.uploader-wrapper');
+		    options.start(elem, id, fileName);
 		},
 		onCancel: function(id, fileName){
-		    options.cancel(id, fileName);
+			var elem = $(this.element).closest('.uploader-wrapper');
+		    options.cancel(elem, id, fileName);
 		},         
 	});	
 

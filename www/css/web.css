@@ -247,7 +247,13 @@ body {
 	opacity: 0.8;
 	left: 0;
 }
-
+#content-multiple {
+	background: beige;
+	text-align: center;
+	padding: 20px 0;
+	outline:2px dashed red;
+	margin-top:15px;
+}
 /* sidebar */
 #work-sidebar {
 	position:absolute;
@@ -514,3 +520,8 @@ li#trash-bin{
 
 
 
+#content-block-list .ui-state-highlight {
+	background: #2ac5c6;
+	height: 40px;
+	margin: 0;
+}

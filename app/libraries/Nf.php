@@ -30,7 +30,7 @@ class Nf
     function category_to_string($category_code){
         return @implode(' · ', $this->category_to_array($category_code));
     }
-    function category_to_array($category_code){
+    function category_to_array($category_code, $return_key = TRUE){
         $categories = array();
         if(empty($category_code))
             return $categories;
@@ -38,7 +38,7 @@ class Nf
         $keyword_list = $this->ci->config->item('keyword', 'keyword');
         foreach($keyword_list as $key => $value){
             if(strpos($category_code, $key)!==FALSE){
-                $categories[] = $value;
+                $categories[] = $return_key ? $key : $value;
                 $category_code = str_replace($key, '', $category_code);
             }
         }

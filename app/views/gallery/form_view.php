@@ -2,6 +2,7 @@
 	NFview = <?php
 		echo json_encode($row); // view내의 스크립트에서 편리하게 사용하기 위하여 미리 할당
 	?>;
+	NFview.keywords = <?php echo json_encode($this->nf->category_to_array($row->keywords, TRUE)); ?>;
 	NFview.area = 'work-form';
 </script>
 
@@ -52,7 +53,7 @@
 					<option data-content='<i class="spi spi-ccl-cc-by-sa"></i>저작자표시-동일조건변경허락' value="BY-SA">저작자표시-동일조건변경허락</option>
 					<option data-content='<i class="spi spi-ccl-cc-by-nc-sa"></i>저작자표시-비영리-동일조건변경허락' value="BY-NC-SA">저작자표시-비영리-동일조건변경허락</option>
 					<option data-content='<i class="spi spi-ccl-cc-by-nc-nd"></i>저작자표시-비영리-변경금지' value="BY-NC-ND">저작자표시-비영리-변경금지</option>
-				</select>					
+				</select>
 
 
 				<div>
@@ -113,6 +114,9 @@
 				<h4>내용</h4>
 				<ul id="content-block-list" class="work-info list-unstyled work-contents">
 				</ul>
+				<div id="content-multiple">
+					드래그앤드롭으로 새로운 이미지 추가
+				</div>
 			</div>
 			<!-- 작품영역 끝 -->
 
@@ -178,4 +182,4 @@
 <script src="/js/libs/jquery.Jcrop.min.js"></script>
 <script src="/js/libs/bootstrap-tagsinput.min.js"></script>
 <script src="/js/libs/wysihtml5-0.3.0.min.js"></script>
-<script src="/js/libs/bootstrap-wysihtml5-0.0.2.min.js"></script>
+<script src="/js/libs/bootstrap-wysihtml5-0.0.2.js"></script>

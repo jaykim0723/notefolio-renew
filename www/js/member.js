@@ -26,15 +26,17 @@ var workUtil = {
 					}
 				}, 'json').done(function(responseJSON){
 					console.log('crop cover done > responseJSON', responseJSON);
-					
-					$('[name=cover_upload_id]').val(upload_id);
+					if(responseJSON.status=='done'){
 
-					$('#cover-preview .well').each(function(index){
-						$(this).html('<img src="'.responseJSON.src[index]+"'/>");
-					});
+						$('[name=cover_upload_id]').val(upload_id);
 
-					dialog.close();
-					site.scroll.unlock();
+						$('#cover-preview .well').each(function(index){
+							$(this).html('<img src="'+responseJSON.src[index]+"'/>");
+						});
+
+						dialog.close();
+						site.scroll.unlock();
+					}
 				});
 			}
 		});
@@ -65,7 +67,7 @@ var workUtil = {
     			break;
 
     			case 'video':
-    				o.c = $(this).children('iframe').attr('src');
+    				o.c = $(this).children('iframe').attr('src').replace('?wmode=transparent', '');
     			break;
 
     			case 'text':
@@ -107,7 +109,12 @@ var workUtil = {
 			// 내용 블럭 셋팅하기
 			var sendTo = $('#content-block-list');
 			$.each(NFview.contents, function(k, block){
-				workUtil.content.createBlock(block.t, block.c).appendTo(sendTo);
+				var $a = workUtil.content.createBlock(block.t, block.c);
+				$a.appendTo(sendTo);
+				// $a.remove();
+				if(block.t=='text'){
+					$a.find('textarea').wysihtml5();
+				}
 			});
 
 
@@ -178,6 +185,23 @@ var workUtil = {
 				selectCover.getModalBody().html($list);
 			});
 
+			$('#content-multiple').ajaxUploader({
+				url : '/upload/image',
+				multiple : true,
+				start : function(elem, id, fileName){
+					console.log(elem, id, fileName);
+				},
+				cancel : function(elem, id, fileName){
+					console.log(elem, id, fileName);
+				},
+				done : function(responseJSON, elem, id, fileName){
+					workUtil.content.createBlock('image', responseJSON.src).appendTo($('#content-block-list'));
+				},
+				fail : function(responseJSON, elem, id, fileName){
+					console.log(responseJSON, elem, id, fileName);
+				}
+			});
+
 			// footer 버리기
 			$('#footer').remove();
 			
@@ -191,21 +215,23 @@ var workUtil = {
     			cursor: 'move',
 				start: function(event, ui){
 				},
-		        placeholder: {
-		            element: function(clone, ui) {
-		            	var container = $('<li class="item-sorting"></li>')
-		                		.css('outline', '#00ff00 5px dotted');
+		        // placeholder: {
+		        //     element: function(clone, ui) {
+		        //     	var container = $('<li class="item-sorting"></li>')
+		        //         		.css('outline', '#00ff00 5px dotted');
 
-		                return $(container).append($('<div>'+clone[0].innerHTML+'</div>').css('opacity','0.5'));
-		            },
-		            update: function() {
-		                return;
-		            }
-		        },
+		        //         return $(container).append($('<div>'+clone[0].innerHTML+'</div>').css('opacity','0.5'));
+		        //     },
+		        //     update: function() {
+		        //         return;
+		        //     }
+		        // },
+				// placeholder: "ui-state-highlight",
+			    // forcePlaceholderSize: false,
+				helper: 'clone',
 				stop: function(event, ui){
 				},
   				receive: function(event, ui) {
-
   				},
 				update: function(){
 					console.log('updated');
@@ -333,7 +359,7 @@ var workUtil = {
 				case 'image':
 					if(c=='')
 						c = '/img/thumb_wide4.jpg';
-					output = workUtil.content.createUploader($('<li class="block-image"><img src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
+					output = workUtil.content.createUploader($('<li class="block-image" id="image-'+(new Date().getTime())+'"><img src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
@@ -346,7 +372,7 @@ var workUtil = {
 
 				case 'text':
 				default:
-					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(c).wysihtml5();
+					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(c);//.wysihtml5();
 					output = $('<li class="block-text"></li>').append(textarea);
 				break;
 			}
@@ -370,20 +396,20 @@ var workUtil = {
 			return $(elem).ajaxUploader({
 				url : '/upload/image',
 				multiple : false,
-				start : function(){
-
+				start : function(elem, id, fileName){
+					console.log(elem, id, fileName);
 				},
-				cancel : function(){
-					
+				cancel : function(elem, id, fileName){
+					console.log(elem, id, fileName);
 				},
-				done : function(){
-					// upload id와 src만 반환
+				done : function(responseJSON, elem, id, fileName){
+					console.log('createUploader > done', responseJSON, elem, id, fileName);
+					elem.children('img').prop('src', responseJSON.src);
 				},
-				fail : function(){
-
+				fail : function(responseJSON, elem, id, fileName){
+					console.log(responseJSON, elem, id, fileName);
 				}
 			});
-
 		},
 		createOldUploader: function(url){
     		return $("<div></div>");

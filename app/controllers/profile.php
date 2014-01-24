@@ -303,7 +303,6 @@ class Profile extends CI_Controller {
 	
 
 
-
 	function statistics($username='', $page=1){
 		log_message('debug','--------- statistics ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
@@ -313,8 +312,6 @@ class Profile extends CI_Controller {
 			$this->layout->set_view('profile/header_view', $user);
 		$this->layout->set_view('profile/statistics_view')->render();
 	}
-
-	
 
 
 
@@ -332,6 +329,7 @@ class Profile extends CI_Controller {
 		));
 		$this->layout->set_view('profile/follow_listing_view', $followings_list)->render();
 	}
+
 
 	function followers($username='', $page=1){
 		log_message('debug','--------- followers ( params : '.print_r(get_defined_vars(),TRUE)).')';
