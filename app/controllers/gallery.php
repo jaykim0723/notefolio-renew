@@ -146,6 +146,9 @@ class Gallery extends CI_Controller {
 
 		$json = array(
 			'status'=>($result_t1&&$result_t2&&$result_t3)?'done':'fail',
+			'size'=>$size,
+			'to_crop'=>array('t2'=>$crop_param_t2,'t3'=>$crop_param_t3),
+			'cropped'=>array('t2'=>$to_crop_t2,'t3'=>$to_crop_t3),
 			'src'=> array(
 				$this->config->item('temp_upload_uri', 'upload').$work_id.'_t1.jpg?_='.time(),
 				$this->config->item('temp_upload_uri', 'upload').$work_id.'_t2.jpg?_='.time(),
