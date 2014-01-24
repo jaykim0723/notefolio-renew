@@ -132,14 +132,14 @@ class Gallery extends CI_Controller {
 				)
 			);
 
-        $result_t1 = $this->make_thumbnail(
+        $result_t1 = $this->file_save->make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,
 			$this->config->item('temp_upload_path', 'upload').$work_id.'_t1.jpg', 'small');
-        $result_t2 = $this->make_thumbnail(
+        $result_t2 = $this->file_save->make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,
 			$this->config->item('temp_upload_path', 'upload').$work_id.'_t2.jpg', 'single',
 			array('crop_to'=>$to_crop_t2, 'spanning'=>true));
-        $result_t3 = $this->make_thumbnail(
+        $result_t3 = $this->file_save->make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,
 			$this->config->item('temp_upload_path', 'upload').$work_id.'_t3.jpg', 'wide', 
 			array('crop_to'=>$to_crop_t3, 'spanning'=>true));
