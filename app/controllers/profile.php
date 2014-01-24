@@ -276,10 +276,16 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- about ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->_get_user_info($username);
+		$data = $this->profile_model->get_about($user->user_id);
 		
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user);
-		$this->layout->set_view('profile/about_view')->render();
+		$this->layout->set_view('profile/about_view', $data)->render();
+	}
+	function update_about($username='', $contents=''){
+		$user = $this->_get_user_info($username);
+		$data = $this->profile_model->put_about($user->user_id, $contents='');
+		$this->layout->set_json('viewfile', $data->contents)->render();
 	}
 
 	

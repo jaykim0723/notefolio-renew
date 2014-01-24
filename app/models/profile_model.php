@@ -432,6 +432,31 @@ class profile_model extends CI_Model {
     }
 
 
+
+
+
+
+
+    function get_about($user_id=''){
+        $data = (object)array(
+            'status' => 'done',
+            'contents' => ''
+        );
+        # do stuff
+        $row = $this->db->where('user_id', $user_id)->get('user_about')->row();
+        $data->contents = $row->contents;
+        return $data;        
+    }
+
+
+    function put_about($user_id='', $contents=''){
+        $data = (object)array(
+            'status' => 'done'
+        );
+        $this->db->set('contents', $contents)->where('user_id', $user_id)->update('user_about');
+        return $data; 
+    }
+
 }
 
 /* End of file work_model.php */
