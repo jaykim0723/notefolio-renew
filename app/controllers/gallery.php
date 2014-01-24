@@ -113,9 +113,8 @@ class Gallery extends CI_Controller {
 
         $size = array('width'=> $width, 'height'=> $height);
         
-        $crop_param_t2 = $this->input->get_post('t2');
-        $crop_param_t3 = $this->input->get_post('t3');
-        var_export($this->input->get_post());
+        $crop_param_t2 = $this->input->post('t2');
+        $crop_param_t3 = $this->input->post('t3');
 
 		$to_crop_t2 = $this->file_save->get_crop_opt($size, array(
 					'width'=>$crop_param_t2['w'],
