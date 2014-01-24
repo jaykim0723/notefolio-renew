@@ -113,7 +113,7 @@ class feed_model extends CI_Model {
         try{
             $info = $this->db->get()->row();
         }
-        catch (Exception e) {
+        catch (Exception $e) {
             $data = (object)array(
                 'status' => 'fail',
                 'alarm_all' => 0,
