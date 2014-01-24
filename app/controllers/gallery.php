@@ -117,17 +117,19 @@ class Gallery extends CI_Controller {
         $crop_param_t3 = $this->input->get_post('t3');
 
 		$to_crop_t2 = $this->file_save->get_crop_opt($size, array(
-				'width'=>$crop_param_t2['w'],
-				'height'=>$crop_param_t2['h'],
-				'pos_x'=>$crop_param_t2['x'],
-				'pos_y'=>$crop_param_t2['y']
+					'width'=>$crop_param_t2['w'],
+					'height'=>$crop_param_t2['h'],
+					'pos_x'=>$crop_param_t2['x'],
+					'pos_y'=>$crop_param_t2['y']
+				)
 			);
 
 		$to_crop_t3 = $this->file_save->get_crop_opt($size, array(
-				'width'=>$crop_param_t3['w'],
-				'height'=>$crop_param_t3['h'],
-				'pos_x'=>$crop_param_t3['x'],
-				'pos_y'=>$crop_param_t3['y']
+					'width'=>$crop_param_t3['w'],
+					'height'=>$crop_param_t3['h'],
+					'pos_x'=>$crop_param_t3['x'],
+					'pos_y'=>$crop_param_t3['y']
+				)
 			);
 
         $result_t1 = $this->make_thumbnail(
@@ -145,7 +147,6 @@ class Gallery extends CI_Controller {
 		$json = array(
 			'status'=>($result)?'done':'fail',
 			'src'=> array(
-<<<<<<< HEAD
 				$this->config->item('temp_upload_uri', 'upload').$work_id.'_t1.jpg?_='.time(),
 				$this->config->item('temp_upload_uri', 'upload').$work_id.'_t2.jpg?_='.time(),
 				$this->config->item('temp_upload_uri', 'upload').$work_id.'_t3.jpg?_='.time()
