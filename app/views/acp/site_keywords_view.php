@@ -27,7 +27,6 @@ $keyword = array(
           <th>한글출력</th>
           <th>수정/삭제</th>
         </tr>
-      </thead>
         <tr id="keyword-insert">
           <td><?=form_input(array(
             'id'=>'keyword-key', 
@@ -43,6 +42,7 @@ $keyword = array(
             </a>
           </td>
         </tr>
+      </thead>
       <tbody>
         <?php foreach($keyword_list as $key => $val): ?>
         <tr id="keyword-<?=$key?>">
