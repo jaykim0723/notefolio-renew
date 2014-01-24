@@ -15,7 +15,7 @@
             html    += '</td>';
 
             return html;
-        }
+        },
         insert: function(){
             var key = $('#keyword-key').val();
             var val = $('#keyword-val').val();
