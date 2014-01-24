@@ -7,10 +7,10 @@
       html    += '<td>';
       html    +=  '<a href="javascript:keywordUtil.update('+ key +'); return;">';
       html    +=   '<span class="btn btn-primary">수정</span>';
-      html    +=  '</a>';
+      html    +=  '</a> ';
       html    +=  '<a href="javascript:keywordUtil.delete('+ key +'); return;">';
       html    +=   '<span class="btn btn-danger">삭제</span>';
-      html    +=  '</a>';
+      html    +=  '</a> ';
       html    +=  '<input type="hidden" name="keyword[]" value="'+ json +'" />';
       html    += '</td>';
 
