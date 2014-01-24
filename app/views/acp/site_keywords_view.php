@@ -49,10 +49,10 @@ $keyword = array(
           <td><?=$key?></td>
           <td><?=$val?></td>
           <td>
-            <a href="javascript:keywordUtil.update('<?=$key?>')">
+            <a href="javascript:keywordUtil.update('<?=$key?>'); return;">
               <span class="btn btn-primary">수정</span>
             </a>
-            <a href="">
+            <a href="javascript:keywordUtil.delete('<?=$key?>'); return;">
               <span class="btn btn-danger">삭제</span>
             </a>
             <?=form_hidden(array('keyword[]'=>json_encode(array($key=>$val))))?>
