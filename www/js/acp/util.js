@@ -57,12 +57,15 @@
         keywordUtil.proc.refreshForm();
       },
       refreshForm: function(){
-        var text = $('input[name=keyword]').map(function(){
-          return JSON.parse($(this).val());
-        })
-        .get();
+        var obj = new Object();
+        var text = $('input[name=keyword]').each(function(){
+          var json = JSON.parse($(this).val());
+          for (i in json){
+            eval('obj.'+i+'='+json[i]);
+          }
+        });
 
-        $('#keyword').text('{'+JSON.stringify(text)+'}');
+        $('#keyword').text('{'+JSON.stringify(obj)+'}');
       },
     }
 
