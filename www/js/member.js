@@ -26,6 +26,7 @@ var workUtil = {
 				}, 'json').done(function(responseJSON){
 					console.log('crop cover done > responseJSON', responseJSON);
 
+					$('[name=cover_upload_id]').val(responseJSON.upload_id);
 					dialog.close();
 					site.scroll.unlock();
 				});
