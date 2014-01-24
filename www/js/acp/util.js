@@ -61,8 +61,7 @@
           return JSON.parse($(this).val());
         })
         .get()
-        .concat()
-        .toString;
+        .concat();
 
         $('#keyword').text('{'+JSON.stringify(text)+'}');
       },
