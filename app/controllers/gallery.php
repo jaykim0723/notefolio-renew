@@ -94,7 +94,6 @@ class Gallery extends CI_Controller {
 
 		$json = array(
 			'status'=>($result)?'done':'fail',
-			'upload_id'=> '',
 			'src'=>$this->config->item('profile_upload_uri', 'upload').$username.'_face.jpg?_='.time()
 			);
 		$this->layout->set_json($json)->render();
