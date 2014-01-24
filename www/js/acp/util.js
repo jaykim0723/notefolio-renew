@@ -17,7 +17,7 @@
       return html;
     },
     insert: function(){
-      var key = $('#keyword-key').val();
+      var key = toUpperCase($('#keyword-key').val());
       var val = $('#keyword-val').val();
 
       $('#keyword-key').val('');
@@ -42,7 +42,17 @@
     },
     delete: function(key){
       $('tr#keyword-'+key).remove();
+    },
+    refreshForm: function(){
+      var text = $('input[name=keyword').map(function(){
+        return $(this).val();
+      })
+      .get()
+      .join(',');
+
+      $('#keyword').text(text);
     }
+
   }
       
   
