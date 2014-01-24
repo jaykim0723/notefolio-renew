@@ -143,5 +143,8 @@
         });
       });
     </script><!-- /Calendar -->
+    
+    <script type="text/javascript" src="/js/libs/json2.js"></script>
+    <script type="text/javascript" src="/js/acp/util.js"></script>
 </body>
 </html>
