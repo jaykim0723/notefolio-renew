@@ -10,6 +10,7 @@ var workUtil = {
 				var crop2 = NFview.popCrop[1].tellSelect();
 				// 이미지 src, crop 정보를 토대로 사진을 잘라내는 명령을 내린다.
 				$.post('/gallery/save_cover', {
+					work_id : NFview.work_id,
 					upload_id : upload_id,
 					t2 : {
 						x : crop1.x,
@@ -43,12 +44,10 @@ var workUtil = {
 			var returnType = true;
 		}
 		
-		console.log($('#keywords').selectpicker('val'));
-
 		var data = $(form).serialize();
 
 		// keywords에 관련해서는 지우고 다시 작업을 진행한다.
-		data = data.replace('')		
+		data = data.replace(/(&keywords)=([A-Z0-9]{2})/g, '$1[]=$2');
 
 		var contents = [];
 		$('#content-block-list li').each(function(index){
@@ -79,8 +78,6 @@ var workUtil = {
     		contents.push(o);
 		});
 		data += '&contents='+array2json(contents);
-		console.log(data);
-
 
 		blockPage.block();
 		$.ajax({

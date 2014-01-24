@@ -19,18 +19,22 @@
 				<h4>공개여부</h4>
 				<div class="control-group">
                     <label class="notefolio-radio inline<?if($row->status=='enabled'){?> checked<?}?>">
-                        <input type="radio" name="status" value="enabled" <?if($row->status=='enabled'){?> checked<?}?>> 여
+                        <input type="radio" name="status" value="enabled" <?if($row->status=='enabled'){?> checked<?}?>> 공개
                     </label>
                     &nbsp; &nbsp; &nbsp;
                     <label class="notefolio-radio inline<?if($row->status=='disabled'){?> checked<?}?>">
-                        <input type="radio" name="status" value="disabled" <?if($row->status=='disabled'){?> checked<?}?>> 아니오
+                        <input type="radio" name="status" value="disabled" <?if($row->status=='disabled'){?> checked<?}?>> 비공개
                     </label>
 				</div>
 
 				<h4>키워드</h4>
 
 				<select name="keywords" id="keywords" multiple title="Choose one of the following..." >
-					<?php foreach ($keyword_list as $key => $keyword) { ?>
+					<?php 
+					$this->load->config('keyword', TRUE);
+					$keyword_list = $this->config->item('keyword', 'keyword');
+
+					foreach ($keyword_list as $key => $keyword) { ?>
 						<option value="<?php echo $key?>"><?php echo $keyword;?></option>
 					<?php }	?>
 				</select>

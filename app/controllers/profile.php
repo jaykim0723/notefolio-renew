@@ -60,10 +60,10 @@ class Profile extends CI_Controller {
 
         $size = array('width'=> $width, 'height'=> $height);
         $o_crop = array(
-				'width'=>$this->input->get_post('w'),
-				'height'=>$this->input->get_post('h'),
-				'pos_x'=>$this->input->get_post('x'),
-				'pos_y'=>$this->input->get_post('y')
+				'width'  => $this->input->get_post('w'),
+				'height' => $this->input->get_post('h'),
+				'pos_x'  => $this->input->get_post('x'),
+				'pos_y'  => $this->input->get_post('y')
 			);
 
 		$to_crop = $this->file_save->get_crop_opt($size, $o_crop);

@@ -98,7 +98,7 @@ class Gallery extends CI_Controller {
 				$this->config->item('profile_upload_uri', 'upload').$username.'_t1.jpg?_='.time(),
 				$this->config->item('profile_upload_uri', 'upload').$username.'_t2.jpg?_='.time(),
 				$this->config->item('profile_upload_uri', 'upload').$username.'_t3.jpg?_='.time()
-			);
+			)
 		);
 		$this->layout->set_json($json)->render();
 	}
