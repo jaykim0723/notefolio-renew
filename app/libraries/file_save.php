@@ -33,6 +33,7 @@ class file_save {
                 case "image":
                     $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['large'], 'large');
                     $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['medium'], 'medium');
+                    $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['small'], 'small');
                     $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['wide'], 'wide', array('autocrop'=>true));
                     $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
                 break;
@@ -141,6 +142,23 @@ class file_save {
                 case "medium":
                     $todo = array('resize');
                 break;
+                case "small":
+                    $todo = array('resize');
+                    $opt['spanning'] = true;
+                    
+                    list($o_width, $o_height) = getimagesize($tmp_name);
+                    $size_data = $this->get_wh_ratio(array(
+                        'width'=>$o_width,
+                        'height'=>$o_height
+                        ));
+                    
+                    if($size_data['width']==0){
+                        $max_width  = $max_width /$size_data['ratio'];
+                    }
+                    else if($size_data['height']==0){
+                        $max_height = $max_height*$size_data['ratio'];
+                    }
+                break;
                 case "wide":
                     $todo = array('resize', 'crop');
                 break;
@@ -192,7 +210,7 @@ class file_save {
                 $image->resampleImage(150,150,imagick::FILTER_LANCZOS,1);
 
                 if(in_array('resize', $todo)){
-                    if(($image->getImageWidth() > $max_width)||(isset($opt['spanning'])&&$opt['spanning'])){
+                    if(($image->getImageWidth() > $max_width)||(isset($opt['spanning'])&&$opt['spanning'])||){
                     // Resize image using the lanczos resampling algorithm based on width
                         $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
                     }
@@ -348,5 +366,28 @@ class file_save {
             'pos_y'  =>round($crop['pos_y']*$ratio),
             'ratio'  =>$ratio
             );
+    }
+
+    /**
+     * get width/height ratio
+     * 
+     * @param array $size
+     * @return array/bool-false
+     */
+    function get_wh_ratio($size=array()){
+
+        //-- get image ratio
+        $image_ratio = $size['width']/$size['height'];
+
+        if($image_ratio<1){ //이미지가 기준 가로폭보다 작다
+            $width = 0;
+        }
+        else if($image_ratio>1){
+            $height = 0;
+        }
+        else{
+        }
+
+        return array('width'=>$width, 'height'=>$height, 'ratio'=>$image_ratio);
     }
 }

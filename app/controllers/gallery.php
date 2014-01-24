@@ -91,13 +91,53 @@ class Gallery extends CI_Controller {
 		// t3[h]:400
 
 		# do stuff
+		$this->load->config('upload', TRUE);
+		$this->load->model('upload_model');
+		$this->load->library('file_save');
+		
+		if(empty($upload_id)){
+			$upload_id = $this->input->get_post('upload_id');
+		}
+		if(empty($username)){
+			$username = $this->tank_auth->get_username();
+		}
+
+		$upload = $this->upload_model->get(array('id'=>$upload_id));
+		if($upload->status=='done')
+			$upload = $upload->row;
+
+		$filename = $upload->filename;
+		$filename = substr($filename, 0,2).'/'.substr($filename, 2, 2).'/'.$filename;
+
+        list($width, $height) = getimagesize($this->config->item('img_upload_path', 'upload').$filename);
+
+        $size = array('width'=> $width, 'height'=> $height);
+        $o_crop = array(
+				'width'=>$this->input->get_post('w'),
+				'height'=>$this->input->get_post('h'),
+				'pos_x'=>$this->input->get_post('x'),
+				'pos_y'=>$this->input->get_post('y')
+			);
+
+		$to_crop = $this->file_save->get_crop_opt($size, $o_crop);
+
+		$result = $this->file_save->make_thumbnail(
+			$this->config->item('img_upload_path', 'upload').$filename,
+			$this->config->item('temp_upload_path', 'upload').$username.'_t2.jpg',
+			'profile_face', 
+			array('crop_to'=>$to_crop, 'spanning'=>true)
+			);
+
+		if($result=='done'){
+			$this->user_model->put_timestamp(array('id'=>USER_ID));
+		}
 
 		$json = array(
 			'status'=>($result)?'done':'fail',
 			'src'=> array(
-				$this->config->item('profile_upload_uri', 'upload').$username.'_t1.jpg?_='.time(),
-				$this->config->item('profile_upload_uri', 'upload').$username.'_t2.jpg?_='.time(),
-				$this->config->item('profile_upload_uri', 'upload').$username.'_t3.jpg?_='.time()
+				$this->config->item('temp_upload_uri', 'upload').$username.'_t1.jpg?_='.time(),
+				$this->config->item('temp_upload_uri', 'upload').$username.'_t2.jpg?_='.time(),
+				$this->config->item('temp_upload_uri', 'upload').$username.'_t3.jpg?_='.time()
 			);
 		);
 		$this->layout->set_json($json)->render();
