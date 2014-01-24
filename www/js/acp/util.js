@@ -11,7 +11,7 @@
       html    +=  '<a href="javascript:keywordUtil.delete('+ key +'); return;">';
       html    +=   '<span class="btn btn-danger">삭제</span>';
       html    +=  '</a> ';
-      html    +=  '<input type="hidden" name="keyword[]" value="'+ json +'" />';
+      html    +=  '<input type="hidden" name="keyword" value='+"'"+ json +"' />";
       html    += '</td>';
 
       return html;

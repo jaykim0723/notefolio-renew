@@ -55,7 +55,7 @@ $keyword = array(
             <a href="javascript:keywordUtil.delete('<?=$key?>'); return;">
               <span class="btn btn-danger">삭제</span>
             </a>
-            <?=form_hidden(array('keyword'=>json_encode(array($key=>$val))))?>
+            <input type="hidden" name="keyword" value='<?=json_encode(array($key=>$val))?>' />
           </td>
         </tr>
         <?php endforeach; ?>
