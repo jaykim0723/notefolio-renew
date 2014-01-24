@@ -35,7 +35,7 @@
               return;
             }
 
-            var html = keywordUtil.getLineHtml(key, val);
+            var html = keywordUtil.getRowHtml(key, val);
             $('<tr></tr>').html(html).prependTo($('tbody', '#keyword-list'));
         }
       }
