@@ -69,7 +69,7 @@ $keyword = array(
     <button class="btn btn-large btn-primary" type="submit">전송</button>
 <?php echo form_close(); ?>
 
-    <script type="text/javascript" src="/libs/json2.js"></script>
+    <script type="text/javascript" src="/js/libs/json2.js"></script>
     <script type="text/javascript">
         var keywordUtil = {
               insert: function(){
