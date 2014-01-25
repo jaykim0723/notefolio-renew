@@ -826,7 +826,7 @@ var profileUtil = {
 			$.get(site.url+'/profile/statistics_datatable', {
 				period : period
 			}, 'json').done(function(responseJSON){
-				var html = '<table class="table table-bordered">'+
+				var html = '<table class="table">'+
 					'<thead>'+
 						'<tr>'+
 							'<th>작품번호</th>'+
