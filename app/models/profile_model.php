@@ -518,6 +518,7 @@ class profile_model extends CI_Model {
 
         # do stuff
         # 성수씨 호출
+        # ex) $data->row->work_cnt = 234;
 
         return $data; 
 
