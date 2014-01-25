@@ -21,7 +21,7 @@
 				<tbody>
 					<tr>
 						<td><?php echo number_format($total->work_cnt) ?></td>
-						<td><?php echo number_format($total->view_cnt) ?></td>
+						<td><?php echo number_format($total->hit_cnt) ?></td>
 						<td><?php echo number_format($total->note_cnt) ?></td>
 						<td><?php echo number_format($total->collect_cnt) ?></td>
 						<td><?php echo number_format($total->follower_cnt) ?></td>
@@ -32,11 +32,11 @@
 		
 
 
-			<div id="statistics-chart-area" style="background: #fff;height:400px;">
+			<div id="statistics-chart-area" style="background: #fff;">
 				<div class="row">
 					<div class="col-sm-6">
 						<h4 id="statistics-header">
-							조회수 <span id="statistics-total-view">2344</span>
+							조회수 <span id="statistics-total-hit">2344</span>
 							/
 							노트수 <span id="statistics-total-note">2344</span>
 							/
@@ -45,7 +45,7 @@
 					</div>
 					<div class="col-sm-6" id="statistics-toolbars">
 						<div class="btn-group pull-right">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
 								<span id="statistics-period">기간설정</span> <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
@@ -58,7 +58,7 @@
 							</ul>
 						</div>
 						<div class="btn-group pull-right">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
 								<span id="statistics-type">기간내 조회수 변동</span> <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
@@ -70,219 +70,15 @@
 						</div>
 					</div>
 				</div>
-				<div id="statistics-chart">
+				<div id="statistics-chart" style="height:300px;">
 				</div>
+				<div id="statistics-tooltip"></div>
 			</div>
 
 			<div id="statistics-table-area">
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>작품번호</th>
-							<th>작품명</th>
-							<th>날짜</th>
-							<th>조회수</th>
-							<th>노트수</th>
-							<th>콜렉트수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>aonetuhanoteh</td>
-							<td>234</td>
-							<td>aonetuhanoteh</td>
-							<td>aonetuhanoteh</td>
-							<td>aonetuhanoteh</td>
-							<td>aonetuhanoteh</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
-							<td>234</td>
-							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-					</tbody>
-				</table>
 			</div>
 
+			<script src="/js/libs/jquery.flot.js"></script>
 			<script src="/js/libs/jquery.dataTables.js"></script>
 			<script src="/js/libs/dataTables.bootstrap.js"></script>
 			<script>
@@ -291,7 +87,6 @@
 
 				$(function(){
 					profileUtil.statistics.setGround();
-					$('#statistics-table-area table').dataTable();					
 				})
 			</script>
 <?php if (!$this->input->is_ajax_request()): ?>

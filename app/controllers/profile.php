@@ -380,6 +380,11 @@ class Profile extends CI_Controller {
 			'sdate' => $date->sdate,
 			'edate' => $date->edate
 		));
+		$new_rows = array();
+		foreach($json->rows as $ymd => $value){
+			$new_rows[] = array(strtotime($ymd)*1000, $value);
+		}
+		$json->rows = $new_rows;
 		$this->layout->set_json($json)->render();
 	}
 

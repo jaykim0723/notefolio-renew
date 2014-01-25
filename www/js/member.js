@@ -767,7 +767,7 @@ var profileUtil = {
 			$.get(site.url+'/profile/statistics_count', {
 				period : period
 			}, 'json').done(function(responseJSON){
-				$('#statistics-total-view').html(responseJSON.row.view_cnt);
+				$('#statistics-total-hit').html(responseJSON.row.hit_cnt);
 				$('#statistics-total-note').html(responseJSON.row.note_cnt);
 				$('#statistics-total-collect').html(responseJSON.row.collect_cnt);
 			});
@@ -778,16 +778,79 @@ var profileUtil = {
 				type : type,
 				period : period
 			}, 'json').done(function(responseJSON){
-				console.log('reLoadChart', responseJSON);
-			});
+				$.plot("#statistics-chart", [ {label:type, data:responseJSON.rows, color:'#2ac5c6'} ], {
+					series: {
+						lines: {
+							show: true
+						}
+					},
+					xaxes: [ {
+						mode: "time",
+						timeformat: "%y-%m-%d"
+					} ],
+					grid: {
+						hoverable: true
+					}
+				});
+				$("<div id='tooltip'></div>").css({
+					position: "absolute",
+					display: "none",
+					border: "1px solid #fdd",
+					padding: "2px",
+					"background-color": "#fee",
+					opacity: 0.80
+				}).appendTo("body");
+
+				$("#statistics-chart").bind("plothover", function (event, pos, item) {
+					if (item) {
+						var x = item.datapoint[0].toFixed(2),
+							y = item.datapoint[1].toFixed(2);
+						var date = new Date(item.datapoint[0]);
+
+						var year = date.getFullYear();
+						var month = date.getMonth() + 1;
+						var day = date.getDate();
+						x = year +'-' + month + '-' + day;
+
+						$("#tooltip").html(x + " = " + y)
+							.css({top: item.pageY+5, left: item.pageX+5})
+							.fadeIn(200);
+					} else {
+						$("#tooltip").hide();
+					}
+				});
+			});	
 		},
 
 		reLoadTable : function(period){
 			$.get(site.url+'/profile/statistics_datatable', {
 				period : period
 			}, 'json').done(function(responseJSON){
-				$('#statistics-table-area table tbody').html(responseJSON.tbody);
-				// $('#statistics-table-area table').dataTable();
+				var html = '<table class="table table-bordered">'+
+					'<thead>'+
+						'<tr>'+
+							'<th>작품번호</th>'+
+							'<th>작품명</th>'+
+							'<th>날짜</th>'+
+							'<th>조회수</th>'+
+							'<th>노트수</th>'+
+							'<th>콜렉트수</th>'+
+						'</tr>'+
+					'</thead>'+
+					'<tbody>';
+				for(var i in responseJSON.rows){
+					html += '<tr>' +
+						'<td>'+ responseJSON.rows[i].work_id+'</td>' +
+						'<td>'+ responseJSON.rows[i].title+'</td>' +
+						'<td>'+ responseJSON.rows[i].regdate+'</td>' +
+						'<td>'+ responseJSON.rows[i].hit_cnt+'</td>' +
+						'<td>'+ responseJSON.rows[i].note_cnt+'</td>' +
+						'<td>'+ responseJSON.rows[i].collect_cnt+'</td>' +
+						'</tr>';
+				}
+				html += '</tbody>'+
+					'</table>';
+				$('#statistics-table-area').html(html).children('table').dataTable();
 			});
 		}
 	}

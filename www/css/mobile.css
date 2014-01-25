@@ -1132,6 +1132,9 @@ p.desc {
 }
 
 
+#statistics-chart-area {
+	padding: 20px 20px 0 20px;
+}
 #statistics-header {
 }
 #statistics-header span {
@@ -1140,6 +1143,8 @@ p.desc {
 #statistics-toolbars a {
 	cursor: pointer;
 }
+
+
 #statistics-table-area {
 	background: #fff;
 	padding: 20px;

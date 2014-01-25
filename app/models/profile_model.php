@@ -508,7 +508,7 @@ class profile_model extends CI_Model {
             'status' => 'done',
             'row' => (object)array(
                 'work_cnt' => 0,
-                'view_cnt' => 0,
+                'hit_cnt' => 0,
                 'note_cnt' => 0,
                 'collect_cnt' => 0,
                 'following_cnt' => 0,
@@ -546,7 +546,7 @@ class profile_model extends CI_Model {
             'sdate' => $params->sdate,
             'edate' => $params->edate,
             'row' => (object)array(
-                'view_cnt' => 12,
+                'hit_cnt' => 12,
                 'note_cnt' => 34,
                 'collect_cnt' => 56,
             )
@@ -554,7 +554,7 @@ class profile_model extends CI_Model {
 
         # do stuff
         # 성수씨 호출
-        # ex) $data->row->view_cnt = 2;
+        # ex) $data->row->hit_cnt = 2;
         # ex) $data->row->note_cnt = 2;
         # ex) $data->row->collect_cnt = 2;
 
@@ -593,12 +593,15 @@ class profile_model extends CI_Model {
         );
         // 차트에서는 값이 0인 날도 누락되면 안되므로, 먼저 rows에 기간내의 모든 일자별을 셋팅을 만들어둔다.
         $start_timestamp = strtotime($params->sdate);
-        for($i=0; $i<9; $i++){
+        for($i=0; $i<9999; $i++){
             $label_date = date('Y-m-d', strtotime('+'.$i.' days', $start_timestamp));
             $data->rows[$label_date] = 0;
             if($label_date == $params->edate)
                 break;
         }
+        // dummy
+        foreach($data->rows as &$r)
+            $r = rand(0,9999);
 
 
         # do stuff
@@ -636,12 +639,17 @@ class profile_model extends CI_Model {
                 //     'work_id' => 23,
                 //     'title' => '테스트작품',
                 //     'regdate' => '2014-01-01',
-                //     'view_cnt' => 1,
+                //     'hit_cnt' => 1,
                 //     'note_cnt' => 1,
                 //     'collect_cnt' => 1,
                 // )
             )
         );
+
+        // dummy
+        $dummy = $this->db->select('work_id, title, LEFT(regdate, 10) as regdate, hit_cnt, note_cnt, collect_cnt', FALSE)->limit(200)->get('works')->result();
+        foreach($dummy as $r)
+            $data->rows[] = $r;
 
         # do stuff
         # 성수씨 호출
