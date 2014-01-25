@@ -572,7 +572,7 @@ class profile_model extends CI_Model {
         $params = (object)$params;
         $default_params = (object)array(
             'user_id'   => '',
-            'type' => 'view',
+            'type' => 'hit',
             'sdate' => '',
             'edate' => ''
         );

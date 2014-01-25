@@ -734,7 +734,7 @@ var profileUtil = {
 	statistics : {
 		setGround : function(){
 			NFview.oldPeriod = 'latest1'; // 기본기간을 설정한다. 최근 1개월
-			NFview.oldType = 'view'; // 기본타입을 설정한다. 조회수
+			NFview.oldType = 'hit'; // 기본타입을 설정한다. 조회수
 			profileUtil.statistics.clickEvent('period', NFview.oldPeriod); // period가 바뀌는 경우에는 전체를 업데이트하므로....
 			$('#statistics-toolbars a').on('click', function(){
 				var type = $(this).data('type');
@@ -819,6 +819,22 @@ var profileUtil = {
 						$("#tooltip").hide();
 					}
 				});
+				window.onresize = function(event) {
+			        $.plot($("#statistics-chart"), [ {label:type, data:responseJSON.rows, color:'#2ac5c6'} ],{
+					series: {
+						lines: {
+							show: true
+						}
+					},
+					xaxes: [ {
+						mode: "time",
+						timeformat: "%y-%m-%d"
+					} ],
+					grid: {
+						hoverable: true
+					}
+				});
+			    }
 			});	
 		},
 

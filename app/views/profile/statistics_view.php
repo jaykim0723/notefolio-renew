@@ -62,7 +62,7 @@
 								<span id="statistics-type">기간내 조회수 변동</span> <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li><a data-type="type" data-value="view">조회수 변동</a></li>
+								<li><a data-type="type" data-value="hit">조회수 변동</a></li>
 								<li><a data-type="type" data-value="note">노트수 변동</a></li>
 								<li><a data-type="type" data-value="collect">콜렉트수 변동</a></li>
 								<li><a data-type="type" data-value="work">작품수 변동</a></li>
