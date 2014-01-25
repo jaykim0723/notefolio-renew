@@ -35,7 +35,7 @@
 			<div id="statistics-chart-area" style="background: #fff;height:400px;">
 				<div class="row">
 					<div class="col-sm-6">
-						<h4>
+						<h4 id="statistics-header">
 							조회수 <span id="statistics-total-view"></span>
 							/
 							노트수 <span id="statistics-total-note"></span>
@@ -59,13 +59,13 @@
 						</div>
 						<div class="btn-group pull-right">
 							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-								<span id="statistics-type">기간내 조회수 보기</span> <span class="caret"></span>
+								<span id="statistics-type">기간내 조회수 변동</span> <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li><a data-type="type" data-value="view">조회수 보기</a></li>
-								<li><a data-type="type" data-value="note">노트수 보기</a></li>
-								<li><a data-type="type" data-value="collect">콜렉트수 보기</a></li>
-								<li><a data-type="type" data-value="work">작품수 보기</a></li>
+								<li><a data-type="type" data-value="view">조회수 변동</a></li>
+								<li><a data-type="type" data-value="note">노트수 변동</a></li>
+								<li><a data-type="type" data-value="collect">콜렉트수 변동</a></li>
+								<li><a data-type="type" data-value="work">작품수 변동</a></li>
 							</ul>
 						</div>
 					</div>
@@ -78,16 +78,18 @@
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th>aonetuhanoteh</th>
-							<th>aonetuhanoteh</th>
-							<th>aonetuhanoteh</th>
-							<th>aonetuhanoteh</th>
-							<th>aonetuhanoteh</th>
+							<th>작품번호</th>
+							<th>작품명</th>
+							<th>날짜</th>
+							<th>조회수</th>
+							<th>노트수</th>
+							<th>콜렉트수</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>aonetuhanoteh</td>
+							<td>234</td>
 							<td>aonetuhanoteh</td>
 							<td>aonetuhanoteh</td>
 							<td>aonetuhanoteh</td>
@@ -96,12 +98,6 @@
 						<tr>
 							<td>52342</td>
 							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
 							<td>234</td>
 							<td>52342</td>
 							<td>234235</td>
@@ -110,12 +106,6 @@
 						<tr>
 							<td>52342</td>
 							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
 							<td>234</td>
 							<td>52342</td>
 							<td>234235</td>
@@ -124,12 +114,6 @@
 						<tr>
 							<td>52342</td>
 							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
 							<td>234</td>
 							<td>52342</td>
 							<td>234235</td>
@@ -138,12 +122,6 @@
 						<tr>
 							<td>52342</td>
 							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
 							<td>234</td>
 							<td>52342</td>
 							<td>234235</td>
@@ -152,12 +130,6 @@
 						<tr>
 							<td>52342</td>
 							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
 							<td>234</td>
 							<td>52342</td>
 							<td>234235</td>
@@ -166,12 +138,6 @@
 						<tr>
 							<td>52342</td>
 							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
 							<td>234</td>
 							<td>52342</td>
 							<td>234235</td>
@@ -180,12 +146,6 @@
 						<tr>
 							<td>52342</td>
 							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
 							<td>234</td>
 							<td>52342</td>
 							<td>234235</td>
@@ -194,12 +154,6 @@
 						<tr>
 							<td>52342</td>
 							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
 							<td>234</td>
 							<td>52342</td>
 							<td>234235</td>
@@ -208,12 +162,6 @@
 						<tr>
 							<td>52342</td>
 							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
 							<td>234</td>
 							<td>52342</td>
 							<td>234235</td>
@@ -222,12 +170,6 @@
 						<tr>
 							<td>52342</td>
 							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
 							<td>234</td>
 							<td>52342</td>
 							<td>234235</td>
@@ -236,12 +178,6 @@
 						<tr>
 							<td>52342</td>
 							<td>234</td>
-							<td>52342</td>
-							<td>234235</td>
-							<td>234</td>
-						</tr>
-						<tr>
-							<td>52342</td>
 							<td>234</td>
 							<td>52342</td>
 							<td>234235</td>
@@ -249,6 +185,95 @@
 						</tr>
 						<tr>
 							<td>52342</td>
+							<td>234</td>
+							<td>234</td>
+							<td>52342</td>
+							<td>234235</td>
+							<td>234</td>
+						</tr>
+						<tr>
+							<td>52342</td>
+							<td>234</td>
+							<td>234</td>
+							<td>52342</td>
+							<td>234235</td>
+							<td>234</td>
+						</tr>
+						<tr>
+							<td>52342</td>
+							<td>234</td>
+							<td>234</td>
+							<td>52342</td>
+							<td>234235</td>
+							<td>234</td>
+						</tr>
+						<tr>
+							<td>52342</td>
+							<td>234</td>
+							<td>234</td>
+							<td>52342</td>
+							<td>234235</td>
+							<td>234</td>
+						</tr>
+						<tr>
+							<td>52342</td>
+							<td>234</td>
+							<td>234</td>
+							<td>52342</td>
+							<td>234235</td>
+							<td>234</td>
+						</tr>
+						<tr>
+							<td>52342</td>
+							<td>234</td>
+							<td>234</td>
+							<td>52342</td>
+							<td>234235</td>
+							<td>234</td>
+						</tr>
+						<tr>
+							<td>52342</td>
+							<td>234</td>
+							<td>234</td>
+							<td>52342</td>
+							<td>234235</td>
+							<td>234</td>
+						</tr>
+						<tr>
+							<td>52342</td>
+							<td>234</td>
+							<td>234</td>
+							<td>52342</td>
+							<td>234235</td>
+							<td>234</td>
+						</tr>
+						<tr>
+							<td>52342</td>
+							<td>234</td>
+							<td>234</td>
+							<td>52342</td>
+							<td>234235</td>
+							<td>234</td>
+						</tr>
+						<tr>
+							<td>52342</td>
+							<td>234</td>
+							<td>234</td>
+							<td>52342</td>
+							<td>234235</td>
+							<td>234</td>
+						</tr>
+						<tr>
+							<td>52342</td>
+							<td>234</td>
+							<td>234</td>
+							<td>52342</td>
+							<td>234235</td>
+							<td>234</td>
+						</tr>
+						<tr>
+							<td>52342</td>
+							<td>234</td>
 							<td>234</td>
 							<td>52342</td>
 							<td>234235</td>

@@ -1121,12 +1121,18 @@ p.desc {
 }
 
 
+#statistics-header {
+}
+#statistics-header span {
+	margin-right: 20px;
+	color: green;
+}
 #statistics-toolbars a {
 	cursor: pointer;
 }
 #statistics-table-area {
 	background: #fff;
-	margin-top: 20px;
+	padding: 20px;
 }
 #statistics-table-area table {
 }
