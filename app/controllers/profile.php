@@ -334,6 +334,65 @@ class Profile extends CI_Controller {
 			$this->layout->set_view('profile/header_view', $user);
 		$this->layout->set_view('profile/statistics_view', $data)->render();
 	}
+	function _get_date_by_period($period){
+		$edate = date('Y-m-d', time());
+		switch($period){
+			case 'latest1':
+				$sdate = date('Y-m-d', strtotime('-1 month'));
+				break;
+			case 'latest3':
+				$sdate = date('Y-m-d', strtotime('-3 month'));
+				break;
+			case 'this_m':
+				$sdate = date('Y-m', time()).'-01';
+				$edate = date('Y-m', time()).'-'.date('t');
+				break;
+			case 'prev_m':
+				$sdate = date('Y-m', strtotime('-1 month')).'-01';
+				$edate = date('Y-m', strtotime('-1 month')).'-'.date('t', strtotime('-1 month'));
+				break;
+			default :
+		}
+		return (object)array(
+			'sdate' => $sdate,
+			'edate' => $edate
+		);
+	}
+
+	function statistics_count(){
+		$period = $this->input->get('period');
+		$date = $this->_get_date_by_period($period);
+		$json = $this->profile_model->get_statistics_count(array(
+			'user_id' => USER_ID,
+			'sdate' => $date->sdate,
+			'edate' => $date->edate
+		));
+		$this->layout->set_json($json)->render();
+	}
+
+	function statistics_chart(){
+		$type = $this->input->get('type');
+		$period = $this->input->get('period');
+		$date = $this->_get_date_by_period($period);
+		$json = $this->profile_model->get_statistics_chart(array(
+			'user_id' => USER_ID,
+			'type' => $type,
+			'sdate' => $date->sdate,
+			'edate' => $date->edate
+		));
+		$this->layout->set_json($json)->render();
+	}
+
+	function statistics_datatable(){
+		$period = $this->input->get('period');
+		$date = $this->_get_date_by_period($period);
+		$json = $this->profile_model->get_statistics_datatable(array(
+			'user_id' => USER_ID,
+			'sdate' => $date->sdate,
+			'edate' => $date->edate
+		));
+		$this->layout->set_json($json)->render();
+	}
 
 
 

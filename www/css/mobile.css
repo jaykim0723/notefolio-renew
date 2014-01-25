@@ -27,6 +27,17 @@ body * {
 }
 
 
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+	background: #2ac5c6;
+	border-color: #2ac5c6;
+}
+
+
+
+
+
+
+
 /* override for flat */
 .well {
 	-webkit-box-shadow:none;
@@ -1124,8 +1135,7 @@ p.desc {
 #statistics-header {
 }
 #statistics-header span {
-	margin-right: 20px;
-	color: green;
+	color: #2ac5c6;
 }
 #statistics-toolbars a {
 	cursor: pointer;

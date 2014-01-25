@@ -733,21 +733,61 @@ var profileUtil = {
 
 	statistics : {
 		setGround : function(){
+			NFview.oldPeriod = 'latest1'; // 기본기간을 설정한다. 최근 1개월
+			NFview.oldType = 'view'; // 기본타입을 설정한다. 조회수
+			profileUtil.statistics.clickEvent('period', NFview.oldPeriod); // period가 바뀌는 경우에는 전체를 업데이트하므로....
 			$('#statistics-toolbars a').on('click', function(){
 				var type = $(this).data('type');
-				var period = $(this).data('period');
+				var value = $(this).data('value');
+				profileUtil.statistics.clickEvent(type, value);
 			});
 		},
-		reLoadChart : function(){
-			
+
+		clickEvent : function(type, value){
+			console.log('profileUtil > statistics > clickEvent ', type, value);
+			if(type=='period'){
+				// 기간이 달라지는 경우 아래의 두 가지에 대해서 조회를 한다.
+				profileUtil.statistics.reLoadTopCount(value);
+				profileUtil.statistics.reLoadTable(value);
+				profileUtil.statistics.reLoadChart(NFview.oldType, value);
+				NFview.oldPeriod = value;
+			}else if(type=='type'){
+				// type만 달라진 경우
+				profileUtil.statistics.reLoadChart(value, NFview.oldPeriod);
+				NFview.oldType = value;
+			}
+			// 표시하는 부분을 교체해준다.
+			$('#statistics-period').html($('#statistics-toolbars a').filter('[data-value='+NFview.oldPeriod+']').html());
+
+			// 표시하는 부분을 교체해준다.
+			$('#statistics-type').html($('#statistics-toolbars a').filter('[data-value='+NFview.oldType+']').html());
 		},
-		reLoadTable : function(){
-			$('#statistics-table-area table').dataTable({
-				"sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
-				"sPaginationType": "bootstrap",
-				"oLanguage": {
-					"sLengthMenu": "_MENU_ records per page"
-				}
+
+		reLoadTopCount : function(period){
+			$.get(site.url+'/profile/statistics_count', {
+				period : period
+			}, 'json').done(function(responseJSON){
+				$('#statistics-total-view').html(responseJSON.row.view_cnt);
+				$('#statistics-total-note').html(responseJSON.row.note_cnt);
+				$('#statistics-total-collect').html(responseJSON.row.collect_cnt);
+			});
+		},
+
+		reLoadChart : function(type, period){
+			$.get(site.url+'/profile/statistics_chart', {
+				type : type,
+				period : period
+			}, 'json').done(function(responseJSON){
+				console.log('reLoadChart', responseJSON);
+			});
+		},
+
+		reLoadTable : function(period){
+			$.get(site.url+'/profile/statistics_datatable', {
+				period : period
+			}, 'json').done(function(responseJSON){
+				$('#statistics-table-area table tbody').html(responseJSON.tbody);
+				// $('#statistics-table-area table').dataTable();
 			});
 		}
 	}

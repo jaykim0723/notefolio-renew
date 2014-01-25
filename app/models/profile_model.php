@@ -489,7 +489,11 @@ class profile_model extends CI_Model {
 
 
 
-
+    /**
+     * 특정 작가의 모든 누적수치 반환
+     * @param  [type] $params [description]
+     * @return [type]         [description]
+     */
     function get_statistics_total($params){
         log_message('debug','--------- profile_model > get_statistics_total ( params : '.print_r(get_defined_vars(),TRUE)).')';
         $params = (object)$params;
@@ -500,8 +504,6 @@ class profile_model extends CI_Model {
             if(!isset($params->{$key}))
                 $params->{$key} = $value;
         }
-
-        
         $data = (object)array(
             'status' => 'done',
             'row' => (object)array(
@@ -515,9 +517,131 @@ class profile_model extends CI_Model {
         );
 
         # do stuff
+        # 성수씨 호출
 
         return $data; 
 
+    }
+
+    /**
+     * 특정 기간내의 작가별 조회수, 노트수, 콜렉트 수 반환
+     * @param  [type] $params [description]
+     * @return [type]         [description]
+     */
+    function get_statistics_count($params){
+        log_message('debug','--------- profile_model > get_statistics_count ( params : '.print_r(get_defined_vars(),TRUE)).')';
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => '',
+            'sdate' => '',
+            'edate' => ''
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+        $data = (object)array(
+            'status' => 'done',
+            'sdate' => $params->sdate,
+            'edate' => $params->edate,
+            'row' => (object)array(
+                'view_cnt' => 12,
+                'note_cnt' => 34,
+                'collect_cnt' => 56,
+            )
+        );
+
+        # do stuff
+        # 성수씨 호출
+
+        return $data; 
+    } 
+
+
+    /**
+     * 특정 기간내의 작가의 일자별 조회수나 노트수나 등등..
+     * @param  [type] $params [description]
+     * @return [type]         [description]
+     */
+    function get_statistics_chart($params){
+        log_message('debug','--------- profile_model > get_statistics_chart ( params : '.print_r(get_defined_vars(),TRUE)).')';
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => '',
+            'type' => 'view',
+            'sdate' => '',
+            'edate' => ''
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+
+        $data = (object)array(
+            'status' => 'done',
+            'type' => $params->type,
+            'sdate' => $params->sdate,
+            'edate' => $params->edate,
+            'rows' => array()
+        );
+        // 차트에서는 값이 0인 날도 누락되면 안되므로, 먼저 rows에 기간내의 모든 일자별을 셋팅을 만들어둔다.
+        $start_timestamp = strtotime($params->sdate);
+        for($i=0; $i<9; $i++){
+            $label_date = date('Y-m-d', strtotime('+'.$i.' days', $start_timestamp));
+            $data->rows[$label_date] = 0;
+            if($label_date == $params->edate)
+                break;
+        }
+
+
+        # do stuff
+        # 성수씨 호출
+        # 관련된 쿼리를 호출하고, $data->rows['2013-01-02']와 같이 날짜별로 값을 대입한다.
+
+        return $data; 
+    }
+
+    /**
+     * 특정 기간내의 작가의 데이터테이블
+     * @param  [type] $params [description]
+     * @return [type]         [description]
+     */
+    function get_statistics_datatable($params){
+        log_message('debug','--------- profile_model > get_statistics_datatable ( params : '.print_r(get_defined_vars(),TRUE)).')';
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => '',
+            'sdate' => '',
+            'edate' => ''
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+
+        $data = (object)array(
+            'status' => 'done',
+            'sdate' => $params->sdate,
+            'edate' => $params->edate,
+            'rows' => array(
+                // array( // 각 형식은 아래와 같이 전달해주면 됩니다.
+                //     'work_id' => 23,
+                //     'title' => '테스트작품',
+                //     'regdate' => '2014-01-01',
+                //     'view_cnt' => 1,
+                //     'note_cnt' => 1,
+                //     'collect_cnt' => 1,
+                // )
+            )
+        );
+
+        # do stuff
+        # 성수씨 호출
+        # 관련된 쿼리를 호출하고, $data->rows['2013-01-02']와 같이 날짜별로 값을 대입한다.
+
+        return $data; 
     }
 
 }
