@@ -24,7 +24,7 @@
 	<![endif]-->
 	<link href="/css/bootstrap-dialog.css" rel="stylesheet"/>
 	<link href="/css/bootstrap-select.css" rel="stylesheet"/>
-	<link href="/css/flick/jquery-ui-1.10.3.custom.min.css" rel="stylesheet"/>
+	<link href="/css/flick/jquery-ui-view-1.10.4.custom.min.css" rel="stylesheet"/>
 	<link href="/css/util.css" rel="stylesheet"/>
 	<link href="/css/mmenu/jquery.mmenu.nf.css" rel="stylesheet" /><!-- jQuery.mmenu -->
 	<link href="/css/mobile.css" rel="stylesheet"/>

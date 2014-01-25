@@ -1151,7 +1151,9 @@ p.desc {
 }
 #statistics-table-area table {
 }
-
+#select-range-wrapper .modal-dialog {
+	max-width: 420px;
+}
 
 
 

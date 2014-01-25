@@ -352,6 +352,7 @@ class Profile extends CI_Controller {
 				$edate = date('Y-m', strtotime('-1 month')).'-'.date('t', strtotime('-1 month'));
 				break;
 			default :
+				list($sdate, $edate) = explode('~', $period);
 		}
 		return (object)array(
 			'sdate' => $sdate,

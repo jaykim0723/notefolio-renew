@@ -1,7 +1,7 @@
 <script src="/js/libs/bootstrap.min.js"></script>
 <script src="/js/libs/bootstrap-dialog.js"></script>
 <script src="/js/libs/bootstrap-select.js"></script>
-<script src="/js/libs/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="/js/libs/jquery-ui-view-1.10.4.custom.min.js"></script>
 <script src="/js/libs/fileuploader.js"></script>
 <script src="/js/libs/jquery-ajax-uploader.js"></script>
 <script src="/js/libs/waypoints.js"></script>

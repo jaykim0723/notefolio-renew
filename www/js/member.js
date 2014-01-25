@@ -742,7 +742,17 @@ var profileUtil = {
 				if(type=='period' && value=='user'){
 					var dialog = new BootstrapDialog({
 					    message: function(dialogRef){
-					        var $message = $('<input id="btn-select-range"/>').datepicker();
+					    	var s = '<div class="row">' +
+						    	'<div class="col-sm-6">'+
+						    		'조회시작<br/>'+
+						    		'<input type="date" value="'+NFview.sdate+'" name="sdate"/>'+
+						    	'</div>'+
+						    	'<div class="col-sm-6">'+
+						    		'조회종료<br/>'+
+						    		'<input type="date" value="'+NFview.edate+'" name="edate"/>'+
+						    	'</div>'+
+					    	'</div>';
+					        var $message = $(s);
 					        return $message;
 					    },
 					    buttons: [
@@ -750,7 +760,12 @@ var profileUtil = {
 						        label: 'Select',
 						        cssClass: 'btn-primary',
 						        action: function(dialog){
-						        	
+						        	var s = [];
+						        	dialog.getModalBody().find('input').each(function(){
+						        		s.push($(this).val());
+						        	});
+						        	profileUtil.statistics.clickEvent('period', s.join('~'));
+						            dialog.close();
 						        }
 						    },{
 						        label: 'Cancel',
@@ -763,6 +778,12 @@ var profileUtil = {
 					});
 					dialog.realize();
 					dialog.open();
+					dialog.getModal().prop('id', 'select-range-wrapper'); // cssClass 버그로 인해서 이 꼼수로..
+					dialog.getModalBody().find('[type=date]').datepicker({
+			        	format : 'yyyy-mm-dd'
+			        }).on('changeDate', function(ev){
+		        		dialog.getModalBody().find('[type=date]').datepicker('hide');
+					});
 				}else{
 					profileUtil.statistics.clickEvent(type, value);
 				}
@@ -783,7 +804,13 @@ var profileUtil = {
 				NFview.oldType = value;
 			}
 			// 표시하는 부분을 교체해준다.
-			$('#statistics-period').html($('#statistics-toolbars a').filter('[data-value='+NFview.oldPeriod+']').html());
+			var $obj = $('#statistics-toolbars a').filter('[data-value="'+NFview.oldPeriod+'"]');
+			var disp = '';
+			if($obj.length > 0)
+				disp = $obj.html();
+			else
+				disp = '임의('+NFview.oldPeriod+')';
+			$('#statistics-period').html(disp);
 
 			// 표시하는 부분을 교체해준다.
 			$('#statistics-type').html($('#statistics-toolbars a').filter('[data-value='+NFview.oldType+']').html());
@@ -804,6 +831,9 @@ var profileUtil = {
 				type : type,
 				period : period
 			}, 'json').done(function(responseJSON){
+				NFview.sdate = responseJSON.sdate;
+				NFview.edate = responseJSON.edate;
+
 				$.plot("#statistics-chart", [ {label:type, data:responseJSON.rows, color:'#2ac5c6'} ], {
 					series: {
 						lines: {
