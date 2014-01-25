@@ -739,7 +739,33 @@ var profileUtil = {
 			$('#statistics-toolbars a').on('click', function(){
 				var type = $(this).data('type');
 				var value = $(this).data('value');
-				profileUtil.statistics.clickEvent(type, value);
+				if(type=='period' && value=='user'){
+					var dialog = new BootstrapDialog({
+					    message: function(dialogRef){
+					        var $message = $('<input id="btn-select-range"/>').datepicker();
+					        return $message;
+					    },
+					    buttons: [
+						    {
+						        label: 'Select',
+						        cssClass: 'btn-primary',
+						        action: function(dialog){
+						        	
+						        }
+						    },{
+						        label: 'Cancel',
+						        cssClass: 'btn-default',
+						        action: function(dialog){
+						            dialog.close();
+						        }
+						    }
+					    ]
+					});
+					dialog.realize();
+					dialog.open();
+				}else{
+					profileUtil.statistics.clickEvent(type, value);
+				}
 			});
 		},
 

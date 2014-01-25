@@ -78,12 +78,15 @@
 			<div id="statistics-table-area">
 			</div>
 
+			<script src="/js/libs/bootstrap-datepicker.js"></script>
 			<script src="/js/libs/jquery.flot.js"></script>
 			<script src="/js/libs/jquery.dataTables.js"></script>
 			<script src="/js/libs/dataTables.bootstrap.js"></script>
 			<script>
 				if($('#style_datatable').length==0)
 					$('head').append('<link id="style_datatable" href="/css/dataTables.bootstrap.css" rel="stylesheet"/>');
+				if($('#style_datepicker').length==0)
+					$('head').append('<link id="style_datepicker" href="/css/datepicker.css" rel="stylesheet"/>');
 
 				$(function(){
 					profileUtil.statistics.setGround();
