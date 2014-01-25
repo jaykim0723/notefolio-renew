@@ -1121,9 +1121,15 @@ p.desc {
 }
 
 
-
-
-
+#statistics-toolbars a {
+	cursor: pointer;
+}
+#statistics-table-area {
+	background: #fff;
+	margin-top: 20px;
+}
+#statistics-table-area table {
+}
 
 
 

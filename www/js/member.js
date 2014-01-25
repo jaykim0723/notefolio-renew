@@ -732,7 +732,24 @@ var profileUtil = {
 
 
 	statistics : {
-				
+		setGround : function(){
+			$('#statistics-toolbars a').on('click', function(){
+				var type = $(this).data('type');
+				var period = $(this).data('period');
+			});
+		},
+		reLoadChart : function(){
+			
+		},
+		reLoadTable : function(){
+			$('#statistics-table-area table').dataTable({
+				"sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+				"sPaginationType": "bootstrap",
+				"oLanguage": {
+					"sLengthMenu": "_MENU_ records per page"
+				}
+			});
+		}
 	}
 };
 
