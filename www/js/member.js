@@ -728,10 +728,12 @@ var profileUtil = {
 			dialog.open();
 			site.scroll.lock();
 		});
+	},
+
+
+	statistics : {
+				
 	}
-
-
-
 };
 
 

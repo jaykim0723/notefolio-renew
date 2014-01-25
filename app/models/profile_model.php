@@ -437,24 +437,87 @@ class profile_model extends CI_Model {
 
 
 
-    function get_about($user_id=''){
+    function get_about($params){
+        log_message('debug','--------- profile_model > get_about ( params : '.print_r(get_defined_vars(),TRUE)).')';
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => ''
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
         $data = (object)array(
             'status' => 'done',
-            'contents' => ''
+            'row' => (object)array()
         );
-        # do stuff
-        $row = $this->db->where('user_id', $user_id)->get('user_about')->row();
-        $data->contents = $row->contents;
+        $row = $this->db->where('user_id', $params->user_id)->get('user_about')->row();
+        if(!$row){
+            $row = (object)array(
+                'contents'    => '',
+                'attachments' => serialize(array())
+            );
+        }
+        $data->row->attachments = unserialize($row->attachments);
+        $data->row->contents = $row->contents;
         return $data;        
     }
 
 
-    function put_about($user_id='', $contents=''){
+    function put_about($params){
+        log_message('debug','--------- profile_model > put_about ( params : '.print_r(get_defined_vars(),TRUE)).')';
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => '',
+            'contents' => '',
+            'attachments' => ''
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
         $data = (object)array(
             'status' => 'done'
         );
-        $this->db->set('contents', $contents)->where('user_id', $user_id)->update('user_about');
+        $this->db->set('contents', $params->contents)->set('attachments', serialize($params->contents))->where('user_id', $row->user_id)->update('user_about');
         return $data; 
+    }
+
+
+
+
+
+
+    function get_statistics_total($params){
+        log_message('debug','--------- profile_model > get_statistics_total ( params : '.print_r(get_defined_vars(),TRUE)).')';
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => ''
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        
+        $data = (object)array(
+            'status' => 'done',
+            'row' => (object)array(
+                'work_cnt' => 0,
+                'view_cnt' => 0,
+                'note_cnt' => 0,
+                'collect_cnt' => 0,
+                'following_cnt' => 0,
+                'follower_cnt' => 0
+            )
+        );
+
+        # do stuff
+
+        return $data; 
+
     }
 
 }

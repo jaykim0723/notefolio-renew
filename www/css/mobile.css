@@ -930,7 +930,7 @@ p.desc {
 
 
 #profile-nav {
-	
+	margin-bottom: 20px;	
 } 
 #profile-nav .number {
 	display: none;
@@ -1094,3 +1094,44 @@ p.desc {
 #dialog-change-color .modal-footer {	
 	margin-top: 0;
 }
+
+
+
+
+
+
+
+
+
+#about-cont {
+	min-height: 400px;
+}
+
+#statistics-widgets {
+	margin-bottom: 20px;
+}
+#statistics-widgets th,
+#statistics-widgets td {
+	font-size: 30px;
+	background: #fff;
+	text-align: center;
+}
+#statistics-widgets th {
+	font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

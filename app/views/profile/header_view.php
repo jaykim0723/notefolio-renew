@@ -81,7 +81,7 @@
 						</a>
 					</li>
 					<li id="profile_nav_collection">
-						<a href="/<?php echo $row->username ?>/collection">
+						<a href="/<?php echo $row->username ?>/collect">
 							<i class="spi spi-check">check</i><span class="text"> Collect</span><span class="number">22</span>
 						</a>
 					</li>
