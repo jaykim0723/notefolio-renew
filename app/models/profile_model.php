@@ -553,6 +553,9 @@ class profile_model extends CI_Model {
 
         # do stuff
         # 성수씨 호출
+        # ex) $data->row->view_cnt = 2;
+        # ex) $data->row->note_cnt = 2;
+        # ex) $data->row->collect_cnt = 2;
 
         return $data; 
     } 
@@ -583,7 +586,9 @@ class profile_model extends CI_Model {
             'type' => $params->type,
             'sdate' => $params->sdate,
             'edate' => $params->edate,
-            'rows' => array()
+            'rows' => array(
+                // '2014-01-02' => 0,
+            )
         );
         // 차트에서는 값이 0인 날도 누락되면 안되므로, 먼저 rows에 기간내의 모든 일자별을 셋팅을 만들어둔다.
         $start_timestamp = strtotime($params->sdate);
@@ -597,7 +602,8 @@ class profile_model extends CI_Model {
 
         # do stuff
         # 성수씨 호출
-        # 관련된 쿼리를 호출하고, $data->rows['2013-01-02']와 같이 날짜별로 값을 대입한다.
+        # 관련된 쿼리를 호출하고 날짜별로 값을 대입한다.
+        # ex) $data->rows['2013-01-02'] = $row->date;
 
         return $data; 
     }
@@ -620,7 +626,6 @@ class profile_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-
         $data = (object)array(
             'status' => 'done',
             'sdate' => $params->sdate,
@@ -639,7 +644,6 @@ class profile_model extends CI_Model {
 
         # do stuff
         # 성수씨 호출
-        # 관련된 쿼리를 호출하고, $data->rows['2013-01-02']와 같이 날짜별로 값을 대입한다.
 
         return $data; 
     }
