@@ -25,7 +25,9 @@ class migrate extends CI_Controller {
         //-- facebook post 
         $cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'../../notefolio-web/app_cli/cli.php migrate user_list';
         $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
-        var_export(str_replace($errmsg, '', exec($cmd)));  
+        
+        $list = @json_decode(exec($cmd));
+        var_export($list);  
 	}
 
 	/**
