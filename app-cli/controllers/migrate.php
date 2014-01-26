@@ -124,7 +124,7 @@ class migrate extends CI_Controller {
 
             $sql = '';
             foreach($data->follow as $param){
-                $sql = (($sql=='')?'':',')."
+                $sql .= (($sql=='')?'':',')."
                     (".$this->db->escape($data->info->user_id).",
                     ".$this->db->escape($param->follow_id).",
                     ".$this->db->escape($param->regdate).");
