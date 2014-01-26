@@ -39,6 +39,7 @@ class migrate extends CI_Controller {
             $cmd = $default_cmd.' user '.$val->id;
 
             $data = @json_decode(exec($cmd));
+            exit();
 
             $data->keyword = $this->convert_keyword($data->keyword);
 
