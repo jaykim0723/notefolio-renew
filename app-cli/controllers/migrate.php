@@ -101,24 +101,24 @@ class migrate extends CI_Controller {
                 `regdate`,
                 `point`)
                 VALUES
-                {$this->info->id},
-                {$this->info->user_id},
-                '{$this->keywords}',
-                '{$this->info->location}',
-                '{$this->info->website}',
-                '{$this->info->facebook_id}',
-                '{$this->info->twitter_id}',
-                '{$this->info->gender}',
-                '{$this->info->realname}',
-                '{$this->info->phone}',
-                '{$this->info->birth}',
-                '{$this->info->description}',
-                '{$this->info->mailing}',
-                {$this->info->following_cnt},
-                {$this->info->follower_cnt},
-                '{$this->info->moddate}',
-                '{$this->info->regdate}',
-                {$this->info->point});
+                {$data->info->id},
+                {$data->info->user_id},
+                '{$data->keywords}',
+                '{$data->info->location}',
+                '{$data->info->website}',
+                '{$data->info->facebook_id}',
+                '{$data->info->twitter_id}',
+                '{$data->info->gender}',
+                '{$data->info->realname}',
+                '{$data->info->phone}',
+                '{$data->info->birth}',
+                '{$data->info->description}',
+                '{$data->info->mailing}',
+                {$data->info->following_cnt},
+                {$data->info->follower_cnt},
+                '{$data->info->moddate}',
+                '{$data->info->regdate}',
+                {$data->info->point});
                 ";
             $this->db->query($sql);
 
