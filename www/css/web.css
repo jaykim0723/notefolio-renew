@@ -393,6 +393,7 @@ li#trash-bin{
 }
 #work-submit {
 	position: relative;
+	top: 20px;
 }
 #work-discoverbility {
 	display: block;

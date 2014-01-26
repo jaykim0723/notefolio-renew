@@ -1,4 +1,8 @@
 var workUtil = {
+	defaultValue : {
+		image : '/img/thumb_wide4.jpg',
+		video : '//www.youtube.com/embed/wnnOf05WKEs'
+	},
 	saveCover : function(upload_id, src){
 		memberUtil.popCrop({
 			message : ['400x400 크기의 정사각형 썸네일을 지정해주세요.', '800x400의 직사각형 썸네일을 지정해주세요'],
@@ -42,6 +46,80 @@ var workUtil = {
 			}
 		});
 	},
+	checkValue : {
+		title : function(){
+			return $('#title').val()=='' ? -1 : 0;
+		},
+		contents : function(){
+			var o = {
+				image : 0,
+				video : 0,
+				text : 0,
+				line : 0
+			}
+			$('#content-block-list > li').each(function(index){
+	    		var type =(""+$(this).attr("class")+"").match(/block-(\w+)/)[0].replace('block-', '');
+	    		switch(type){
+	    			case 'image':
+	    				if(typeof $(this).children('img').data('id')=='undefined')
+	    					return true; // 더미 이미지는 제외한다.
+	    			break;
+	    			case 'video':
+	    				if($(this).children('iframe').attr('src').indexOf(workUtil.defaultValue.video)!=-1)
+	    					return true; // 기본 영상은 없는 걸로 친다
+	    			break;
+	    			case 'text':
+	    				if($(this).children('textarea').val()=='')
+	    					return true; // 내용이 없으면 빈놈으로 취급한다.
+	    			break;
+	    		}
+	    		o[type]++;
+			});
+			return o;
+		},
+		keywords : function(){
+			return $('#keywords').val().length;
+		},
+		tags : function(){
+			var v = $('#tags').val();
+			if(v.indexOf(',')!==-1)
+				return v.split(',').length;
+			else if(v!='')
+				return 1;
+			else
+				return 0;
+		},
+		ccl : function(){
+			return $('#ccl').val()=='' ? -1 : 0
+		},
+		cover : function(){
+			return $('#cover-preview img:first').attr('src').indexOf('cover_default.png')!=-1 ? -1 : 0;
+		}
+
+	},
+	discoverbility : function(){
+		var total = 0;
+		var contents = this.checkValue.contents();
+		if(contents.image == 1)
+			total += 20;
+		else if(contents.image == 2)
+			total += 20;
+		else if(contents.image == 3)
+			total += 10;
+		if(contents.video > 0)
+			total += 20;
+		if(contents.text > 0)
+			total += 20;
+		if(this.checkValue.keywords()>0)
+			total += 20;
+		var tags = this.checkValue.tags();
+		if(tags == 1)
+			total += 5;
+		else if(tags == 2)
+			total += 5;
+		$('#work-discoverbility > span').css('width', (total/100)+'%');
+		return total;
+	},
 	save : function(form, returnType){
 		if(typeof(returnType)=='undefined'){
 			var returnType = true;
@@ -66,7 +144,7 @@ var workUtil = {
     				o.c = $(this).children('img').attr('src');
     				o.i = $(this).children('img').data('id');
     				if(typeof o.i=='undefined')
-    					o.i = '';
+    					return true; // 더미 이미지는 제외한다.
     			break;
 
     			case 'video':
@@ -107,7 +185,6 @@ var workUtil = {
 		restoreContents : function(){ // create든 update든 NFView의 값을 가지고 폼들에 반영을 해준다.
 			// 제목 셋팅해주기
 			$('#title').val(NFview.title);
-
 
 			// 내용 블럭 셋팅하기
 			var sendTo = $('#content-block-list');
@@ -186,10 +263,6 @@ var workUtil = {
 					$list.append('<li><img src="'+$(this).children('img').prop('src')+'"/></li>');
 				});
 				selectCover.getModalBody().html($list);
-			});
-			// 커버 기존값 복원하기
-			$('#cover-preview img').each(function(index){
-				$(this).attr('src', '/data/covers/'+NFview.work_id+'_t'+(index+1)+'.jpg');
 			});
 
 			$('#content-multiple').ajaxUploader({
@@ -377,7 +450,7 @@ var workUtil = {
 				
 				case 'image':
 					if(c=='')
-						c = '/img/thumb_wide4.jpg';
+						c = workUtil.defaultValue.image;
 					output = workUtil.content.createUploader($('<li class="block-image"><img src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
@@ -385,7 +458,7 @@ var workUtil = {
 
 				case 'video':
 					if(c=='')
-						c = '//www.youtube.com/embed/wnnOf05WKEs';
+						c = workUtil.defaultValue.video;
 					output = $('<li class="block-video"><iframe src="'+c+'?wmode=transparent" frameborder="0" wmode="Opaque"></iframe><div class="block-video-overlay"><textarea></textarea></div></li>');
 				break;
 

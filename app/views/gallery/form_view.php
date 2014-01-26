@@ -73,13 +73,13 @@
 
 				<div class="row" id="cover-preview">
 					<div class="col-md-4">
-						<img src="" alt="">
+						<img src="" alt="" onerror="this.src='/img/cover_default.png';">
 					</div>
 					<div class="col-md-4">
-						<img src="" alt="">
+						<img src="" alt="" onerror="this.src='/img/cover_default.png';">
 					</div>
 					<div class="col-md-4">
-						<img src="" alt="">
+						<img src="" alt="" onerror="this.src='/img/cover_default.png';">
 					</div>
 				</div>
 
