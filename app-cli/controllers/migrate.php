@@ -32,6 +32,8 @@ class migrate extends CI_Controller {
             $cmd = $default_cmd.'migrate user '.$val;
 
             $data = @json_decode(exec($cmd));
+            var_export($data);
+
 
         }
 
