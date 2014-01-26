@@ -142,7 +142,7 @@ class migrate extends CI_Controller {
             $new[] = $new_keyword;
         }
         sort($new);
-        $new = array_unique($new)
+        $new = array_unique($new);
 
         return implode('', $new);
     }
