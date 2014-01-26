@@ -46,7 +46,9 @@ class migrate extends CI_Controller {
 
             $data->keyword = $this->convert_keyword($data->keyword);
 
-            $sql = "INSERT INTO `users`
+            $sql = '';
+
+            $sql .= "INSERT INTO `users`
                 (`id`,
                 `username`,
                 `password`,
@@ -82,8 +84,7 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($data->info->last_login).",
                 ".$this->db->escape($data->info->created).",
                 ".$this->db->escape($data->info->modified).");";
-            $this->db->query($sql);
-            $sql = "INSERT INTO `user_profiles`
+            $sql .= "INSERT INTO `user_profiles`
                 (`id`,
                 `user_id`,
                 `keywords`,
@@ -120,10 +121,9 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($data->info->regdate).",
                 ".$this->db->escape($data->info->point).");
                 ";
-            $this->db->query($sql);
 
             foreach($data->follow as $param){
-                $sql = "INSERT INTO `user_follows`
+                $sql .= "INSERT INTO `user_follows`
                     (`follower_id`,
                     `follow_id`,
                     `regdate`)
@@ -132,13 +132,13 @@ class migrate extends CI_Controller {
                     ".$this->db->escape($param->follow_id).",
                     ".$this->db->escape($param->regdate).");
                     ";
-                $this->db->query($sql);
             }
 
             //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
             //$this->db->query($sql);
             //var_export($data);
 
+            $this->db->query($sql);
 
         }
         //$this->db->trans_complete();
