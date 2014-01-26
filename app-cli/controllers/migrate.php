@@ -128,9 +128,9 @@ class migrate extends CI_Controller {
                     `follow_id`,
                     `regdate`)
                     VALUES
-                    ({".$this->db->escape($param->follower_id)."},
-                    {".$this->db->escape($param->follow_id)."},
-                    {".$this->db->escape($param->regdate)."});
+                    (".$this->db->escape($param->follower_id).",
+                    ".$this->db->escape($param->follow_id).",
+                    ".$this->db->escape($param->regdate).");
                     ";
                 $this->db->query($sql);
             }
