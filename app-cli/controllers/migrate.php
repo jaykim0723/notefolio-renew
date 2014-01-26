@@ -35,6 +35,8 @@ class migrate extends CI_Controller {
         $this->db->query($sql);
         $sql = "TRUNCATE `user_profiles`;";
         $this->db->query($sql);
+        $sql = "TRUNCATE `user_follows`;";
+        $this->db->query($sql);
         
         $response = @json_decode(exec($cmd));
         foreach($response->rows as $key=>$val){
@@ -120,6 +122,19 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($data->info->point).");
                 ";
             $this->db->query($sql);
+
+            foreach($data->follow as $param){
+                $sql = "INSERT INTO `user_follows`
+                    (`follower_id`,
+                    `follow_id`,
+                    `regdate`)
+                    VALUES
+                    ({".$this->db->escape($param->follower_id)."},
+                    {".$this->db->escape($param->follow_id)."},
+                    {".$this->db->escape($param->regdate)."});
+                    ";
+                $this->db->query($sql);
+            }
 
             //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
             //$this->db->query($sql);
