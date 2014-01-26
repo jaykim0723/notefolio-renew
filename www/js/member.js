@@ -224,7 +224,13 @@ var workUtil = {
 
 
 			// 키워드 셋팅하기
-			$('#keywords').selectpicker('val', NFview.keywords);
+			$('#keywords').selectpicker('val', NFview.keywords).data('old', NFview.keywords.join(',')).on('change', function(){
+				if(workUtil.checkValue.keywords()>2){
+					$(this).selectpicker('val', $(this).data('old').split(','));
+				}else{
+					$(this).data('old', $(this).val().join(','));
+				}
+			});
 
 
 			// 태그 셋팅하기

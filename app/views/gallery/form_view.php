@@ -28,8 +28,7 @@
                     </label>
 				</div>
 
-				<h4>키워드</h4>
-
+				<h4>카테고리</h4>
 				<select name="keywords" id="keywords" multiple title="Choose one of the following..." >
 					<?php 
 					$this->load->config('keyword', TRUE);
