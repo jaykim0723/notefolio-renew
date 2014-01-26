@@ -325,6 +325,17 @@ body {
 	position: relative;
 }
 */
+.work-contents > .block-text {
+	position: relative;
+}
+.work-contents > .block-text .wysihtml5-toolbar {
+	position: absolute;
+	top:-7px;
+	display: none;
+}
+.work-contents > .block-text:hover .wysihtml5-toolbar {
+	display: block;
+}
 #content-block-list .block-text iframe {
 	min-height: 200px!important;
 	border-color: #f0f0f0!important;

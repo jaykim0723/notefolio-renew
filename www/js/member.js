@@ -53,7 +53,7 @@ var workUtil = {
 		data = data.replace(/(&keywords)=([A-Z0-9]{2})/g, '$1[]=$2');
 
 		var contents = [];
-		$('#content-block-list li').each(function(index){
+		$('#content-block-list > li').each(function(index){
 			var o = {
 				t : '', 
 				i : '', 
@@ -65,6 +65,8 @@ var workUtil = {
     			case 'image':
     				o.c = $(this).children('img').attr('src');
     				o.i = $(this).children('img').data('id');
+    				if(typeof o.i=='undefined')
+    					o.i = '';
     			break;
 
     			case 'video':

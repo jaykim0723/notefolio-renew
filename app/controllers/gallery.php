@@ -159,6 +159,30 @@ class Gallery extends CI_Controller {
 
 	function save(){
 		$input = $this->input->post();
+		$work = $this->work_model->get_info(array(
+			'work_id' => $input['work_id']
+		));
+		$input['contents'] = json_decode($input['contents']);
+		$input['created_images'] = $input['deleted_images'] = array();
+		$work_images = $input_images = array();
+		foreach($work->row->contents as $row){ // 기존 contents의 이미지 정보들을 수집
+			if($row->t=='image' && $row->i!=''){
+				$work_images[] = $row->i;
+			}
+		}
+		foreach($input['contents'] as $row){ // 새로 들어온 것들을 비교하면서 최종 작업진행
+			if($row->t=='image' && $row->i!=''){
+				$input_images[] = $row->i;
+				if(in_array($row->i, $work_images)!==FALSE)
+					$input['created_images'][] = $row->i; // 기존에 없던 것이라면 이것은 추가된 것이다.
+			}
+		}
+		foreach($work_images as $i){
+			if(in_array($i, $input_images)==FALSE)
+				$input['deleted_images'][] = $i; // 기존에는 있었지만 새로운 것에 없다면 삭제된 것이다.
+		}
+		$input['keywords'] = implode('', $input['keywords']);
+		
 		$data = $this->work_model->put_info((object)$input);
 		$this->layout->set_json($data)->render();
 	}
