@@ -28,9 +28,8 @@ class migrate extends CI_Controller {
         $cmd = $default_cmd.' user_list';
         
         $response = @json_decode(exec($cmd));
-        foreach($response->rows as $key=>$val->id){
-            var_export($val);
-            $cmd = $default_cmd.' user '.$val;
+        foreach($response->rows as $key=>$val){
+            $cmd = $default_cmd.' user '.$val->id;
 
             $data = @json_decode(exec($cmd));
             var_export($data);
