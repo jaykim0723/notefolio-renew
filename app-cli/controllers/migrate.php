@@ -66,7 +66,7 @@ class migrate extends CI_Controller {
     public function convert_keyword($old){
         $new = array();
 
-        $keywordset array(
+        $keywordset = array(
                 'A7'  //'공예'
                     => array(
                         'pottery'              , //'도예/유리',
