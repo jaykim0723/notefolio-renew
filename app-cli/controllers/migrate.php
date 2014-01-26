@@ -64,24 +64,24 @@ class migrate extends CI_Controller {
                 `modified`)
                 VALUES
                 ({$data->info->id},
-                {$data->info->username},
-                {$data->info->password},
-                {$data->info->email},
+                '{$data->info->username}',
+                '{$data->info->password}',
+                '{$data->info->email}',
                 {$data->info->level},
                 {$data->info->activated},
                 {$data->info->banned},
-                {$data->info->ban_reason},
-                {$data->info->realname},
-                {$data->info->new_password_key},
-                {$data->info->new_password_requested},
-                {$data->info->new_email},
-                {$data->info->new_email_key},
-                {$data->info->last_ip},
-                {$data->info->last_login},
-                {$data->info->created},
-                {$data->info->modified});";
+                '{$data->info->ban_reason}',
+                '{$data->info->realname}',
+                '{$data->info->new_password_key}',
+                '{$data->info->new_password_requested}',
+                '{$data->info->new_email}',
+                '{$data->info->new_email_key}',
+                '{$data->info->last_ip}',
+                '{$data->info->last_login}',
+                '{$data->info->created}',
+                '{$data->info->modified}');";
             $this->db->query($sql);
-            $sql = "INSERT INTO `notefolio-renew`.`user_profiles`
+            $sql = "INSERT INTO `user_profiles`
                 (`id`,
                 `user_id`,
                 `keywords`,
@@ -99,28 +99,26 @@ class migrate extends CI_Controller {
                 `follower_cnt`,
                 `moddate`,
                 `regdate`,
-                `point`,
-                `face_color`)
+                `point`)
                 VALUES
                 {$this->info->id},
                 {$this->info->user_id},
-                {$this->keywords},
-                {$this->info->location},
-                {$this->info->website},
-                {$this->info->facebook_id},
-                {$this->info->twitter_id},
-                {$this->info->gender},
-                {$this->info->realname},
-                {$this->info->phone},
-                {$this->info->birth},
-                {$this->info->description},
-                {$this->info->mailing},
+                '{$this->keywords}',
+                '{$this->info->location}',
+                '{$this->info->website}',
+                '{$this->info->facebook_id}',
+                '{$this->info->twitter_id}',
+                '{$this->info->gender}',
+                '{$this->info->realname}',
+                '{$this->info->phone}',
+                '{$this->info->birth}',
+                '{$this->info->description}',
+                '{$this->info->mailing}',
                 {$this->info->following_cnt},
                 {$this->info->follower_cnt},
-                {$this->info->moddate},
-                {$this->info->regdate},
-                {$this->info->point},
-                {$this->info->face_color});
+                '{$this->info->moddate}',
+                '{$this->info->regdate}',
+                {$this->info->point});
                 ";
             $this->db->query($sql);
 
