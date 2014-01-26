@@ -29,7 +29,7 @@ class migrate extends CI_Controller {
 
         $this->load->database();
 
-        $this->db->trans_start();
+        //$this->db->trans_start();
 
         $sql = "TRUNCATE `users`;";
         $this->db->query($sql);
@@ -128,7 +128,7 @@ class migrate extends CI_Controller {
 
 
         }
-        $this->db->trans_complete();
+        //$this->db->trans_complete();
 
         echo $this->db->trans_status().PHP_EOL;
 	}
