@@ -32,6 +32,8 @@ class migrate extends CI_Controller {
             $cmd = $default_cmd.' user '.$val->id;
 
             $data = @json_decode(exec($cmd));
+
+            $data->keyword = $this->convert_keyword($data->keyword);
             var_export($data);
 
 
@@ -131,14 +133,15 @@ class migrate extends CI_Controller {
                     ),
             );
 
-        foreach($old as $keyword){
+        foreach($old as $val){
             foreach($keywordset as $keyword_code=>$keyword_list){
-                if(in_array($old, $keyword_list))
+                if(in_array($val->category, $keyword_list))
                     $new_keyword = $keyword_code;
             }
 
             $new[] = $new_keyword;
         }
+        sort($new);
 
         return implode('', $new);
     }
