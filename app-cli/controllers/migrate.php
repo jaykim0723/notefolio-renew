@@ -23,7 +23,7 @@ class migrate extends CI_Controller {
 	 */
 	public function get_user(){
         //-- facebook post 
-        $cmd = 'php ../../notefolio-web/app_cli/cli.php migrate user_list';
+        $cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'../../notefolio-web/app_cli/cli.php migrate user_list';
         var_export(exec($cmd));  
 	}
 
