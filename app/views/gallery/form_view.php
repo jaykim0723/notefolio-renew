@@ -88,7 +88,7 @@
 				<input type="hidden" name="cover_upload_id" value="<?php echo $row->work_id ?>"/>
 
 				<button id="work-submit" type="submit" class="btn btn-primary btn-block btn-lg">
-					<span id="work-discoverbility"><span style="width:70%;"></span></span>
+					<span id="work-discoverbility"><span style="width:0%;"></span></span>
 					전송
 				</button>
 			</div>

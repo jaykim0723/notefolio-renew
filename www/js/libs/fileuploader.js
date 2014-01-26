@@ -386,6 +386,8 @@ qq.FileUploaderBasic.prototype = {
         
         for (var i=0; i<files.length; i++){
             this._uploadFile(files[i]);        
+            if(!this._options.multiple)
+                break;
         }        
     },       
     _uploadFile: function(fileContainer){      

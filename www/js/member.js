@@ -48,7 +48,7 @@ var workUtil = {
 	},
 	checkValue : {
 		title : function(){
-			return $('#title').val()=='' ? -1 : 0;
+			return $('#title').val()=='' ? 0 : 1;
 		},
 		contents : function(){
 			var o = {
@@ -61,7 +61,7 @@ var workUtil = {
 	    		var type =(""+$(this).attr("class")+"").match(/block-(\w+)/)[0].replace('block-', '');
 	    		switch(type){
 	    			case 'image':
-	    				if(typeof $(this).children('img').data('id')=='undefined')
+	    				if($(this).children('img').data('id')=='')
 	    					return true; // 더미 이미지는 제외한다.
 	    			break;
 	    			case 'video':
@@ -78,7 +78,7 @@ var workUtil = {
 			return o;
 		},
 		keywords : function(){
-			return $('#keywords').val().length;
+			return empty($('#keywords').val()) ? 0 : $('#keywords').val().length;
 		},
 		tags : function(){
 			var v = $('#tags').val();
@@ -90,39 +90,64 @@ var workUtil = {
 				return 0;
 		},
 		ccl : function(){
-			return $('#ccl').val()=='' ? -1 : 0
+			return $('#ccl').val()=='' ? 0 : 1
 		},
 		cover : function(){
-			return $('#cover-preview img:first').attr('src').indexOf('cover_default.png')!=-1 ? -1 : 0;
+			return $('#cover-preview img:first').attr('src').indexOf('cover_default.png')!=-1 ? 0 : 1;
 		}
 
 	},
 	discoverbility : function(){
 		var total = 0;
-		var contents = this.checkValue.contents();
-		if(contents.image == 1)
+		var value = {
+			title : workUtil.checkValue.title(),
+			contents : workUtil.checkValue.contents(),
+			keywords : workUtil.checkValue.keywords(),
+			tags : workUtil.checkValue.tags(),
+			ccl : workUtil.checkValue.ccl(),
+			cover : workUtil.checkValue.cover()
+		};
+		if(value.contents.image == 1)
 			total += 20;
-		else if(contents.image == 2)
+		else if(value.contents.image == 2)
+			total += 40;
+		else if(value.contents.image > 2)
+			total += 50;
+		if(value.contents.video > 0)
 			total += 20;
-		else if(contents.image == 3)
+		if(value.contents.text > 0)
+			total += 20;
+		if(value.keywords>0)
+			total += 20;
+		if(value.tags == 1)
+			total += 5;
+		else if(value.tags > 1)
 			total += 10;
-		if(contents.video > 0)
-			total += 20;
-		if(contents.text > 0)
-			total += 20;
-		if(this.checkValue.keywords()>0)
-			total += 20;
-		var tags = this.checkValue.tags();
-		if(tags == 1)
-			total += 5;
-		else if(tags == 2)
-			total += 5;
-		$('#work-discoverbility > span').css('width', (total/100)+'%');
-		return total;
+		$('#work-discoverbility > span').css('width', total+'%');
+		console.log('discoverbility', total, value);
+		return value;
 	},
 	save : function(form, returnType){
 		if(typeof(returnType)=='undefined'){
 			var returnType = true;
+		}
+		var value = this.discoverbility();
+		// 필수 입력값에 대해서만 간단하게 검사
+		if(value.title==0){
+			msg.open('제목을 입력하여 주십시오.', 'error');
+			return;
+		}
+		if(value.contents.image + value.contents.video + value.contents.text == 0 ){
+			msg.open('내용을 생성하여 주십시오.', 'error');
+			return;
+		}
+		if(value.keywords == 0){
+			msg.open('카테고리를 선택하여 주십시오.', 'error');
+			return;
+		}
+		if(value.cover == 0){
+			msg.open('커버를 지정하여 주십시오.', 'error');
+			return;
 		}
 		
 		var data = $(form).serialize();
@@ -143,7 +168,7 @@ var workUtil = {
     			case 'image':
     				o.c = $(this).children('img').attr('src');
     				o.i = $(this).children('img').data('id');
-    				if(typeof o.i=='undefined')
+    				if(o.i=='')
     					return true; // 더미 이미지는 제외한다.
     			break;
 
@@ -189,7 +214,7 @@ var workUtil = {
 			// 내용 블럭 셋팅하기
 			var sendTo = $('#content-block-list');
 			$.each(NFview.contents, function(k, block){
-				var $a = workUtil.content.createBlock(block.t, block.c);
+				var $a = workUtil.content.createBlock(block.t, block.c, block.i);
 				$a.appendTo(sendTo);
 				// $a.remove();
 				if(block.t=='text'){
@@ -216,6 +241,7 @@ var workUtil = {
 	                tagsObj.tagsinput('add', $(this).val());
 	                $(this).val('');
 	            }
+	            workUtil.discoverbility();
 	        });
 
         
@@ -269,13 +295,14 @@ var workUtil = {
 				url : '/upload/image',
 				multiple : true,
 				start : function(elem, id, fileName){
-					console.log(elem, id, fileName);
+					$('#content-block-list').append($('<li class="block-image" id="temp-'+id+'"><img/><button class="btn btn-primary">Upload an image</button></li>'));
 				},
 				cancel : function(elem, id, fileName){
 					console.log(elem, id, fileName);
 				},
 				done : function(responseJSON, elem, id, fileName){
-					workUtil.content.createBlock('image', responseJSON.src).appendTo($('#content-block-list'));
+					workUtil.content.createUploader($('#temp-'+id)).children('img').prop('src', responseJSON.src).data('id', responseJSON.upload_id);
+					workUtil.discoverbility();
 				},
 				fail : function(responseJSON, elem, id, fileName){
 					console.log(responseJSON, elem, id, fileName);
@@ -284,6 +311,8 @@ var workUtil = {
 
 			// footer 버리기
 			$('#footer').remove();
+
+			workUtil.discoverbility();
 			
 		},
 		setGround: function(target, trash){ // 각 블록별 소팅할 수 있도록 이벤트 바인딩
@@ -372,6 +401,7 @@ var workUtil = {
 				var textSrc = $(this).find('.block-video-overlay').hide().find('textarea').val();
 				if(videoSrc!=textSrc){
 					$(this).find('iframe').prop('src', textSrc+'?wmode=transparent');
+					workUtil.discoverbility();
 				}
 			});
 
@@ -399,6 +429,7 @@ var workUtil = {
 						});
 						if(className =='text')
 							$newBlock.find('textarea').wysihtml5();
+						workUtil.discoverbility();
 					}
 				})
 				.draggable({
@@ -422,6 +453,7 @@ var workUtil = {
 										.append($newBlock);
 									if(className =='text')
 										$newBlock.find('textarea').wysihtml5();
+									workUtil.discoverbility();
 								}else{
 									//$(ui.draggable).remove();
 								}
@@ -434,7 +466,7 @@ var workUtil = {
 					}
 				});
 		},
-		createBlock: function(type, c, returnType){
+		createBlock: function(type, c, i, returnType){
 			if(typeof(type)=='undefined'){
 				var type = "text";
 			}
@@ -451,7 +483,7 @@ var workUtil = {
 				case 'image':
 					if(c=='')
 						c = workUtil.defaultValue.image;
-					output = workUtil.content.createUploader($('<li class="block-image"><img src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
+					output = workUtil.content.createUploader($('<li class="block-image"><img data-id="" src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
@@ -482,23 +514,24 @@ var workUtil = {
 		removeBlock: function(target){
     		$(target).fadeOut(100, function(){
 	    		$(this).remove();
+	    		workUtil.discoverbility();
     		});
 		},
 		createUploader:function(elem, data){
 			return $(elem).ajaxUploader({
 				url : '/upload/image',
-				multiple : true,
+				multiple : false,
 				start : function(elem, id, fileName){
-					elem.hide();
-					console.log(elem, id, fileName);
-					elem.after($('<li class="block-image" id="temp-'+id+'"><img/><button class="btn btn-primary">Upload an image</button></li>'));
+					// elem.after($('<li class="block-image" id="temp-'+id+'"><img/><button class="btn btn-primary">Upload an image</button></li>'));
 				},
 				cancel : function(elem, id, fileName){
 					console.log(elem, id, fileName);
 				},
 				done : function(responseJSON, elem, id, fileName){
 					console.log('createUploader > done', responseJSON, elem, id, fileName);
-					workUtil.content.createUploader($('#temp-'+id)).children('img').prop('src', responseJSON.src);
+					elem.children('img').prop('src', responseJSON.src).data('id', responseJSON.upload_id);
+					// workUtil.content.createUploader($('#temp-'+id)).children('img').prop('src', responseJSON.src).data('id', responseJSON.upload_id);
+					workUtil.discoverbility();
 				},
 				fail : function(responseJSON, elem, id, fileName){
 					console.log(responseJSON, elem, id, fileName);
