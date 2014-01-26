@@ -27,6 +27,8 @@ class migrate extends CI_Controller {
         
         $cmd = $default_cmd.' user_list';
 
+        $this->load->database();
+
         $this->db->trans_start();
 
         $sql = "TRUNCATE `users`;";
@@ -39,7 +41,6 @@ class migrate extends CI_Controller {
             $cmd = $default_cmd.' user '.$val->id;
 
             $data = @json_decode(exec($cmd));
-            exit();
 
             $data->keyword = $this->convert_keyword($data->keyword);
 
