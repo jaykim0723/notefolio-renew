@@ -26,6 +26,11 @@ class migrate extends CI_Controller {
         $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
         
         $cmd = $default_cmd.' user_list';
+
+        $sql = "TRUNCATE `notefolio-renew`.`users`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `notefolio-renew`.`user_profiles`;";
+        $this->db->query($sql);
         
         $response = @json_decode(exec($cmd));
         foreach($response->rows as $key=>$val){
@@ -34,6 +39,89 @@ class migrate extends CI_Controller {
             $data = @json_decode(exec($cmd));
 
             $data->keyword = $this->convert_keyword($data->keyword);
+
+            $sql = "INSERT INTO `notefolio-renew`.`users`
+                (`id`,
+                `username`,
+                `password`,
+                `email`,
+                `level`,
+                `activated`,
+                `banned`,
+                `ban_reason`,
+                `realname`,
+                `new_password_key`,
+                `new_password_requested`,
+                `new_email`,
+                `new_email_key`,
+                `last_ip`,
+                `last_login`,
+                `created`,
+                `modified`)
+                VALUES
+                ({$data->info->id},
+                {$data->info->username},
+                {$data->info->password},
+                {$data->info->email},
+                {$data->info->level},
+                {$data->info->activated},
+                {$data->info->banned},
+                {$data->info->ban_reason},
+                {$data->info->realname},
+                {$data->info->new_password_key},
+                {$data->info->new_password_requested},
+                {$data->info->new_email},
+                {$data->info->new_email_key},
+                {$data->info->last_ip},
+                {$data->info->last_login},
+                {$data->info->created},
+                {$data->info->modified});";
+            $this->db->query($sql);
+            $sql = "INSERT INTO `notefolio-renew`.`user_profiles`
+                (`id`,
+                `user_id`,
+                `keywords`,
+                `location`,
+                `website`,
+                `facebook_id`,
+                `twitter_id`,
+                `gender`,
+                `realname`,
+                `phone`,
+                `birth`,
+                `description`,
+                `mailing`,
+                `following_cnt`,
+                `follower_cnt`,
+                `moddate`,
+                `regdate`,
+                `point`,
+                `face_color`)
+                VALUES
+                {$this->info->id},
+                {$this->info->user_id},
+                {$this->keywords},
+                {$this->info->location},
+                {$this->info->website},
+                {$this->info->facebook_id},
+                {$this->info->twitter_id},
+                {$this->info->gender},
+                {$this->info->realname},
+                {$this->info->phone},
+                {$this->info->birth},
+                {$this->info->description},
+                {$this->info->mailing},
+                {$this->info->following_cnt},
+                {$this->info->follower_cnt},
+                {$this->info->moddate},
+                {$this->info->regdate},
+                {$this->info->point},
+                {$this->info->face_color});
+                ";
+            $this->db->query($sql);
+
+            //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
+            //$this->db->query($sql);
             var_export($data);
 
 
@@ -57,6 +145,8 @@ class migrate extends CI_Controller {
             $cmd = $default_cmd.' work '.$val->id;
 
             $data = @json_decode(exec($cmd));
+
+            $data->keyword = $this->convert_keyword($data->keyword);
 
         }
 
