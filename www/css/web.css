@@ -397,10 +397,12 @@ li#trash-bin{
 	background: #2ac5c6;
 	height: 10px;
 }
-#cover-preview .well {
+#cover-preview .col-md-4 {
 	display: table-cell;
 	vertical-align: middle;
-	background: #fff;
+}
+#cover-preview img {
+	width: 100%;
 }
 
 /* profile */

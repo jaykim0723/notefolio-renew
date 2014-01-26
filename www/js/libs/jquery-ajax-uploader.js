@@ -8,7 +8,7 @@ $.fn.ajaxUploader = function(opts) {
 		dropActiveClass : '.drop-active',
 		clickElement : 'self',
 		multiple : true,
-		allowedExtensions : ['jpg','jpeg','gif','bmp','tiff'],
+		allowedExtensions : ['jpg','jpeg','gif','bmp','tiff','png'],
 		sizeLimit : 10000, // KB
 		start : function(elem, id, fileName){
 			console.log(elem, id, fileName);

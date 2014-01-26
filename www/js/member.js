@@ -30,8 +30,9 @@ var workUtil = {
 
 						$('[name=cover_upload_id]').val(upload_id);
 
-						$('#cover-preview .well').each(function(index){
-							$(this).html('<img src="'+responseJSON.src[index]+"'/>");
+						$('#cover-preview img').each(function(index){
+							console.log(index, responseJSON.src[index]);
+							$(this).attr('src', responseJSON.src[index]);
 						});
 
 						dialog.close();
@@ -183,6 +184,10 @@ var workUtil = {
 					$list.append('<li><img src="'+$(this).children('img').prop('src')+'"/></li>');
 				});
 				selectCover.getModalBody().html($list);
+			});
+			// 커버 기존값 복원하기
+			$('#cover-preview img').each(function(index){
+				$(this).attr('src', '/data/covers/'+NFview.work_id+'_t'+(index+1)+'.jpg');
 			});
 
 			$('#content-multiple').ajaxUploader({
@@ -834,7 +839,7 @@ var profileUtil = {
 				NFview.sdate = responseJSON.sdate;
 				NFview.edate = responseJSON.edate;
 
-				$.plot("#statistics-chart", [ {label:type, data:responseJSON.rows, color:'#2ac5c6'} ], {
+				$.plot("#statistics-chart", [ {label:$('#statistics-toolbars a').filter('[data-value='+type+']').html(), data:responseJSON.rows, color:'#2ac5c6'} ], {
 					series: {
 						lines: {
 							show: true
