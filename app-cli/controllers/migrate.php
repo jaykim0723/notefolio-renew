@@ -124,13 +124,13 @@ class migrate extends CI_Controller {
 
             $sql = '';
             foreach($data->follow as $param){
-                $sql .= (($sql=='')?'':',')."
+                $sql .= (empty($sql)?'':',')."
                     (".$this->db->escape($data->info->user_id).",
                     ".$this->db->escape($param->follow_id).",
                     ".$this->db->escape($param->regdate).");
                     ";
             }
-            if($sql!=''){
+            if(!empty($sql)){
                 $sql = "INSERT INTO `user_follows`
                     (`follower_id`,
                     `follow_id`,
