@@ -141,7 +141,7 @@ class migrate extends CI_Controller {
 
             //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
             //$this->db->query($sql);
-            //var_export($data);
+            var_export($data);
 
 
         }
