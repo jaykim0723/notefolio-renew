@@ -52,6 +52,7 @@ class migrate extends CI_Controller {
         
         $response = @json_decode(exec($cmd));
         foreach($response->rows as $key=>$val){
+            var_export($val);
             $cmd = $default_cmd.' work '.$val->id;
 
             $data = @json_decode(exec($cmd));
