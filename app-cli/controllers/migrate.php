@@ -27,9 +27,11 @@ class migrate extends CI_Controller {
         
         $cmd = $default_cmd.' user_list';
 
-        $sql = "TRUNCATE `notefolio-renew`.`users`;";
+        $this->db->trans_start();
+
+        $sql = "TRUNCATE `users`;";
         $this->db->query($sql);
-        $sql = "TRUNCATE `notefolio-renew`.`user_profiles`;";
+        $sql = "TRUNCATE `user_profiles`;";
         $this->db->query($sql);
         
         $response = @json_decode(exec($cmd));
@@ -40,7 +42,7 @@ class migrate extends CI_Controller {
 
             $data->keyword = $this->convert_keyword($data->keyword);
 
-            $sql = "INSERT INTO `notefolio-renew`.`users`
+            $sql = "INSERT INTO `users`
                 (`id`,
                 `username`,
                 `password`,
@@ -126,8 +128,9 @@ class migrate extends CI_Controller {
 
 
         }
+        $this->db->trans_complete();
 
-        echo PHP_EOL;
+        echo $this->db->trans_status().PHP_EOL;
 	}
 
 	/**
