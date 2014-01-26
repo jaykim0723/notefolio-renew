@@ -133,7 +133,7 @@ class migrate extends CI_Controller {
                     `regdate`,
                     `moddate`)
                     VALUES
-                    (".$this->db->escape($data->sns_fb->id).",
+                    (".$this->db->escape($data->user_id).",
                     ".$this->db->escape($data->sns_fb->fb_num_id).",
                     ".$this->db->escape($data->sns_fb->access_token).",
                     ".$this->db->escape($data->sns_fb->post_work).",
@@ -147,7 +147,7 @@ class migrate extends CI_Controller {
             $sql = '';
             foreach($data->follow as $param){
                 $sql .= (empty($sql)?'':',')."
-                    (".$this->db->escape($data->info->user_id).",
+                    (".$this->db->escape($data->user_id).",
                     ".$this->db->escape($param->follow_id).",
                     ".$this->db->escape($param->regdate).")
                     ";
