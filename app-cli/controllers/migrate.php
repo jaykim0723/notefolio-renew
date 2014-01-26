@@ -43,6 +43,7 @@ class migrate extends CI_Controller {
             $data = @json_decode(exec($cmd));
 
             $data->keyword = $this->convert_keyword($data->keyword);
+            var_export($data->keyword);
 
             $sql = "INSERT INTO `users`
                 (`id`,
@@ -90,7 +91,6 @@ class migrate extends CI_Controller {
                 `facebook_id`,
                 `twitter_id`,
                 `gender`,
-                `realname`,
                 `phone`,
                 `birth`,
                 `description`,
@@ -103,13 +103,12 @@ class migrate extends CI_Controller {
                 VALUES
                 (".$this->db->escape($data->info->id).",
                 ".$this->db->escape($data->info->user_id).",
-                ".$this->db->escape($data->keywords).",
+                ".$this->db->escape($data->keyword).",
                 ".$this->db->escape($data->info->location).",
                 ".$this->db->escape($data->info->website).",
                 ".$this->db->escape($data->info->facebook_id).",
                 ".$this->db->escape($data->info->twitter_id).",
                 ".$this->db->escape($data->info->gender).",
-                ".$this->db->escape($data->info->realname).",
                 ".$this->db->escape($data->info->phone).",
                 ".$this->db->escape($data->info->birth).",
                 ".$this->db->escape($data->info->description).",
@@ -124,7 +123,7 @@ class migrate extends CI_Controller {
 
             //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
             //$this->db->query($sql);
-            var_export($data);
+            //var_export($data);
 
 
         }
