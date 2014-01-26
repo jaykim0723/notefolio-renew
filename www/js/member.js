@@ -123,7 +123,9 @@ var workUtil = {
 			total += 5;
 		else if(value.tags > 1)
 			total += 10;
-		$('#work-discoverbility > span').css('width', total+'%');
+		$('#work-discoverbility > span').animate({
+			width : total+'%'
+		}, 1000);
 		console.log('discoverbility', total, value);
 		return value;
 	},
@@ -225,10 +227,11 @@ var workUtil = {
 
 			// 키워드 셋팅하기
 			$('#keywords').selectpicker('val', NFview.keywords).data('old', NFview.keywords.join(',')).on('change', function(){
-				if(workUtil.checkValue.keywords()>2){
+				var count = workUtil.checkValue.keywords();
+				if(count>2){
 					$(this).selectpicker('val', $(this).data('old').split(','));
 				}else{
-					$(this).data('old', $(this).val().join(','));
+					$(this).data('old', count > 0 ? $(this).val().join(',') : '');
 				}
 			});
 
