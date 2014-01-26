@@ -27,8 +27,8 @@ class migrate extends CI_Controller {
         
         $cmd = $default_cmd.' user_list';
         
-        $list = @json_decode(exec($cmd));
-        foreach($list as $key=>$val){
+        $response = @json_decode(exec($cmd));
+        foreach($response->rows as $key=>$val){
             $cmd = $default_cmd.'migrate user '.$val;
 
             $data = @json_decode(exec($cmd));
@@ -50,8 +50,8 @@ class migrate extends CI_Controller {
         
         $cmd = $default_cmd.' work_list';
         
-        $list = @json_decode(exec($cmd));
-        foreach($list as $key=>$val){
+        $response = @json_decode(exec($cmd));
+        foreach($response->rows as $key=>$val){
             $cmd = $default_cmd.'migrate work '.$val;
 
             $data = @json_decode(exec($cmd));
