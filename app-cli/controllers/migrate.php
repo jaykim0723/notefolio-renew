@@ -101,7 +101,7 @@ class migrate extends CI_Controller {
                 `regdate`,
                 `point`)
                 VALUES
-                {$data->info->id},
+                ({$data->info->id},
                 {$data->info->user_id},
                 '{$data->keywords}',
                 '{$data->info->location}',
