@@ -35,6 +35,8 @@ class migrate extends CI_Controller {
         $this->db->query($sql);
         $sql = "TRUNCATE `user_profiles`;";
         $this->db->query($sql);
+        $sql = "TRUNCATE `user_sns_fb`;";
+        $this->db->query($sql);
         $sql = "TRUNCATE `user_follows`;";
         $this->db->query($sql);
         
@@ -120,6 +122,26 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($data->info->regdate).",
                 ".$this->db->escape($data->info->point).");
                 ";
+            $this->db->query($sql);
+            $sql = "INSERT INTO `notefolio-renew`.`user_sns_fb`
+                    (`id`,
+                    `fb_num_id`,
+                    `access_token`,
+                    `post_work`,
+                    `post_comment`,
+                    `post_note`,
+                    `regdate`,
+                    `moddate`)
+                    VALUES
+                    (".$this->db->escape($data->sns_fb->id).",
+                    ".$this->db->escape($data->sns_fb->fb_num_id).",
+                    ".$this->db->escape($data->sns_fb->access_token).",
+                    ".$this->db->escape($data->sns_fb->post_work).",
+                    ".$this->db->escape($data->sns_fb->post_comment).",
+                    ".$this->db->escape($data->sns_fb->post_note).",
+                    ".$this->db->escape($data->sns_fb->regdate).",
+                    ".$this->db->escape($data->sns_fb->moddate).");
+                    ";
             $this->db->query($sql);
 
             $sql = '';
