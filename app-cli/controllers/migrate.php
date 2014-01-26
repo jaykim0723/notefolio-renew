@@ -127,7 +127,7 @@ class migrate extends CI_Controller {
                 $sql .= (empty($sql)?'':',')."
                     (".$this->db->escape($data->info->user_id).",
                     ".$this->db->escape($param->follow_id).",
-                    ".$this->db->escape($param->regdate).");
+                    ".$this->db->escape($param->regdate).")
                     ";
             }
             if(!empty($sql)){
@@ -135,7 +135,7 @@ class migrate extends CI_Controller {
                     (`follower_id`,
                     `follow_id`,
                     `regdate`)
-                    VALUES ".$sql;
+                    VALUES ".$sql.";";
                 $this->db->query($sql);
             }
 
