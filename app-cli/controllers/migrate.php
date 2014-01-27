@@ -52,7 +52,7 @@ class migrate extends CI_Controller {
 
             $data->keyword = $this->convert_keyword($data->keyword);
             //var_export($data);
-            echo('User ID "'.$this->user_id.'" - Working...'.PHP_EOL);
+            echo('User ID "'.$data->user_id.'" - Working...'.PHP_EOL);
 
             $sql = "INSERT INTO `users`
                 (`id`,
