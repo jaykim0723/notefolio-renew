@@ -22,6 +22,10 @@ class migrate extends CI_Controller {
 	 * @param int $user_id
 	 */
 	public function get_user(){
+        $this->load->config('upload', TRUE);
+        $this->load->model('upload_model');
+        $this->load->library('file_save');
+
         $default_cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'../../notefolio-web/app_cli/cli.php migrate';
         $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
         
@@ -182,6 +186,16 @@ class migrate extends CI_Controller {
                     VALUES ".$sql.";";
                 $this->db->query($sql);
             }
+
+
+        $filename = $data->pic;
+
+        $this->file_save->make_thumbnail(
+            $this->config->item('img_upload_path', 'upload').$filename,
+            $this->config->item('profile_upload_path', 'upload').$username.'_face.jpg',
+            'profile_face', 
+            array('crop_to'=>array( 'width'  => 100, 'height' => 100, 'pos_x'  => 0, 'pos_y'  => 0), 'spanning'=>true)
+            );
 
             //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
             //$this->db->query($sql);
