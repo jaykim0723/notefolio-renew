@@ -192,7 +192,7 @@ class migrate extends CI_Controller {
 
         $this->file_save->make_thumbnail(
             $this->config->item('img_upload_path', 'upload').$filename,
-            $this->config->item('profile_upload_path', 'upload').$username.'_face.jpg',
+            $this->config->item('profile_upload_path', 'upload').$data->info->username.'_face.jpg',
             'profile_face', 
             array('crop_to'=>array( 'width'  => 100, 'height' => 100, 'pos_x'  => 0, 'pos_y'  => 0), 'spanning'=>true)
             );
