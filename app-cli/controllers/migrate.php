@@ -194,20 +194,23 @@ class migrate extends CI_Controller {
                 $this->db->query($sql);
             }
             echo('.');
-
-            $filename = $data->pic;
-
-            $this->file_save->make_thumbnail(
-                $filename,
-                $this->config->item('profile_upload_path', 'upload').$data->info->username.'_face.jpg',
-                'profile_face', 
-                array('crop_to'=>array( 'width'  => 100, 'height' => 100, 'pos_x'  => 0, 'pos_y'  => 0), 'spanning'=>true)
-                );
-
-                //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
-                //$this->db->query($sql);
+            
+            if(!empty($data->pic)){
+                $filename = $data->pic;
+    
+                $this->file_save->make_thumbnail(
+                    $filename,
+                    $this->config->item('profile_upload_path', 'upload').$data->info->username.'_face.jpg',
+                    'profile_face', 
+                    array('crop_to'=>array( 'width'  => 100, 'height' => 100, 'pos_x'  => 0, 'pos_y'  => 0), 'spanning'=>true)
+                    );
+            }
+            echo('.');
 
             echo(' done.'.PHP_EOL);
+    
+                    //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
+                    //$this->db->query($sql);
 
         }
         //$this->db->trans_complete();
