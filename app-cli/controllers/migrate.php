@@ -52,7 +52,7 @@ class migrate extends CI_Controller {
 
             $data->keyword = $this->convert_keyword($data->keyword);
             //var_export($data);
-            echo('User ID "'.$data->user_id.'" - Working...'.PHP_EOL);
+            echo('User ID "'.$data->user_id.'" - Working');
 
             $sql = "INSERT INTO `users`
                 (`id`,
@@ -91,6 +91,8 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($data->info->created).",
                 ".$this->db->escape($data->info->modified).");";
             $this->db->query($sql);
+            echo('.');
+            
             $sql = "INSERT INTO `user_profiles`
                 (`id`,
                 `user_id`,
@@ -151,6 +153,7 @@ class migrate extends CI_Controller {
                         ";
                 $this->db->query($sql);
             }
+            echo('.');
 
             $sql = '';
             foreach($data->follow as $param){
@@ -168,6 +171,7 @@ class migrate extends CI_Controller {
                     VALUES ".$sql.";";
                 $this->db->query($sql);
             }
+            echo('.');
 
             $sql = '';
             foreach($data->collect as $param){
@@ -187,20 +191,21 @@ class migrate extends CI_Controller {
                     VALUES ".$sql.";";
                 $this->db->query($sql);
             }
+            echo('.');
 
+            $filename = $data->pic;
 
-        $filename = $data->pic;
+            $this->file_save->make_thumbnail(
+                $this->config->item('img_upload_path', 'upload').$filename,
+                $this->config->item('profile_upload_path', 'upload').$data->info->username.'_face.jpg',
+                'profile_face', 
+                array('crop_to'=>array( 'width'  => 100, 'height' => 100, 'pos_x'  => 0, 'pos_y'  => 0), 'spanning'=>true)
+                );
 
-        $this->file_save->make_thumbnail(
-            $this->config->item('img_upload_path', 'upload').$filename,
-            $this->config->item('profile_upload_path', 'upload').$data->info->username.'_face.jpg',
-            'profile_face', 
-            array('crop_to'=>array( 'width'  => 100, 'height' => 100, 'pos_x'  => 0, 'pos_y'  => 0), 'spanning'=>true)
-            );
+                //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
+                //$this->db->query($sql);
 
-            //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
-            //$this->db->query($sql);
-
+            echo('done.'.PHP_EOL);
 
         }
         //$this->db->trans_complete();
