@@ -164,6 +164,25 @@ class migrate extends CI_Controller {
                 $this->db->query($sql);
             }
 
+            $sql = '';
+            foreach($data->collect as $param){
+                $sql .= (empty($sql)?'':',')."
+                    (".$this->db->escape($data->user_id).",
+                    ".$this->db->escape($param->work_id).",
+                    ".$this->db->escape($param->comment).",
+                    ".$this->db->escape($param->regdate).")
+                    ";
+            }
+            if(!empty($sql)){
+                $sql = "INSERT INTO `user_work_collect`
+                    (`user_id`,
+                    `work_id`,
+                    `comment`,
+                    `regdate`)
+                    VALUES ".$sql.";";
+                $this->db->query($sql);
+            }
+
             //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
             //$this->db->query($sql);
 
