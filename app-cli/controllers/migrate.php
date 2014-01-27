@@ -92,7 +92,7 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($data->info->modified).");";
             $this->db->query($sql);
             echo('.');
-            
+
             $sql = "INSERT INTO `user_profiles`
                 (`id`,
                 `user_id`,
@@ -131,6 +131,8 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($data->info->point).");
                 ";
             $this->db->query($sql);
+            echo('.');
+
             if(count($data->sns_fb)>0){
                 $sql = "INSERT INTO `notefolio-renew`.`user_sns_fb`
                         (`id`,
@@ -196,7 +198,7 @@ class migrate extends CI_Controller {
             $filename = $data->pic;
 
             $this->file_save->make_thumbnail(
-                $this->config->item('img_upload_path', 'upload').$filename,
+                $filename,
                 $this->config->item('profile_upload_path', 'upload').$data->info->username.'_face.jpg',
                 'profile_face', 
                 array('crop_to'=>array( 'width'  => 100, 'height' => 100, 'pos_x'  => 0, 'pos_y'  => 0), 'spanning'=>true)
@@ -205,7 +207,7 @@ class migrate extends CI_Controller {
                 //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
                 //$this->db->query($sql);
 
-            echo('done.'.PHP_EOL);
+            echo(' done.'.PHP_EOL);
 
         }
         //$this->db->trans_complete();
