@@ -605,6 +605,9 @@ class migrate extends CI_Controller {
         $this->load->config('upload', TRUE);
         $this->load->model('upload_model');
         $this->load->library('file_save');
+        if($work_id=='8'){
+            echo ('x');
+        }
             
         $filename = $this->make_filename('image', $org_filename);
 
