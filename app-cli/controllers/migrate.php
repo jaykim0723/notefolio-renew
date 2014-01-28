@@ -264,7 +264,7 @@ class migrate extends CI_Controller {
             echo('.');
             
             if(!empty($data->content)){
-                $data->content = $this->convert_content($data->work_id, $data->content);
+                $data->content = $this->convert_content($data->work_id, $data->user_id, $data->content);
             }
             echo('.');
 
@@ -561,7 +561,7 @@ class migrate extends CI_Controller {
      * convert contents for new system
      *
      */
-    public function convert_content($work_id, $old){
+    public function convert_content($work_id, $user_id, $old){
         $new = array();
 
         foreach($old as $val){
@@ -577,8 +577,8 @@ class migrate extends CI_Controller {
                     $path = '/home/web/notefolio-web/www/img/'
                         .date('ym', strtotime($val->moddate)).'/'.$val->id.'_r';
 
-        echo('$result = $this->image_migrate('."$work_id, $path, {$val->filename}, {$val->filesize});");
-                    $result = $this->image_migrate($work_id, $path, $val->filename, $val->filesize);
+        echo('$result = $this->image_migrate('."$work_id, $user_id, $path, {$val->filename}, {$val->filesize});");
+                    $result = $this->image_migrate($work_id, $user_id, $path, $val->filename, $val->filesize);
 
         var_export($result);
                     $data['i'] = $result['upload_id'];
@@ -599,7 +599,7 @@ class migrate extends CI_Controller {
      * migrate image (get->upload->return)
      *
      */
-    public function migrate_image($work_id, $path, $org_filename, $filesize){
+    public function migrate_image($work_id, $user_id, $path, $org_filename, $filesize){
         $this->load->config('upload', TRUE);
         $this->load->model('upload_model');
         $this->load->library('file_save');
@@ -616,6 +616,7 @@ class migrate extends CI_Controller {
         echo(';');
 
         $upload_id = $this->upload_model->post(array(
+            'user_id' => $user_id,
             'work_id' => $work_id,
             'type' => 'work',
             'filename' => $filename['original'],
