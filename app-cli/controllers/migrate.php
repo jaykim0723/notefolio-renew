@@ -255,6 +255,13 @@ class migrate extends CI_Controller {
 
             $data = @json_decode(exec($cmd));
 
+            if($start>0&&$data->work_id!=$start){
+                continue;
+            }
+            else{
+                $start = 0;
+            }
+
             echo('Work ID "'.$data->work_id.'" - Migrating');
             $data->keyword = $this->convert_keyword($data->keyword);
             echo('.');
