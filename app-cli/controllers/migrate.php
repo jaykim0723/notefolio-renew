@@ -587,8 +587,6 @@ class migrate extends CI_Controller {
                     continue;
                 break;
             }
-            echo('a');
-
             $new[] = $data;
         }
 
@@ -629,7 +627,6 @@ class migrate extends CI_Controller {
             'org_filename' => $file['name'],
             'data' => $this->upload_model->get(array('id'=>$upload_id))->row
             );
-        echo('b');
 
         return $json;
     }
