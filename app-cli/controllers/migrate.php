@@ -606,23 +606,16 @@ class migrate extends CI_Controller {
             
         $filename = $this->make_filename('image', $path, $org_filename);
 
-        switch($type){
-            case "image":
-                $this->make_thumbnail($org_filename, $filename['path'].$filename['large'], 'large');
-                $this->make_thumbnail($org_filename, $filename['path'].$filename['medium'], 'medium');
-                $this->make_thumbnail($org_filename, $filename['path'].$filename['small'], 'small');
-                $this->make_thumbnail($org_filename, $filename['path'].$filename['wide'], 'wide', array('autocrop'=>true));
-                $this->make_thumbnail($org_filename, $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
-            break;
-            case "cover":
-            break;
-            default:
-            break;
-        }
+        $this->make_thumbnail($org_filename, $filename['path'].$filename['large'], 'large');
+        $this->make_thumbnail($org_filename, $filename['path'].$filename['medium'], 'medium');
+        $this->make_thumbnail($org_filename, $filename['path'].$filename['small'], 'small');
+        $this->make_thumbnail($org_filename, $filename['path'].$filename['wide'], 'wide', array('autocrop'=>true));
+        $this->make_thumbnail($org_filename, $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
+
 
 
         $upload_id = $this->upload_model->post(array(
-            'work_id' => $work_id),
+            'work_id' => $work_id,
             'type' => 'work',
             'filename' => $filename['original'],
             'org_filename' => $org_filename,
