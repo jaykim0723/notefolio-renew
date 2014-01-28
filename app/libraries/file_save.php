@@ -175,6 +175,10 @@ class file_save {
             if(class_exists('Imagick')){
                 // assign ImageMagick
                 $image = new Imagick($tmp_name);
+                $image->setImageMatte(true);
+                $image->setImageMatteColor('white');
+                $image->setImageAlphaChannel(Imagick::ALPHACHANNEL_OPAQUE);
+
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
                 if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
                     $profiles = $image->getImageProfiles('*', false); 
@@ -191,10 +195,7 @@ class file_save {
                     $image->profileImage('icc', $icc_rgb); 
                     unset($icc_rgb); 
                 }
-                $image->setImageMatte(true);
-                $image->setImageMatteColor('white');
-                $image->setImageAlphaChannel(Imagick::ALPHACHANNEL_OPAQUE);
-
+                
                 if(in_array('crop', $todo)){
                     // Crop Image. Resize is next block.
                     if(isset($opt['autocrop'])&&$opt['autocrop']){
