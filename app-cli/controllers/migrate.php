@@ -264,7 +264,7 @@ class migrate extends CI_Controller {
             echo('.');
             
             if(!empty($data->content)){
-                $data->content = $this->convert_content($data->work_id, $data->user_id, $data->content);
+                $data->content = $this->convert_content($data->work_id, $data->info->user_id, $data->content);
             }
             echo('.');
 
@@ -579,13 +579,16 @@ class migrate extends CI_Controller {
                 case "image":
                     $path = '/home/web/notefolio-web/www/img/'
                         .date('ym', strtotime($val->moddate)).'/'.$val->id.'_r';
-
-                    $result = $this->migrate_image($work_id, $user_id, $path, $val->filename, $val->filesize);
-                    echo('*');
-
-                    $data['i'] = $result['upload_id'];
-                    $data['c'] = $result['src'];
-                    
+                    if(file_exists($path)){
+                        $result = $this->migrate_image($work_id, $user_id, $path, $val->filename, $val->filesize);
+                        echo('*');
+    
+                        $data['i'] = $result['upload_id'];
+                        $data['c'] = $result['src'];
+                    }
+                    else{
+                        continue;
+                    }
                 break;
                 default:
                     continue;
