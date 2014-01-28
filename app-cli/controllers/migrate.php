@@ -575,7 +575,7 @@ class migrate extends CI_Controller {
                 break;
                 case "image":
                     $path = '/home/web/notefolio-web/www/img/'
-                        .preg_replace('/[^-][^-]([^-]+)-([^-]+) /', '$1$2', $val->moddate).'/'.$val->id.'_r';
+                        .preg_replace('/^[^-][^-]([^-]+)-([^-]+).+/', '$1$2', $val->moddate).'/'.$val->id.'_r';
                     var_export($path);
 
                     $result = $this->image_migrate($work_id, $path, $val->filename, $val->filesize);
