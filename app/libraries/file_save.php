@@ -222,7 +222,10 @@ class file_save {
                 $image->setImageCompressionQuality((isset($opt['ext'])&&$opt['ext']!='jpg')?0:90);
                 
                 // Clean & Save
-                //$image->stripImage();
+                $image->stripImage();
+                $image->setImageMatte(true);
+                $image->setImageMatteColor('white');
+                $image->setImageAlphaChannel(Imagick::ALPHACHANNEL_OPAQUE);
                 $image->writeImage($name);
                 $image->destroy();
 
