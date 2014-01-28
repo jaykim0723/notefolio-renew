@@ -290,7 +290,7 @@ class migrate extends CI_Controller {
                 (".$this->db->escape($data->work_id).",
                 ".$this->db->escape($data->info->regdate).",
                 'enabled',
-                ".$this->db->escape($data->keywords).",
+                ".$this->db->escape($data->keyword).",
                 ".$this->db->escape($data->info->title).",
                 ".$this->db->escape($data->tags).",
                 ".$this->db->escape($data->info->user_id).",
