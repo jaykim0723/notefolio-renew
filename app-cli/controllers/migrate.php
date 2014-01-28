@@ -349,7 +349,7 @@ class migrate extends CI_Controller {
                     VALUES ".$sql.";";
                 $this->db->query($sql);
                 $sql = "UPDATE `work_comments`
-                    set `children_cnt` = 
+                    set `work_comments`.`children_cnt` = 
                     (select count(*)
                         from `work_comments`
                         where `work_id` = {$this->db->escape($data->work_id)}
