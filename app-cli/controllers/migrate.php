@@ -223,7 +223,7 @@ class migrate extends CI_Controller {
 	 * migrate info for work list
 	 *
 	 */
-	public function get_work(){
+	public function get_work($start=0){
         $this->load->config('upload', TRUE);
         $this->load->model('upload_model');
         $this->load->library('file_save');
@@ -236,18 +236,19 @@ class migrate extends CI_Controller {
         $this->load->database();
 
         //$this->db->trans_start();
+        if($start==0){
+            $sql = "TRUNCATE `works`;";
+            $this->db->query($sql);
+            $sql = "TRUNCATE `work_comments`;";
+            $this->db->query($sql);
+            $sql = "TRUNCATE `work_tags`;";
+            $this->db->query($sql);
+            $sql = "TRUNCATE `log_work_view`;";
+            $this->db->query($sql);
+            $sql = "TRUNCATE `log_work_note`;";
+            $this->db->query($sql);
+        }
 
-        $sql = "TRUNCATE `works`;";
-        $this->db->query($sql);
-        $sql = "TRUNCATE `work_comments`;";
-        $this->db->query($sql);
-        $sql = "TRUNCATE `work_tags`;";
-        $this->db->query($sql);
-        $sql = "TRUNCATE `log_work_view`;";
-        $this->db->query($sql);
-        $sql = "TRUNCATE `log_work_note`;";
-        $this->db->query($sql);
-        
         $response = @json_decode(exec($cmd));
         foreach($response->rows as $key=>$val){
             $cmd = $default_cmd.' work '.$val->id;
