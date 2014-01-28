@@ -631,7 +631,7 @@ class migrate extends CI_Controller {
             'org_filename' => $file['name'],
             'data' => $this->upload_model->get(array('id'=>$upload_id))->row
             );
-            echo('.');
+            echo('s');
 
         return $json;
     }
