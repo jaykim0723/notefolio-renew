@@ -604,7 +604,7 @@ class migrate extends CI_Controller {
         $this->load->library('tank_auth');
         echo(';');
             
-        $filename = $this->file_save->make_filename('image', $org_filename);
+        $filename = $this->make_filename('image', $org_filename);
         echo(';');
 
         $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['large'],  'large' );
