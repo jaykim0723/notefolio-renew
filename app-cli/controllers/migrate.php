@@ -257,9 +257,15 @@ class migrate extends CI_Controller {
             echo('Work ID "'.$data->work_id.'" - Migraing');
             $data->keyword = $this->convert_keyword($data->keyword);
             echo('.');
-            $data->tags = $this->convert_tags($data->tag);
+
+            if(!empty($data->tag)){
+                $data->tags = $this->convert_tags($data->tag);
+            }
             echo('.');
-            $data->content = $this->convert_content($data->content);
+            
+            if(!empty($data->content)){
+                $data->content = $this->convert_content($data->content);
+            }
             echo('.');
 
             $sql = "INSERT INTO `notefolio-renew`.`works`
@@ -542,15 +548,11 @@ class migrate extends CI_Controller {
      */
     public function convert_tags($old){
         $new = array();
-            echo('.');
 
         foreach($old as $val){
             $new[] = $val['text'];
         }
-            echo('.');
-
         $new = array_unique($new);
-            echo('.');
 
         return implode(',', $new);
     }
