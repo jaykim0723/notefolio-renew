@@ -577,10 +577,8 @@ class migrate extends CI_Controller {
                     $path = '/home/web/notefolio-web/www/img/'
                         .date('ym', strtotime($val->moddate)).'/'.$val->id.'_r';
 
-        echo('$result = $this->image_migrate('."$work_id, $user_id, $path, {$val->filename}, {$val->filesize});");
                     $result = $this->image_migrate($work_id, $user_id, $path, $val->filename, $val->filesize);
 
-        var_export($result);
                     $data['i'] = $result['upload_id'];
                     $data['c'] = $result['src'];
                     
@@ -605,14 +603,14 @@ class migrate extends CI_Controller {
         $this->load->library('file_save');
         echo(';');
             
-        $filename = $this->make_filename('image', $path, $org_filename);
+        $filename = $this->file_save->make_filename('image', $path, $org_filename);
         echo(';');
 
-        $this->make_thumbnail($org_filename, $filename['path'].$filename['large'],  'large' );
-        $this->make_thumbnail($org_filename, $filename['path'].$filename['medium'], 'medium');
-        $this->make_thumbnail($org_filename, $filename['path'].$filename['small'],  'small' );
-        $this->make_thumbnail($org_filename, $filename['path'].$filename['wide'],   'wide',   array('autocrop'=>true));
-        $this->make_thumbnail($org_filename, $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
+        $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['large'],  'large' );
+        $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['medium'], 'medium');
+        $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['small'],  'small' );
+        $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['wide'],   'wide',   array('autocrop'=>true));
+        $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
         echo(';');
 
         $upload_id = $this->upload_model->post(array(
