@@ -52,7 +52,7 @@ class migrate extends CI_Controller {
 
             $data->keyword = $this->convert_keyword($data->keyword);
             //var_export($data);
-            echo('User ID "'.$data->user_id.'" - Working');
+            echo('User ID "'.$data->user_id.'" - Migrating');
 
             $sql = "INSERT INTO `users`
                 (`id`,
@@ -223,10 +223,27 @@ class migrate extends CI_Controller {
 	 *
 	 */
 	public function get_work(){
+        $this->load->config('upload', TRUE);
+        $this->load->model('upload_model');
+        $this->load->library('file_save');
+
         $default_cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'../../notefolio-web/app_cli/cli.php migrate';
         $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
         
         $cmd = $default_cmd.' work_list';
+
+        $this->load->database();
+
+        //$this->db->trans_start();
+
+        $sql = "TRUNCATE `users`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `user_profiles`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `user_sns_fb`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `user_follows`;";
+        $this->db->query($sql);
         
         $response = @json_decode(exec($cmd));
         foreach($response->rows as $key=>$val){
@@ -236,9 +253,90 @@ class migrate extends CI_Controller {
 
             $data->keyword = $this->convert_keyword($data->keyword);
 
-        }
+            echo('Work ID "'.$data->work_id.'" - Migraing');
 
-        echo PHP_EOL;
+            $sql = "INSERT INTO `users`
+                (`id`,
+                `username`,
+                `password`,
+                `email`,
+                `level`,
+                `activated`,
+                `banned`,
+                `ban_reason`,
+                `realname`,
+                `new_password_key`,
+                `new_password_requested`,
+                `new_email`,
+                `new_email_key`,
+                `last_ip`,
+                `last_login`,
+                `created`,
+                `modified`)
+                VALUES
+                (".$this->db->escape($data->info->id).",
+                ".$this->db->escape($data->info->username).",
+                ".$this->db->escape($data->info->password).",
+                ".$this->db->escape($data->info->email).",
+                ".$this->db->escape($data->info->level).",
+                ".$this->db->escape($data->info->activated).",
+                ".$this->db->escape($data->info->banned).",
+                ".$this->db->escape($data->info->ban_reason).",
+                ".$this->db->escape($data->info->realname).",
+                ".$this->db->escape($data->info->new_password_key).",
+                ".$this->db->escape($data->info->new_password_requested).",
+                ".$this->db->escape($data->info->new_email).",
+                ".$this->db->escape($data->info->new_email_key).",
+                ".$this->db->escape($data->info->last_ip).",
+                ".$this->db->escape($data->info->last_login).",
+                ".$this->db->escape($data->info->created).",
+                ".$this->db->escape($data->info->modified).");";
+            $this->db->query($sql);
+            echo('.');
+
+            /*
+            $sql = '';
+            foreach($data->follow as $param){
+                $sql .= (empty($sql)?'':',')."
+                    (".$this->db->escape($data->user_id).",
+                    ".$this->db->escape($param->follow_id).",
+                    ".$this->db->escape($param->regdate).")
+                    ";
+            }
+            if(!empty($sql)){
+                $sql = "INSERT INTO `user_follows`
+                    (`follower_id`,
+                    `follow_id`,
+                    `regdate`)
+                    VALUES ".$sql.";";
+                $this->db->query($sql);
+            }
+            echo('.');
+            */
+
+            /*
+            if(!empty($data->pic)){
+                $filename = $data->pic;
+    
+                $this->file_save->make_thumbnail(
+                    $filename,
+                    $this->config->item('profile_upload_path', 'upload').$data->info->username.'_face.jpg',
+                    'profile_face', 
+                    array('crop_to'=>array( 'width'  => 100, 'height' => 100, 'pos_x'  => 0, 'pos_y'  => 0), 'spanning'=>true)
+                    );
+            }
+            echo('.');
+            */
+
+            echo(' done.'.PHP_EOL);
+    
+                    //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
+                    //$this->db->query($sql);
+
+        }
+        //$this->db->trans_complete();
+
+        echo $this->db->trans_status().PHP_EOL;
 	}
 
     /**
