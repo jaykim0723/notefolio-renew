@@ -348,12 +348,12 @@ class migrate extends CI_Controller {
                     `children_cnt`)
                     VALUES ".$sql.";";
                 $this->db->query($sql);
-                $sql = "UPDATE `work_comments` o
+                $sql = "UPDATE `work_comments` as o
                     set `children_cnt` = 
                     (select count(*)
-                        from `work_comments`
+                        from `work_comments` as c
                         where `work_id` = ".$this->db->escape($data->work_id)."
-                        and `parent_id` = o.id
+                        and c.parent_id = o.id
                     )
                     where `work_id` = ".$this->db->escape($data->work_id).";";
                 $this->db->query($sql);
@@ -434,10 +434,10 @@ class migrate extends CI_Controller {
 
                 $result_t1 = $this->file_save->make_thumbnail(
                     $filename,
-                    $this->config->item('cover_upload_path', 'upload').$work_id.'_t1.jpg', 'small');
+                    $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t1.jpg', 'small');
                 $result_t2 = $this->file_save->make_thumbnail(
                     $filename,
-                    $this->config->item('cover_upload_path', 'upload').$work_id.'_t2.jpg', 'single',
+                    $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t2.jpg', 'single',
                     array('crop_to'=>$to_crop_t2, 'spanning'=>true));
                 $result_t3 = $this->file_save->make_thumbnail(
                     $filename,
