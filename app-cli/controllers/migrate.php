@@ -566,7 +566,6 @@ class migrate extends CI_Controller {
 
         foreach($old as $val){
             if(empty($val)) continue;
-            var_export($val);
 
             $data = array('t'=>$val->type);
             switch($val->type){
@@ -577,9 +576,11 @@ class migrate extends CI_Controller {
                 case "image":
                     $path = '/home/web/notefolio-web/www/img/'
                         .preg_replace('/([^-][^-])[^-]+(-)[^-]+(.+)/', '', $val->moddate).'/'.$val->id;
-
+                        echo ('$path')
+            echo('/');
                     $result = $this->image_migrate($work_id, $path, $val->filename, $val->filesize);
 
+            echo('/');
                     $data['i'] = $result['upload_id'];
                     $data['c'] = $result['src'];
                     
