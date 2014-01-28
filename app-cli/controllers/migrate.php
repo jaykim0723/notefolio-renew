@@ -582,6 +582,7 @@ class migrate extends CI_Controller {
                         .date('ym', strtotime($val->moddate)).'/'.$val->id.'_r';
 
                     $result = $this->migrate_image($work_id, $user_id, $path, $val->filename, $val->filesize);
+                    echo('*');
 
                     $data['i'] = $result['upload_id'];
                     $data['c'] = $result['src'];
