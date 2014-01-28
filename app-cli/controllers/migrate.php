@@ -260,6 +260,7 @@ class migrate extends CI_Controller {
             $data->tags = $this->convert_tags($data->tag);
             echo('.');
             $data->content = $this->convert_content($data->content);
+            echo('.');
 
             $sql = "INSERT INTO `notefolio-renew`.`works`
                 (`work_id`,
@@ -301,7 +302,7 @@ class migrate extends CI_Controller {
             echo('.');
 
             $sql = '';
-            foreach($data->notes as $param){
+            foreach($data->tag as $param){
                 $sql .= (empty($sql)?'':',')."
                     (".$this->db->escape($data->work_id).",
                     ".$this->db->escape($param->text).")
@@ -541,13 +542,15 @@ class migrate extends CI_Controller {
      */
     public function convert_tags($old){
         $new = array();
+            echo('.');
 
         foreach($old as $val){
-
             $new[] = $val['text'];
         }
+            echo('.');
 
         $new = array_unique($new);
+            echo('.');
 
         return implode(',', $new);
     }
