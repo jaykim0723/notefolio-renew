@@ -419,33 +419,17 @@ class migrate extends CI_Controller {
                 $crop_param_t2 = $this->input->get_post('t2');
                 $crop_param_t3 = $this->input->get_post('t3');
 
-                $to_crop_t2 = $this->file_save->get_crop_opt($size, array(
-                            'width'=>$crop_param_t2['w'],
-                            'height'=>$crop_param_t2['h'],
-                            'pos_x'=>$crop_param_t2['x'],
-                            'pos_y'=>$crop_param_t2['y']
-                        )
-                    );
-
-                $to_crop_t3 = $this->file_save->get_crop_opt($size, array(
-                            'width'=>$crop_param_t3['w'],
-                            'height'=>$crop_param_t3['h'],
-                            'pos_x'=>$crop_param_t3['x'],
-                            'pos_y'=>$crop_param_t3['y']
-                        )
-                    );
-
                 $result_t1 = $this->file_save->make_thumbnail(
                     $filename,
                     $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t1.jpg', 'small');
                 $result_t2 = $this->file_save->make_thumbnail(
                     $filename,
                     $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t2.jpg', 'single',
-                    array('crop_to'=>$to_crop_t2, 'spanning'=>true));
+                    array('autocrop'=>true, 'spanning'=>true));
                 $result_t3 = $this->file_save->make_thumbnail(
                     $filename,
                     $this->config->item('cover_upload_path', 'upload').$work_id.'_t3.jpg', 'wide', 
-                    array('crop_to'=>$to_crop_t3, 'spanning'=>true));
+                    array('autocrop'=>true, 'spanning'=>true));
     
             }
             echo('.');
