@@ -174,7 +174,9 @@ class file_save {
 
             if(class_exists('Imagick')){
                 // assign ImageMagick
-                $image = new Imagick($tmp_name);
+                $image = new Imagick();
+                $image->setResolution(300,300); 
+                $image->readImage($tmp_name);
 
                 //-- transparent background to white
                 $image->setImageBackgroundColor('white'); 
