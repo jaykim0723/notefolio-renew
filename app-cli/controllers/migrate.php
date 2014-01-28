@@ -605,52 +605,31 @@ class migrate extends CI_Controller {
         $this->load->config('upload', TRUE);
         $this->load->model('upload_model');
         $this->load->library('file_save');
-        if($work_id=='8'){
-            echo ($org_filename);
-        }
             
-        $filename = $this->make_filename('image', $org_filename);
-        if($work_id=='8'){
-            echo ('x');
-        }
+        $filename = $this->make_filename('image', urlencode($org_filename));
 
         $this->file_save->make_thumbnail(
             $path,
             $filename['path'].$filename['large'],
             'large' );
-        if($work_id=='8'){
-            echo ('x');
-        }
         $this->file_save->make_thumbnail(
             $path,
             $filename['path'].$filename['medium'],
             'medium');
-        if($work_id=='8'){
-            echo ('x');
-        }
         $this->file_save->make_thumbnail(
             $path,
             $filename['path'].$filename['small'],
             'small' );
-        if($work_id=='8'){
-            echo ('x');
-        }
         $this->file_save->make_thumbnail(
             $path,
             $filename['path'].$filename['wide'],
             'wide',
             array('autocrop'=>true));
-        if($work_id=='8'){
-            echo ('x');
-        }
         $this->file_save->make_thumbnail(
             $path,
             $filename['path'].$filename['single'],
             'single',
             array('autocrop'=>true));
-        if($work_id=='8'){
-            echo ('x');
-        }
 
         copy($path, $filename['path'].$filename['original']);
 
