@@ -587,14 +587,6 @@ class migrate extends CI_Controller {
                     continue;
                 break;
             }
-            $data = $this->db
-                ->from('work_content_'.$v[0])
-
-                ->where('id', $v[1])
-                ->get()->row();
-            $data->type = $v[0];
-
-            $work_contents[] = $data;
 
             $new[] = $data;
         }
