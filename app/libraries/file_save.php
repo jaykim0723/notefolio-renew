@@ -191,6 +191,9 @@ class file_save {
                     $image->profileImage('icc', $icc_rgb); 
                     unset($icc_rgb); 
                 }
+                $image->setImageMatte(true);
+                $image->setImageMatteColor('white');
+                $image->setImageAlphaChannel(Imagick::ALPHACHANNEL_OPAQUE);
 
                 if(in_array('crop', $todo)){
                     // Crop Image. Resize is next block.
@@ -223,9 +226,6 @@ class file_save {
                 
                 // Clean & Save
                 $image->stripImage();
-                $image->setImageMatte(true);
-                $image->setImageMatteColor('white');
-                $image->setImageAlphaChannel(Imagick::ALPHACHANNEL_OPAQUE);
                 $image->writeImage($name);
                 $image->destroy();
 
