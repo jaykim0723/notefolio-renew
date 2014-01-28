@@ -608,7 +608,7 @@ class migrate extends CI_Controller {
             
         $filename = $this->make_filename('image', urlencode($org_filename));
         if($work_id=='8'){
-            echo ('x');
+            var_export($filename);
         }
 
         $this->file_save->make_thumbnail(
