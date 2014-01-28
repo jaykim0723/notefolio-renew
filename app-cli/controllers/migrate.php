@@ -549,9 +549,8 @@ class migrate extends CI_Controller {
     public function convert_tags($old){
         $new = array();
 
-        var_export($old);
         foreach($old as $val){
-            $new[] = $val['text'];
+            $new[] = $val->text;
         }
         $new = array_unique($new);
 
