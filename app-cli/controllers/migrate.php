@@ -605,29 +605,35 @@ class migrate extends CI_Controller {
         $filename = $this->make_filename('image', $org_filename);
 
         $this->file_save->make_thumbnail(
-            $org_filename,
+            $path,
             $filename['path'].$filename['large'],
             'large' );
         echo(';');
-        $this->file_save->make_thumbnail($org_filename,
+        $this->file_save->make_thumbnail(
+            $path,
             $filename['path'].$filename['medium'],
             'medium');
         echo(';');
-        $this->file_save->make_thumbnail($org_filename,
+        $this->file_save->make_thumbnail(
+            $path,
             $filename['path'].$filename['small'],
             'small' );
         echo(';');
-        $this->file_save->make_thumbnail($org_filename,
+        $this->file_save->make_thumbnail(
+            $path,
             $filename['path'].$filename['wide'],
             'wide',
             array('autocrop'=>true));
         echo(';');
-        $this->file_save->make_thumbnail($org_filename,
+        $this->file_save->make_thumbnail(
+            $path,
             $filename['path'].$filename['single'],
             'single',
             array('autocrop'=>true));
         echo(';');
-        
+
+        copy($path, $filename['path'].$filename['original']);
+
         $upload_id = $this->upload_model->post(array(
             'user_id' => $user_id,
             'work_id' => $work_id,
@@ -639,7 +645,7 @@ class migrate extends CI_Controller {
         ));
         echo(';');
 
-        $json = array(
+        $output = array(
             'status' => 'done',
             'message'   => 'successed',
             'upload_id' => $upload_id,
@@ -649,7 +655,7 @@ class migrate extends CI_Controller {
             );
         echo(';');
 
-        return $json;
+        return $output;
     }
 
     /**
