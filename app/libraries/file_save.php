@@ -213,7 +213,7 @@ class file_save {
                     $image->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
                 }
 
-                $image->resampleImage(200,200,imagick::FILTER_LANCZOS,1);
+                //$image->resampleImage(200,200,imagick::FILTER_LANCZOS,1);
 
                 if(in_array('resize', $todo)){
                     if(($image->getImageWidth() > $max_width)||(isset($opt['spanning'])&&$opt['spanning'])){
@@ -228,7 +228,7 @@ class file_save {
                 $image->setImageCompressionQuality((isset($opt['ext'])&&$opt['ext']!='jpg')?0:90);
                 
                 // Clean & Save
-                //$image->stripImage();
+                $image->stripImage();
                 $image->writeImage($name);
                 $image->destroy();
 
