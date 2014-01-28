@@ -577,7 +577,7 @@ class migrate extends CI_Controller {
                     $path = '/home/web/notefolio-web/www/img/'
                         .date('ym', strtotime($val->moddate)).'/'.$val->id.'_r';
 
-                    $result = $this->image_migrate($work_id, $user_id, $path, $val->filename, $val->filesize);
+                    $result = $this->migrate_image($work_id, $user_id, $path, $val->filename, $val->filesize);
 
                     $data['i'] = $result['upload_id'];
                     $data['c'] = $result['src'];
