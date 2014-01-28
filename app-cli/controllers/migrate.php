@@ -259,6 +259,7 @@ class migrate extends CI_Controller {
             echo('.');
             $data->tags = $this->convert_tags($data->tag);
             echo('.');
+            $data->content = $this->convert_content($data->content);
 
             $sql = "INSERT INTO `notefolio-renew`.`works`
                 (`work_id`,
@@ -288,7 +289,7 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($data->info->user_id).",
                 '',
                 ".$this->db->escape($data->info->moddate).",
-                ".$this->db->escape(serialize($data->contents)).",
+                ".$this->db->escape(serialize($data->content)).",
                 0,
                 ".$this->db->escape($data->count->hit_cnt).",
                 ".$this->db->escape($data->count->note_cnt).",
