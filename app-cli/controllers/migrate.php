@@ -50,9 +50,10 @@ class migrate extends CI_Controller {
 
             $data = @json_decode(exec($cmd));
 
-            $data->keyword = $this->convert_keyword($data->keyword);
-            //var_export($data);
             echo('User ID "'.$data->user_id.'" - Migrating');
+            $data->keyword = $this->convert_keyword($data->keyword);
+            echo('.');
+            //var_export($data);
 
             $sql = "INSERT INTO `users`
                 (`id`,
@@ -253,10 +254,11 @@ class migrate extends CI_Controller {
 
             $data = @json_decode(exec($cmd));
 
-            $data->keyword = $this->convert_keyword($data->keyword);
-            $data->tags = $this->convert_tags($data->tag);
-
             echo('Work ID "'.$data->work_id.'" - Migraing');
+            $data->keyword = $this->convert_keyword($data->keyword);
+            echo('.');
+            $data->tags = $this->convert_tags($data->tag);
+            echo('.');
 
             $sql = "INSERT INTO `notefolio-renew`.`works`
                 (`work_id`,
