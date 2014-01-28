@@ -638,6 +638,74 @@ class migrate extends CI_Controller {
         return $json;
     }
 
+    /**
+     * make file name using hash(sha256)
+     * 
+     * @param string $type
+     * @param string $name
+     * @return array
+     */
+    function make_filename($type=false, $name=false){
+        if($name){
+            $path_text = pathinfo($name);
+            $o_name = $path_text['filename'];
+            $ext = strtolower($path_text['extension']);
+        }
+        else {
+            $o_name = '';
+            $ext = '';
+        }
+        if(in_array($type, array('image'))){
+            $salt = $this->ci->config->item('encryption_key')
+                    .'NOTEFOLIO'
+                    .microtime();
+            $hashed_name = hash('sha256', $salt.$o_name);
+            $hashed_path = substr($hashed_name, 0, 2).'/'.substr($hashed_name, 2, 2).'/';
+        }
+        switch($type){
+            case 'image':
+                $path = $this->ci->config->item('img_upload_path', 'upload');
+                $uri  = $this->ci->config->item('img_upload_uri',  'upload');
+                $output = array('original' =>$hashed_name.'.'.$ext,
+                                'large'    =>$hashed_name.'_v1.jpg',
+                                'medium'   =>$hashed_name.'_v2.jpg',
+                                'wide'     =>$hashed_name.'_t3.jpg',
+                                'single'   =>$hashed_name.'_t2.jpg',
+                                'small'    =>$hashed_name.'_t1.jpg',
+                                'path'     =>$path.$hashed_path,
+                                'uri'      =>$uri.$hashed_path,
+                                'ext'      =>($ext!='')?$ext:'jpg'
+                                );
+            break;
+            case 'cover':
+                $path = $this->ci->config->item('cover_upload_path', 'upload');
+                $uri  = $this->ci->config->item('cover_upload_uri',  'upload');
+                $output = array('original' =>$o_name,
+                                'wide'     =>$o_name.'_t3.jpg',
+                                'single'   =>$o_name.'_t2.jpg',
+                                'small'    =>$o_name.'_t1.jpg',
+                                'path'     =>$path,
+                                'uri'      =>$uri,
+                                'ext'      =>($ext!='')?$ext:'jpg'
+                                );
+            break;
+            default:
+                $path = $this->ci->config->item('upload_path', 'upload');
+                $output = array('original'     =>$name,
+                                'path'         =>$path,
+                                'ext'          =>($ext!='')?$ext:'jpg'
+                                    );
+            break;
+        }
+        
+        if(!is_dir($output['path'])) //create the folder if it's not already exists
+        {
+            mkdir($output['path'],0777,TRUE);
+        }
+
+        return $output;
+    }
+
 }
 
 /* End of file migrate.php */
