@@ -357,7 +357,7 @@ class migrate extends CI_Controller {
                         group by parent_id
                     ) c
                     where `work_id` = {$this->db->escape($data->work_id)}
-                    and c.parent_id = `work_comments`.`id`;";
+                    and `work_comments`.`id` = c.parent_id;";
                 $this->db->query($sql);
             }
             echo('.');
