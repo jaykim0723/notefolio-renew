@@ -601,10 +601,9 @@ class migrate extends CI_Controller {
         $this->load->config('upload', TRUE);
         $this->load->model('upload_model');
         $this->load->library('file_save');
-        echo(';');
             
         $filename = $this->make_filename('image', $org_filename);
-        echo(';');
+        var_export($filename);
 
         $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['large'],  'large' );
         $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['medium'], 'medium');
