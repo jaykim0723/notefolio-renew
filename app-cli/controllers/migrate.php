@@ -607,11 +607,11 @@ class migrate extends CI_Controller {
 
             switch($type){
                 case "image":
-                    $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['large'], 'large');
-                    $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['medium'], 'medium');
-                    $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['small'], 'small');
-                    $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['wide'], 'wide', array('autocrop'=>true));
-                    $this->make_thumbnail($file['tmp_name'], $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
+                    $this->make_thumbnail($org_filename, $filename['path'].$filename['large'], 'large');
+                    $this->make_thumbnail($org_filename, $filename['path'].$filename['medium'], 'medium');
+                    $this->make_thumbnail($org_filename, $filename['path'].$filename['small'], 'small');
+                    $this->make_thumbnail($org_filename, $filename['path'].$filename['wide'], 'wide', array('autocrop'=>true));
+                    $this->make_thumbnail($org_filename, $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
                 break;
                 case "cover":
                 break;
