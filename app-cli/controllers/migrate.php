@@ -298,6 +298,22 @@ class migrate extends CI_Controller {
             echo('.');
 
             $sql = '';
+            foreach($data->notes as $param){
+                $sql .= (empty($sql)?'':',')."
+                    (".$this->db->escape($data->work_id).",
+                    ".$this->db->escape($param->text).")
+                    ";
+            }
+            if(!empty($sql)){
+                $sql = "INSERT INTO `work_tags`
+                    (`work_id`,
+                    `text`)
+                    VALUES ".$sql.";";
+                $this->db->query($sql);
+            }
+            echo('.');
+
+            $sql = '';
             foreach($data->comment as $param){
                 $sql .= (empty($sql)?'':',')."
                     (".$this->db->escape($param->id).",
