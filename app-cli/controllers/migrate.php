@@ -254,7 +254,7 @@ class migrate extends CI_Controller {
 
             $data = @json_decode(exec($cmd));
 
-            echo('Work ID "'.$data->work_id.'" - Migraing');
+            echo('Work ID "'.$data->work_id.'" - Migrating');
             $data->keyword = $this->convert_keyword($data->keyword);
             echo('.');
 
@@ -549,6 +549,7 @@ class migrate extends CI_Controller {
     public function convert_tags($old){
         $new = array();
 
+        var_export($old);
         foreach($old as $val){
             $new[] = $val['text'];
         }
