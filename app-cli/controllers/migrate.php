@@ -645,6 +645,7 @@ class migrate extends CI_Controller {
      * @return array
      */
     function make_filename($type=false, $name=false){
+        $this->load->config('upload', TRUE);
         if($name){
             $path_text = pathinfo($name);
             $o_name = $path_text['filename'];
