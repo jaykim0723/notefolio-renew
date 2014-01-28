@@ -566,6 +566,7 @@ class migrate extends CI_Controller {
 
         foreach($old as $val){
             if(empty($val)) continue;
+            var_export($val);
 
             $data = array('t'=>$val->type);
             switch($val->type){
@@ -589,8 +590,6 @@ class migrate extends CI_Controller {
             }
             $new[] = $data;
         }
-
-        var_export($new);
 
         return $new;
     }
