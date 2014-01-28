@@ -576,7 +576,6 @@ class migrate extends CI_Controller {
                 case "image":
                     $path = '/home/web/notefolio-web/www/img/'
                         .date('ym', strtotime($val->moddate)).'/'.$val->id.'_r';
-                    var_export($path);
 
                     $result = $this->image_migrate($work_id, $path, $val->filename, $val->filesize);
 
@@ -602,14 +601,17 @@ class migrate extends CI_Controller {
         $this->load->config('upload', TRUE);
         $this->load->model('upload_model');
         $this->load->library('file_save');
+        echo(';');
             
         $filename = $this->make_filename('image', $path, $org_filename);
+        echo(';');
 
         $this->make_thumbnail($org_filename, $filename['path'].$filename['large'],  'large' );
         $this->make_thumbnail($org_filename, $filename['path'].$filename['medium'], 'medium');
         $this->make_thumbnail($org_filename, $filename['path'].$filename['small'],  'small' );
         $this->make_thumbnail($org_filename, $filename['path'].$filename['wide'],   'wide',   array('autocrop'=>true));
         $this->make_thumbnail($org_filename, $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
+        echo(';');
 
         $upload_id = $this->upload_model->post(array(
             'work_id' => $work_id,
@@ -619,6 +621,7 @@ class migrate extends CI_Controller {
             'filesize' => $filesize,
             'comment' => ''
         ));
+        echo(';');
 
         $json = array(
             'status' => 'done',
@@ -628,6 +631,7 @@ class migrate extends CI_Controller {
             'org_filename' => $file['name'],
             'data' => $this->upload_model->get(array('id'=>$upload_id))->row
             );
+        echo(';');
 
         return $json;
     }
