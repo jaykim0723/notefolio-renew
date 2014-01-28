@@ -350,7 +350,7 @@ class migrate extends CI_Controller {
                 $this->db->query($sql);
                 $sql = "UPDATE `work_comments` as o
                             inner join (
-                                select parent_id, count(*) as count
+                                select parent_id, ifnull(count(*),0) as count
                                     from `work_comments` as s
                                     where `work_id` = {$this->db->escape($data->work_id)}
                                     and parent_id != 0
@@ -358,8 +358,7 @@ class migrate extends CI_Controller {
                                 ) as c on o.id = c.parent_id
                     set o.`children_cnt` = c.count
                     where `work_id` = {$this->db->escape($data->work_id)}
-                    and o.`id` = c.parent_id
-                    and o.`parent_id` != 0;";
+                    and o.parent_id = 0;";
                 $this->db->query($sql);
             }
             echo('.');
