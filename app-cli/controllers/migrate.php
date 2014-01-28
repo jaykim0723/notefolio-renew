@@ -251,196 +251,13 @@ class migrate extends CI_Controller {
 
         $response = @json_decode(exec($cmd));
         foreach($response->rows as $key=>$val){
-            $cmd = $default_cmd.' work '.$val->id;
+            echo('Work ID "'.$val->id.'" - Migrating');
 
-            $data = @json_decode(exec($cmd));
-
-            if($start>0&&$data->work_id!=$start){
-                continue;
-            }
-            else{
-                $start = 0;
-            }
-
-            echo('Work ID "'.$data->work_id.'" - Migrating');
-            $data->keyword = $this->convert_keyword($data->keyword);
-            echo('.');
-
-            if(!empty($data->tag)){
-                $data->tags = $this->convert_tags($data->tag);
-            }
-            echo('.');
+            $default_cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'cli.php migrate';
+            $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
             
-            if(!empty($data->content)){
-                $data->content = $this->convert_content($data->work_id, $data->info->user_id, $data->content);
-            }
-            echo('.');
-
-            $sql = "INSERT INTO `notefolio-renew`.`works`
-                (`work_id`,
-                `regdate`,
-                `status`,
-                `keywords`,
-                `title`,
-                `tags`,
-                `user_id`,
-                `folder`,
-                `moddate`,
-                `contents`,
-                `nofol_rank`,
-                `hit_cnt`,
-                `note_cnt`,
-                `collect_cnt`,
-                `comment_cnt`,
-                `ccl`,
-                `discoverbility`)
-                VALUES
-                (".$this->db->escape($data->work_id).",
-                ".$this->db->escape($data->info->regdate).",
-                'enabled',
-                ".$this->db->escape($data->keyword).",
-                ".$this->db->escape($data->info->title).",
-                ".$this->db->escape($data->tags).",
-                ".$this->db->escape($data->info->user_id).",
-                '',
-                ".$this->db->escape($data->info->moddate).",
-                ".$this->db->escape(serialize($data->content)).",
-                0,
-                ".$this->db->escape($data->count->hit_cnt).",
-                ".$this->db->escape($data->count->note_cnt).",
-                ".$this->db->escape($data->count->collect_cnt).",
-                ".$this->db->escape($data->count->comment_cnt).",
-                ".$this->db->escape(implode('', $data->info->license)).",
-                100);";
-            $this->db->query($sql);
-            echo('.');
-
-            $sql = '';
-            foreach($data->tag as $param){
-                $sql .= (empty($sql)?'':',')."
-                    (".$this->db->escape($data->work_id).",
-                    ".$this->db->escape($param->text).")
-                    ";
-            }
-            if(!empty($sql)){
-                $sql = "INSERT INTO `work_tags`
-                    (`work_id`,
-                    `text`)
-                    VALUES ".$sql.";";
-                $this->db->query($sql);
-            }
-            echo('.');
-
-            $sql = '';
-            foreach($data->comment as $param){
-                $sql .= (empty($sql)?'':',')."
-                    (".$this->db->escape($param->id).",
-                    ".$this->db->escape($data->work_id).",
-                    ".$this->db->escape($param->parent_id).",
-                    ".$this->db->escape($param->user_id).",
-                    ".$this->db->escape($param->content).",
-                    ".$this->db->escape($param->regdate).",
-                    ".$this->db->escape($param->moddate).",
-                    0)
-                    ";
-            }
-            if(!empty($sql)){
-                $sql = "INSERT INTO `work_comments`
-                    (`id`,
-                    `work_id`,
-                    `parent_id`,
-                    `user_id`,
-                    `content`,
-                    `regdate`,
-                    `moddate`,
-                    `children_cnt`)
-                    VALUES ".$sql.";";
-                $this->db->query($sql);
-                $sql = "UPDATE `work_comments` as o
-                            inner join (
-                                select parent_id, ifnull(count(*),0) as count
-                                    from `work_comments` as s
-                                    where `work_id` = {$this->db->escape($data->work_id)}
-                                    and parent_id != 0
-                                    group by parent_id
-                                ) as c on o.id = c.parent_id
-                    set o.`children_cnt` = c.count
-                    where `work_id` = {$this->db->escape($data->work_id)}
-                    and o.parent_id = 0;";
-                $this->db->query($sql);
-            }
-            echo('.');
-
-            $sql = '';
-            foreach($data->views as $param){
-                $sql .= (empty($sql)?'':',')."
-                    (".$this->db->escape($data->work_id).",
-                    ".$this->db->escape($param->user_id).",
-                    ".$this->db->escape($param->remote_addr).",
-                    'migrate',
-                    ".$this->db->escape($param->regdate).",
-                    0)
-                    ";
-            }
-            if(!empty($sql)){
-                $sql = "INSERT INTO `log_work_view`
-                    (`work_id`,
-                    `user_id`,
-                    `remote_addr`,
-                    `phpsessid`,
-                    `regdate`)
-                    VALUES ".$sql.";";
-                $this->db->query($sql);
-            }
-            echo('.');
-
-            $sql = '';
-            foreach($data->notes as $param){
-                $sql .= (empty($sql)?'':',')."
-                    (".$this->db->escape($data->work_id).",
-                    ".$this->db->escape($param->user_id).",
-                    ".$this->db->escape($param->remote_addr).",
-                    'migrate',
-                    ".$this->db->escape($param->regdate).",
-                    0)
-                    ";
-            }
-            if(!empty($sql)){
-                $sql = "INSERT INTO `log_work_note`
-                    (`work_id`,
-                    `user_id`,
-                    `remote_addr`,
-                    `phpsessid`,
-                    `regdate`)
-                    VALUES ".$sql.";";
-                $this->db->query($sql);
-            }
-            echo('.');
-
-            if(!empty($data->pic)){
-                $filename = $data->pic;
-
-                list($width, $height) = getimagesize($filename);
-
-                $size = array('width'=> $width, 'height'=> $height);
-                
-                $crop_param_t2 = $this->input->get_post('t2');
-                $crop_param_t3 = $this->input->get_post('t3');
-
-                $result_t1 = $this->file_save->make_thumbnail(
-                    $filename,
-                    $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t1.jpg', 'small');
-                $result_t2 = $this->file_save->make_thumbnail(
-                    $filename,
-                    $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t2.jpg', 'single',
-                    array('autocrop'=>true, 'spanning'=>true));
-                $result_t3 = $this->file_save->make_thumbnail(
-                    $filename,
-                    $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t3.jpg', 'wide', 
-                    array('autocrop'=>true, 'spanning'=>true));
-    
-            }
-            echo('.');
+            $cmd = $default_cmd.' get_work_one '.$val->id.' &';
+            exec($cmd);
 
             echo(' done.'.PHP_EOL);
     
@@ -452,6 +269,202 @@ class migrate extends CI_Controller {
 
         echo $this->db->trans_status().PHP_EOL;
 	}
+
+    public function get_work_one($work_id){
+        $this->load->config('upload', TRUE);
+        $this->load->model('upload_model');
+        $this->load->library('file_save');
+
+        $default_cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'../../notefolio-web/app_cli/cli.php migrate';
+        $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
+        
+        $cmd = $default_cmd.' work '.$work_id;
+
+        $this->load->database();
+
+        $data = @json_decode(exec($cmd));
+
+        echo('Work ID "'.$data->work_id.'" - Migrating');
+        $data->keyword = $this->convert_keyword($data->keyword);
+        echo('.');
+
+        if(!empty($data->tag)){
+            $data->tags = $this->convert_tags($data->tag);
+        }
+        echo('.');
+        
+        if(!empty($data->content)){
+            $data->content = $this->convert_content($data->work_id, $data->info->user_id, $data->content);
+        }
+        echo('.');
+
+        $sql = "INSERT INTO `notefolio-renew`.`works`
+            (`work_id`,
+            `regdate`,
+            `status`,
+            `keywords`,
+            `title`,
+            `tags`,
+            `user_id`,
+            `folder`,
+            `moddate`,
+            `contents`,
+            `nofol_rank`,
+            `hit_cnt`,
+            `note_cnt`,
+            `collect_cnt`,
+            `comment_cnt`,
+            `ccl`,
+            `discoverbility`)
+            VALUES
+            (".$this->db->escape($data->work_id).",
+            ".$this->db->escape($data->info->regdate).",
+            'enabled',
+            ".$this->db->escape($data->keyword).",
+            ".$this->db->escape($data->info->title).",
+            ".$this->db->escape($data->tags).",
+            ".$this->db->escape($data->info->user_id).",
+            '',
+            ".$this->db->escape($data->info->moddate).",
+            ".$this->db->escape(serialize($data->content)).",
+            0,
+            ".$this->db->escape($data->count->hit_cnt).",
+            ".$this->db->escape($data->count->note_cnt).",
+            ".$this->db->escape($data->count->collect_cnt).",
+            ".$this->db->escape($data->count->comment_cnt).",
+            ".$this->db->escape(implode('', $data->info->license)).",
+            100);";
+        $this->db->query($sql);
+        echo('.');
+
+        $sql = '';
+        foreach($data->tag as $param){
+            $sql .= (empty($sql)?'':',')."
+                (".$this->db->escape($data->work_id).",
+                ".$this->db->escape($param->text).")
+                ";
+        }
+        if(!empty($sql)){
+            $sql = "INSERT INTO `work_tags`
+                (`work_id`,
+                `text`)
+                VALUES ".$sql.";";
+            $this->db->query($sql);
+        }
+        echo('.');
+
+        $sql = '';
+        foreach($data->comment as $param){
+            $sql .= (empty($sql)?'':',')."
+                (".$this->db->escape($param->id).",
+                ".$this->db->escape($data->work_id).",
+                ".$this->db->escape($param->parent_id).",
+                ".$this->db->escape($param->user_id).",
+                ".$this->db->escape($param->content).",
+                ".$this->db->escape($param->regdate).",
+                ".$this->db->escape($param->moddate).",
+                0)
+                ";
+        }
+        if(!empty($sql)){
+            $sql = "INSERT INTO `work_comments`
+                (`id`,
+                `work_id`,
+                `parent_id`,
+                `user_id`,
+                `content`,
+                `regdate`,
+                `moddate`,
+                `children_cnt`)
+                VALUES ".$sql.";";
+            $this->db->query($sql);
+            $sql = "UPDATE `work_comments` as o
+                        inner join (
+                            select parent_id, ifnull(count(*),0) as count
+                                from `work_comments` as s
+                                where `work_id` = {$this->db->escape($data->work_id)}
+                                and parent_id != 0
+                                group by parent_id
+                            ) as c on o.id = c.parent_id
+                set o.`children_cnt` = c.count
+                where `work_id` = {$this->db->escape($data->work_id)}
+                and o.parent_id = 0;";
+            $this->db->query($sql);
+        }
+        echo('.');
+
+        $sql = '';
+        foreach($data->views as $param){
+            $sql .= (empty($sql)?'':',')."
+                (".$this->db->escape($data->work_id).",
+                ".$this->db->escape($param->user_id).",
+                ".$this->db->escape($param->remote_addr).",
+                'migrate',
+                ".$this->db->escape($param->regdate).",
+                0)
+                ";
+        }
+        if(!empty($sql)){
+            $sql = "INSERT INTO `log_work_view`
+                (`work_id`,
+                `user_id`,
+                `remote_addr`,
+                `phpsessid`,
+                `regdate`)
+                VALUES ".$sql.";";
+            $this->db->query($sql);
+        }
+        echo('.');
+
+        $sql = '';
+        foreach($data->notes as $param){
+            $sql .= (empty($sql)?'':',')."
+                (".$this->db->escape($data->work_id).",
+                ".$this->db->escape($param->user_id).",
+                ".$this->db->escape($param->remote_addr).",
+                'migrate',
+                ".$this->db->escape($param->regdate).",
+                0)
+                ";
+        }
+        if(!empty($sql)){
+            $sql = "INSERT INTO `log_work_note`
+                (`work_id`,
+                `user_id`,
+                `remote_addr`,
+                `phpsessid`,
+                `regdate`)
+                VALUES ".$sql.";";
+            $this->db->query($sql);
+        }
+        echo('.');
+
+        if(!empty($data->pic)){
+            $filename = $data->pic;
+
+            list($width, $height) = getimagesize($filename);
+
+            $size = array('width'=> $width, 'height'=> $height);
+            
+            $crop_param_t2 = $this->input->get_post('t2');
+            $crop_param_t3 = $this->input->get_post('t3');
+
+            $result_t1 = $this->file_save->make_thumbnail(
+                $filename,
+                $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t1.jpg', 'small');
+            $result_t2 = $this->file_save->make_thumbnail(
+                $filename,
+                $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t2.jpg', 'single',
+                array('autocrop'=>true, 'spanning'=>true));
+            $result_t3 = $this->file_save->make_thumbnail(
+                $filename,
+                $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t3.jpg', 'wide', 
+                array('autocrop'=>true, 'spanning'=>true));
+
+        }
+        
+        echo(' done.'.PHP_EOL);
+    }
 
     /**
      * convert keyword to new keyword
