@@ -627,7 +627,7 @@ class migrate extends CI_Controller {
             'single',
             array('autocrop'=>true));
         echo(';');
-
+        
         $upload_id = $this->upload_model->post(array(
             'user_id' => $user_id,
             'work_id' => $work_id,

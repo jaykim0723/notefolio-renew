@@ -132,6 +132,7 @@ class file_save {
      */
     function make_thumbnail($tmp_name=false, $name=false, $type=false, $opt=array()){
         if($tmp_name){
+            var_export($tmp_name);
             $maxsize = $this->ci->config->item('thumbnail_'.$type, 'upload');
             $max_width = $maxsize['max_width'];
             $max_height = $maxsize['max_height'];
