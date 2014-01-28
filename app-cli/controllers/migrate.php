@@ -428,7 +428,7 @@ class migrate extends CI_Controller {
                     array('autocrop'=>true, 'spanning'=>true));
                 $result_t3 = $this->file_save->make_thumbnail(
                     $filename,
-                    $this->config->item('cover_upload_path', 'upload').$work_id.'_t3.jpg', 'wide', 
+                    $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t3.jpg', 'wide', 
                     array('autocrop'=>true, 'spanning'=>true));
     
             }
