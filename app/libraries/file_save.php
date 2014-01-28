@@ -228,7 +228,7 @@ class file_save {
                 $image->setImageCompressionQuality((isset($opt['ext'])&&$opt['ext']!='jpg')?0:90);
                 
                 // Clean & Save
-                $image->stripImage();
+                //$image->stripImage();
                 $image->writeImage($name);
                 $image->destroy();
 
