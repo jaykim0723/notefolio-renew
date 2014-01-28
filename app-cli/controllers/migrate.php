@@ -638,7 +638,6 @@ class migrate extends CI_Controller {
             'filesize' => $filesize,
             'comment' => ''
         ));
-        echo(';');
 
         $output = array(
             'status' => 'done',
@@ -648,7 +647,6 @@ class migrate extends CI_Controller {
             'org_filename' => $file['name'],
             'data' => $this->upload_model->get(array('id'=>$upload_id))->row
             );
-        echo(';');
 
         return $output;
     }
