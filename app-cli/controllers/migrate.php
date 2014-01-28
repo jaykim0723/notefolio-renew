@@ -348,14 +348,16 @@ class migrate extends CI_Controller {
                     `children_cnt`)
                     VALUES ".$sql.";";
                 $this->db->query($sql);
-                $sql = "UPDATE `work_comments` as o
+                $sql = "UPDATE `work_comments`
                     set `children_cnt` = 
                     (select count(*)
-                        from `work_comments` as c
-                        where `work_id` = ".$this->db->escape($data->work_id)."
-                        and c.parent_id = o.id
-                    )
-                    where `work_id` = ".$this->db->escape($data->work_id).";";
+                        from `work_comments`
+                        where `work_id` = {$this->db->escape($data->work_id)}
+                        and parent_id != 0
+                        group by parent_id
+                    ) c
+                    where `work_id` = {$this->db->escape($data->work_id)}
+                    and a.parent_id = id;";
                 $this->db->query($sql);
             }
             echo('.');
