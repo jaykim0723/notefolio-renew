@@ -604,15 +604,28 @@ class migrate extends CI_Controller {
             
         $filename = $this->make_filename('image', $org_filename);
 
-        $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['large'],  'large' );
+        $this->file_save->make_thumbnail(
+            $org_filename,
+            $filename['path'].$filename['large'],
+            'large' );
         echo(';');
-        $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['medium'], 'medium');
+        $this->file_save->make_thumbnail($org_filename,
+            $filename['path'].$filename['medium'],
+            'medium');
         echo(';');
-        $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['small'],  'small' );
+        $this->file_save->make_thumbnail($org_filename,
+            $filename['path'].$filename['small'],
+            'small' );
         echo(';');
-        $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['wide'],   'wide',   array('autocrop'=>true));
+        $this->file_save->make_thumbnail($org_filename,
+            $filename['path'].$filename['wide'],
+            'wide',
+            array('autocrop'=>true));
         echo(';');
-        $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
+        $this->file_save->make_thumbnail($org_filename,
+            $filename['path'].$filename['single'],
+            'single',
+            array('autocrop'=>true));
         echo(';');
 
         $upload_id = $this->upload_model->post(array(
