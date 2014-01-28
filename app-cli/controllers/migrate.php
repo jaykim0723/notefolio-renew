@@ -304,6 +304,7 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($data->count->comment_cnt).",
                 ".$this->db->escape(implode('', $data->count->license)).",
                 100);";
+            echo($sql);
             $this->db->query($sql);
             echo('.');
 
