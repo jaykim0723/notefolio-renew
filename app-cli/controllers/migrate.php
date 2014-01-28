@@ -587,7 +587,7 @@ class migrate extends CI_Controller {
                     continue;
                 break;
             }
-            echo('.');
+            echo('a');
 
             $new[] = $data;
         }
@@ -606,13 +606,11 @@ class migrate extends CI_Controller {
             
         $filename = $this->make_filename('image', $path, $org_filename);
 
-        $this->make_thumbnail($org_filename, $filename['path'].$filename['large'], 'large');
+        $this->make_thumbnail($org_filename, $filename['path'].$filename['large'],  'large' );
         $this->make_thumbnail($org_filename, $filename['path'].$filename['medium'], 'medium');
-        $this->make_thumbnail($org_filename, $filename['path'].$filename['small'], 'small');
-        $this->make_thumbnail($org_filename, $filename['path'].$filename['wide'], 'wide', array('autocrop'=>true));
+        $this->make_thumbnail($org_filename, $filename['path'].$filename['small'],  'small' );
+        $this->make_thumbnail($org_filename, $filename['path'].$filename['wide'],   'wide',   array('autocrop'=>true));
         $this->make_thumbnail($org_filename, $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
-
-
 
         $upload_id = $this->upload_model->post(array(
             'work_id' => $work_id,
@@ -631,7 +629,7 @@ class migrate extends CI_Controller {
             'org_filename' => $file['name'],
             'data' => $this->upload_model->get(array('id'=>$upload_id))->row
             );
-            echo('s');
+        echo('b');
 
         return $json;
     }
