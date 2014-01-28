@@ -264,7 +264,7 @@ class migrate extends CI_Controller {
             echo('.');
             
             if(!empty($data->content)){
-                $data->content = $this->convert_content($data->content);
+                $data->content = $this->convert_content($data->work_id, $data->content);
             }
             echo('.');
 
@@ -561,7 +561,7 @@ class migrate extends CI_Controller {
      * convert contents for new system
      *
      */
-    public function convert_content($old){
+    public function convert_content($work_id, $old){
         $new = array();
 
         foreach($old as $val){
@@ -587,6 +587,7 @@ class migrate extends CI_Controller {
                     continue;
                 break;
             }
+            echo('.');
 
             $new[] = $data;
         }
@@ -598,47 +599,48 @@ class migrate extends CI_Controller {
      * migrate image (get->upload->return)
      *
      */
-    public function migrate_image($path, $org_filename, $filesize){
+    public function migrate_image($work_id, $path, $org_filename, $filesize){
         $this->load->config('upload', TRUE);
         $this->load->model('upload_model');
         $this->load->library('file_save');
             
-            $filename = $this->make_filename('image', $path, $org_filename);
+        $filename = $this->make_filename('image', $path, $org_filename);
 
-            switch($type){
-                case "image":
-                    $this->make_thumbnail($org_filename, $filename['path'].$filename['large'], 'large');
-                    $this->make_thumbnail($org_filename, $filename['path'].$filename['medium'], 'medium');
-                    $this->make_thumbnail($org_filename, $filename['path'].$filename['small'], 'small');
-                    $this->make_thumbnail($org_filename, $filename['path'].$filename['wide'], 'wide', array('autocrop'=>true));
-                    $this->make_thumbnail($org_filename, $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
-                break;
-                case "cover":
-                break;
-                default:
-                break;
-            }
+        switch($type){
+            case "image":
+                $this->make_thumbnail($org_filename, $filename['path'].$filename['large'], 'large');
+                $this->make_thumbnail($org_filename, $filename['path'].$filename['medium'], 'medium');
+                $this->make_thumbnail($org_filename, $filename['path'].$filename['small'], 'small');
+                $this->make_thumbnail($org_filename, $filename['path'].$filename['wide'], 'wide', array('autocrop'=>true));
+                $this->make_thumbnail($org_filename, $filename['path'].$filename['single'], 'single', array('autocrop'=>true));
+            break;
+            case "cover":
+            break;
+            default:
+            break;
+        }
 
 
-            $upload_id = $this->upload_model->post(array(
-                'work_id' => $this->input->get_post('work_id'),
-                'type' => 'work',
-                'filename' => $filename['original'],
-                'org_filename' => $org_filename,
-                'filesize' => $filesize,
-                'comment' => ''
-            ));
+        $upload_id = $this->upload_model->post(array(
+            'work_id' => $work_id),
+            'type' => 'work',
+            'filename' => $filename['original'],
+            'org_filename' => $org_filename,
+            'filesize' => $filesize,
+            'comment' => ''
+        ));
 
-            $json = array(
-                'status' => 'done',
-                'message'   => 'successed',
-                'upload_id' => $upload_id,
-                'src' => $filename['uri'].$filename['medium'],
-                'org_filename' => $file['name'],
-                'data' => $this->upload_model->get(array('id'=>$upload_id))->row
-                );
+        $json = array(
+            'status' => 'done',
+            'message'   => 'successed',
+            'upload_id' => $upload_id,
+            'src' => $filename['uri'].$filename['medium'],
+            'org_filename' => $file['name'],
+            'data' => $this->upload_model->get(array('id'=>$upload_id))->row
+            );
+            echo('.');
 
-            return $json;
+        return $json;
     }
 
 }
