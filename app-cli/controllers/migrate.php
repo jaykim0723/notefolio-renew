@@ -645,7 +645,6 @@ class migrate extends CI_Controller {
      * @return array
      */
     function make_filename($type=false, $name=false){
-        $this->load->config('upload', TRUE);
         if($name){
             $path_text = pathinfo($name);
             $o_name = $path_text['filename'];
@@ -656,7 +655,7 @@ class migrate extends CI_Controller {
             $ext = '';
         }
         if(in_array($type, array('image'))){
-            $salt = $this->ci->config->item('encryption_key')
+            $salt = $this->config->item('encryption_key')
                     .'NOTEFOLIO'
                     .microtime();
             $hashed_name = hash('sha256', $salt.$o_name);
@@ -664,8 +663,8 @@ class migrate extends CI_Controller {
         }
         switch($type){
             case 'image':
-                $path = $this->ci->config->item('img_upload_path', 'upload');
-                $uri  = $this->ci->config->item('img_upload_uri',  'upload');
+                $path = $this->config->item('img_upload_path', 'upload');
+                $uri  = $this->config->item('img_upload_uri',  'upload');
                 $output = array('original' =>$hashed_name.'.'.$ext,
                                 'large'    =>$hashed_name.'_v1.jpg',
                                 'medium'   =>$hashed_name.'_v2.jpg',
@@ -678,8 +677,8 @@ class migrate extends CI_Controller {
                                 );
             break;
             case 'cover':
-                $path = $this->ci->config->item('cover_upload_path', 'upload');
-                $uri  = $this->ci->config->item('cover_upload_uri',  'upload');
+                $path = $this->config->item('cover_upload_path', 'upload');
+                $uri  = $this->config->item('cover_upload_uri',  'upload');
                 $output = array('original' =>$o_name,
                                 'wide'     =>$o_name.'_t3.jpg',
                                 'single'   =>$o_name.'_t2.jpg',
@@ -690,7 +689,7 @@ class migrate extends CI_Controller {
                                 );
             break;
             default:
-                $path = $this->ci->config->item('upload_path', 'upload');
+                $path = $this->config->item('upload_path', 'upload');
                 $output = array('original'     =>$name,
                                 'path'         =>$path,
                                 'ext'          =>($ext!='')?$ext:'jpg'
