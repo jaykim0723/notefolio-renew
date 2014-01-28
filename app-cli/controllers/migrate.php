@@ -606,10 +606,13 @@ class migrate extends CI_Controller {
         $this->load->model('upload_model');
         $this->load->library('file_save');
         if($work_id=='8'){
-            echo ('x');
+            echo ($org_filename);
         }
             
         $filename = $this->make_filename('image', $org_filename);
+        if($work_id=='8'){
+            echo ('x');
+        }
 
         $this->file_save->make_thumbnail(
             $path,
