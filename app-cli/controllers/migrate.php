@@ -246,8 +246,6 @@ class migrate extends CI_Controller {
         $this->db->query($sql);
         $sql = "TRUNCATE `log_work_note`;";
         $this->db->query($sql);
-        $sql = "TRUNCATE `uploads`;";
-        $this->db->query($sql);
         
         $response = @json_decode(exec($cmd));
         foreach($response->rows as $key=>$val){
