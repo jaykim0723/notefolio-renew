@@ -227,7 +227,7 @@ class migrate extends CI_Controller {
         $this->load->config('upload', TRUE);
         $this->load->model('upload_model');
         $this->load->library('file_save');
-        
+
         ignore_user_abort(true);
         set_time_limit(0);
 
@@ -259,7 +259,7 @@ class migrate extends CI_Controller {
             $default_cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'cli.php migrate';
             $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
             
-            $cmd = $default_cmd.' get_work_one '.$val->id.' &';
+            $cmd = $default_cmd.' get_work_one '.$val->id.' > /dev/null &';
             exec($cmd);
 
             echo(' done.'.PHP_EOL);
