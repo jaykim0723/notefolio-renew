@@ -603,7 +603,7 @@ class migrate extends CI_Controller {
         $this->load->library('file_save');
         echo(';');
             
-        $filename = $this->file_save->make_filename('image', $path);
+        $filename = $this->file_save->make_filename('image', $org_filename);
         echo(';');
 
         $this->file_save->make_thumbnail($org_filename, $filename['path'].$filename['large'],  'large' );
