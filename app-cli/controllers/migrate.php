@@ -598,6 +598,7 @@ class migrate extends CI_Controller {
      *
      */
     public function migrate_image($work_id, $user_id, $path, $org_filename, $filesize){
+        echo(';');
         $this->load->config('upload', TRUE);
         $this->load->model('upload_model');
         $this->load->library('file_save');
