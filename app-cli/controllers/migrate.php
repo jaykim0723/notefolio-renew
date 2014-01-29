@@ -245,7 +245,14 @@ class migrate extends CI_Controller {
 
         $response = @json_decode(exec($cmd));
         foreach($response->rows as $key=>$val){
-            echo('Work ID "'.$val->id.'" - Migrating');
+            if(isset($start) && $val->id!=$start){
+                echo('Work ID "'.$val->id.'" - skip'.PHP_EOL);
+                continue;
+            } else{
+                unset($start);
+                echo('Work ID "'.$val->id.'" - Migrating');
+            }
+
 
             $this->get_work_one($val->id);
 
