@@ -310,7 +310,7 @@ class migrate extends CI_Controller {
             $data->content = $this->convert_content($data->work_id, $data->info->user_id, $data->content);
         }
         echo('.');
-        $data->ccl = $this->convert_license($data->license);
+        $data->info->ccl = $this->convert_license($data->info->license);
         echo('.');
 
         $sql = "INSERT INTO `notefolio-renew`.`works`
