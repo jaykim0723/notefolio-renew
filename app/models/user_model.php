@@ -197,7 +197,7 @@ class user_model extends CI_Model {
         }
         else {
             # 성수씨 
-            $user->user_keywords = $user->$keywords;
+            $user->user_keywords = $user->keywords;
             $user->sns = (object)array( // temporary
                 'facebook' => $user->facebook_id,
                 'twitter' => $user->twitter_id
