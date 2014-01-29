@@ -104,6 +104,7 @@
 	</div>
 </section>
 
+<?=var_export($row, true)?>
 
 
 <script>
