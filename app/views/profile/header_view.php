@@ -70,8 +70,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="pull-right nav nav-pills list-inline">
-					<li><a href="/<?php echo $row->username ?>/followings">23 Followings</a></li>
-					<li><a href="/<?php echo $row->username ?>/followers">29 Followers</a></li>
+					<li><a href="/<?php echo $row->username ?>/followings"><?=$row->following_cnt?> Followings</a></li>
+					<li><a href="/<?php echo $row->username ?>/followers"><?=$row->follower_cnt?> Followers</a></li>
 				</ul>
 				<div class="clearfix visible-xs"></div>
 				<ul id="profile-nav" class="nav nav-pills">
