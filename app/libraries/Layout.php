@@ -40,7 +40,7 @@ class Layout
 
 		if(USER_ID>0){
 			$this->ci->load->model('user_model');
-			$user = $this->ci->user_model->get_info(array('id' => USER_ID));
+			$user = $this->ci->user_model->get_info(array('id' => USER_ID, 'get_profile'=>true));
 			if($user->status=='done'){
 				$this->ci->nf->set('user', $user->row);
 			}
