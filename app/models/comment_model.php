@@ -333,7 +333,7 @@ class comment_model extends CI_Model {
                 if($comment->parent_id==0){
                     $this->db->query("UPDATE works 
                         set comment_cnt = comment_cnt - {$affected} 
-                        where work_id = {$params->work_id};
+                        where work_id = {$comment->work_id};
                         ");
                 }
                 $data = (object)array(
