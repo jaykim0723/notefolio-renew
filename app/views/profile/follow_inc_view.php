@@ -7,7 +7,7 @@
 		<?php endforeach ?>
 	</div>
 	<div class="follow-face">
-		<img src="/data/profiles/<?php echo $row->username ?>.jpg?_=<?php echo substr($row->modified, -2); ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
+		<img src="/data/profiles/<?php echo $row->username ?>_face.jpg?_=<?php echo substr($row->modified, -2); ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
 		<i class="si si-face-large"></i>
 	</div>
 	<div class="follow-center">
