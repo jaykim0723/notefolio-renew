@@ -595,7 +595,7 @@ class migrate extends CI_Controller {
             $new[0]="BY";
         }
         else{
-            return '';
+            return 'x';
         }
 
         if($old[1]=="n"){
@@ -614,7 +614,7 @@ class migrate extends CI_Controller {
             default;
                 break;
         }
-        
+
         return implode('-', $new);
     }
 
