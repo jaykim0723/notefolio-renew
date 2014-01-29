@@ -21,7 +21,7 @@
 			<div class="col-md-3" style="height:100%;">
 				<div id="work-profile-image">
 					<a id="profile-image" href="<?php echo site_url($row->user->username) ?>">
-						<img src="/data/profiles/<?php echo $row->user->username ?>.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt=""/>
+						<img src="/data/profiles/<?php echo $row->user->username ?>_face.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt=""/>
 					</a>
 					<div id="profile-info">
 						<h2><?php echo $row->user->username ?></h2>
