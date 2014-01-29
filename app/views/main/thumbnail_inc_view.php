@@ -12,7 +12,7 @@ $wide = in_array($row->key, array(4,11));
 		<span class="main-work-title">
 			<span class="pull-right">
 				<span class="main-work-face">
-					<img src="/data/profiles/<?=$row->user->id?>?h=1385655105" alt=""/>
+					<img src="/data/profiles/<?=$row->user->username?>_face.jpg?h=1385655105" alt=""/>
 					<i class="si si-face-small"></i>
 				</span>
 				<?php echo $row->user->username; ?>
