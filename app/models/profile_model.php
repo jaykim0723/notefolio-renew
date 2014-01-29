@@ -149,7 +149,7 @@ class profile_model extends CI_Model {
                 'realname'   => $row->realname,
                 'created'    => $row->created,
                 'modified'   => $row->modified, // profile 사진 갱신을 위해서 필요하다.
-                'user_keywords' => 'A7B7C7',
+                'user_keywords' => $row->keywords,
                 'recent_works' => array(), // 최근 4개의 작품을 아래에 첨부하되, 각 객체는 work_list에서 쓰는 그 테이블을 그대로 쓴다. 단, 어차피 유저에 한하므로 user 정보는 필요없다.
                 'is_follow' => ($row->is_follow==1 ? 'y' : 'n') // 기존에 어떤명을 했는지 잘 기억이...
             );
@@ -237,7 +237,7 @@ class profile_model extends CI_Model {
                 'realname'   => $row->realname,
                 'created'    => $row->created,
                 'modified'   => $row->modified, // profile 사진 갱신을 위해서 필요하다.
-                'user_keywords' => 'A7B7C7',
+                'user_keywords' => $row->keywords,
                 'recent_works' => array(), // 최근 4개의 작품을 아래에 첨부하되, 각 객체는 work_list에서 쓰는 그 테이블을 그대로 쓴다. 단, 어차피 유저에 한하므로 user 정보는 필요없다.
                 'is_follow' => ($row->is_follow==1 ? 'y' : 'n') // 기존에 어떤명을 했는지 잘 기억이...
             );
