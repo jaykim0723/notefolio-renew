@@ -317,7 +317,6 @@ class Profile extends CI_Controller {
 		));
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user);
-		exit('AAAAA');
 		$this->layout->set_view('profile/collection_listing_view', $collection_list)->render();
 	}
 
