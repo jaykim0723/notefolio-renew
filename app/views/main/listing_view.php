@@ -19,7 +19,7 @@
 										<i class="spi spi-next_white">next</i>
 									</span>
 									<span class="hot-face"> <!-- bg here -->
-										<img src="/data/profiles/<?=$row->user_id?>_face.jpg?h=1385655105" alt=""/>
+										<img src="/data/profiles/<?=$row->id?>_face.jpg?h=1385655105" alt=""/>
 										<i class="si si-face-medium"></i>
 										<i class="si si-face-medium_point"></i>
 									</span>
