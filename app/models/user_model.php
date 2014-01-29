@@ -197,12 +197,10 @@ class user_model extends CI_Model {
         }
         else {
             # 성수씨 
-            $user->following_cnt = 234;
-            $user->follower_cnt = 29;
-            $user->user_keywords = 'A7B7C7';
+            $user->user_keywords = $user->$keywords;
             $user->sns = (object)array( // temporary
-                'facebook' => 'maxzidell',
-                'twitter' => 'maxzidell'
+                'facebook' => $user->facebook_id,
+                'twitter' => $user->twitter_id
             );
 
             unset($user->password);
