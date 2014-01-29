@@ -256,11 +256,7 @@ class migrate extends CI_Controller {
         foreach($response->rows as $key=>$val){
             echo('Work ID "'.$val->id.'" - Migrating');
 
-            $default_cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'cli.php migrate';
-            $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
-            
-            $cmd = $default_cmd.' get_work_one '.$val->id.' > /dev/null &';
-            exec($cmd);
+            $this->get_work_one($val->id);
 
             echo(' done.'.PHP_EOL);
     
