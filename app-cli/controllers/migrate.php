@@ -310,6 +310,8 @@ class migrate extends CI_Controller {
             $data->content = $this->convert_content($data->work_id, $data->info->user_id, $data->content);
         }
         echo('.');
+        $data->ccl = $this->convert_license($data->license);
+        echo('.');
 
         $sql = "INSERT INTO `notefolio-renew`.`works`
             (`work_id`,
@@ -345,7 +347,7 @@ class migrate extends CI_Controller {
             ".$this->db->escape($data->count->note_cnt).",
             ".$this->db->escape($data->count->collect_cnt).",
             ".$this->db->escape($data->count->comment_cnt).",
-            ".$this->db->escape(implode('', $data->info->license)).",
+            ".$this->db->escape($data->info->ccl).",
             100);";
         $this->db->query($sql);
         echo('.');
@@ -576,6 +578,44 @@ class migrate extends CI_Controller {
         $new = array_unique($new);
 
         return implode(',', $new);
+    }
+
+    /**
+     * convert license array to string(seperated by -)
+     *
+     */
+    public function convert_license($old){
+        $new = array();
+
+        if(!is_array($old)){
+            $old = array($old);
+        }
+
+        if($old[0]=="y"){
+            $new[0]="BY";
+        }
+        else{
+            return '';
+        }
+
+        if($old[1]=="n"){
+            $new[]="NC";
+        }
+
+        switch($old[2]){
+
+            case 2:
+                $new[]="SA";
+                break;
+            case 1:
+                $new[]="ND";
+                break;
+            case 0:
+            default;
+                break;
+        }
+        
+        return implode('-', $new);
     }
 
     /**
