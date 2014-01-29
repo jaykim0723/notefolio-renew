@@ -2,7 +2,7 @@
 	<div class="follow-recent-works">
 		<?php foreach ($row->recent_works as $key => $r): ?>
 			<a href="/<?php echo $row->username ?>/<?php echo $r->work_id ?>">
-				<img src="/data/covers/<?php echo $r->work_id ?>-t1.jpg?_=<?php echo substr($r->modified, -2); ?>" alt="">
+				<img src="/data/covers/<?php echo $r->work_id ?>_t1.jpg?_=<?php echo substr($r->modified, -2); ?>" alt="">
 			</a>
 		<?php endforeach ?>
 	</div>
