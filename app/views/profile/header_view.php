@@ -104,8 +104,6 @@
 	</div>
 </section>
 
-<?=var_export($row, true)?>
-
 
 <script>
 	if(site.prevPage.url.indexOf(site.url+site.segment[0])==0){
