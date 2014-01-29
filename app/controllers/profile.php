@@ -313,7 +313,7 @@ class Profile extends CI_Controller {
 
 		$collection_list = $this->profile_model->get_collection_list(array(
 			'page' => $page,
-			'user_id' => $user->user_id
+			'user_id' => $user->row->id
 		));
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user);
