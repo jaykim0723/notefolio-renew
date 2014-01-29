@@ -58,7 +58,7 @@
 					</a>
 					<a id="btn-profile" href="/<?php echo $this->session->userdata('username') ?>">
 						<div id="btn-profile-icon">
-							<img src="/data/profiles/<?php echo $this->session->userdata('username') ?>.jpg" alt=""/>
+							<img src="/data/profiles/<?php echo $this->session->userdata('username') ?>_face.jpg" alt=""/>
 							<i class="si si-face-medium"></i>
 						</div>
 						<span><?php echo $this->session->userdata('username'); ?></span>
