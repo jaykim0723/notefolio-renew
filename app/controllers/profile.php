@@ -217,7 +217,6 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- profile.php > myworks ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->_get_user_info($username);
-		var_export($user);
 
         $this->load->model('work_model');
 		$work_list = $this->work_model->get_list(array(
