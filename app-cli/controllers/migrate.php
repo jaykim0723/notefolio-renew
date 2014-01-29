@@ -240,16 +240,7 @@ class migrate extends CI_Controller {
 
         //$this->db->trans_start();
         if($start==0){
-            $sql = "TRUNCATE `works`;";
-            $this->db->query($sql);
-            $sql = "TRUNCATE `work_comments`;";
-            $this->db->query($sql);
-            $sql = "TRUNCATE `work_tags`;";
-            $this->db->query($sql);
-            $sql = "TRUNCATE `log_work_view`;";
-            $this->db->query($sql);
-            $sql = "TRUNCATE `log_work_note`;";
-            $this->db->query($sql);
+            $this->clear_work();
         }
 
         $response = @json_decode(exec($cmd));
@@ -268,6 +259,29 @@ class migrate extends CI_Controller {
 
         echo $this->db->trans_status().PHP_EOL;
 	}
+
+    public function clear_work(){
+        $this->load->database();
+
+        $sql = "TRUNCATE `works`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `work_comments`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `work_tags`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `log_work_view`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `log_work_note`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `uploads`;";
+        $this->db->query($sql);
+
+        $default_cmd = 'rm -rf '.$this->input->server('DOCUMENT_ROOT').'../www/data/img/*';
+        
+        $cmd = $default_cmd;
+        
+        $response = @json_decode(exec($cmd));
+    }
 
     public function get_work_one($work_id){
         $this->load->config('upload', TRUE);
