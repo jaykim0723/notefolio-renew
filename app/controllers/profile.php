@@ -241,7 +241,7 @@ class Profile extends CI_Controller {
 		$user = $this->_get_user_info($username);
 
         $this->load->model('work_model');
-        $id_before++;
+        $id_before++; // 리스트에 현재의 작품을 포함하여야 하므로..
 		$work_list = $this->work_model->get_list(array(
 			'id_before' => $id_before,
 			'user_id' => $this->user_id
@@ -288,20 +288,31 @@ class Profile extends CI_Controller {
 		$this->layout->set_view('profile/about_view', $data)->render();
 	}
 
-
-	function update_about($username='', $contents=''){
-		$user = $this->_get_user_info($username);
-
-		$input = $this->input->post();
-
-		$data = $this->profile_model->put_about(array(
-			'user_id'     => $user->id,
-			'contents'    => $input['contents'],
-			'attachments' => $input['attachments']
+	function update_about(){
+		$contents = $this->input->post('contents');
+		$attachments = $this->input->post('attachments');
+		
+		$about = $this->profile_model->get_about(array(
+			'user_id' => USER_ID
 		));
-		$data->user = $user;
-		$this->layout->set_json($data)->render();
+
+		// 삭제하여야할 uploads > id들을 구한다. (기존에 있다가 사라진 것들, 혹은 추가는 했지만 다시 취소하는 놈들)
+		
+		$json = $this->profile_model->put_about(array(
+			'user_id' => USER_ID,
+			'contents' => $contents,
+			'attachments' => $attachments
+		));
+		$this->layout->set_json($json)->render();
 	}
+
+	function read_about_attachments(){
+		$json = $this->profile_model->get_about_attachments(array(
+			'user_id' => USER_ID
+		));
+		$this->layout->set_json($json)->render();
+	}
+
 
 	
 
@@ -405,6 +416,7 @@ class Profile extends CI_Controller {
 		));
 		$this->layout->set_json($json)->render();
 	}
+
 
 
 

@@ -179,7 +179,7 @@ var workUtil = {
     			break;
 
     			case 'text':
-    				o.c = $(this).children('textarea').val();
+    				o.c = br2nl($(this).children('textarea').val());
     			break;
 
     			case 'line':
@@ -1046,6 +1046,54 @@ var profileUtil = {
 					'</table>';
 				$('#statistics-table-area').html(html).children('table').dataTable();
 			});
+		}
+	},
+
+	about : {
+		setGround : function(){
+			$('#btn-update-about').on('click', function(){
+				profileUtil.about.update();
+			});
+			$('#btn-submit-about').on('click', function(){
+				profileUtil.about.submit();
+			})
+			$('#btn-cancel-about').on('click', function(){
+				profileUtil.about.cancel();
+			})
+		},
+		update : function(){
+			$('#btn-update-about').hide();
+			$('#footer').css('bottom', '-100px');
+			var html = $('#about-cont').hide().html();
+			html = $.trim(html);
+			$('#about-edit-area').show().children('textarea').val(html).wysihtml5();
+			
+			// 위지윅에디터 활성화
+			
+			
+			// 첨부파일 리스트 불러오기
+
+		},
+		cancel : function(){
+			location.reload();
+		},
+		submit : function(){
+			var contents = $('#about-edit-area > textarea').val();
+			console.log('contents', contents);
+			contents = br2nl(contents);
+			$.post('/profile/update_about', {
+				contents : contents
+			}, 'json').done(function(responseJSON){
+				if(responseJSON.status=='done'){
+					profileUtil.about.cancel();
+				}
+			});
+		},
+		addAttachment : function(){
+
+		},
+		removeAttachment : function(){
+
 		}
 	}
 };

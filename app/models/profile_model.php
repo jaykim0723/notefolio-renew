@@ -460,6 +460,10 @@ class profile_model extends CI_Model {
             );
         }
         $data->row->attachments = unserialize($row->attachments);
+
+        # do stuff(성수씨 호출)
+        # $data->row->attachments에 있는 uploads>id 들을 기반으로 관련 정보들을 불러온다.
+        
         $data->row->contents = $row->contents;
         return $data;        
     }
@@ -471,7 +475,7 @@ class profile_model extends CI_Model {
         $default_params = (object)array(
             'user_id'   => '',
             'contents' => '',
-            'attachments' => ''
+            'attachments' => array()
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
@@ -481,9 +485,10 @@ class profile_model extends CI_Model {
         $data = (object)array(
             'status' => 'done'
         );
-        $this->db->set('contents', $params->contents)->set('attachments', serialize($params->contents))->where('user_id', $row->user_id)->update('user_about');
+        $this->db->set('contents', $params->contents)->where('user_id', $params->user_id)->update('user_about');
         return $data; 
     }
+
 
 
 

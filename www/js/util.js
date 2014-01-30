@@ -366,6 +366,9 @@ function delete_array_by_value(v, arr){
 	}
 	return arr;
 }
+function br2nl(str){
+	return str.replace(/<br ?\/?>\n?/gi, "\n");
+}
 
 
 function jumpObj(tar, callback){
