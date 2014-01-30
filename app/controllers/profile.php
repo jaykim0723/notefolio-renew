@@ -241,8 +241,9 @@ class Profile extends CI_Controller {
 		$user = $this->_get_user_info($username);
 
         $this->load->model('work_model');
+        $id_before++;
 		$work_list = $this->work_model->get_list(array(
-			'id_before' => --$id_before,
+			'id_before' => $id_before,
 			'user_id' => $this->user_id
 		));
 		$work_list->username = $username;
