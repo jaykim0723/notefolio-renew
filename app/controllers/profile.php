@@ -306,14 +306,14 @@ class Profile extends CI_Controller {
 
 
 
-	function collection($username='', $page=1){
+	function collect($username='', $page=1){
 		log_message('debug','--------- collection ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->_get_user_info($username);
 
 		$collection_list = $this->profile_model->get_collection_list(array(
 			'page' => $page,
-			'user_id' => $this->row->user_id
+			'user_id' => $user->row->id
 		));
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user);
@@ -321,6 +321,11 @@ class Profile extends CI_Controller {
 	}
 
 	
+	function collection($username='', $page=1){
+
+		return $this->collect($username, $page);
+	}
+
 
 
 	function statistics($username='', $page=1){

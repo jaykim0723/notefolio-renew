@@ -51,9 +51,9 @@ $route['(gallery|profile|auth|auth_other|admin|acp|comment|main|feed|feed_new|al
 $route['(gallery|profile|auth|auth_other|admin|acp|comment|upload|info|main|feed|factive_user|alarm|fbauth)/(:any)'] = "$1/$2";
 $route['(gallery|profile|auth|auth_other|admin|acp|comment|upload|info|main|feed|factive_user|alarm|fbauth)'] = "$1";
 
-$route['(:any)/(gallery|collection|about|statistics|followings|followers)/(:num)'] = "profile/$2/$1/$3"; // tabs list
-$route['(:any)/(gallery|collection|about|statistics|followings|followers)/(:any)'] = "$2/$3/$1"; // maxzidell/gallery/upload -> gallery/upload/maxzidell
-$route['(:any)/(gallery|collection|about|statistics|followings|followers)'] = "profile/$2/$1"; // tabs
+$route['(:any)/(gallery|collect|collection|about|statistics|followings|followers)/(:num)'] = "profile/$2/$1/$3"; // tabs list
+$route['(:any)/(gallery|collect|collection|about|statistics|followings|followers)/(:any)'] = "$2/$3/$1"; // maxzidell/gallery/upload -> gallery/upload/maxzidell
+$route['(:any)/(gallery|collect|collection|about|statistics|followings|followers)'] = "profile/$2/$1"; // tabs
 $route['(:any)/(:num)/(update|delete)'] = "gallery/$3/$2"; 
 $route['(:any)/(:num)'] = "gallery/info/$2";
 $route['(:any)'] = "profile/myworks/$1";

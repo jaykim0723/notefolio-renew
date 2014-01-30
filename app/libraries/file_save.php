@@ -174,7 +174,15 @@ class file_save {
 
             if(class_exists('Imagick')){
                 // assign ImageMagick
-                $image = new Imagick($tmp_name);
+                $image = new Imagick();
+                $image->setResolution(300,300); 
+                $image->readImage($tmp_name);
+
+                //-- transparent background to white
+                $image->setImageBackgroundColor('white'); 
+                $image = $image->flattenImages(); 
+                //-- end
+
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
                 if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
                     $profiles = $image->getImageProfiles('*', false); 
@@ -207,7 +215,7 @@ class file_save {
                     $image->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
                 }
 
-                $image->resampleImage(200,200,imagick::FILTER_LANCZOS,1);
+                //$image->resampleImage(200,200,imagick::FILTER_LANCZOS,1);
 
                 if(in_array('resize', $todo)){
                     if(($image->getImageWidth() > $max_width)||(isset($opt['spanning'])&&$opt['spanning'])){

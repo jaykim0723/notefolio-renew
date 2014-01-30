@@ -2,12 +2,12 @@
 	<div class="follow-recent-works">
 		<?php foreach ($row->recent_works as $key => $r): ?>
 			<a href="/<?php echo $row->username ?>/<?php echo $r->work_id ?>">
-				<img src="/data/covers/<?php echo $r->work_id ?>-t1.jpg?_=<?php echo substr($r->modified, -2); ?>" alt="">
+				<img src="/data/covers/<?php echo $r->work_id ?>_t2.jpg?_=<?php echo substr($r->modified, -2); ?>" alt="">
 			</a>
 		<?php endforeach ?>
 	</div>
 	<div class="follow-face">
-		<img src="/data/profiles/<?php echo $row->username ?>.jpg?_=<?php echo substr($row->modified, -2); ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
+		<img src="/data/profiles/<?php echo $row->username ?>_face.jpg?_=<?php echo substr($row->modified, -2); ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
 		<i class="si si-face-large"></i>
 	</div>
 	<div class="follow-center">

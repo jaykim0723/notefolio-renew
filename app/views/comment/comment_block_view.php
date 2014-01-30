@@ -29,7 +29,7 @@
 			<?php endif; ?>
 		</div>
 		<a class="comment-profile-area" target="_blank" href="<?php echo site_url($row->user->username); ?>">
-			<img src="<?php echo site_url('data/profiles/'.$row->user->username) ?>.jpg" alt="">
+			<img src="<?php echo site_url('data/profiles/'.$row->user->username) ?>_face.jpg" alt="">
 			<i class="si si-face-medium"></i>
 		</a>
 		<div class="comment-textarea">

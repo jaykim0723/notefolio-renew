@@ -22,6 +22,10 @@ class migrate extends CI_Controller {
 	 * @param int $user_id
 	 */
 	public function get_user(){
+        $this->load->config('upload', TRUE);
+        $this->load->model('upload_model');
+        $this->load->library('file_save');
+
         $default_cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'../../notefolio-web/app_cli/cli.php migrate';
         $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
         
@@ -46,8 +50,10 @@ class migrate extends CI_Controller {
 
             $data = @json_decode(exec($cmd));
 
+            echo('User ID "'.$data->user_id.'" - Migrating');
             $data->keyword = $this->convert_keyword($data->keyword);
-            var_export($data);
+            echo('.');
+            //var_export($data);
 
             $sql = "INSERT INTO `users`
                 (`id`,
@@ -86,6 +92,8 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($data->info->created).",
                 ".$this->db->escape($data->info->modified).");";
             $this->db->query($sql);
+            echo('.');
+
             $sql = "INSERT INTO `user_profiles`
                 (`id`,
                 `user_id`,
@@ -124,6 +132,8 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($data->info->point).");
                 ";
             $this->db->query($sql);
+            echo('.');
+
             if(count($data->sns_fb)>0){
                 $sql = "INSERT INTO `notefolio-renew`.`user_sns_fb`
                         (`id`,
@@ -146,6 +156,7 @@ class migrate extends CI_Controller {
                         ";
                 $this->db->query($sql);
             }
+            echo('.');
 
             $sql = '';
             foreach($data->follow as $param){
@@ -163,10 +174,44 @@ class migrate extends CI_Controller {
                     VALUES ".$sql.";";
                 $this->db->query($sql);
             }
+            echo('.');
 
-            //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
-            //$this->db->query($sql);
+            $sql = '';
+            foreach($data->collect as $param){
+                $sql .= (empty($sql)?'':',')."
+                    (".$this->db->escape($data->user_id).",
+                    ".$this->db->escape($param->work_id).",
+                    ".$this->db->escape($param->comment).",
+                    ".$this->db->escape($param->regdate).")
+                    ";
+            }
+            if(!empty($sql)){
+                $sql = "INSERT INTO `user_work_collect`
+                    (`user_id`,
+                    `work_id`,
+                    `comment`,
+                    `regdate`)
+                    VALUES ".$sql.";";
+                $this->db->query($sql);
+            }
+            echo('.');
+            
+            if(!empty($data->pic)){
+                $filename = $data->pic;
+    
+                $this->file_save->make_thumbnail(
+                    $filename,
+                    $this->config->item('profile_upload_path', 'upload').$data->info->username.'_face.jpg',
+                    'profile_face', 
+                    array('crop_to'=>array( 'width'  => 100, 'height' => 100, 'pos_x'  => 0, 'pos_y'  => 0), 'spanning'=>true)
+                    );
+            }
+            echo('.');
 
+            echo(' done.'.PHP_EOL);
+    
+                    //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
+                    //$this->db->query($sql);
 
         }
         //$this->db->trans_complete();
@@ -178,24 +223,270 @@ class migrate extends CI_Controller {
 	 * migrate info for work list
 	 *
 	 */
-	public function get_work(){
+	public function get_work($start=0){
+        $this->load->config('upload', TRUE);
+        $this->load->model('upload_model');
+        $this->load->library('file_save');
+
+        ignore_user_abort(true);
+        set_time_limit(0);
+
         $default_cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'../../notefolio-web/app_cli/cli.php migrate';
         $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
         
         $cmd = $default_cmd.' work_list';
-        
-        $response = @json_decode(exec($cmd));
-        foreach($response->rows as $key=>$val){
-            $cmd = $default_cmd.' work '.$val->id;
 
-            $data = @json_decode(exec($cmd));
+        $this->load->database();
 
-            $data->keyword = $this->convert_keyword($data->keyword);
-
+        //$this->db->trans_start();
+        if($start==0){
+            $this->clear_work();
         }
 
-        echo PHP_EOL;
+        $response = @json_decode(exec($cmd));
+        foreach($response->rows as $key=>$val){
+            if(isset($start) && $val->id!=$start){
+                echo('Work ID "'.$val->id.'" - skip'.PHP_EOL);
+                continue;
+            } else{
+                unset($start);
+                echo('Work ID "'.$val->id.'" - Migrating');
+            }
+
+
+            $this->get_work_one($val->id);
+
+            echo(' done.'.PHP_EOL);
+    
+                    //$sql = "INSERT INTO table (title) VALUES(".$this->db->escape($title).")";
+                    //$this->db->query($sql);
+
+        }
+        //$this->db->trans_complete();
+
+        echo $this->db->trans_status().PHP_EOL;
 	}
+
+    public function clear_work(){
+        $this->load->database();
+
+        $sql = "TRUNCATE `works`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `work_comments`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `work_tags`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `log_work_view`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `log_work_note`;";
+        $this->db->query($sql);
+        $sql = "TRUNCATE `uploads`;";
+        $this->db->query($sql);
+
+        $default_cmd = 'rm -rf '.$this->input->server('DOCUMENT_ROOT').'../www/data/img/*';
+        
+        $cmd = $default_cmd;
+        
+        $response = @json_decode(exec($cmd));
+    }
+
+    public function get_work_one($work_id){
+        $this->load->config('upload', TRUE);
+        $this->load->model('upload_model');
+        $this->load->library('file_save');
+
+        $default_cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'../../notefolio-web/app_cli/cli.php migrate';
+        $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
+        
+        $cmd = $default_cmd.' work '.$work_id;
+
+        $this->load->database();
+
+        $data = @json_decode(exec($cmd));
+
+        echo('Work ID "'.$data->work_id.'" - Migrating');
+        $data->keyword = $this->convert_keyword($data->keyword);
+        echo('.');
+
+        if(!empty($data->tag)){
+            $data->tags = $this->convert_tags($data->tag);
+        }
+        echo('.');
+        
+        if(!empty($data->content)){
+            $data->content = $this->convert_content($data->work_id, $data->info->user_id, $data->content);
+        }
+        echo('.');
+        $data->info->ccl = $this->convert_license($data->info->license);
+        echo('.');
+
+        $sql = "INSERT INTO `notefolio-renew`.`works`
+            (`work_id`,
+            `regdate`,
+            `status`,
+            `keywords`,
+            `title`,
+            `tags`,
+            `user_id`,
+            `folder`,
+            `moddate`,
+            `contents`,
+            `nofol_rank`,
+            `hit_cnt`,
+            `note_cnt`,
+            `collect_cnt`,
+            `comment_cnt`,
+            `ccl`,
+            `discoverbility`)
+            VALUES
+            (".$this->db->escape($data->work_id).",
+            ".$this->db->escape($data->info->regdate).",
+            'enabled',
+            ".$this->db->escape($data->keyword).",
+            ".$this->db->escape($data->info->title).",
+            ".$this->db->escape($data->tags).",
+            ".$this->db->escape($data->info->user_id).",
+            '',
+            ".$this->db->escape($data->info->moddate).",
+            ".$this->db->escape(serialize($data->content)).",
+            0,
+            ".$this->db->escape($data->count->hit_cnt).",
+            ".$this->db->escape($data->count->note_cnt).",
+            ".$this->db->escape($data->count->collect_cnt).",
+            ".$this->db->escape($data->count->comment_cnt).",
+            ".$this->db->escape($data->info->ccl).",
+            100);";
+        $this->db->query($sql);
+        echo('.');
+
+        $sql = '';
+        foreach($data->tag as $param){
+            $sql .= (empty($sql)?'':',')."
+                (".$this->db->escape($data->work_id).",
+                ".$this->db->escape($param->text).")
+                ";
+        }
+        if(!empty($sql)){
+            $sql = "INSERT INTO `work_tags`
+                (`work_id`,
+                `text`)
+                VALUES ".$sql.";";
+            $this->db->query($sql);
+        }
+        echo('.');
+
+        $sql = '';
+        foreach($data->comment as $param){
+            $sql .= (empty($sql)?'':',')."
+                (".$this->db->escape($param->id).",
+                ".$this->db->escape($data->work_id).",
+                ".$this->db->escape($param->parent_id).",
+                ".$this->db->escape($param->user_id).",
+                ".$this->db->escape($param->content).",
+                ".$this->db->escape($param->regdate).",
+                ".$this->db->escape($param->moddate).",
+                0)
+                ";
+        }
+        if(!empty($sql)){
+            $sql = "INSERT INTO `work_comments`
+                (`id`,
+                `work_id`,
+                `parent_id`,
+                `user_id`,
+                `content`,
+                `regdate`,
+                `moddate`,
+                `children_cnt`)
+                VALUES ".$sql.";";
+            $this->db->query($sql);
+            $sql = "UPDATE `work_comments` as o
+                        inner join (
+                            select parent_id, ifnull(count(*),0) as count
+                                from `work_comments` as s
+                                where `work_id` = {$this->db->escape($data->work_id)}
+                                and parent_id != 0
+                                group by parent_id
+                            ) as c on o.id = c.parent_id
+                set o.`children_cnt` = c.count
+                where `work_id` = {$this->db->escape($data->work_id)}
+                and o.parent_id = 0;";
+            $this->db->query($sql);
+        }
+        echo('.');
+
+        $sql = '';
+        foreach($data->views as $param){
+            $sql .= (empty($sql)?'':',')."
+                (".$this->db->escape($data->work_id).",
+                ".$this->db->escape($param->user_id).",
+                ".$this->db->escape($param->remote_addr).",
+                'migrate',
+                ".$this->db->escape($param->regdate).",
+                0)
+                ";
+        }
+        if(!empty($sql)){
+            $sql = "INSERT INTO `log_work_view`
+                (`work_id`,
+                `user_id`,
+                `remote_addr`,
+                `phpsessid`,
+                `regdate`)
+                VALUES ".$sql.";";
+            $this->db->query($sql);
+        }
+        echo('.');
+
+        $sql = '';
+        foreach($data->notes as $param){
+            $sql .= (empty($sql)?'':',')."
+                (".$this->db->escape($data->work_id).",
+                ".$this->db->escape($param->user_id).",
+                ".$this->db->escape($param->remote_addr).",
+                'migrate',
+                ".$this->db->escape($param->regdate).",
+                0)
+                ";
+        }
+        if(!empty($sql)){
+            $sql = "INSERT INTO `log_work_note`
+                (`work_id`,
+                `user_id`,
+                `remote_addr`,
+                `phpsessid`,
+                `regdate`)
+                VALUES ".$sql.";";
+            $this->db->query($sql);
+        }
+        echo('.');
+
+        if(!empty($data->pic)){
+            $filename = $data->pic;
+
+            list($width, $height) = getimagesize($filename);
+
+            $size = array('width'=> $width, 'height'=> $height);
+            
+            $crop_param_t2 = $this->input->get_post('t2');
+            $crop_param_t3 = $this->input->get_post('t3');
+
+            $result_t1 = $this->file_save->make_thumbnail(
+                $filename,
+                $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t1.jpg', 'small');
+            $result_t2 = $this->file_save->make_thumbnail(
+                $filename,
+                $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t2.jpg', 'single',
+                array('autocrop'=>true, 'spanning'=>true));
+            $result_t3 = $this->file_save->make_thumbnail(
+                $filename,
+                $this->config->item('cover_upload_path', 'upload').$data->work_id.'_t3.jpg', 'wide', 
+                array('autocrop'=>true, 'spanning'=>true));
+
+        }
+        
+        echo(' done.'.PHP_EOL);
+    }
 
     /**
      * convert keyword to new keyword
@@ -281,6 +572,225 @@ class migrate extends CI_Controller {
         return implode('', $new);
     }
 
+    /**
+     * convert tags array to string(seperated by comma)
+     *
+     */
+    public function convert_tags($old){
+        $new = array();
+
+        foreach($old as $val){
+            $new[] = $val->text;
+        }
+        $new = array_unique($new);
+
+        return implode(',', $new);
+    }
+
+    /**
+     * convert license array to string(seperated by -)
+     *
+     */
+    public function convert_license($old){
+        $new = array();
+
+        if(!is_array($old)){
+            $old = array($old);
+        }
+
+        if($old[0]=="y"){
+            $new[0]="BY";
+        }
+        else{
+            return 'x';
+        }
+
+        if($old[1]=="n"){
+            $new[]="NC";
+        }
+
+        switch($old[2]){
+
+            case 2:
+                $new[]="SA";
+                break;
+            case 1:
+                $new[]="ND";
+                break;
+            case 0:
+            default;
+                break;
+        }
+
+        return implode('-', $new);
+    }
+
+    /**
+     * convert contents for new system
+     *
+     */
+    public function convert_content($work_id, $user_id, $old){
+        $new = array();
+
+        foreach($old as $val){
+            if(empty($val)) continue;
+
+            $data = array('t'=>$val->type);
+            switch($val->type){
+                case "text":
+                case "video":
+                    $data['c'] = $val->content;
+                break;
+                case "image":
+                    $path = '/home/web/notefolio-web/www/img/'
+                        .date('ym', strtotime($val->regdate)).'/'.$val->id.'_r';
+                    if(file_exists($path)){
+                        $result = $this->migrate_image($work_id, $user_id, $path, $val->filename, $val->filesize);
+                        echo('*');
+    
+                        $data['i'] = $result['upload_id'];
+                        $data['c'] = $result['src'];
+                    }
+                    else{
+                        unset($data);
+                        continue;
+                    }
+                break;
+                default:
+                    continue;
+                break;
+            }
+            $new[] = $data;
+        }
+
+        return $new;
+    }
+
+    /**
+     * migrate image (get->upload->return)
+     *
+     */
+    public function migrate_image($work_id, $user_id, $path, $org_filename, $filesize){
+        $this->load->config('upload', TRUE);
+        $this->load->model('upload_model');
+        $this->load->library('file_save');
+            
+        $filename = $this->make_filename('image', urlencode($org_filename));
+
+        $this->file_save->make_thumbnail(
+            $path,
+            $filename['path'].$filename['large'],
+            'large' );
+        $this->file_save->make_thumbnail(
+            $path,
+            $filename['path'].$filename['medium'],
+            'medium');
+        $this->file_save->make_thumbnail(
+            $path,
+            $filename['path'].$filename['small'],
+            'small' );
+        $this->file_save->make_thumbnail(
+            $path,
+            $filename['path'].$filename['wide'],
+            'wide',
+            array('autocrop'=>true));
+        $this->file_save->make_thumbnail(
+            $path,
+            $filename['path'].$filename['single'],
+            'single',
+            array('autocrop'=>true));
+
+        copy($path, $filename['path'].$filename['original']);
+
+        $upload_id = $this->upload_model->post(array(
+            'user_id' => $user_id,
+            'work_id' => $work_id,
+            'type' => 'work',
+            'filename' => $filename['original'],
+            'org_filename' => $org_filename,
+            'filesize' => $filesize,
+            'comment' => ''
+        ));
+
+        $output = array(
+            'status' => 'done',
+            'message'   => 'successed',
+            'upload_id' => $upload_id,
+            'src' => $filename['uri'].$filename['medium'],
+            'org_filename' => $file['name'],
+            'data' => $this->upload_model->get(array('id'=>$upload_id))->row
+            );
+
+        return $output;
+    }
+
+    /**
+     * make file name using hash(sha256)
+     * 
+     * @param string $type
+     * @param string $name
+     * @return array
+     */
+    function make_filename($type=false, $name=false){
+        if($name){
+            $path_text = pathinfo($name);
+            $o_name = $path_text['filename'];
+            $ext = strtolower($path_text['extension']);
+        }
+        else {
+            $o_name = '';
+            $ext = '';
+        }
+        if(in_array($type, array('image'))){
+            $salt = $this->config->item('encryption_key')
+                    .'NOTEFOLIO'
+                    .microtime();
+            $hashed_name = hash('sha256', $salt.$o_name);
+            $hashed_path = substr($hashed_name, 0, 2).'/'.substr($hashed_name, 2, 2).'/';
+        }
+        switch($type){
+            case 'image':
+                $path = $this->config->item('img_upload_path', 'upload');
+                $uri  = $this->config->item('img_upload_uri',  'upload');
+                $output = array('original' =>$hashed_name.'.'.$ext,
+                                'large'    =>$hashed_name.'_v1.jpg',
+                                'medium'   =>$hashed_name.'_v2.jpg',
+                                'wide'     =>$hashed_name.'_t3.jpg',
+                                'single'   =>$hashed_name.'_t2.jpg',
+                                'small'    =>$hashed_name.'_t1.jpg',
+                                'path'     =>$path.$hashed_path,
+                                'uri'      =>$uri.$hashed_path,
+                                'ext'      =>($ext!='')?$ext:'jpg'
+                                );
+            break;
+            case 'cover':
+                $path = $this->config->item('cover_upload_path', 'upload');
+                $uri  = $this->config->item('cover_upload_uri',  'upload');
+                $output = array('original' =>$o_name,
+                                'wide'     =>$o_name.'_t3.jpg',
+                                'single'   =>$o_name.'_t2.jpg',
+                                'small'    =>$o_name.'_t1.jpg',
+                                'path'     =>$path,
+                                'uri'      =>$uri,
+                                'ext'      =>($ext!='')?$ext:'jpg'
+                                );
+            break;
+            default:
+                $path = $this->config->item('upload_path', 'upload');
+                $output = array('original'     =>$name,
+                                'path'         =>$path,
+                                'ext'          =>($ext!='')?$ext:'jpg'
+                                    );
+            break;
+        }
+        
+        if(!is_dir($output['path'])) //create the folder if it's not already exists
+        {
+            mkdir($output['path'],0777,TRUE);
+        }
+
+        return $output;
+    }
 
 }
 
