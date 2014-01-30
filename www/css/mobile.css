@@ -570,7 +570,7 @@ form.comment-block.create textarea {
 		.comment-profile-area .spi,
 		.comment-profile-area .si {
 			position: absolute;
-			top: 0;
+			top: -1px;
 			left: 0;
 		}
 	.comment-textarea {
