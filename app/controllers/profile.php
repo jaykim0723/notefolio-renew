@@ -296,8 +296,6 @@ class Profile extends CI_Controller {
 			'user_id' => USER_ID
 		));
 
-		// 삭제하여야할 uploads > id들을 구한다. (기존에 있다가 사라진 것들, 혹은 추가는 했지만 다시 취소하는 놈들)
-		
 		$json = $this->profile_model->put_about(array(
 			'user_id' => USER_ID,
 			'contents' => $contents,

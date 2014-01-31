@@ -1165,6 +1165,9 @@ p.desc {
 #about-edit-area textarea {
 	width: 100%;
 }
+#about-edit-area iframe {
+	height: 400px;
+}
 #about-attachments {
 	float: left;
 	width: 100%;
