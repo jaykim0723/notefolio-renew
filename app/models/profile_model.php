@@ -460,7 +460,7 @@ class profile_model extends CI_Model {
             );
         }
         $data->row->attachments = unserialize($row->attachments);
-        if(!empty($data->row->attachments)){
+        if(count($data->row->attachments)){
             $attachments = $this->db->select('id, filename')
                 ->where_in('id', $data->row->attachments)
                 ->where('user_id', $params->user_id)
