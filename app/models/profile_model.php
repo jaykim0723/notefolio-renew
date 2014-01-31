@@ -469,7 +469,7 @@ class profile_model extends CI_Model {
         }
         
         $data->row->attachments = array();
-        if($attachments){
+        if(!empty($attachments)){
             foreach($attachments as $attachment){
                 $data->row->attachments[] = array(
                     'upload_id' => $attachment->id,
