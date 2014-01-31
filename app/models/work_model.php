@@ -24,12 +24,17 @@ class work_model extends CI_Model {
             'order_by'  => 'newest', // newest, oldest
             'keywords'  => '', 
             'folder'    => '', // ''면 전체
-            'user_id'   => '' // 프로필 등 특정 작가의 작품만을 조회할 때
+            'user_id'   => '', // 프로필 등 특정 작가의 작품만을 조회할 때
+            'only_enable'   => false, // enable된 작품만
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
     			$params->{$key} = $value;
     	}
+
+        if($params->only_enable){
+            $this->db->where('works.status', 'enabled');
+        }
 
     	$this->db
             ->select('works.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')

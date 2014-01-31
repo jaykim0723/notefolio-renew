@@ -62,6 +62,7 @@ class Main extends CI_Controller {
 		// exit(serialize($data));
 
 		$work_list = $this->work_model->get_list(array(
+			'only_enable' => true,
 			'page'      => $page,
 			'delimiter' => $page==1 ? 17 : 16 // 처음일 때에는 하나를 따로 뺀다
 		));
