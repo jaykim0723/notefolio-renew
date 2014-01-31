@@ -11,15 +11,21 @@
 			<?php endif; ?>
 
 			<div id="about-cont">
-				<?php echo nl2br(htmlentities($row->contents, ENT_COMPAT, 'utf-8')); ?>
+				<?php echo nl2br($row->contents); ?>
 			</div>			
 
 			<?php if($this->nf->get('user')->username == $user->row->username): ?>
 			<div id="about-edit-area">
 				<textarea name="about-text" id="about-text" cols="30" rows="10"></textarea>
 				<ul id="about-attachments">
+					<li id="about-upload">
+						<i class="spi spi-plus">plus</i>
+						<br/>
+						파일첨부
+					</li>
+					<br class="clearfix"/>
 				</ul>
-				<div class="centered">
+				<div class="centered clearfix">
 					<button id="btn-submit-about" class="btn btn-primary">수정완료</button>
 					<button id="btn-cancel-about" class="btn btn-default">취소</button>
 				</div>

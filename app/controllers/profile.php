@@ -306,10 +306,11 @@ class Profile extends CI_Controller {
 		$this->layout->set_json($json)->render();
 	}
 
-	function read_about_attachments(){
-		$json = $this->profile_model->get_about_attachments(array(
+	function read_about(){
+		$json = $this->profile_model->get_about(array(
 			'user_id' => USER_ID
 		));
+		$json->row->contents = nl2br($json->row->contents);
 		$this->layout->set_json($json)->render();
 	}
 

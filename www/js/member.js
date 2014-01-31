@@ -1060,18 +1060,39 @@ var profileUtil = {
 			$('#btn-cancel-about').on('click', function(){
 				profileUtil.about.cancel();
 			})
+			$('#about-upload').ajaxUploader({
+				url : '/upload/image',
+				multiple : true,
+				droppable : true,
+				start : function(){
+					blockPage.block();
+				},
+				cancel : function(){
+					blockPage.unblock();
+				},
+				done : function(responseJSON){
+					blockPage.unblock();
+					// change profile face
+					profileUtil.about.createAttachmentBlock(responseJSON).insertBefore('#about-upload');
+				},
+				fail : function(){
+					blockPage.unblock();
+				}
+			});
 		},
 		update : function(){
-			$('#btn-update-about').hide();
+			$('#about-cont, #btn-update-about').hide();
 			$('#footer').css('bottom', '-100px');
-			var html = $('#about-cont').hide().html();
-			html = $.trim(html);
-			$('#about-edit-area').show().children('textarea').val(html).wysihtml5();
-			
-			// 위지윅에디터 활성화
-			
-			
-			// 첨부파일 리스트 불러오기
+
+			// init exist attachments list
+			// 오래 머물러 있을 수 있으므로 수정을 했을 때 최신 정보를 다시 불러온다.
+			$.get('/profile/read_about', {}, 'json').done(function(responseJSON){
+				$('#about-edit-area').show().children('textarea').val(responseJSON.row.contents).wysihtml5(); // 현재의 값을 배치하고 위지윅에디터 활성화
+				$.each(responseJSON.row.attachments, function(k,v){
+					console.log(k,v);
+					profileUtil.about.createAttachmentBlock(v).insertBefore('#about-upload');
+				});
+			});
 
 		},
 		cancel : function(){
@@ -1079,18 +1100,24 @@ var profileUtil = {
 		},
 		submit : function(){
 			var contents = $('#about-edit-area > textarea').val();
+			var attachments = [];
+			$('#about-attachments > .about-attachment-li').each(function(){
+				attachments.push(this.id.replace('attach-', ''));
+			});
+			$('#about-edit-area > textarea').val();
 			console.log('contents', contents);
 			contents = br2nl(contents);
 			$.post('/profile/update_about', {
-				contents : contents
+				contents : contents,
+				attachments : attachments
 			}, 'json').done(function(responseJSON){
 				if(responseJSON.status=='done'){
 					profileUtil.about.cancel();
 				}
 			});
 		},
-		addAttachment : function(){
-
+		createAttachmentBlock : function(r){
+			return $('<li class="about-attachment-li" id="attach-'+r.upload_id+'"><img src="'+r.src+'"/></li>');
 		},
 		removeAttachment : function(){
 
