@@ -280,11 +280,11 @@ class Profile extends CI_Controller {
 		$data = $this->profile_model->get_about(array(
 			'user_id' => $user->row->id
 		));
-		exit('aaa');
 		$data->user = $user;
 		
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user);
+		exit('aaa');
 	
 		$this->layout->set_view('profile/about_view', $data)->render();
 	}
