@@ -277,10 +277,10 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- about ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->_get_user_info($username);
-		exit('aaa');
 		$data = $this->profile_model->get_about(array(
 			'user_id' => $user->row->id
 		));
+		exit('aaa');
 		$data->user = $user;
 		
 		if(!$this->input->is_ajax_request())
