@@ -460,7 +460,7 @@ class profile_model extends CI_Model {
             );
         }
         $data->row->attachments = unserialize($row->attachments);
-        if(count($data->row->attachments)){
+        if(count($data->row->attachments)>0){
             $attachments = $this->db->select('id, filename')
                 ->where_in('id', $data->row->attachments)
                 ->where('user_id', $params->user_id)
@@ -496,7 +496,10 @@ class profile_model extends CI_Model {
         $data = (object)array(
             'status' => 'done'
         );
-        $this->db->set('contents', $params->contents)->set('attachments', serialize($params->attachments))->where('user_id', $params->user_id)->update('user_about');
+        $this->db->set('contents', $params->contents)
+        ->set('attachments', serialize($params->attachments))
+        ->where('user_id', $params->user_id)
+        ->update('user_about');
         return $data; 
     }
 
