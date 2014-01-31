@@ -284,7 +284,6 @@ class Profile extends CI_Controller {
 		
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user);
-		exit('aaa');
 	
 		$this->layout->set_view('profile/about_view', $data)->render();
 	}
