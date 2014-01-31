@@ -460,8 +460,12 @@ class profile_model extends CI_Model {
             );
         }
         $data->row->attachments = unserialize($row->attachments);
-
-        $attachments = $this->db->select('id, filename')->where_in('id', $data->row->attachments)->where('user_id', $params->user_id)->get('uploads')->result();
+        if(!empty($data->row->attachments)){
+            $attachments = $this->db->select('id, filename')
+                ->where_in('id', $data->row->attachments)
+                ->where('user_id', $params->user_id)
+                ->get('uploads')->result();
+        }
         $data->row->attachments = array();
         if($attachments){
             foreach($attachments as $attachment){
