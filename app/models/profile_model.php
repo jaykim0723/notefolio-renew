@@ -501,15 +501,18 @@ class profile_model extends CI_Model {
 
         $this->db
             ->set('contents', $params->contents)
-            ->set('attachments', serialize($params->attachments))
-            ->where('user_id', $params->user_id);
+            ->set('attachments', serialize($params->attachments));
 
 
         $row = $this->db->where('user_id', $params->user_id)->get('user_about')->row();
         if($row){
-            $this->db->update('user_about');
+            $this->db
+            ->where('user_id', $params->user_id)
+            ->update('user_about');
         } else {
-            $this->db->insert('user_about');
+            $this->db
+                ->set('user_id', $params->user_id)
+                ->insert('user_about');
         }
         return $data; 
     }
