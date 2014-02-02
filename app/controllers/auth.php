@@ -710,7 +710,7 @@ class Auth extends CI_Controller
     function _register_get_facebook_info($data=array()){
 
         //-- join with facebook
-        $fb_info = json_decode($this->session->userdata('register_fb_info'));
+        $fb_info = json_decode($this->session->flashdata('register_fb_info'));
         if($fb_info){
             $data['fb_info']=$fb_info;
             $data['fb_num_id']=$fb_info->id;
