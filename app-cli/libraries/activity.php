@@ -14,6 +14,7 @@ class Activity {
     
     function __construct($config=null) {
         $this->ci =& get_instance();
+        $this->ci->load->database();
         $this->ci->load->model('user_model');
         $this->ci->load->model('work_model');
         $this->ci->load->model('tank_auth/users');
@@ -40,7 +41,7 @@ class Activity {
      * 
      * @return array
      */
-    private function make_param($workType, $resource=array())
+    function make_param($workType, $resource=array())
     {
         //-- make work type
         $workType = strtolower($workType);
@@ -53,8 +54,36 @@ class Activity {
             $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_work_type'));
             return array();
         }
+    }
 
+    /**
+     * make activity parameter for user. (create)
+     * 
+     * @param array $resource
+     * 
+     * @return array
+     */
+    function make_param_create($params=array())
+    {
+        parse_str($params['data']);
 
+        $data = array();
+        $data['user_A'] = $this->ci->user_model->get_info(array('id'=>$user_A))->row;
+
+        switch($params['area']){
+            case "user":
+
+            break;
+            case "work":
+
+            break;
+            default:
+                $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_area'));
+                return array();
+            break;
+        }
+
+        return $data;
     }
     
     /**
