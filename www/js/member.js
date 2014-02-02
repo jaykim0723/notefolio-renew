@@ -809,11 +809,19 @@ var profileUtil = {
 				blockPage.unblock();
 			}
 		});
-		$('#btn-delete-face').on('click', function(){
-
-		});
-		$('#btn-delete-bg').on('click', function(){
-
+		$('#btn-delete-face, #btn-delete-bg').on('click', function(){
+			var _actionTarget = this.id == 'btn-delete-bg' ? 'bg' : 'face';
+			BootstrapDialog.confirm('정말 삭제하시겠습니까?', function(result){
+				if(result){
+					$.post('/profile/delete_'+_actionTarget, {}, 'json').done(function(responseJSON){
+						if(_actionTarget=='face'){
+							$('#profile-image').children('img').prop('src', '/img/default_profile_face.png');
+						}else{
+							$('#profile-header').css('background-image', '');
+						}
+					});
+				}
+			}, 'danger');
 		});
 		$('#btn-select-face, #btn-select-bg').on('click', function(){
 			var _actionTarget = this.id == 'btn-select-bg' ? 'bg' : 'face';
