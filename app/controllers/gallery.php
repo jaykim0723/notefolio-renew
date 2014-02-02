@@ -237,7 +237,6 @@ class Gallery extends CI_Controller {
                     )
                 );
             
-            exit('aaa');
             for($i=1; $i<=3; $i++){
                 rename($this->config->item('temp_upload_path', 'upload').$params->work_id."_t$i.jpg", 
                     $this->config->item('cover_upload_path', 'upload').$params->work_id."_t$i.jpg");
