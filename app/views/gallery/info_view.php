@@ -199,7 +199,7 @@
 				</div>
 
 				<?php if ($row->prev_work_id!=0): ?>
-				<a href="/<?php echo $row->user->username; ?>/<?php echo $row->prev_work_id; ?>" class="more-link">more</a>
+					<a href="/<?php echo $row->user->username; ?>/<?php echo $row->prev_work_id; ?>" class="more-link">more</a>
 				<?php endif ?>
 				
 
