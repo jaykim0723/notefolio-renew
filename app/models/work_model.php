@@ -209,7 +209,10 @@ class work_model extends CI_Model {
         $work_id = $input->work_id;
         unset($input->work_id);
 
-        $this->db->where('work_id', $work_id)->where('user_id', USER_ID)->update('works', $input);
+        $this->db
+            ->where('work_id', $work_id)
+            ->where('user_id', USER_ID)
+            ->update('works', $input);
 
         $data = (object)array(
             'status' => 'done'

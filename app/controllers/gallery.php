@@ -195,10 +195,7 @@ class Gallery extends CI_Controller {
 		if($result->status==='fail')
 			alert($result->message);
 
-		redirect('/mypage');
-		
-		// 삭제가 완료되면 어디로 가는가?
-		// 몰라 -> 3루수였던가...(?!)
+		redirect('/'.$this->tank_auth->get_username());
 	}
 
 
