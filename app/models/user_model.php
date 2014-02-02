@@ -196,12 +196,13 @@ class user_model extends CI_Model {
             );
         }
         else {
-            var_export($user);
-            $user->user_keywords = $user->keywords;
-            $user->sns = (object)array(
-                'facebook' => $user->facebook_id,
-                'twitter' => $user->twitter_id
-            );
+            if($params->get_profile){
+                $user->user_keywords = $user->keywords;
+                $user->sns = (object)array(
+                    'facebook' => $user->facebook_id,
+                    'twitter' => $user->twitter_id
+                );
+            }
 
             unset($user->password);
             unset($user->new_password_key);
