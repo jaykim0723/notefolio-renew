@@ -62,13 +62,15 @@ class Profile extends CI_Controller {
         list($width, $height) = getimagesize($this->config->item('img_upload_path', 'upload').$filename);
 
         $size = array('width'=> $width, 'height'=> $height);
+    	var_export($size);
+		exit();
         $o_crop = array(
 				'width'  => $this->input->get_post('w'),
 				'height' => $this->input->get_post('h'),
 				'pos_x'  => $this->input->get_post('x'),
 				'pos_y'  => $this->input->get_post('y')
 			);
-        
+
     	$maxsize = $this->config->item('thumbnail_medium', 'upload');
         if($size['width']<$maxsize['width']){
         	$opt['width'] = $size['width'];
@@ -77,8 +79,6 @@ class Profile extends CI_Controller {
         }
 
 		$to_crop = $this->file_save->get_crop_opt($size, $o_crop, $opt);
-    	var_export($filename);
-		exit();
 
 		$result = $this->file_save->make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,
