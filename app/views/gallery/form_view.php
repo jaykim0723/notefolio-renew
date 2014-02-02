@@ -83,7 +83,7 @@
 
 
 				<input type="hidden" name="work_id" value="<?php echo $row->work_id ?>"/>
-				<input type="hidden" name="cover_upload_id" value="<?php echo $row->work_id ?>"/>
+				<input type="hidden" name="cover_upload_id" value=""/>
 
 				<button id="work-submit" type="submit" class="btn btn-primary btn-block btn-lg">
 					<span id="work-discoverbility"><span style="width:0%;"></span></span>
