@@ -47,7 +47,7 @@ $captcha = array(
 			echo form_hidden('fb_num_id', $fb_num_id);
 			$email['value'] = (!empty($email['value']))?$email['value']:$fb_info->email;
 			$email['disabled'] = 'disabled';
-			var_export($fb_info->gender);
+			var_export(substr($fb_info->gender, 0, 1));
 			$gender_{substr($fb_info->gender, 0, 1)} = 'checked';
 
 		?>
