@@ -1104,6 +1104,11 @@ p.desc {
 .dialog-work-list li.selected {
 	background: #2ac5c6!important;
 }
+.dialog-work-list li.disabled {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+	opacity: 0.5;
+}
 .dialog-work-list li img {
 	width: 90%;
 	margin: 5%;

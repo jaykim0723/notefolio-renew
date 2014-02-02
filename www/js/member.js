@@ -1181,9 +1181,3 @@ var profileUtil = {
 
 
 
-$(function(){
-	$(document).on('click', '.dialog-work-list-wrapper li', function(){
-		$(this).parent().children('.selected').removeClass('selected');
-		$(this).addClass('selected');
-	})
-});

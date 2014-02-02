@@ -277,7 +277,12 @@ $(function() {
     	$(this).find('.spi, .si').each(function(){
 	    	$(this).prop('class', $(this).prop('class').replace('_point',''));
     	});
-    });
+    }).on('click', '.dialog-work-list-wrapper li', function(){
+		if($(this).hasClass('disabled')) return;
+		$(this).parent().children('.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+
 
 });
 

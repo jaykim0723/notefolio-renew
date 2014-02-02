@@ -543,7 +543,7 @@ li#trash-bin{
 
 
 
-.dialog-work-list-wrapper ul li:hover {
+.dialog-work-list-wrapper ul li:not(.disabled):hover {
 	background: #eee;
 }
 
