@@ -21,9 +21,7 @@ class activity extends CI_Controller {
 	 *
      * @param string $data (querystring)
 	 */
-    public function post($work, $area, $act, $type, $data){
-        parse_str($data);
-
+    public function post($crud, $area, $act, $data){
         $this->load->library('activity');
         $this->load->model('activity_model');
 
@@ -32,7 +30,6 @@ class activity extends CI_Controller {
         	'act'  => $act,
         	'type' => $type,
         	'data' => $data,
-
         	));
 
         $this->activity_model->post($params);

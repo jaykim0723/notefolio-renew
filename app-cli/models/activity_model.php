@@ -20,8 +20,33 @@ class activity_model extends CI_Model {
     		if(!isset($params->{$key}))
     			$params->{$key} = $value;
     	}
+/*
+INSERT INTO `notefolio-renew`.`log_activity`
+(`id`,
+`regdate`,
+`ref_id`,
+`user_id`,
+`area`,
+`act`,
+`type`,
+`point_get`,
+`point_status`,
+`data`,
+`remote_addr`)
+VALUES
+(<{id: }>,
+<{regdate: CURRENT_TIMESTAMP}>,
+<{ref_id: 0}>,
+<{user_id: 0}>,
+<{area: W}>,
+<{act: C}>,
+<{type: }>,
+<{point_get: 0}>,
+<{point_status: 0}>,
+<{data: }>,
+<{remote_addr: console}>);
+*/
         
-
     }
     
     /**

@@ -37,7 +37,8 @@ class Gallery extends CI_Controller {
     function info($work_id=''){
         $work = $this->work_model->get_info(array(
             'work_id' => $work_id,
-            'folder'  => ''
+            'folder'  => '',
+            'get_next_prev'=>true
         ));
         if($work->status==='fail') alert('작품이 존재하지 않습니다.');
 

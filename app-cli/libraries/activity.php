@@ -38,25 +38,21 @@ class Activity {
      * @param string $workType
      * @param array $resource
      * 
-     * @return bool
+     * @return array
      */
     private function make_param($workType, $resource=array())
     {
         //-- make work type
         $workType = strtolower($workType);
-        $type_array = array('create' => 'C','read' => 'R','update' => 'U','delete' => 'D',);
+        $type_array = array('create','read','update','delete',);
         if (array_key_exists($workType, $type_array)) {
-            $resource['workType'] = $type_array[$workType];
+            $resource['workType'] = $workType;
+            return $this->make_param_{$workType};
         }
         else {
             $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_work_type'));
-            return false;
+            return array();
         }
-        //-- end
-
-        //-- get for insert info
-        
-        //--
 
 
     }
