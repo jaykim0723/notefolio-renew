@@ -208,13 +208,13 @@ class work_model extends CI_Model {
         //-- work id is not for update
         $work_id = $input->work_id;
         unset($input->work_id);
-        var_export($input);
-        exit();
 
         $this->db
             ->where('work_id', $work_id)
             ->where('user_id', USER_ID)
             ->update('works', $input);
+        var_export($input);
+        exit();
 
         $data = (object)array(
             'status' => 'done'
