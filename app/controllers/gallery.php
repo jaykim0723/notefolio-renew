@@ -217,6 +217,7 @@ class Gallery extends CI_Controller {
 
         //-- cover_upload_id is not for update
         var_export($input);
+        exit();
         if(!empty($input['cover_upload_id'])){
             $this->_set_cover(
                 array(
