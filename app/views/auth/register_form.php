@@ -60,6 +60,7 @@ if(isset($fb_num_id)) {
 			;
 	$email['disabled'] = 'disabled';
 	$gender_{substr($fb_info->gender, 0, 1)} = 'checked';
+	var_export($gender_m);
 }
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
