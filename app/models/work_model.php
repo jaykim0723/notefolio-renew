@@ -176,13 +176,14 @@ class work_model extends CI_Model {
         $data->row->user = $user;
 
         if($params->get_next_prev){
+            var_export($user);
             $this->db->flush_cache();
 
             try{
                 $next = $this->db
                     ->select('work_id')
                     ->where('work_id >', $data->row->work_id)
-                    ->where('user_id', $user->id)
+                    //->where('user_id', $user->id)
                     ->limit(1)
                     ->get('works')->row()->work_id;
             }
