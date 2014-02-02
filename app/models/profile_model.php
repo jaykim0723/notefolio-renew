@@ -546,10 +546,9 @@ class profile_model extends CI_Model {
                         sum(collect_cnt) as collect_cnt,
                         following_cnt,
                         follower_cnt
-                    from work
+                    from works
                         left join user_profiles on works.user_id = user_profiles.user_id
-                    where user_id = {$this->db->escape($params->user_id)};
-        ";
+                    where user_id = ".$this->db->escape($params->user_id).";";
         $query = $this->db->query($sql);
 
         $data = (object)array(
