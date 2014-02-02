@@ -176,7 +176,7 @@ class work_model extends CI_Model {
         $data->row->user = $user;
 
         if($params->get_next_prev){
-            var_export($user);
+            var_export($data);
             $this->db->flush_cache();
 
             try{
