@@ -14,10 +14,10 @@ class Activity {
     
     function __construct($config=null) {
         $this->ci =& get_instance();
-        $this->ci->load->database();
-        $this->ci->load->model('user_model');
-        $this->ci->load->model('work_model');
-        $this->ci->load->model('tank_auth/users');
+#        $this->ci->load->database();
+#        $this->ci->load->model('user_model');
+#        $this->ci->load->model('work_model');
+#        $this->ci->load->model('tank_auth/users');
     }
     
     /**
@@ -27,11 +27,12 @@ class Activity {
      * 
      * @return bool
      */
+    /*
     function post($area='', $type='', $data=array())
     {
 
         return false;
-    }
+    }*/
 
 
     /**
@@ -42,6 +43,7 @@ class Activity {
      * 
      * @return array
      */
+    /*
     function make_param($workType, $resource=array())
     {
         //-- make work type
@@ -55,7 +57,7 @@ class Activity {
             $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_work_type'));
             return array();
         }
-    }
+    }*/
 
     /**
      * make activity parameter for user. (create)
@@ -121,7 +123,8 @@ class Activity {
      * 
      * @return bool
      */
+    /*
     private function after_post($area, $type, $resource=array())
     {
-    }
+    }*/
 }
