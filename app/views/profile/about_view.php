@@ -16,7 +16,7 @@
 
 			<?php if($this->nf->get('user')->username == $user->row->username): ?>
 			<div id="about-edit-area">
-				<textarea name="about-text" id="about-text" cols="30" rows="10"></textarea>
+				<textarea name="about-text" id="about-text" cols="30" rows="20"></textarea>
 				<ul id="about-attachments">
 					<li id="about-upload">
 						<i class="spi spi-plus">plus</i>
