@@ -166,6 +166,8 @@ class Gallery extends CI_Controller {
 		$input['contents'] = json_decode($input['contents']);
 		$input['created_images'] = $input['deleted_images'] = array();
 		$work_images = $input_images = array();
+		if($work->row->contents=='')
+			$work->row->contents = array();
 		foreach($work->row->contents as $row){ // 기존 contents의 이미지 정보들을 수집
 			if($row->t=='image' && $row->i!=''){
 				$work_images[] = $row->i;

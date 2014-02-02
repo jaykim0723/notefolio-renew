@@ -1089,7 +1089,6 @@ var profileUtil = {
 			$.get('/profile/read_about', {}, 'json').done(function(responseJSON){
 				$('#about-edit-area').show().children('textarea').val(responseJSON.row.contents).wysihtml5(); // 현재의 값을 배치하고 위지윅에디터 활성화
 				$.each(responseJSON.row.attachments, function(k,v){
-					console.log(k,v);
 					profileUtil.about.createAttachmentBlock(v).insertBefore('#about-upload');
 				});
 			});
