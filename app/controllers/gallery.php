@@ -147,10 +147,10 @@ class Gallery extends CI_Controller {
 
 		$json = array(
 			'status'=>($result_t1&&$result_t2&&$result_t3)?'done':'fail',
-		//	'cropped' => array(
-		//		't2'=> $to_crop_t2,
-		//		't3'=> $to_crop_t3
-		//		),
+		#	'cropped' => array(
+		#		't2'=> $to_crop_t2,
+		#		't3'=> $to_crop_t3
+		#		),
 			'src'=> array(
 				$this->config->item('temp_upload_uri', 'upload').$work_id.'_t1.jpg?_='.time(),
 				$this->config->item('temp_upload_uri', 'upload').$work_id.'_t2.jpg?_='.time(),
@@ -178,7 +178,7 @@ class Gallery extends CI_Controller {
 			}
 		}
 		foreach($input['contents'] as $row){ // 새로 들어온 것들을 비교하면서 최종 작업진행
-			if($row->t=='image' && $row->i!=''){
+			if($row->t=='image' && !empty($row->i)){
 				$input_images[] = $row->i;
 				if(in_array($row->i, $work_images)!==FALSE)
 					$input['created_images'][] = $row->i; // 기존에 없던 것이라면 이것은 추가된 것이다.
