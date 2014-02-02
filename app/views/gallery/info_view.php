@@ -141,7 +141,7 @@
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="work-tags">
-										<i class="spi spi-tag"></i> <?php echo @implode(', ', $tags) ?>
+										<i class="spi spi-tag"></i> <?php echo @implode(', ', $row->tags) ?>
 									</div>
 								</div>
 							</div>
