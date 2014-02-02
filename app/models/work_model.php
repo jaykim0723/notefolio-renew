@@ -183,6 +183,7 @@ class work_model extends CI_Model {
                     ->select('work_id')
                     ->where('work_id >', $data->row->work_id)
                     ->where('user_id', $user->id)
+                    ->order_by('work_id', 'asc')
                     ->limit(1)
                     ->get('works')->row();
                 if(isset($next->work_id)){
@@ -200,6 +201,7 @@ class work_model extends CI_Model {
                     ->select('work_id')
                     ->where('work_id <', $data->row->work_id)
                     ->where('user_id', $user->id)
+                    ->order_by('work_id', 'desc')
                     ->limit(1)
                     ->get('works')->row();
                 if(isset($prev->work_id)){
