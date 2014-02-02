@@ -75,7 +75,7 @@ class Profile extends CI_Controller {
         } else {
         	$opt = array();
         }
-    	var_export($size);
+    	var_export($maxsize);
 		exit();
 
 		$to_crop = $this->file_save->get_crop_opt($size, $o_crop, $opt);
