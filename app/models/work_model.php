@@ -186,7 +186,7 @@ class work_model extends CI_Model {
             catch(Exception $e){
                 $next = 0;
             }
-            $data->next = $next;
+            $data->row->next_work_id = $next;
             $this->db->flush_cache();
 
             try{
@@ -199,7 +199,7 @@ class work_model extends CI_Model {
             catch(Exception $e){
                 $prev = 0;
             }
-            $data->prev = $prev;
+            $data->row->prev_work_id = $prev;
             $this->db->flush_cache();
 
 
