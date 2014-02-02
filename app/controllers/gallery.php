@@ -227,7 +227,7 @@ class Gallery extends CI_Controller {
                 ->where('type', 'cover')
                 ->where('work_id', $params->work_id)
                 ->update('uploads');
-            exit('aaa');
+
             $this->load->model('upload_model');
             $this->upload_model->put(
                 array(
@@ -236,7 +236,8 @@ class Gallery extends CI_Controller {
                     'type'=>'cover', 
                     )
                 );
-    
+            
+            exit('aaa');
             for($i=1; $i<=3; $i++){
                 rename($this->config->item('temp_upload_path', 'upload').$params->work_id."_t$i.jpg", 
                     $this->config->item('cover_upload_path', 'upload').$params->work_id."_t$i.jpg");
