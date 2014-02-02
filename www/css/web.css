@@ -308,6 +308,9 @@ body {
 #work-recent-list .selected {
 	background: yellow;
 }
+#side.info > a:hover {	
+	background:#fafafa;
+}
 
 
 
@@ -437,6 +440,11 @@ li#trash-bin{
 #profile-inner-wrapper {
 	width: 400px;
 	top: 100px; 
+}
+#profile-header:hover #btn-edit-cover,
+#profile-inner:hover #btn-edit-inner,
+#profile-image:hover #btn-edit-profile {
+	display: block;
 }
 
 

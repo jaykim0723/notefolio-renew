@@ -701,9 +701,6 @@ html.auth body {
 	cursor:pointer;
 	border-radius:5px;
 }
-#side.info > a:hover {	
-	background:#fafafa;
-}
 #side.info > a.current {
 	background:#f0f0f0;
 
@@ -929,13 +926,6 @@ p.desc {
 		width: 400px;
 		top: 50px;
 		height: 350px;
-	}
-}
-@media (min-width:992px) {
-	#profile-header:hover #btn-edit-cover,
-	#profile-inner:hover #btn-edit-inner,
-	#profile-image:hover #btn-edit-profile {
-		display: block;
 	}
 }
 

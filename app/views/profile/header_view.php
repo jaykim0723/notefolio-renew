@@ -70,8 +70,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="pull-right nav nav-pills list-inline">
-					<li><a href="/<?php echo $row->username ?>/followings"><?=$this->nf->get('user')->following_cnt?> Followings</a></li>
-					<li><a href="/<?php echo $row->username ?>/followers"><?=$this->nf->get('user')->follower_cnt?> Followers</a></li>
+					<li><a href="/<?php echo $row->username ?>/followings"><?=$row->following_cnt?> Followings</a></li>
+					<li><a href="/<?php echo $row->username ?>/followers"><?=$row->follower_cnt?> Followers</a></li>
 				</ul>
 				<div class="clearfix visible-xs"></div>
 				<ul id="profile-nav" class="nav nav-pills">
@@ -125,7 +125,7 @@
 
 
 
-<?php if($this->config->item('debug_tutorial')=='y' OR strpos($this->session->userdata('tutorial'), 'profile')!==FALSE):
+<?php if($this->tank_auth->is_logged_in() && ($this->config->item('debug_tutorial')=='y' OR strpos($this->session->userdata('tutorial'), 'profile')!==FALSE)):
 $this->session->set_userdata('tutorial', str_replace($this->session->userdata('tutorial'), '(profile)', ''));
 ?>
 <script src="/js/libs/bootstro.min.js"></script>
@@ -135,15 +135,19 @@ $this->session->set_userdata('tutorial', str_replace($this->session->userdata('t
 	$(function(){
 		if($(window).width()>991){
 			// init bootstro
-			$('#profile-header').addClass('bootstro')
-				.data('bootstro-step', 0)
-				.data('bootstro-placement', 'bottom')
-				.data('bootstro-title', '배경색 변경')
-				.data('bootstro-content', '우측 상단을 마우스로 클릭하시면 배경을 커스터마이징 할 수 있습니다. 마우스를 올려보시면 우측에 버튼이 나타납니다.');
-			$('#profile-inner-wrapper').addClass('bootstro')
-				.data('bootstro-step', 1)
-				.data('bootstro-title', '프로필 변경')
-				.data('bootstro-content', '배경색과 투명도를 변경할 수 있으며, 사진도 변경할 수 있습니다. 마우스를 올려보시면 버튼이 나타납니다.');
+			$('#profile-image').addClass('bootstro')
+				.attr('data-bootstro-step', 0)
+				.attr('data-bootstro-title', '프로필 변경')
+				.attr('data-bootstro-content', '배경색과 투명도를 변경할 수 있으며, 사진도 변경할 수 있습니다. 마우스를 올려보시면 버튼이 나타납니다.');
+			$('#btn-edit-cover').show().addClass('bootstro')
+				.attr('data-bootstro-step', 1)
+				.attr('data-bootstro-placement', 'left')
+				.attr('data-bootstro-title', '배경색 변경')
+				.attr('data-bootstro-content', '우측 상단을 마우스로 클릭하시면 배경을 커스터마이징 할 수 있습니다.');
+			$('#profile-nav').show().addClass('bootstro')
+				.attr('data-bootstro-step', 2)
+				.attr('data-bootstro-title', '네비게이션 메뉴')
+				.attr('data-bootstro-content', '당신에 관한 모든 사안들을 이곳에서 확인하세요. 특히 Statistics는 가관입니다.');
 			bootstro.start();
 		}else{
 			// init mobile tutorial
