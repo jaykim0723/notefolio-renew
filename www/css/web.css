@@ -399,6 +399,7 @@ li#trash-bin{
 	display: block;
 	position: absolute;
 	background: #888;
+	overflow: hidden;
 	height: 10px;
 	top: -10px;
 	left:0;

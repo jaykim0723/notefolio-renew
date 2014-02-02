@@ -4,6 +4,7 @@ var workUtil = {
 		video : '//www.youtube.com/embed/wnnOf05WKEs'
 	},
 	saveCover : function(upload_id, src){
+		site.scroll.lock();
 		memberUtil.popCrop({
 			message : ['400x400 크기의 정사각형 썸네일을 지정해주세요.', '800x400의 직사각형 썸네일을 지정해주세요'],
 			src : src,
@@ -20,6 +21,7 @@ var workUtil = {
 				tmp[crop2.w/crop2.h] = crop2;
 
 				// 이미지 src, crop 정보를 토대로 사진을 잘라내는 명령을 내린다.
+				blockPage.block();
 				$.post('/gallery/save_cover', {
 					work_id : NFview.work_id,
 					upload_id : upload_id,
@@ -37,6 +39,7 @@ var workUtil = {
 					}
 				}, 'json').done(function(responseJSON){
 					console.log('crop cover done > responseJSON', responseJSON);
+					blockPage.unblock();
 					if(responseJSON.status=='done'){
 
 						$('[name=cover_upload_id]').val(upload_id);
@@ -204,11 +207,15 @@ var workUtil = {
 			dataType : 'json'
 		}).done(function(d){
 			blockPage.unblock();
-			if(d.status=='done')
-				(returnType)?
-				site.redirect('/gallery/'+NFview.work_id, '등록이 성공하였습니다'):
-				formFeedback('', 'success', '전송에 성공하였습니다.');
-			else
+			if(d.status=='done'){
+				BootstrapDialog.confirm('전송이 성공되었습니다. 해당 작품으로 지금 이동하시겠습니까?', function(result){
+		            if(result) {
+		                site.redirect('/'+NFview.user.username+'/'+NFview.work_id);
+		            }else{
+		                ;
+		            }
+		        });
+			}else
 				formFeedback('', 'error', '전송에 실패하였습니다.');
 		}).fail(function(e){
 			blockPage.unblock();
@@ -224,11 +231,11 @@ var workUtil = {
 			var sendTo = $('#content-block-list');
 			if(NFview.contents.length>0){
 				$.each(NFview.contents, function(k, block){
-					var $a = workUtil.content.createBlock(block.t, block.c, block.i);
-					$a.appendTo(sendTo);
-					// $a.remove();
+					var $o = workUtil.content.createBlock(block.t, block.c, block.i);
+					$o.appendTo(sendTo);
+					// $o.remove();
 					if(block.t=='text'){
-						$a.find('textarea').wysihtml5();
+						$o.find('textarea').wysihtml5();
 					}
 				});
 			}else{
@@ -290,6 +297,7 @@ var workUtil = {
 					blockPage.unblock();
 				}
 			});
+			
 			$('#btn-select-cover').on('click', function(){
 				var selectCover = memberUtil.popLoading({
 					title : '작품내용 중 선택하기',
@@ -375,9 +383,9 @@ var workUtil = {
 				stop: function(event, ui){
 					if($(ui.item[0]).hasClass('block-text')==false) return;
 					var c = $(ui.item[0]).find('textarea').val();
-					var $a = workUtil.content.createBlock('text', c);
-					$(ui.item[0]).replaceWith($a);
-					$a.find('textarea').wysihtml5();
+					var $o = workUtil.content.createBlock('text', c);
+					$(ui.item[0]).replaceWith($o);
+					$o.find('textarea').wysihtml5();
 				},
   				receive: function(event, ui) {
   				},
@@ -518,7 +526,7 @@ var workUtil = {
 				case 'image':
 					if(c=='')
 						c = workUtil.defaultValue.image;
-					output = workUtil.content.createUploader($('<li class="block-image"><img data-id="" src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
+					output = workUtil.content.createUploader($('<li class="block-image"><img data-id="'+i+'" src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;

@@ -71,13 +71,13 @@
 
 				<div class="row" id="cover-preview">
 					<div class="col-md-4">
-						<img src="" alt="" onerror="this.src='/img/cover_default.png';">
+						<img src="/data/covers/<?php echo $row->work_id ?>_t1.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="">
 					</div>
 					<div class="col-md-4">
-						<img src="" alt="" onerror="this.src='/img/cover_default.png';">
+						<img src="/data/covers/<?php echo $row->work_id ?>_t2.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="">
 					</div>
 					<div class="col-md-4">
-						<img src="" alt="" onerror="this.src='/img/cover_default.png';">
+						<img src="/data/covers/<?php echo $row->work_id ?>_t3.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="">
 					</div>
 				</div>
 
