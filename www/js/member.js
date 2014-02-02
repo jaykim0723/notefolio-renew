@@ -17,16 +17,16 @@ var workUtil = {
 					work_id : NFview.work_id,
 					upload_id : upload_id,
 					t2 : {
-						x : crop1.x,
-						y : crop1.y,
-						w : crop1.w,
-						h : crop1.h
-					},
-					t3 : {
 						x : crop2.x,
 						y : crop2.y,
 						w : crop2.w,
 						h : crop2.h
+					},
+					t3 : {
+						x : crop1.x,
+						y : crop1.y,
+						w : crop1.w,
+						h : crop1.h
 					}
 				}, 'json').done(function(responseJSON){
 					console.log('crop cover done > responseJSON', responseJSON);
