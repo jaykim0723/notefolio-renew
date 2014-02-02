@@ -130,7 +130,7 @@ var workUtil = {
 			total += 5;
 		else if(value.tags > 1)
 			total += 10;
-		$('#work-discoverbility > span').animate({
+		$('#work-discoverbility > span').stop().animate({
 			width : total+'%'
 		}, 1000);
 		console.log('discoverbility', total, value);
@@ -222,14 +222,18 @@ var workUtil = {
 
 			// 내용 블럭 셋팅하기
 			var sendTo = $('#content-block-list');
-			$.each(NFview.contents, function(k, block){
-				var $a = workUtil.content.createBlock(block.t, block.c, block.i);
-				$a.appendTo(sendTo);
-				// $a.remove();
-				if(block.t=='text'){
-					$a.find('textarea').wysihtml5();
-				}
-			});
+			if(NFview.contents.length>0){
+				$.each(NFview.contents, function(k, block){
+					var $a = workUtil.content.createBlock(block.t, block.c, block.i);
+					$a.appendTo(sendTo);
+					// $a.remove();
+					if(block.t=='text'){
+						$a.find('textarea').wysihtml5();
+					}
+				});
+			}else{
+				$('#content-block-list').append('<img src="/img/form_view_default.png" id="default-image"/>');
+			}
 
 
 			// 키워드 셋팅하기
@@ -240,6 +244,7 @@ var workUtil = {
 				}else{
 					$(this).data('old', count > 0 ? $(this).val().join(',') : '');
 				}
+	            workUtil.discoverbility();
 			});
 
 
@@ -289,20 +294,27 @@ var workUtil = {
 				var selectCover = memberUtil.popLoading({
 					title : '작품내용 중 선택하기',
 					done : function(dialog){
-						var src = dialog.getModalBody().find('.selected').children('img').attr('src');
+						var $img = dialog.getModalBody().find('.selected').children('img');
+						if($img.length == 0){
+							msg.open('이미지를 선택해주세요.', 'error');
+							return;
+						}
+						var src = $img.attr('src');
+						var upload_id = $img.data('id');
 						if(typeof src=='undefined'){
 							msg.open('이미지를 선택해주세요.', 'error');
 							return;
 						}
-						alert('selected : '+src);
-						// dialog.close();
+						dialog.close();
+						workUtil.saveCover(upload_id, src);
 					}
 				});
 				// call current images
 				selectCover.getModal().addClass('dialog-work-list-wrapper');
-				$list = $('<ul></ul>');
+				$list = $('<ul class="dialog-work-list"></ul>');
 				$('#content-block-list .block-image').each(function(index){
-					$list.append('<li><img src="'+$(this).children('img').prop('src')+'"/></li>');
+					var $img = $(this).children('img');
+					$list.append('<li><img src="'+$img.prop('src')+'" data-id="'+$img.data('id')+'"/></li>');
 				});
 				selectCover.getModalBody().html($list);
 			});
@@ -311,13 +323,18 @@ var workUtil = {
 				url : '/upload/image',
 				multiple : true,
 				start : function(elem, id, fileName){
-					$('#content-block-list').append($('<li class="block-image" id="temp-'+id+'"><img/><button class="btn btn-primary">Upload an image</button></li>'));
+					$('#default-image').remove();
+					$('#content-block-list').append($('<li class="block-image" id="temp-'+id+'" style="min-height:100px;"><div class="ajax-loading-overlay"><img src="/img/ajax-loader.gif" class="ajax-loading"/></li>'));
 				},
 				cancel : function(elem, id, fileName){
 					console.log(elem, id, fileName);
 				},
 				done : function(responseJSON, elem, id, fileName){
-					workUtil.content.createUploader($('#temp-'+id)).children('img').prop('src', responseJSON.src).data('id', responseJSON.upload_id);
+					var $o = $('#temp-'+id);
+					$o.css('min-height', 'auto');
+					$o.children('.ajax-loading-overlay').remove();
+					$o.append('<img/><button class="btn btn-primary">Upload an image</button>');
+					workUtil.content.createUploader($o).children('img:first').prop('src', responseJSON.src).data('id', responseJSON.upload_id);
 					workUtil.discoverbility();
 				},
 				fail : function(responseJSON, elem, id, fileName){
@@ -440,6 +457,7 @@ var workUtil = {
 						className = className[1];
 						$newBlock = workUtil.content.createBlock(className).fadeTo(0, 0.01);
 						$newBlock.appendTo(sendTo);
+						$('#default-image').remove();
 						$.when(site.scrollToBottom()).done(function(){
 							$newBlock.fadeTo(300, 1);
 						});
@@ -467,6 +485,7 @@ var workUtil = {
 									$(ui.draggable)
 										.empty()
 										.append($newBlock);
+									$('#default-image').remove();
 									if(className =='text')
 										$newBlock.find('textarea').wysihtml5();
 									workUtil.discoverbility();
@@ -538,15 +557,14 @@ var workUtil = {
 				url : '/upload/image',
 				multiple : false,
 				start : function(elem, id, fileName){
-					// elem.after($('<li class="block-image" id="temp-'+id+'"><img/><button class="btn btn-primary">Upload an image</button></li>'));
+					elem.append('<div class="ajax-loading-overlay"><img src="/img/ajax-loader.gif" class="ajax-loading"/></div>');
 				},
 				cancel : function(elem, id, fileName){
 					console.log(elem, id, fileName);
 				},
 				done : function(responseJSON, elem, id, fileName){
-					console.log('createUploader > done', responseJSON, elem, id, fileName);
+					elem.children('.ajax-loading-overlay').remove();
 					elem.children('img').prop('src', responseJSON.src).data('id', responseJSON.upload_id);
-					// workUtil.content.createUploader($('#temp-'+id)).children('img').prop('src', responseJSON.src).data('id', responseJSON.upload_id);
 					workUtil.discoverbility();
 				},
 				fail : function(responseJSON, elem, id, fileName){

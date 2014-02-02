@@ -13,7 +13,7 @@
 							<option value="monthly">이번 달</option>
 						</select>
 					</div>
-					<select class="col-xs-6" name="work_categories" id="work_categories" multiple title="Choose one of the following...">
+					<select class="col-xs-4" name="work_categories" id="work_categories" multiple title="Choose one of the following...">
 						<?php 
 						$this->load->config('keyword', TRUE);
 						$keyword_list = $this->config->item('keyword', 'keyword');
@@ -22,6 +22,7 @@
 							<option value="<?php echo $key?>"><?php echo $keyword;?></option>
 						<?php }	?>
 					</select>
+					<input class="col-xs-2 form-control" type="text" placeholder="검색어"/>
 					<select class="col-xs-2" name="" id="">
 						<option value="newest">최신순</option>
 						<option value="noted">인기순</option>

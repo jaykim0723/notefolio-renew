@@ -31,8 +31,24 @@ body * {
 	background: #2ac5c6;
 	border-color: #2ac5c6;
 }
-
-
+.ajax-loading-overlay {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom :0 ;
+	background: #fff;
+	opacity: 0.8;
+	z-index:10;
+}
+.ajax-loading {
+	position: absolute;
+	left: 50%;
+	top:50%;
+	width: auto!important;
+	margin-left: -8px;
+	margin-top: -8px;
+}
 
 
 
@@ -491,6 +507,7 @@ body * {
 .work-contents > .block-video,
 .work-contents > .block-text {
 	margin: 10px 0 0 0;
+	position: relative;
 }
 .work-contents > .block-image:first-child,
 .work-contents > .block-video:first-child,
