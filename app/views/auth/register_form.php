@@ -65,9 +65,13 @@ if(isset($fb_num_id)) {
 			;
 	$email['disabled'] = 'disabled';
 	$gender[substr($fb_info->gender, 0, 1)] = 'checked';
-	var_export($fb_info);
 
 	$birthday = explode('/', $fb_info->birthday);
+	$birth = array(
+		'year'=>$birthday[2],
+		'month'=>$birthday[0],
+		'day'=>$birthday[1]
+	);
 }
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
