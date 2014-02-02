@@ -221,12 +221,12 @@ class upload_model extends CI_Model {
             $this->db->trans_complete();
 
             if($this->db->trans_status()){
-                $this->ci->load->config('upload', TRUE);
+                $this->load->config('upload', TRUE);
 
                 exec(
                     preg_replace(
                         '/^(..)(..)([^\.]+)(\.[a-zA-Z]+)/', 
-                        'rm -f '.$this->ci->config->item('img_upload_uri','upload').'$1/$2/$1$2$3*', 
+                        'rm -f '.$this->config->item('img_upload_uri','upload').'$1/$2/$1$2$3*', 
                         $attachment->filename
                         )
                     );

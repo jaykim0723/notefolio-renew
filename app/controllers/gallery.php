@@ -192,7 +192,11 @@ class Gallery extends CI_Controller {
 
         //-- cover_upload_id is not for update
         if(isset($input['cover_upload_id'])){
-            $cover_upload_id = $input['cover_upload_id'];
+            $this->_set_cover(
+                array(
+                    'work_id'=>$input['work_id'], 
+                    'upload_id'=>$input['cover_upload_id']
+            ));
             unset($input['cover_upload_id']);
         }
         
@@ -204,7 +208,47 @@ class Gallery extends CI_Controller {
         $this->layout->set_json($data)->render();
     }
 
+    function _set_cover($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'work_id'   => '',
+            'upload_id'   => '' 
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
 
+        try{
+            $this->load->config('upload', TRUE);
+    
+            $this->db
+                ->set('work_id', 0)
+                ->where('type', 'cover')
+                ->where('work_id', $params->work_id)
+                ->update('uploads');
+    
+            $this->load->model('upload_model');
+            $this->upload_model->put(
+                array(
+                    'id'=>$params->upload_id, 
+                    'work_id'=>$params->work_id, 
+                    'type'=>'cover', 
+                    )
+                );
+    
+            for($i=1; $i<=3; $i++){
+                rename($this->config->item('temp_upload_path', 'upload').$params->work_id."_t$i.jpg", 
+                    $this->config->item('cover_upload_path', 'upload').$params->work_id."_t$i.jpg");
+            }
+        }
+        catch(Exception $e){
+            return false;
+        }
+
+        return true;
+
+    }
 
     function delete($work_id=''){
         $result = $this->work_model->delete_info(array('work_id'=>$work_id));
