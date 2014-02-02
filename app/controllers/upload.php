@@ -29,6 +29,9 @@ class Upload extends CI_Controller
                         $row->filename
                         )
 		);
+
+		var_export($row);
+		exit();
 		$this->layout->set_json($data)->render();
 	}
 
