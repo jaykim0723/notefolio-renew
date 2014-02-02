@@ -42,6 +42,7 @@ $captcha = array(
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
+		<?php var_export($fb_num_id); ?>
 		<?php if(isset($fb_num_id)){?>
 		<a href="javascript:window.location.reload()" class="btn btn-info btn-block">Now with facebook</a>
 		<?php }else{?>
