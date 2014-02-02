@@ -42,7 +42,6 @@ class Activity {
      * 
      * @return array
      */
-    /*
     function make_param($workType, $resource=array())
     {
         //-- make work type
@@ -57,7 +56,6 @@ class Activity {
             return array();
         }
     }
-    */
 
     /**
      * make activity parameter for user. (create)
@@ -66,6 +64,7 @@ class Activity {
      * 
      * @return array
      */
+    /*
     function make_param_create($params=array())
     {
         parse_str($params['data'], $opt);
@@ -114,7 +113,7 @@ class Activity {
 
         return $data;
     }
-    
+    */
     /**
      * do after post process for user.
      * 
