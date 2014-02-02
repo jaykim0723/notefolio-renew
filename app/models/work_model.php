@@ -209,12 +209,6 @@ class work_model extends CI_Model {
         //-- work id is not for update
         $work_id = $input->work_id;
         unset($input->work_id);
-
-        //-- cover_upload_id is not for update
-        if(isset($input->cover_upload_id)){
-            $cover_upload_id = $input->cover_upload_id;
-            unset($input->cover_upload_id);
-        }
         
         $this->db
             ->where('work_id', $work_id)

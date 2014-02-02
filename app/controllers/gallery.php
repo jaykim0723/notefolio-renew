@@ -188,9 +188,13 @@ class Gallery extends CI_Controller {
 			if(in_array($i, $input_images)==FALSE)
 				$input['deleted_images'][] = $i; // 기존에는 있었지만 새로운 것에 없다면 삭제된 것이다.
 		}
-		$input['keywords'] = implode('', $input['keywords']);
-		
-		//var_export($input);
+		$input['keywords'] = implode('', $input['keywords']);		
+
+        //-- cover_upload_id is not for update
+        if(isset($input['cover_upload_id'])){
+            $cover_upload_id = $input['cover_upload_id'];
+            unset($input['cover_upload_id']);
+        }
 
 		$data = $this->work_model->put_info($input);
 		$this->layout->set_json($data)->render();
