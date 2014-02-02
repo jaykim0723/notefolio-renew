@@ -169,7 +169,7 @@ class fbauth extends CI_Controller
             $this->_window_opener_move('/');
         } else {*/
             //-- register 변수들 대입
-            $this->session->set_flashdata('register_fb_info', json_encode($fbme));
+            $this->session->set_userdata('register_fb_info', json_encode($fbme));
 
             $this->_window_opener_move("/auth/register");
         //}
