@@ -121,3 +121,17 @@
 
 	NFview.area = 'profile';
 </script>
+
+
+
+
+<?php if($this->config->item('debug_tutorial')=='y' OR strpos($this->session->userdata('tutorial'), 'profile')!==FALSE):
+$this->session->set_userdata('tutorial_profile', str_replace($this->session->userdata('tutorial'), 'profile', ''));
+?>
+<script src="/js/libs/bootstro.min.js"></script>
+<script>
+	if($('#style_bootstro').length==0)
+		$('head').append('<link id="style_bootstro" href="/css/bootstro.min.css" rel="stylesheet"/>');
+	site.tutorial.profile();
+</script>
+<?php endif; ?>	

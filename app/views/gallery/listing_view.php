@@ -22,7 +22,7 @@
 							<option value="<?php echo $key?>"><?php echo $keyword;?></option>
 						<?php }	?>
 					</select>
-					<input class="col-xs-2 form-control" type="text" placeholder="검색어"/>
+					<input class="col-xs-2 form-control" type="text" name="" placeholder="검색어"/>
 					<select class="col-xs-2" name="" id="">
 						<option value="newest">최신순</option>
 						<option value="noted">인기순</option>

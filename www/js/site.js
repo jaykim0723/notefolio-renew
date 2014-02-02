@@ -199,7 +199,13 @@ var site = {
 			);
 			return dialog;
 		});
-	}   	
+	},
+	
+	tutorial : {
+		profile : function(){
+			alert('profile');
+		}
+	}
 };
 site.checkFlashMsg(); // 페이지가 전환된 이후에 메시지를 표시할 것이 있는지 검사
 
