@@ -474,7 +474,7 @@ class profile_model extends CI_Model {
                 $data->row->attachments[] = array(
                     'upload_id' => $attachment->id,
                     'src' =>
-                        preg_replace('/^(..)(..)./', '/$1/$2/', $attachment->filename)
+                        preg_replace('/^(..)(..).+/', '/$1/$2/', $attachment->filename)
                         .str_replace('.jpg', '_v2.jpg', $attachment->filename) # 성수씨 여기
                 );
             }
