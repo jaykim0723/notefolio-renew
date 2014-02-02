@@ -182,6 +182,7 @@ class work_model extends CI_Model {
                     ->where('work_id >', $data->row->work_id)
                     ->limit(1)
                     ->get('works')->row()->work_id;
+            }
             catch(Exception $e){
                 $next = 0;
             }
@@ -194,6 +195,7 @@ class work_model extends CI_Model {
                     ->where('work_id <', $data->row->work_id)
                     ->limit(1)
                     ->get('works')->row()->work_id;
+            }
             catch(Exception $e){
                 $prev = 0;
             }
