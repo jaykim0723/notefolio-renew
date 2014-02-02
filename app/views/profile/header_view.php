@@ -126,12 +126,31 @@
 
 
 <?php if($this->config->item('debug_tutorial')=='y' OR strpos($this->session->userdata('tutorial'), 'profile')!==FALSE):
-$this->session->set_userdata('tutorial_profile', str_replace($this->session->userdata('tutorial'), 'profile', ''));
+$this->session->set_userdata('tutorial', str_replace($this->session->userdata('tutorial'), '(profile)', ''));
 ?>
 <script src="/js/libs/bootstro.min.js"></script>
 <script>
 	if($('#style_bootstro').length==0)
 		$('head').append('<link id="style_bootstro" href="/css/bootstro.min.css" rel="stylesheet"/>');
-	site.tutorial.profile();
+	$(function(){
+		if($(window).width()>991){
+			// init bootstro
+			$('#profile-header').addClass('bootstro')
+				.data('bootstro-step', 0)
+				.data('bootstro-placement', 'bottom')
+				.data('bootstro-title', '배경색 변경')
+				.data('bootstro-content', '우측 상단을 마우스로 클릭하시면 배경을 커스터마이징 할 수 있습니다. 마우스를 올려보시면 우측에 버튼이 나타납니다.');
+			$('#profile-inner-wrapper').addClass('bootstro')
+				.data('bootstro-step', 1)
+				.data('bootstro-title', '프로필 변경')
+				.data('bootstro-content', '배경색과 투명도를 변경할 수 있으며, 사진도 변경할 수 있습니다. 마우스를 올려보시면 버튼이 나타납니다.');
+			bootstro.start();
+		}else{
+			// init mobile tutorial
+			
+		}
+	});
+	
+
 </script>
 <?php endif; ?>	
