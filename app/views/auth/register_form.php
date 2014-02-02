@@ -45,8 +45,10 @@ $captcha = array(
 	<?php if(isset($fb_num_id)){?>
 		<?php 
 			echo form_hidden('fb_num_id', $fb_num_id);
-			$email['value'] = $fb_info->email;
+			$email['value'] = (!empty($email['value'])?$email['value']:$fb_info->email;
 			$email['disabled'] = 'disabled';
+			$gender_{$fb_info->gender} = 'checked';
+
 		?>
 		<a href="javascript:window.location.reload()" class="btn btn-info btn-block">Now with facebook</a>
 	<?php }else{?>
@@ -78,10 +80,10 @@ $captcha = array(
 	<div class="form-group">
 		<label>성별</label><br/>
 		<label class="radio-inline">
-			<input type='radio' name='gender' value='f'/> 여
+			<input type='radio' name='gender' value='f' <?=$gender_f?>/> 여
 		</label>
 		<label class="radio-inline">
-			<input type='radio' name='gender' value='m'/> 남
+			<input type='radio' name='gender' value='m' <?=$gender_m?>/> 남
 		</label>
 	</div>
 		
