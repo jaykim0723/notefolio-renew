@@ -231,9 +231,9 @@ class Gallery extends CI_Controller {
             $this->load->model('upload_model');
             $this->upload_model->put(
                 array(
-                    'id'=>$params->upload_id, 
-                    'work_id'=>$params->work_id, 
-                    'type'=>'cover', 
+                    'id'      =>$params->upload_id, 
+                    'work_id' =>$params->work_id, 
+                    'type'    =>'cover', 
                     )
                 );
             

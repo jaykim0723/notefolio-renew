@@ -152,12 +152,12 @@ class upload_model extends CI_Model {
     /**
      * put upload data.
      *
-     * @param  array  $params (depend by field in table `uploads`)
+     * @param  array  $input (depend by field in table `uploads`)
      * @return object       (status return object. status=[done|fail])
      */
-    function put($data=array()){
+    function put($input=array()){
         // null > return fail
-        if($data == array()){
+        if(count($input)==0){
             $data = (object)array(
                 'status' => 'fail',
                 'message' => 'no_input_data'
@@ -165,9 +165,23 @@ class upload_model extends CI_Model {
 
             return $data;
         }
+        $input = (object)$input;
 
         $input->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
         
+        foreach($input as $key=>$val){
+            if(in_array(
+                $key, 
+                array('id','user_id','work_id','type','filename','org_filename',
+                    'filesize', 'regdate', 'moddate', 'comment')
+                )){
+                continue;
+            }
+            else {
+                unset($input->{$key});
+            }
+        }
+
         //-- upload id is not for update
         $upload_id = $input->id;
         unset($input->id);
