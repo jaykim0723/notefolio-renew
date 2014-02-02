@@ -191,8 +191,7 @@ class Gallery extends CI_Controller {
         $input['keywords'] = implode('', $input['keywords']);       
 
         //-- cover_upload_id is not for update
-        if(isset($input['cover_upload_id'])){
-            exit(var_export($input));
+        if(!empty($input['cover_upload_id'])){
             $this->_set_cover(
                 array(
                     'work_id'=>$input['work_id'], 
@@ -222,7 +221,7 @@ class Gallery extends CI_Controller {
 
         try{
             $this->load->config('upload', TRUE);
-    
+            exit('aaa');
             $this->db
                 ->set('work_id', 0)
                 ->where('type', 'cover')
