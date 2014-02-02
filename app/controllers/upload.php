@@ -19,7 +19,7 @@ class Upload extends CI_Controller
 		$row = $this->db
 			->where('type', 'cover')
 			->where('work_id', $work_id)
-			->get('uploads');
+			->get('uploads')->row();
 
 		$data = array(
 			'upload_id' =>  $row->id,
