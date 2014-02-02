@@ -33,6 +33,7 @@ class Activity {
         return false;
     }
 
+
     /**
      * make activity parameter for user.
      * 
@@ -41,6 +42,7 @@ class Activity {
      * 
      * @return array
      */
+    /*
     function make_param($workType, $resource=array())
     {
         //-- make work type
@@ -55,6 +57,7 @@ class Activity {
             return array();
         }
     }
+    */
 
     /**
      * make activity parameter for user. (create)
