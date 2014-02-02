@@ -221,13 +221,13 @@ class Gallery extends CI_Controller {
 
         try{
             $this->load->config('upload', TRUE);
-            exit('aaa');
+            
             $this->db
                 ->set('work_id', 0)
                 ->where('type', 'cover')
                 ->where('work_id', $params->work_id)
                 ->update('uploads');
-    
+            exit('aaa');
             $this->load->model('upload_model');
             $this->upload_model->put(
                 array(
