@@ -56,7 +56,7 @@ class Profile extends CI_Controller {
 		$filename = preg_replace(
                         '/^(..)(..)([^\.]+)(\.[a-zA-Z]+)/', 
                         '$1/$2/$1$2$3$4', 
-                        $upload->filename;
+                        $upload->filename
                         );
 		var_export($filename);
 		exit();
