@@ -59,7 +59,7 @@ if(isset($fb_num_id)) {
 			$fb_info->email
 			;
 	$email['disabled'] = 'disabled';
-	$gender[{substr($fb_info->gender, 0, 1)}] = 'checked';
+	$gender[substr($fb_info->gender, 0, 1)] = 'checked';
 	var_export($gender['m']);
 }
 ?>
