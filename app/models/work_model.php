@@ -188,6 +188,8 @@ class work_model extends CI_Model {
                     ->get('works')->row();
                 if(isset($next->work_id)){
                     $next = $next->work_id;
+                }else{
+                    $next = 0;
                 }
             }
             catch(Exception $e){
@@ -206,6 +208,8 @@ class work_model extends CI_Model {
                     ->get('works')->row();
                 if(isset($prev->work_id)){
                     $prev = $prev->work_id;
+                }else{
+                    $prev = 0;
                 }
             }
             catch(Exception $e){
