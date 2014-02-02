@@ -5247,7 +5247,7 @@ wysihtml5.dom.replaceWithChildNodes = function(node) {
   }
   
   function _isLineBreak(node) {
-    return node.nodeName === "BR";
+    return node.nodeName.toUpperCase() === "BR";
   }
   
   function _appendLineBreak(element) {
@@ -7118,7 +7118,7 @@ wysihtml5.Commands = Base.extend(
   }
 
   function _isLineBreak(node) {
-    return node.nodeName === "BR";
+    return node.nodeName.toUpperCase() === "BR";
   }
 
   /**

@@ -173,5 +173,5 @@
 <script src="/js/member.js"></script>
 <script src="/js/libs/jquery.Jcrop.min.js"></script>
 <script src="/js/libs/bootstrap-tagsinput.min.js"></script>
-<script src="/js/libs/wysihtml5-0.3.0.min.js"></script>
+<script src="/js/libs/wysihtml5-0.3.0.js"></script>
 <script src="/js/libs/bootstrap-wysihtml5-0.0.2.js"></script>

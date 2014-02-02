@@ -197,7 +197,7 @@ var workUtil = {
     		}
     		contents.push(o);
 		});
-		data += '&contents='+array2json(contents);
+		data += '&contents='+JSON.stringify(contents);
 
 		blockPage.block();
 		$.ajax({
@@ -470,9 +470,7 @@ var workUtil = {
 							$newBlock.fadeTo(300, 1);
 						});
 						if(className =='text')
-							$newBlock.find('textarea').wysihtml5({
-								height : 300
-							});
+							$newBlock.find('textarea').wysihtml5();
 						workUtil.discoverbility();
 					}
 				})
@@ -541,7 +539,7 @@ var workUtil = {
 
 				case 'text':
 				default:
-					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(c);
+					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(nl2br(c));
 					output = $('<li class="block-text"></li>').append(textarea);
 				break;
 			}

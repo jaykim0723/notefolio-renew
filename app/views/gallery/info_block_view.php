@@ -19,7 +19,7 @@
 
 <?php break; case 'text': ?>
 <li class="block-text">
-	<?php echo htmlentities($c, ENT_COMPAT, 'utf-8') ?>
+	<?php echo nl2br($c); ?>
 </li>
 
 
