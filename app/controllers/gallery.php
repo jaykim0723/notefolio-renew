@@ -68,7 +68,7 @@ class Gallery extends CI_Controller {
     function update($work_id=''){
         $work = $this->work_model->get_info(array('work_id'=>$work_id)); 
         if($work->status==='fail') alert('작품이 존재하지 않습니다.');
-        if($work->row->user_id!==USER_ID) alert('본인의 작품만 수정할 수 있습니다.');
+        // if($work->row->user_id!==USER_ID) alert('본인의 작품만 수정할 수 있습니다.');
 
         $this->form($work);
     }
