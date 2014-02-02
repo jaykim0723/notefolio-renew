@@ -185,7 +185,7 @@ class Gallery extends CI_Controller {
                     $input['created_images'][] = $row->i; // 기존에 없던 것이라면 이것은 추가된 것이다.
             }
         }
-        if(!empty($input['created_images'])){
+        if(count($input['created_images'])>0){
             //-- DB Update
             $this->db
                 ->set('work_id', $input['work_id'])
@@ -198,7 +198,7 @@ class Gallery extends CI_Controller {
             if(in_array($i, $input_images)==FALSE)
                 $input['deleted_images'][] = $i; // 기존에는 있었지만 새로운 것에 없다면 삭제된 것이다.
         }
-        if(!empty($input['deleted_images'])){
+        if(count($input['deleted_images'])>0){
             //-- DB Update
             $this->db
                 ->set('work_id', 0)
