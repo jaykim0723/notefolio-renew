@@ -64,7 +64,6 @@
 						<ul class="dropdown-menu">
 						  <li><a id="btn-upload-cover" href="#">커버 업로드</a></li>
 						  <li><a id="btn-select-cover" href="#">작품내용 중 선택</a></li>
-						  <li><a href="javascript:memberUtil.popCrop({'message':['정사각형 메인을 정해주세요.','직사각형 보고 커버를 정해주세요.']});">크롭테스트(임시)</a></li>
 						</ul>
 					</div>	
 					<h4>커버</h4>

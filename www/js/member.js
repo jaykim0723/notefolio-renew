@@ -12,21 +12,28 @@ var workUtil = {
 			done : function(dialog){
 				var crop1 = NFview.popCrop[0].tellSelect();
 				var crop2 = NFview.popCrop[1].tellSelect();
+				var tmp = {
+					400 : {},
+					800 : {}
+				};
+				tmp[crop1.w] = crop1;
+				tmp[crop2.w] = crop2;
+
 				// 이미지 src, crop 정보를 토대로 사진을 잘라내는 명령을 내린다.
 				$.post('/gallery/save_cover', {
 					work_id : NFview.work_id,
 					upload_id : upload_id,
 					t2 : {
-						x : crop2.x,
-						y : crop2.y,
-						w : crop2.w,
-						h : crop2.h
+						x : tmp[400].x,
+						y : tmp[400].y,
+						w : tmp[400].w,
+						h : tmp[400].h
 					},
 					t3 : {
-						x : crop1.x,
-						y : crop1.y,
-						w : crop1.w,
-						h : crop1.h
+						x : tmp[800].x,
+						y : tmp[800].y,
+						w : tmp[800].w,
+						h : tmp[800].h
 					}
 				}, 'json').done(function(responseJSON){
 					console.log('crop cover done > responseJSON', responseJSON);
