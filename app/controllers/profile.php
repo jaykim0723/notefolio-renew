@@ -70,13 +70,11 @@ class Profile extends CI_Controller {
 			);
 
     	$maxsize = $this->config->item('thumbnail_medium', 'upload');
-        if($size['width']<$maxsize['width']){
+        if($size['width']<$maxsize['max_width']){
         	$opt['width'] = $size['width'];
         } else {
         	$opt = array();
         }
-    	var_export($maxsize);
-		exit();
 
 		$to_crop = $this->file_save->get_crop_opt($size, $o_crop, $opt);
 
