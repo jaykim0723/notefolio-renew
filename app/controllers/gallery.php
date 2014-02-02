@@ -184,7 +184,7 @@ class Gallery extends CI_Controller {
 		}
 		$input['keywords'] = implode('', $input['keywords']);
 		
-		var_export($input);
+		//var_export($input);
 
 		$data = $this->work_model->put_info($input);
 		$this->layout->set_json($data)->render();
