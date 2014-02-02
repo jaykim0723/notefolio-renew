@@ -172,6 +172,7 @@ class Gallery extends CI_Controller {
         $work_images = $input_images = array();
         if($work->row->contents=='')
             $work->row->contents = array();
+        else $work->row->contents = unserialize($work->row->contents);
         foreach($work->row->contents as $row){ // 기존 contents의 이미지 정보들을 수집
             if($row->t=='image' && $row->i!=''){
                 $work_images[] = $row->i;
@@ -184,10 +185,29 @@ class Gallery extends CI_Controller {
                     $input['created_images'][] = $row->i; // 기존에 없던 것이라면 이것은 추가된 것이다.
             }
         }
+        if(!empty($input['created_images'])){
+            //-- DB Update
+            $this->db
+                ->set('work_id', $input['work_id'])
+                ->where('type', 'work')
+                ->where_in('work_id', $input['created_images'])
+                ->update('uploads');
+            //-- end
+        }
         foreach($work_images as $i){
             if(in_array($i, $input_images)==FALSE)
                 $input['deleted_images'][] = $i; // 기존에는 있었지만 새로운 것에 없다면 삭제된 것이다.
         }
+        if(!empty($input['deleted_images'])){
+            //-- DB Update
+            $this->db
+                ->set('work_id', 0)
+                ->where('type', 'work')
+                ->where_in('work_id', $input['deleted_images'])
+                ->update('uploads');
+            //-- end
+        }
+
         $input['keywords'] = implode('', $input['keywords']);       
 
         //-- cover_upload_id is not for update
