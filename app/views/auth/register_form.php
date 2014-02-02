@@ -42,7 +42,7 @@ $captcha = array(
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
-		<?php if(isset($fb_info)):?>
+		<?php if(isset($fb_num_id)):?>
 		<a href="javascript:window.location.reload()" class="btn btn-info btn-block">Now with facebook</a>
 		<?php else:?>
 		<a href="" class="btn btn-info btn-block" id="signup-with-fb">Signup with facebook</a>
