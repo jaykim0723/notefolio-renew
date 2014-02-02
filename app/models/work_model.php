@@ -180,6 +180,7 @@ class work_model extends CI_Model {
                 $next = $this->db
                     ->select('work_id')
                     ->where('work_id >', $data->row->work_id)
+                    ->where('user_id', $data->row->user_id)
                     ->limit(1)
                     ->get('works')->row()->work_id;
             }
@@ -193,6 +194,7 @@ class work_model extends CI_Model {
                 $prev = $this->db
                     ->select('work_id')
                     ->where('work_id <', $data->row->work_id)
+                    ->where('user_id', $data->row->user_id)
                     ->limit(1)
                     ->get('works')->row()->work_id;
             }
