@@ -1086,6 +1086,9 @@ var profileUtil = {
 					blockPage.unblock();
 				}
 			});
+			$('#about-edit-area').on('click', 'i', function(){
+				$(this).parent().remove();
+			});
 		},
 		update : function(){
 			$('#about-cont, #btn-update-about').hide();
@@ -1123,7 +1126,7 @@ var profileUtil = {
 			});
 		},
 		createAttachmentBlock : function(r){
-			return $('<li class="about-attachment-li" id="attach-'+r.upload_id+'"><img src="'+r.src+'"/></li>');
+			return $('<li class="about-attachment-li" id="attach-'+r.upload_id+'"><i class="spi spi-close">close</i><img src="'+r.src+'"/></li>');
 		},
 		removeAttachment : function(){
 

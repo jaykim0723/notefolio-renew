@@ -19,7 +19,7 @@
 				<textarea name="about-text" id="about-text" cols="30" rows="20"></textarea>
 				<ul id="about-attachments">
 					<li id="about-upload">
-						<i class="spi spi-plus">plus</i>
+						<span class="spi spi-plus">plus</span>
 						<br/>
 						파일첨부
 					</li>
