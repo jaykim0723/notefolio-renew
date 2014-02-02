@@ -768,7 +768,7 @@ var profileUtil = {
 			console.log('crop profile bg done > responseJSON', responseJSON);
 			// 프로필 배경을 응답받은 주소로 갱신을 해준다.
 			msg.open('적용이 완료되었습니다.');
-			$('#profile-header').css('background-image', responseJSON.src);
+			$('#profile-header').css('background-image', url(responseJSON.src));
 		});
 	},
 
