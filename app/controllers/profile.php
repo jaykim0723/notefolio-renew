@@ -62,8 +62,6 @@ class Profile extends CI_Controller {
         list($width, $height) = getimagesize($this->config->item('img_upload_path', 'upload').$filename);
 
         $size = array('width'=> $width, 'height'=> $height);
-    	var_export($size);
-		exit();
         $o_crop = array(
 				'width'  => $this->input->get_post('w'),
 				'height' => $this->input->get_post('h'),
@@ -77,6 +75,8 @@ class Profile extends CI_Controller {
         } else {
         	$opt = array();
         }
+    	var_export($size);
+		exit();
 
 		$to_crop = $this->file_save->get_crop_opt($size, $o_crop, $opt);
 
