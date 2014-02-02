@@ -16,9 +16,18 @@ class Upload extends CI_Controller
 	}
 	
 	function get_upload_id_by_work_id($work_id){
+		$row = $this->db
+			->where('type', 'cover')
+			->where('work_id', $work_id)
+			->get('uploads');
+
 		$data = array(
-			'upload_id' =>  '',
-			'src' => ''
+			'upload_id' =>  $row->id,
+			'src' => preg_replace(
+                        '/^(..)(..)([^\.]+)(\.[a-zA-Z]+)/', 
+                        $this->config->item('img_upload_uri','upload')'$1/$2/$1$2$3_v2.jpg', 
+                        $row->filename
+                        );
 		);
 		$this->layout->set_json($data)->render();
 	}
