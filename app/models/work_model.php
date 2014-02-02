@@ -174,9 +174,10 @@ class work_model extends CI_Model {
             unset($data->row->{$key});
         }
         $data->row->user = $user;
+        var_export($data);
+        exit();
 
         if($params->get_next_prev){
-            var_export($data);
             $this->db->flush_cache();
 
             try{
