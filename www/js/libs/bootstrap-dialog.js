@@ -557,20 +557,23 @@ var BootstrapDialog = null;
             data: {
                 'callback' : callback
             },
-            buttons: [{
-                    label: 'Cancel',
-                    action: function(dialog) {
-                        typeof dialog.getData('callback') === 'function' && dialog.getData('callback')(false);
-                        dialog.close();
-                    }
-                }, {
+            buttons: [
+                {
                     label: 'OK',
                     cssClass: 'btn-'+userType,
                     action: function(dialog) {
                         typeof dialog.getData('callback') === 'function' && dialog.getData('callback')(true);
                         dialog.close();
                     }
-                }]
+                },
+                {
+                    label: 'Cancel',
+                    action: function(dialog) {
+                        typeof dialog.getData('callback') === 'function' && dialog.getData('callback')(false);
+                        dialog.close();
+                    }
+                }
+                ]
         }).open();
     };
 }(window.jQuery);

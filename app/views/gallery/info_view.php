@@ -210,12 +210,20 @@
 		</div>
 	</div>
 </section>
+<?php if ($this->tank_auth->is_logged_in()): ?>
+	<script src="/js/member.js"></script>
+	<script>
+		$(function(){
+			$('#work-info-wrapper').on('click', '.btn-delete-work', function(e){
+				workUtil.delete(this);
+				return false;
+			});
+		});
+	</script>
+<?php endif ?>
 <script>
 	$(function() {
-		$('#work-info-wrapper').on('click', '.btn-delete-work', function(e){
-			workUtil.delete(this);
-			return false;
-		}).on('submit', 'form.comment-block', function(){
+		$('#work-info-wrapper').on('submit', 'form.comment-block', function(){
 			commentUtil.submitComment(this);
 		}).on('click', '.btn-open-comment', function(){
 			commentUtil.open(this);
