@@ -182,7 +182,7 @@ class work_model extends CI_Model {
                 $next = $this->db
                     ->select('work_id')
                     ->where('work_id >', $data->row->work_id)
-                    ->where('user_id', $data->row->user->id)
+                    ->where('user_id', $user->id)
                     ->limit(1)
                     ->get('works')->row()->work_id;
             }
