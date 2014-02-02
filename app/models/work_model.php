@@ -120,7 +120,9 @@ class work_model extends CI_Model {
         }
 
     	$this->db
-            ->select('works.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified, user_profiles.keywords as user_keywords')
+            ->select('works.*')
+            ->select('users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
+            ->select('user_profiles.keywords as user_keywords, user_profiles.facebook_id as user_facebook_id, user_profiles.twitter_id as user_twitter_id')
     		// ->select('work_id, title, realname as user, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
             ->join('users', 'users.id = works.user_id', 'left')
@@ -163,9 +165,9 @@ class work_model extends CI_Model {
             'created'    => $data->row->created,
             'modified'   => $data->row->modified,
             'user_keywords'   => $data->row->user_keywords,
-            'sns'   => (object)array(// temporary
-                'facebook' => 'maxzidell',
-                'twitter' => 'maxzidell'
+            'sns'   => (object)array(
+                'facebook' => $data->row->user_facebook_id,
+                'twitter' => $data->row->user_twitter_id,
             ) 
         );
         foreach($user as $key=>$value){
@@ -180,7 +182,7 @@ class work_model extends CI_Model {
                 $next = $this->db
                     ->select('work_id')
                     ->where('work_id >', $data->row->work_id)
-                    //->where('user_id', $data->row->user_id)
+                    ->where('user_id', $data->row->user->id)
                     ->limit(1)
                     ->get('works')->row()->work_id;
             }
@@ -194,7 +196,7 @@ class work_model extends CI_Model {
                 $prev = $this->db
                     ->select('work_id')
                     ->where('work_id <', $data->row->work_id)
-                    //->where('user_id', $data->row->user_id)
+                    ->where('user_id', $data->row->user->id)
                     ->limit(1)
                     ->get('works')->row()->work_id;
             }
