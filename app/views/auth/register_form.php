@@ -39,18 +39,23 @@ $captcha = array(
 	'class' => 'form-control',
 	'maxlength'	=> 8,
 );
+$birth = array(
+	'year'=>1990,
+	'month'=>8,
+	'day'=>8
+);
+
+if(isset($fb_num_id)) {
+	$username['value'] = (!empty($username['value']))?$username['value']:$fb_info->username;
+	$email['value'] = (!empty($email['value']))?$email['value']:$fb_info->email;
+	$email['disabled'] = 'disabled';
+	$gender_{substr($fb_info->gender, 0, 1)} = 'checked';
+}
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
 	<?php if(isset($fb_num_id)){?>
-		<?php 
-			echo form_hidden('fb_num_id', $fb_num_id);
-			$email['value'] = (!empty($email['value']))?$email['value']:$fb_info->email;
-			$email['disabled'] = 'disabled';
-			var_export(substr($fb_info->gender, 0, 1));
-			$gender_{substr($fb_info->gender, 0, 1)} = 'checked';
-
-		?>
+		<?php echo form_hidden('fb_num_id', $fb_num_id); ?>
 		<a href="javascript:window.location.reload()" class="btn btn-info btn-block">Now with facebook</a>
 	<?php }else{?>
 		<a href="" class="btn btn-info btn-block" id="signup-with-fb">Signup with facebook</a>
@@ -81,16 +86,13 @@ $captcha = array(
 	<div class="form-group">
 		<label>성별</label><br/>
 		<label class="radio-inline">
-			<input type='radio' name='gender' value='f' <?=$gender_f?>/> 여
+			<input type='radio' name='gender' value='f' /> 여
 		</label>
 		<label class="radio-inline">
-			<input type='radio' name='gender' value='m' <?=$gender_m?>/> 남
+			<input type='radio' name='gender' value='m' /> 남
 		</label>
 	</div>
-		
-    <?php
-		$birth=array('year'=>1990,'month'=>8,'day'=>8);
-	?>
+
 	<div class="form-group">
 		<label>생년월일</label>
 		<div id='birth_field'>
