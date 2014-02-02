@@ -45,9 +45,9 @@ $captcha = array(
 	<?php if(isset($fb_num_id)){?>
 		<?php 
 			echo form_hidden('fb_num_id', $fb_num_id);
-			$email['value'] = (!empty($email['value'])?$email['value']:$fb_info->email;
+			$email['value'] = (!empty($email['value']))?$email['value']:$fb_info->email;
 			$email['disabled'] = 'disabled';
-			//$gender_{$fb_info->gender} = 'checked';
+			$gender_{$fb_info->gender} = 'checked';
 
 		?>
 		<a href="javascript:window.location.reload()" class="btn btn-info btn-block">Now with facebook</a>
