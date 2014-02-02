@@ -202,14 +202,14 @@ class work_model extends CI_Model {
         log_message('debug','--------- work_model > put_info ( params : '.print_r(get_defined_vars(),TRUE)).')';
         $input = (object)$input;
         // 값을 정규식으로 검사한다.
-        var_export($input);
-        exit();
 
         $input->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
         
         //-- work id is not for update
         $work_id = $input->work_id;
         unset($input->work_id);
+        var_export($input);
+        exit();
 
         $this->db
             ->where('work_id', $work_id)
