@@ -46,8 +46,18 @@ $birth = array(
 );
 
 if(isset($fb_num_id)) {
-	$username['value'] = (!empty($username['value']))?$username['value']:$fb_info->username;
-	$email['value'] = (!empty($email['value']))?$email['value']:$fb_info->email;
+	$username['value'] = 
+		(!empty($username['value']))?
+			$username['value']
+			:
+			(isset($fb_info->username) ? $fb_info->username : '')
+			;
+	$email['value'] = 
+		(!empty($email['value']))?
+			$email['value']
+			:
+			$fb_info->email
+			;
 	$email['disabled'] = 'disabled';
 	$gender_{substr($fb_info->gender, 0, 1)} = 'checked';
 }
