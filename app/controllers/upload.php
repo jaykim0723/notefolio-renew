@@ -30,6 +30,8 @@ class Upload extends CI_Controller
 	 * @return no retun
 	 */
 	function image($file=null){
+		sleep(2);
+
 		if(empty($file)){
 			if ($filename = $this->input->get_post('qqfile')) {
 			    // XMLHttpRequest stream'd upload

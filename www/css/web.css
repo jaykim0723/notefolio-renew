@@ -262,6 +262,14 @@ body {
 	bottom:0;
 	left:0;
 }
+#work-sidebar > .container, 
+#work-sidebar > .container > .row,
+#work-sidebar > .container > .row > .col-md-3 {
+	height: 100%;
+}
+#work-sidebar > .container > .row > .col-md-3 {
+	overflow: auto;
+}
 #work-profile-image {
 	background: #999;
 	padding: 20px 0 0 0;
@@ -353,6 +361,7 @@ div.upload-guide{
 	border: #0000ff 5px dotted;
 }
 #work-content-blockadder{
+	background: #fff;
 	display: block;
 	position: fixed;
 	width: 50px;
