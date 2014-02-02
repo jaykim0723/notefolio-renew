@@ -222,8 +222,8 @@ class Gallery extends CI_Controller {
                     'work_id'=>$input['work_id'], 
                     'upload_id'=>$input['cover_upload_id']
             ));
-            unset($input['cover_upload_id']);
         }
+        unset($input['cover_upload_id']);
         
         unset($input['_wysihtml5_mode']);
 
