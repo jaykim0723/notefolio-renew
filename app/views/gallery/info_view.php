@@ -198,7 +198,7 @@
 					</div>
 				</div>
 
-				<a href="/<?php echo $row->user->username; ?>/<?php echo $row->next_work_id; ?>" class="more-link">more</a>
+				<a href="/<?php echo $row->user->username; ?>/<?php echo $row->prev_work_id; ?>" class="more-link">more</a>
 				
 
 
