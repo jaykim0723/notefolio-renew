@@ -203,6 +203,7 @@ class work_model extends CI_Model {
         $input = (object)$input;
         // 값을 정규식으로 검사한다.
         var_export($input);
+        exit();
 
         $input->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
         
