@@ -172,10 +172,10 @@ class Gallery extends CI_Controller {
         $work_images = $input_images = array();
 
         if(empty($work->row->contents)){
-            $old_contents =  array();
-        }
-        else {
-            $old_contents = unserialize($work->row->contents);
+            $old_contents = array();
+        
+        } else {
+            $old_contents = $work->row->contents;
         }
 
         foreach($old_contents as $row){ // 기존 contents의 이미지 정보들을 수집
