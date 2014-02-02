@@ -128,10 +128,6 @@ class work_model extends CI_Model {
     		->limit(1); //set
         $work = $this->db->get()->row();
 
-        // 여기에서 값을 조작한다.
-        # do stuff
-        $work->keywords = 'A7B7'; // temporary
-        $work->tags = @explode(')(', trim(trim($work->tags, '('),')'));
         if(substr($work->contents, 0, 2)=='a:')
             $work->contents = unserialize($work->contents);
 
