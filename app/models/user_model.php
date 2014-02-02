@@ -580,18 +580,18 @@ class user_model extends CI_Model {
 
         $this->db->trans_start();
         //-- set
-        if(empty($data['post_note']))
+        if(empty($data->post_note))
             $this->db->set('post_note', 'N');
         else
-            $this->db->set('post_note', $data['post_note']);
-        if(empty($data['post_comment']))
+            $this->db->set('post_note', $data->post_note);
+        if(empty($data->post_comment))
             $this->db->set('post_comment', 'N');
         else
-            $this->db->set('post_comment', $data['post_comment']);
-        if(empty($data['post_work']))
+            $this->db->set('post_comment', $data->post_comment);
+        if(empty($data->post_work))
             $this->db->set('post_work', 'N');
         else
-            $this->db->set('post_work', $data['post_work']);
+            $this->db->set('post_work', $data->post_work);
         //-- where
         if(!empty($fb_num_id))
             $this->db->where('fb_num_id', $fb_num_id);
