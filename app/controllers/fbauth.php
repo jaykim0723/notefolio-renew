@@ -156,7 +156,7 @@ class fbauth extends CI_Controller
 
         $user = $this->user_model->get_info(array('sns_fb_num_id'=>$fbme['id'], 'get_sns_fb'=>true));
         $user_by_email = $this->user_model->get_info(array('email'=>$fbme['email'])); //-- 이메일 받아오기.
-        
+        /*
         if($user->status=='done'&&count($user->row)>0){ //-- fb 가입자
             $this->_login_by_fb($user->row);
             $this->user_model->put_sns_fb(array('id'=>$user->row->id, 'fb_num_id'=>$fbme['id']));
@@ -167,12 +167,12 @@ class fbauth extends CI_Controller
             $this->_login_by_fb($user_by_email->row);
             
             $this->_window_opener_move('/');
-        } else {
+        } else {*/
             //-- register 변수들 대입
             $this->session->set_flashdata('register_fb_info', json_encode($fbme));
 
             $this->_window_opener_move("/auth/register");
-        }
+        //}
 
         return $this->_window_close();
     }
