@@ -71,13 +71,13 @@
 
 				<div class="row" id="cover-preview">
 					<div class="col-md-4">
-						<img src="/data/covers/<?php echo $row->work_id ?>_t1.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="">
+						<img src="/data/covers/<?php echo $row->work_id ?>_t1.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="" onerror="this.src='/img/cover_default.png';">
 					</div>
 					<div class="col-md-4">
-						<img src="/data/covers/<?php echo $row->work_id ?>_t2.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="">
+						<img src="/data/covers/<?php echo $row->work_id ?>_t2.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="" onerror="this.src='/img/cover_default.png';">
 					</div>
 					<div class="col-md-4">
-						<img src="/data/covers/<?php echo $row->work_id ?>_t3.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="">
+						<img src="/data/covers/<?php echo $row->work_id ?>_t3.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="" onerror="this.src='/img/cover_default.png';">
 					</div>
 				</div>
 
@@ -104,7 +104,7 @@
 				<input id="title" type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
 				<br>
 				<h4>내용</h4>
-				<ul id="content-block-list" class="work-info list-unstyled work-contents">
+				<ul style="margin-top:0;" id="content-block-list" class="work-info list-unstyled work-contents">
 				</ul>
 				<div id="content-multiple">
 					드래그앤드롭으로 새로운 이미지 추가
