@@ -184,7 +184,8 @@ class work_model extends CI_Model {
                     ->where('work_id >', $data->row->work_id)
                     ->where('user_id', $user->id)
                     ->limit(1)
-                    ->get('works')->row()->work_id;
+                    ->get('works')->row();
+                var_export($next);
             }
             catch(Exception $e){
                 $next = 0;
@@ -198,13 +199,15 @@ class work_model extends CI_Model {
                     ->where('work_id <', $data->row->work_id)
                     ->where('user_id', $user->id)
                     ->limit(1)
-                    ->get('works')->row()->work_id;
+                    ->get('works')->row();
+                var_export($prev);
             }
             catch(Exception $e){
                 $prev = 0;
             }
             $data->row->prev_work_id = $prev;
             $this->db->flush_cache();
+            exit();
 
 
         }
