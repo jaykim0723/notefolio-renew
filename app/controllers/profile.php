@@ -344,7 +344,7 @@ class Profile extends CI_Controller {
 		$user = $this->_get_user_info($username);
 
 		$data = (object)array(
-			'total' => $this->profile_model->get_statistics_total(array('user_id='=>$user->row->id))->row
+			'total' => $this->profile_model->get_statistics_total(array('user_id'=>$user->row->id))->row
 		);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user);
