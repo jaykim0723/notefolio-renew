@@ -168,7 +168,7 @@ class Gallery extends CI_Controller {
             'work_id' => $input['work_id']
         ));
         $input['contents'] = json_decode($input['contents']);
-        $input['created_images'] = $input['deleted_images'] = array();
+        $created_images = $deleted_images = array();
         $work_images = $input_images = array();
         if($work->row->contents=='')
             $work->row->contents = array();
@@ -182,28 +182,28 @@ class Gallery extends CI_Controller {
             if($row->t=='image' && !empty($row->i)){
                 $input_images[] = $row->i;
                 if(in_array($row->i, $work_images)!==FALSE)
-                    $input['created_images'][] = $row->i; // 기존에 없던 것이라면 이것은 추가된 것이다.
+                    $created_images[] = $row->i; // 기존에 없던 것이라면 이것은 추가된 것이다.
             }
         }
-        if(count($input['created_images'])>0){
+        if(count($created_images)>0){
             //-- DB Update
             $this->db
                 ->set('work_id', $input['work_id'])
                 ->where('type', 'work')
-                ->where_in('work_id', $input['created_images'])
+                ->where_in('work_id', $created_images)
                 ->update('uploads');
             //-- end
         }
         foreach($work_images as $i){
             if(in_array($i, $input_images)==FALSE)
-                $input['deleted_images'][] = $i; // 기존에는 있었지만 새로운 것에 없다면 삭제된 것이다.
+                $deleted_images[] = $i; // 기존에는 있었지만 새로운 것에 없다면 삭제된 것이다.
         }
-        if(count($input['deleted_images'])>0){
+        if(count($deleted_images)>0){
             //-- DB Update
             $this->db
                 ->set('work_id', 0)
                 ->where('type', 'work')
-                ->where_in('work_id', $input['deleted_images'])
+                ->where_in('work_id', $deleted_images)
                 ->update('uploads');
             //-- end
         }
