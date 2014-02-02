@@ -738,6 +738,7 @@ var profileUtil = {
 			done : function(dialog){
 				var crop = NFview.popCrop[0].tellSelect();
 				// 이미지 src, crop 정보를 토대로 사진을 잘라내는 명령을 내린다.
+				blockPage.block();
 				$.post('/profile/change_face', {
 					upload_id : upload_id,
 					x : crop.x,
@@ -746,6 +747,7 @@ var profileUtil = {
 					h : crop.h
 				}, 'json').done(function(responseJSON){
 					console.log('crop profile face done > responseJSON', responseJSON);
+					blockPage.unblock();
 					// 프로필 이미지를 응답받은 주소로 갱신을 해준다.
 					msg.open('적용이 완료되었습니다.');
 					$('#profile-image').children('img').prop('src', responseJSON.src);
@@ -758,9 +760,11 @@ var profileUtil = {
 
 	changeBg : function(upload_id, src){
 		// change profile bg
+		blockPage.block();
 		$.post('/profile/change_bg', {
 			upload_id : upload_id
 		}, 'json').done(function(responseJSON){
+			blockPage.unblock();
 			console.log('crop profile bg done > responseJSON', responseJSON);
 			// 프로필 배경을 응답받은 주소로 갱신을 해준다.
 			msg.open('적용이 완료되었습니다.');
