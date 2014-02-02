@@ -25,7 +25,7 @@ class Upload extends CI_Controller
 			'upload_id' =>  $row->id,
 			'src' => preg_replace(
                         '/^(..)(..)([^\.]+)(\.[a-zA-Z]+)/', 
-                        $this->config->item('img_upload_uri','upload')'$1/$2/$1$2$3_v2.jpg', 
+                        $this->config->item('img_upload_uri','upload').'$1/$2/$1$2$3_v2.jpg', 
                         $row->filename
                         );
 		);
