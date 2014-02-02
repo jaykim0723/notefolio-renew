@@ -121,7 +121,7 @@ class Activity {
      * 
      * @return bool
      */
-    private function after_post($area, $type, &$resource=array())
+    private function after_post($area, $type, $resource=array())
     {
     }
 }
