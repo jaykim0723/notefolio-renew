@@ -65,7 +65,6 @@ if(isset($fb_num_id)) {
 			;
 	$email['disabled'] = 'disabled';
 	$gender[substr($fb_info->gender, 0, 1)] = 'checked';
-	var_export($gender['m']);
 }
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
@@ -102,10 +101,10 @@ if(isset($fb_num_id)) {
 	<div class="form-group">
 		<label>성별</label><br/>
 		<label class="radio-inline">
-			<input type='radio' name='gender' value='f' /> 여
+			<input type='radio' name='gender' value='f' <?=$gender['f']?> /> 여
 		</label>
 		<label class="radio-inline">
-			<input type='radio' name='gender' value='m' /> 남
+			<input type='radio' name='gender' value='m' <?=$gender['m']?> /> 남
 		</label>
 	</div>
 
