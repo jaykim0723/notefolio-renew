@@ -196,9 +196,9 @@ class user_model extends CI_Model {
             );
         }
         else {
-            # 성수씨 
+            var_export($user);
             $user->user_keywords = $user->keywords;
-            $user->sns = (object)array( // temporary
+            $user->sns = (object)array(
                 'facebook' => $user->facebook_id,
                 'twitter' => $user->twitter_id
             );
@@ -236,7 +236,9 @@ class user_model extends CI_Model {
         }
 
         // default tank auth
-        $this->tank_auth->create_user(); //($username, $email, $password, $email_activation)
+        $this->tank_auth->create_user(
+
+        ); //($username, $email, $password, $email_activation)
 
         $user_id = $this->db->insert_id();
         return $user_id;

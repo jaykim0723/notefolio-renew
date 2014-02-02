@@ -14,10 +14,10 @@ class Activity {
     
     function __construct($config=null) {
         $this->ci =& get_instance();
-#        $this->ci->load->database();
-#        $this->ci->load->model('user_model');
-#        $this->ci->load->model('work_model');
-#        $this->ci->load->model('tank_auth/users');
+        $this->ci->load->database();
+        $this->ci->load->model('user_model');
+        $this->ci->load->model('work_model');
+        $this->ci->load->model('tank_auth/users');
     }
     
     /**
@@ -127,4 +127,4 @@ class Activity {
     private function after_post($area, $type, $resource=array())
     {
     }*/
-}
+}}
