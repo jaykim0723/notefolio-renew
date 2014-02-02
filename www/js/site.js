@@ -680,22 +680,26 @@ var workInfoUtil = {
 		// 지금 막 불러온 것이 사이드바에서 마지막인지 확인을 해보고,
 		// 마지막이라면 리스트 불러와서 추가해주기
 		var $workRecentList = $('#work-recent-list');
-		var idBefore = $workRecentList.children('li:last').data('id');
-		$workRecentList.children('.selected').removeClass('selected');
-
-		if(idBefore==null) // 아직 불려진게 없다면
+		var idBefore = null;
+		if($workRecentList.children('li:last').length > 0){
+			idBefore = $workRecentList.children('li:last').attr('id').replace('work-recent-','');
+			$workRecentList.children('.selected').removeClass('selected');
+		}else{ // 아직 불려진게 없다면
 			idBefore = work_id; // 현재 열린것 이전부터 들여오기
+		}
 
 		if(idBefore==work_id){
 			$.get(site.url+'profile/my_recent_works/'+NFview.username+'/'+idBefore, {
 			}).done(function(responseHTML){
 				$workRecentList.append(responseHTML);
 				// 현재 불려진 놈을 선택하기
-				$workRecentList.children('#work-recent-'+work_id).addClass('selected');
+				// $workRecentList.children('#work-recent-'+work_id).addClass('selected');
+				// $workRecentList.scrollTo($workRecentList.children('#work-recent-'+work_id));
 			});
 		}else{
 			// 현재 불려진 놈을 선택하기
-			$workRecentList.children('#work-recent-'+work_id).addClass('selected');
+			// $workRecentList.children('#work-recent-'+work_id).addClass('selected');
+			// $workRecentList.scrollTo($workRecentList.children('#work-recent-'+work_id));
 		}
 	},
 	initRecentList : function(){

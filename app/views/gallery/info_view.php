@@ -223,6 +223,7 @@
 		});
 	</script>
 <?php endif ?>
+<script src="/js/libs/jquery.scrollTo.min.js"></script>
 <script>
 	$(function() {
 		$('#work-info-wrapper').on('submit', 'form.comment-block', function(){
