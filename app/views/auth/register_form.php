@@ -42,11 +42,16 @@ $captcha = array(
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
-		<?php if(isset($fb_num_id)){?>
+	<?php if(isset($fb_num_id)){?>
+		<?php 
+			echo form_hidden('fb_num_id', $fb_num_id);
+			$email['value'] = $fb_info->email;
+			$email['disabled'] = 'disabled';
+		?>
 		<a href="javascript:window.location.reload()" class="btn btn-info btn-block">Now with facebook</a>
-		<?php }else{?>
+	<?php }else{?>
 		<a href="" class="btn btn-info btn-block" id="signup-with-fb">Signup with facebook</a>
-		<?php }?>
+	<?php }?>
 	</div>
 	<?php if ($use_username) { ?>
 	<div class="form-group">
