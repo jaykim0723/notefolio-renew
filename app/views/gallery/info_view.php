@@ -226,29 +226,8 @@
 <script src="/js/libs/jquery.scrollTo.min.js"></script>
 <script>
 	$(function() {
-		$('#work-info-wrapper').on('submit', 'form.comment-block', function(){
-			commentUtil.submitComment(this);
-		}).on('click', '.btn-open-comment', function(){
-			commentUtil.open(this);
-		}).on('click', '.btn-delete-comment', function(){
-			commentUtil.delete(this);
-		}).on('click', '.btn-update-comment', function(){
-			commentUtil.update(this);
-		}).on('click', '.btn-reply-comment', function(){
-			commentUtil.reply(this);
-		}).on('click', '.btn-cancel-comment', function(){
-			commentUtil.cancel(this);
-		}).on('click', '.btn-comment-prev', function(){
-			commentUtil.prev(this);
-		}).on('click', '.btn-note', function(){
-			noteUtil.open(this);
-		}).on('click', '.btn-add-collect', function(){
-			collectUtil.open(this);
-		}).on('click', '.btn-cancel-collect', function(){
-			collectUtil.close(this);
-		});
 		NFview.infiniteCallback();
-
+		workInfoUtil.setGround();
 		workInfoUtil.initRecentList();
 
 	});

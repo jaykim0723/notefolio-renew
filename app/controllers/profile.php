@@ -244,7 +244,6 @@ class Profile extends CI_Controller {
 		$user = $this->_get_user_info($username);
 
         $this->load->model('work_model');
-        $id_before++; // 리스트에 현재의 작품을 포함하여야 하므로..
 		$work_list = $this->work_model->get_list(array(
 			'id_before' => $id_before,
 			'user_id' => $this->user_id

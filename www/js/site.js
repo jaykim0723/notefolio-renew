@@ -674,6 +674,29 @@ var collectUtil = {
 
 
 var workInfoUtil = {
+	setGround : function(){
+		$('#work-info-wrapper').on('submit', 'form.comment-block', function(){
+			commentUtil.submitComment(this);
+		}).on('click', '.btn-open-comment', function(){
+			commentUtil.open(this);
+		}).on('click', '.btn-delete-comment', function(){
+			commentUtil.delete(this);
+		}).on('click', '.btn-update-comment', function(){
+			commentUtil.update(this);
+		}).on('click', '.btn-reply-comment', function(){
+			commentUtil.reply(this);
+		}).on('click', '.btn-cancel-comment', function(){
+			commentUtil.cancel(this);
+		}).on('click', '.btn-comment-prev', function(){
+			commentUtil.prev(this);
+		}).on('click', '.btn-note', function(){
+			noteUtil.open(this);
+		}).on('click', '.btn-add-collect', function(){
+			collectUtil.open(this);
+		}).on('click', '.btn-cancel-collect', function(){
+			collectUtil.close(this);
+		});
+	},
 	getRecentList : function(work_id){
 		console.log('site.js > workInfoUtil > getRecentList', work_id);
 
@@ -681,14 +704,18 @@ var workInfoUtil = {
 		// 마지막이라면 리스트 불러와서 추가해주기
 		var $workRecentList = $('#work-recent-list');
 		var idBefore = null;
+		var isFirst = false;
 		if($workRecentList.children('li:last').length > 0){
 			idBefore = $workRecentList.children('li:last').attr('id').replace('work-recent-','');
-			$workRecentList.children('.selected').removeClass('selected');
 		}else{ // 아직 불려진게 없다면
-			idBefore = work_id; // 현재 열린것 이전부터 들여오기
+			idBefore = parseInt(work_id) + 1; // 현재 열린것 이전부터 들여오기
+			isFirst = true;
 		}
+		$('#work-'+work_id).waypoint(function() {
+			workInfoUtil.selectRecentList(this.id.replace('work-',''));
+		});	
 
-		if(idBefore==work_id){
+		if(isFirst || idBefore==work_id){
 			$.get(site.url+'profile/my_recent_works/'+NFview.username+'/'+idBefore, {
 			}).done(function(responseHTML){
 				$workRecentList.append(responseHTML);
@@ -701,6 +728,13 @@ var workInfoUtil = {
 			// $workRecentList.children('#work-recent-'+work_id).addClass('selected');
 			// $workRecentList.scrollTo($workRecentList.children('#work-recent-'+work_id));
 		}
+	},
+	selectRecentList : function(work_id){
+		var $workRecentList = $('#work-recent-list');
+		if($workRecentList.children('li').length==0) return;
+		$workRecentList.children('.selected').removeClass('selected');
+		$workRecentList.children('#work-recent-'+work_id).addClass('selected');
+		$workRecentList.scrollTo($workRecentList.children('#work-recent-'+work_id));
 	},
 	initRecentList : function(){
 		var top = $('#work-recent-works').offset().top - $(window).scrollTop();
