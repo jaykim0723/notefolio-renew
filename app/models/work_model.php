@@ -173,6 +173,36 @@ class work_model extends CI_Model {
         }
         $data->row->user = $user;
 
+        if($params->get_next_prev){
+            $this->db->flush_cache();
+
+            try{
+                $next = $this->db
+                    ->select('work_id')
+                    ->where('work_id >', $data->row->work_id)
+                    ->limit(1)
+                    ->get('works')->row()->work_id;
+            catch(Exception $e){
+                $next = 0;
+            }
+            $data->next = $next;
+            $this->db->flush_cache();
+
+            try{
+                $prev = $this->db
+                    ->select('work_id')
+                    ->where('work_id <', $data->row->work_id)
+                    ->limit(1)
+                    ->get('works')->row()->work_id;
+            catch(Exception $e){
+                $prev = 0;
+            }
+            $data->prev = $prev;
+            $this->db->flush_cache();
+
+
+        }
+
         return $data;
     }
 
