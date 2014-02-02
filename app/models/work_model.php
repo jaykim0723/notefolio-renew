@@ -145,8 +145,8 @@ class work_model extends CI_Model {
         }
         // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
         $data->row->noted = $data->row->collected = $data->row->is_follow = 'n';
-        $data->row->tags = @explode($data->row->tags);
-        
+        $data->row->tags = @explode(',', $data->row->tags);
+
         if(USER_ID>0){
             # 로그인한 사용자라면 이 사람이 어떻게 했는지 쿼리를 여기에서 하나 날리고 아래 값을 할당한다.
             $data->row->noted = ($this->get_note(array('work_id'=> $params->work_id,'user_id'=>USER_ID)))? 'y': 'n';
