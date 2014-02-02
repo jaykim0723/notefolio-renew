@@ -226,6 +226,8 @@ class Gallery extends CI_Controller {
 
         $data = $this->work_model->put_info($input);
         $this->layout->set_json($data)->render();
+        var_export($data);
+        exit();
     }
 
     function _set_cover($params=array()){

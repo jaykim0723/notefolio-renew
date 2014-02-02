@@ -213,8 +213,6 @@ class work_model extends CI_Model {
             ->where('work_id', $work_id)
             ->where('user_id', USER_ID)
             ->update('works', $input);
-        var_export($input);
-        exit();
 
         $data = (object)array(
             'status' => 'done'
