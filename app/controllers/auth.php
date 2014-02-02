@@ -716,6 +716,8 @@ class Auth extends CI_Controller
             $data['fb_num_id']=$fb_info->id;
         }
         //-- end
+
+        return $data;
     }
 
     /**
