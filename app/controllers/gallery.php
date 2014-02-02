@@ -216,6 +216,7 @@ class Gallery extends CI_Controller {
         $input['keywords'] = implode('', $input['keywords']);       
 
         //-- cover_upload_id is not for update
+        var_export($input['cover_upload_id']);
         if(!empty($input['cover_upload_id'])){
             $this->_set_cover(
                 array(
