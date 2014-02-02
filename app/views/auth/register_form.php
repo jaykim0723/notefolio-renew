@@ -45,6 +45,11 @@ $birth = array(
 	'day'=>8
 );
 
+$gender = array(
+	'm' => '',
+	'f'	=> ''
+);
+
 if(isset($fb_num_id)) {
 	$username['value'] = 
 		(!empty($username['value']))?
