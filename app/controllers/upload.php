@@ -27,7 +27,7 @@ class Upload extends CI_Controller
                         '/^(..)(..)([^\.]+)(\.[a-zA-Z]+)/', 
                         $this->config->item('img_upload_uri','upload').'$1/$2/$1$2$3_v2.jpg', 
                         $row->filename
-                        );
+                        )
 		);
 		$this->layout->set_json($data)->render();
 	}
