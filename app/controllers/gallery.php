@@ -223,7 +223,6 @@ class Gallery extends CI_Controller {
         unset($input['_wysihtml5_mode']);
 
         $input['contents'] = serialize($input['contents']);
-        exit(var_export($input));
 
         $data = $this->work_model->put_info($input);
         $this->layout->set_json($data)->render();
