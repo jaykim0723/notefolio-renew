@@ -9,199 +9,198 @@ var msg = {
 	}
 };
 
-var site = {
-	redirect : function(url, msg){
-		if(typeof msg!=='undefined'){ // 이동된 이후에 출력할 성공 메시지가 있다면 지정
-			localStorage.setItem('flashMsg', JSON.stringify({
-				time : $.now(),
-				url : url,
-				msg : msg,
-			}));
+site.redirect = function(url, msg){
+	if(typeof msg!=='undefined'){ // 이동된 이후에 출력할 성공 메시지가 있다면 지정
+		localStorage.setItem('flashMsg', JSON.stringify({
+			time : $.now(),
+			url : url,
+			msg : msg,
+		}));
+	}
+	location.href = url;
+};
+site.scrollToBottom = function(obj){
+	if(typeof obj!='undefined')
+		var top = $(obj).offset().top - 40;
+	else{
+		var top = $(document).height();
+	}
+	var delay = 0.5 * Math.abs(top - document.body.scrollTop);
+	return $('html,body').stop().animate({scrollTop: top}, delay);
+};
+site.checkFlashMsg = function(){
+	if(!empty(localStorage.getItem('flashMsg'))){
+		var t = JSON.parse(localStorage.getItem('flashMsg'));
+		if(
+			$.now() - parseInt(t.time,10) < 10000  // 메시지가 생성된 이후에 10초가 지나지 않았어야 하고
+			&& 
+			location.href.indexOf(t.url)>-1 // 목표 url을 포함하여야 한다
+		){
+			msg.open(t.msg);
 		}
-		location.href = url;
-	},
-	scrollToBottom : function(obj){
-		if(typeof obj!='undefined')
-			var top = $(obj).offset().top - 40;
-		else{
-			var top = $(document).height();
-		}
-		var delay = 0.5 * Math.abs(top - document.body.scrollTop);
-		return $('html,body').stop().animate({scrollTop: top}, delay);
-	},
-	checkFlashMsg : function(){
-		if(!empty(localStorage.getItem('flashMsg'))){
-			var t = JSON.parse(localStorage.getItem('flashMsg'));
-			if(
-				$.now() - parseInt(t.time,10) < 10000  // 메시지가 생성된 이후에 10초가 지나지 않았어야 하고
-				&& 
-				location.href.indexOf(t.url)>-1 // 목표 url을 포함하여야 한다
-			){
-				msg.open(t.msg);
-			}
-			localStorage.removeItem('flashMsg');
-		}
-	},
-	alarm : {
-		checkUnread : function(){
-			$.getJSON('/feed/check_unread').done(function(d){
-				console.log(d);
-				if(d.status=='done'){
-					$('.unread-alarm').text(d.alarm_unread)[d.alarm_unread>0?'show':'hide']();
-					$('.unread-feed').text(d.feed_unread)[d.feed_unread>0?'show':'hide']();
-					setTimeout(function(){
-						site.alarm.checkUnread();
-					}, 30000);
-				}
-			});
-		},
-		open : function(){
-			if($('#alarm-popup').length > 0){
-				this.close();
-				return;
-			}
-			$('#alarm-wrapper').append([
-				'<div id="alarm-popup">',
-					'<div id="alarm-popup-unread"></div>',
-					'<div id="alarm-popup-list"></div>',
-				'</div>'
-			].join('')).on({
-				mouseenter : function(){
-					$(document).off('click.alarm');
-				},
-				mouseleave : function(){
-					$(document).one('click.alarm', function(){
-						site.alarm.close();
-					})
-				}
-			})
-			.children('div').on({
-				mouseenter : function(){
-					site.scroll.lock();
-				},
-				mouseleave : function(){
-					site.scroll.unlock();
-				}
-			})
-			.height($(window).height()>550 ? 500 : $(window).height()-100)
-			.children('#alarm-popup-list')
-			.load('/alarm/listing/1');
+		localStorage.removeItem('flashMsg');
+	}
+};
 
-
- 		},
-		close : function(){
-			site.scroll.unlock(); // 혹시 몰라서 다시 한 번
-			$('#alarm-popup').remove();
+site.alarm = {
+	checkUnread : function(){
+		$.getJSON('/feed/check_unread').done(function(d){
+			console.log(d);
+			if(d.status=='done'){
+				$('.unread-alarm').text(d.alarm_unread)[d.alarm_unread>0?'show':'hide']();
+				$('.unread-feed').text(d.feed_unread)[d.feed_unread>0?'show':'hide']();
+				setTimeout(function(){
+					site.alarm.checkUnread();
+				}, 30000);
+			}
+		});
+	},
+	open : function(){
+		if($('#alarm-popup').length > 0){
+			this.close();
+			return;
 		}
-	},
-	scroll : {
-		lock : function(){
-			 var scrollPosition = [self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft, self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop ];      
-			 var html = jQuery('html');
-			 html.data('scroll-position', scrollPosition);
-			 html.data('previous-overflow', html.css('overflow'));
-			 html.css('overflow', 'hidden');
-			 window.scrollTo(scrollPosition[0], scrollPosition[1]);
-		},
-		unlock : function(){
-			var html = jQuery('html');
-			var scrollPosition = html.data('scroll-position');
-			if(empty(scrollPosition)) return;
-			html.css('overflow', html.data('previous-overflow'));
-			window.scrollTo(scrollPosition[0], scrollPosition[1]);
-		}
-	},
-	cache : {},
-	loadHTML : function(val){
-		return site.cache[ val ]|| $.ajax(site.url + val, {		
-        	success:function( resp ){
-        		site.cache[ val ]= resp;
-        	}
-       	});
-       	// use $.when(site.loadHTML('url')).then(function(resp){ });
-	},
-	requireLogin : function(){
-		BootstrapDialog.confirm('회원만이 이용가능한 기능입니다. 지금 로그인 하시겠습니까?', function(result){
-            if(result) {
-                site.redirect(site.url+'auth/login?go_to='+location.href);
-            }
-        });
-   	},
-	popWorkList : function(opts){
-		var defaults = {
-			title : 'Someone\'s gallery',
-			username : '',
-			work_id : '',
-			sub : '',
-			id_before : '',
-			id : 'ajax-dialog-wrapper',
-			done : function(dialog){
-				console.log('site > popWorkList > done', dialog);
-	            dialog.close();
+		$('#alarm-wrapper').append([
+			'<div id="alarm-popup">',
+				'<div id="alarm-popup-unread"></div>',
+				'<div id="alarm-popup-list"></div>',
+			'</div>'
+		].join('')).on({
+			mouseenter : function(){
+				$(document).off('click.alarm');
+			},
+			mouseleave : function(){
+				$(document).one('click.alarm', function(){
+					site.alarm.close();
+				})
+			}
+		})
+		.children('div').on({
+			mouseenter : function(){
+				site.scroll.lock();
+			},
+			mouseleave : function(){
 				site.scroll.unlock();
 			}
-		};
-		// extend the options from defaults with user's options
-		var options = $.extend(defaults, opts || {});
+		})
+		.height($(window).height()>550 ? 500 : $(window).height()-100)
+		.children('#alarm-popup-list')
+		.load('/alarm/listing/1');
 
-		var dialog = new BootstrapDialog({
-		    title: options.title,
-		    message: '<div class="loading"><img src="/img/loading.gif"/></div>',
-		    data: {
-                'done': options.done
-            },
-		    buttons: [
-			    {
-			        label: 'Select',
-			        cssClass: 'btn-primary',
-			        action: function(dialog){
-			        	typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);
-			        }
-			    },{
-			        label: 'Cancel',
-			        cssClass: 'btn-default',
-			        action: function(dialog){
-			            dialog.close();
-						site.scroll.unlock();
-			        }
-			    }
-		    ]
-		});
-		dialog.realize();
-		dialog.getModal().prop('id', options.id); // cssClass 버그로 인해서 이 꼼수로..
-		dialog.open();
-		site.scroll.lock();
 
-		// call list
-		$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+options.id_before, {}, function(d){return d;})).done(function(d){
-			dialog.getModalBody().html(
-				$('<div>').addClass('dialog-work-list-wrapper').html(
-					$('<ul>')
-					.addClass('work-list-ul')
-					.addClass('dialog-work-list')
-					.html(
-						d
-					)
-				).append(
-					$('<button class="btn btn-more btn-default btn-block">')
-					.html('more...')
-					.on('click', function(){
-						var id_before = $('li:last', '#'+options.id).prop('id').replace('work-recent-', '');
-						$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+id_before, {}, function(d){return d;})).done(function(d){
-							if(d==''){
-								$('button.btn-more', '#'+options.id).remove();
-							}else{
-								$(d).appendTo('#'+options.id+' ul');
-							}
-						});
-					})
-				)
-			);
-			return dialog;
-		});
+		},
+	close : function(){
+		site.scroll.unlock(); // 혹시 몰라서 다시 한 번
+		$('#alarm-popup').remove();
 	}
-	
 };
+site.scroll = {
+	lock : function(){
+		 var scrollPosition = [self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft, self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop ];      
+		 var html = jQuery('html');
+		 html.data('scroll-position', scrollPosition);
+		 html.data('previous-overflow', html.css('overflow'));
+		 html.css('overflow', 'hidden');
+		 window.scrollTo(scrollPosition[0], scrollPosition[1]);
+	},
+	unlock : function(){
+		var html = jQuery('html');
+		var scrollPosition = html.data('scroll-position');
+		if(empty(scrollPosition)) return;
+		html.css('overflow', html.data('previous-overflow'));
+		window.scrollTo(scrollPosition[0], scrollPosition[1]);
+	}
+};
+site.cache : {},
+site.loadHTML = function(val){
+	return site.cache[ val ]|| $.ajax(site.url + val, {		
+    	success:function( resp ){
+    		site.cache[ val ]= resp;
+    	}
+   	});
+   	// use $.when(site.loadHTML('url')).then(function(resp){ });
+};
+site.requireLogin = function(){
+	BootstrapDialog.confirm('회원만이 이용가능한 기능입니다. 지금 로그인 하시겠습니까?', function(result){
+        if(result) {
+            site.redirect(site.url+'auth/login?go_to='+location.href);
+        }
+    });
+};
+site.popWorkList = function(opts){
+	var defaults = {
+		title : 'Someone\'s gallery',
+		username : '',
+		work_id : '',
+		sub : '',
+		id_before : '',
+		id : 'ajax-dialog-wrapper',
+		done : function(dialog){
+			console.log('site > popWorkList > done', dialog);
+            dialog.close();
+			site.scroll.unlock();
+		}
+	};
+	// extend the options from defaults with user's options
+	var options = $.extend(defaults, opts || {});
+
+	var dialog = new BootstrapDialog({
+	    title: options.title,
+	    message: '<div class="loading"><img src="/img/loading.gif"/></div>',
+	    data: {
+            'done': options.done
+        },
+	    buttons: [
+		    {
+		        label: 'Select',
+		        cssClass: 'btn-primary',
+		        action: function(dialog){
+		        	typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);
+		        }
+		    },{
+		        label: 'Cancel',
+		        cssClass: 'btn-default',
+		        action: function(dialog){
+		            dialog.close();
+					site.scroll.unlock();
+		        }
+		    }
+	    ]
+	});
+	dialog.realize();
+	dialog.getModal().prop('id', options.id); // cssClass 버그로 인해서 이 꼼수로..
+	dialog.open();
+	site.scroll.lock();
+
+	// call list
+	$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+options.id_before, {}, function(d){return d;})).done(function(d){
+		dialog.getModalBody().html(
+			$('<div>').addClass('dialog-work-list-wrapper').html(
+				$('<ul>')
+				.addClass('work-list-ul')
+				.addClass('dialog-work-list')
+				.html(
+					d
+				)
+			).append(
+				$('<button class="btn btn-more btn-default btn-block">')
+				.html('more...')
+				.on('click', function(){
+					var id_before = $('li:last', '#'+options.id).prop('id').replace('work-recent-', '');
+					$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+id_before, {}, function(d){return d;})).done(function(d){
+						if(d==''){
+							$('button.btn-more', '#'+options.id).remove();
+						}else{
+							$(d).appendTo('#'+options.id+' ul');
+						}
+					});
+				})
+			)
+		);
+		return dialog;
+	});
+};
+	
 site.checkFlashMsg(); // 페이지가 전환된 이후에 메시지를 표시할 것이 있는지 검사
 
 

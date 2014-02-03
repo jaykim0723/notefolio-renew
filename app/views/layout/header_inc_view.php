@@ -40,14 +40,15 @@
 	
 	<script src="/js/libs/jquery-1.10.2.min.js"></script>
 	<script src="/js/util.js"></script>
-	<script src="/js/site.js"></script>
 	<script>
 		NFview = {};
 		var common_assets = '';
+		var site = {};
 		site.user_id = <?php echo USER_ID ?>;
 		site.username = '<?php echo $this->session->userdata('username'); ?>';
 		site.url = '<?php echo site_url() ?>';
 		site.segment = ['<?php echo implode("','", $this->uri->segment_array()); ?>'];
+	<script src="/js/site.js"></script>
 	</script>
 
 </head>

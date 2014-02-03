@@ -29,7 +29,7 @@
 				</div>
 
 				<h4>카테고리</h4>
-				<select name="keywords" id="keywords" multiple title="Choose one of the following..." >
+				<select name="keywords" id="keywords" multiple title="최대 2개까지 선택" >
 					<?php 
 					$this->load->config('keyword', TRUE);
 					$keyword_list = $this->config->item('keyword', 'keyword');
