@@ -633,7 +633,7 @@ class profile_model extends CI_Model {
                 'note_cnt' => $row->note_cnt,
                 'collect_cnt' => $row->collect_cnt,
             ), 
-            'query' = $this->db->last_query()
+            'query' => $this->db->last_query()
         );
 
         return $data; 
