@@ -509,7 +509,7 @@ class Auth extends CI_Controller
             $data = $this->_register_do_process($data);
 		}
 		else {
-			$this->_register_create_hash($data);
+			$data = $this->_register_create_hash($data);
             $data = $this->_register_get_facebook_info($data);
 		}
 
@@ -700,6 +700,8 @@ class Auth extends CI_Controller
         $data['submit_uuid'] = hash_final($submit_uuid);
         $this->session->set_userdata('submit_uuid', $data['submit_uuid']);
         //-- end
+
+        return $data;
     }
 
     /**
@@ -738,207 +740,6 @@ class Auth extends CI_Controller
 
         $this->layout->set_view('auth/register_form', $data)->render();
     }
-
-
-
-	/**
-	 *	가입 및 수정에서 공통으로 쓰이는 폼
-	 */
-	function _form($method='setting')
-	{
-		if($method=='register' && USER_ID>0)
-			redirect('/'); // 회원인 상태에서 register로 접근하는 사람은 초기화면으로 강제 이동시킴
-
-		$this->load->model('oldmodel/auth_model');
-		
-		$data = array();
-
-		if(!$this->input->post('submitting')){
-		  // first time
-		  if($method=='register'){ // 아직 회원이 아니다. 가입폼을 위함.
-			   // create;
-			   // 기본값을 셋팅해준다.
-			   $data = array(
-			   		'email' => '',
-			   		'confirm_email' => '',
-			   		'password' => '',
-			   		'confirm_password' => '',
-			   		'gender' => 'f',
-			   		'realname' => '',
-			   		'birth' => '1990-08-08',
-			   		'username' => '',
-			   		'categories' => '',
-			   		'description' => '자신의 소개를 입력해주세요.',
-			   		'homepage' => '',
-			   		'facebook_url' => '',
-			   		'twitter_screen_name' => '',
-			   		'profile_image' => '/images/profile_img',
-                    
-			   		'invite_code' => $this->input->post('invite_code')
-			   );
-               
-               //-- for facebook signup
-               if($this->input->post('register_type')=='facebook'){
-                    $fb_info = $this->fbsdk->api('/me');
-                    //echo "<!-- ".var_export($fb_info, true)." -->\n";
-                    
-                    if(isset($fb_info['email'])) {
-                        $data['email'] = $fb_info['email'];
-                        $data['confirm_email'] = $fb_info['email'];
-                    }
-                    if(isset($fb_info['gender'])) {
-                        $data['gender'] = substr(strtolower($fb_info['gender']), 0, 1);
-                    }
-                    if(isset($fb_info['username'])) {
-                        $data['facebook_url'] = $fb_info['username'];
-                        $data['username'] = $fb_info['username'];
-                    }
-                    if(isset($fb_info['name'])) {
-                        $data['realname'] = $fb_info['name'];
-                    }
-                    if(isset($fb_info['bio'])) {
-                        $data['description'] = $fb_info['bio'];
-                    }
-                    if(isset($fb_info['birthday'])) {
-                        $data['birth'] = date("Y-m-d", strtotime($fb_info['birthday']));;
-                    }
-                    
-                    $data['fb_num_id'] = $fb_info['id'];
-               }
-		  }else{
-			   // update
-			   $data = $this->auth_model->get_user_info(USER_ID);
-			   log_message('debug','-------------'.json_encode($data));
-		  }
-		}else{
-			// action
-			// 폼을 검증한다.
-			function set_value_to_data($method){
-			    $ci =& get_instance();
-                
-			   	$row = array(
-			   		'gender'                => $ci->form_validation->set_value('gender'),
-			   		'realname'              => $ci->form_validation->set_value('realname'),
-			   		'username'              => $ci->form_validation->set_value('username'),
-			   		'categories'            => $ci->form_validation->set_value('categories'),
-			   		'homepage'              => $ci->form_validation->set_value('homepage'),
-			   		'facebook_url'          => $ci->form_validation->set_value('facebook_url'),
-			   		'twitter_screen_name'   => $ci->form_validation->set_value('twitter_screen_name'),
-                    'mailing'               => ($ci->form_validation->set_value('mailing')=='1')?1:0,
-			   		'birth'                 => implode("-", array($ci->input->post('year'),$ci->input->post('month'),$ci->input->post('day'))),
-			   	);
-                if($method=='register'){
-                    $row['email']           = $ci->form_validation->set_value('email');
-                    $row['confirm_email']   = $ci->form_validation->set_value('confirm_email');
-                    $row['password']        = $ci->form_validation->set_value('password');
-                    $row['confirm_password'] = $ci->form_validation->set_value('confirm_password');
-                    $row['term']            = $ci->form_validation->set_value('term');
-                    $row['privacy']         = $ci->form_validation->set_value('privacy');
-                    $row['invite_code']     = $ci->form_validation->set_value('invite_code');
-                }else if($method=='setting'){
-                    //-- facebook
-                    $row['fb_num_id'] = $ci->input->post('fb_num_id');
-                    $row['fb_post_work'] = $ci->input->post('fb_post_work');
-                    $row['fb_post_comment'] = $ci->input->post('fb_post_comment');
-                    $row['fb_post_note'] = $ci->input->post('fb_post_note');
-                    //-- facebook - end
-                }
-                
-				return $row;    
-			}
-			
-			$this->load->library('form_validation');
-			
-			// 입력값의 검사조건 설정(이 함수는 수정할 때에도 동일하게 쓰임)
-			if($method=='register'){
-				// 회원가입시에만
-				// setting에서는 링크를 이용하여 auth로 이동(이메일 변경 및 비밀번호 변경)
-				$this->form_validation
-					->set_rules('email', '이메일', 'trim|required|valid_email|max_length[100]|is_unique[users.email]')
-					->set_rules('confirm_email', '이메일확인', 'trim|required|matches[email]')
-					->set_rules('password', '비밀번호', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']')
-					->set_rules('confirm_password', '비밀번호 확인', 'trim|required|matches[password]')
-					->set_rules('term', '약관 동의', 'trim|required')
-					->set_rules('privacy', '개인정보보호정책 동의', 'trim|required')
-					->set_rules('invite_code', '초대장번호', 'trim|required|coupon_check');
-			}else{
-				// 수정시에만
-			}
-			// 공통
-			$this->form_validation
-				->set_rules('gender', '성별', 'trim|required')
-				->set_rules('realname', '이름', 'trim|required')
-				->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean')
-				->set_rules('categories', '키워드', 'trim|required')
-				->set_rules('homepage', '웹사이트', 'trim')
-				->set_rules('facebook_url', '페이스북', 'trim')
-				->set_rules('twitter_screen_name', '트위터', 'trim')
-                ->set_rules('mailing', '메일링 동의', 'trim');
-			
-			if($this->form_validation->run() !== FALSE){
-			   	$data = set_value_to_data($method);
-                log_message('debug','Data Send: '.json_encode($data));
-			   	// 성공한 경우..
-			   	if($method=='register'){ // 회원가입 처리. tank_auth
-			   		$data['recommend'] = $this->input->post('recommend');
-log_message('debug', ' -------- data ----------'.json_encode($data));			   		
-			   		$result = $this->auth_model->post_user_info($data);
-log_message('debug', ' -------- resurt ----------'.json_encode($result));			   		
-			   		if($result=='invite_error'){
-			   			;// 초대장이 에러난 경우이다.
-			   		}
-			   	}else{ // 수정처리
-			   		$result = $this->auth_model->put_user_info($data);
-			   	}
-				if(
-					($method=='register' && is_array($result))
-					OR
-					($method=='setting' && $result !== FALSE)
-				){ // 회원가입이 정상처리되어 username
-					$id = ($method=='register' ? $result['user_id'] : USER_ID);
-					if(strpos($this->input->post('thumbnail_url'), 'temp')){
-						// 임시로 들어온 파일이다.
-						@unlink(APPPATH.'../www/profiles/'.$id);
-						rename(APPPATH.'../www'.$this->input->post('thumbnail_url'), APPPATH.'../www/profiles/'.$id);
-						$this->session->set_userdata('p_i', time());
-					}
-				   	if($method=='register'){ // 회원가입 처리. tank_auth
-				   	
-				   		// 이메일을 보낸다.
-				   		$data['site_name'] = $this->config->item('website_name', 'tank_auth');
-				   		$this->_send_email('welcome', $data['email'], $data);
-				   		
-				   		// 로그인 처리
-				   		$this->load->library('tank_auth');
-						if ($this->tank_auth->login(
-								$data['email'],
-								$data['password'],
-								'',
-								TRUE,
-								TRUE)) {								// success
-								
-				   		    if($this->input->post('fb_num_id')) // facebook 등록 처리 (facebook으로 가입시)
-				   		        $this->auth_model->post_user_fb_info($result['user_id'], $this->input->post('fb_num_id'));
-                            
-							exit(json_encode(array('code'=>'success', 'username'=>$result['username'])));
-						}
-					}else
-                    	/*redirect($result); // 해당 유저의 프로필 페이지로 이동        */
-                    	redirect('/auth/setting'); // setting으로 다시 이동
-				}	   	
-			}else{
-			   // 실패한 경우.
-			   // 다시 폼이 열리도록..(근데 아마 ajax로 값을 받아서 자바스크립트에서 처리할 듯)
-			   if ($method=='register' && validation_errors()!='') {
-			       exit(json_encode(array('code'=>'error', 'message'=>validation_errors())));
-			   }
-			   
-			   $data = set_value_to_data($method);
-			}
-		  
-		}
-        $this->layout->set_view('auth/'.$method.'_form_view', $data)->render();	
-	}
 
     /*
      * @brief check if username is available / for callback

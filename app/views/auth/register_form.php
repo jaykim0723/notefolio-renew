@@ -63,7 +63,7 @@ if(isset($fb_num_id)) {
 			:
 			$fb_info->email
 			;
-	$email['disabled'] = 'disabled';
+	//$email['disabled'] = 'disabled';
 	$gender[substr($fb_info->gender, 0, 1)] = 'checked';
 
 	$birthday = explode('/', $fb_info->birthday);
@@ -82,6 +82,7 @@ if(isset($fb_num_id)) {
 	<?php }else{?>
 		<a href="" class="btn btn-info btn-block" id="signup-with-fb">Signup with facebook</a>
 	<?php }?>
+	<?php echo form_hidden('submit_uuid', $submit_uuid); ?>
 	</div>
 	<?php if ($use_username) { ?>
 	<div class="form-group">
