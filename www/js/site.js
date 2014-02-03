@@ -680,7 +680,7 @@ var workInfoUtil = {
 		}).on('click', '.btn-open-comment', function(){
 			commentUtil.open(this);
 		}).on('click', '.btn-delete-comment', function(){
-			commentUtil.delete(this);
+			commentUtil['delete'](this);
 		}).on('click', '.btn-update-comment', function(){
 			commentUtil.update(this);
 		}).on('click', '.btn-reply-comment', function(){
