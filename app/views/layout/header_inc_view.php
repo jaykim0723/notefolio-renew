@@ -48,8 +48,8 @@
 		site.username = '<?php echo $this->session->userdata('username'); ?>';
 		site.url = '<?php echo site_url() ?>';
 		site.segment = ['<?php echo implode("','", $this->uri->segment_array()); ?>'];
-	<script src="/js/site.js"></script>
 	</script>
+	<script src="/js/site.js"></script>
 
 </head>
 
