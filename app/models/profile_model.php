@@ -762,7 +762,7 @@ class profile_model extends CI_Model {
 
         $output = array();
         foreach ($period as $date) {
-            $dateString = $date->format('Y-m-d')
+            $dateString = $date->format('Y-m-d');
             $output[$dateString] = $data[$dateString];
         }
 
@@ -815,7 +815,7 @@ class profile_model extends CI_Model {
 
         $output = array();
         foreach ($period as $date) {
-            $dateString = $date->format('Y-m-d')
+            $dateString = $date->format('Y-m-d');
             $output[$dateString] = $data[$dateString];
         }
 
@@ -869,7 +869,7 @@ class profile_model extends CI_Model {
 
         $output = array();
         foreach ($period as $date) {
-            $dateString = $date->format('Y-m-d')
+            $dateString = $date->format('Y-m-d');
             $output[$dateString] = $data[$dateString];
         }
 
@@ -922,7 +922,7 @@ class profile_model extends CI_Model {
 
         $output = array();
         foreach ($period as $date) {
-            $dateString = $date->format('Y-m-d')
+            $dateString = $date->format('Y-m-d');
             $output[$dateString] = $data[$dateString];
         }
 
