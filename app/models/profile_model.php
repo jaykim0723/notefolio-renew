@@ -716,7 +716,7 @@ class profile_model extends CI_Model {
             left join log_work_note as t on works.work_id = t.work_id
             where works.user_id = ? and t.regdate between ? and ?
             group by work_id
-        ) n on works.work_id = n.work_id,
+        ) n on works.work_id = n.work_id
         left join (
             select works.work_id, count(distinct t.id) as count
             from works
@@ -724,7 +724,7 @@ class profile_model extends CI_Model {
             where
                 works.user_id = ? and t.parent_id = 0 and t.regdate between ? and ?
             group by work_id
-        ) c on works.work_id = c.work_id,
+        ) c on works.work_id = c.work_id
         left join (
             select works.work_id, count(distinct t.id) as count
             from works
@@ -732,7 +732,7 @@ class profile_model extends CI_Model {
             where
                 works.user_id = ? and t.regdate between ? and ?
             group by work_id
-        ) cl on works.work_id = cl.work_id,";
+        ) cl on works.work_id = cl.work_id";
 
         $rows = $this->db->query($sql, array(
             $params->user_id, $params->sdate, $params->edate,
