@@ -236,12 +236,24 @@ class user_model extends CI_Model {
         }
 
         // default tank auth
-        $this->tank_auth->create_user(
+        $result = $this->tank_auth->create_user(
             $params->username, $params->email, $params->password, $this->config->item('email_activation', 'tank_auth')
         ); //($username, $email, $password, $email_activation)
 
-        $user_id = $this->db->insert_id();
-        return $user_id;
+        if($result){
+            $data = (object)array(
+                'status' => 'done',
+                'row' => (object)array(
+                    'id' => $result['id'],
+                    'username' => $params->username
+                    )
+            );
+        } else {
+            $data = (object)array(
+                'status' => 'fail',
+                'message' => 'error'
+            );
+        }
     }
 
     /**
