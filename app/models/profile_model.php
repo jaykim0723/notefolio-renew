@@ -621,6 +621,12 @@ class profile_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
+        $row = $this->get_statistics_data_{$params->edate}(array(
+            'user_id' => $params->user_id,
+            'sdate' => $params->sdate,
+            'edate' => $params->edate,
+            ))
+
 
         $data = (object)array(
             'status' => 'done',
@@ -661,9 +667,9 @@ class profile_model extends CI_Model {
         log_message('debug','--------- profile_model > get_statistics_datatable ( params : '.print_r(get_defined_vars(),TRUE)).')';
         $params = (object)$params;
         $default_params = (object)array(
-            'user_id'   => '',
-            'sdate' => '',
-            'edate' => ''
+            'user_id'   => USER_ID,
+            'sdate' => date('Y-m-d'),
+            'edate' => date('Y-m-d', strtotime("-1 week", strtotime($to)))
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
@@ -695,6 +701,232 @@ class profile_model extends CI_Model {
         # 성수씨 호출
 
         return $data; 
+    }
+
+//-- work counts
+
+    /**
+     * Get work view count data
+     *
+     * @param array $params
+     * @return array
+     */
+    function get_statistics_data_hit($params)
+    {
+        return $this->get_statistics_data_view($params);
+    }
+    
+    /**
+     * Get work view count data
+     *
+     * @param array $params
+     * @return array
+     */
+    function get_statistics_data_view($params)
+    {
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => USER_ID,
+            'sdate' => date('Y-m-d'),
+            'edate' => date('Y-m-d', strtotime("-1 week", strtotime($to)))
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+        
+        $period = new DatePeriod(
+             new DateTime($params->sdate),
+             new DateInterval('P1D'),
+             new DateTime($params->edate)
+        );
+
+        $data = array();
+        
+        $sql = "SELECT 
+                date_format(v.regdate, '%Y-%m-%d') as date,
+                count(v.id) as log_count,
+                count(distinct v.work_id) as work_count
+            from
+                log_work_view as v
+            left join works on works.work_id = v.work_id
+            where
+                works.user_id = ?
+                and v.regdate between ? and ?
+            group by date"; 
+        $query = $this->db->query($sql, array($params->user_id, $params->sdate, $params->edate));
+        foreach ($query->result() as $row)
+        {
+            $data[$row->date] = $row->log_count;
+        }
+
+        $output = array();
+        foreach ($period as $date) {
+            $dateString = $date->format('Y-m-d')
+            $output[$dateString] = $data[$dateString];
+        }
+
+        return $output;
+    }
+
+    /**
+     * Get work note count data
+     *
+     * @param array $params
+     * @return array
+     */
+    function get_statistics_data_note($params)
+    {
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => USER_ID,
+            'sdate' => date('Y-m-d'),
+            'edate' => date('Y-m-d', strtotime("-1 week", strtotime($to)))
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+        
+        $period = new DatePeriod(
+             new DateTime($params->sdate),
+             new DateInterval('P1D'),
+             new DateTime($params->edate)
+        );
+
+        $data = array();
+        
+        $sql = "SELECT 
+                date_format(n.regdate, '%Y-%m-%d') as date,
+                count(n.id) as log_count,
+                count(distinct n.work_id) as work_count
+            from
+                log_work_note as n
+            left join works on works.work_id = n.work_id
+            where
+                works.user_id = ?
+                and n.regdate between ? and ?
+            group by date"; 
+        $query = $this->db->query($sql, array($params->user_id, $params->sdate, $params->edate));
+        foreach ($query->result() as $row)
+        {
+            $data[$row->date] = $row->log_count;
+        }
+
+        $output = array();
+        foreach ($period as $date) {
+            $dateString = $date->format('Y-m-d')
+            $output[$dateString] = $data[$dateString];
+        }
+
+        return $output;
+    }
+
+    /**
+     * Get work comment count data
+     *
+     * @param array $params
+     * @return array
+     */
+    function get_statistics_data_comment($params)
+    {
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => USER_ID,
+            'sdate' => date('Y-m-d'),
+            'edate' => date('Y-m-d', strtotime("-1 week", strtotime($to)))
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+        
+        $period = new DatePeriod(
+             new DateTime($params->sdate),
+             new DateInterval('P1D'),
+             new DateTime($params->edate)
+        );
+
+        $data = array();
+        
+        $sql = "SELECT 
+                date_format(c.regdate, '%Y-%m-%d') as date,
+                count(c.id) as log_count,
+                count(distinct c.work_id) as work_count
+            from
+                work_comments as c
+            left join works on works.work_id = c.work_id
+            where
+                works.user_id = ?
+                and c.parent_id = 0
+                and c.regdate between ? and ?
+            group by date"; 
+        $query = $this->db->query($sql, array($params->user_id, $params->sdate, $params->edate));
+        foreach ($query->result() as $row)
+        {
+            $data[$row->date] = $row->log_count;
+        }
+
+        $output = array();
+        foreach ($period as $date) {
+            $dateString = $date->format('Y-m-d')
+            $output[$dateString] = $data[$dateString];
+        }
+
+        return $output;
+    }
+
+    /**
+     * Get work collect count data
+     *
+     * @param array $params
+     * @return array
+     */
+    function get_statistics_data_collect($params)
+    {
+        $params = (object)$params;
+        $default_params = (object)array(
+            'user_id'   => USER_ID,
+            'sdate' => date('Y-m-d'),
+            'edate' => date('Y-m-d', strtotime("-1 week", strtotime($to)))
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+        
+        $period = new DatePeriod(
+             new DateTime($params->sdate),
+             new DateInterval('P1D'),
+             new DateTime($params->edate)
+        );
+
+        $data = array();
+        
+        $sql = "SELECT 
+                date_format(c.regdate, '%Y-%m-%d') as date,
+                count(c.id) as log_count,
+                count(distinct c.work_id) as work_count
+            from
+                user_work_collect as c
+            left join works on works.work_id = c.work_id
+            where
+                works.user_id = ?
+                and c.regdate between ? and ?
+            group by date"; 
+        $query = $this->db->query($sql, array($params->user_id, $params->sdate, $params->edate));
+        foreach ($query->result() as $row)
+        {
+            $data[$row->date] = $row->log_count;
+        }
+
+        $output = array();
+        foreach ($period as $date) {
+            $dateString = $date->format('Y-m-d')
+            $output[$dateString] = $data[$dateString];
+        }
+
+        return $output;
     }
 
 }
