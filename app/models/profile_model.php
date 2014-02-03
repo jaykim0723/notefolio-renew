@@ -614,17 +614,7 @@ class profile_model extends CI_Model {
             $params->sdate, $params->edate,
             $params->sdate, $params->edate,
             $params->sdate, $params->edate
-            ));
-        foreach ($query->result() as $row)
-        {
-            $data[$row->date] = $row->log_count;
-        }
-
-        $output = array();
-        foreach ($period as $date) {
-            $dateString = $date->format('Y-m-d');
-            $output[$dateString] = (empty($data[$dateString]))?0:$data[$dateString];
-        }
+            ))->row();
 
         $data = (object)array(
             'status' => 'done',
