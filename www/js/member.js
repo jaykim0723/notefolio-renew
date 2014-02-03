@@ -437,7 +437,7 @@ var workUtil = {
 			});
 			$(sendTo).on('mouseenter', '.block-video', function(event){
 				$(this).find('.block-video-overlay').show().find('textarea').val('<iframe src="'+$(this).find('iframe').attr('src').replace('?wmode=transparent', '')+'"></iframe>');
-			}).on('mouseleave', '.block-video', function(event){
+			}).on('change mouseleave', '.block-video', function(event){
 				var videoSrc = $(this).find('iframe').attr('src').replace('?wmode=transparent', '');
 				var textSrc = $(this).find('.block-video-overlay').hide().find('textarea').val();
 				if(textSrc.indexOf(videoSrc)==-1){

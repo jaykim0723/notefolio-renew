@@ -147,7 +147,30 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-6">
-									<i class="spi spi-ccl-cc-<?php echo strtolower($row->ccl) ?>">CCL</i>
+									<i rel="tooltip" title="<?php
+									switch($row->ccl){
+										case 'BY':
+											echo '저작자표시';
+											break;
+										case 'BY-NC':
+											echo '저작자표시-비영리';
+											break;
+										case 'BY-ND':
+											echo '저작자표시-변경금지';
+											break;
+										case 'BY-SA':
+											echo '저작자표시-동일조건변경허락';
+											break;
+										case 'BY-NC-SA':
+											echo '저작자표시-비영리-동일조건변경허락';
+											break;
+										case 'BY-NC-ND':
+											echo '저작자표시-비영리-변경금지';
+											break;
+										default:
+											echo 'CCL 표시 안함';
+									}
+									?>" class="spi spi-ccl-cc-<?php echo strtolower($row->ccl) ?>">CCL</i>
 								</div>
 								<div class="col-xs-6 righted work-sns">
 									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="btn-nofol">

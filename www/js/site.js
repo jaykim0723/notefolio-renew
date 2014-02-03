@@ -232,6 +232,11 @@ $(document).on('click', '.btn-follow', function(){
 
 
 $(function() {
+	$('body').tooltip({
+	    selector: '[rel=tooltip]',
+	    placement : 'bottom'
+	});
+
 	$('.infinite-list').waypoint('infinite', {
 		items: '.infinite-item',
 		more: '.more-link',
