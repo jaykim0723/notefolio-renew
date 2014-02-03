@@ -24,7 +24,7 @@ class activity extends CI_Controller {
     public function post($crud, $area, $act, $data){
         //$this->load->model('activity_model');
         parse_str($data, $data);
-        $params = $this->make_param($work, array(
+        $params = $this->make_param($crud, array(
         	'area' => $area,
         	'act'  => $act,
         	'data' => $data,
