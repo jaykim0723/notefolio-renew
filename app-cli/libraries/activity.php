@@ -18,7 +18,6 @@ class Activity {
         $this->ci->load->database();
         $this->ci->load->model('user_model');
         $this->ci->load->model('work_model');
-        $this->ci->load->model('tank_auth/users');
     }
     
     /**
