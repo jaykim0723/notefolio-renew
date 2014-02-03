@@ -10,7 +10,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Activity {
     
-    var $last_error = '';
+    //var $last_error = '';
     /*
     function __construct($config=null) {
         $this->ci =& get_instance();
