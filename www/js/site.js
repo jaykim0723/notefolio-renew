@@ -605,7 +605,8 @@ var snsUtil = {
 	facebook : function(o){
 		console.log('site.js > snsUtil > facebook');
 		var workInfo = this.getInfo(o);
-		this.newPop('http://www.facebook.com/sharer.php?s=100&p[url]=' + workInfo.url + '&p[images][0]=' + workInfo.cover + '&p[title]=' + workInfo.title + '&p[summary]=' + workInfo.summary, 510, 368);
+		this.newPop('http://www.facebook.com/sharer.php?u=' + workInfo.url + '&t=' + workInfo.title, 510, 368);
+		// this.newPop('http://www.facebook.com/sharer.php?s=100&p[url]=' + workInfo.url + '&p[images][0]=' + workInfo.cover + '&p[title]=' + workInfo.title + '&p[summary]=' + workInfo.summary, 510, 368);
 	},
 
 	kakaotalk : function(o){
