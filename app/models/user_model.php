@@ -237,7 +237,7 @@ class user_model extends CI_Model {
 
         // default tank auth
         $this->tank_auth->create_user(
-            $params->username $params->email, $params->password, $this->config->item('email_activation', 'tank_auth')
+            $params->username, $params->email, $params->password, $this->config->item('email_activation', 'tank_auth')
         ); //($username, $email, $password, $email_activation)
 
         $user_id = $this->db->insert_id();
