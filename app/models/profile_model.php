@@ -608,7 +608,7 @@ class profile_model extends CI_Model {
             and cl.regdate between ? and ?
             ";
 
-        $query = $this->db->query($sql, array(
+        $row = $this->db->query($sql, array(
             $params->user_id,
             $params->sdate, $params->edate,
             $params->sdate, $params->edate,
