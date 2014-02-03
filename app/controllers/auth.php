@@ -617,7 +617,7 @@ class Auth extends CI_Controller
                         return array();
                     }
                     
-                    exit(json_encode(array_merge(array('status'=>'error', 'goStep'=>$error_stage), $error_data)));
+                    //exit(json_encode(array_merge(array('status'=>'error', 'goStep'=>$error_stage), $error_data)));
                 }
                
                 $data = set_value_to_data($method);
