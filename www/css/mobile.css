@@ -593,16 +593,29 @@ form.comment-block.create textarea {
 			top: -1px;
 			left: 0;
 		}
+	.comment-username {
+		margin-left: 70px;
+	}
+	.comment-username a {
+		color: #444;
+	}
+	.comment-username span {
+		color: #aaa;
+		font-size: 12px;
+	}
 	.comment-textarea {
 		margin-left: 70px;
 		border: 0;
 		min-height: 50px;
+		color: #aaa;
+		font-size: 13px;
 	}
 	textarea.comment-textarea {
 		background: #f8f8f8;
 		position: absolute;
 		left: 0;
 		right: 100px;
+		color: #000;
 	}
 	.comment-control-area-mobile {
 		position: absolute;

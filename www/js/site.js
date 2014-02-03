@@ -391,7 +391,7 @@ var commentUtil = {
 		var $commentInner = $(o).closest('.comment-inner');
 		var $commentBlock = $commentInner.closest('.comment-block');
 		var content = $.trim($commentBlock.find('.comment-textarea').html());
-		contents = br2nl(contents);
+		content = br2nl(content);
 		var $work = $commentBlock.parents('.work-wrapper');	
 		var work_id = $work.data('id');
 		// console.log($commentBlock, work_id);

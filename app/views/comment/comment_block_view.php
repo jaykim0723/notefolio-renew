@@ -32,6 +32,10 @@
 			<img src="<?php echo site_url('data/profiles/'.$row->user->username) ?>_face.jpg" alt="">
 			<i class="si si-face-medium"></i>
 		</a>
+		<div class="comment-username">
+			<a target="_blank" href="<?php echo site_url($row->user->username); ?>"><?php echo $row->user->username; ?></a>
+			<span><?php echo $this->nf->print_time($row->moddate); ?></span>
+		</div>
 		<div class="comment-textarea">
 			<?php echo nl2br(htmlentities($row->content, ENT_COMPAT, 'UTF-8')); ?>
 		</div>

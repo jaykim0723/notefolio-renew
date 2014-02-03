@@ -54,7 +54,6 @@ class Gallery extends CI_Controller {
                 }
             }
         }
-
         $this->layout->set_header(array(
             'keywords' => @implode(', ',$work->row->tags),
             'description' => $description,
