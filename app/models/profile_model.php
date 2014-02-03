@@ -623,39 +623,19 @@ class profile_model extends CI_Model {
 
         $get_data = "get_statistics_data_".$params->type;
 
-        $row = $this->{$get_data}(array(
+        $rows = $this->{$get_data}(array(
             'user_id' => $params->user_id,
             'sdate' => $params->sdate,
             'edate' => $params->edate,
             ));
-
 
         $data = (object)array(
             'status' => 'done',
             'type' => $params->type,
             'sdate' => $params->sdate,
             'edate' => $params->edate,
-            'rows' => array(
-                // '2014-01-02' => 0,
-            )
+            'rows' => $rows
         );
-        // 차트에서는 값이 0인 날도 누락되면 안되므로, 먼저 rows에 기간내의 모든 일자별을 셋팅을 만들어둔다.
-        $start_timestamp = strtotime($params->sdate);
-        for($i=0; $i<9999; $i++){
-            $label_date = date('Y-m-d', strtotime('+'.$i.' days', $start_timestamp));
-            $data->rows[$label_date] = 0;
-            if($label_date == $params->edate)
-                break;
-        }
-        // dummy
-        foreach($data->rows as &$r)
-            $r = rand(0,9999);
-
-
-        # do stuff
-        # 성수씨 호출
-        # 관련된 쿼리를 호출하고 날짜별로 값을 대입한다.
-        # ex) $data->rows['2013-01-02'] = $row->date;
 
         return $data; 
     }
