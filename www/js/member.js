@@ -71,7 +71,7 @@ var workUtil = {
 	    		var type =(""+$(this).attr("class")+"").match(/block-(\w+)/)[0].replace('block-', '');
 	    		switch(type){
 	    			case 'image':
-	    				if($(this).children('img').data('id')=='')
+	    				if(empty($(this).children('img').data('id')))
 	    					return true; // 더미 이미지는 제외한다.
 	    			break;
 	    			case 'video':
@@ -117,6 +117,7 @@ var workUtil = {
 			ccl : workUtil.checkValue.ccl(),
 			cover : workUtil.checkValue.cover()
 		};
+		console.log(value.contents);
 		if(value.contents.image == 1)
 			total += 20;
 		else if(value.contents.image == 2)
