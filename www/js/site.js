@@ -111,7 +111,7 @@ site.scroll = {
 		window.scrollTo(scrollPosition[0], scrollPosition[1]);
 	}
 };
-site.cache : {},
+site.cache = {};
 site.loadHTML = function(val){
 	return site.cache[ val ]|| $.ajax(site.url + val, {		
     	success:function( resp ){
