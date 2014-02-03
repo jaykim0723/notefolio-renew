@@ -581,22 +581,61 @@ class profile_model extends CI_Model {
             if(!isset($params->{$key}))
                 $params->{$key} = $value;
         }
+
+        $data = array();
+        
+        $sql = "SELECT
+            count(v.id) as hit_cnt,
+            count(n.id) as note_cnt,
+            count(c.id) as comment_cnt,
+            count(cl.id) as collect_cnt
+        from
+            works
+        left join
+            log_work_view as v on works.work_id = v.work_id
+        left join 
+            log_work_note as n on works.work_id = n.work_id
+        left join 
+            work_comments as c on works.work_id = c.work_id
+        left join 
+            user_work_collect as cl on works.work_id = cl.work_id
+        where
+            works.user_id = ?
+            and v.regdate between ? and ?
+            and n.regdate between ? and ?
+            and c.parent_id = 0
+            and c.regdate between ? and ?
+            and cl.regdate between ? and ?
+            ";
+
+        $query = $this->db->query($sql, array(
+            $params->user_id,
+            $params->sdate, $params->edate,
+            $params->sdate, $params->edate,
+            $params->sdate, $params->edate,
+            $params->sdate, $params->edate
+            ));
+        foreach ($query->result() as $row)
+        {
+            $data[$row->date] = $row->log_count;
+        }
+
+        $output = array();
+        foreach ($period as $date) {
+            $dateString = $date->format('Y-m-d');
+            $output[$dateString] = (empty($data[$dateString]))?0:$data[$dateString];
+        }
+
         $data = (object)array(
             'status' => 'done',
             'sdate' => $params->sdate,
             'edate' => $params->edate,
             'row' => (object)array(
-                'hit_cnt' => 12,
-                'note_cnt' => 34,
-                'collect_cnt' => 56,
+                'hit_cnt' => $row->hit_cnt,
+                'note_cnt' => $row->note_cnt,
+                'collect_cnt' => $row->collect_cnt,
             )
         );
-
-        # do stuff
-        # 성수씨 호출
-        # ex) $data->row->hit_cnt = 2;
-        # ex) $data->row->note_cnt = 2;
-        # ex) $data->row->collect_cnt = 2;
 
         return $data; 
     } 
