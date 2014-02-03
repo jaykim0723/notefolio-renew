@@ -11,7 +11,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 class Activity {
     
     var $last_error = '';
-    
+    /*
     function __construct($config=null) {
         $this->ci =& get_instance();
         $this->ci->load->database();
@@ -19,7 +19,7 @@ class Activity {
         $this->ci->load->model('work_model');
         $this->ci->load->model('tank_auth/users');
     }
-    
+    */
     /**
      * post activity for user.
      * 
