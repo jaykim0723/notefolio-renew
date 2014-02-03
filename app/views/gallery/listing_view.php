@@ -50,7 +50,7 @@
 					<?php endforeach ?>
 				</ul>
 
-				<a href="/gallery/listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?>" class="more-link">more</a>
+				<a href="/gallery/listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?>" class="more-link btn btn-more btn-default btn-block">more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 		</div>

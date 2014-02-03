@@ -5,13 +5,13 @@
 		<div class="row">
 			<div class="col-md-12">
 <?php endif ?>
-				<ul class="feed-activity-list alarm-list clearfix">
+				<ul id="alarm-list" class="feed-activity-list alarm-list clearfix">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('feed/activity_inc_view', $row) ?>
 					<?php endforeach ?>
 				</ul>
-				<a href="/alarm/listing/<?php echo $page+1; ?>" class="alarm-more-link">more</a>
+				<a href="/alarm/listing/<?php echo $page+1; ?>" class="alarm-more-link btn btn-default btn-block">more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 		</div>
@@ -19,14 +19,3 @@
 </section>
 <?php endif; ?>
 
-<?php if ($page==1): ?>
-<script>
-	$(function(){
-		$('.alarm-list').waypoint('infinite', {
-			items: '.alarm-item',
-			more: '.alarm-more-link',
-			offset: 'bottom-in-view'
-		});	
-	});
-</script>
-<?php endif ?>

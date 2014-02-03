@@ -51,7 +51,7 @@
 					<?php endforeach ?>
 				</ul>
 
-				<a href="/main/listing/<?php echo ($page)?$page+1:2; ?>" class="btn btn-default btn-block more-link">more</a>
+				<a href="/main/listing/<?php echo ($page)?$page+1:2; ?>" class="btn btn-default btn-block more-link btn-more">more</a>
 
 
 				

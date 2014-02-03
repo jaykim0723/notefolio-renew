@@ -3,7 +3,7 @@
 	color: #444;
 	text-decoration: none;
 }
-.more-link {
+.btn-more {
 	margin-top: 10px;
 }
 .btn-link:hover {
@@ -1234,6 +1234,7 @@ p.desc {
 
 
 #loading-indicator {
+	z-index: 1040;
 	display: none;
 	position: fixed;
 	left: 50%;
