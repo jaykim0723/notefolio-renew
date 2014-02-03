@@ -5,10 +5,7 @@
 }
 body {
 	background: #f4f4f4;
-}
-html, body {
-		overflow-y:scroll;
-
+	overflow-y:scroll;
 }
 #header {
 	height: 60px;
