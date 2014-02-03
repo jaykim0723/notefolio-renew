@@ -639,7 +639,11 @@ class migrate extends CI_Controller {
             switch($val->type){
                 case "text":
                 case "video":
-                    $data['c'] = $val->content;
+                    $data['c'] = trim(preg_replace(
+                                    array('/&amp;/', '/&lt;/', '/&gt;/', '/&quot;/', '/&nbsp;/'), 
+                                    array('&', '<', '>', '"', ' '), 
+                                    $$val->content
+                                )));
                 break;
                 case "image":
                     $path = '/home/web/notefolio-web/www/img/'
@@ -660,7 +664,7 @@ class migrate extends CI_Controller {
                     continue;
                 break;
             }
-            $new[] = $data;
+            $new[] = (object)$data;
         }
 
         return $new;
