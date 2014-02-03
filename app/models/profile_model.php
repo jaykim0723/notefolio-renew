@@ -581,8 +581,6 @@ class profile_model extends CI_Model {
             if(!isset($params->{$key}))
                 $params->{$key} = $value;
         }
-
-        $data = array();
         
         $sql = "SELECT
             ifnull(v.count, 0) as hit_cnt,
@@ -695,12 +693,59 @@ class profile_model extends CI_Model {
             if(!isset($params->{$key}))
                 $params->{$key} = $value;
         }
+        
+        $sql = "SELECT
+            works.work_id,
+            works.title,
+            works.regdate,
+            ifnull(v.count, 0) as hit_cnt,
+            ifnull(n.count, 0) as note_cnt,
+            ifnull(c.count, 0) as comment_cnt,
+            ifnull(cl.count, 0) as collect_cnt
+        from works
+        left join (
+            select works.work_id, count(distinct t.id) as count
+            from works
+            left join log_work_view as t on works.work_id = t.work_id
+            where works.user_id = ? and t.regdate between ? and ?
+            group by work_id
+        ) v on works.work_id = v.work_id
+        left join (
+            select works.work_id, count(distinct t.id) as count
+            from works
+            left join log_work_note as t on works.work_id = t.work_id
+            where works.user_id = ? and t.regdate between ? and ?
+            group by work_id
+        ) n on works.work_id = n.work_id,
+        left join (
+            select works.work_id, count(distinct t.id) as count
+            from works
+            left join work_comments as t on works.work_id = t.work_id
+            where
+                works.user_id = ? and t.parent_id = 0 and t.regdate between ? and ?
+            group by work_id
+        ) c on works.work_id = c.work_id,
+        left join (
+            select works.work_id, count(distinct t.id) as count
+            from works
+            left join user_work_collect as t on works.work_id = t.work_id
+            where
+                works.user_id = ? and t.regdate between ? and ?
+            group by work_id
+        ) cl on works.work_id = cl.work_id,";
+
+        $rows = $this->db->query($sql, array(
+            $params->user_id, $params->sdate, $params->edate,
+            $params->user_id, $params->sdate, $params->edate,
+            $params->user_id, $params->sdate, $params->edate,
+            $params->user_id, $params->sdate, $params->edate
+            ))->result_array();
 
         $data = (object)array(
             'status' => 'done',
             'sdate' => $params->sdate,
             'edate' => $params->edate,
-            'rows' => array(
+            'rows' => $rows
                 // array( // 각 형식은 아래와 같이 전달해주면 됩니다.
                 //     'work_id' => 23,
                 //     'title' => '테스트작품',
@@ -709,16 +754,7 @@ class profile_model extends CI_Model {
                 //     'note_cnt' => 1,
                 //     'collect_cnt' => 1,
                 // )
-            )
         );
-
-        // dummy
-        $dummy = $this->db->select('work_id, title, LEFT(regdate, 10) as regdate, hit_cnt, note_cnt, collect_cnt', FALSE)->limit(200)->get('works')->result();
-        foreach($dummy as $r)
-            $data->rows[] = $r;
-
-        # do stuff
-        # 성수씨 호출
 
         return $data; 
     }
