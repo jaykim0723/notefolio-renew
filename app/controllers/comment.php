@@ -19,9 +19,11 @@ class Comment extends CI_Controller {
 		log_message('debug','--------- comment.php > read_list ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		$comment_list = $this->comment_model->get_list(array(
 			'work_id' => $work_id,
-			'id_before' => $this->input->get('id_before')
+			'id_before' => $this->input->get('id_before'),
+			'delimiter' => $this->input->get('delimiter')
 		));
 		if(!empty($comment_list)){
+			$comment_list->rows = array_reverse($comment_list->rows);
 			foreach ($comment_list->rows as $key => $row) {
 				$this->load->view('comment/comment_block_view', array('row' => $row));
 			}

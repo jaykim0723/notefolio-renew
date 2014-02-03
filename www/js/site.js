@@ -327,13 +327,13 @@ var commentUtil = {
 
 		$('.comment-wrapper', $work).show();
 		// call list and insert into wrapper
-		$.when(commentUtil.readList(work_id, '')).then(function(responseHTML){ // 리스트를 불러와서 '이전보기' 버튼 뒤에 배치하기
+		$.when(commentUtil.readList(work_id, '', 6)).then(function(responseHTML){ // 리스트를 불러와서 '이전보기' 버튼 뒤에 배치하기
 			var $o = $('<div>'+responseHTML+'</div>');
-			if($o.find('.comment-block').length<11)
+			if($o.find('.comment-block').length<6)
 				var mode = 'hide';
 			else{
 				var mode = 'show';
-				$o.children('.comment-block:last').remove();
+				$o.children('.comment-block:first').remove();
 			}
 			console.log($o);
 			$('.btn-comment-prev', $work)[mode]().after($o.html());
@@ -361,15 +361,18 @@ var commentUtil = {
 		});
 	},
 
-	readList : function(work_id, idBefore){
+	readList : function(work_id, idBefore, delimiter){
 		console.log('site.js > commentUtil > readList', work_id, idBefore);
+		if(typeof delimiter=='undefined')
+			delimiter = 11;
 
 		// get id_before
 		return $.ajax({
 			type : 'get',
 			url : site.url+'comment/read_list/'+work_id,
 			data : {
-				id_before : idBefore
+				id_before : (empty(idBefore) ? '': idBefore+1),
+				delimiter : delimiter
 			}
 		});
 	},

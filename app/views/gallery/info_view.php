@@ -24,7 +24,7 @@
 						<img src="/data/profiles/<?php echo $row->user->username ?>_face.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt=""/>
 					</a>
 					<div id="profile-info">
-						<h2><?php echo $row->user->username ?></h2>
+						<h2><a href="<?php echo site_url($row->user->username) ?>"><?php echo $row->user->username ?></a></h2>
 						<h4>&nbsp;<?php echo $row->user->user_keywords; ?>&nbsp;</h4>
 						<div id="profile-sns-link">
 							<?php foreach ($row->user->sns as $service => $id):
