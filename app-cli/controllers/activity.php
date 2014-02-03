@@ -48,18 +48,18 @@ class activity extends CI_Controller {
     
     function make_param($workType, $resource=array())
     {   
-        var_export($resource);
-        //-- make work type
+        //-- go by work type
         $workType = strtolower($workType);
-        $type_array = array('create','read','update','delete',);
-        if (array_key_exists($workType, $type_array)) {
+        try{
             $resource['workType'] = $workType;
-            return $this->{'make_param_'.$workType}($resource);
+            $output =  $this->{'make_param_'.$workType}($resource);
         }
-        else {
+        catch(Exception $e){
             $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_work_type'));
             return array();
         }
+
+        return $output;
     }
 
     /**
