@@ -671,7 +671,7 @@ class profile_model extends CI_Model {
         $default_params = (object)array(
             'user_id'   => USER_ID,
             'sdate' => date('Y-m-d'),
-            'edate' => date('Y-m-d', strtotime("-1 week", strtotime($to)))
+            'edate' => date('Y-m-d', strtotime("-1 week"))
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
@@ -730,7 +730,7 @@ class profile_model extends CI_Model {
         $default_params = (object)array(
             'user_id'   => USER_ID,
             'sdate' => date('Y-m-d'),
-            'edate' => date('Y-m-d', strtotime("-1 week", strtotime($to)))
+            'edate' => date('Y-m-d', strtotime("-1 week"))
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
@@ -783,7 +783,7 @@ class profile_model extends CI_Model {
         $default_params = (object)array(
             'user_id'   => USER_ID,
             'sdate' => date('Y-m-d'),
-            'edate' => date('Y-m-d', strtotime("-1 week", strtotime($to)))
+            'edate' => date('Y-m-d', strtotime("-1 week"))
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
@@ -836,7 +836,7 @@ class profile_model extends CI_Model {
         $default_params = (object)array(
             'user_id'   => USER_ID,
             'sdate' => date('Y-m-d'),
-            'edate' => date('Y-m-d', strtotime("-1 week", strtotime($to)))
+            'edate' => date('Y-m-d', strtotime("-1 week"))
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
@@ -890,7 +890,7 @@ class profile_model extends CI_Model {
         $default_params = (object)array(
             'user_id'   => USER_ID,
             'sdate' => date('Y-m-d'),
-            'edate' => date('Y-m-d', strtotime("-1 week", strtotime($to)))
+            'edate' => date('Y-m-d', strtotime("-1 week"))
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
