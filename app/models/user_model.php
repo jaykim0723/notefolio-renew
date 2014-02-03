@@ -227,7 +227,6 @@ class user_model extends CI_Model {
     function post($params=array()){
         $params = (object)$params;
         $default_params = (object)array(
-            'id' => '',
             'set_profile' => false,
             'set_sns_fb' => false,
         );
@@ -238,7 +237,7 @@ class user_model extends CI_Model {
 
         // default tank auth
         $this->tank_auth->create_user(
-
+            $params->username $params->email, $params->password, $this->config->item('email_activation', 'tank_auth')
         ); //($username, $email, $password, $email_activation)
 
         $user_id = $this->db->insert_id();
@@ -680,7 +679,26 @@ class user_model extends CI_Model {
         return $data;
     }
 
-    
+    /**
+     * Send email message of given type (activate, forgot_password, etc.)
+     *
+     * @param   string
+     * @param   string
+     * @param   array
+     * @return  void
+     */
+    function _send_email($type, $email, &$data)
+    {
+        $this->load->library('email');
+        $this->email->from($this->config->item('webmaster_email', 'tank_auth'), $this->config->item('website_name', 'tank_auth'));
+        $this->email->reply_to($this->config->item('webmaster_email', 'tank_auth'), $this->config->item('website_name', 'tank_auth'));
+        $this->email->to($email);
+        $this->email->subject(sprintf($this->lang->line('auth_subject_'.$type), $this->config->item('website_name', 'tank_auth')));
+        $this->email->message($this->load->view('email/'.$type.'-html', $data, TRUE));
+        $this->email->set_alt_message($this->load->view('email/'.$type.'-txt', $data, TRUE));
+        $this->email->send();
+        
+    }
 
 }
 
