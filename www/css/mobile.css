@@ -1230,3 +1230,18 @@ p.desc {
 
 
 
+#loading-indicator {
+	display: none;
+	position: fixed;
+	left: 50%;
+	bottom:10px;
+	width: 200px;
+	margin-left: -100px;
+	background: rgba(255, 255, 255, 0.9);
+	padding: 10px 0;
+	text-align: center;
+	border-radius: 5px;
+}
+#loading-indicator img {
+	margin-right: 10px;
+}

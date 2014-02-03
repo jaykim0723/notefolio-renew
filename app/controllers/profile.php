@@ -338,8 +338,7 @@ class Profile extends CI_Controller {
 	}
 
 	
-	function collection($username='', $page=1){
-
+	function collection($username='', $page=1){ // for old version
 		return $this->collect($username, $page);
 	}
 

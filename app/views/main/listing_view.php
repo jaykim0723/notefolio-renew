@@ -3,11 +3,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+				<?php if ($page==1): ?>
 				<ul id="main-list-top" class="main-thumbnail-list">
-					
 					<?php $this->load->view('main/thumbnail_inc_view', array('row' => $first)) ?>
-
-					
 					<li class="thumbbox hidden-xs hidden-sm">
 						<h2 id="main-hot-creators-title" class="nofol-title">Hot Creators</h2>
 						<ul id="main-hot-creators">
@@ -40,7 +38,10 @@
 						</ul>
 					</li>
 				</ul>
+				<?php endif ?>
+
 <?php endif ?>
+
 				<ul class="main-thumbnail-list infinite-list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row):
@@ -51,7 +52,11 @@
 				</ul>
 
 				<a href="/main/listing/<?php echo ($page)?$page+1:2; ?>" class="more-link">more</a>
+
+
+				
 <?php if (!$this->input->is_ajax_request()): ?>
+
 			</div>
 		</div>
 	</div>

@@ -43,3 +43,8 @@
         //$.fn.dialog2.helpers.alert("현재 준비중입니다.");
     });
 </script>
+
+<div id="loading-indicator">
+	<img src="/img/ajax-loader.gif" alt=""/>
+	Loading...
+</div>

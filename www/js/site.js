@@ -8,7 +8,6 @@ var msg = {
 
 	}
 };
-
 site.redirect = function(url, msg){
 	if(typeof msg!=='undefined'){ // 이동된 이후에 출력할 성공 메시지가 있다면 지정
 		localStorage.setItem('flashMsg', JSON.stringify({
@@ -230,23 +229,37 @@ $(document).on('click', '.btn-follow', function(){
 	}, 'json');
 });
 
-
+var aaa = '';
 $(function() {
 	$('body').tooltip({
 	    selector: '[rel=tooltip]',
 	    placement : 'bottom'
 	});
 
-	$('.infinite-list').waypoint('infinite', {
-		items: '.infinite-item',
-		more: '.more-link',
-		offset: 'bottom-in-view',
-		onAfterPageLoad : function(){
-			if(typeof NFview.infiniteCallback!=='undefined'){
-				NFview.infiniteCallback();
-			}
-		}
+	// $('.infinite-list').waypoint('infinite', {
+	// 	items: '.infinite-item',
+	// 	more: '.more-link',
+	// 	offset: 'bottom-in-view',
+	// 	onAfterPageLoad : function(){
+	// 		if(typeof NFview.infiniteCallback!=='undefined'){
+	// 			NFview.infiniteCallback();
+	// 		}
+	// 	}
+	// });
+	$(document).on('click', '.more-link', function(event){
+		event.preventDefault();
+		event.stopPropagation();
+		$(this).remove();
+		$('#loading-indicator').fadeIn();
+		$.get($(this).attr('href'), {}).done(function(responseHTML){
+			var $container = $('.infinite-list');
+			var $response = $('<div>'+responseHTML+'</div>');
+			$('a.more-link', $response).insertAfter($container);
+			$('li.infinite-item', $response).appendTo($container);
+			$('#loading-indicator').fadeOut();
+		});
 	});
+
 	$('.sticky').waypoint('sticky', {
 	  stuckClass: 'stuck',
 	  handler : function(direction){
@@ -684,6 +697,7 @@ var collectUtil = {
 
 
 var workInfoUtil = {
+
 	setGround : function(){
 		$('#work-info-wrapper').on('submit', 'form.comment-block', function(){
 			commentUtil.submitComment(this);
@@ -707,6 +721,7 @@ var workInfoUtil = {
 			collectUtil.close(this);
 		});
 	},
+
 	getRecentList : function(work_id){
 		console.log('site.js > workInfoUtil > getRecentList', work_id);
 
