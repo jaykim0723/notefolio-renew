@@ -13,7 +13,6 @@ class Activity {
     var $last_error = '';
     
     function __construct($config=null) {
-        echo('XXXXXXXXXX'.PHP_EOL);
         $this->ci =& get_instance();
         $this->ci->load->database();
         $this->ci->load->model('user_model');
