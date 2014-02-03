@@ -47,7 +47,8 @@ class activity extends CI_Controller {
      */
     
     function make_param($workType, $resource=array())
-    {
+    {   
+        var_export($resource);
         //-- make work type
         $workType = strtolower($workType);
         $type_array = array('create','read','update','delete',);
