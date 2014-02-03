@@ -5,7 +5,7 @@
  *
  * @author Yoon, Seongsu(soplel@snooey.net)
  */
-echo('OOOOOOOOOO'.PHP_EOL);
+
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Activity {
@@ -13,6 +13,7 @@ class Activity {
     var $last_error = '';
     
     function __construct($config=null) {
+        echo('XXXXXXXXXX'.PHP_EOL);
         $this->ci =& get_instance();
         $this->ci->load->database();
         $this->ci->load->model('user_model');
