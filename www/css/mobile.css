@@ -1149,7 +1149,7 @@ p.desc {
 }
 
 #statistics-widgets {
-	margin-bottom: 20px;
+	width: 300px;
 }
 #statistics-widgets th,
 #statistics-widgets td {

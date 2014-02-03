@@ -7,28 +7,6 @@
 <?php endif ?>
 			
 
-			<table id="statistics-widgets" class="table table-bordered">
-				<thead>
-					<tr>
-						<th>총 작품수</th>
-						<th>총 조회수</th>
-						<th>총 노트수</th>
-						<th>총 콜렉트수</th>
-						<th>총 팔로워수</th>
-						<th>총 팔로윙수</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><?php echo number_format($total->work_cnt) ?></td>
-						<td><?php echo number_format($total->hit_cnt) ?></td>
-						<td><?php echo number_format($total->note_cnt) ?></td>
-						<td><?php echo number_format($total->collect_cnt) ?></td>
-						<td><?php echo number_format($total->follower_cnt) ?></td>
-						<td><?php echo number_format($total->following_cnt) ?></td>
-					</tr>
-				</tbody>
-			</table>
 		
 
 
