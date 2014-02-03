@@ -45,6 +45,7 @@ class activity extends CI_Controller {
      * 
      * @return array
      */
+    
     function make_param($workType, $resource=array())
     {
         //-- make work type
@@ -52,7 +53,7 @@ class activity extends CI_Controller {
         $type_array = array('create','read','update','delete',);
         if (array_key_exists($workType, $type_array)) {
             $resource['workType'] = $workType;
-            return $this->make_param_{$workType};
+            return $this->{'make_param_'.$workType};
         }
         else {
             $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_work_type'));
@@ -67,9 +68,11 @@ class activity extends CI_Controller {
      * 
      * @return array
      */
+    
     function make_param_create($params=array())
     {
         parse_str($params['data'], $opt);
+        var_export($opt);
 
         $data = array();
         $user_A = $this->ci->user_model->get_info(array('id'=>$opt['user_A']))->row;
