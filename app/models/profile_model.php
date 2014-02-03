@@ -732,13 +732,15 @@ class profile_model extends CI_Model {
             where
                 works.user_id = ? and t.regdate between ? and ?
             group by work_id
-        ) cl on works.work_id = cl.work_id";
+        ) cl on works.work_id = cl.work_id
+        where works.user_id = ?";
 
         $rows = $this->db->query($sql, array(
             $params->user_id, $params->sdate, $params->edate,
             $params->user_id, $params->sdate, $params->edate,
             $params->user_id, $params->sdate, $params->edate,
-            $params->user_id, $params->sdate, $params->edate
+            $params->user_id, $params->sdate, $params->edate,
+            $params->user_id
             ))->result_array();
 
         $data = (object)array(
