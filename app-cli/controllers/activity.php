@@ -75,7 +75,7 @@ class activity extends CI_Controller {
         var_export($opt);
 
         $data = array();
-        $user_A = $this->ci->user_model->get_info(array('id'=>$opt['user_A']))->row;
+        $user_A = $this->user_model->get_info(array('id'=>$opt['user_A']))->row;
         $data['user_A'] = array(
             'id'=>$user_A->id,
             'username'=>$user_A->username,
@@ -85,7 +85,7 @@ class activity extends CI_Controller {
         switch($params['area']){
             case "user":
                 if(in_array($params['type'], array('follow'))){
-                    $user_B = $this->ci->user_model->get_info(array('id'=>$opt['user_B']))->row;
+                    $user_B = $this->user_model->get_info(array('id'=>$opt['user_B']))->row;
                     $data['user_B'] = array(
                         'id'=>$user_B->id,
                         'username'=>$user_B->username,
@@ -95,14 +95,14 @@ class activity extends CI_Controller {
             break;
             case "work":
                 if(in_array($params['type'], array('work'))){
-                    $work = $this->ci->work_model->get_info(array('work_id'=>$work_id))->row;
+                    $work = $this->work_model->get_info(array('work_id'=>$work_id))->row;
                     $opt['user_B'] = $work->user->id;
                     $data['work'] = array(
                         'work_id' => $work->work_id,
                         'title' => $work->title
                         );
 
-                    $user_B = $this->ci->user_model->get_info(array('id'=>$opt['user_B']))->row;
+                    $user_B = $this->user_model->get_info(array('id'=>$opt['user_B']))->row;
                     $data['user_B'] = array(
                         'id'=>$user_B->id,
                         'username'=>$user_B->username,
