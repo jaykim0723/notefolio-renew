@@ -591,25 +591,25 @@ class profile_model extends CI_Model {
             ifnull(sum(cl.count), 0) as collect_cnt
         from
         (
-            select works.work_id, count(distinct t.id) as count
+            select count(distinct t.id) as count
             from works
             left join log_work_view as t on works.work_id = t.work_id
             where works.user_id = ? and t.regdate between ? and ?
         ) v,
         (
-            select works.work_id, count(distinct t.id) as count
+            select count(distinct t.id) as count
             from works
             left join log_work_note as t on works.work_id = t.work_id
             where works.user_id = ? and t.regdate between ? and ?
         ) n,
         (
-            select works.work_id, count(distinct t.id) as count
+            select count(distinct t.id) as count
             from works
             left join work_comments as t on works.work_id = t.work_id
             where
                 works.user_id = ? and t.parent_id = 0 and t.regdate between ? and ?
         ) c,
-        (select works.work_id, count(distinct t.id) as count
+        (select count(distinct t.id) as count
             from works
             left join user_work_collect as t on works.work_id = t.work_id
             where
