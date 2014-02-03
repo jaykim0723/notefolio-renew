@@ -127,4 +127,4 @@ class Activity {
     private function after_post($area, $type, $resource=array())
     {
     }*/
-}}
+}
