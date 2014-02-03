@@ -43,8 +43,21 @@ class Gallery extends CI_Controller {
         if($work->status==='fail') alert('작품이 존재하지 않습니다.');
 
         $work->row->hit_cnt++;
+        $description = '';
+        // get description
+        if(!empty($work->row->contents)){
+            foreach($work->row->contents as $obj){
+                // exit(print_r($obj, TRUE));
+                if($obj['t']=='text'){
+                    $description = $obj['c'];
+                    break;
+                }
+            }
+        }
+
         $this->layout->set_header(array(
             'keywords' => @implode(', ',$work->row->tags),
+            'description' => $description,
             'site_name' => $this->config->item('website_name', 'tank_auth'),
             'url' => site_url($work->row->user->username.'/'.$work->row->work_id),
             'image' => site_url('data/covers/'.$work->row->work_id.'_t2.jpg?_='.substr($work->row->moddate, -2)),
