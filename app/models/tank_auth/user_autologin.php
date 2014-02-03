@@ -36,7 +36,7 @@ class User_Autologin extends CI_Model
 	{
 		$this->db->select($this->users_table_name.'.id');
 		$this->db->select($this->users_table_name.'.username');
-        $this->db->select($this->profile_table_name.'.realname');
+        $this->db->select($this->users_table_name.'.realname');
 		$this->db->from($this->users_table_name);
         $this->db->join($this->profile_table_name, $this->profile_table_name.'.user_id = '.$this->users_table_name.'.id','left');
 		$this->db->join($this->table_name, $this->table_name.'.user_id = '.$this->users_table_name.'.id');
