@@ -765,7 +765,7 @@ class profile_model extends CI_Model {
         $output = array();
         foreach ($period as $date) {
             $dateString = $date->format('Y-m-d');
-            $output[$dateString] = $data[$dateString];
+            $output[$dateString] = (empty($data[$dateString]))?0:$data[$dateString];
         }
 
         return $output;
