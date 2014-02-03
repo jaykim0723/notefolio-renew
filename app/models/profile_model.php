@@ -585,35 +585,53 @@ class profile_model extends CI_Model {
         $data = array();
         
         $sql = "SELECT
-            count(v.id) as hit_cnt,
-            count(n.id) as note_cnt,
-            count(c.id) as comment_cnt,
-            count(cl.id) as collect_cnt
+            users.id,
+            ifnull(v.count, 0) as hit_cnt,
+            ifnull(n.count, 0) as note_cnt,
+            ifnull(c.count, 0) as comment_cnt,
+            ifnull(cl.count, 0) as collect_cnt
         from
-            works
-        left join
-            log_work_view as v on works.work_id = v.work_id
-        left join 
-            log_work_note as n on works.work_id = n.work_id
-        left join 
-            work_comments as c on works.work_id = c.work_id
-        left join 
-            user_work_collect as cl on works.work_id = cl.work_id
-        where
-            works.user_id = ?
-            and v.regdate between ? and ?
-            and n.regdate between ? and ?
-            and c.parent_id = 0
-            and c.regdate between ? and ?
-            and cl.regdate between ? and ?
-            ";
+            users
+        left join (
+            select
+                user_id,
+                count(id) as count
+            from log_work_view
+            where user_id = ?
+                and regdate between ? and ?
+        ) v on users.id = v.user_id
+        left join (
+            select
+                user_id,
+                count(id) as count
+            from log_work_note
+            where user_id = ?
+                and regdate between ? and ?
+        ) n on users.id = n.user_id
+        left join (
+            select
+                user_id,
+                count(id) as count
+            from work_comments
+            where user_id = ?
+                and regdate between ? and ?
+        ) c on users.id = c.user_id
+        left join (
+            select
+                user_id,
+                count(id) as count
+            from user_work_collect
+            where user_id = ?
+                and regdate between ? and ?
+        ) cl on users.id = cl.user_id
+        where users.id = ?";
 
         $row = $this->db->query($sql, array(
-            $params->user_id,
-            $params->sdate, $params->edate,
-            $params->sdate, $params->edate,
-            $params->sdate, $params->edate,
-            $params->sdate, $params->edate
+            $params->user_id, $params->sdate, $params->edate,
+            $params->user_id, $params->sdate, $params->edate,
+            $params->user_id, $params->sdate, $params->edate,
+            $params->user_id, $params->sdate, $params->edate,
+            $params->user_id
             ))->row();
 
         $data = (object)array(
