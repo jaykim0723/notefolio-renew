@@ -623,7 +623,8 @@ class Auth extends CI_Controller
                 $data = set_value_to_data($method);
             }
 
-            exit(json_encode($this->input->post()));
+            //exit(json_encode($this->input->post()));
+            exit();
         }
         else{
             exit(json_encode(array('status'=>'error','errmsg'=>'올바르지 않은 접근입니다')));
