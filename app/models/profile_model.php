@@ -621,7 +621,7 @@ class profile_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-        $get_data = "get_statistics_data_".$params->edate;
+        $get_data = "get_statistics_data_".$params->type;
 
         $row = $this->{$get_data}(array(
             'user_id' => $params->user_id,
