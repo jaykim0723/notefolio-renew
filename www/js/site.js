@@ -240,7 +240,7 @@ $(function() {
 	$('.infinite-list').waypoint('infinite', {
 		items: '.infinite-item',
 		more: '.more-link',
-		offset: 80%,
+		offset: 'bottom-in-view',
 		onAfterPageLoad : function(){
 			if(typeof NFview.infiniteCallback!=='undefined'){
 				NFview.infiniteCallback();
