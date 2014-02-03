@@ -8,6 +8,9 @@ var msg = {
 
 	}
 };
+site.checkNewBottom = function(){
+	return $(window).scrollTop() + $(window).height() > $(document).height() - 100;
+};
 site.redirect = function(url, msg){
 	if(typeof msg!=='undefined'){ // 이동된 이후에 출력할 성공 메시지가 있다면 지정
 		localStorage.setItem('flashMsg', JSON.stringify({
@@ -246,19 +249,30 @@ $(function() {
 	// 		}
 	// 	}
 	// });
+	
 	$(document).on('click', '.more-link', function(event){
 		event.preventDefault();
 		event.stopPropagation();
-		$(this).remove();
 		$('#loading-indicator').fadeIn();
 		$.get($(this).attr('href'), {}).done(function(responseHTML){
 			var $container = $('.infinite-list');
 			var $response = $('<div>'+responseHTML+'</div>');
-			$('a.more-link', $response).insertAfter($container);
+			$('.more-link', $response).insertAfter($container);
 			$('li.infinite-item', $response).appendTo($container);
 			$('#loading-indicator').fadeOut();
+			if(typeof NFview.infiniteCallback!=='undefined'){
+				NFview.infiniteCallback();
+			}
 		});
+		$(this).remove();
 	});
+	$(window).on('scroll', function() {
+		if(site.checkNewBottom()){
+			if($('#loading-indicator').css('display')!='block'){
+				$('.more-link').trigger('click');
+			}
+		};
+	});	
 
 	$('.sticky').waypoint('sticky', {
 	  stuckClass: 'stuck',
