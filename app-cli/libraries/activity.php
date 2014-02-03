@@ -50,7 +50,7 @@ class Activity {
         $type_array = array('create','read','update','delete',);
         if (array_key_exists($workType, $type_array)) {
             $resource['workType'] = $workType;
-            return $this->make_param_{$workType};
+            return $this->{'make_param_'.$workType};
         }
         else {
             $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_work_type'));
