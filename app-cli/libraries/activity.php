@@ -69,6 +69,7 @@ class Activity {
     function make_param_create($params=array())
     {
         parse_str($params['data'], $opt);
+        var_export($opt);
 
         $data = array();
         $user_A = $this->ci->user_model->get_info(array('id'=>$opt['user_A']))->row;
