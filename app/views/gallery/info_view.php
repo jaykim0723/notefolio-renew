@@ -252,7 +252,6 @@
 		NFview.infiniteCallback();
 		workInfoUtil.setGround();
 		workInfoUtil.initRecentList();
-
 	});
 </script>
 <?php endif ?>

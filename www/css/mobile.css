@@ -602,6 +602,7 @@ form.comment-block.create textarea {
 	.comment-username span {
 		color: #aaa;
 		font-size: 12px;
+		margin-left: 30px;
 	}
 	.comment-textarea {
 		margin-left: 70px;
