@@ -591,25 +591,26 @@ class profile_model extends CI_Model {
             ifnull(cl.count, 0) as collect_cnt
         from
         (
-            select count(distinct t.id) as count
+            select works.user_id, count(distinct t.id) as count
             from works
             left join log_work_view as t on works.work_id = t.work_id
             where works.user_id = ? and t.regdate between ? and ?
         ) v,
         (
-            select count(distinct t.id) as count
+            select works.user_id, count(distinct t.id) as count
             from works
             left join log_work_note as t on works.work_id = t.work_id
             where works.user_id = ? and t.regdate between ? and ?
         ) n,
         (
-            select count(distinct t.id) as count
+            select works.user_id, count(distinct t.id) as count
             from works
             left join work_comments as t on works.work_id = t.work_id
             where
                 works.user_id = ? and t.parent_id = 0 and t.regdate between ? and ?
         ) c,
-        (select count(distinct t.id) as count
+        (
+            select works.user_id, count(distinct t.id) as count
             from works
             left join user_work_collect as t on works.work_id = t.work_id
             where
@@ -631,7 +632,8 @@ class profile_model extends CI_Model {
                 'hit_cnt' => $row->hit_cnt,
                 'note_cnt' => $row->note_cnt,
                 'collect_cnt' => $row->collect_cnt,
-            )
+            ), 
+            'query' = $this->db->last_query()
         );
 
         return $data; 
