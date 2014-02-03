@@ -585,10 +585,10 @@ class profile_model extends CI_Model {
         $data = array();
         
         $sql = "SELECT
-            ifnull(sum(v.count), 0) as hit_cnt,
-            ifnull(sum(n.count), 0) as note_cnt,
-            ifnull(sum(c.count), 0) as comment_cnt,
-            ifnull(sum(cl.count), 0) as collect_cnt
+            ifnull(v.count, 0) as hit_cnt,
+            ifnull(n.count, 0) as note_cnt,
+            ifnull(c.count, 0) as comment_cnt,
+            ifnull(cl.count, 0) as collect_cnt
         from
         (
             select count(distinct t.id) as count
