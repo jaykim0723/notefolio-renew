@@ -3,6 +3,9 @@
 	color: #444;
 	text-decoration: none;
 }
+.more-link {
+	margin-top: 10px;
+}
 .btn-link:hover {
 	color: #aaa;
 	text-decoration: none;

@@ -257,8 +257,11 @@ $(function() {
 		$.get($(this).attr('href'), {}).done(function(responseHTML){
 			var $container = $('.infinite-list');
 			var $response = $('<div>'+responseHTML+'</div>');
-			$('.more-link', $response).insertAfter($container);
-			$('li.infinite-item', $response).appendTo($container);
+			var $lis = $('li.infinite-item', $response);
+			if($lis.length > 0){
+				$('.more-link', $response).insertAfter($container);
+				$lis.appendTo($container);
+			}
 			$('#loading-indicator').fadeOut();
 			if(typeof NFview.infiniteCallback!=='undefined'){
 				NFview.infiniteCallback();
