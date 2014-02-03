@@ -585,53 +585,42 @@ class profile_model extends CI_Model {
         $data = array();
         
         $sql = "SELECT
-            users.id,
-            ifnull(v.count, 0) as hit_cnt,
-            ifnull(n.count, 0) as note_cnt,
-            ifnull(c.count, 0) as comment_cnt,
-            ifnull(cl.count, 0) as collect_cnt
+            ifnull(sum(v.count), 0) as hit_cnt,
+            ifnull(sum(n.count), 0) as note_cnt,
+            ifnull(sum(c.count), 0) as comment_cnt,
+            ifnull(sum(cl.count), 0) as collect_cnt
         from
-            users
-        left join (
-            select
-                user_id,
-                count(id) as count
-            from log_work_view
-            where user_id = ?
-                and regdate between ? and ?
-        ) v on users.id = v.user_id
-        left join (
-            select
-                user_id,
-                count(id) as count
-            from log_work_note
-            where user_id = ?
-                and regdate between ? and ?
-        ) n on users.id = n.user_id
-        left join (
-            select
-                user_id,
-                count(id) as count
-            from work_comments
-            where user_id = ?
-                and regdate between ? and ?
-        ) c on users.id = c.user_id
-        left join (
-            select
-                user_id,
-                count(id) as count
-            from user_work_collect
-            where user_id = ?
-                and regdate between ? and ?
-        ) cl on users.id = cl.user_id
-        where users.id = ?";
+        (
+            select works.work_id, count(distinct t.id) as count
+            from works
+            left join log_work_view as t on works.work_id = t.work_id
+            where works.user_id = ? and t.regdate between ? and ?
+        ) v,
+        (
+            select works.work_id, count(distinct t.id) as count
+            from works
+            left join log_work_note as t on works.work_id = t.work_id
+            where works.user_id = ? and t.regdate between ? and ?
+        ) n,
+        (
+            select works.work_id, count(distinct t.id) as count
+            from works
+            left join work_comments as t on works.work_id = t.work_id
+            where
+                works.user_id = ? and t.parent_id = 0 and t.regdate between ? and ?
+        ) c,
+        (select works.work_id, count(distinct t.id) as count
+            from works
+            left join user_work_collect as t on works.work_id = t.work_id
+            where
+                works.user_id = ? and t.regdate between ? and ?
+        ) cl";
 
         $row = $this->db->query($sql, array(
             $params->user_id, $params->sdate, $params->edate,
             $params->user_id, $params->sdate, $params->edate,
             $params->user_id, $params->sdate, $params->edate,
-            $params->user_id, $params->sdate, $params->edate,
-            $params->user_id
+            $params->user_id, $params->sdate, $params->edate
             ))->row();
 
         $data = (object)array(
