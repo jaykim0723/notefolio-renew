@@ -48,7 +48,6 @@ class Layout
 			// $this->nf->get('user')->username;
 		}
 
-
 		// print header
 		if(!$this->ci->input->is_ajax_request()){
 			(($areaName!='acp'))?$this->ci->load->view('layout/header_inc_view', $this->header):'';
