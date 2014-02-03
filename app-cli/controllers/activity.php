@@ -22,10 +22,10 @@ class activity extends CI_Controller {
      * @param string $data (querystring)
 	 */
     public function post($crud, $area, $act, $data){
-        exit('aaaaaaa'.PHP_EOL);
+        echo('aaaaaaa'.PHP_EOL);
         //$this->load->library('activity');
         //$this->load->model('activity_model');
-        exit('aaaaaaa'.PHP_EOL);
+        echo('aaaaaaa'.PHP_EOL);
         /*$params = $this->activity->make_param($work, array(
         	'area' => $area,
         	'act'  => $act,
