@@ -548,6 +548,7 @@ var noteUtil = {
 	cancel : function($work){
 		console.log('site.js > noteUtil > cancel', $work);
 
+		$work.data('noted', 'n');
 		var work_id = $work.data('id');
 		$btnNote = $('.btn-note', $work);
 		$btnNote.next().css('visibility','hidden');
@@ -589,7 +590,7 @@ var snsUtil = {
 		workInfo.id = $work.data('id');
 		workInfo.url = encodeURIComponent($('.work-url', $work).text());
 		workInfo.title = encodeURIComponent($('.work-title', $work).text());
-		workInfo.cover = '/data/covers/'+workInfo.cover+'-t2.jpg';
+		workInfo.cover = '/data/covers/'+workInfo.id+'_t2.jpg?_='+$work.data('moddate');
 		workInfo.summary = $.trim($('.work-contents', $work).text().substr(0,100));
 		console.log('workInfo', workInfo);
 		return workInfo;

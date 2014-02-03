@@ -59,7 +59,7 @@
 <?php endif ?>
 
 				<div id="work-list" class="work-list infinite-list">
-					<div class="work-wrapper infinite-item" id="work-<?php echo $row->work_id ?>" data-id="<?php echo $row->work_id ?>" data-noted="<?php echo $row->noted; ?>" data-collected="<?php echo $row->collected; ?>">
+					<div class="work-wrapper infinite-item" id="work-<?php echo $row->work_id ?>" data-id="<?php echo $row->work_id ?>" data-noted="<?php echo $row->noted; ?>" data-collected="<?php echo $row->collected; ?>" data-moddate="<?php echo substr($row->regdate, -2); ?>">
 						<div class="work-small-profile bg1 visible-xs visible-sm">
 							<img src="/data/profiles/<?php echo $row->user->username ?>.jpg"/>
 							<h2><?php echo $row->user->username ?></h2>
@@ -174,10 +174,10 @@
 								</div>
 								<div class="col-xs-6 righted work-sns">
 									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="btn-nofol">
-										<i class="spi spi-fb">fb_hover</i>
+										<i class="spi spi-twit">fb_hover</i>
 									</a>
 									<a href="javascript:;" onclick="snsUtil.facebook(this);" class="btn-nofol">
-										<i class="spi spi-twit">fb_hover</i>
+										<i class="spi spi-fb">fb_hover</i>
 									</a>
 									<a href="javascript:;" onclick="snsUtil.pinterest(this);" class="btn-nofol">
 										<i class="spi spi-pinter">fb_hover</i>

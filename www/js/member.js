@@ -509,12 +509,15 @@ var workUtil = {
 					}
 				});
 		},
-		createBlock: function(type, c, i, returnType){
+		createBlock : function(type, c, i, returnType){
 			if(typeof(type)=='undefined'){
 				var type = "text";
 			}
 			if(typeof(c)=='undefined'){
 				var c = '';
+			}
+			if(typeof(i)=='undefined'){
+				var i = '';
 			}
 
 			var output = '';
