@@ -625,7 +625,7 @@ class profile_model extends CI_Model {
             'user_id' => $params->user_id,
             'sdate' => $params->sdate,
             'edate' => $params->edate,
-            ))
+            ));
 
 
         $data = (object)array(
