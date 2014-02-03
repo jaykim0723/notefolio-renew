@@ -5,7 +5,7 @@
  *
  * @author Yoon, Seongsu(soplel@snooey.net)
  */
-
+echo('OOOOOOOOOO'.PHP_EOL);
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Activity {
@@ -27,12 +27,12 @@ class Activity {
      * 
      * @return bool
      */
-    /*
+    
     function post($area='', $type='', $data=array())
     {
 
         return false;
-    }*/
+    }
 
 
     /**
@@ -43,7 +43,7 @@ class Activity {
      * 
      * @return array
      */
-    /*
+    
     function make_param($workType, $resource=array())
     {
         //-- make work type
@@ -57,7 +57,7 @@ class Activity {
             $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_work_type'));
             return array();
         }
-    }*/
+    }
 
     /**
      * make activity parameter for user. (create)
@@ -66,7 +66,7 @@ class Activity {
      * 
      * @return array
      */
-    /*
+    
     function make_param_create($params=array())
     {
         parse_str($params['data'], $opt);
@@ -115,7 +115,7 @@ class Activity {
 
         return $data;
     }
-    */
+    
     /**
      * do after post process for user.
      * 
