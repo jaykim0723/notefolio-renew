@@ -8,6 +8,8 @@ var msg = {
 
 	}
 };
+site.scrollLimit = 200;
+site.scrollCount = 0;
 site.checkNewBottom = function(o){
 	if(o.hasClass('disabled')) return false;
 	return $(window).scrollTop() + $(window).height() > $(document).height() - 100;
@@ -239,10 +241,7 @@ $(function() {
 	    placement : 'bottom'
 	});
 
-
 	// infinite scroll binding
-	site.scrollLimit = 200;
-	site.scrollCount = 0;
 	$(document).on('click', '.more-link', function(event){
 		event.preventDefault();
 		event.stopPropagation();
@@ -255,6 +254,7 @@ $(function() {
 			if($lis.length > 0){
 				$('.more-link', $response).insertAfter($container);
 				$lis.appendTo($container);
+				setLocal('listing_html', $container.html());
 			}
 			$('#loading-indicator').fadeOut();
 			if(typeof NFview.infiniteCallback!=='undefined'){

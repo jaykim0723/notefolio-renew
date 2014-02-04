@@ -75,7 +75,7 @@ var workUtil = {
 	    					return true; // 더미 이미지는 제외한다.
 	    			break;
 	    			case 'video':
-	    				if($(this).children('iframe').attr('src').indexOf(workUtil.defaultValue.video)!=-1)
+	    				if($(this).children('iframe').length > 0 && $(this).children('iframe').attr('src').indexOf(workUtil.defaultValue.video)!=-1)
 	    					return true; // 기본 영상은 없는 걸로 친다
 	    			break;
 	    			case 'text':

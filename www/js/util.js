@@ -410,3 +410,39 @@ jQuery.fn.extend({
 
 
 
+
+
+
+
+
+
+
+
+
+// http://techpatterns.com/downloads/javascript_cookies.php
+function setLocal( name, value, expires, path, domain, secure )
+{
+     try {
+          localStorage.setItem(name, value);
+     } catch (e) {
+          alert(e);
+     }
+}
+// this fixes an issue with the old method, ambiguous values
+// with this test document.cookie.indexOf( name + "=" );
+function getLocal( check_name ) {
+
+     try {
+          return localStorage.getItem(check_name);
+     } catch (e) {
+          return null;
+     }
+}
+
+// this deletes the cookie when called
+function delLocal( name, path, domain ) {
+     localStorage.removeItem(name);    
+}
+function resetAll(){
+     localStorage.clear();
+}
