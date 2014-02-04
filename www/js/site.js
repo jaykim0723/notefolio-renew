@@ -254,7 +254,8 @@ $(function() {
 			if($lis.length > 0){
 				$('.more-link', $response).insertAfter($container);
 				$lis.appendTo($container);
-				setLocal('listing_html', $container.html());
+				if($container.attr('id')!='work-list')
+					setLocal('listing_html', $container.html());
 			}
 			$('#loading-indicator').fadeOut();
 			if(typeof NFview.infiniteCallback!=='undefined'){
