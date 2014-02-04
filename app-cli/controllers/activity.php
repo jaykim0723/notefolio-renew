@@ -72,6 +72,7 @@ class activity extends CI_Controller {
     function make_param_create($params=array())
     {
         $this->load->model('user_model');
+        $this->load->model('work_model');
 
         $params = (object)$params;
 
