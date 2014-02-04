@@ -28,6 +28,11 @@ body * {
 .stuck{
 	position: fixed;
 }
+.tip {
+	font-size: 12px;
+	color: #888;
+	font-weight: normal;
+}
 
 
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {

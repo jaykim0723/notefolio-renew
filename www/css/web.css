@@ -272,6 +272,11 @@ body {
 }
 #default-image {
 	width: 100%;
+	background: beige;
+	text-align: center;
+}
+#default-image img {
+	margin: 30px auto;
 }
 
 
@@ -349,7 +354,6 @@ body {
 #content-block-list{
 	display: block;
 	width: 100%;
-	min-height:300px;
 }
 /*#content-block-list li{
 	display: block;
@@ -441,6 +445,12 @@ li#trash-bin{
 	display: block;
 	background: #2ac5c6;
 	height: 20px;
+}
+#cover-preview .col-md-12 div {
+	background: beige;
+}
+#cover-preview .col-md-12 img {
+	width: 100%;
 }
 #cover-preview .col-md-4 {
 	display: table-cell;

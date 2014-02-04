@@ -409,6 +409,43 @@ jQuery.fn.extend({
 });
 
 
+/*******
+
+     ***     Anchor Slider  ***
+     *** http://www.feelkey.com ***
+     *** Made by zidell@gmail.com ***
+    
+     Usage.
+    
+     <a rel='rel1' class='anchorLink'>go rel1</a>
+    
+     <script type='text/javascript'>
+          $('a.anchorLink').anchorLink();
+     </script>
+    
+    
+*****/
+         
+jQuery.fn.extend({
+	anchorTar : '',
+	anchorLink: function() {
+		this.click(function(){
+			$.fn.anchorAnimate('#'+$(this).attr('rel'));
+		});
+	},
+	anchorAnimate : function(tar, delay){
+		$.fn.anchorTar = $(tar);
+		var top = $.fn.anchorTar.offset().top - 100;
+		if(empty(delay))
+			var delay = 0.1 * Math.abs(top - document.body.scrollTop);
+		$('html,body').animate({scrollTop: top}, delay, function(){
+			$.fn.anchorTar.focus();
+		});
+		return false;	
+	}
+});
+
+
 
 
 

@@ -33,7 +33,7 @@
                     <input type='search' id='faq_search' placeholder="이곳에 검색어를 입력하세요." class='form-control'/>
                     <script>
                         $(function(){
-                            $('#faq_search').focus().keyup(function(){
+                            $('#faq_search').keyup(function(){
                                 var q = $(this).val().toLowerCase();
                                 var list = $('#faq_list');
                                 if(q.length == 0){
@@ -160,6 +160,23 @@
                                 $(this).toggleClass('opened');
                                 $(this).next().slideToggle('fast');
                             });
+                            var focusTo = function(o){
+                                $('#faq_search').val('');
+                                var list = $('#faq_list');
+                                list.children('.question').removeClass('opened').show();
+                                list.children('.answer').hide();
+                                $.fn.anchorAnimate(o, 200);
+                                o.next().slideDown('fast');
+                                return false;           
+                            };
+                           $(function(){
+                                if(location.hash!=''){
+                                    // hash가 들어왔다면 해당 질답으로 바로 이동하도록..
+                                    focusTo($('#faq_list').children('h2[data-key='+location.hash.replace('#','')+']'));
+                                }else{
+                                    $('#faq_search').focus();                                    
+                                }
+                            });                            
                         </script>
                     </div> <!-- end of cont_gallery -->
                 </div>

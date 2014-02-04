@@ -33,7 +33,7 @@
 
 
 
-				<h4>CCL <a class="tip">자세히보기</a></h4>
+				<h4>CCL <a class="tip" href="/info/faq#ccl" target="_blank">자세히보기</a></h4>
 				<select name="ccl" id="ccl" class="" title="Choose one of the following..." >
 					<option value="">CCL 표시 안함</option>
 					<option data-content='<i class="spi spi-ccl-cc-by"></i>저작자표시' value="BY">저작자표시</option>
@@ -72,7 +72,9 @@
 
 				<div class="row" id="cover-preview">
 					<div class="col-md-12" style="display:none;">
-						<img src="/img/default_cover_tip.png" alt=""/>
+						<div>
+							<img src="/img/coverupload.png" alt=""/>
+						</div>
 					</div>
 
 					<div class="col-md-4">
@@ -103,15 +105,15 @@
 
 
 
-				<h4>충실도 <a class="tip">자세히보기</a></h4>
+				<h4>충실도 <a class="tip" href="/info/faq#discoverbility" target="_blank">자세히보기</a></h4>
 				<div id="work-discoverbility"><span style="width:0%;"></span></div>
+
 
 
 				<input type="hidden" name="work_id" value="<?php echo $row->work_id ?>"/>
 				<input type="hidden" name="cover_upload_id" value=""/>
 
 				<button id="work-submit" type="submit" class="btn btn-primary btn-block btn-lg">
-					
 					전송
 				</button>
 			</div>
@@ -132,7 +134,7 @@
 				<ul style="margin-top:0;" id="content-block-list" class="work-info list-unstyled work-contents">
 				</ul>
 				<div id="content-multiple">
-					드래그앤드롭으로 새로운 이미지 추가
+					<img src="/img/uploadcont2.png" alt=""/>
 				</div>
 			</div>
 			<!-- 작품영역 끝 -->
@@ -148,11 +150,11 @@
 
 
 <ul class="list-unstyled" id="work-content-blockadder">
-	<li class="block block-text"><i class="glyphicon glyphicon-pencil"></i></li>
-	<li class="block block-image"><i class="glyphicon glyphicon-picture"></i></li>
-	<li class="block block-video"><i class="glyphicon glyphicon-film"></i></li>
-	<li class="block block-line"><i class="glyphicon glyphicon-minus"></i></li>
-	<li id="trash-bin" class="glyphicon glyphicon-remove">&nbsp;</li>
+	<li class="block block-text"><i class="spi spi-write">write</i></li>
+	<li class="block block-image"><i class="spi spi-work">work</i></li>
+	<li class="block block-video"><i class="spi spi-video">video</i></li>
+	<li class="block block-line"><i class="spi spi-division">division</i></li>
+	<li id="trash-bin"><i class="spi spi-delete">delete</i></li>
 </ul>
 <script>
 	$(function() {

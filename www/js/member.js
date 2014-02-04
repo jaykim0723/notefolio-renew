@@ -248,7 +248,7 @@ var workUtil = {
 					}
 				});
 			}else{
-				$('#content-block-list').append('<img src="/img/form_view_default.png" id="default-image"/>');
+				$('#content-block-list').append('<div id="default-image"><img src="/img/uploadcont1.png"/></div>');
 			}
 			$('#content-block-list').on('click', 'i.spi', function(){
 				workUtil.content.removeBlock($(this).parents('li.block'));
