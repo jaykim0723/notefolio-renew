@@ -77,7 +77,6 @@ class activity extends CI_Controller {
                 'point_get' =>$ap,
                 'activity_id' => $result->activity_id,
                 ));
-            return true;
         }
         echo '.';
 
