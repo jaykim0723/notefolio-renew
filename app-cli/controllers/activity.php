@@ -47,6 +47,8 @@ class activity extends CI_Controller {
     
     function make_param($workType, $resource=array())
     {   
+        $this->load->model('user_model');
+
         //-- go by work type
         $workType = strtolower($workType);
         try{
@@ -57,6 +59,25 @@ class activity extends CI_Controller {
             $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_work_type'));
             return array();
         }
+
+        $data = array();
+
+        $user_A = $this->user_model->get_info(array('id'=>$params->data['user_A']));
+        if(!isset($user_A->row)){
+            $user_A->row = (object)array(
+                'id' => $params->data['user_A'],
+                'username' => '',
+                'realname' => '',
+                );
+        }
+        $data['user_A'] = array(
+            'id'=>$user_A->row->id,
+            'username'=>$user_A->row->username,
+            'realname'=>$user_A->row->realname
+            );
+
+
+        $output = array_merge($data, $output);
 
         return $output;
     }
@@ -78,20 +99,6 @@ class activity extends CI_Controller {
 
         $data = array();
         
-        $user_A = $this->user_model->get_info(array('id'=>$params->data['user_A']));
-        if(!isset($user_A->row)){
-            $user_A->row = (object)array(
-                'id' => $params->data['user_A'],
-                'username' => '',
-                'realname' => '',
-                );
-        }
-        $data['user_A'] = array(
-            'id'=>$user_A->row->id,
-            'username'=>$user_A->row->username,
-            'realname'=>$user_A->row->realname
-            );
-
         switch($params->area){
             case "user":
                 if(in_array($params->type, array('follow'))){
