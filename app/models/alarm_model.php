@@ -80,8 +80,8 @@ class alarm_model extends CI_Model {
         catch (Exception $e) {
             $data = (object)array(
                 'status' => 'fail',
-                'alarm_all' => 0,
-                'alarm_unread' => 0,
+                'all' => 0,
+                'unread' => 0,
             );
 
             return $data;
@@ -91,8 +91,8 @@ class alarm_model extends CI_Model {
 
         $data = (object)array(
             'status' => 'done',
-            'alarm_all' => $info->all,
-            'alarm_unread' => $info->unread,
+            'all' => $info->all_count,
+            'unread' => $info->unread,
         );
 
         return $data;
