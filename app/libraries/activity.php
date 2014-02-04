@@ -39,13 +39,14 @@ class Activity {
         $default_cmd = 'php '.$this->ci->input->server('DOCUMENT_ROOT').'../app-cli/cli.php activity';
         $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
         
-        $data=http_build_query(array(
-            'user_A'    =>$params['user_A'],
-            'user_B'    =>$params['user_B'],
-            'work_id'   =>$params['work_id'],
-            'parent_id' =>$params['parent_id'],
-            'comment'   =>$params['comment'],
-            ));
+        $queryData = array();
+        if(isset($params['user_A']))    $queryData['user_A']    => $params['user_A'];
+        if(isset($params['user_B']))    $queryData['user_B']    => $params['user_B'];
+        if(isset($params['work_id']))   $queryData['work_id']   => $params['work_id'];
+        if(isset($params['parent_id'])) $queryData['parent_id'] => $params['parent_id'];
+        if(isset($params['comment']))   $queryData['comment']   => $params['comment'];
+
+        $data=http_build_query($queryData);
 
         $cmd = $default_cmd." ".$params['crud']." ".$params['area']." ".$params['type']." ".$data." > /dev/null &";
 
