@@ -78,7 +78,11 @@ class activity extends CI_Controller {
 
         $this->db->trans_complete();
 
+        echo $this->db->trans_status();
+
         //echo $this->last_error;
+
+        echo PHP_EOL;
         return false;
     }
 
