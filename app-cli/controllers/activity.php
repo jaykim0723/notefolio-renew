@@ -93,7 +93,7 @@ class activity extends CI_Controller {
 
         switch($params->area){
             case "user":
-                if(in_array($params['type'], array('follow'))){
+                if(in_array($params->type, array('follow'))){
                     $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
                     if(!isset($user_B->row)){
                         $user_B->row = (object)array(
@@ -110,7 +110,7 @@ class activity extends CI_Controller {
                 }
             break;
             case "work":
-                if(in_array($params['type'], array('work'))){
+                if(in_array($params->type, array('work'))){
                     $work = $this->work_model->get_info(array('work_id'=>$params->data['work_id']));
                     if(!isset($work->row)){
                         $work->row = (object)array(
