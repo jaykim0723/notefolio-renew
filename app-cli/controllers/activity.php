@@ -174,7 +174,7 @@ class activity extends CI_Controller {
                 }
             break;
             case "work":
-                if(in_array($params->type, array('work', 'collect', 'comment', 'note'))){
+                if(in_array($params->type, array('create', 'collect', 'comment', 'note'))){
                     $work = $this->work_model->get_info(array('work_id'=>$params->data['work_id']));
                     if(!isset($work->row)){
                         $work->row = (object)array(

@@ -73,6 +73,8 @@ class Gallery extends CI_Controller {
             $result = $this->work_model->post_view($params);
         }
 
+
+        //-- write activity
         $this->load->library('activity');
         $this->activity->post(array(
             'crud' => 'create',
@@ -86,7 +88,19 @@ class Gallery extends CI_Controller {
 
     function create(){
         $work_id = $this->work_model->post_info(); // 비어있는 값으로 생성하고
-        if(emptY($work_id)) alert('작품이 존재하지 않습니다.');
+        if(empty($work_id)) alert('작품이 존재하지 않습니다.');
+
+
+        //-- write activity
+        $this->load->library('activity');
+        $this->activity->post(array(
+            'crud' => 'create',
+            'area' => 'work',
+            'type'  => 'create',
+            'work_id' => $work_id,
+            'user_A' => USER_ID,
+            ));
+
         redirect($this->session->userdata('username').'/'.$work_id.'/update');
     }
     function upload(){ // 기존의 주소를 보전하기 위하여
@@ -261,6 +275,17 @@ class Gallery extends CI_Controller {
 
         $data = $this->work_model->put_info($input);
         $this->layout->set_json($data)->render();
+
+
+        //-- write activity
+        $this->load->library('activity');
+        $this->activity->post(array(
+            'crud' => 'update',
+            'area' => 'work',
+            'type'  => $input['status'],
+            'work_id' => $input['work_id'],
+            'user_A' => USER_ID,
+            ));
     }
 
     function _set_cover($params=array()){
@@ -325,10 +350,34 @@ class Gallery extends CI_Controller {
             switch($note){
                 case 'n':
                     $result = $this->work_model->delete_note($params);
+
+
+                    //-- write activity
+                    $this->load->library('activity');
+                    $this->activity->post(array(
+                        'crud' => 'delete',
+                        'area' => 'work',
+                        'type'  => 'collect',
+                        'work_id' => $params->work_id,
+                        'user_A' => $params->user_id,
+                        'comment' => ''
+                        ));
                 break;
                 case 'y':
                 default:
                     $result = $this->work_model->post_note($params);
+
+
+                    //-- write activity
+                    $this->load->library('activity');
+                    $this->activity->post(array(
+                        'crud' => 'create',
+                        'area' => 'work',
+                        'type'  => 'collect',
+                        'work_id' => $params->work_id,
+                        'user_A' => $params->user_id,
+                        'comment' => ''
+                        ));
                 break;
             }
         }
@@ -353,10 +402,32 @@ class Gallery extends CI_Controller {
                 switch($collect){
                     case 'n':
                         $result = $this->work_model->delete_collect($params);
+
+
+                        //-- write activity
+                        $this->load->library('activity');
+                        $this->activity->post(array(
+                            'crud' => 'delete',
+                            'area' => 'work',
+                            'type'  => 'note',
+                            'work_id' => $params->work_id,
+                            'user_A' => $params->user_id,
+                            ));
                     break;
                     case 'y':
                     default:
                         $result = $this->work_model->post_collect($params);
+
+
+                        //-- write activity
+                        $this->load->library('activity');
+                        $this->activity->post(array(
+                            'crud' => 'create',
+                            'area' => 'work',
+                            'type'  => 'note',
+                            'work_id' => $params->work_id,
+                            'user_A' => $params->user_id,
+                            ));
                     break;
                 }
             }
