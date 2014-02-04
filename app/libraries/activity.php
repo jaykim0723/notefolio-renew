@@ -49,7 +49,7 @@ class Activity {
         $data = http_build_query($queryData);
 
         $cmd = $default_cmd." ".$params['crud']." ".$params['area']." ".$params['type']." \"".$data."\" > /dev/null &";
-
+        var_export($cmd);
         $response = exec($cmd);
 
         return $response;
