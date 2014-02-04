@@ -22,14 +22,32 @@ class activity extends CI_Controller {
      * @param string $data (querystring)
 	 */
     public function post($crud, $area, $type, $data){
+        $this->load->model('activity_model');
+        $this->load->config('activity_point', TRUE);
+
         parse_str($data, $data);
         $params = $this->make_param($crud, array(
         	'area' => $area,
         	'type'  => $type,
         	'data' => $data,
         	));
-        var_export($params);
-        //$this->activity_model->post($params);
+        
+
+        $ap = $this->config->item('ap',  'activity_point');
+
+        var_export($ap);
+        exit();
+        $this->activity_model->post(array(
+            'ref_id' => (isset($params['work']['work_id']))?$params['work']['work_id']:0,
+            'user_id' => (isset($params['user_A']['id']))?$params['user_A']['id']:0,
+            'area' => strtolower($area),
+            'act' => strtolower($crud),
+            'type' => strtolower($type),
+            'point_get' => ,
+            'point_status' => 0,
+            'data' => '',
+            'remote_addr' => 'console'
+        ));
 
         //echo $this->activity->last_response;
         return true;
@@ -124,13 +142,15 @@ class activity extends CI_Controller {
                     if(!isset($work->row)){
                         $work->row = (object)array(
                             'work_id' => $params->data['work_id'],
-                            'title' => ''
+                            'title' => '',
+                            'nofol_rank' => 0
                             );
                         $params->data['user_B'] = 0;
                     }
                     $data['work'] = array(
                         'work_id' => $work->row->work_id,
-                        'title' => $work->row->title
+                        'title' => $work->row->title,
+                        'nofol_rank' => $work->row->nofol_rank
                         );
                     $params->data['user_B'] = $work->row->user->id;
 
