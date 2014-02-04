@@ -43,7 +43,7 @@ class activity extends CI_Controller {
             'area' => strtolower($area),
             'act' => strtolower($crud),
             'type' => strtolower($type),
-            'point_get' => ,
+            'point_get' => 0,
             'point_status' => 0,
             'data' => '',
             'remote_addr' => 'console'
