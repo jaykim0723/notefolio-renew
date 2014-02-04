@@ -120,11 +120,11 @@ class activity extends CI_Controller {
                             );
                         $params->data['user_B'] = 0;
                     }
-                    $params->data['user_B'] = $work->user->id;
                     $data['work'] = array(
                         'work_id' => $work->row->work_id,
                         'title' => $work->row->title
                         );
+                    $params->data['user_B'] = $work->row->user->id;
 
                     $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
                     if(!isset($user_B->row)){
