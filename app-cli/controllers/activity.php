@@ -409,7 +409,7 @@ class activity extends CI_Controller {
                     }
                 break;
                 case "work":
-                    if(in_array($params->type, array('collect', 'comment'))){
+                    if(in_array($params->type, array('collect', 'comment', 'note'))){
                         //send to-> alarm
                         $this->activity_model->post_alarm(array(
                             'crud' => $params->crud,
