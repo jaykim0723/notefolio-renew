@@ -344,7 +344,7 @@ var workUtil = {
 				multiple : true,
 				start : function(elem, id, fileName){
 					$('#default-image').remove();
-					$('#content-block-list').append($('<li class="block-image" id="temp-'+id+'" style="min-height:100px;"><div class="ajax-loading-overlay"><img src="/img/ajax-loader.gif" class="ajax-loading"/></li>'));
+					$('#content-block-list').append($('<li class="block-image block" id="temp-'+id+'" style="min-height:100px;"><div class="ajax-loading-overlay"><img src="/img/ajax-loader.gif" class="ajax-loading"/></div><i class="spi spi-close2">close2</i></li>'));
 				},
 				cancel : function(elem, id, fileName){
 					console.log(elem, id, fileName);

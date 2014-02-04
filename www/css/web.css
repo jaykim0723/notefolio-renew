@@ -201,8 +201,8 @@ body {
 #content-block-list > li > i.spi {
 	position: absolute;
 	z-index: 10;
-	right: -5px;
-	top: -5px;
+	right: -10px;
+	top: -10px;
 	cursor: pointer;
 }
 .work-info-icons > div br {
