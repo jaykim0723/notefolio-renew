@@ -111,7 +111,7 @@ class activity extends CI_Controller {
                 }
             break;
             case "work":
-                if(in_array($params->type, array('work'))){
+                if(in_array($params->type, array('work', 'collect', 'comment', 'note'))){
                     $work = $this->work_model->get_info(array('work_id'=>$params->data['work_id']));
                     if(!isset($work->row)){
                         $work->row = (object)array(
@@ -139,6 +139,9 @@ class activity extends CI_Controller {
                         'username'=>$user_B->row->username,
                         'realname'=>$user_B->row->realname
                         );
+                }
+                if(in_array($params->type, array('collect', 'comment'))){
+                    $data['comment'] = $params->data['comment'];
                 }
             break;
             default:
