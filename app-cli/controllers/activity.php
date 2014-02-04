@@ -4,6 +4,8 @@
  *
  * @author Yoon, Seongsu(soplel@snooey.net)
  */
+
+define('USER_ID', 0);
  
 class activity extends CI_Controller {
 
