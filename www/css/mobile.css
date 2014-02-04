@@ -399,9 +399,6 @@ body * {
 .work-wrapper {
 	margin-bottom: 100px;
 }
-#work-info-wrapper .more-link {
-	visibility: hidden;
-}
 #work-content-blockadder{
 	display: none;
 }
