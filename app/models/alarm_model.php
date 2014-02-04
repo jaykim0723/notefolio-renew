@@ -66,27 +66,16 @@ class alarm_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-        $this->db
-            ->select('count(id) as all, sum(if(isnull(readdate), 0, 1)) as unread')
-            ->from('user_alarms')
-            ->where('user_id', $params->user_id)
-            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
-        switch($params->order_by){
-            case "newest":
-                $this->db->order_by('moddate', 'desc');
-            break;
-            case "oldest":
-                $this->db->order_by('moddate', 'asc');
-            break;
-            default:
-                if(is_array($params->order_by))
-                    $this->db->order_by($params->order_by);
-            break;
+        $query = $this->db->query("SELECT
+            count(id) as all_count, 
+            ifnull( sum( if( isnull( readdate ), 0, 1 ) ), 0 ) as unread
+            from user_feeds 
+            where user_id = ".$this->db->escape($params->user_id).";"); //set
         }
 
         try{
-            $info = $this->db->get()->row();
+            $info = $query->row();
         }
         catch (Exception $e) {
             $data = (object)array(
