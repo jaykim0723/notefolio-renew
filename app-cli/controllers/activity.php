@@ -6,8 +6,10 @@
  */
  
 class activity extends CI_Controller {
-
-	/**
+    
+    const USER_ID = 0;
+	
+    /**
 	 * Index Page for this controller.
 	 *
 	 */
@@ -66,7 +68,7 @@ class activity extends CI_Controller {
     
     function make_param($workType, $resource=array())
     {   
-        const USER_ID = $resource['data']['user_A'];
+
         $this->load->model('user_model');
 
         //-- go by work type
