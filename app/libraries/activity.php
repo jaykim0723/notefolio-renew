@@ -41,7 +41,7 @@ class Activity {
         
         $cmd = $default_cmd." ".$params['crud']." ".$params['area']." ".$params['type']." ".$data." > /dev/null &";
 
-        $response = @json_decode(exec($cmd));
+        $response = exec($cmd);
 
         return $response;
     }
