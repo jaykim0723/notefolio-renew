@@ -48,6 +48,10 @@ class Gallery extends CI_Controller {
         if(!empty($work->row->contents)){
             foreach($work->row->contents as $obj){
                 // exit(print_r($obj, TRUE));
+                if(!is_object($obj)){
+                    $obj = (object)$obj;
+                }
+                
                 if($obj->t=='text'){
                     $description = $obj->c;
                     break;
