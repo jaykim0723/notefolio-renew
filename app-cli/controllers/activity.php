@@ -21,11 +21,11 @@ class activity extends CI_Controller {
 	 *
      * @param string $data (querystring)
 	 */
-    public function post($crud, $area, $act, $data){
+    public function post($crud, $area, $type, $data){
         parse_str($data, $data);
         $params = $this->make_param($crud, array(
         	'area' => $area,
-        	'act'  => $act,
+        	'type'  => $type,
         	'data' => $data,
         	));
         var_export($params);
