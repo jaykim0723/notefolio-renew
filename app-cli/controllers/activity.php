@@ -71,6 +71,8 @@ class activity extends CI_Controller {
     
     function make_param_create($params=array())
     {
+        $this->load->model('user_model');
+
         $data = array();
         $user_A = $this->user_model->get_info(array('id'=>$params->data['user_A']))->row;
         $data['user_A'] = array(
