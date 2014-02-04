@@ -14,21 +14,36 @@ class Activity {
         $this->ci =& get_instance();
     }
     
-    /*
+    /**
      * post activity for user.
      * 
-     * @param array $data
+     * @param array $params
      * 
-     * @return noop
+     * @return string
      */
-    function post($data=array())
+    function post($params=array())
     {
+        /*
+        $params = array(
+            'crud' => $crud,
+            'area' => $area,
+            'type'  => $type,
+            'work_id' => $work_id,
+            'user_A' => $user_A_id,
+            'user_B' => $user_B_id,
+            'parent_id' => $parent_id,
+            'comment' => $comment,
+            );
+        */
 
         $default_cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'../app-cli/cli.php activity';
         $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
         
-        $cmd = $default_cmd.' user_list';
+        $cmd = $default_cmd." {$params['crud']} {$params['area']} {$params['type']} {$data} > /dev/null &";
 
+        $response = @json_decode(exec($cmd));
+
+        return $response;
     }
     
 }
