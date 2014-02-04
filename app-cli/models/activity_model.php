@@ -228,7 +228,7 @@ VALUES
                         FROM ( 
                             SELECT follower_id as user_id
                                 from user_follows
-                                where follow_id = ".$this->db->escape($params->user_B_id)."
+                                where follow_id = ".$this->db->escape($params->user_A_id)."
                                 order by user_id asc
                             ) a
                     )
@@ -248,7 +248,7 @@ VALUES
                         FROM ( 
                             SELECT follower_id as user_id
                                 from user_follows
-                                where follow_id = ".$this->db->escape($params->user_B_id)."
+                                where follow_id = ".$this->db->escape($params->user_A_id)."
                                 order by user_id asc
                             ) a
                     )
