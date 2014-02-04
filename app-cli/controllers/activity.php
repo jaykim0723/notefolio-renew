@@ -36,7 +36,7 @@ class activity extends CI_Controller {
         
 
         $ap_list = $this->config->item('ap',  'activity_point');
-        $ap = (isset($ap_list[$area][$type]))?$ap_list[$area][$type]:0
+        $ap = (isset($ap_list[$area][$type]))?$ap_list[$area][$type]:0;
 
         $this->activity_model->post(array(
             'ref_id' => (isset($params['work']['work_id']))?$params['work']['work_id']:0,
