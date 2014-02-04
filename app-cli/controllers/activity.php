@@ -91,7 +91,7 @@ class activity extends CI_Controller {
             'realname'=>$user_A->row->realname
             );
 
-        switch($params['area']){
+        switch($params->area){
             case "user":
                 if(in_array($params['type'], array('follow'))){
                     $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
