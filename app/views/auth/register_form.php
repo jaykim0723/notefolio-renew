@@ -137,6 +137,14 @@ if(isset($fb_num_id)) {
 		</div>
 	</div>
 
+    <div class="form-group checkbox">
+        <label class="checked">
+        	<input type="checkbox" name="mailing" value="1" checked="checked">노트폴리오의 최신 소식 및 작가/작품 소개를 메일로 받겠습니다.
+        </label> 
+    </div>
+
+
+
 	<?php if ($captcha_registration) {
 		if ($use_recaptcha) { ?>
 	<div class="form-group">
@@ -164,6 +172,8 @@ if(isset($fb_num_id)) {
 	</div>
 	<?php }
 	} ?>
+
+	<div style="color:#888;font-size:12px;margin-top:5px;">버튼을 클릭함으로써 노트폴리오의 <a href="/info/terms" class="register-ajax">약관</a>과 <a href="/info/privacy" class="register-ajax">개인정보보호정책</a>에 동의합니다.</div>
 	<button type="submit" name="register" class="btn btn-primary">Register</button>
 <?php echo form_close(); ?>
 
@@ -175,4 +185,34 @@ if(isset($fb_num_id)) {
         fb_diag.focus();
         //$.fn.dialog2.helpers.alert("현재 준비중입니다.");
     });
+    $(function(){
+    	$('.register-ajax').on('click', function(event){
+    		event.preventDefault();
+    		event.stopPropagation();
+			var dialog = new BootstrapDialog({
+			    title: $(this).text(),
+			    message: '<div class="loading" style="text-align:center;padding:50px 0;"><img src="/img/loading.gif"/></div>',
+			    buttons: [
+				    {
+				        label: 'Done',
+				        cssClass: 'btn-primary',
+				        action: function(dialogRef){    
+				            dialogRef.close();
+				        }
+				    }
+			    ]
+			});
+			// dialog.realize();
+			// dialog.getModal().prop('id', options.id); // cssClass 버그로 인해서 이 꼼수로..
+			dialog.open();
+
+			$.get($(this).attr('href'), {}).done(function(responseHTML){
+				dialog.getModalBody().html(responseHTML);
+			});
+    	})
+    })
+
+
+
+
 </script>

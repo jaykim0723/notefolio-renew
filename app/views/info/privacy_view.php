@@ -1,9 +1,15 @@
+<?php if (!$this->input->is_ajax_request()): ?>
 <section id="privacy_container">
     <div class="container">
         <div class="row">
             <div id="content" class="col-md-12">
 
                 <h1>Privacy Policy</h1>	
+
+<?php endif; ?>
+
+
+
 
                 <pre id='term'>
  제1장 총칙
@@ -334,7 +340,10 @@
 ③ 법 시행 전에 개인정보를 수집한 개인정보처리자는 기존의 수집목적 범위에도 불구하고 제1항 단서 및 제2항을 준수하기 위하여 새롭게 정보주체의 동의를 받을 목적으로 법 시행 전에 수집한 개인정보를 이용할 수 있다.
                 </pre>	
 
+
+<?php if (!$this->input->is_ajax_request()): ?>
             </div>
         </div>
     </div>
 </section>
+<?php endif; ?>

@@ -1,3 +1,5 @@
+<?php if (!$this->input->is_ajax_request()): ?>
+	
 <section id="term_container">
     <div class="container">
         <div class="row">
@@ -5,6 +7,7 @@
 
 
 				<h1>Term of use</h1>	
+<?php endif ?>
 						
 						
 				<pre id='term'>
@@ -256,11 +259,12 @@ notefolio.net은 때때로 회원들에게 무료배송 프로모션을 제공�
 
 "notefolio"와 이용자간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소 당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다. "notefolio"와 이용자간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
 
+
+<?php if (!$this->input->is_ajax_request()): ?>
 				</pre>	
 
             </div>
         </div>
     </div>
 </section>
-
-
+<?php endif; ?>
