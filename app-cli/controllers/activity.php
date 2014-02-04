@@ -1,4 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+define(USER_ID, 0);
+
 /**
  * @brief Activity Write Controller
  *
@@ -6,10 +8,8 @@
  */
  
 class activity extends CI_Controller {
-    
-    const USER_ID = 0;
-	
-    /**
+
+	/**
 	 * Index Page for this controller.
 	 *
 	 */
@@ -68,7 +68,6 @@ class activity extends CI_Controller {
     
     function make_param($workType, $resource=array())
     {   
-
         $this->load->model('user_model');
 
         //-- go by work type
