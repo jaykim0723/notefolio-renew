@@ -50,7 +50,7 @@ class activity extends CI_Controller {
         }
         echo '.';
 
-        $this->db->trans_start();
+        //$this->db->trans_start();
 
         $result = $this->activity_model->post(array(
             'ref_id' => (isset($params['work']['work_id']))?$params['work']['work_id']:0,
@@ -80,7 +80,7 @@ class activity extends CI_Controller {
         }
         echo '.';
 
-        $this->db->trans_complete();
+        //$this->db->trans_complete();
 
         echo $this->db->trans_status();
 
