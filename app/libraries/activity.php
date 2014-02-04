@@ -46,9 +46,9 @@ class Activity {
         if(isset($params['parent_id'])) $queryData['parent_id'] => $params['parent_id'];
         if(isset($params['comment']))   $queryData['comment']   => $params['comment'];
 
-        $data=http_build_query($queryData);
+        $data = http_build_query($queryData);
 
-        $cmd = $default_cmd." ".$params['crud']." ".$params['area']." ".$params['type']." ".$data." > /dev/null &";
+        $cmd = $default_cmd." ".$params['crud']." ".$params['area']." ".$params['type']." \"".$data."\" > /dev/null &";
 
         $response = exec($cmd);
 
