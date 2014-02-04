@@ -36,19 +36,17 @@ class activity extends CI_Controller {
         
 
         $ap_list = $this->config->item('ap',  'activity_point');
-        $ap = (isset($ap_list[$area][$type]))?$ap_list[$area][$type]:0;
+        $ap = (isset($ap_list[$area][$type]))?$ap_list[$area][$type]:0
 
-        var_export($ap);
-        exit();
         $this->activity_model->post(array(
             'ref_id' => (isset($params['work']['work_id']))?$params['work']['work_id']:0,
             'user_id' => (isset($params['user_A']['id']))?$params['user_A']['id']:0,
             'area' => strtolower($area),
             'act' => strtolower($crud),
             'type' => strtolower($type),
-            'point_get' => 0,
-            'point_status' => 0,
-            'data' => '',
+            'point_get' => $ap,
+            'point_status' => (isset($params['work']['nofol_rank']))?$params['work']['nofol_rank']:0,
+            'data' => serialize((object)$params),
             'remote_addr' => 'console'
         ));
 
