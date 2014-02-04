@@ -67,12 +67,16 @@ class feed_model extends CI_Model {
 
 
     function get_unread_count($user_id=''){
+        $user_id = (empty($user_id))?USER_ID:$user_id;
+
+        $feed_count = $this->get_cout(array('user_id'=>$user_id));
+
         $data = (object)array(
             'status' => 'done',
             'alarm_all' => 2398,
             'alarm_unread' => 34,
-            'feed_all' => 2930,
-            'feed_unread' => 3
+            'feed_all' => $feed_count->all,
+            'feed_unread' => $feed_count->unread
         );
         
         // do stuff
@@ -94,21 +98,7 @@ class feed_model extends CI_Model {
         $this->db
             ->select('count(id) as all, sum(if(isnull(readdate), 0, 1)) as unread')
             ->from('user_feeds')
-            ->where('user_id', $params->user_id)
-            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
-
-        switch($params->order_by){
-            case "newest":
-                $this->db->order_by('moddate', 'desc');
-            break;
-            case "oldest":
-                $this->db->order_by('moddate', 'asc');
-            break;
-            default:
-                if(is_array($params->order_by))
-                    $this->db->order_by($params->order_by);
-            break;
-        }
+            ->where('user_id', $params->user_id); //set
 
         try{
             $info = $this->db->get()->row();
@@ -127,8 +117,8 @@ class feed_model extends CI_Model {
 
         $data = (object)array(
             'status' => 'done',
-            'alarm_all' => $info->all,
-            'alarm_unread' => $info->unread,
+            'all' => $info->all,
+            'unread' => $info->unread,
         );
 
         return $data;
