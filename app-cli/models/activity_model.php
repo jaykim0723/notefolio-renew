@@ -228,7 +228,7 @@ VALUES
                         FROM ( 
                             SELECT follower_id as user_id
                                 from user_follows
-                                where follower_id = ".$this->db->escape($params->user_B_id)."
+                                where follow_id = ".$this->db->escape($params->user_B_id)."
                                 order by user_id asc
                             ) a
                     )
@@ -241,14 +241,14 @@ VALUES
                 &&(($params->type=="note")||($params->type=="comment")||($params->type=="collect"))   ){
                 $sql = "INSERT INTO `user_feeds` (`user_id`,`ref_id`,`regdate`)
                     (
-                        SELECT 
+                        SELECT
                             a.user_id,        
                             ".$this->db->escape($params->activity_id)." as ref_id,
                             CURRENT_TIMESTAMP as regdate
                         FROM ( 
                             SELECT follower_id as user_id
                                 from user_follows
-                                where follower_id = ".$this->db->escape($params->user_B_id)."
+                                where follow_id = ".$this->db->escape($params->user_B_id)."
                                 order by user_id asc
                             ) a
                     )
