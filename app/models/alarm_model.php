@@ -89,8 +89,8 @@ class alarm_model extends CI_Model {
 
         $data = (object)array(
             'status' => 'done',
-            'all' => $info->all_count,
-            'unread' => $info->unread,
+            'all' => (int)$info->all_count,
+            'unread' => (int)$info->unread,
         );
 
         return $data;
