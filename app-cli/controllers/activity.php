@@ -61,6 +61,7 @@ class activity extends CI_Controller {
         }
 
         $data = array();
+        $params = (object)$resource;
 
         $user_A = $this->user_model->get_info(array('id'=>$params->data['user_A']));
         if(!isset($user_A->row)){
