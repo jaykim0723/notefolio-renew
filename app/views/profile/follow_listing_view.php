@@ -4,7 +4,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1><?php echo $mode ?></h1>
 <?php endif ?>
 				<ul class="follow-list infinite-list mode-<?php echo $mode ?>">
 					<!-- list -->

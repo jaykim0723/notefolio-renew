@@ -1167,7 +1167,7 @@ var profileUtil = {
 			});
 		},
 		createAttachmentBlock : function(r){
-			return $('<li class="about-attachment-li" id="attach-'+r.upload_id+'"><i class="spi spi-close">close</i><img src="'+r.src+'"/></li>');
+			return $('<li class="about-attachment-li" id="attach-'+r.upload_id+'"><i class="spi spi-close3">close3</i><img src="'+r.src+'"/></li>');
 		},
 		removeAttachment : function(){
 

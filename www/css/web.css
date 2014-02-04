@@ -312,7 +312,8 @@ body {
 	padding: 0 15px;
 	margin: 0;
 	margin-left: -15px;
-	overflow:scroll;
+	overflow-y:scroll;
+	overflow-x:hidden;
 	position: absolute;
 	bottom: 40px;
 	top:411px;

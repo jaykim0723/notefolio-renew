@@ -272,6 +272,7 @@ $(function() {
 					setLocal('listing_href', href);
 					// setLocal('listing_top', $(window).scrollTop()); // 클릭시 저장하는 것으로 수정
 			}
+			$(window).trigger('scroll');
 			$('#loading-indicator').fadeOut();
 			if(typeof NFview.infiniteCallback!=='undefined'){
 				NFview.infiniteCallback();

@@ -11,6 +11,14 @@
 <?php endif ?>
 
 <div id="profile-header" style="background-image:url(/data/profiles/<?php echo $row->username ?>_bg.jpg?_=<?php echo substr($row->modified,-2) ?>);">
+
+	<div id="profile-total">
+		<span>총 작품수 : <?php echo number_format($total->work_cnt) ?></span>
+		<span>조회받은 수 : <?php echo number_format($total->hit_cnt) ?></span>
+		<span>노트받은 수 : <?php echo number_format($total->note_cnt) ?></span>
+		<span>콜렉트당한 수 : <?php echo number_format($total->collect_cnt) ?></span>
+	</div>
+
 	<div id="profile-inner-wrapper" style="background-color:<?php echo $row->face_color ?>">
 		<div id="profile-inner">
 			<div id="profile-image">
@@ -69,28 +77,14 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<table id="statistics-widgets" class="pull-right table table-bordered">
-					<thead>
-						<tr>
-							<th>총 작품수</th>
-							<th>총 조회수</th>
-							<th>총 노트수</th>
-							<th>총 콜렉트수</th>
-							<th>총 팔로워수</th>
-							<th>총 팔로윙수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><?php echo number_format($total->work_cnt) ?></td>
-							<td><?php echo number_format($total->hit_cnt) ?></td>
-							<td><?php echo number_format($total->note_cnt) ?></td>
-							<td><?php echo number_format($total->collect_cnt) ?></td>
-							<td><?php echo number_format($total->follower_cnt) ?></td>
-							<td><?php echo number_format($total->following_cnt) ?></td>
-						</tr>
-					</tbody>
-				</table>
+				<ul class="nav nav-pills pull-right">
+					<li>
+						<a href="/<?php echo $row->username ?>/followings">followings(<?php echo number_format($total->following_cnt) ?>)</a>
+					</li>
+					<li>
+						<a href="/<?php echo $row->username ?>/followers">followers(<?php echo number_format($total->follower_cnt) ?>)</a>
+					</li>
+				</ul>
 				<div class="clearfix visible-xs"></div>
 				<ul id="profile-nav" class="nav nav-pills">
 					<li id="profile_nav_">

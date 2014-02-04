@@ -872,7 +872,13 @@ p.desc {
 	margin-bottom: 30px;
 	position: relative;
 }
-
+#profile-total {
+	position: absolute;
+	right: 15px;
+	bottom: 15px;
+	color: #fff;
+	font-size: 12px;
+}
 #profile-header #btn-edit-cover {
 	display: none;
 	position: absolute;
@@ -1152,7 +1158,10 @@ p.desc {
 
 
 
-
+#about-container {
+	background: #fff;
+	padding: 30px;
+}
 #about-cont {
 	min-height: 400px;
 }
