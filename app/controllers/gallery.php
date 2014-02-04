@@ -42,8 +42,6 @@ class Gallery extends CI_Controller {
         ));
         if($work->status==='fail') alert('작품이 존재하지 않습니다.');
 
-        exit(var_export($work));
-
         $work->row->hit_cnt++;
         $description = '';
         // get description
@@ -56,6 +54,7 @@ class Gallery extends CI_Controller {
                 }
             }
         }
+        exit(var_export($work));
         $this->layout->set_header(array(
             'keywords' => @implode(', ',$work->row->tags),
             'description' => $description,
