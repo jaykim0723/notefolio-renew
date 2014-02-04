@@ -75,8 +75,8 @@ class feed_model extends CI_Model {
 
         $data = (object)array(
             'status' => 'done',
-            'alarm_all' => 2398,
-            'alarm_unread' => 34,
+            'alarm_all' => $alarm_count->all,
+            'alarm_unread' => $alarm_count->unread
             'feed_all' => $feed_count->all,
             'feed_unread' => $feed_count->unread
         );
