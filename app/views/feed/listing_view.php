@@ -4,14 +4,14 @@
 	<div class="container">
 		<div class="row visible-sm visible-xs">
 			<div class="col-md-12">
-				<ul class="nav nav-tabs">
-					<li class="active"><a href="#">팔로워의 작품</a></li>
-					<li><a href="#">팔로워의 활동</a></li>
+				<ul id="feed-tab" class="nav nav-tabs">
+					<li rel="feed-list-wrapper" class="active"><a href="#">팔로워의 작품</a></li>
+					<li rel="activity-list-wrapper"><a href="#">팔로워의 활동</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-9 col-sm-12 col-xs-12">
+			<div id="feed-list-wrapper" class="col-md-9 col-sm-12 col-xs-12">
 <?php endif ?>
 
 
@@ -29,7 +29,7 @@
 
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
-			<div class="col-md-3 hidden-sm hidden-xs">
+			<div id="activity-list-wrapper" class="col-md-3">
 				<?php echo $this->load->view('feed/activity_listing_view', $activity); ?>
 			</div>
 		</div>
@@ -39,6 +39,38 @@
 <?php if ($page==1): ?>
 <script>
 	$(function(){
+		$('#feed-tab li').on('click', function(){
+			var $tab = $('#feed-tab');
+			$tab.children('li').removeClass('active');
+			$(this).addClass('active');
+			var activated = $(this).attr('rel');
+			$('#feed-list-wrapper, #activity-list-wrapper').toggle();
+			if(activated=='feed-list-wrapper'){
+				$('#feed-list').removeClass('disabled');
+			}else{
+				$('#feed-list').addClass('disabled');
+			}
+		});
+		NFview.lastMode = $(window).width() > 991 ? 'large' : 'small';
+		$(window).on('resize', function(){
+			var currentWidth = $(this).width();
+			if(currentWidth > 991 && NFview.lastMode=='small'){
+				$('#feed-list-wrapper, #activity-list-wrapper').show();
+				$('#feed-list').removeClass('disabled');
+				NFview.lastMode = 'large';
+			}else if(currentWidth <= 991 && NFview.lastMode=='large'){
+				var activated = $('#feed-tab li.active').attr('rel');
+				$('#feed-list-wrapper, #activity-list-wrapper').hide();
+				$('#'+activated).show();
+				if(activated=='feed-list-wrapper'){
+					$('#feed-list').removeClass('disabled');
+				}else{
+					$('#feed-list').addClass('disabled');
+				}
+				NFview.lastMode = 'small';
+			}
+		});
+
 		$(document).on('click', '.activity-more-link', function(event){
 			event.preventDefault();
 			event.stopPropagation();
@@ -56,6 +88,7 @@
 		});
 		NFview.infiniteCallback = function(){
 			// 두 리스트의 길이차를 분석하여, 너무 차이가 많이 나면 하나씩 등록을 해준다.
+			if($(window).width() <= 991) return;
 			var gap = $('#feed-list').outerHeight() - $('#feed-activity-list').outerHeight();
 			if(gap>400){
 				$('.activity-more-link').trigger('click');

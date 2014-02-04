@@ -384,7 +384,11 @@ body * {
 	font-size: 12px;
 	line-height: 1em;
 }
-
+@media (max-width:991px) {
+	#activity-list-wrapper {
+		display: none;
+	}
+}
 
 /* work */
 .work-wrapper {

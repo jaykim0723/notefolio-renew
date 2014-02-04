@@ -240,11 +240,14 @@ $(function() {
 	});
 
 
-	
+	// infinite scroll binding
+	site.scrollLimit = 200;
+	site.scrollCount = 0;
 	$(document).on('click', '.more-link', function(event){
 		event.preventDefault();
 		event.stopPropagation();
 		$('#loading-indicator').fadeIn();
+		site.scrollCount++;
 		$.get($(this).attr('href'), {}).done(function(responseHTML){
 			var $container = $('.infinite-list');
 			var $response = $('<div>'+responseHTML+'</div>');
@@ -261,11 +264,12 @@ $(function() {
 		$(this).remove();
 	});
 	$(window).on('scroll', function() {
-		if(site.checkNewBottom($('.infinite-list'))){
-			if($('#loading-indicator').css('display')!='block'){
-				$('.more-link').trigger('click');
-			}
-		};
+		var $list = $('.infinite-list');
+		if(site.scrollCount > site.scrollLimit) return;
+		if($list.hasClass('disabled')) return;
+		if(!site.checkNewBottom($list)) return;
+		if($('#loading-indicator').css('display')=='block') return;
+		$('.more-link').trigger('click');
 	});
 
 	if(site.user_id>0){
