@@ -3,33 +3,51 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<form action="" class="well form-inline" role="form">
-					<div class="input-group col-xs-2">
-	  					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-						<select class="" name="sort_option" id="sort_option">
-							<option value="total">전체 기간</option>
-							<option value="daily">오늘</option>
-							<option value="1week">이번 주</option>
-							<option value="monthly">이번 달</option>
-						</select>
-					</div>
-					<select class="col-xs-4" name="work_categories" id="work_categories" multiple title="Choose one of the following...">
-						<?php 
-						$this->load->config('keyword', TRUE);
-						$keyword_list = $this->config->item('keyword', 'keyword');
+				<form action="" class="form-inline" role="form">
 
-						foreach ($keyword_list as $key => $keyword) { ?>
-							<option value="<?php echo $key?>"><?php echo $keyword;?></option>
-						<?php }	?>
-					</select>
-					<input class="col-xs-2 form-control" type="text" name="" placeholder="검색어"/>
-					<select class="col-xs-2" name="" id="">
-						<option value="newest">최신순</option>
-						<option value="noted">인기순</option>
-						<option value="viewed">조회순</option>
-						<option value="featured">추천순</option>
-					</select>
-					<button type="submit" class="btn btn-primary">조회</button>
+					<div class="row">
+						<div class="col-md-3 col-sm-">
+							<div class="input-group">
+			  					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+								<select class="" name="sort_option" id="sort_option">
+									<option value="total">전체 기간</option>
+									<option value="daily">오늘</option>
+									<option value="1week">이번 주</option>
+									<option value="monthly">이번 달</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<select name="work_categories" id="work_categories" multiple title="Choose one of the following...">
+								<?php 
+								$this->load->config('keyword', TRUE);
+								$keyword_list = $this->config->item('keyword', 'keyword');
+
+								foreach ($keyword_list as $key => $keyword) { ?>
+									<option value="<?php echo $key?>"><?php echo $keyword;?></option>
+								<?php }	?>
+							</select>
+						</div>
+
+						<div class="col-md-3">
+							<input class="col-xs-2 form-control" type="text" name="" placeholder="검색어"/>
+						</div>
+
+						<div class="col-md-2">
+							<select name="" id="">
+								<option value="newest">최신순</option>
+								<option value="noted">인기순</option>
+								<option value="viewed">조회순</option>
+								<option value="featured">추천순</option>
+							</select>
+						</div>
+
+						<div class="col-md-1">
+							<button type="submit" class="btn btn-primary">조회</button>
+						</div>
+					</div>
+
 				</form>
 			</div>
 		</div>

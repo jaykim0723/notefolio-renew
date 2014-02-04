@@ -193,6 +193,18 @@ body {
 
 
 /* work */
+
+#content-block-list > li {
+	position: relative;
+	overflow: visible!important;
+}
+#content-block-list > li > i.spi {
+	position: absolute;
+	z-index: 10;
+	right: -5px;
+	top: -5px;
+	cursor: pointer;
+}
 .work-info-icons > div br {
 	display: block;
 }

@@ -250,6 +250,9 @@ var workUtil = {
 			}else{
 				$('#content-block-list').append('<img src="/img/form_view_default.png" id="default-image"/>');
 			}
+			$('#content-block-list').on('click', 'i.spi', function(){
+				workUtil.content.removeBlock($(this).parents('li.block'));
+			});
 
 
 			// 키워드 셋팅하기
@@ -532,13 +535,13 @@ var workUtil = {
 			var output = '';
 			switch(type){
 				case 'line':
-					output = $('<li class="block-line"></li>');
+					output = $('<li class="block-line block"><i class="spi spi-close">close</i></li>');
 				break;
 				
 				case 'image':
 					if(c=='')
 						c = workUtil.defaultValue.image;
-					output = workUtil.content.createUploader($('<li class="block-image"><img data-id="'+i+'" src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
+					output = workUtil.content.createUploader($('<li class="block-image block"><img data-id="'+i+'" src="'+c+'"/><button class="btn btn-primary">Upload an image</button><i class="spi spi-close">close</i></li>'));
 
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
@@ -546,13 +549,13 @@ var workUtil = {
 				case 'video':
 					if(c=='')
 						c = workUtil.defaultValue.video;
-					output = $('<li class="block-video"><iframe src="'+c+'?wmode=transparent" frameborder="0" wmode="Opaque"></iframe><div class="block-video-overlay"><textarea></textarea></div></li>');
+					output = $('<li class="block-video block"><iframe src="'+c+'?wmode=transparent" frameborder="0" wmode="Opaque"></iframe><div class="block-video-overlay"><textarea></textarea></div><i class="spi spi-close">close</i></li>');
 				break;
 
 				case 'text':
 				default:
 					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(nl2br(c));
-					output = $('<li class="block-text"></li>').append(textarea);
+					output = $('<li class="block-text block"><i class="spi spi-close">close</i></li>').append(textarea);
 				break;
 			}
 			if(typeof(data)!='undefined'){
