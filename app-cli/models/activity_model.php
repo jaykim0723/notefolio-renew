@@ -193,7 +193,6 @@ VALUES
         
         return (object)array(
             'status' => 'done',
-            'activity_id' => $activity_id
         );
         
     }
@@ -267,7 +266,6 @@ VALUES
         
         return (object)array(
             'status' => 'done',
-            'activity_id' => $activity_id
         );
         
     }
