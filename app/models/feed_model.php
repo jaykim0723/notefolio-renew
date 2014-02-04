@@ -70,7 +70,7 @@ class feed_model extends CI_Model {
         $this->load->model('alarm_model');
         $user_id = (empty($user_id))?USER_ID:$user_id;
 
-        $feed_count = $this->get_count(array('user_id'=>$user_id));\
+        $feed_count = $this->get_count(array('user_id'=>$user_id));
         $alarm_count = $this->alarm_model->get_count(array('user_id'=>$user_id));
 
         $data = (object)array(
