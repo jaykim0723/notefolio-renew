@@ -22,6 +22,10 @@ site.redirect = function(url, msg){
 			msg : msg,
 		}));
 	}
+	delLocal('listing_html');
+	delLocal('listing_url');
+	delLocal('listing_href');
+
 	location.href = url;
 };
 site.scrollToBottom = function(obj){
@@ -279,6 +283,12 @@ $(function() {
 			}
 		});
 		$(this).remove();
+	}).on('click', '.clear-list', function(){
+		alert(234);
+		// delLocal('listing_html');
+		// delLocal('listing_url');
+		// delLocal('listing_href');
+		// return true;
 	});
 	$(window).on('scroll', function() {
 		var $list = $('.infinite-list');
