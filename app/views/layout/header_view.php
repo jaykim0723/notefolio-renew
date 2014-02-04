@@ -28,7 +28,7 @@
 						</a>
 					</li>
 					<li>
-						<a class="btn btn-link" href="/gallery/listing"><i class="spi spi-gallery"></i></a>
+						<a class="btn btn-link clear-list" href="/gallery/listing"><i class="spi spi-gallery"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -102,23 +102,23 @@
 				followings <?php echo $this->nf->get('user')->follower_cnt ?>
 			</li>
 			<li>
-				<a href="/alarm/listing">
+				<a class="clear-list" href="/alarm/listing">
 					Alarm
 					<span class="label label-danger rounded unread-alarm"></span>
 				</a>
 			</li>
 			<li>
-				<a href="/feed/listing">
+				<a class="clear-list" href="/feed/listing">
 					Feed
 					<span class="label label-danger rounded unread-feed"></span>
 				</a>
 			</li>
 
 			<li>
-				<a href="/<?php echo $this->session->userdata('username') ?>/myworks">My works</a>
+				<a class="clear-list" href="/<?php echo $this->session->userdata('username') ?>/myworks">My works</a>
 			</li>
 			<li>
-				<a href="/<?php echo $this->session->userdata('username') ?>/statistics">Statistics</a>
+				<a class="clear-list" href="/<?php echo $this->session->userdata('username') ?>/statistics">Statistics</a>
 			</li>
 			<li>
 				<a href="/auth/setting">Settings</a>
