@@ -250,7 +250,7 @@ $(function() {
 		$.get($(this).attr('href'), {}).done(function(responseHTML){
 			var $container = $('.infinite-list');
 			var $response = $('<div>'+responseHTML+'</div>');
-			var $lis = $('li.infinite-item', $response);
+			var $lis = $('.infinite-item', $response);
 			if($lis.length > 0){
 				$('.more-link', $response).insertAfter($container);
 				$lis.appendTo($container);
