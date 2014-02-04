@@ -6,8 +6,6 @@ class activity_model extends CI_Model {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('api/work_model');
-        $this->load->model('tank_auth/users');
         
     }
 
