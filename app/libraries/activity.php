@@ -50,6 +50,7 @@ class Activity {
 
         $cmd = $default_cmd." ".$params['crud']." ".$params['area']." ".$params['type']." \"".$data."\" > /dev/null &";
         var_export($cmd);
+        exit();
         $response = exec($cmd);
 
         return $response;
