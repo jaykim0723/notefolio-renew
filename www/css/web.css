@@ -511,6 +511,7 @@ li#trash-bin{
 #btn-profile-icon {
 	float: right;
 	position: relative;
+    margin-top: -4px;
 }
 #btn-profile-icon img {
 	width: 50px;
@@ -520,6 +521,7 @@ li#trash-bin{
 	position: absolute;
 	left: 0;
 	top: 0;
+    margin-top: -0.5px;
 }
 #btn-profile span {
 	margin-top: 10px;
