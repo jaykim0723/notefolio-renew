@@ -120,7 +120,7 @@ VALUES
                     $sql = "INSERT INTO `user_alarms` (`user_id`,`ref_id`,`regdate`)
                         (
                             SELECT `user_id`, ".$this->db->escape($params->activity_id)." as ref_id, CURRENT_TIMESTAMP as regdate
-                                FROM `'.$area.'_comments`
+                                FROM `work_comments`
                                 WHERE `work_id`=".$this->db->escape($params->ref_id)."
                                     AND `parent_id`=0
                                     AND `user_id` != ".$this->db->escape($params->user_A_id)."
