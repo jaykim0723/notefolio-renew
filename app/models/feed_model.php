@@ -95,10 +95,11 @@ class feed_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-        $this->db
-            ->select('count(id) as all, sum(if(isnull(readdate), 0, 1)) as unread')
-            ->from('user_feeds')
-            ->where('user_id', $params->user_id); //set
+        $this->db->query("SELECT
+            count(id) as all_count, 
+            ifnull( sum( if( isnull( readdate ), 0, 1 ) ), 0 ) as unread
+            from user_feeds 
+            where user_id = ".$this->db->escape($params->user_id).";"); //set
 
         try{
             $info = $this->db->get()->row();
@@ -117,7 +118,7 @@ class feed_model extends CI_Model {
 
         $data = (object)array(
             'status' => 'done',
-            'all' => $info->all,
+            'all' => $info->all_count,
             'unread' => $info->unread,
         );
 
