@@ -191,7 +191,12 @@ body {
 #main-hot-creators a:hover .hot-go {
 	display: block;
 }
-
+@media (min-width:1200px) {
+	#main-hot-creators a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}
 
 
 
