@@ -357,10 +357,9 @@ class Gallery extends CI_Controller {
                         $this->activity->post(array(
                             'crud' => 'delete',
                             'area' => 'work',
-                            'type'  => 'collect',
+                            'type'  => 'note',
                             'work_id' => $params->work_id,
                             'user_A' => $params->user_id,
-                            'comment' => ''
                             ));
                     }
                 break;
@@ -375,10 +374,9 @@ class Gallery extends CI_Controller {
                         $this->activity->post(array(
                             'crud' => 'create',
                             'area' => 'work',
-                            'type'  => 'collect',
+                            'type'  => 'note',
                             'work_id' => $params->work_id,
                             'user_A' => $params->user_id,
-                            'comment' => ''
                             ));
                     }
                 break;
@@ -412,9 +410,10 @@ class Gallery extends CI_Controller {
                             $this->activity->post(array(
                                 'crud' => 'delete',
                                 'area' => 'work',
-                                'type'  => 'note',
+                                'type'  => 'collect',
                                 'work_id' => $params->work_id,
                                 'user_A' => $params->user_id,
+                                'comment' => ''
                                 ));
                         }
                     break;
@@ -428,9 +427,10 @@ class Gallery extends CI_Controller {
                             $this->activity->post(array(
                                 'crud' => 'create',
                                 'area' => 'work',
-                                'type'  => 'note',
+                                'type'  => 'collect',
                                 'work_id' => $params->work_id,
                                 'user_A' => $params->user_id,
+                                'comment' => ''
                                 ));
                         }
                     break;
