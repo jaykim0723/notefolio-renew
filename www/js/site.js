@@ -248,8 +248,8 @@ site.restoreInifiniteScroll = function(target, target_button){
 
 $(function() {
 	$('body').tooltip({
-	    selector: '[rel=tooltip]',
-	    placement : 'bottom'
+	    selector: '[data-toggle=tooltip]',
+	    placement : $(this).data('placement')
 	});
 
 	// infinite scroll binding

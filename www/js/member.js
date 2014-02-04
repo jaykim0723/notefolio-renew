@@ -368,6 +368,7 @@ var workUtil = {
 			workUtil.discoverbility();
 			
 		},
+
 		setGround: function(target, trash){ // 각 블록별 소팅할 수 있도록 이벤트 바인딩
 			if(typeof(target)=='undefined'){
 				var target = "#content-block-list";
@@ -378,20 +379,6 @@ var workUtil = {
     			distance: 15,
 				start: function(event, ui){
 				},
-		        // placeholder: {
-		        //     element: function(clone, ui) {
-		        //     	var container = $('<li class="item-sorting"></li>')
-		        //         		.css('outline', '#00ff00 5px dotted');
-
-		        //         return $(container).append($('<div>'+clone[0].innerHTML+'</div>').css('opacity','0.5'));
-		        //     },
-		        //     update: function() {
-		        //         return;
-		        //     }
-		        // },
-				// placeholder: "ui-state-highlight",
-			    // forcePlaceholderSize: false,
-				// helper: 'clone',
 				stop: function(event, ui){
 					if($(ui.item[0]).hasClass('block-text')==false) return;
 					var c = $(ui.item[0]).find('textarea').val();
@@ -405,6 +392,7 @@ var workUtil = {
 				}
 			});
 		},
+
 		setTrashBin: function(target, sendTo){
 			if(typeof(target)=='undefined'){
 				var target = "#trash-bin";
@@ -488,7 +476,7 @@ var workUtil = {
 				})
 				.draggable({
 					connectToSortable: "#content-block-list",
-					helper: "clone",
+					helper: 'clone',
 					distance: 15,
 					start: function(event, ui){
 						$(sendTo).droppable({
@@ -499,12 +487,12 @@ var workUtil = {
 							},
 					    	drop: function( event, ui ) {
 								$(ui.draggable).css('outline', 'none');
-					    		var className =(""+$(ui.draggable).attr("class")+"").match(/block-(\w+)/);
+					    		var className = $(ui.draggable).attr("class").match(/block-(\w+)/);
 								if(className){
 									$newBlock = workUtil.content.createBlock(className[1]);
-									$(ui.draggable)
-										.empty()
-										.append($newBlock);
+									console.log('$newBlock', $newBlock);
+									console.log('$newBlock.unwrap()', $newBlock.unwrap());
+									$(ui.draggable).empty().append($newBlock.html());
 									$('#default-image').remove();
 									if(className =='text')
 										$newBlock.find('textarea').wysihtml5();

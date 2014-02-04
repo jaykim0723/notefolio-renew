@@ -147,7 +147,7 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-6">
-									<i rel="tooltip" title="<?php
+									<i data-toggle="tooltip" data-placement="bottom" title="<?php
 									switch($row->ccl){
 										case 'BY':
 											echo '저작자표시';

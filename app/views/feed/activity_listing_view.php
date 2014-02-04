@@ -1,7 +1,7 @@
 <ul id="feed-activity-list" class="feed-activity-list">
 	<!-- list -->
 	<?php foreach ($rows as $key => $row): ?>
-	<?php $this->load->view('feed/activity_inc_view', $row) ?>
+	<?php $this->load->view('feed/activity_inc_view', array('row' => $row)) ?>
 	<?php endforeach ?>
 
 </ul>

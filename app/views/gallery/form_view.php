@@ -33,7 +33,7 @@
 
 
 
-				<h4>CCL</h4>
+				<h4>CCL <a class="tip">자세히보기</a></h4>
 				<select name="ccl" id="ccl" class="" title="Choose one of the following..." >
 					<option value="">CCL 표시 안함</option>
 					<option data-content='<i class="spi spi-ccl-cc-by"></i>저작자표시' value="BY">저작자표시</option>
@@ -103,7 +103,7 @@
 
 
 
-				<h4>충실도</h4>
+				<h4>충실도 <a class="tip">자세히보기</a></h4>
 				<div id="work-discoverbility"><span style="width:0%;"></span></div>
 
 
@@ -148,10 +148,10 @@
 
 
 <ul class="list-unstyled" id="work-content-blockadder">
-	<li class="block-text"><i class="glyphicon glyphicon-pencil"></i></li>
-	<li class="block-image"><i class="glyphicon glyphicon-picture"></i></li>
-	<li class="block-video"><i class="glyphicon glyphicon-film"></i></li>
-	<li class="block-line"><i class="glyphicon glyphicon-minus"></i></li>
+	<li class="block block-text"><i class="glyphicon glyphicon-pencil"></i></li>
+	<li class="block block-image"><i class="glyphicon glyphicon-picture"></i></li>
+	<li class="block block-video"><i class="glyphicon glyphicon-film"></i></li>
+	<li class="block block-line"><i class="glyphicon glyphicon-minus"></i></li>
 	<li id="trash-bin" class="glyphicon glyphicon-remove">&nbsp;</li>
 </ul>
 <script>
