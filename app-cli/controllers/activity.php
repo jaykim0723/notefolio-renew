@@ -38,6 +38,16 @@ class activity extends CI_Controller {
 
         $ap_list = $this->config->item('ap',  'activity_point');
         $ap = (isset($ap_list[$area][$type]))?$ap_list[$area][$type]:0;
+        switch($crud){
+            case "delete":
+                $ap = -$ap;
+            break;
+            default:
+                $ap = $ap;
+            break;
+        }
+
+        $this->db->trans_start();
 
         $result = $this->activity_model->post(array(
             'ref_id' => (isset($params['work']['work_id']))?$params['work']['work_id']:0,
@@ -57,12 +67,16 @@ class activity extends CI_Controller {
                 'area' => $area,
                 'type'  => $type,
                 'ref_id' => (isset($params['work']['work_id']))?$params['work']['work_id']:0,
+                'user_A_id' => $params['user_A']['id'],
+                'user_B_id' => $params['user_B']['id'],
                 'parent_id' => (isset($data['parent_id']))?$data['parent_id']:0,
                 'point_get' =>$ap,
-                'activity_id' => $result->activity_id
+                'activity_id' => $result->activity_id,
                 ));
             return true;
         }
+
+        $this->db->trans_complete();
 
         //echo $this->last_error;
         return false;
@@ -196,6 +210,163 @@ class activity extends CI_Controller {
         return $data;
     }
 
+    /**
+     * make activity parameter for user. (update)
+     * 
+     * @param array $resource
+     * 
+     * @return array
+     */
+    
+    function make_param_update($params=array())
+    {
+        $this->load->model('user_model');
+        $this->load->model('work_model');
+
+        $params = (object)$params;
+
+        $data = array();
+        
+        switch($params->area){
+            case "user":
+                if(in_array($params->type, array('follow'))){
+                    $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
+                    if(!isset($user_B->row)){
+                        $user_B->row = (object)array(
+                            'id' => $params->data['user_B'],
+                            'username' => '',
+                            'realname' => '',
+                            );
+                    }
+                    $data['user_B'] = array(
+                        'id'=>$user_B->id,
+                        'username'=>$user_B->row->username,
+                        'realname'=>$user_B->row->realname
+                        );
+                }
+            break;
+            case "work":
+                if(in_array($params->type, array('enable', 'disable', 'delete', 'collect', 'comment'))){
+                    $work = $this->work_model->get_info(array('work_id'=>$params->data['work_id']));
+                    if(!isset($work->row)){
+                        $work->row = (object)array(
+                            'work_id' => $params->data['work_id'],
+                            'title' => '',
+                            'nofol_rank' => 0
+                            );
+                        $params->data['user_B'] = 0;
+                    }
+                    $data['work'] = array(
+                        'work_id' => $work->row->work_id,
+                        'title' => $work->row->title,
+                        'nofol_rank' => $work->row->nofol_rank
+                        );
+                    $params->data['user_B'] = $work->row->user->id;
+
+                    $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
+                    if(!isset($user_B->row)){
+                        $user_B->row = (object)array(
+                            'id' => $params->data['user_B'],
+                            'username' => '',
+                            'realname' => '',
+                            );
+                    }
+                    $data['user_B'] = array(
+                        'id'=>$user_B->row->id,
+                        'username'=>$user_B->row->username,
+                        'realname'=>$user_B->row->realname
+                        );
+                }
+                if(in_array($params->type, array('collect', 'comment'))){
+                    $data['comment'] = $params->data['comment'];
+                }
+            break;
+            default:
+                $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_area'));
+                return array();
+            break;
+        }
+
+        return $data;
+    }
+
+    /**
+     * make activity parameter for user. (delete)
+     * 
+     * @param array $resource
+     * 
+     * @return array
+     */
+    
+    function make_param_delete($params=array())
+    {
+        $this->load->model('user_model');
+        $this->load->model('work_model');
+
+        $params = (object)$params;
+
+        $data = array();
+        
+        switch($params->area){
+            case "user":
+                if(in_array($params->type, array('follow'))){
+                    $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
+                    if(!isset($user_B->row)){
+                        $user_B->row = (object)array(
+                            'id' => $params->data['user_B'],
+                            'username' => '',
+                            'realname' => '',
+                            );
+                    }
+                    $data['user_B'] = array(
+                        'id'=>$user_B->id,
+                        'username'=>$user_B->row->username,
+                        'realname'=>$user_B->row->realname
+                        );
+                }
+            break;
+            case "work":
+                if(in_array($params->type, array('work', 'collect', 'comment', 'note'))){
+                    $work = $this->work_model->get_info(array('work_id'=>$params->data['work_id']));
+                    if(!isset($work->row)){
+                        $work->row = (object)array(
+                            'work_id' => $params->data['work_id'],
+                            'title' => '',
+                            'nofol_rank' => 0
+                            );
+                        $params->data['user_B'] = 0;
+                    }
+                    $data['work'] = array(
+                        'work_id' => $work->row->work_id,
+                        'title' => $work->row->title,
+                        'nofol_rank' => $work->row->nofol_rank
+                        );
+                    $params->data['user_B'] = $work->row->user->id;
+
+                    $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
+                    if(!isset($user_B->row)){
+                        $user_B->row = (object)array(
+                            'id' => $params->data['user_B'],
+                            'username' => '',
+                            'realname' => '',
+                            );
+                    }
+                    $data['user_B'] = array(
+                        'id'=>$user_B->row->id,
+                        'username'=>$user_B->row->username,
+                        'realname'=>$user_B->row->realname
+                        );
+                }
+            break;
+            default:
+                $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_area'));
+                return array();
+            break;
+        }
+
+        return $data;
+    }
+
 
     /**
      * make after activity for user.
@@ -211,8 +382,6 @@ class activity extends CI_Controller {
 
         $params = (object)$params;
 
-        $data = array();
-
         if(empty($params->activity_id)){
             $this->last_error = json_encode(array('code'=>'error', 'message'=>"where is 'activity id'?"));
             return false;
@@ -223,174 +392,100 @@ class activity extends CI_Controller {
                 case "user":
                     if(in_array($params->type, array('follow'))){
                         //send to-> alarm
-                        $this->activity_model->post_alarm(array());
+                        $this->activity_model->post_alarm(array(
+                            'crud' => $params->crud,
+                            'area' => $params->area,
+                            'type' => $params->type,
+                            'ref_id' => $params->ref_id,
+                            'user_A_id' => $params->user_A_id,
+                            'user_B_id' => $params->user_B_id,
+                            'parent_id' => $params->parent_id,
+                            'activity_id' => $params->activity_id,
+                            ));
                     }
                 break;
                 case "work":
-                    if(in_array($params->type, array('enable', 'collect', 'comment'))){
+                    if(in_array($params->type, array('collect', 'comment'))){
                         //send to-> alarm
-                        $this->activity_model->post_alarm(array());
+                        $this->activity_model->post_alarm(array(
+                            'crud' => $params->crud,
+                            'area' => $params->area,
+                            'type' => $params->type,
+                            'ref_id' => $params->ref_id,
+                            'user_A_id' => $params->user_A_id,
+                            'user_B_id' => $params->user_B_id,
+                            'parent_id' => $params->parent_id,
+                            'activity_id' => $params->activity_id,
+                            ));
                     }
-                    if(in_array($params->type, array('enable', 'collect', 'comment', 'note'))){
+                    
+                    if(in_array($params->type, array('collect', 'comment', 'note'))){
                         //send to-> feed
-                        $this->activity_model->post_feed(array());
+                        $this->activity_model->post_feed(array(
+                            'crud' => $params->crud,
+                            'area' => $params->area,
+                            'type' => $params->type,
+                            'ref_id' => $params->ref_id,
+                            'user_A_id' => $params->user_A_id,
+                            'user_B_id' => $params->user_B_id,
+                            'parent_id' => $params->parent_id,
+                            'activity_id' => $params->activity_id,
+                            ));
                         
                     }
                 break;
                 default:
-                    $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_area'));
-                    return array();
+                break;
+            }
+        }
+
+        if($params->crud == 'update'){
+            switch($params->area){
+                case "work":
+                    if(in_array($params->type, array('enable',))){
+                        //send to-> alarm
+                        $this->activity_model->post_alarm(array(
+                            'crud' => $params->crud,
+                            'area' => $params->area,
+                            'type' => $params->type,
+                            'ref_id' => $params->ref_id,
+                            'user_A_id' => $params->user_A_id,
+                            'user_B_id' => $params->user_B_id,
+                            'parent_id' => $params->parent_id,
+                            'activity_id' => $params->activity_id,
+                            ));
+                    }
+                    
+                    if(in_array($params->type, array('enable',))){
+                        //send to-> feed
+                        $this->activity_model->post_feed(array(
+                            'crud' => $params->crud,
+                            'area' => $params->area,
+                            'type' => $params->type,
+                            'ref_id' => $params->ref_id,
+                            'user_A_id' => $params->user_A_id,
+                            'user_B_id' => $params->user_B_id,
+                            'parent_id' => $params->parent_id,
+                            'activity_id' => $params->activity_id,
+                            ));
+                        
+                    }
+                break;
+                default:
                 break;
             }
         }
 
         if(($params->area=="work")&&(!empty($params->point_get))){
             //add point
-            //$this->activity_model->post_feed(array());
+            $this->db->query("UPDATE works 
+                set nofol_rank = nofol_rank - {$params->point_get} 
+                where work_id = {$params->ref_id};
+                ");
             
         }
 
-        return $data;
-
-        /*
-        if(isset($resource['activity_id'])){
-            if($type=="add_comment"&& in_array($area, array("work","forum","webzine"))){
-                if(isset($resource['comment_parent_id'])){
-                    $this->ci->db->query('
-                        INSERT INTO `user_alarms` (`user_id`,`ref_id`,`regdate`)
-                        (
-                            SELECT `user_id`,"'.$resource['activity_id'].'" as ref_id, CURRENT_TIMESTAMP as regdate
-                                FROM `'.$area.'_comments`
-                                WHERE `'.$area.'_id`="'.$resource[$area.'_id'].'"
-                                    AND `user_id` != '.$resource['user_id'].'
-                                    AND `user_id` != '.$resource['user_id'].'
-                                    AND `user_id` != '.$resource[$area.'_user_id'].'
-                                    AND
-                                    (
-                                        ( `parent_id`="'.$resource['comment_parent_id'].'")
-                                        OR
-                                        ( `parent_id`=0
-                                        AND `id` = '.$resource['comment_parent_id'].')
-                                    )
-                                GROUP BY `user_id`
-                        )
-                        ; 
-                    ');
-                }
-                else {
-                    $this->ci->db->query('
-                        INSERT INTO `user_alarms` (`user_id`,`ref_id`,`regdate`)
-                        (
-                            SELECT `user_id`,"'.$resource['activity_id'].'" as ref_id, CURRENT_TIMESTAMP as regdate
-                                FROM `'.$area.'_comments`
-                                WHERE `'.$area.'_id`="'.$resource[$area.'_id'].'"
-                                    AND `parent_id`=0
-                                    AND `user_id` != '.$resource['user_id'].'
-                                    AND `user_id` != '.$resource[$area.'_user_id'].'
-                                GROUP BY `user_id`
-                        )
-                        ; 
-                    ');
-                }
-                $this->ci->db->query('
-                    INSERT INTO `user_alarms` (`user_id`,`ref_id`,`regdate`)
-                    (
-                        SELECT * 
-                        FROM ( SELECT "'.$resource[$area.'_user_id'].'" as user_id,"'.$resource['activity_id'].'" as ref_id, CURRENT_TIMESTAMP as regdate ) a
-                            WHERE a.user_id != '.$resource['user_id'].'
-                    )
-                    ; 
-                ');
-            } else if ($type=="add_comment"&&$area=="user"){
-                if(isset($resource['comment_parent_id'])){
-                    $this->ci->db->query('
-                        INSERT INTO `user_alarms` (`user_id`,`ref_id`,`regdate`)
-                        (
-                            SELECT `user_id`,"'.$resource['activity_id'].'" as ref_id, CURRENT_TIMESTAMP as regdate
-                                FROM `user_profile_comments`
-                                WHERE `user_profile_id`="'.$resource['profile_user_id'].'"
-                                    AND `user_id` != '.$resource['user_id'].'
-                                    AND `user_id` != '.$resource['user_id'].'
-                                    AND `user_id` != '.$resource['profile_user_id'].'
-                                    AND
-                                    (
-                                        ( `parent_id`="'.$resource['comment_parent_id'].'")
-                                        OR
-                                        ( `parent_id`=0
-                                        AND `id` = '.$resource['comment_parent_id'].')
-                                    )
-                                GROUP BY `user_id`
-                        )
-                        ; 
-                    ');
-                }
-                else {
-                    
-                }
-                $this->ci->db->query('
-                    INSERT INTO `user_alarms` (`user_id`,`ref_id`,`regdate`)
-                    (
-                        SELECT * 
-                        FROM ( SELECT "'.$resource['profile_user_id'].'" as user_id,"'.$resource['activity_id'].'" as ref_id, CURRENT_TIMESTAMP as regdate ) a
-                            WHERE a.user_id != '.$resource['user_id'].'
-                    )
-                    ; 
-                ');
-                
-            } else if(($type=="add_note"&&$area=="work")||
-                      ($type=="add_collect"&&$area=="work")){
-                *
-                 * 
-                 $this->ci->db->query('
-                    INSERT INTO `user_alarms` (`user_id`,`ref_id`,`regdate`)
-                    (
-                        SELECT `user_id`,"'.$resource['activity_id'].'" as ref_id, CURRENT_TIMESTAMP as regdate
-                            FROM `works`
-                            WHERE `id`="'.$resource['work_id'].'"
-                                AND `user_id` != '.$resource['user_id'].'
-                            GROUP BY `user_id`
-                    )
-                    ; 
-                ');
-                 * 
-                 *
-                $this->ci->db->query('
-                    INSERT INTO `user_alarms` (`user_id`,`ref_id`,`regdate`)
-                    (
-                        SELECT * 
-                        FROM ( SELECT "'.$resource['work_user_id'].'" as user_id,"'.$resource['activity_id'].'" as ref_id, CURRENT_TIMESTAMP as regdate ) a
-                            WHERE a.user_id != '.$resource['user_id'].'
-                    )
-                    ; 
-                ');    
-            } else if ($type=="add_coworker"&&$area=="work"){
-                $this->ci->db->query('
-                    INSERT INTO `user_alarms` (`user_id`,`ref_id`,`regdate`)
-                    (
-                        SELECT * 
-                        FROM ( SELECT "'.$resource['coworker_user_id'].'" as user_id,"'.$resource['activity_id'].'" as ref_id, CURRENT_TIMESTAMP as regdate ) a
-                            WHERE a.user_id != '.$resource['user_id'].'
-                    )
-                    ; 
-                ');
-            } else if ($type=="add_follow"&&$area=="user"){
-                $this->ci->db->query('
-                    INSERT INTO `user_alarms` (`user_id`,`ref_id`,`regdate`)
-                    (
-                        SELECT * 
-                        FROM ( SELECT "'.$resource['follow_user_id'].'" as user_id,"'.$resource['activity_id'].'" as ref_id, CURRENT_TIMESTAMP as regdate ) a
-                            WHERE a.user_id != '.$resource['user_id'].'
-                    )
-                    ; 
-                ');
-            }
-            
-            return TRUE;
-        }
-        
-        $this->last_error = json_encode(array('code'=>'error', 'message'=>"where is 'activity id'?"));
-        return FALSE;
-        */
+        return true;
     }
     
 }
