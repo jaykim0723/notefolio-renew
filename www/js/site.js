@@ -248,6 +248,7 @@ site.restoreInifiniteScroll = function(target, target_button){
 	$(target_button).remove();
 	var $container = $(target);
 	$container.html(getLocal('listing_html')).after('<a href="'+getLocal('listing_href')+'" class="more-link btn btn-default btn-block btn-more">more</a>');
+	$(window).scrollTop(getLocal('listing_top'));
 }
 
 $(function() {
@@ -270,11 +271,11 @@ $(function() {
 				var href = $('.more-link', $response).attr('href');
 				$('.more-link', $response).insertAfter($container);
 				$lis.appendTo($container);
-				if($container.attr('id')!='work-list')
+				if(NFview.area!='work-list')
 					setLocal('listing_html', $container.html());
 					setLocal('listing_url', location.href);
 					setLocal('listing_href', href);
-					// setLocal('listing_top', $(window).scrollTop()); // 클릭시 저장하는 것으로 수정
+					setLocal('listing_top', $(window).scrollTop());
 			}
 			$(window).trigger('scroll');
 			$('#loading-indicator').fadeOut();
@@ -289,6 +290,7 @@ $(function() {
 		delLocal('listing_href');
 		return true;
 	});
+
 	$(window).on('scroll', function() {
 		var $list = $('.infinite-list');
 		if(site.scrollCount > site.scrollLimit) return;
@@ -296,6 +298,8 @@ $(function() {
 		if(!site.checkNewBottom($list)) return;
 		if($('#loading-indicator').css('display')=='block') return;
 		$('.more-link').trigger('click');
+		if(NFview.area!='work-list')
+			setLocal('listing_top', $(window).scrollTop());
 	});
 
 	if(site.user_id>0){

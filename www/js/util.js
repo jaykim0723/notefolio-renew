@@ -478,7 +478,11 @@ function getLocal( check_name ) {
 
 // this deletes the cookie when called
 function delLocal( name, path, domain ) {
-     localStorage.removeItem(name);    
+     try {
+	     localStorage.removeItem(name);    
+     } catch (e) {
+         	;
+     }
 }
 function resetAll(){
      localStorage.clear();
