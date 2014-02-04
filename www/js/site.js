@@ -254,6 +254,7 @@ $(function() {
 			if($lis.length > 0){
 				$('.more-link', $response).insertAfter($container);
 				$lis.appendTo($container);
+				console.log("$container.attr('id'):", $container.attr('id'));
 				if($container.attr('id')!='work-list')
 					setLocal('listing_html', $container.html());
 			}
