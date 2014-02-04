@@ -167,7 +167,7 @@ class activity extends CI_Controller {
                             );
                     }
                     $data['user_B'] = array(
-                        'id'=>$user_B->id,
+                        'id'=>$user_B->row->id,
                         'username'=>$user_B->row->username,
                         'realname'=>$user_B->row->realname
                         );
@@ -324,7 +324,7 @@ class activity extends CI_Controller {
                             );
                     }
                     $data['user_B'] = array(
-                        'id'=>$user_B->id,
+                        'id'=>$user_B->row->id,
                         'username'=>$user_B->row->username,
                         'realname'=>$user_B->row->realname
                         );
