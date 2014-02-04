@@ -203,7 +203,7 @@ class activity extends CI_Controller {
                     'username'=>$user_B->row->username,
                     'realname'=>$user_B->row->realname
                     );
-                
+
                 if(in_array($params->type, array('collect', 'comment'))){
                     $data['comment'] = $params->data['comment'];
                 }
@@ -253,37 +253,35 @@ class activity extends CI_Controller {
                 }
             break;
             case "work":
-                if(in_array($params->type, array('enable', 'disable', 'delete', 'collect', 'comment'))){
-                    $work = $this->work_model->get_info(array('work_id'=>$params->data['work_id']));
-                    if(!isset($work->row)){
-                        $work->row = (object)array(
-                            'work_id' => $params->data['work_id'],
-                            'title' => '',
-                            'nofol_rank' => 0
-                            );
-                        $params->data['user_B'] = 0;
-                    }
-                    $data['work'] = array(
-                        'work_id' => $work->row->work_id,
-                        'title' => $work->row->title,
-                        'nofol_rank' => $work->row->nofol_rank
+                $work = $this->work_model->get_info(array('work_id'=>$params->data['work_id']));
+                if(!isset($work->row)){
+                    $work->row = (object)array(
+                        'work_id' => $params->data['work_id'],
+                        'title' => '',
+                        'nofol_rank' => 0
                         );
-                    $params->data['user_B'] = $work->row->user->id;
+                    $params->data['user_B'] = 0;
+                }
+                $data['work'] = array(
+                    'work_id' => $work->row->work_id,
+                    'title' => $work->row->title,
+                    'nofol_rank' => $work->row->nofol_rank
+                    );
+                $params->data['user_B'] = $work->row->user->id;
 
-                    $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
-                    if(!isset($user_B->row)){
-                        $user_B->row = (object)array(
-                            'id' => $params->data['user_B'],
-                            'username' => '',
-                            'realname' => '',
-                            );
-                    }
-                    $data['user_B'] = array(
-                        'id'=>$user_B->row->id,
-                        'username'=>$user_B->row->username,
-                        'realname'=>$user_B->row->realname
+                $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
+                if(!isset($user_B->row)){
+                    $user_B->row = (object)array(
+                        'id' => $params->data['user_B'],
+                        'username' => '',
+                        'realname' => '',
                         );
                 }
+                $data['user_B'] = array(
+                    'id'=>$user_B->row->id,
+                    'username'=>$user_B->row->username,
+                    'realname'=>$user_B->row->realname
+                    );
                 if(in_array($params->type, array('collect', 'comment'))){
                     $data['comment'] = $params->data['comment'];
                 }
@@ -333,37 +331,35 @@ class activity extends CI_Controller {
                 }
             break;
             case "work":
-                if(in_array($params->type, array('work', 'collect', 'comment', 'note'))){
-                    $work = $this->work_model->get_info(array('work_id'=>$params->data['work_id']));
-                    if(!isset($work->row)){
-                        $work->row = (object)array(
-                            'work_id' => $params->data['work_id'],
-                            'title' => '',
-                            'nofol_rank' => 0
-                            );
-                        $params->data['user_B'] = 0;
-                    }
-                    $data['work'] = array(
-                        'work_id' => $work->row->work_id,
-                        'title' => $work->row->title,
-                        'nofol_rank' => $work->row->nofol_rank
+                $work = $this->work_model->get_info(array('work_id'=>$params->data['work_id']));
+                if(!isset($work->row)){
+                    $work->row = (object)array(
+                        'work_id' => $params->data['work_id'],
+                        'title' => '',
+                        'nofol_rank' => 0
                         );
-                    $params->data['user_B'] = $work->row->user->id;
+                    $params->data['user_B'] = 0;
+                }
+                $data['work'] = array(
+                    'work_id' => $work->row->work_id,
+                    'title' => $work->row->title,
+                    'nofol_rank' => $work->row->nofol_rank
+                    );
+                $params->data['user_B'] = $work->row->user->id;
 
-                    $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
-                    if(!isset($user_B->row)){
-                        $user_B->row = (object)array(
-                            'id' => $params->data['user_B'],
-                            'username' => '',
-                            'realname' => '',
-                            );
-                    }
-                    $data['user_B'] = array(
-                        'id'=>$user_B->row->id,
-                        'username'=>$user_B->row->username,
-                        'realname'=>$user_B->row->realname
+                $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
+                if(!isset($user_B->row)){
+                    $user_B->row = (object)array(
+                        'id' => $params->data['user_B'],
+                        'username' => '',
+                        'realname' => '',
                         );
                 }
+                $data['user_B'] = array(
+                    'id'=>$user_B->row->id,
+                    'username'=>$user_B->row->username,
+                    'realname'=>$user_B->row->realname
+                    );
             break;
             default:
                 $this->last_error = @json_encode(array('status'=>'fail', 'message'=>'no_have_area'));
