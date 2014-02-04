@@ -163,7 +163,7 @@ VALUES
                 $sql = "INSERT INTO `user_alarms` (`user_id`,`ref_id`,`regdate`)
                     (
                         SELECT * 
-                        FROM ( SELECT ".$this->db->escape($params->ref_id)." as user_id,".$this->db->escape($params->activity_id)." as ref_id, CURRENT_TIMESTAMP as regdate ) a
+                        FROM ( SELECT ".$this->db->escape($params->user_B_id)." as user_id,".$this->db->escape($params->activity_id)." as ref_id, CURRENT_TIMESTAMP as regdate ) a
                             WHERE a.user_id != ".$this->db->escape($params->user_A_id)."
                     )
                     ; 
