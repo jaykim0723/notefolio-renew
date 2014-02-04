@@ -95,14 +95,14 @@ class feed_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-        $this->db->query("SELECT
+        $query = $this->db->query("SELECT
             count(id) as all_count, 
             ifnull( sum( if( isnull( readdate ), 0, 1 ) ), 0 ) as unread
             from user_feeds 
             where user_id = ".$this->db->escape($params->user_id).";"); //set
 
         try{
-            $info = $this->db->get()->row();
+            $info = $query->row();
         }
         catch (Exception $e) {
             $data = (object)array(
