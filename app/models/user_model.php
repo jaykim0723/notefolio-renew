@@ -7,7 +7,6 @@ class user_model extends CI_Model {
     {
         parent::__construct();
 
-        $this->load->model('tank_auth/users');
         $this->load->helper('acp');
     }
 
@@ -403,6 +402,8 @@ class user_model extends CI_Model {
      * @return object       (status return object. status=[done|fail])
      */
     function delete($data=array()){
+        $this->load->model('tank_auth/users');
+
         // null > return fail
         if($data == array()){
             $data = (object)array(
