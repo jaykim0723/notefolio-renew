@@ -12,7 +12,7 @@ class activity_model extends CI_Model {
     function post($params=array()){
     	$params = (object)$params;
     	$default_params = (object)array(
-            'regdate' => date('Y-m-d'),
+            'regdate' => date('Y-m-d H:i:s'),
             'ref_id' => 0,
             'user_id' => 0,
             'area' => 'work',
@@ -55,7 +55,7 @@ VALUES
 */
 
         try{
-            $this->db->insert('uploads', $params);
+            $this->db->insert('log_activity', $params);
             $activity_id = $this->db->insert_id();
         }
         catch(Exception $e){
