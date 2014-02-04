@@ -27,6 +27,7 @@ class activity extends CI_Controller {
     public function post($crud, $area, $type, $data){
         $this->load->model('activity_model');
         $this->load->config('activity_point', TRUE);
+        echo 'Posting...';
 
         parse_str($data, $data);
         $params = $this->make_param($crud, array(
@@ -34,6 +35,7 @@ class activity extends CI_Controller {
         	'type'  => $type,
         	'data' => $data,
         	));
+        echo '.';
         
 
         $ap_list = $this->config->item('ap',  'activity_point');
@@ -46,6 +48,7 @@ class activity extends CI_Controller {
                 $ap = $ap;
             break;
         }
+        echo '.';
 
         $this->db->trans_start();
 
@@ -60,6 +63,7 @@ class activity extends CI_Controller {
             'data' => serialize((object)$params),
             'remote_addr' => 'console'
         ));
+        echo '.';
 
         if($result->status=='done'){
             $this->after_post(array(
@@ -75,6 +79,7 @@ class activity extends CI_Controller {
                 ));
             return true;
         }
+        echo '.';
 
         $this->db->trans_complete();
 
@@ -82,7 +87,7 @@ class activity extends CI_Controller {
 
         //echo $this->last_error;
 
-        echo PHP_EOL;
+        echo 'done.'.PHP_EOL;
         return false;
     }
 
