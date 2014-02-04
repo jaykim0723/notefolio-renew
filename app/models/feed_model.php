@@ -106,8 +106,8 @@ class feed_model extends CI_Model {
         catch (Exception $e) {
             $data = (object)array(
                 'status' => 'fail',
-                'alarm_all' => 0,
-                'alarm_unread' => 0,
+                'all' => 0,
+                'unread' => 0,
             );
 
             return $data;
