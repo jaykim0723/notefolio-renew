@@ -395,6 +395,7 @@ class activity extends CI_Controller {
             $this->last_error = json_encode(array('code'=>'error', 'message'=>"where is 'activity id'?"));
             return false;
         }
+        echo '!';
 
         if($params->crud == 'create'){
             switch($params->area){
@@ -440,15 +441,13 @@ class activity extends CI_Controller {
                             'parent_id' => $params->parent_id,
                             'activity_id' => $params->activity_id,
                             ));
-                        
                     }
                 break;
                 default:
                 break;
             }
         }
-
-        if($params->crud == 'update'){
+        else if($params->crud == 'update'){
             switch($params->area){
                 case "work":
                     if(in_array($params->type, array('enable',))){
@@ -477,13 +476,13 @@ class activity extends CI_Controller {
                             'parent_id' => $params->parent_id,
                             'activity_id' => $params->activity_id,
                             ));
-                        
                     }
                 break;
                 default:
                 break;
             }
         }
+        echo '!';
 
         if(($params->area=="work")&&(!empty($params->point_get))){
             //add point
@@ -491,8 +490,8 @@ class activity extends CI_Controller {
                 set nofol_rank = nofol_rank - {$params->point_get} 
                 where work_id = {$params->ref_id};
                 ");
-            
         }
+        echo '!';
 
         return true;
     }
