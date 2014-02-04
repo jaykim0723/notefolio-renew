@@ -16,17 +16,8 @@
 			</div>
 
 			<!-- 사이드바 시작 -->
-			<div class="col-md-3 ">
-				<h4>공개여부</h4>
-				<div class="control-group">
-                    <label class="notefolio-radio inline<?if($row->status=='enabled'){?> checked<?}?>">
-                        <input type="radio" name="status" value="enabled" <?if($row->status=='enabled'){?> checked<?}?>> 공개
-                    </label>
-                    &nbsp; &nbsp; &nbsp;
-                    <label class="notefolio-radio inline<?if($row->status=='disabled'){?> checked<?}?>">
-                        <input type="radio" name="status" value="disabled" <?if($row->status=='disabled'){?> checked<?}?>> 비공개
-                    </label>
-				</div>
+			<div class="col-md-3">
+
 
 				<h4>카테고리</h4>
 				<select name="keywords" id="keywords" multiple title="최대 2개까지 선택" >
@@ -39,10 +30,9 @@
 					<?php }	?>
 				</select>
 
-				<h4>태그</h4>
-				<input id="tags" name="tags" type="text" class="form-control">
 
-				
+
+
 				<h4>CCL</h4>
 				<select name="ccl" id="ccl" class="" title="Choose one of the following..." >
 					<option value="">CCL 표시 안함</option>
@@ -54,6 +44,17 @@
 					<option data-content='<i class="spi spi-ccl-cc-by-nc-nd"></i>저작자표시-비영리-변경금지' value="BY-NC-ND">저작자표시-비영리-변경금지</option>
 				</select>
 
+
+
+
+
+				<h4>태그</h4>
+				<input id="tags" name="tags" type="text" class="form-control">
+
+
+
+
+				
 
 				<div>
 					<div class="pull-right btn-group">
@@ -70,23 +71,47 @@
 				</div>
 
 				<div class="row" id="cover-preview">
+					<div class="col-md-12" style="display:none;">
+						<img src="/img/default_cover_tip.png" alt=""/>
+					</div>
+
 					<div class="col-md-4">
-						<img src="/data/covers/<?php echo $row->work_id ?>_t1.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="" onerror="this.src='/img/cover_default.png';">
+						<img class="preview" src="/data/covers/<?php echo $row->work_id ?>_t1.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="" onerror="workUtil.showCoverTip();">
 					</div>
 					<div class="col-md-4">
-						<img src="/data/covers/<?php echo $row->work_id ?>_t2.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="" onerror="this.src='/img/cover_default.png';">
+						<img class="preview" src="/data/covers/<?php echo $row->work_id ?>_t2.jpg?_=<?php echo substr($row->moddate, -2) ?>">
 					</div>
 					<div class="col-md-4">
-						<img src="/data/covers/<?php echo $row->work_id ?>_t3.jpg?_=<?php echo substr($row->moddate, -2) ?>" alt="" onerror="this.src='/img/cover_default.png';">
+						<img class="preview" src="/data/covers/<?php echo $row->work_id ?>_t3.jpg?_=<?php echo substr($row->moddate, -2) ?>">
 					</div>
+
 				</div>
+
+
+				
+				<h4>공개여부</h4>
+				<div class="control-group">
+                    <label class="notefolio-radio inline<?if($row->status=='enabled'){?> checked<?}?>">
+                        <input type="radio" name="status" value="enabled" <?if($row->status=='enabled'){?> checked<?}?>> 공개
+                    </label>
+                    &nbsp; &nbsp; &nbsp;
+                    <label class="notefolio-radio inline<?if($row->status=='disabled'){?> checked<?}?>">
+                        <input type="radio" name="status" value="disabled" <?if($row->status=='disabled'){?> checked<?}?>> 비공개
+                    </label>
+				</div>
+
+
+
+
+				<h4>충실도</h4>
+				<div id="work-discoverbility"><span style="width:0%;"></span></div>
 
 
 				<input type="hidden" name="work_id" value="<?php echo $row->work_id ?>"/>
 				<input type="hidden" name="cover_upload_id" value=""/>
 
 				<button id="work-submit" type="submit" class="btn btn-primary btn-block btn-lg">
-					<span id="work-discoverbility"><span style="width:0%;"></span></span>
+					
 					전송
 				</button>
 			</div>

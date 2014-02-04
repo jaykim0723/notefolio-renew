@@ -425,7 +425,7 @@ function setLocal( name, value, expires, path, domain, secure )
      try {
           localStorage.setItem(name, value);
      } catch (e) {
-          alert(e);
+          console.error('setLocal Error', e);
      }
 }
 // this fixes an issue with the old method, ambiguous values

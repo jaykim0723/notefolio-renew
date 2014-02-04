@@ -62,4 +62,11 @@
 	</div>
 </section>
 
+<?php if ($page==1): ?>
+<script>
+	site.restoreInifiniteScroll();
+</script>
+<?php endif ?>
+
+
 <?php endif; ?>

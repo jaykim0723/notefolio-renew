@@ -142,7 +142,7 @@
 
 
 
-
+<?php /*
 <?php if($this->tank_auth->is_logged_in() && ($this->config->item('debug_tutorial')=='y' OR strpos($this->session->userdata('tutorial'), 'profile')!==FALSE)):
 $this->session->set_userdata('tutorial', str_replace($this->session->userdata('tutorial'), '(profile)', ''));
 ?>
@@ -176,3 +176,4 @@ $this->session->set_userdata('tutorial', str_replace($this->session->userdata('t
 
 </script>
 <?php endif; ?>	
+*/ ?>

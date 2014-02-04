@@ -8,7 +8,7 @@
 			</div>
 			<div class="col-md-6 righted">
 				<?php if (USER_ID==0): ?>
-					<a href="/auth/login"><i class="spi spi-topbar_login"></i></a> 
+					<a href="/auth/register"><i class="spi spi-topbar_register"></i></a> 
 				<?php else: ?>				
 					<a href="/auth/setting"><i class="spi spi-tobar_setting"></i></a>
 					<a href="/auth/logout" class="ml"><i class="spi spi-topbar_logout"></i></a>
@@ -38,8 +38,8 @@
 					<a class="btn btn-nofol btn-no-border" href="#" id="login-with-fb">
 						<i class="spi spi-fb">fb</i> Login with Facebook
 					</a>
-					<a class="btn btn-nofol btn-no-border" href="/auth/register">
-						<i class="spi spi-user">user</i> Sign Up
+					<a class="btn btn-nofol btn-no-border" href="/auth/login">
+						<i class="spi spi-user">user</i> Login
 					</a>
 				<?php else: ?>
 					<span id="alarm-wrapper">

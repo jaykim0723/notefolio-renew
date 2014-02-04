@@ -417,18 +417,15 @@ li#trash-bin{
 }
 #work-discoverbility {
 	display: block;
-	position: absolute;
 	background: #888;
 	overflow: hidden;
-	height: 10px;
-	top: -10px;
-	left:0;
+	height: 20px;
 	width:100%;
 }
 #work-discoverbility span {
 	display: block;
 	background: #2ac5c6;
-	height: 10px;
+	height: 20px;
 }
 #cover-preview .col-md-4 {
 	display: table-cell;

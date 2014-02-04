@@ -3,6 +3,10 @@ var workUtil = {
 		image : '/img/thumb_wide4.jpg',
 		video : '//www.youtube.com/embed/wnnOf05WKEs'
 	},
+	showCoverTip : function(){
+		$('#cover-preview .col-md-12').show();
+		$('#cover-preview .col-md-4').hide();
+	},
 	saveCover : function(upload_id, src){
 		site.scroll.lock();
 		memberUtil.popCrop({
@@ -44,8 +48,12 @@ var workUtil = {
 
 						$('[name=cover_upload_id]').val(upload_id);
 
-						$('#cover-preview img').each(function(index){
-							console.log(index, responseJSON.src[index]);
+						var $cover = $('#cover-preview');
+
+						$cover.children('.col-md-12').hide();
+						$cover.children('.col-md-4').show();
+
+						$cover.find('.preview').each(function(index){
 							$(this).attr('src', responseJSON.src[index]);
 						});
 

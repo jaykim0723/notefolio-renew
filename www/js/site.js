@@ -235,6 +235,17 @@ $(document).on('click', '.btn-follow', function(){
 	}, 'json');
 });
 
+site.restoreInifiniteScroll = function(target, target_button){
+	if(typeof target=='undefined')
+		target = '.infinite-list';
+	if(typeof target_button=='undefined')
+		target_button = '.more-link';
+	if(getLocal('listing_url')!=location.href) return;
+	$(target_button).remove();
+	var $container = $(target);
+	$container.html(getLocal('listing_html')).after('<a href="'+getLocal('listing_href')+'" class="more-link btn btn-default btn-block btn-more">more</a>');
+}
+
 $(function() {
 	$('body').tooltip({
 	    selector: '[rel=tooltip]',
@@ -252,11 +263,14 @@ $(function() {
 			var $response = $('<div>'+responseHTML+'</div>');
 			var $lis = $('.infinite-item', $response);
 			if($lis.length > 0){
+				var href = $('.more-link', $response).attr('href');
 				$('.more-link', $response).insertAfter($container);
 				$lis.appendTo($container);
-				console.log("$container.attr('id'):", $container.attr('id'));
 				if($container.attr('id')!='work-list')
 					setLocal('listing_html', $container.html());
+					setLocal('listing_url', location.href);
+					setLocal('listing_href', href);
+					// setLocal('listing_top', $(window).scrollTop()); // 클릭시 저장하는 것으로 수정
 			}
 			$('#loading-indicator').fadeOut();
 			if(typeof NFview.infiniteCallback!=='undefined'){
