@@ -66,7 +66,7 @@ class activity extends CI_Controller {
     
     function make_param($workType, $resource=array())
     {   
-        define(USER_ID, $resource['data']['user_A']);
+        //define(USER_ID, $resource['data']['user_A']);
         $this->load->model('user_model');
 
         //-- go by work type
