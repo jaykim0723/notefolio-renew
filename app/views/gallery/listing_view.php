@@ -6,7 +6,8 @@
 				<form action="" class="form-inline" role="form">
 
 					<div class="row">
-						<div class="col-md-3 col-sm-">
+						
+						<div class="col-md-3 col-sm-6">
 							<div class="input-group">
 			  					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 								<select class="" name="sort_option" id="sort_option">
@@ -18,7 +19,8 @@
 							</div>
 						</div>
 
-						<div class="col-md-3">
+
+						<div class="col-md-3 col-sm-6">
 							<select name="work_categories" id="work_categories" multiple title="Choose one of the following...">
 								<?php 
 								$this->load->config('keyword', TRUE);
@@ -30,11 +32,15 @@
 							</select>
 						</div>
 
-						<div class="col-md-3">
+						
+
+						<div class="col-md-3 col-sm-6">
 							<input class="col-xs-2 form-control" type="text" name="" placeholder="검색어"/>
 						</div>
 
-						<div class="col-md-2">
+
+
+						<div class="col-md-2 col-sm-6">
 							<select name="" id="">
 								<option value="newest">최신순</option>
 								<option value="noted">인기순</option>
@@ -43,7 +49,7 @@
 							</select>
 						</div>
 
-						<div class="col-md-1">
+						<div class="col-md-1 col-sm-12">
 							<button type="submit" class="btn btn-primary">조회</button>
 						</div>
 					</div>
