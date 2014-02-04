@@ -33,7 +33,8 @@ class activity extends CI_Controller {
         	));
         
 
-        $ap = $this->config->item('ap',  'activity_point');
+        $ap_list = $this->config->item('ap',  'activity_point');
+        $ap = $ap_list[$area][$type];
 
         var_export($ap);
         exit();
