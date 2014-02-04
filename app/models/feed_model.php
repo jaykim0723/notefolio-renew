@@ -69,7 +69,7 @@ class feed_model extends CI_Model {
     function get_unread_count($user_id=''){
         $user_id = (empty($user_id))?USER_ID:$user_id;
 
-        $feed_count = $this->get_cout(array('user_id'=>$user_id));
+        $feed_count = $this->get_count(array('user_id'=>$user_id));
 
         $data = (object)array(
             'status' => 'done',
