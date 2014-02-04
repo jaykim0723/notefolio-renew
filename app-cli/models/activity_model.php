@@ -226,7 +226,7 @@ VALUES
                             ".$this->db->escape($params->activity_id)." as ref_id,
                             CURRENT_TIMESTAMP as regdate
                         FROM ( 
-                            SELECT follow_id as user_id
+                            SELECT follower_id as user_id
                                 from user_follows
                                 where follower_id = ".$this->db->escape($params->user_B_id)."
                                 order by user_id asc
@@ -246,7 +246,7 @@ VALUES
                             ".$this->db->escape($params->activity_id)." as ref_id,
                             CURRENT_TIMESTAMP as regdate
                         FROM ( 
-                            SELECT follow_id as user_id
+                            SELECT follower_id as user_id
                                 from user_follows
                                 where follower_id = ".$this->db->escape($params->user_B_id)."
                                 order by user_id asc
