@@ -74,7 +74,16 @@ class activity extends CI_Controller {
         $this->load->model('user_model');
 
         $data = array();
-        $user_A = $this->user_model->get_info(array('id'=>$params->data['user_A']))->row;
+        try{
+            $user_A = $this->user_model->get_info(array('id'=>$params->data['user_A']))->row;
+        }
+        catch(Exception $e){
+            return $user_A = (object)array(
+                'id' => $params->data['user_A'],
+                'username' => '',
+                'realname' => '',
+                );
+        }
         $data['user_A'] = array(
             'id'=>$user_A->id,
             'username'=>$user_A->username,
