@@ -207,8 +207,7 @@ class activity extends CI_Controller {
     
     function after_post($params=array())
     {  
-        $this->load->model('user_model');
-        $this->load->model('work_model');
+        $this->load->model('activity_model');
 
         $params = (object)$params;
 
