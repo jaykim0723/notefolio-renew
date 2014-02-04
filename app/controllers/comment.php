@@ -94,6 +94,20 @@ class Comment extends CI_Controller {
 		));
 		// 화면에 출력을 하도록 출력해주기
 		$this->load->view('comment/comment_block_view', $comment, FALSE);
+
+        if($result->status=="done"){
+            //-- write activity
+            $this->load->library('activity');
+            $this->activity->post(array(
+                'crud' => 'create',
+                'area' => 'work',
+                'type'  => 'comment',
+                'user_A' => USER_ID,
+                'work_id' => $params['work_id'],
+                'parent_id' => $params['parent_id'],
+                'comment' => $params['content'],
+                ));
+        }
 	}
 
 	/**
@@ -116,6 +130,19 @@ class Comment extends CI_Controller {
 		$comment = $this->comment_model->get_info($params);
 		// 화면에 출력을 하도록 출력해주기
 		$this->load->view('comment/comment_block_view', $comment, FALSE);
+
+        if($result->status=="done"){
+            //-- write activity
+            $this->load->library('activity');
+            $this->activity->post(array(
+                'crud' => 'update',
+                'area' => 'work',
+                'type'  => 'comment',
+                'user_A' => USER_ID,
+                'work_id' => $params['work_id'],
+                'comment' => $params['content'],
+                ));
+        }
 	}
 
 
@@ -136,6 +163,18 @@ class Comment extends CI_Controller {
 		$result = $this->comment_model->delete_info($params);
 		if($result->status==='fail')
 			alert($result->message);
+
+        if($result->status=="done"){
+            //-- write activity
+            $this->load->library('activity');
+            $this->activity->post(array(
+                'crud' => 'delete',
+                'area' => 'work',
+                'type'  => 'comment',
+                'user_A' => USER_ID,
+                'work_id' => $params['work_id'],
+                ));
+        }
 		# what else?
 	}
 
