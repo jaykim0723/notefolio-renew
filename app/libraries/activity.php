@@ -40,11 +40,11 @@ class Activity {
         $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
         
         $data=http_build_query(array(
-            'user_A'    =>$user_A,
-            'user_B'    =>$user_B,
-            'work_id'   =>$work_id,
-            'parent_id' =>$parent_id,
-            'comment'   =>$comment,
+            'user_A'    =>$params['user_A'],
+            'user_B'    =>$params['user_B'],
+            'work_id'   =>$params['work_id'],
+            'parent_id' =>$params['parent_id'],
+            'comment'   =>$params['comment'],
             ));
 
         $cmd = $default_cmd." ".$params['crud']." ".$params['area']." ".$params['type']." ".$data." > /dev/null &";
