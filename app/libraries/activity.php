@@ -40,11 +40,11 @@ class Activity {
         $errmsg = 'eAccelerator: Unable to change cache directory /var/cache/eaccelerator permissions';
         
         $queryData = array();
-        if(isset($params['user_A']))    $queryData['user_A']    => $params['user_A'];
-        if(isset($params['user_B']))    $queryData['user_B']    => $params['user_B'];
-        if(isset($params['work_id']))   $queryData['work_id']   => $params['work_id'];
-        if(isset($params['parent_id'])) $queryData['parent_id'] => $params['parent_id'];
-        if(isset($params['comment']))   $queryData['comment']   => $params['comment'];
+        if(isset($params['user_A']))    $queryData['user_A']    = $params['user_A'];
+        if(isset($params['user_B']))    $queryData['user_B']    = $params['user_B'];
+        if(isset($params['work_id']))   $queryData['work_id']   = $params['work_id'];
+        if(isset($params['parent_id'])) $queryData['parent_id'] = $params['parent_id'];
+        if(isset($params['comment']))   $queryData['comment']   = $params['comment'];
 
         $data = http_build_query($queryData);
 
