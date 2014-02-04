@@ -205,7 +205,7 @@ class activity extends CI_Controller {
                     );
 
                 if(in_array($params->type, array('collect', 'comment'))){
-                    $data['comment'] = $params->data['comment'];
+                    $data['comment'] = (!empty($params->data['comment']))?$params->data['comment']:'';
                 }
             break;
             default:
