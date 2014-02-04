@@ -474,10 +474,34 @@ class Profile extends CI_Controller {
 				switch($follow){
 					case 'n':
 						$result = $this->profile_model->delete_follow($params);
+
+                        if($result->status=="done"){
+                            //-- write activity
+                            $this->load->library('activity');
+                            $this->activity->post(array(
+                                'crud' => 'delete',
+                                'area' => 'user',
+                                'type'  => 'follow',
+                                'user_A' => $params->follower_id,
+                                'user_B' => $params->follow_id,
+                                ));
+                        }
 					break;
 					case 'y':
 					default:
 						$result = $this->profile_model->post_follow($params);
+
+                        if($result->status=="done"){
+                            //-- write activity
+                            $this->load->library('activity');
+                            $this->activity->post(array(
+                                'crud' => 'create',
+                                'area' => 'user',
+                                'type'  => 'follow',
+                                'user_A' => $params->follower_id,
+                                'user_B' => $params->follow_id,
+                                ));
+                        }
 					break;
 				}
 			}
