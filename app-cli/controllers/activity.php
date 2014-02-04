@@ -84,32 +84,53 @@ class activity extends CI_Controller {
                 );
         }
         $data['user_A'] = array(
-            'id'=>$user_A->id,
-            'username'=>$user_A->username,
-            'realname'=>$user_A->realname
+            'id'=>$user_A->row->id,
+            'username'=>$user_A->row->username,
+            'realname'=>$user_A->row->realname
             );
 
         switch($params['area']){
             case "user":
                 if(in_array($params['type'], array('follow'))){
-                    $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']))->row;
+                    $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
+                    if(!isset($user_B->row)){
+                        $user_B->row = (object)array(
+                            'id' => $params->data['user_B'],
+                            'username' => '',
+                            'realname' => '',
+                            );
+                    }
                     $data['user_B'] = array(
                         'id'=>$user_B->id,
-                        'username'=>$user_B->username,
-                        'realname'=>$user_B->realname
+                        'username'=>$user_B->row->username,
+                        'realname'=>$user_B->row->realname
                         );
                 }
             break;
             case "work":
                 if(in_array($params['type'], array('work'))){
-                    $work = $this->work_model->get_info(array('work_id'=>$work_id))->row;
+                    $work = $this->work_model->get_info(array('work_id'=>$params->data['work_id']));
+                    if(!isset($work->row)){
+                        $work->row = (object)array(
+                            'work_id' => $params->data['work_id'],
+                            'title' => ''
+                            );
+                        $params->data['user_B'] = 0;
+                    }
                     $params->data['user_B'] = $work->user->id;
                     $data['work'] = array(
-                        'work_id' => $work->work_id,
-                        'title' => $work->title
+                        'work_id' => $work->row->work_id,
+                        'title' => $work->row->title
                         );
 
-                    $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']))->row;
+                    $user_B = $this->user_model->get_info(array('id'=>$params->data['user_B']));
+                    if(!isset($user_B->row)){
+                        $user_B->row = (object)array(
+                            'id' => $params->data['user_B'],
+                            'username' => '',
+                            'realname' => '',
+                            );
+                    }
                     $data['user_B'] = array(
                         'id'=>$user_B->id,
                         'username'=>$user_B->username,
