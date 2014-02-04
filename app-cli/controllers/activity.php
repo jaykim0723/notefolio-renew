@@ -4,8 +4,6 @@
  *
  * @author Yoon, Seongsu(soplel@snooey.net)
  */
-
-define(USER_ID, 0);
  
 class activity extends CI_Controller {
 
@@ -68,6 +66,7 @@ class activity extends CI_Controller {
     
     function make_param($workType, $resource=array())
     {   
+        const USER_ID = $resource['data']['user_A'];
         $this->load->model('user_model');
 
         //-- go by work type
