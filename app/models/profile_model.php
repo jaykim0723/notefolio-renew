@@ -553,8 +553,6 @@ class profile_model extends CI_Model {
                     works ON works.user_id = user_profiles.user_id
                 where
                     user_profiles.user_id = ".$this->db->escape($params->user_id).";";
-        echo($sql);
-        exit();
         $query = $this->db->query($sql);
 
         $data = (object)array(
