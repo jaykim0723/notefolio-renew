@@ -27,7 +27,7 @@ class Gallery extends CI_Controller {
         $q = ($this->input->get_post('q'))?
                 $this->input->get_post('q'):'';
         $order = ($this->input->get_post('order'))?
-                $this->input->get_post('order'):'';
+                $this->input->get_post('order'):'newest';
 
         $work_list = $this->work_model->get_list(array(
             'page' => $page,
