@@ -38,6 +38,24 @@ class work_model extends CI_Model {
             $this->db->where('works.status', 'enabled');
         }
 
+        if($params->from!='all'){
+            switch($params->from){
+                case 'month':
+                    $from = date('Y-m-d');
+                    break;
+                case 'week':
+                    $from = date('Y-m-d', strtotime('-1 week'));
+                    break;
+                case 'month':
+                    $from = date('Y-m-d', strtotime('-1 month'));
+                    break;
+                case 'all':
+                default:
+                    break;
+            }
+            $this->db->where("(works.regdate >= ".$this->db->escape($from)." or works.moddate >= ".$this->db->escape($from).")", NULL, FALSE);
+        }
+
         foreach($params->keywords as $val){
             $this->db->like('works.keywords', $val, 'both');
         }
