@@ -643,7 +643,7 @@ class migrate extends CI_Controller {
                                     array('/&amp;/', '/&lt;/', '/&gt;/', '/&quot;/', '/&nbsp;/'), 
                                     array('&', '<', '>', '"', ' '), 
                                     $$val->content
-                                ))); //-- tag...
+                                )); //-- tag...
                 break;
                 case "image":
                     $path = '/home/web/notefolio-web/www/img/'
