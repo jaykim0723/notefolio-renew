@@ -437,8 +437,6 @@ class Profile extends CI_Controller {
 			'page' => $page,
 			'user_id' => $this->user_id
 		));
-		var_export($this->user_id);
-		exit();
 		$this->layout->set_view('profile/follow_listing_view', $followings_list)->render();
 	}
 

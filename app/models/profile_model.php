@@ -549,6 +549,8 @@ class profile_model extends CI_Model {
                     from works
                         left join user_profiles on works.user_id = user_profiles.user_id
                     where works.user_id = ".$this->db->escape($params->user_id).";";
+        echo($sql);
+        exit();
         $query = $this->db->query($sql);
 
         $data = (object)array(
