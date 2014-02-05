@@ -37,14 +37,14 @@ switch($row->area){
                 $work_title = "\"{$row->info->work['title']}\"";
                 $comment = "\"{$row->info->comment}\"";
                 $prep=($row->info->user_B['id']==USER_ID)?'이':'도';
-                $text="<b>{$row->info->user_A['realname']}</b>님{$prep} <b>{$row->info->user_B['realname']}</b>님의 작품<b> {$work_title}</b> 을 콜렉션에 담았습니다. {$comment}";
+                $text="<b>{$row->info->user_A['realname']}</b>님{$prep} <b>{$row->info->user_B['realname']}</b>님의 작품<b> {$work_title}</b> 을 콜렉션에 담았습니다. {$row->info->comment}";
                 break;
             case "comment":
                 $link="/{$row->info->user_B['username']}/{$work_id}";
                 $work_title = "\"{$row->info->work['title']}\"";
                 $comment = "\"{$row->info->comment}\"";
                 $prep=($row->info->user_B['id']==USER_ID)?'이':'도';
-                $text="<b>{$row->info->user_A['realname']}</b>님{$prep} <b>{$row->info->user_B['realname']}</b>님의 작품<b> {$work_title} </b>에 댓글을 남겼습니다. {$comment}";
+                $text="<b>{$row->info->user_A['realname']}</b>님{$prep} <b>{$row->info->user_B['realname']}</b>님의 작품<b> {$work_title} </b>에 댓글을 남겼습니다. {$row->info->comment}";
                 break;
         }
         break;        
