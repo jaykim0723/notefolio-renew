@@ -1,8 +1,8 @@
 <?php
-if (!is_file($this->input->server('DOCUMENT_ROOT')."/data/profiles/{$info->user_A['username']}_face.jpg"))
+if (!is_file($this->input->server('DOCUMENT_ROOT')."/data/profiles/{$row->info->user_A['username']}_face.jpg"))
     $profile_image = '';
 else
-    $profile_image = "/data/profiles/{$info->user_A['username']}_face.jpg";
+    $profile_image = "/data/profiles/{$row->info->user_A['username']}_face.jpg";
 
 /*
 AAA님이 회원님의 작품 "작품 제목"을 NOTE 하였습니다.
@@ -19,32 +19,32 @@ switch($area){
     case "user":
         switch($type){
             case "follow":
-                $link="/{$info->user_A['username']}";
-                $text="<b>{$info->user_A['realname']}</b>님이 <b>{$info->user_B['realname']}</b>님을 팔로우합니다.";
+                $link="/{$row->info->user_A['username']}";
+                $text="<b>{$row->info->user_A['realname']}</b>님이 <b>{$row->info->user_B['realname']}</b>님을 팔로우합니다.";
                 break;
         }
         break;
     case "work":
         switch($type){
             case "note":
-                $link="/{$info->user_B['username']}/{$info->work['work_id']}";
-                $work_title = "\"{$info->work['title']}\"";
-                $prep=($info->user_B['id']==USER_ID)?'이':'도';
-                $text="<b>{$info->user_A['realname']}</b>님{$prep} <b>{$info->user_B['realname']}</b>님의 작품 <b>{$work_title}</b> 을 좋아합니다.";
+                $link="/{$row->info->user_B['username']}/{$row->info->work['work_id']}";
+                $work_title = "\"{$row->info->work['title']}\"";
+                $prep=($row->info->user_B['id']==USER_ID)?'이':'도';
+                $text="<b>{$row->info->user_A['realname']}</b>님{$prep} <b>{$row->info->user_B['realname']}</b>님의 작품 <b>{$work_title}</b> 을 좋아합니다.";
                 break;
             case "collect":
-                $link="/{$info->user_A['username']}/collect";
-                $work_title = "\"{$info->work['title']}\"";
-                $comment = "\"{$info->comment}\"";
-                $prep=($info->user_B['id']==USER_ID)?'이':'도';
-                $text="<b>{$info->user_A['realname']}</b>님{$prep} <b>{$info->user_B['realname']}</b>님의 작품<b> {$work_title}</b> 을 콜렉션에 담았습니다. {$comment}";
+                $link="/{$row->info->user_A['username']}/collect";
+                $work_title = "\"{$row->info->work['title']}\"";
+                $comment = "\"{$row->info->comment}\"";
+                $prep=($row->info->user_B['id']==USER_ID)?'이':'도';
+                $text="<b>{$row->info->user_A['realname']}</b>님{$prep} <b>{$row->info->user_B['realname']}</b>님의 작품<b> {$work_title}</b> 을 콜렉션에 담았습니다. {$comment}";
                 break;
             case "comment":
-                $link="/{$info->user_B['username']}/{$work_id}";
-                $work_title = "\"{$info->work['title']}\"";
-                $comment = "\"{$info->comment}\"";
-                $prep=($info->user_B['id']==USER_ID)?'이':'도';
-                $text="<b>{$info->user_A['realname']}</b>님{$prep} <b>{$info->user_B['realname']}</b>님의 작품<b> {$work_title} </b>에 댓글을 남겼습니다. {$comment}";
+                $link="/{$row->info->user_B['username']}/{$work_id}";
+                $work_title = "\"{$row->info->work['title']}\"";
+                $comment = "\"{$row->info->comment}\"";
+                $prep=($row->info->user_B['id']==USER_ID)?'이':'도';
+                $text="<b>{$row->info->user_A['realname']}</b>님{$prep} <b>{$row->info->user_B['realname']}</b>님의 작품<b> {$work_title} </b>에 댓글을 남겼습니다. {$comment}";
                 break;
         }
         break;        
