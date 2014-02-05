@@ -428,6 +428,8 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- followings ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->_get_user_info($username);
+		var_export($user);
+		exit();
 		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$this->user_id))->row;
 
 		if(!$this->input->is_ajax_request())
