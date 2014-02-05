@@ -20,6 +20,8 @@ class alarm_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
+        
+
         // DB 호출하
         // 출력값 조정하고
         // do stuff by 성수씨
