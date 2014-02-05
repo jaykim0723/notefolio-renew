@@ -13,11 +13,26 @@ class alarm_model extends CI_Model {
         $params = (object)$params;
         $default_params = (object)array(
             'page' => 1,
+            'delimiter' => 20, // 한 페이지당 작품 수
+            'order_by'  => 'newest', // newest, oldest
             'user_id' => '' // 필수정보(누구의 피드인지)
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
                 $params->{$key} = $value;
+        }
+
+        switch($params->order_by){
+            case "newest":
+                $this->db->order_by('user_alarms.regdate', 'desc');
+            break;
+            case "oldest":
+                $this->db->order_by('user_alarms.regdate', 'asc');
+            break;
+            default:
+                if(is_array($params->order_by))
+                    $this->db->order_by($params->order_by);
+            break;
         }
 
         //-- feeds
@@ -43,6 +58,7 @@ class alarm_model extends CI_Model {
 
         $query = $this->db
             ->where('user_alarms.user_id', $params->user_id)
+        ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter))
             ->get('user_alarms');
 
         $rows = array();
