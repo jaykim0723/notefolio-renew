@@ -40,7 +40,7 @@ class work_model extends CI_Model {
 
         if($params->from!='all'){
             switch($params->from){
-                case 'month':
+                case 'day':
                     $from = date('Y-m-d');
                     break;
                 case 'week':
