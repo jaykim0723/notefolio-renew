@@ -53,8 +53,8 @@
 						<span class="label label-nofol rounded unread-feed"></span>
 					</a>
 
-					<a class="btn btn-nofol btn-no-border" href="/gallery/create" style="font-family:'Roboto',sans-serif;font-weight:300;font-size:18px;color:#6d6e71;">
-						<i class="spi spi-plus2"></i> Upload work
+					<a class="btn btn-nofol btn-no-border" href="/gallery/create" style="font-family:'Roboto',sans-serif;font-weight:300;font-size:16px;color:#6d6e71;padding:10px 12px 6px;">
+						<i class="spi spi-plus2" style="margin-top:-1px;"></i> Upload work
 					</a>
 					<a id="btn-profile" href="/<?php echo $this->session->userdata('username') ?>">
 						<div id="btn-profile-icon">

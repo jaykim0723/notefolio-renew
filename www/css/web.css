@@ -528,6 +528,8 @@ li#trash-bin{
 	float: right;
 	margin-right: 10px;
 	color: #444;
+	font-weight:300;
+	font-size:16px;
 }
 
 
