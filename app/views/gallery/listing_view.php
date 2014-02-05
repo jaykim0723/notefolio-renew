@@ -27,7 +27,7 @@
 								$keyword_list = $this->config->item('keyword', 'keyword');
 
 								foreach ($keyword_list as $key => $keyword) { ?>
-									<option value="<?php echo $key?>"<?=(in_array('$key', $this->input->get_post('work_categories')))?' selected':''?>><?php echo $keyword;?></option>
+									<option value="<?php echo $key?>"<?=(in_array($key, $work_categories))?' selected':''?>><?php echo $keyword;?></option>
 								<?php }	?>
 							</select>
 						</div>
