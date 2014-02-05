@@ -24,6 +24,12 @@ class alarm_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
+        if(!empty($params->id_before)   &&$params->id_before!=0)
+            $this->db->where('user_alarms.id <', $params->id_before);
+
+        if(!empty($params->id_after)    &&$params->id_after!=0)
+            $this->db->where('user_alarms.id >', $params->id_after);
+
         switch($params->order_by){
             case "newest":
                 $this->db->order_by('user_alarms.regdate', 'desc');
