@@ -15,9 +15,9 @@ BBB님이 회원님을 팔로우합니다.
 BBB님이 회원님과 작품 "작품 제목"을 함께 만들었다고 알렸습니다.
 BBB님이 회원님의 방명록에 댓글을 남겼습니다.
 */
-switch($area){
+switch($row->area){
     case "user":
-        switch($type){
+        switch($row->type){
             case "follow":
                 $link="/{$row->info->user_A['username']}";
                 $text="<b>{$row->info->user_A['realname']}</b>님이 <b>{$row->info->user_B['realname']}</b>님을 팔로우합니다.";
@@ -25,7 +25,7 @@ switch($area){
         }
         break;
     case "work":
-        switch($type){
+        switch($row->type){
             case "note":
                 $link="/{$row->info->user_B['username']}/{$row->info->work['work_id']}";
                 $work_title = "\"{$row->info->work['title']}\"";
