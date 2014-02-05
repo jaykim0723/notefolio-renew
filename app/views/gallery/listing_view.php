@@ -74,7 +74,7 @@
 					<?php endforeach ?>
 				</ul>
 <?php
-$querystring = (count($_GET)>0)?'?':''
+$querystring = (count($_GET)>0)?'?':'';
 if(!empty($querystring)){
 	foreach($_GET as $q_key=>$q_val){
 		$querystring .= urlencode($q_key)."=".urlencode($q_val)."&"
