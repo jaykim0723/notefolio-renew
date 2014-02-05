@@ -11,10 +11,10 @@
 							<div class="input-group">
 			  					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 								<select class="" name="from" id="from">
-									<option value="total">전체 기간</option>
-									<option value="daily">오늘</option>
-									<option value="1week">이번 주</option>
-									<option value="monthly">이번 달</option>
+									<option value="all">전체 기간</option>
+									<option value="day">오늘</option>
+									<option value="week">이번 주</option>
+									<option value="month">이번 달</option>
 								</select>
 							</div>
 						</div>

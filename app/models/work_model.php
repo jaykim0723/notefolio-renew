@@ -21,6 +21,7 @@ class work_model extends CI_Model {
             'id_after'  => 0, // call by...
             'page'      => 1, // 불러올 페이지
             'delimiter' => 24, // 한 페이지당 작품 수
+            'from'  => 'all', // 조회기간
             'order_by'  => 'newest', // newest, oldest
             'keywords'  => array(), 
             'q'  => '', 
@@ -35,6 +36,24 @@ class work_model extends CI_Model {
 
         if($params->only_enable){
             $this->db->where('works.status', 'enabled');
+        }
+
+        if($params->from!='all'){
+            switch($params->from){
+                case 'month':
+                    $from = date('Y-m-d');
+                    break;
+                case 'week':
+                    $from = date('Y-m-d', strtotime('-1 week'));
+                    break;
+                case 'month':
+                    $from = date('Y-m-d', strtotime('-1 month'));
+                    break;
+                case 'all':
+                default:
+                    break;
+            }
+            $this->db->where("(works.regdate >= ".$this->db->escape($from)." or works.moddate >= ".$this->db->escape($from).")", NULL, FALSE);
         }
 
         foreach($params->keywords as $val){

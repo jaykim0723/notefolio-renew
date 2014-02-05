@@ -22,6 +22,8 @@ class Gallery extends CI_Controller {
      * @return [type]        [description]
      */
     function listing($page=1){
+        $from = $this->input->get_post('from'))?
+                $this->input->get_post('from'):'all';
         $work_categories = ($this->input->get_post('work_categories'))?
                 $this->input->get_post('work_categories'):array();
         $q = ($this->input->get_post('q'))?
@@ -34,12 +36,14 @@ class Gallery extends CI_Controller {
             'only_enable'=> true,
             'keyword' => $work_categories,
             'order_by' => $order,
+            'from' => $from,
             'q' => $q,
         ));
 
         $work_list->work_categories = $work_categories;
         $work_list->q = $q;
         $work_list->order = $order;
+        $work_list->from = $from;
         $this->layout->set_view('gallery/listing_view', $work_list)->render();
     }
 
