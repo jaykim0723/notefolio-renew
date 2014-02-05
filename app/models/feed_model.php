@@ -20,6 +20,33 @@ class feed_model extends CI_Model {
     			$params->{$key} = $value;
     	}
 
+        //-- feeds
+        $table = "user_feeds";
+        $fields = array('id', 'user_id', 'regdate',
+                                'readdate', 'deldate');
+        foreach($fields as $field){
+            $this->db->select($table.'.'.$field);
+        }
+        unset($table, $fields, $field);
+        //-- end
+
+        //-- activity
+        $table = "log_activity";
+        $fields = array('ref_id', 'user_id', 'area', 'act', 'type',
+                                'point_get', 'point_status', 'data');
+        foreach($fields as $field){
+            $this->db->select($table.'.'.$field);
+        }
+        $this->db->join($table, 'user_feeds.ref_id='.$table.'.id', 'left');
+        unset($table, $fields, $field);
+        //-- end
+
+        $query = $this->db
+            ->get('user_feeds');
+
+        var_export($query->result());
+        exit();
+
         // DB 호출하
         // 출력값 조정하고
         // do stuff by 성수씨
