@@ -23,6 +23,7 @@ class work_model extends CI_Model {
             'delimiter' => 24, // 한 페이지당 작품 수
             'order_by'  => 'newest', // newest, oldest
             'keywords'  => array(), 
+            'q'  => '', 
             'folder'    => '', // ''면 전체
             'user_id'   => '', // 프로필 등 특정 작가의 작품만을 조회할 때
             'only_enable'   => false, // enable된 작품만
@@ -38,6 +39,11 @@ class work_model extends CI_Model {
 
         foreach($params->keywords as $val){
             $this->db->like('works.keywords', $val, 'both');
+        }
+
+        if(!empty($params->q)){
+            $this->db->or_like('works.title', $params->q, 'both');
+            $this->db->or_like('works.tags', $params->q, 'both');
         }
 
     	$this->db
