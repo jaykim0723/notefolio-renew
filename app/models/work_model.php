@@ -42,8 +42,7 @@ class work_model extends CI_Model {
         }
 
         if(!empty($params->q)){
-            $this->db->or_like('works.title', $params->q, 'both');
-            $this->db->or_like('works.tags', $params->q, 'both');
+            $this->db->where('(MATCH (works.title) AGAINST ("'.$this->db->escape($params->q).'") or (MATCH (works.tags) AGAINST ("'.$this->db->escape($params->q).'")', NULL, FALSE);
         }
 
     	$this->db
