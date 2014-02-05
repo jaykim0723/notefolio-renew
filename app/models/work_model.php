@@ -36,6 +36,10 @@ class work_model extends CI_Model {
             $this->db->where('works.status', 'enabled');
         }
 
+        foreach($params->keywords as $val){
+            $this->db->like('works.keywords', $val, 'both');
+        }
+
     	$this->db
             ->select('works.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
     		// ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
@@ -112,7 +116,7 @@ class work_model extends CI_Model {
         $default_params = (object)array(
             'work_id' => '',
             'folder'  => '', // ''면 모든 작품
-            'get_next_prev'=>false
+            'get_next_prev'=>false,
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
