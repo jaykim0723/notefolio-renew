@@ -50,13 +50,13 @@ class feed_model extends CI_Model {
 
             $rows[] = (object)array(
             'user' => (object)array(
-                'id' => $info->user_A->id,
-                'realname' => $info->user_A->realname,
-                'username' => $info->user_A->username
+                'id' => $info->user_A['id'],
+                'realname' => $info->user_A['realname'],
+                'username' => $info->user_A['username']
             ),
             'work' => (object)array(
-                'work_id' => $info->work->work_id,
-                'title' => $info->work->work_title,
+                'work_id' => $info->work['work_id'],
+                'title' => $info->work['title'],
             ),
             'regdate' => $row->regdate,
             'type' => $row->act,
