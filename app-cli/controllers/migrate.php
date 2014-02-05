@@ -642,7 +642,7 @@ class migrate extends CI_Controller {
                     $data['c'] = trim(preg_replace(
                                     array('/&amp;/', '/&lt;/', '/&gt;/', '/&quot;/', '/&nbsp;/'), 
                                     array('&', '<', '>', '"', ' '), 
-                                    $$val->content
+                                    $val->content
                                 )); //-- tag...
                 break;
                 case "image":
