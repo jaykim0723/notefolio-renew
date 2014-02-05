@@ -41,7 +41,7 @@
 
 
 						<div class="col-md-2 col-sm-6">
-							<select name="" id="">
+							<select name="order" id="order">
 								<option value="newest">최신순</option>
 								<option value="noted">인기순</option>
 								<option value="viewed">조회순</option>
