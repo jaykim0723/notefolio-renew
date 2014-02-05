@@ -3,7 +3,7 @@ if (!is_file($this->input->server('DOCUMENT_ROOT')."/data/profiles/{$row->info->
     $profile_image = '';
 else
     $profile_image = "/data/profiles/{$row->info->user_A['username']}_face.jpg";
-echo('<pre>'.var_export($row, true).'</pre>');
+
 /*
 AAA님이 회원님의 작품 "작품 제목"을 NOTE 하였습니다.
 AAA님이 회원님의 작품 "작품 제목"에 댓글을 남겼습니다. "댓글 내용"
@@ -40,7 +40,7 @@ switch($row->area){
                 $text="<b>{$row->info->user_A['realname']}</b>님{$prep} <b>{$row->info->user_B['realname']}</b>님의 작품<b> {$work_title}</b> 을 콜렉션에 담았습니다. {$row->info->comment}";
                 break;
             case "comment":
-                $link="/{$row->info->user_B['username']}/{$work_id}";
+                $link="/{$row->info->user_B['username']}/{$row->info->work['work_id']}";
                 $work_title = "\"{$row->info->work['title']}\"";
                 $comment = "\"{$row->info->comment}\"";
                 $prep=($row->info->user_B['id']==USER_ID)?'이':'도';
