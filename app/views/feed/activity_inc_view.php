@@ -3,7 +3,7 @@ if (!is_file($this->input->server('DOCUMENT_ROOT')."/data/profiles/{$row->info->
     $profile_image = '';
 else
     $profile_image = "/data/profiles/{$row->info->user_A['username']}_face.jpg";
-
+echo('<pre>'.var_export($row, true).'</pre>');
 /*
 AAA님이 회원님의 작품 "작품 제목"을 NOTE 하였습니다.
 AAA님이 회원님의 작품 "작품 제목"에 댓글을 남겼습니다. "댓글 내용"
