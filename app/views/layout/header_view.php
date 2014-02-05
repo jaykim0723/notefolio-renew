@@ -24,11 +24,11 @@
 				<ul class="list-inline">
 					<li>
 						<a href="/" class="clear-list">
-							<i class="spi spi-nflogo"></i>
+							<i class="spi spi-nflogo" style="margin-top:-2px;"></i>
 						</a>
 					</li>
-					<li>
-						<a class="btn btn-link clear-list" href="/gallery/listing"><i class="spi spi-gallery"></i></a>
+					<li style="margin-left: 32px;">
+						<a class="btn btn-link clear-list" href="/gallery/listing" style="font-size:18px;font-family:'Roboto',sans-serif;color:#6d6e71;font-weight:400;">Gallery</a>
 					</li>
 				</ul>
 			</div>
@@ -53,8 +53,8 @@
 						<span class="label label-nofol rounded unread-feed"></span>
 					</a>
 
-					<a class="btn btn-nofol btn-no-border" href="/gallery/create">
-						<i class="spi spi-plus">plus</i> Upload work
+					<a class="btn btn-nofol btn-no-border" href="/gallery/create" style="font-family:'Roboto',sans-serif;font-weight:300;font-size:18px;color:#6d6e71;">
+						<i class="spi spi-plus2"></i> Upload work
 					</a>
 					<a id="btn-profile" href="/<?php echo $this->session->userdata('username') ?>">
 						<div id="btn-profile-icon">
