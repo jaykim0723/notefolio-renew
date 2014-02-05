@@ -60,6 +60,7 @@ class alarm_model extends CI_Model {
                     'title' => $info->work['title'],
                 ),
                 'regdate' => $row->regdate,
+                'readdate' => $row->readdate,
                 'area' => $row->area,
                 'act' => $row->act,
                 'type' => $row->act,
