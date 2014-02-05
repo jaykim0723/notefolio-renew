@@ -44,31 +44,25 @@ class feed_model extends CI_Model {
         $query = $this->db
             ->get('user_feeds');
 
-        var_export($query->result());
-        exit();
+        $rows = array();
+        foreach($query->result() as $row){
+            $info = unserialize($row->data);
 
-        // DB 호출하
-        // 출력값 조정하고
-        // do stuff by 성수씨
-        $row = (object)array(
+            $rows[] = (object)array(
             'user' => (object)array(
-                'id' => 234,
-                'realname' => '이흥현',
-                'username' => '홍구'
+                'id' => $info->user_A->id,
+                'realname' => $info->user_A->realname,
+                'username' => $info->user_A->username
             ),
             'work' => (object)array(
-                'work_id' => 2398674,
-                'title' => '노트폴리오 예제',
-                'regdate' => '2013-01-23 11:20:12'
+                'work_id' => $info->work->work_id,
+                'title' => $info->work->work_title,
             ),
-            'regdate' => '2013-01-23 11:20:12',
-            'type' => 'create',
-            'message' => '<a class="info_link" href="/gangsups">홍구</a>님이 <a class="info_link" href="#">새로운 작품</a>을 공개하였습니다.'
+            'regdate' => $row->regdate,
+            'type' => $row->act,
+            'message' => $row->data
         );
-        $rows = array();
-        for($i=0; $i<20; $i++)
-            $rows[] = $row;
-        
+        }
         $data = (object)array(
             'status' => 'done',
             'page'   => $params->page,
