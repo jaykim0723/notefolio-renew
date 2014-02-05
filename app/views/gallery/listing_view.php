@@ -35,7 +35,7 @@
 						
 
 						<div class="col-md-3 col-sm-6">
-							<input class="col-xs-2 form-control" type="text" name="q" placeholder="검색어"/>
+							<input class="col-xs-2 form-control" type="text" name="q" placeholder="검색어" value="<?=q?>"/>
 						</div>
 
 
