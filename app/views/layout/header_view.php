@@ -35,11 +35,11 @@
 
 			<div class="col-md-7 righted">
 				<?php if (USER_ID==0): ?>
-					<a class="btn btn-nofol btn-no-border" href="#" id="login-with-fb">
-						<i class="spi spi-fb">fb</i> Login with Facebook
+					<a class="btn btn-nofol btn-no-border" href="#" id="login-with-fb" style="font-size:16px;font-weight:300;margin-top:6px;">
+						<i class="spi spi-fb" style="margin-top:-2px;">fb</i> Login with facebook
 					</a>
-					<a class="btn btn-nofol btn-no-border" href="/auth/login">
-						<i class="spi spi-user">user</i> Login
+					<a class="btn btn-nofol btn-no-border" href="/auth/login" style="font-size:16px;font-weight:300;margin-top:5px;">
+						<i class="spi spi-user" style="margin-top:-2px;">user</i> Login
 					</a>
 				<?php else: ?>
 					<span id="alarm-wrapper">
