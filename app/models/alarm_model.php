@@ -20,30 +20,50 @@ class alarm_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-        
+        //-- feeds
+        $table = "user_alarms";
+        $fields = array('id', 'user_id', 'regdate',
+                                'readdate', 'deldate');
+        foreach($fields as $field){
+            $this->db->select($table.'.'.$field);
+        }
+        unset($table, $fields, $field);
+        //-- end
 
-        // DB 호출하
-        // 출력값 조정하고
-        // do stuff by 성수씨
-        $row = (object)array(
-            'user' => (object)array(
-                'id' => 234,
-                'realname' => '이흥현',
-                'username' => '홍구'
-            ),
-            'work' => (object)array(
-                'work_id' => 2398674,
-                'title' => '노트폴리오 예제',
-                'regdate' => '2013-01-23 11:20:12'
-            ),
-            'regdate' => '2013-01-23 11:20:12',
-            'type' => 'create',
-            'message' => '<a class="info_link" href="/gangsups">홍구</a>님이 <a class="info_link" href="#">새로운 작품</a>을 공개하였습니다.'
-        );
+        //-- activity
+        $table = "log_activity";
+        $fields = array('ref_id', 'user_id', 'area', 'act', 'type',
+                                'point_get', 'point_status', 'data');
+        foreach($fields as $field){
+            $this->db->select($table.'.'.$field);
+        }
+        $this->db->join($table, 'user_alarms.ref_id='.$table.'.id', 'left');
+        unset($table, $fields, $field);
+        //-- end
+
+        $query = $this->db
+            ->where('user_alarms.user_id', $params->user_id)
+            ->get('user_alarms');
+
         $rows = array();
-        for($i=0; $i<20; $i++)
-            $rows[] = $row;
-        
+        foreach($query->result() as $row){
+            $info = unserialize($row->data);
+
+            $rows[] = (object)array(
+                'user' => (object)array(
+                    'id' => $info->user_A['id'],
+                    'realname' => $info->user_A['realname'],
+                    'username' => $info->user_A['username']
+                ),
+                'work' => (object)array(
+                    'work_id' => $info->work['work_id'],
+                    'title' => $info->work['title'],
+                ),
+                'regdate' => $row->regdate,
+                'type' => $row->act,
+                'message' => $row->data
+            );
+        }
         $data = (object)array(
             'status' => 'done',
             'page'   => $params->page,
