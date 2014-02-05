@@ -220,7 +220,7 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- profile.php > myworks ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->_get_user_info($username);
-		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$user->row->id))->row;
+		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$this->user_id))->row;
 
         $this->load->model('work_model');
 		$work_list = $this->work_model->get_list(array(
@@ -280,7 +280,7 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- about ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->_get_user_info($username);
-		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$user->row->id))->row;
+		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$this->user_id))->row;
 
 		$data = $this->profile_model->get_about(array(
 			'user_id' => $user->row->id
@@ -326,7 +326,7 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- collection ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->_get_user_info($username);
-		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$user->row->id))->row;
+		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$this->user_id))->row;
 
 		$collection_list = $this->profile_model->get_collection_list(array(
 			'page' => $page,
@@ -347,7 +347,7 @@ class Profile extends CI_Controller {
 	function statistics($username='', $page=1){
 		log_message('debug','--------- statistics ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		$user = $this->_get_user_info($username);
-		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$user->row->id))->row;
+		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$this->user_id))->row;
 
 		$data = (object)array(
 		);
@@ -428,7 +428,7 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- followings ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->_get_user_info($username);
-		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$user->row->id))->row;
+		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$this->user_id))->row;
 
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user);
@@ -445,7 +445,7 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- followers ( params : '.print_r(get_defined_vars(),TRUE)).')';
 
 		$user = $this->_get_user_info($username);
-		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$user->row->id))->row;
+		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$this->user_id))->row;
 
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_view('profile/header_view', $user);
