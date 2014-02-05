@@ -245,7 +245,7 @@ class migrate extends CI_Controller {
 
         $response = @json_decode(exec($cmd));
         foreach($response->rows as $key=>$val){
-            if(isset($start) && $val->id!=$start){
+            if($start>0 && $val->id!=$start){
                 echo('Work ID "'.$val->id.'" - skip'.PHP_EOL);
                 continue;
             } else{
