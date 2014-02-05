@@ -22,12 +22,16 @@ class Gallery extends CI_Controller {
      * @return [type]        [description]
      */
     function listing($page=1){
+        $work_categories = ($this->input->get_post('work_categories'))?
+                $this->input->get_post('work_categories'):array();
+
         $work_list = $this->work_model->get_list(array(
             'page' => $page,
             'only_enable'=> true
+            'keyword' => $work_categories
         ));
-        $work_list->work_categories = ($this->input->get_post('work_categories'))?
-                $this->input->get_post('work_categories'):array();
+        
+        $work_list->work_categories = $work_categories;
         $this->layout->set_view('gallery/listing_view', $work_list)->render();
     }
 
