@@ -721,7 +721,7 @@ class migrate extends CI_Controller {
             'message'   => 'successed',
             'upload_id' => $upload_id,
             'src' => $filename['uri'].$filename['medium'],
-            'org_filename' => $file['name'],
+            'org_filename' => $org_filename,
             'data' => $this->upload_model->get(array('id'=>$upload_id))->row
             );
 
