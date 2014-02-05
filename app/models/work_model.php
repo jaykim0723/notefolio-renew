@@ -64,9 +64,18 @@ class work_model extends CI_Model {
     		case "newest":
     			$this->db->order_by('moddate', 'desc');
     		break;
-    		case "oldest":
-    			$this->db->order_by('moddate', 'asc');
-    		break;
+            case "oldest":
+                $this->db->order_by('moddate', 'asc');
+            break;
+            case "noted":
+                $this->db->order_by('note_cnt', 'desc');
+            break;
+            case "viewed":
+                $this->db->order_by('hit_cnt', 'desc');
+            break;
+            case "featured":
+                $this->db->order_by('nofol_rank', 'desc');
+            break;
     		default:
     			if(is_array($params->order_by))
     				$this->db->order_by($params->order_by);

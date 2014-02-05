@@ -42,10 +42,10 @@
 
 						<div class="col-md-2 col-sm-6">
 							<select name="order" id="order">
-								<option value="newest">최신순</option>
-								<option value="noted">인기순</option>
-								<option value="viewed">조회순</option>
-								<option value="featured">추천순</option>
+								<option value="newest"<?=($order=="newest")?' selected':''?>>최신순</option>
+								<option value="noted"<?=($order=="noted")?' selected':''?>>인기순</option>
+								<option value="viewed"<?=($order=="viewed")?' selected':''?>>조회순</option>
+								<option value="featured"<?=($order=="featured")?' selected':''?>>추천순</option>
 							</select>
 						</div>
 
