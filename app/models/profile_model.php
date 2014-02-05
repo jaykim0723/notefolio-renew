@@ -539,16 +539,20 @@ class profile_model extends CI_Model {
                 $params->{$key} = $value;
         }
 
-        $sql = "SELECT  count(work_id) as work_cnt,
-                        sum(hit_cnt) as hit_cnt,
-                        sum(note_cnt) as note_cnt,
-                        sum(comment_cnt) as comment_cnt,
-                        sum(collect_cnt) as collect_cnt,
-                        following_cnt,
-                        follower_cnt
-                    from works
-                        left join user_profiles on works.user_id = user_profiles.user_id
-                    where works.user_id = ".$this->db->escape($params->user_id).";";
+        $sql = "SELECT 
+                    ifnull(count(work_id), 0) as work_cnt,
+                    ifnull(sum(hit_cnt), 0) as hit_cnt,
+                    ifnull(sum(note_cnt), 0) as note_cnt,
+                    ifnull(sum(comment_cnt), 0) as comment_cnt,
+                    ifnull(sum(collect_cnt), 0) as collect_cnt,
+                    ifnull(following_cnt, 0) as following_cnt,
+                    ifnull(follower_cnt, 0) as follower_cnt
+                from
+                    user_profiles
+                        left join
+                    works ON works.user_id = user_profiles.user_id
+                where
+                    user_profiles.user_id = ".$this->db->escape($params->user_id).";";
         echo($sql);
         exit();
         $query = $this->db->query($sql);
