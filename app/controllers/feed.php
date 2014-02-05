@@ -6,6 +6,7 @@ class Feed extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('feed_model');
+        $this->load->model('alarm_model');
 		$this->nf->_member_check(array('update','delete'));
     }
 	
@@ -21,7 +22,7 @@ class Feed extends CI_Controller {
 			'user_id' => USER_ID
 		));
 		// 첫페이지 출력을 위하여 이곳에서 불러들이기
-		$feed_list->activity = 	$this->feed_model->get_list(array(
+		$feed_list->activity = 	$this->alarm_model->get_list(array(
 			'page' => $page,
 			'user_id' => USER_ID
 		));

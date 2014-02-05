@@ -50,18 +50,13 @@ class feed_model extends CI_Model {
             $info = unserialize($row->data);
 
             $rows[] = (object)array(
-                'user' => (object)array(
-                    'id' => $info->user_A['id'],
-                    'realname' => $info->user_A['realname'],
-                    'username' => $info->user_A['username']
-                ),
-                'work' => (object)array(
-                    'work_id' => $info->work['work_id'],
-                    'title' => $info->work['title'],
-                ),
                 'regdate' => $row->regdate,
-                'type' => $row->act,
-                'message' => $row->data
+                'readdate' => $row->readdate,
+                'area' => $row->area,
+                'act' => $row->act,
+                'type' => $row->type,
+                'message' => $row->data,
+                'info' => $info
             );
         }
         $data = (object)array(

@@ -50,15 +50,6 @@ class alarm_model extends CI_Model {
             $info = unserialize($row->data);
 
             $rows[] = (object)array(
-                'user' => (object)array(
-                    'id' => $info->user_A['id'],
-                    'realname' => $info->user_A['realname'],
-                    'username' => $info->user_A['username']
-                ),
-                'work' => (object)array(
-                    'work_id' => $info->work['work_id'],
-                    'title' => $info->work['title'],
-                ),
                 'regdate' => $row->regdate,
                 'readdate' => $row->readdate,
                 'area' => $row->area,
