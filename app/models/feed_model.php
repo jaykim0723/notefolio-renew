@@ -12,6 +12,8 @@ class feed_model extends CI_Model {
     function get_list($params=array()){
     	$params = (object)$params;
     	$default_params = (object)array(
+            'id_before'  => 0, // call by...
+            'id_after'  => 0, // call by...
     		'page' => 1,
             'delimiter' => 20, // 한 페이지당 작품 수
             'order_by'  => 'newest', // newest, oldest
@@ -21,6 +23,12 @@ class feed_model extends CI_Model {
     		if(!isset($params->{$key}))
     			$params->{$key} = $value;
     	}
+
+        if(!empty($params->id_before)   &&$params->id_before!=0)
+            $this->db->where('user_feeds.id <', $params->id_before);
+
+        if(!empty($params->id_after)    &&$params->id_after!=0)
+            $this->db->where('user_feeds.id >', $params->id_after);
 
         switch($params->order_by){
             case "newest":
@@ -58,6 +66,7 @@ class feed_model extends CI_Model {
 
         $query = $this->db
             //->where('user_feeds.user_id', $params->user_id)
+        ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter))
             ->get('user_feeds');
 
         $rows = array();

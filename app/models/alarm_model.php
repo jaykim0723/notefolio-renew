@@ -12,6 +12,8 @@ class alarm_model extends CI_Model {
     function get_list($params=array()){
         $params = (object)$params;
         $default_params = (object)array(
+            'id_before'  => 0, // call by...
+            'id_after'  => 0, // call by...
             'page' => 1,
             'delimiter' => 20, // 한 페이지당 작품 수
             'order_by'  => 'newest', // newest, oldest
