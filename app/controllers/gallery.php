@@ -71,18 +71,18 @@ class Gallery extends CI_Controller {
         $params->work_id = $work_id;
         if(!empty($params->work_id) && $params->work_id>0){
             $result = $this->work_model->post_view($params);
+
+            //-- write activity
+            $this->load->library('activity');
+            $this->activity->post(array(
+                'crud' => 'create',
+                'area' => 'work',
+                'type'  => 'view',
+                'work_id' => $params->work_id,
+                'user_A' => $params->user_id,
+                ));
         }
 
-
-        //-- write activity
-        $this->load->library('activity');
-        $this->activity->post(array(
-            'crud' => 'create',
-            'area' => 'work',
-            'type'  => 'view',
-            'work_id' => $work_id,
-            'user_A' => USER_ID,
-            ));
     }
 
 
