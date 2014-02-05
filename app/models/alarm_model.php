@@ -63,7 +63,7 @@ class alarm_model extends CI_Model {
                 'readdate' => $row->readdate,
                 'area' => $row->area,
                 'act' => $row->act,
-                'type' => $row->act,
+                'type' => $row->type,
                 'message' => $row->data,
                 'info' => $info
             );
