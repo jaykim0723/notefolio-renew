@@ -5,8 +5,8 @@ else
     $profile_image = "/data/profiles/{$row->info->user_A['username']}_face.jpg";
 ?>
 <li class="thumbbox infinite-item">
-	<?php echo $row->info->comment; ?>
-	<?php echo $this->nf->print_time($row->regdate) ?>
+	<?=(isset($row->info->comment))?$row->info->comment:''; ?>
+	<?=$this->nf->print_time($row->regdate) ?>
 	<a href="/<?=$row->info->user_B['username']?>/<?=$row->info->work['work_id']?>">
 		<img src="<?=$profile_image?>"/>
 	</a>
