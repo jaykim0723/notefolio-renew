@@ -42,6 +42,7 @@ class feed_model extends CI_Model {
         //-- end
 
         $query = $this->db
+            ->where('user_feeds.user_id', $params->user_id)
             ->get('user_feeds');
 
         $rows = array();
