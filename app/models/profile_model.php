@@ -574,8 +574,8 @@ class profile_model extends CI_Model {
         $params = (object)$params;
         $default_params = (object)array(
             'user_id'   => '',
-            'sdate' => '2012-10-01',
-            'edate' => date('Y-m-d H:i:s')
+            'sdate' => '',
+            'edate' => ''
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
