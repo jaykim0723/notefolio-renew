@@ -8,7 +8,7 @@
 				<ul id="alarm-list" class="feed-activity-list alarm-list clearfix">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
-					<?php $this->load->view('feed/activity_inc_view', $row) ?>
+					<?php $this->load->view('feed/activity_inc_view', array('row'=>$row)) ?>
 					<?php endforeach ?>
 				</ul>
 				<a href="/alarm/listing/<?php echo $page+1; ?>" class="alarm-more-link btn btn-default btn-block">more</a>
