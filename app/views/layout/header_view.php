@@ -39,7 +39,7 @@
 						<i class="spi spi-fb" style="margin-top:-2px;">fb</i> Login with facebook
 					</a>
 					<a class="btn btn-nofol btn-no-border" href="/auth/login" style="font-size:16px;font-weight:300;margin-top:5px;">
-						<i class="spi spi-user" style="margin-top:-2px;">user</i> Login
+						<i class="spi spi-user" style="margin-top:-2px;">user</i>&nbsp;&nbsp;Login
 					</a>
 				<?php else: ?>
 					<span id="alarm-wrapper">
