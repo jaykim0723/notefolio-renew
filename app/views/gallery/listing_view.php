@@ -21,7 +21,7 @@
 
 
 						<div class="col-md-3 col-sm-6">
-							<select name="work_categories" id="work_categories" multiple title="Choose one of the following...">
+							<select name="work_categories[]" id="work_categories" multiple title="Choose one of the following...">
 								<?php 
 								$this->load->config('keyword', TRUE);
 								$keyword_list = $this->config->item('keyword', 'keyword');
