@@ -59,10 +59,9 @@ if(is_null($row->readdate)){
 
 <li class="activity-infinite-item <?php echo $this->uri->segment(1); ?>-item clearfix">
 	<a href="<?=$link?>" class="<?=$is_read?>">
-		<i class="spi spi-menu_disc"></i>
 		<div>
 			<img src="<?=$profile_image?>" alt="">
-			<i class="si si-face-medium"></i>
+			<i class="spi spi-menu_disc"></i>
 		</div>
 		<span>
 			<?=$text?>
