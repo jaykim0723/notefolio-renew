@@ -1,5 +1,5 @@
 <?php
-if (!is_file($this->input->server('DOCUMENT_ROOT')."/data/profiles/{$info->user_A['username']}_face.jpg")
+if (!is_file($this->input->server('DOCUMENT_ROOT')."/data/profiles/{$info->user_A['username']}_face.jpg"))
     $profile_image = '';
 else
     $profile_image = "/data/profiles/{$info->user_A['username']}_face.jpg";
