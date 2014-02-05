@@ -74,12 +74,7 @@
 					<?php endforeach ?>
 				</ul>
 <?php
-$querystring = (count($_GET)>0)?'?':'';
-if(!empty($querystring)){
-	foreach($_GET as $q_key=>$q_val){
-		$querystring .= urlencode($q_key)."=".urlencode($q_val)."&";
-	}
-}
+$querystring = (!empty($_SERVER['QUERY_STRING']))?'?'.$_SERVER['QUERY_STRING']:'';
 ?>
 				<a href="/gallery/listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?><?=$querystring?>" class="more-link btn btn-more btn-default btn-block">more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
