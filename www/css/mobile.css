@@ -450,18 +450,27 @@ html, body {
 */
 .work-info {
 	background: #fff;
-	color: #aaa;
+	color: #999;
 }
 	.work-info .work-info-title {
 		padding: 20px 10px 20px 20px;
 	}
 	.work-info h2 {
-		font-size: 17px;
-		margin-top: 0;
+		font-size: 20px;
+		margin-top: 11px;
 		color: #666;
+		font-weight: 300;
+		margin-bottom: 4px;
 	}
 	.work-info-time {
 		font-size: 12px;
+		margin-left:1px;
+	}
+	.work-info-time a {
+		color: #999;
+	}
+	.work-info-time a:hover {
+		text-decoration: none;
 	}
 	.work-info-icons {
 	}
