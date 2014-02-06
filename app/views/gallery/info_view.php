@@ -25,7 +25,7 @@
 					</a>
 					<div id="profile-info">
 						<h2><a href="<?php echo site_url($row->user->username) ?>"><?php echo $row->user->username ?></a></h2>
-						<h4>&nbsp;<?php echo $row->user->user_keywords; ?>&nbsp;</h4>
+						<h4>&nbsp;<?php echo $this->nf->category_to_string($row->user->user_keywords, true); ?>&nbsp;</h4>
 						<div id="profile-sns-link">
 							<?php foreach ($row->user->sns as $service => $id):
 							$tmp = $this->nf->sns($service, $id);
