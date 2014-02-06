@@ -366,6 +366,9 @@ body {
 #content-block-list{
 	display: block;
 	width: 100%;
+	min-height: 200px;
+	padding: 10px 0;
+	background: transparent;
 }
 /*#content-block-list li{
 	display: block;
@@ -481,11 +484,6 @@ li#trash-bin{
 #profile-inner-wrapper {
 	width: 400px;
 	top: 100px; 
-}
-#profile-header:hover #btn-edit-cover,
-#profile-inner:hover #btn-edit-inner,
-#profile-image:hover #btn-edit-profile {
-	display: block;
 }
 
 

@@ -20,24 +20,29 @@
 	</div>
 
 	<div id="profile-inner-wrapper" style="background-color:<?php echo $row->face_color ?>">
+			
 		<div id="profile-inner">
+			<?php if($this->session->userdata('username')==$row->username): ?>
+			<div id="btn-edit-profile" class="pull-right btn-group">
+				<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+				  <span class="text">정보 편집</span>
+				  <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+				  <li><a id="btn-upload-face" href="#3">사진 업로드</a></li>
+				  <li><a id="btn-select-face" href="#3">사진 작품 중 선택</a></li>
+				  <li><a id="btn-delete-face" href="#3">사진 삭제</a></li>
+				  <li class="divider"></li>
+				  <li><a id="btn-change-color" href="#3">배경색 변경</a></li>
+				  <li class="divider"></li>
+				  <li><a id="btn-change-username" href="#3">사용자명 변경</a></li>
+				  <li><a id="btn-change-keywords" href="#3">키워드 편경</a></li>
+				  <li><a id="btn-change-sns" href="#3">소셜주소 변경</a></li>
+				</ul>
+			</div>	
+			<?php endif; ?>
 			<div id="profile-image">
 				<img src="/data/profiles/<?php echo $row->username ?>_face.jpg?_=<?php echo substr($row->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
-				<?php if($this->session->userdata('username')==$row->username): ?>
-				<div id="btn-edit-profile" class="btn-group">
-					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-					  <span class="text">프로필사진 편집</span>
-					  <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-					  <li><a id="btn-upload-face" href="#3">사진 업로드</a></li>
-					  <li><a id="btn-select-face" href="#3">작품 중 선택</a></li>
-					  <li><a id="btn-delete-face" href="#3">삭제</a></li>
-					  <li class="divider"></li>
-					  <li><a id="btn-change-color" href="#3">배경색 변경</a></li>
-					</ul>
-				</div>	
-				<?php endif; ?>
 			</div>
 			<div id="profile-info">
 				<h2><?php echo $row->username; ?></h2>

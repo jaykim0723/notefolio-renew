@@ -774,7 +774,15 @@ var profileUtil = {
 			$('#profile-header').css('background-image', 'url('+responseJSON.src+')');
 		});
 	},
+	changeUsername : function(){
 
+	},
+	changeKeywords : function(){
+
+	},
+	changeSNS : function(){
+
+	},
 	setGround :  function(){
 		$('#btn-upload-face').ajaxUploader({
 			url : '/upload/image',
@@ -898,6 +906,19 @@ var profileUtil = {
 			dialog.open();
 			site.scroll.lock();
 		});
+
+
+		$('#btn-change-username').on('click', function(){
+			profileUtil.changeUsername();
+		});
+		$('#btn-change-keywords').on('click', function(){
+			profileUtil.changeKeywords();
+		});
+		$('#btn-change-sns').on('click', function(){
+			profileUtil.changeSNS();
+		});
+
+
 	},
 
 
