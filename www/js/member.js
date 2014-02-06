@@ -496,10 +496,8 @@ var workUtil = {
 									$(ui.draggable).empty().append($newBlock);
 									$(ui.draggable).prepend($('<i class="spi spi-close2">close2</i>'));
 									$('#default-image').remove();
-									if(className =='text'){
+									if(className =='text')
 										$newBlock.find('textarea').wysihtml5();
-										$newBlock.prepend($('<i class="spi spi-close2">close2</i>'));
-									}
 									workUtil.discoverbility();
 								}else{
 									//$(ui.draggable).remove();
@@ -546,7 +544,7 @@ var workUtil = {
 				case 'text':
 				default:
 					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(nl2br(c));
-					output = $('<li class="block-text block"></li>').append(textarea);
+					output = $('<li class="block-text block"><i class="spi spi-close2">close2</i></li>').append(textarea);
 				break;
 			}
 			if(typeof(data)!='undefined'){
