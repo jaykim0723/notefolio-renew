@@ -98,7 +98,6 @@ body {
 }
 .main-thumbnail-list .thumbbox:hover .main-work-title {
 	bottom:0px;
-	line-height:230%;
 }
 .main-thumbnail-list .main-work-face {
 	display: block;
@@ -111,7 +110,7 @@ body {
 .main-thumbnail-list .main-work-face .si {
 	position: absolute;
 	left: 0;
-	top: -7px; /* 왜 어긋나는가? 이미지 정렬 문제인가? -> 수치조절, 다른 브라우저에서 확인 필요*/
+	top: 0;
 }
 
 
