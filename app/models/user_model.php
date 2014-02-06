@@ -206,15 +206,6 @@ class user_model extends CI_Model {
                 );
             }
 
-            $followed = $this->db
-                ->where(array(
-                    'follower_id'=>USER_ID,
-                    'follow_id'=>$data->row->id
-                    ))
-                ->get('user_follows');
-
-            $user->is_follow = ($followed->num_rows()>0) ? 'y' : 'n';
-
             unset($user->password);
             unset($user->new_password_key);
             unset($user->new_password_requested);
