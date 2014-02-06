@@ -225,6 +225,12 @@ html, body {
 .main-thumbnail-list .thumbbox img {
 	width: 100%;
 }
+.thumbbox:hover .main-work-info {
+	opacity: 1;
+	-webkit-opacity: 1;
+	filter: alpha(opacity=100);
+	transition: opacity 0.7s ease;
+}
 .main-thumbnail-list .main-work-info {
 	display: block;
 	position: absolute;
@@ -239,6 +245,11 @@ html, body {
 	height: auto!important;
 	width: auto!important;
 	overflow: hidden;
+	opacity: 0;
+	-webkit-opacity: 0;
+	filter: alpha(opacity=0);
+	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
 	
 }
 .main-thumbnail-list .main-work-title {
