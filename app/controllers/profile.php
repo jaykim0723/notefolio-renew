@@ -199,7 +199,8 @@ class Profile extends CI_Controller {
 		// ex) $username = 'amxzidell';
 		$json = $this->profile_model->set_change_username(USER_ID, $username);
 		// ex) $json = array(
-		// 		'status' => 'done'
+		// 		'status' => 'done',
+		// 		'msg' => '중복됩니다.' // 에러가 있는 경우 담아서 주세요. 
 		// );
 		$this->layout->set_json($data)->render();
 	}
