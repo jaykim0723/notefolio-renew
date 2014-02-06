@@ -498,7 +498,7 @@ var workUtil = {
 									if(className =='text')
 										$newBlock.find('textarea').wysihtml5();
 									workUtil.discoverbility();
-									$(ui.draggable)].prepend($('<i class="spi spi-close2">close2</i>'));
+									$(ui.draggable).prepend($('<i class="spi spi-close2">close2</i>'));
 								}else{
 									//$(ui.draggable).remove();
 								}
