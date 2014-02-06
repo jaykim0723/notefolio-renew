@@ -195,25 +195,38 @@ class Profile extends CI_Controller {
 	 * @return [type] [description]
 	 */
 	function change_username(){
-		$username = $this->input->post('username');
+		$username = $this->input->post('username'); 
+		// ex) $username = 'amxzidell';
 		$json = $this->profile_model->set_change_username(USER_ID, $username);
 		$this->layout->set_json($data)->render();
 	}
+
+
 	/**
 	 * 사용자의 카테고리를 변경하는 것
 	 * @return [type] [description]
 	 */
 	function change_keywords(){
 		$keywords = $this->input->post('keywords');
+		// ex) $keywords = 'A7B7';
 		$json = $this->profile_model->set_change_keywords(USER_ID, $keywords);
 		$this->layout->set_json($data)->render();
 	}
+
+
 	/**
 	 * 사용자의 SNS 주소를 변경하는 것
 	 * @return [type] [description]
 	 */
 	function change_sns(){
 		$input = $this->input->post(); // 값이 비어있으면 그것은 제외하는 것이다.
+		// ex) $input = array(
+		// 		'twitter' => '',
+		// 		'facebook' => 'maxzidell',
+		// 		'pinterest' => '',
+		// 		'tumblr' => '',
+		// 		'vimeo' => ''
+		// );
 		$json = $this->profile_model->set_change_username(USER_ID, $input);
 		$this->layout->set_json($data)->render();
 	}
