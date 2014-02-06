@@ -490,8 +490,9 @@ var workUtil = {
 					    		var className = $(ui.draggable).attr("class").match(/block-(\w+)/);
 								if(className){
 									$newBlock = workUtil.content.createBlock(className[1]);
-									console.log('$newBlock', $newBlock);
-									console.log('$newBlock.unwrap()', $newBlock.unwrap());
+									// console.log('$newBlock', $newBlock);
+									// console.log('$newBlock.unwrap()', $newBlock.unwrap());
+									// var draggableIndex = $(ui.draggable).index('li.block'));
 									$(ui.draggable).empty().append($newBlock.html());
 									$('#default-image').remove();
 									if(className =='text')
@@ -530,7 +531,6 @@ var workUtil = {
 					if(c=='')
 						c = workUtil.defaultValue.image;
 					output = workUtil.content.createUploader($('<li class="block-image block"><img data-id="'+i+'" src="'+c+'"/><button class="btn btn-primary">Upload an image</button><i class="spi spi-close2">close2</i></li>'));
-
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
 

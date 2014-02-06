@@ -150,7 +150,7 @@
 
 
 <ul class="list-unstyled" id="work-content-blockadder">
-	<li class="block block-text"><i class="spi spi-write">write</i></li>
+	<li class="block block-text"><i class="spi spi-text">text</i></li>
 	<li class="block block-image"><i class="spi spi-work">work</i></li>
 	<li class="block block-video"><i class="spi spi-video">video</i></li>
 	<li class="block block-line"><i class="spi spi-division">division</i></li>

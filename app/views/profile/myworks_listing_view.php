@@ -10,6 +10,7 @@
 				
 					<div class="alert alert-info">
 					  <strong>게시물이 없습니다.</strong>
+					<br/>
 					  작품을 등록해주세요.
 					</div>
 

@@ -827,12 +827,12 @@ var workInfoUtil = {
 		$workRecentList.children('.selected').removeClass('selected');
 		$workRecentList.children('#work-recent-'+work_id).addClass('selected');
 		$workRecentList.scrollTo($workRecentList.children('#work-recent-'+work_id));
+		$workRecentList.css('top', top);
 	},
 	initRecentList : function(){
 		var top = $('#work-recent-works').offset().top - $(window).scrollTop();
 		top -= $('#work-recent-works > h2').outerHeight();
 		top += 14; // ? 왜 안맞는지는 모르겠지만 일단 이렇게..
-		console.log('top', top); 
 		$('#work-recent-list').on({
 			mouseenter : function(){
 				site.scroll.lock();

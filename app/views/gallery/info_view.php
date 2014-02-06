@@ -250,7 +250,9 @@
 <script>
 	$(function() {
 		NFview.infiniteCallback();
-		workInfoUtil.setGround();
+		workInfoUtil.setGround();		
+	});
+	$(window).on('load', function(){
 		workInfoUtil.initRecentList();
 	});
 </script>

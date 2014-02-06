@@ -87,10 +87,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="nav nav-pills pull-right">
-					<li>
+					<li id="profile_nav_followings">
 						<a href="/<?php echo $row->username ?>/followings">followings(<?php echo number_format($total->following_cnt) ?>)</a>
 					</li>
-					<li>
+					<li id="profile_nav_followers">
 						<a href="/<?php echo $row->username ?>/followers">followers(<?php echo number_format($total->follower_cnt) ?>)</a>
 					</li>
 				</ul>
@@ -101,7 +101,7 @@
 							<i class="spi spi-check">check</i><span class="text"> Works</span><span class="number">234</span>
 						</a>
 					</li>
-					<li id="profile_nav_collection">
+					<li id="profile_nav_collect">
 						<a href="/<?php echo $row->username ?>/collect">
 							<i class="spi spi-check">check</i><span class="text"> Collect</span><span class="number">22</span>
 						</a>
@@ -145,7 +145,9 @@
 
 
 
-<?php /*
+<?php
+
+/*
 <?php if($this->tank_auth->is_logged_in() && ($this->config->item('debug_tutorial')=='y' OR strpos($this->session->userdata('tutorial'), 'profile')!==FALSE)):
 $this->session->set_userdata('tutorial', str_replace($this->session->userdata('tutorial'), '(profile)', ''));
 ?>
