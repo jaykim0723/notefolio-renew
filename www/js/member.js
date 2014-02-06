@@ -486,7 +486,7 @@ var workUtil = {
 							out: function(event, ui){
 							},
 					    	drop: function( event, ui ) {
-								$(ui.draggable).css('outline', 'none');
+								$(ui.draggable).css('outline', 'none').empty();
 					    		var className = $(ui.draggable).attr("class").match(/block-(\w+)/);
 								if(className){
 									className = className[1];
@@ -494,9 +494,9 @@ var workUtil = {
 									// console.log('$newBlock', $newBlock);
 									// console.log('$newBlock.unwrap()', $newBlock.unwrap());
 									// var draggableIndex = $(ui.draggable).index('li.block'));
-									var $target = $(ui.draggable).empty();
+									var $target = $(ui.draggable).next();
 									$($newBlock).insertBefore($target);
-									$($target).remove();
+									$(ui.draggable).remove();
 
 									$('#default-image').remove();
 									if(className =='text')
