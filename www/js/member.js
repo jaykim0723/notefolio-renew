@@ -88,7 +88,7 @@ var workUtil = {
 	    			break;
 	    			case 'text':
 	    				if($(this).children('textarea').val()=='')
-	    					return true; // 내용이 없으면 빈놈으로 취급한다.
+	    					;//return true; // 내용이 없으면 빈놈으로 취급한다.
 	    			break;
 	    		}
 	    		o[type]++;
@@ -163,7 +163,7 @@ var workUtil = {
 			return;
 		}
 		if(value.keywords == 0){
-			msg.open('카테고리를 선택하여 주십시오.', 'error', '#keywords', 'y');
+			msg.open('카테고리를 선택하여 주십시오.', 'error', $('#keywords').next(), 'y');
 			return;
 		}
 		if(value.cover == 0){
@@ -174,7 +174,7 @@ var workUtil = {
 		var data = $(form).serialize();
 
 		// keywords에 관련해서는 지우고 다시 작업을 진행한다.
-		data = data.replace(/(&keywords)=([A-Z0-9]{2})/g, '$1[]=$2');
+		data = data.replace(/(&?keywords)=([A-Z7]{2})/g, '$1[]=$2');
 
 		var contents = [];
 		$('#content-block-list > li').each(function(index){
@@ -256,7 +256,7 @@ var workUtil = {
 
 
 			// 키워드 셋팅하기
-			$('#keywords').selectpicker('val', NFview.keywords).data('old', NFview.keywords.join(',')).on('change', function(){
+			$('#keywords').selectpicker('val', NFview.keywords).data('old', NFview.keywords).on('change', function(){
 				var count = workUtil.checkValue.keywords();
 				if(count>2){
 					$(this).selectpicker('val', $(this).data('old').split(','));
