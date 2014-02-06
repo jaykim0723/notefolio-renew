@@ -163,6 +163,8 @@ body {
 	#main-hot-creators a .hot-username {
 		display: block;
 		font-size: 18px;
+		font-weight:300;
+		margin-top: 8px;
 	}
 	#main-hot-creators a .hot-keywords {
 		display: block;
@@ -174,6 +176,7 @@ body {
 	display: none;
 	color: #fff;
 	font-size: 18px;
+	font-weight: 300;
 	margin-top: 17px;
 }
 #main-hot-creators a .si-face-medium_point,
