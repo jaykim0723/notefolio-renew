@@ -427,12 +427,16 @@ class Auth extends CI_Controller
         
         $allowed_user_key = array(
                 'id',
-                'username',
+                //'username',
                 'realname',
-                'email',
+                //'email',
                 'gender',
-                'birth',
+                //'birth',
+                'year',
+                'month',
+                'day',
                 'mailing',
+                'fb_num_id',
             );
         $param = array();
 
@@ -440,6 +444,12 @@ class Auth extends CI_Controller
             if(in_array($key, $allowed_user_key))
                 $param[$key] = $val;
         }
+
+        if(isset($data['year'])&&isset($data['month'])&&isset($data['day'])){
+            $data['birth'] = implode('-', array($data['year'],$data['month'],$data['day']));
+            unset($data['year'],$data['month'],$data['day']);
+        }
+
         $this->user_model->put($param);
 
         
@@ -475,9 +485,9 @@ class Auth extends CI_Controller
 
         $allowed_user_key = array(
                 'id',
-                'username',
+                //'username',
                 'realname',
-                'email',
+                //'email',
                 'gender',
                 'birth',
                 'mailing',

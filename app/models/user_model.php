@@ -584,6 +584,8 @@ class user_model extends CI_Model {
                 'status' => 'fail',
                 'message'=> 'no_input_user_id'
             );
+            
+            return $data;
         }
 
         if(empty($fb_num_id))
