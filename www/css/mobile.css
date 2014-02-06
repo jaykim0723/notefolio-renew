@@ -170,13 +170,13 @@ html, body {
 #footer {
 	background: rgba(255, 255, 255, 0.7);
 	width: 100%;
-	padding: 10px 0;
+	padding: 7px 0;
 	text-align: center;
 	color: #444;
 }
 
 #footer-menu {
-	padding-top:5px;
+	padding-top:6px;
 	font-size: 12px;
 	text-align: left;
 	padding-left: 30px;

@@ -13,10 +13,10 @@
 			</div>
 			<div id="footer-gap" class="col-md-4">
 			</div>
-			<div class="col-md-2" style="padding-top:2px;">
-				<img src="http://magazine.notefolio.net/theme_assets/img/blog.png" style="width:20px;height:20px;margin-top:1px;">
+			<div class="col-md-2" style="padding-top:3px;">
+				<img src="http://magazine.notefolio.net/theme_assets/img/blog.png" style="width:20px;height:20px;">
 				<span class="footerlink">blog</span>
-				<img src="http://magazine.notefolio.net/theme_assets/img/facebook.png" style="width:20px;height:20px;margin-top:1px;">
+				<img src="http://magazine.notefolio.net/theme_assets/img/facebook.png" style="width:20px;height:20px;margin-left:15px;">
 				<span class="footerlink">facebook</span>
 			</div>
 		</div>
