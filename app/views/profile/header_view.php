@@ -36,7 +36,7 @@
 				  <li><a id="btn-change-color" href="#3">배경색 변경</a></li>
 				  <li class="divider"></li>
 				  <li><a id="btn-change-username" href="#3">사용자명 변경</a></li>
-				  <li><a id="btn-change-keywords" href="#3">키워드 편경</a></li>
+				  <li><a id="btn-change-keywords" href="#3">카테고리 변경</a></li>
 				  <li><a id="btn-change-sns" href="#3">소셜주소 변경</a></li>
 				</ul>
 			</div>	

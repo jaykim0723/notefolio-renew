@@ -608,3 +608,9 @@ li#trash-bin{
 	height: 40px;
 	margin: 0;
 }
+
+
+
+#dialog-change-username .modal-dialog {
+    max-width: 320px;
+}
