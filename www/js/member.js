@@ -394,7 +394,7 @@ var workUtil = {
 						// console.log('$newBlock', $newBlock);
 						// console.log('$newBlock.unwrap()', $newBlock.unwrap());
 						// var itemIndex = $(ui.item).index('li.block'));
-						$(ui.item).empty().append($newBlock.html());
+						$(ui.item).insertAfter($newBlock);
 						$('#default-image').remove();
 						if(className =='text')
 							$newBlock.find('textarea').wysihtml5();
