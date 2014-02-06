@@ -559,9 +559,9 @@ class user_model extends CI_Model {
      * @param  array  $data (depend by field in table `user_sns_fb`)
      * @return object       (status return object. status=[done|fail])
      */
-    function put_sns_fb($data=array()){
+    function put_sns_fb($input=array()){
         // null > return fail
-        if($data == array()){
+        if($input == array()){
             $data = (object)array(
                 'status' => 'fail',
                 'message' => 'no_input_data'
@@ -570,14 +570,16 @@ class user_model extends CI_Model {
             return $data;
         }
 
+        $input = (object)$input;
+
         $params = (object)array(
             'moddate' => date('Y-m-d H:i:s'),
         );
 
         $this->load->library('fbsdk');
 
-        $user_id = @$data['user_id'];
-        $fb_num_id = @$data['fb_num_id'];
+        $user_id = $input->user_id;
+        $fb_num_id = $input->fb_num_id;
 
         if(empty($user_id)){
             $data = (object)array(
@@ -597,18 +599,18 @@ class user_model extends CI_Model {
 
         $this->db->trans_start();
         //-- set
-        if(empty($data->post_note))
+        if(empty($input->post_note))
             $this->db->set('post_note', 'N');
         else
-            $this->db->set('post_note', $data->post_note);
-        if(empty($data->post_comment))
+            $this->db->set('post_note', $input->post_note);
+        if(empty($input->post_comment))
             $this->db->set('post_comment', 'N');
         else
-            $this->db->set('post_comment', $data->post_comment);
-        if(empty($data->post_work))
+            $this->db->set('post_comment', $input->post_comment);
+        if(empty($input->post_work))
             $this->db->set('post_work', 'N');
         else
-            $this->db->set('post_work', $data->post_work);
+            $this->db->set('post_work', $input->post_work);
         //-- where
         if(!empty($fb_num_id))
             $this->db->where('fb_num_id', $fb_num_id);

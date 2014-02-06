@@ -487,7 +487,7 @@ class Auth extends CI_Controller
                 'id',
                 //'username',
                 'realname',
-                //'email',
+                'email',
                 'gender',
                 'birth',
                 'mailing',
