@@ -464,7 +464,7 @@ var workUtil = {
 					if(className){
 						className = className[1];
 						$newBlock = workUtil.content.createBlock(className).fadeTo(0, 0.01);
-						$newBlock.appendTo(sendTo);
+						$newBlock.append($('<i class="spi spi-close2">close2</i>')).appendTo(sendTo);
 						$('#default-image').remove();
 						$.when(site.scrollToBottom()).done(function(){
 							$newBlock.fadeTo(300, 1);
@@ -493,7 +493,7 @@ var workUtil = {
 									// console.log('$newBlock', $newBlock);
 									// console.log('$newBlock.unwrap()', $newBlock.unwrap());
 									// var draggableIndex = $(ui.draggable).index('li.block'));
-									$(ui.draggable).empty().append($newBlock);
+									$(ui.draggable).empty().append($('<i class="spi spi-close2">close2</i>')).append($newBlock);
 									$('#default-image').remove();
 									if(className =='text')
 										$newBlock.find('textarea').wysihtml5();
@@ -524,13 +524,13 @@ var workUtil = {
 			var output = '';
 			switch(type){
 				case 'line':
-					output = $('<li class="block-line block"><i class="spi spi-close2">close2</i></li>');
+					output = $('<li class="block-line block"></li>');
 				break;
 				
 				case 'image':
 					if(c=='')
 						c = workUtil.defaultValue.image;
-					output = workUtil.content.createUploader($('<li class="block-image block"><img data-id="'+i+'" src="'+c+'"/><button class="btn btn-primary">Upload an image</button><i class="spi spi-close2">close2</i></li>'));
+					output = workUtil.content.createUploader($('<li class="block-image block"><img data-id="'+i+'" src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
 					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
 				break;
 
@@ -543,7 +543,7 @@ var workUtil = {
 				case 'text':
 				default:
 					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(nl2br(c));
-					output = $('<li class="block-text block"><i class="spi spi-close2">close2</i></li>').append(textarea);
+					output = $('<li class="block-text block"></li>').append(textarea);
 				break;
 			}
 			if(typeof(data)!='undefined'){
