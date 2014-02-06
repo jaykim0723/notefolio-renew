@@ -11,13 +11,13 @@ $wide = in_array($row->key, array(4,11));
 		</span>
 		<span class="main-work-title">
 			<span class="pull-right">
-				<span class="pull-right"><?php echo $row->user->username; ?></span>
+				<span class="pull-right" style="margin-top: 6px;"><?php echo $row->user->username; ?></span>
 				<span class="pull-right main-work-face">
 					<img src="/data/profiles/<?=$row->user->username?>_face.jpg?h=1385655105" alt=""/>
 					<i class="si si-face-small"></i>
 				</span>
 			</span>
-			<?php echo $row->title; ?>
+			<span style="line-height:240%"><?php echo $row->title; ?></span>
 		</span>
 	</a>
 </li>
