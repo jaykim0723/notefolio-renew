@@ -387,6 +387,21 @@ var workUtil = {
 					$o.find('textarea').wysihtml5();
 				},
   				receive: function(event, ui) {
+					$(ui.item).css('outline', 'none');
+		    		var className = $(ui.item).attr("class").match(/block-(\w+)/);
+					if(className){
+						$newBlock = workUtil.content.createBlock(className[1]);
+						// console.log('$newBlock', $newBlock);
+						// console.log('$newBlock.unwrap()', $newBlock.unwrap());
+						// var itemIndex = $(ui.item).index('li.block'));
+						$(ui.item).empty().append($newBlock.html());
+						$('#default-image').remove();
+						if(className =='text')
+							$newBlock.find('textarea').wysihtml5();
+						workUtil.discoverbility();
+					}else{
+						//$(ui.item).remove();
+					}
   				},
 				update: function(event, ui){
 				}
@@ -486,7 +501,7 @@ var workUtil = {
 							out: function(event, ui){
 							},
 					    	drop: function( event, ui ) {
-								$(ui.draggable).css('outline', 'none');
+								/*$(ui.draggable).css('outline', 'none');
 					    		var className = $(ui.draggable).attr("class").match(/block-(\w+)/);
 								if(className){
 									$newBlock = workUtil.content.createBlock(className[1]);
@@ -500,7 +515,7 @@ var workUtil = {
 									workUtil.discoverbility();
 								}else{
 									//$(ui.draggable).remove();
-								}
+								}*/
 					    	},
 					    	disable: true
 					    });
