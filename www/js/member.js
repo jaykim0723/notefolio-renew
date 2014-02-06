@@ -241,7 +241,7 @@ var workUtil = {
 			if(NFview.contents.length>0){
 				$.each(NFview.contents, function(k, block){
 					var $o = workUtil.content.createBlock(block.t, block.c, block.i);
-					$o.appendTo(sendTo);
+					$o.append($('<i class="spi spi-close2">close2</i>')).appendTo(sendTo);
 					// $o.remove();
 					if(block.t=='text'){
 						$o.find('textarea').wysihtml5();
