@@ -489,11 +489,12 @@ var workUtil = {
 								$(ui.draggable).css('outline', 'none');
 					    		var className = $(ui.draggable).attr("class").match(/block-(\w+)/);
 								if(className){
-									$newBlock = workUtil.content.createBlock(className[1]);
+									className = className[1];
+									$newBlock = workUtil.content.createBlock(className);
 									// console.log('$newBlock', $newBlock);
 									// console.log('$newBlock.unwrap()', $newBlock.unwrap());
 									// var draggableIndex = $(ui.draggable).index('li.block'));
-									$(ui.draggable).empty().append($newBlock.html());
+									$newBlock.insertBefore($(ui.draggable).empty().append($newBlock.html()));
 									$('#default-image').remove();
 									if(className =='text')
 										$newBlock.find('textarea').wysihtml5();
