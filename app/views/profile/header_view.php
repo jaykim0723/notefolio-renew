@@ -54,7 +54,7 @@
 				<?php endforeach ?>
 			</div>
 
-			<?php if ($this->tank_auth->is_logged_in()): ?>
+			<?php if ($this->tank_auth->is_logged_in() && $this->session->userdata('username')!=$row->username): ?>
 			<div class="centered">
 				<a href="javascript:;" data-id="<?php echo $row->user_id ?>" class="btn btn-follow btn-nofol btn-hover <?php echo $row->is_follow=='y'?'activated' : '' ?>">
 					<i class="spi spi-follow"></i>
