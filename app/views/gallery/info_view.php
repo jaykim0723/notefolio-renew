@@ -86,7 +86,7 @@
 										<div class="work-info-time">
 											<?php echo $this->nf->print_time($row->regdate) ?>
 											/
-											<?php echo @implode(', ', $row->keywords); ?>
+											<?php echo $this->nf->category_to_string($row->keywords, true); ?>
 										</div>
 									</div>
 								</div>
