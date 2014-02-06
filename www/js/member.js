@@ -494,7 +494,10 @@ var workUtil = {
 									// console.log('$newBlock', $newBlock);
 									// console.log('$newBlock.unwrap()', $newBlock.unwrap());
 									// var draggableIndex = $(ui.draggable).index('li.block'));
-									$newBlock.insertBefore($(ui.draggable).empty().append($newBlock.html()));
+									var $target = $(ui.draggable).empty();
+									$($newBlock).insertBefore($target);
+									$($target).remove();
+
 									$('#default-image').remove();
 									if(className =='text')
 										$newBlock.find('textarea').wysihtml5();
