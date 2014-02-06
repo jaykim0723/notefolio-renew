@@ -36,7 +36,7 @@
 			<div class="col-md-7 righted">
 				<?php if (USER_ID==0): ?>
 					<a class="btn btn-nofol btn-no-border" href="#" id="login-with-fb" style="font-size:16px;font-weight:300;margin-top:6px;">
-						<i class="spi spi-fb" style="margin-top:-2px;">fb</i> Login with facebook
+						<i class="spi spi-fb" style="margin-top:-1px;">fb</i> Login with facebook
 					</a>
 					<a class="btn btn-nofol btn-no-border" href="/auth/login" style="font-size:16px;font-weight:300;margin-top:5px;padding:6px 0px 6px 12px;">
 						<i class="spi spi-user" style="margin-top:-2px;">user</i>&nbsp;&nbsp;Login
