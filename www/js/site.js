@@ -233,9 +233,14 @@ $(document).on('click', '.btn-follow', function(){
 		user_id : $o.data('id'),
 		follow : $o.hasClass('activated') ? 'n' : 'y'
 	};
-	$.post(site.url+'profile/follow_action', data, function(d){
-		console.log($o, d);
-		$o[(d.is_follow == 'y' ? 'add' : 'remove')+'Class']('activated').find('span').html(d.is_follow == 'y' ? 'Following' : 'Follow');
+	$.post(site.url+'profile/follow_action', data, function(responseJSON){
+		console.log($o, responseJSON);
+		if(responseJSON.status=='done'){
+			msg.open($o.hasClass('activated') ? '팔로우를 취소하였습니다.' : '팔로우 하였습니다.');
+			$o[(responseJSON.is_follow == 'y' ? 'add' : 'remove')+'Class']('activated').find('span').html(d.is_follow == 'y' ? 'Following' : 'Follow');
+		}else
+			msg.open(responseJSON.message);
+
 	}, 'json');
 });
 
