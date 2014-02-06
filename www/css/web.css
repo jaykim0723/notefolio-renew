@@ -553,11 +553,17 @@ li#trash-bin{
 	margin-top: 10px;
 	float: right;
 	margin-right: 10px;
-	color: #444;
+	color: #2ac5c6;
 	font-weight:300;
 	font-size:16px;
 }
-
+#btn-profile span:hover {
+	transition: 0.25s linear;
+	-webkit-transition: 0.25s linear;
+	opacity: 0.7;
+	-webkit-opacity: 0.7;
+	filter: alpha(opacity=70);
+}
 
 
 
