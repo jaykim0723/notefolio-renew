@@ -9,7 +9,7 @@ echo form_open('', array(
 ));
 ?>
 	<?php
-		if($data['submitting']==1){
+		if($this->input->post('submitting')==1){
 	?>
 
 	<div class="center" id="status">
