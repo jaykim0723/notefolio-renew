@@ -5,7 +5,7 @@ $wide = in_array($row->key, array(4,11));
 	<a class="go-to-work-info" href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>">
 		<img src="/data/covers/<?=($row->work_id).(($wide)?'_t3':'_t2')?>.jpg"/>
 		<span class="main-work-info si-main-info-bg" style="">
-			<i class="spi spi-view" style="margin-top:-2px;margin-right:5px;color:red;">Hit</i> <?php echo $row->hit_cnt ?>
+			
 			<i class="spi spi-love" style="margin-top:-2px;margin-right:5px;">Note</i> <?php echo $row->note_cnt ?>
 			<i class="spi spi-comment" style="margin-top:-2px;margin-right:5px;">comment</i> <?php echo $row->comment_cnt ?>
 		</span>
