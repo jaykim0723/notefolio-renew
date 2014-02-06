@@ -189,7 +189,15 @@ class work_model extends CI_Model {
             $data->row->noted = ($this->get_note(array('work_id'=> $params->work_id,'user_id'=>USER_ID)))? 'y': 'n';
             $data->row->collected = ($this->get_collect(array('work_id'=> $params->work_id,'user_id'=>USER_ID)))? 'y': 'n';
             # do stuff
-            $data->row->is_follow = rand(0,9)>5 ? 'y' : 'n';
+
+            $followed = $this->db
+                ->where(array(
+                    'follower_id'=>USER_ID,
+                    'follow_id'=>$data->row->id
+                    ))
+                ->get('user_follows');
+
+            $data->row->is_follow = ($followed->num_rows()>0) ? 'y' : 'n';
         }
 
         $user = (object)array(
