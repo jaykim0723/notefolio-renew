@@ -493,9 +493,12 @@ var workUtil = {
 									$newBlock = workUtil.content.createBlock(className);
 									console.log('$newBlock', $newBlock);
 									console.log('$newBlock.unwrap()', $newBlock.unwrap());
-									$(ui.draggable).empty().css('display','none').append($newBlock.html());
-									$newBlock.insertAfter($(ui.draggable));
-									$(ui.draggable).remove();
+									$(ui.draggable)
+										.empty()
+										.css('display','none')
+										.append($newBlock.html())
+										.after($newBlock)
+										.remove();
 									$('#default-image').remove();
 									if(className =='text')
 										$newBlock.find('textarea').wysihtml5();
