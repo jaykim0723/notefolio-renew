@@ -1002,6 +1002,16 @@ p.desc {
 		display: none;
 	}
 }
+#dialog-change-username .modal-dialog {
+    max-width: 320px;
+}
+#dialog-change-keywords .modal-dialog {
+    max-width: 320px;
+}
+#dialog-change-keywords label {
+	display: block;
+}
+
 
 
 #profile-nav {
@@ -1288,3 +1298,6 @@ p.desc {
 #loading-indicator img {
 	margin-right: 10px;
 }
+
+
+

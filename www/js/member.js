@@ -778,10 +778,120 @@ var profileUtil = {
 
 	},
 	changeKeywords : function(){
-
+		var dialog = new BootstrapDialog({
+		    title: '카테고리 변경',
+		    message: function(){
+		    	var currentKeywords = $('#profile-keywords').data('value').match(/.{1,2}/g);
+		    	if(currentKeywords==null)
+		    		currentKeywords = [];
+		    	var area = '';
+		    	for(var i in NFview.keywordList){
+		    		area += '<div class="checkbox"><label><input type="checkbox" name="keywords" value="'+i+'" '+($.inArray(i, currentKeywords)>-1 ? 'checked' : '')+'>'+NFview.keywordList[i]+'</label></div>';
+		    	}
+				var $message = $(
+					'<div id="dialog-change-keywords">'+
+						'<label>최대 3개를 선택하여 주세요.</label>'+
+						area + 
+					'</div>'
+					);
+				return $message;
+		    },
+		    buttons: [
+			    {
+			        label: 'Change',
+			        cssClass: 'btn-primary',
+			        action: function(dialog){
+			        	var value = '';
+			        	$('#dialog-change-keywords').find(':checkbox').each(function(){
+			        		if($(this).is(':checked'))
+			        			value += $(this).val();
+			        	});
+			        	// if(value.length < 3){
+			        	// 	msg.open('최소한 3글자 이상을 입력하셔야 합니다.');
+			        	// 	return false;
+			        	// }
+			        	$.post('/profile/change_keywords', {
+			        		keywords : value
+			        	}, 'json').done(function(responseJSON){
+			        		if(responseJSON.status=='done'){
+				        		$('#profile-keywords').data('value', value).html('&nbsp;'+responseJSON.keywords);
+				        		dialog.close();
+			        		}else{
+			        			msg.open(responseJSON.msg, 'error');
+			        		}
+			        	});
+			        }
+			    },{
+			        label: 'Cancel',
+			        cssClass: 'btn-default',
+			        action: function(dialog){
+						NFview.popCrop = null;
+			            dialog.close();
+			        }
+			    }
+		    ]
+		});
+		dialog.realize();
+		dialog.getModal().prop('id', 'dialog-change-keywords'); // cssClass 버그로 인해서 이 꼼수로..
+		dialog.open();
 	},
 	changeSNS : function(){
-
+		var dialog = new BootstrapDialog({
+		    title: '소셜주소 변경',
+		    message: function(){
+		    	var currentKeywords = $('#profile-keywords').data('value').match(/.{1,2}/g);
+		    	if(currentKeywords==null)
+		    		currentKeywords = [];
+		    	var area = '';
+		    	for(var i in NFview.keywordList){
+		    		area += '<div class="checkbox"><label><input type="checkbox" name="keywords" value="'+i+'" '+($.inArray(i, currentKeywords)>-1 ? 'checked' : '')+'>'+NFview.keywordList[i]+'</label></div>';
+		    	}
+				var $message = $(
+					'<div id="dialog-change-keywords">'+
+						'<label>최대 3개를 선택하여 주세요.</label>'+
+						area + 
+					'</div>'
+					);
+				return $message;
+		    },
+		    buttons: [
+			    {
+			        label: 'Change',
+			        cssClass: 'btn-primary',
+			        action: function(dialog){
+			        	var value = '';
+			        	$('#dialog-change-keywords').find(':checkbox').each(function(){
+			        		if($(this).is(':checked'))
+			        			value += $(this).val();
+			        	});
+			        	// if(value.length < 3){
+			        	// 	msg.open('최소한 3글자 이상을 입력하셔야 합니다.');
+			        	// 	return false;
+			        	// }
+			        	$.post('/profile/change_keywords', {
+			        		keywords : value
+			        	}, 'json').done(function(responseJSON){
+			        		if(responseJSON.status=='done'){
+				        		$('#profile-keywords').data('value', value).html('&nbsp;'+responseJSON.keywords);
+				        		dialog.close();
+			        		}else{
+			        			msg.open(responseJSON.msg, 'error');
+			        		}
+			        	});
+			        }
+			    },{
+			        label: 'Cancel',
+			        cssClass: 'btn-default',
+			        action: function(dialog){
+						NFview.popCrop = null;
+			            dialog.close();
+			        }
+			    }
+		    ]
+		});
+		dialog.realize();
+		dialog.getModal().prop('id', 'dialog-change-keywords'); // cssClass 버그로 인해서 이 꼼수로..
+		dialog.open();
 	},
 	setGround :  function(){
 		$('#btn-upload-face').ajaxUploader({

@@ -46,17 +46,11 @@
 			</div>
 			<div id="profile-info">
 				<h2><?php echo $row->username; ?></h2>
-				<h4>&nbsp;<?php echo $this->nf->category_to_string($row->user_keywords, true); ?>&nbsp;</h4>
+				<h4 id="profile-keywords" data-value="<?php echo $row->user_keywords ?>">&nbsp;<?php echo $this->nf->category_to_string($row->user_keywords, true); ?>&nbsp;</h4>
 			</div>
 
 			<div id="profile-sns-link">
-				<?php foreach ($row->sns as $service => $id):
-				$tmp = $this->nf->sns($service, $id);
-				?>
-				<a href="<?php echo $tmp->link  ?>" class="<?php echo $service ?>" class="btn-hover">
-					<i class="spi spi-fb"></i>
-				</a>
-				<?php endforeach ?>
+				<?php echo $this->nf->sns_to_string($row->sns); ?>
 			</div>
 
 			<?php if ($this->tank_auth->is_logged_in() && $this->session->userdata('username')!=$row->username): ?>
@@ -146,6 +140,11 @@
 	<?php endif; ?>	
 
 	NFview.area = 'profile';
+	NFview.keywordList = <?php
+		$this->load->config('keyword', TRUE);
+		$keyword_list = $this->config->item('keyword', 'keyword');	
+		echo json_encode($keyword_list);
+	?>;
 </script>
 
 

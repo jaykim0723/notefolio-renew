@@ -71,13 +71,29 @@ class Nf
         switch ($service) {
             case 'facebook':
                 $data->link = 'http://facebook.com/'.$id;
-                $data->label = 'fb.com/'.$id;
                 break;
             case 'twitter':
                 $data->link = 'http://twitter.com/'.$id;
-                $data->label = '@'.$id;
+                break;
+            case 'pinterest':
+                $data->link = 'http://pinterest.com/'.$id;
+                break;
+            case 'tumblr':
+                $data->link = 'http://tumblr.com/'.$id;
+                break;
+            case 'vimeo':
+                $data->link = 'http://vimeo.com/'.$id;
+                break;
         }
         return $data;
+    }
+    function sns_to_string($sns=array()){
+        $s = '';
+        foreach ($sns as $service => $id){
+           $tmp = $this->sns($service, $id);
+            $s .= '<a href="'.$tmp->link.'" class="'.$service.'" class="btn-hover"><i class="spi spi-fb"></i></a>';
+        }
+        return $s;
     }
 
     function print_time($ymdhis){

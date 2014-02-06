@@ -19,6 +19,31 @@ class profile_model extends CI_Model {
         }
         return $data;
     }
+
+    function set_change_username($user_id, $username=''){
+        $data = (object)array(
+            'status' => 'done',
+            'msg' => ''
+        );
+        return $data;
+    }
+
+    function set_change_keywords($user_id, $keywords=''){
+        $data = (object)array(
+            'status' => 'done',
+            'msg' => ''
+        );
+        return $data;
+    }
+
+    function set_change_sns($user_id, $input=''){
+        $data = (object)array(
+            'status' => 'done',
+            'msg' => ''
+        );
+        return $data;
+    }
+
     function get_user_id_from_username($username=''){
         return $this->db->select('id as user_id')->where('username', $username)->get('users')->row()->user_id;
     }
