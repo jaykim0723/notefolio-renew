@@ -61,6 +61,11 @@ body {
 	color: #7a7880;
 	margin-left:5px;
 }
+@media (max-width:1200px) {
+	#footer .footerlink {
+		display:none;
+	}
+	}
 #footer-gap {
 	display: none;
 }
