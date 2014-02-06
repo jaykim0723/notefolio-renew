@@ -501,7 +501,7 @@ var workUtil = {
 							out: function(event, ui){
 							},
 					    	drop: function( event, ui ) {
-								/*$(ui.draggable).css('outline', 'none');
+								$(ui.draggable).css('outline', 'none');
 					    		var className = $(ui.draggable).attr("class").match(/block-(\w+)/);
 								if(className){
 									$newBlock = workUtil.content.createBlock(className[1]);
@@ -515,7 +515,7 @@ var workUtil = {
 									workUtil.discoverbility();
 								}else{
 									//$(ui.draggable).remove();
-								}*/
+								}
 					    	},
 					    	disable: true
 					    });
@@ -811,11 +811,15 @@ var profileUtil = {
 			        		msg.open('최소한 3글자 이상을 입력하셔야 합니다.');
 			        		return false;
 			        	}
-			        	blockPage.block();
 			        	$.post('/profile/change_username', {
 			        		username : $.trim(value)
 			        	}, 'json').done(function(responseJSON){
-			        		
+			        		if(responseJSON.status=='done'){
+				        		$('#profile-info > h2').text(value);
+				        		dialog.close();
+			        		}else{
+			        			msg.open(responseJSON.msg, 'error');
+			        		}
 			        	});
 			        }
 			    },{
