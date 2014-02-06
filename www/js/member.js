@@ -387,21 +387,6 @@ var workUtil = {
 					$o.find('textarea').wysihtml5();
 				},
   				receive: function(event, ui) {
-					$(ui.item).css('outline', 'none');
-		    		var className = $(ui.item).attr("class").match(/block-(\w+)/);
-					if(className){
-						$newBlock = workUtil.content.createBlock(className[1]);
-						// console.log('$newBlock', $newBlock);
-						// console.log('$newBlock.unwrap()', $newBlock.unwrap());
-						// var itemIndex = $(ui.item).index('li.block'));
-						$(ui.item).insertAfter($newBlock);
-						$('#default-image').remove();
-						if(className =='text')
-							$newBlock.find('textarea').wysihtml5();
-						workUtil.discoverbility();
-					}else{
-						//$(ui.item).remove();
-					}
   				},
 				update: function(event, ui){
 				}
@@ -508,7 +493,7 @@ var workUtil = {
 									// console.log('$newBlock', $newBlock);
 									// console.log('$newBlock.unwrap()', $newBlock.unwrap());
 									// var draggableIndex = $(ui.draggable).index('li.block'));
-									$(ui.draggable).empty().append($newBlock.html());
+									//$(ui.draggable).empty().append($newBlock.html());
 									$('#default-image').remove();
 									if(className =='text')
 										$newBlock.find('textarea').wysihtml5();
@@ -790,54 +775,7 @@ var profileUtil = {
 		});
 	},
 	changeUsername : function(){
-		var dialog = new BootstrapDialog({
-		    title: '사용자명 변경',
-		    message: function(){
-				var $message = $(
-					'<div id="dialog-change-username">'+
-						'<label>변경할 사용자명</label><br/>'+
-						'<input type="text" class="form-control" value="'+$('#profile-info > h2').text()+'"/>'+
-					'</div>'
-					);
-				return $message;
-		    },
-		    buttons: [
-			    {
-			        label: 'Change',
-			        cssClass: 'btn-primary',
-			        action: function(dialog){
-			        	var value = $('#dialog-change-username').find('input').val();
-			        	if(value.length < 3){
-			        		msg.open('최소한 3글자 이상을 입력하셔야 합니다.');
-			        		return false;
-			        	}
-			        	$.post('/profile/change_username', {
-			        		username : $.trim(value)
-			        	}, 'json').done(function(responseJSON){
-			        		if(responseJSON.status=='done'){
-				        		$('#profile-info > h2').text(value);
-				        		dialog.close();
-			        		}else{
-			        			msg.open(responseJSON.msg, 'error');
-			        		}
-			        	});
-			        }
-			    },{
-			        label: 'Cancel',
-			        cssClass: 'btn-default',
-			        action: function(dialog){
-						NFview.popCrop = null;
-			            dialog.close();
-			        }
-			    }
-		    ]
-		});
-		dialog.realize();
-		dialog.getModal().prop('id', 'dialog-change-username'); // cssClass 버그로 인해서 이 꼼수로..
-		dialog.open();
-		setTimeout(function(){
-			$('#dialog-change-username').find('input').focus();
-		}, 500);
+
 	},
 	changeKeywords : function(){
 
