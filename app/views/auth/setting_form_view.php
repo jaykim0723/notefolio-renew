@@ -8,7 +8,24 @@ echo form_open('', array(
 	'submitting' => 1
 ));
 ?>
+	<?php
+		if($data['submitting']==1){
+	?>
 
+	<div class="center" id="status">
+		<div class="panel panel-success">
+			<div class="panel-heading">
+			  <h3 class="panel-title">정보 변경 완료</h3>
+			</div>
+			<div class="panel-body">
+				<p>개인 정보를 변경하였습니다.</p>
+			</div>
+		</div>
+	</div>
+
+	<?php
+		}
+	?>
 	<?php echo validation_errors();  ?>	
 	<?php
 		$this->load->view('auth/setting/basic_view');
