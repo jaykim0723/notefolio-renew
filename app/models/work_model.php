@@ -188,7 +188,6 @@ class work_model extends CI_Model {
             # 로그인한 사용자라면 이 사람이 어떻게 했는지 쿼리를 여기에서 하나 날리고 아래 값을 할당한다.
             $data->row->noted = ($this->get_note(array('work_id'=> $params->work_id,'user_id'=>USER_ID)))? 'y': 'n';
             $data->row->collected = ($this->get_collect(array('work_id'=> $params->work_id,'user_id'=>USER_ID)))? 'y': 'n';
-            # do stuff
 
             $followed = $this->db
                 ->where(array(
