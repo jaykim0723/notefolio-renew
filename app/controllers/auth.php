@@ -445,8 +445,9 @@ class Auth extends CI_Controller
                 $param[$key] = $val;
         }
 
-        if(isset($data['year'])&&isset($data['month'])&&isset($data['day'])){
+        if(!empty($data['year'])&&!empty($data['month'])&&!empty($data['day'])){
             $data['birth'] = implode('-', array($data['year'],$data['month'],$data['day']));
+            var_export($data);
             unset($data['year'],$data['month'],$data['day']);
         }
 
