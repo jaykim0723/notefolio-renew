@@ -91,7 +91,7 @@ class Nf
         $s = '';
         foreach ($sns as $service => $id){
            $tmp = $this->sns($service, $id);
-            $s .= '<a href="'.$tmp->link.'" class="'.$service.'" class="btn-hover"><i class="spi spi-fb"></i></a>';
+            $s .= '<a href="'.$tmp->link.'" class="'.$service.'" data-value="'.$id.'" class="btn-hover"><i class="spi spi-fb"></i></a>';
         }
         return $s;
     }

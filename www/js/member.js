@@ -839,11 +839,10 @@ var profileUtil = {
 		var dialog = new BootstrapDialog({
 		    title: '소셜주소 변경',
 		    message: function(){
-		    	var currentKeywords = $('#profile-keywords').data('value').match(/.{1,2}/g);
-		    	if(currentKeywords==null)
-		    		currentKeywords = [];
-		    	var area = '';
-		    	for(var i in NFview.keywordList){
+		    	var area = '<label>해당사항이 있는 곳에 아이디를 지정해주세요.</label>';
+				$('#profile-sns-link > a').each(function(){
+
+				});
 		    		area += '<div class="checkbox"><label><input type="checkbox" name="keywords" value="'+i+'" '+($.inArray(i, currentKeywords)>-1 ? 'checked' : '')+'>'+NFview.keywordList[i]+'</label></div>';
 		    	}
 				var $message = $(
