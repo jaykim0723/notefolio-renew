@@ -198,6 +198,9 @@ class Profile extends CI_Controller {
 		$username = $this->input->post('username'); 
 		// ex) $username = 'amxzidell';
 		$json = $this->profile_model->set_change_username(USER_ID, $username);
+		// ex) $json = array(
+		// 		'status' => 'done'
+		// );
 		$this->layout->set_json($data)->render();
 	}
 
@@ -210,6 +213,9 @@ class Profile extends CI_Controller {
 		$keywords = $this->input->post('keywords');
 		// ex) $keywords = 'A7B7';
 		$json = $this->profile_model->set_change_keywords(USER_ID, $keywords);
+		// ex) $json = array(
+		// 		'status' => 'done'
+		// );
 		$this->layout->set_json($data)->render();
 	}
 
@@ -228,6 +234,9 @@ class Profile extends CI_Controller {
 		// 		'vimeo' => ''
 		// );
 		$json = $this->profile_model->set_change_username(USER_ID, $input);
+		// ex) $json = array(
+		// 		'status' => 'done'
+		// );
 		$this->layout->set_json($data)->render();
 	}
 

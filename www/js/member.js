@@ -797,7 +797,11 @@ var profileUtil = {
 			        		return false;
 			        	}
 			        	blockPage.block();
-			        	$.post('')
+			        	$.post('/profile/change_username', {
+			        		username : $.trim(value)
+			        	}, 'json').done(function(responseJSON){
+			        		
+			        	});
 			        }
 			    },{
 			        label: 'Cancel',
