@@ -814,7 +814,7 @@ var profileUtil = {
 			        		keywords : value
 			        	}, 'json').done(function(responseJSON){
 			        		if(responseJSON.status=='done'){
-				        		$('#profile-keywords').data('value', value).html('&nbsp;'+responseJSON.keywords);
+				        		$('#profile-keywords').data('value', value).html('&nbsp;'+responseJSON.keywords_string);
 				        		dialog.close();
 			        		}else{
 			        			msg.open(responseJSON.msg, 'error');
@@ -839,15 +839,20 @@ var profileUtil = {
 		var dialog = new BootstrapDialog({
 		    title: '소셜주소 변경',
 		    message: function(){
-		    	var area = '<label>해당사항이 있는 곳에 아이디를 지정해주세요.</label>';
-				$('#profile-sns-link > a').each(function(){
-
+		    	var area = '<label>해당사항이 있는 곳에 아이디를 지정해주세요.</label><br/><br/>';
+				$.each([
+					'facebook', 'twitter', 'pinterest', 'tumblr', 'vimeo'
+				], function(k, v){
+					var value = $('#profile-sns-link > a.'+v).data('value');
+					if(empty(value))
+						value = '';
+					area += '<div class="form-group row">'+
+						'<div class="col-md-2 centered"><i class="spi spi-'+v+'"></i></div>'+
+						'<div class="col-md-10"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>'+
+					'</div>';
 				});
-		    		area += '<div class="checkbox"><label><input type="checkbox" name="keywords" value="'+i+'" '+($.inArray(i, currentKeywords)>-1 ? 'checked' : '')+'>'+NFview.keywordList[i]+'</label></div>';
-		    	}
 				var $message = $(
-					'<div id="dialog-change-keywords">'+
-						'<label>최대 3개를 선택하여 주세요.</label>'+
+					'<div id="dialog-change-sns">'+
 						area + 
 					'</div>'
 					);
@@ -858,20 +863,17 @@ var profileUtil = {
 			        label: 'Change',
 			        cssClass: 'btn-primary',
 			        action: function(dialog){
-			        	var value = '';
-			        	$('#dialog-change-keywords').find(':checkbox').each(function(){
-			        		if($(this).is(':checked'))
-			        			value += $(this).val();
+			        	var sns = {};
+			        	$('#dialog-change-sns').find('input').each(function(){
+			        		sns[$(this).attr('name')] = $(this).val();
 			        	});
 			        	// if(value.length < 3){
 			        	// 	msg.open('최소한 3글자 이상을 입력하셔야 합니다.');
 			        	// 	return false;
 			        	// }
-			        	$.post('/profile/change_keywords', {
-			        		keywords : value
-			        	}, 'json').done(function(responseJSON){
+			        	$.post('/profile/change_sns', sns, 'json').done(function(responseJSON){
 			        		if(responseJSON.status=='done'){
-				        		$('#profile-keywords').data('value', value).html('&nbsp;'+responseJSON.keywords);
+				        		$('#profile-sns-link').html('&nbsp;'+responseJSON.sns_string);
 				        		dialog.close();
 			        		}else{
 			        			msg.open(responseJSON.msg, 'error');
@@ -889,7 +891,7 @@ var profileUtil = {
 		    ]
 		});
 		dialog.realize();
-		dialog.getModal().prop('id', 'dialog-change-keywords'); // cssClass 버그로 인해서 이 꼼수로..
+		dialog.getModal().prop('id', 'dialog-change-sns'); // cssClass 버그로 인해서 이 꼼수로..
 		dialog.open();
 	},
 	setGround :  function(){

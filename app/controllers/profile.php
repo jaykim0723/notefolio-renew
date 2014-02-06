@@ -218,7 +218,7 @@ class Profile extends CI_Controller {
 		// 		'status' => 'done',
 		// 		'msg' => '' // 에러가 있는 경우 담아서 주세요. 
 		// );
-		$json->keywords = $this->nf->category_to_string($keywords, true); // php에서 만드는 것을 통일하려고.
+		$json->keywords_string = $this->nf->category_to_string($keywords, true); // php에서 만드는 것을 통일하려고.
 		$this->layout->set_json($json)->render();
 	}
 

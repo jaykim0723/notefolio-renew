@@ -1011,6 +1011,9 @@ p.desc {
 #dialog-change-keywords label {
 	display: block;
 }
+#dialog-change-sns .modal-dialog {
+    max-width: 380px;
+}
 
 
 
