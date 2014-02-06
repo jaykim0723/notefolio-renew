@@ -35,7 +35,7 @@ class Nf
             }
         }
 
-        return @implode(' · ', $data);
+        return @implode(' · ', $category);
     }
     function category_to_array($category_code, $return_key = FALSE){
         $categories = array();
