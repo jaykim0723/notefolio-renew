@@ -98,7 +98,7 @@ body {
 }
 .main-thumbnail-list .thumbbox:hover .main-work-title {
 	bottom:0px;
-	line-height: 230%;
+	line-height:230%;
 }
 .main-thumbnail-list .main-work-face {
 	position: relative;
