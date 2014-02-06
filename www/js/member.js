@@ -494,11 +494,13 @@ var workUtil = {
 									// console.log('$newBlock.unwrap()', $newBlock.unwrap());
 									// var draggableIndex = $(ui.draggable).index('li.block'));
 									$(ui.draggable).empty().append($newBlock);
+									$(ui.draggable).prepend($('<i class="spi spi-close2">close2</i>'));
 									$('#default-image').remove();
-									if(className =='text')
+									if(className =='text'){
 										$newBlock.find('textarea').wysihtml5();
+										$newBlock.prepend($('<i class="spi spi-close2">close2</i>'));
+									}
 									workUtil.discoverbility();
-									$(ui.draggable).append($('<i class="spi spi-close2">close2</i>'));
 								}else{
 									//$(ui.draggable).remove();
 								}
