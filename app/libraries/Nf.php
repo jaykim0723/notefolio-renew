@@ -29,9 +29,10 @@ class Nf
 
     function category_to_string($category_code, $to_href=false){
         $category = $this->category_to_array($category_code);
+        $category_key = $this->category_to_array($category_code, true);
         if($to_href){
             foreach($category as $key => $val){
-                $category[$key] = "<a href=\"/gallery/listing?from=all&work_categories%5B%5D={$category_code['$key']}&q=&order=newest\">$val</a>";
+                $category[$key] = "<a href=\"/gallery/listing?from=all&work_categories%5B%5D={$category_key['$key']}&q=&order=newest\">$val</a>";
             }
         }
 
