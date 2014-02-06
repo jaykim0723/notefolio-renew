@@ -53,6 +53,11 @@
 				</a>
 				<?php endforeach ?>
 			</div>
+			
+			<a href="javascript:;" data-id="<?php echo $row->user_id ?>" class="btn btn-follow btn-nofol btn-hover <?php echo $row->is_follow=='y'?'activated' : '' ?>">
+				<i class="spi spi-follow"></i>
+				<span>Follow<?php echo $row->is_follow=='y'?'ing' : '' ?></span>
+			</a>
 
 		</div>
 	</div>
