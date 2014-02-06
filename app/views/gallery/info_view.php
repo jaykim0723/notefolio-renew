@@ -63,7 +63,7 @@
 						<div class="work-small-profile bg1 visible-xs visible-sm">
 							<img src="/data/profiles/<?php echo $row->user->username ?>.jpg"/>
 							<h2><?php echo $row->user->username ?></h2>
-							<span><?php echo @implode(', ', $row->user->keywords); ?></span>
+							<span><?php echo $this->nf->category_to_string($row->user->user_keywords, true); ?></span>
 							<div class="work-url" style="display:none;"><?php echo site_url($row->user->username.'/'.$row->work_id); ?></div>
 						</div>
 						<div class="work-info">
