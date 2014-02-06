@@ -81,6 +81,12 @@ class work_model extends CI_Model {
             $this->db->where('works.work_id >', $params->id_after);
         
     	switch($params->order_by){
+            case "idlarger":
+                $this->db->order_by('work_id', 'desc');
+            break;
+            case "idsmaller":
+                $this->db->order_by('work_id', 'asc');
+            break;
     		case "newest":
     			$this->db->order_by('moddate', 'desc');
     		break;

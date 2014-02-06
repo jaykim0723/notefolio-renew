@@ -247,7 +247,8 @@ class Profile extends CI_Controller {
         $this->load->model('work_model');
 		$work_list = $this->work_model->get_list(array(
 			'id_before' => $id_before,
-			'user_id' => $this->user_id
+			'user_id' => $this->user_id,
+			'order_by' => 'idlarger'
 		));
 		$work_list->username = $username;
 		$this->layout->set_view('profile/my_recent_works_listing_view', $work_list)->render();
