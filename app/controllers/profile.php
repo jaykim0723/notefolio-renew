@@ -527,6 +527,7 @@ class Profile extends CI_Controller {
 		}
 
 		$this->layout->set_json(array(
+			'status'	=> $result->status,
 			'user_id'   => $user_id,
 			'is_follow' => $is_follow
 		))->render();
