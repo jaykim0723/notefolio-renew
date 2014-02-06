@@ -206,6 +206,8 @@ class user_model extends CI_Model {
                 );
             }
 
+            $user->is_follow = rand(0,1)==1? 'y' : 'n'; // temporary
+
             unset($user->password);
             unset($user->new_password_key);
             unset($user->new_password_requested);

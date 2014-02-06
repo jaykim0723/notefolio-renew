@@ -871,6 +871,7 @@ p.desc {
 	background-repeat : repeat;
 	background-attachment: fixed;
 	margin-bottom: 30px;
+	background: #aaa;
 	position: relative;
 }
 #profile-total {
