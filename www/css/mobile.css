@@ -220,12 +220,13 @@ body * {
 	color: #444;
 	padding: 13px;
 	text-decoration: none;
-	border-radius: 7px;
+	border-radius: 25px;
 	background-image: url("//s3.amazonaws.com/css_sprites/713/10713/768bef68df_raw.png");
 	background-repeat: no-repeat;	
 	height: auto!important;
 	width: auto!important;
 	overflow: hidden;
+	background: rgba(255,255,255,0.3) !important;
 }
 .main-thumbnail-list .main-work-title {
 	display: none;
