@@ -498,7 +498,7 @@ var workUtil = {
 									if(className =='text')
 										$newBlock.find('textarea').wysihtml5();
 									workUtil.discoverbility();
-									$(ui.draggable).prepend($('<i class="spi spi-close2">close2</i>'));
+									$(ui.draggable).append($('<i class="spi spi-close2">close2</i>'))
 								}else{
 									//$(ui.draggable).remove();
 								}
@@ -840,10 +840,11 @@ var profileUtil = {
 		var dialog = new BootstrapDialog({
 		    title: '소셜주소 변경',
 		    message: function(){
-		    	var area = '<label>해당사항이 있는 곳에 아이디를 지정해주세요.</label>';
-				$('#profile-sns-link > a').each(function(){
-
-				});
+		    	var currentKeywords = $('#profile-keywords').data('value').match(/.{1,2}/g);
+		    	if(currentKeywords==null)
+		    		currentKeywords = [];
+		    	var area = '';
+		    	for(var i in NFview.keywordList){
 		    		area += '<div class="checkbox"><label><input type="checkbox" name="keywords" value="'+i+'" '+($.inArray(i, currentKeywords)>-1 ? 'checked' : '')+'>'+NFview.keywordList[i]+'</label></div>';
 		    	}
 				var $message = $(
