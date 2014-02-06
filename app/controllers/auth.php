@@ -445,10 +445,9 @@ class Auth extends CI_Controller
                 $param[$key] = $val;
         }
 
-        if(!empty($data['year'])&&!empty($data['month'])&&!empty($data['day'])){
-            $data['birth'] = implode('-', array($data['year'],$data['month'],$data['day']));
-            echo var_export($data, true);
-            unset($data['year'],$data['month'],$data['day']);
+        if(!empty($param['year'])&&!empty($param['month'])&&!empty($param['day'])){
+            $param['birth'] = implode('-', array($param['year'],$param['month'],$param['day']));
+            unset($param['year'],$param['month'],$param['day']);
         }
 
         $this->user_model->put($param);
