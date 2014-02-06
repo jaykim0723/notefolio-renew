@@ -460,9 +460,11 @@ html, body {
 		margin-top: 0;
 		color: #666;
 		font-weight: 300;
+		margin-bottom: 4px;
 	}
 	.work-info-time {
 		font-size: 12px;
+		margin-left:1px;
 	}
 	.work-info-time a {
 		color: #999;
