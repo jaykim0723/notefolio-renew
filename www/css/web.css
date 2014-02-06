@@ -306,7 +306,6 @@ body {
 }
 #default-image {
 	width: 100%;
-	background: beige;
 	text-align: center;
 }
 #default-image img {
@@ -333,6 +332,7 @@ body {
 }
 #work-profile-image {
 	background: #999;
+	background-position:center center;
 	padding: 20px 0 0 0;
 }
 #profile-info {
@@ -390,7 +390,7 @@ body {
 	width: 100%;
 	min-height: 200px;
 	padding: 10px 0;
-	background: transparent;
+	background: #fff;
 }
 /*#content-block-list li{
 	display: block;

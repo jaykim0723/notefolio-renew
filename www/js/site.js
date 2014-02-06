@@ -1,8 +1,8 @@
 var msg = {
-	open : function(msg, type){
+	open : function(msg, type, tObj, doFocus){
 		if(typeof type=='undefined')
 			type = 'success';
-		formFeedback('', type, msg);
+		formFeedback('', type, msg, tObj, doFocus);
 	},
 	close : function(){
 

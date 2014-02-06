@@ -155,7 +155,7 @@ var workUtil = {
 		var value = this.discoverbility();
 		// 필수 입력값에 대해서만 간단하게 검사
 		if(value.title==0){
-			msg.open('제목을 입력하여 주십시오.', 'error');
+			msg.open('제목을 입력하여 주십시오.', 'error', '#title', 'y');
 			return;
 		}
 		if(value.contents.image + value.contents.video + value.contents.text == 0 ){
@@ -163,11 +163,11 @@ var workUtil = {
 			return;
 		}
 		if(value.keywords == 0){
-			msg.open('카테고리를 선택하여 주십시오.', 'error');
+			msg.open('카테고리를 선택하여 주십시오.', 'error', '#keywords', 'y');
 			return;
 		}
 		if(value.cover == 0){
-			msg.open('커버를 지정하여 주십시오.', 'error');
+			msg.open('커버를 지정하여 주십시오.', 'error', '#btn-upload-cover', 'y');
 			return;
 		}
 		
@@ -493,7 +493,8 @@ var workUtil = {
 									// console.log('$newBlock', $newBlock);
 									// console.log('$newBlock.unwrap()', $newBlock.unwrap());
 									// var draggableIndex = $(ui.draggable).index('li.block'));
-									$(ui.draggable).empty().append($('<i class="spi spi-close2">close2</i>')).append($newBlock);
+									$(ui.draggable).empty().append($newBlock);
+									$(ui.draggable).prepend($('<i class="spi spi-close2">close2</i>'));
 									$('#default-image').remove();
 									if(className =='text')
 										$newBlock.find('textarea').wysihtml5();
@@ -543,7 +544,7 @@ var workUtil = {
 				case 'text':
 				default:
 					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(nl2br(c));
-					output = $('<li class="block-text block"></li>').append(textarea);
+					output = $('<li class="block-text block"><i class="spi spi-close2">close2</i></li>').append(textarea);
 				break;
 			}
 			if(typeof(data)!='undefined'){
