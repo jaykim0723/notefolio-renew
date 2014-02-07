@@ -166,7 +166,7 @@ var workUtil = {
 			msg.open('카테고리를 선택하여 주십시오.', 'error', $('#keywords').next(), 'y');
 			return;
 		}
-		if(value.cover == 0){
+ 		if(value.cover == 0){
 			msg.open('커버를 지정하여 주십시오.', 'error', '#btn-upload-cover-wrapper', 'y');
 			return;
 		}
