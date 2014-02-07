@@ -110,7 +110,7 @@ class alarm_model extends CI_Model {
 
         $query = $this->db->query("SELECT
             count(id) as all_count, 
-            ifnull( sum( if( isnull( readdate ), 0, 1 ) ), 0 ) as unread
+            sum( isnull( readdate ) ) as unread
             from user_alarms 
             where user_id = ".$this->db->escape($params->user_id).";"); //set
         try{
