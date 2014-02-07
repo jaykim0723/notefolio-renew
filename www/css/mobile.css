@@ -123,6 +123,12 @@ html, body {
 	text-decoration: none;
 	border-radius: 2em;
 	background: #fff;
+	font-size: 14px;
+	font-family: 'PT Sans', sans-serif;
+	font-weight: 400;
+	line-height: 180%;
+	padding-right: 25px;
+	padding-left: 25px;
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
@@ -606,7 +612,8 @@ html, body {
 	
 }
 .btn-note.noted {
-	background: orange;
+	background: #2ac5c6;
+	color: #fff;
 }
 .block-image img {
 	width: 100%;
@@ -665,7 +672,8 @@ html, body {
 }
 
 .work-addinfo .btn-nofol2:hover .spi-love_white,
-.work-addinfo .btn-nofol2 .spi-love_point{
+.work-addinfo .btn-nofol2 .spi-love_point,
+.work-addinfo .noted .spi-love_white{
 	display:inline-block;
 }
 

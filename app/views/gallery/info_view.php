@@ -130,7 +130,7 @@
 									<a href="javascript:;" class="btn btn-nofol2 btn-note <?php echo $row->noted=='y' ? 'noted' : '' ?>">
 										<i class="spi spi-love_point">love</i>
 										<i class="spi spi-love_white">love</i>
-										좋아요(<?php echo $row->note_cnt ?>)
+										<?php echo $row->note_cnt ?> like it !
 									</a>
 									<div class="add-collection centered <?php echo $row->collected=='y' ? 'collected' : '' ?>">
 										<div class="collect-question">
