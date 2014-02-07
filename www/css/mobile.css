@@ -1272,6 +1272,10 @@ p.desc {
 	background-color: #7bcad4;
 }
 
+#mobile-search-box i.spi {
+	vertical-align: middle;
+}
+
 #mobile-search-field{
 	color: #ffffff;
 	background: none;
@@ -1286,9 +1290,6 @@ p.desc {
 #mobile-search-field::-moz-placeholder, /* Mozilla Firefox 19+ */
 #mobile-search-field:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #ffffff;
-}
-#mobile-search-field .spi {
-	vertical-align: middle;
 }
 
 
