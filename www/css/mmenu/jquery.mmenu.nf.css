@@ -128,11 +128,13 @@ html.mm-blocking #mm-blocker {
   padding: 0;
   margin: 0; }
 
+/* 
 .mm-list * {
   -webkit-text-size-adjust: none;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   text-shadow: none; }
+*/
 .mm-list a,
 .mm-list a:hover {
   text-decoration: none; }
