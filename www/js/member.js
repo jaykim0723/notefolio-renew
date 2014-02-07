@@ -468,7 +468,10 @@ var workUtil = {
 							.prepend($('<i class="spi spi-close2">close2</i>'));
 
 						$.when(workUtil.content.applyBlock($target, className)).done(function(){
-							$target.focus().fadeTo(150, 1);
+							$target.fadeTo(150, 1);
+							$('html, body').animate({
+		                        scrollTop: $("#div1").offset().top
+		                    }, 200);
 						});
 						
 						$('#default-image').remove();
