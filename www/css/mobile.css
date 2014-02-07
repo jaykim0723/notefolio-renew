@@ -447,7 +447,7 @@ html, body {
 #alarm-list .activity-infinite-icon {
 	position: relative;
 }
-#alarm-list .activity-infinite-icon .spi {
+#alarm-list .activity-infinite-icon .si {
 	position: absolute;
 	top: 0;
 	left: 0;
