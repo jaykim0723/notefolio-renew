@@ -170,12 +170,20 @@ class feed_model extends CI_Model {
         $params = (object)$params;
         $default_params = (object)array(
             'readdate' => date('Y-m-d H:i:s'),
-            'user_id' => '' // 필수정보(누구의 피드인지)
+            'user_id' => '', // 필수정보(누구의 피드인지)
+            'id_before'  => 0, // call by...
+            'id_after'  => 0, // call by...
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
                 $params->{$key} = $value;
         }
+
+        if(!empty($params->id_before)   &&$params->id_before!=0)
+            $this->db->where('user_feeds.id <', $params->id_before);
+
+        if(!empty($params->id_after)    &&$params->id_after!=0)
+            $this->db->where('user_feeds.id >', $params->id_after);
 
         try{
             $query = $this->db

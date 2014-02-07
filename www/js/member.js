@@ -240,12 +240,12 @@ var workUtil = {
 			var sendTo = $('#content-block-list');
 			if(NFview.contents.length>0){
 				$.each(NFview.contents, function(k, block){
-					var $o = workUtil.content.createBlock(block.t, block.c, block.i);
-					$o.append($('<i class="spi spi-close2">close2</i>')).appendTo(sendTo);
-					// $o.remove();
-					if(block.t=='text'){
-						$o.find('textarea').wysihtml5();
-					}
+					$target = $('<li class="block-'+block.t+' block"></li>')
+						.prepend($('<i class="spi spi-close2">close2</i>'));
+					//$newBlock = workUtil.content.createBlock(className[1]);
+					workUtil.content.applyBlock($target, className, block.c, block.i);
+					$('#default-image').remove();
+					workUtil.discoverbility();
 				});
 			}else{
 				$('#content-block-list').append('<div id="default-image"><img src="/img/uploadcont1.png"/></div>');
