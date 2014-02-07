@@ -373,6 +373,7 @@ var workUtil = {
 			$(target).sortable({
   				opacity: 0.6,
     			cursor: 'move',
+        		scroll: true,
     			distance: 15,
 				start: function(event, ui){
 				},
