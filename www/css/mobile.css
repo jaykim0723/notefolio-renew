@@ -609,6 +609,10 @@ html, body {
 	margin-right: 3px;
 
 }
+.work-btn:hover{
+	color: #2ac5c6;
+	text-decoration: none;
+}
 
 
 .work-contents {
