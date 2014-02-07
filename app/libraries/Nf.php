@@ -70,7 +70,7 @@ class Nf
         $data = (object)array();
         switch ($service) {
             case 'website':
-                $data->link = '$id';
+                $data->link = $id;
                 break;
             case 'facebook':
                 $data->link = 'http://facebook.com/'.$id;
