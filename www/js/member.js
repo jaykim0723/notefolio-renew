@@ -669,6 +669,7 @@ var memberUtil = {
 			        label: 'Crop',
 			        cssClass: 'btn-primary',
 			        action: function(dialog){
+						site.scroll.unlock();
 			        	typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);
 			        }
 			    },{

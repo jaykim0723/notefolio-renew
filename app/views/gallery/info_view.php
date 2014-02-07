@@ -19,31 +19,33 @@
 				<!-- empty -->
 			</div>
 			<div class="col-md-3" style="height:100%;">
-				<div id="work-profile-image" style="background-image:url(/data/profiles/<?php echo $row->user->username ?>_bg.jpg?_=<?php echo substr($row->user->modified,-2) ?>);">
-					<a id="profile-image" href="<?php echo site_url($row->user->username) ?>">
-						<img src="/data/profiles/<?php echo $row->user->username ?>_face.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt=""/>
-					</a>
-					<div id="profile-info">
-						<h2><a href="<?php echo site_url($row->user->username) ?>"><?php echo $row->user->username ?></a></h2>
-						<h4>&nbsp;<?php echo $this->nf->category_to_string($row->user->user_keywords, true); ?>&nbsp;</h4>
-						<div id="profile-sns-link">
-							<?php foreach ($row->user->sns as $service => $id):
-							$tmp = $this->nf->sns($service, $id);
-							?>
-							<a href="<?php echo $tmp->link  ?>" class="<?php echo $service ?>" class="btn-hover">
-								<i class="spi spi-fb"></i>
-							</a>
-							<?php endforeach ?>
-						</div>
+				<div id="work-profile-image-wrapper" style="background-image:url(/data/profiles/<?php echo $row->user->username ?>_bg.jpg?_=<?php echo substr($row->user->modified,-2) ?>);">
+					<div id="work-profile-image" style="background-color:rgba(255,255,255,0.5);">
+						<a id="profile-image" href="<?php echo site_url($row->user->username) ?>">
+							<img src="/data/profiles/<?php echo $row->user->username ?>_face.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt=""/>
+						</a>
+						<div id="profile-info">
+							<h2><a href="<?php echo site_url($row->user->username) ?>"><?php echo $row->user->username ?></a></h2>
+							<h4>&nbsp;<?php echo $this->nf->category_to_string($row->user->user_keywords, true); ?>&nbsp;</h4>
+							<div id="profile-sns-link">
+								<?php foreach ($row->user->sns as $service => $id):
+								$tmp = $this->nf->sns($service, $id);
+								?>
+								<a href="<?php echo $tmp->link  ?>" class="<?php echo $service ?>" class="btn-hover">
+									<i class="spi spi-fb"></i>
+								</a>
+								<?php endforeach ?>
+							</div>
 
-						<?php if ($this->tank_auth->is_logged_in() && USER_ID!=$row->user_id): ?>
-						<div class="centered">
-							<a href="javascript:;" data-id="<?php echo $row->user_id ?>" class="btn btn-follow btn-nofol btn-hover <?php echo $row->is_follow=='y'?'activated' : '' ?>">
-								<i class="spi spi-follow"></i>
-								<span>Follow<?php echo $row->is_follow=='y'?'ing' : '' ?></span>
-							</a>
+							<?php if ($this->tank_auth->is_logged_in() && USER_ID!=$row->user_id): ?>
+							<div class="centered">
+								<a href="javascript:;" data-id="<?php echo $row->user_id ?>" class="btn btn-follow btn-nofol btn-hover <?php echo $row->is_follow=='y'?'activated' : '' ?>">
+									<i class="spi spi-follow"></i>
+									<span>Follow<?php echo $row->is_follow=='y'?'ing' : '' ?></span>
+								</a>
+							</div>
+							<?php endif ?>
 						</div>
-						<?php endif ?>
 					</div>
 				</div>
 				<div>&nbsp;</div>
