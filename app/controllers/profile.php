@@ -211,8 +211,8 @@ class Profile extends CI_Controller {
 
 			$this->session->set_userdata('username', $username); //change session username
 		}
-
-		$this->layout->set_json($json)->render();
+		redirect('/'.$username);
+		//$this->layout->set_json($json)->render();
 	}
 
 
