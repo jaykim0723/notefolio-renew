@@ -218,6 +218,7 @@ class work_model extends CI_Model {
             'modified'   => $data->row->modified,
             'user_keywords'   => $data->row->user_keywords,
             'sns'   => (object)array(
+                'website' => $data->row->user_website,
                 'facebook' => $data->row->user_facebook_id,
                 'twitter' => $data->row->user_twitter_id,
                 'pinterest' => $data->row->user_pinterest_id,
