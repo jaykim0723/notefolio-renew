@@ -1236,7 +1236,7 @@ p.desc {
 	left: 1.5em;
 	bottom: 0;
 	right: 0.5em;
-    color: #fffff;
+    color: #ffffff;
     background: none;
     border: 0;
 }
@@ -1244,7 +1244,7 @@ p.desc {
 #mobile-search-field:-moz-placeholder, /* Mozilla Firefox 4 to 18 */
 #mobile-search-field::-moz-placeholder, /* Mozilla Firefox 19+ */
 #mobile-search-field:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #fffff;
+    color: #ffffff;
 }
 
 
