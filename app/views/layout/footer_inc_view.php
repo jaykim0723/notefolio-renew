@@ -4,7 +4,7 @@
 		<li>
 			<form action="gallery/listing/1" role="form">
 				<div class="input-group input-group-md">
-					<i class="spi spi-search"></i>
+					<i class="spi spi-search_white"></i>
 					<input type="search" name="q" placeholder="search" class="form-control">
 				</div>
 			</form> 
@@ -24,14 +24,14 @@
 			</li>
 			<li>
 				<a class="clear-list" href="/alarm/listing">
-					<i class="spi spi-follow"></i>
+					<i class="spi spi-alarm_white"></i>
 					Alarm
 					<span class="label rounded unread-alarm"></span>
 				</a>
 			</li>
 			<li>
 				<a class="clear-list" href="/feed/listing">
-					<i class="spi spi-follow"></i>
+					<i class="spi spi-feed_white"></i>
 					Feed
 					<span class="label rounded unread-feed"></span>
 				</a>
@@ -39,32 +39,32 @@
 		<?php endif; ?>
 			<li>
 				<a class="clear-list" href="/gallery/listing">
-					<i class="spi spi-gallery"></i>
+					<i class="spi spi-gallery_white"></i>
 					Gallery
 				</a>
 			</li>
 			<li>
 				<a class="clear-list" href="//magazine.notefolio.net/">
-					<i class="spi spi-follow"></i>
+					<i class="spi spi-magazine_white"></i>
 					Magazine
 				</a>
 			</li>
 			<li>
 				<a class="clear-list" href="/info/about_us/">
-					<i class="spi spi-follow"></i>
+					<i class="spi spi-info_white"></i>
 					Notefolio info
 				</a>
 			</li>
 		<?php if (USER_ID==0): ?>
 			<li>
 				<a href="/auth/login">
-					<i class="spi spi-follow"></i>
+					<i class="spi spi-login_white"></i>
 					Login
 				</a>
 			</li>
 			<li>
 				<a href="/auth/register">
-					<i class="spi spi-follow"></i>
+					<i class="spi spi-plus2_white"></i>
 					Register
 				</a>
 			</li>
@@ -72,7 +72,7 @@
 		<?php if (USER_ID>0): ?>
 			<li>
 				<a href="/auth/logout">
-					<i class="spi spi-follow"></i>
+					<i class="spi spi-logout_white"></i>
 					Sign Out
 				</a>
 			</li>
