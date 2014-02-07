@@ -33,8 +33,8 @@
 
 							<?php if ($this->tank_auth->is_logged_in() && USER_ID!=$row->user_id): ?>
 							<div class="centered">
-								<a href="javascript:;" data-id="<?php echo $row->user_id ?>" class="btn btn-follow btn-nofol btn-hover <?php echo $row->is_follow=='y'?'activated' : '' ?>">
-									<i class="spi spi-follow"></i>
+								<a href="javascript:;" data-id="<?php echo $row->user_id ?>" class="btn btn-follow btn-nofol2 btn-hover <?php echo $row->is_follow=='y'?'activated' : '' ?>" style="border:none;">
+									<i class="spi spi-follow_point"></i>
 									<span>Follow<?php echo $row->is_follow=='y'?'ing' : '' ?></span>
 								</a>
 							</div>
