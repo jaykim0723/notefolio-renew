@@ -671,7 +671,8 @@ html, body {
 }
 
 .work-addinfo .btn-nofol2:hover .spi-love_point,
-.work-addinfo .btn-nofol2 .spi-love_white{
+.work-addinfo .btn-nofol2 .spi-love_white,
+.work-addinfo .noted .spi-love_point {
 	display:none;
 }
 
@@ -681,6 +682,13 @@ html, body {
 	display:inline-block;
 }
 
+.work-addinfo .noted:hover {
+	transition: 0.25s linear;
+	-webkit-transition: 0.25s linear;
+	opacity: 0.7;
+	-webkit-opacity: 0.7;
+	filter: alpha(opacity=70);
+}
 
 /* comment */
 .comment-wrapper {
