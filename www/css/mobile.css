@@ -1193,6 +1193,11 @@ p.desc {
 #profile-info .centered a:hover {
 	color: #fff;
 }
+#profile-info .centered .spi {
+	margin-right:5px;
+	margin-top: -3px;
+}
+
 
 @media (min-width:481px) {
 	#profile-header {
