@@ -201,7 +201,7 @@ class user_model extends CI_Model {
             if($params->get_profile){
                 $user->user_keywords = $user->keywords;
                 $user->sns = (object)array(
-//                    'website' => $user->user_website,
+                    'website' => $user->website,
                     'facebook' => $user->facebook_id,
                     'twitter' => $user->twitter_id,
                     'pinterest' => $user->pinterest_id,
