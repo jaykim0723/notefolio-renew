@@ -774,7 +774,46 @@ var profileUtil = {
 		});
 	},
 	changeUsername : function(){
-
+		var dialog = new BootstrapDialog({
+		    title: '사용자명 변경',
+		    message: function(){
+				var $message = $(
+					'<div id="dialog-change-username">'+
+						'<label>변경할 사용자명</label><br/>'+
+						'<input type="text" class="form-control" value="'+$('#profile-info > h2').text()+'"/>'+
+					'</div>'
+					);
+				return $message;
+		    },
+		    buttons: [
+			    {
+			        label: 'Change',
+			        cssClass: 'btn-primary',
+			        action: function(dialog){
+			        	var value = $('#dialog-change-username').find('input').val();
+			        	if(value.length < 3){
+			        		msg.open('최소한 3글자 이상을 입력하셔야 합니다.');
+			        		return false;
+			        	}
+			        	blockPage.block();
+			        	$.post('')
+			        }
+			    },{
+			        label: 'Cancel',
+			        cssClass: 'btn-default',
+			        action: function(dialog){
+						NFview.popCrop = null;
+			            dialog.close();
+			        }
+			    }
+		    ]
+		});
+		dialog.realize();
+		dialog.getModal().prop('id', 'dialog-change-username'); // cssClass 버그로 인해서 이 꼼수로..
+		dialog.open();
+		setTimeout(function(){
+			$('#dialog-change-username').find('input').focus();
+		}, 500);
 	},
 	changeKeywords : function(){
 		var dialog = new BootstrapDialog({
