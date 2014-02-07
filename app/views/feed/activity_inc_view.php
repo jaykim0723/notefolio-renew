@@ -50,9 +50,8 @@ switch($row->area){
         break;        
 }
 
-if(is_null($row->readdate)){
-    $is_read = "unread";
-}
+$is_read = (is_null($row->readdate))?"unread":'';
+
 
 ?>
 
