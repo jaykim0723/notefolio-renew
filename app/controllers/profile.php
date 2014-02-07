@@ -1,5 +1,4 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-ini_set('display_errors', 'on');
 
 class Profile extends CI_Controller {
 

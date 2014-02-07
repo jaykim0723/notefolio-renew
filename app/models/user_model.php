@@ -63,10 +63,10 @@ class user_model extends CI_Model {
 
         if($params->get_profile){
             $table = "user_profiles";
-            $fields = array('user_id', 'keywords', 'website', 'facebook_id',
-                                    'twitter_id', 'gender', 'birth',
-                                    'description', 'mailing',
-                                    'following_cnt', 'follower_cnt', 'face_color');
+            $fields = array('user_id', 'keywords', 'website',
+                            'facebook_id','twitter_id','pinterest_id','tumblr_id','vimeo_id',
+                            'gender', 'birth', 'description', 'mailing',
+                            'following_cnt', 'follower_cnt', 'face_color');
             foreach($fields as $field){
                 $this->db->select($table.'.'.$field);
             }
@@ -143,10 +143,10 @@ class user_model extends CI_Model {
 
         if($params->get_profile){
             $table = "user_profiles";
-            $fields = array('user_id', 'keywords', 'website', 'facebook_id',
-                                    'twitter_id', 'gender', 'birth',
-                                    'description', 'mailing',
-                                    'following_cnt', 'follower_cnt', 'face_color');
+            $fields = array('user_id', 'keywords', 'website',
+                            'facebook_id','twitter_id','pinterest_id','tumblr_id','vimeo_id',
+                            'gender', 'birth', 'description', 'mailing',
+                            'following_cnt', 'follower_cnt', 'face_color');
             foreach($fields as $field){
                 $this->db->select($table.'.'.$field);
             }
