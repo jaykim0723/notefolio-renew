@@ -385,7 +385,7 @@ var workUtil = {
 						workUtil.content.applyBlock($o, 'text', c);
 					};
 					$('html, body').animate({
-                        scrollTop: $($(ui.item[0])).offset().top
+                        scrollTop: $($(ui.item[0])).offset().top + 100
                     }, 200);
 				},
   				receive: function(event, ui) {
@@ -470,11 +470,12 @@ var workUtil = {
 							.appendTo(sendTo)
 							.prepend($('<i class="spi spi-close2">close2</i>'));
 
+						$('html, body').animate({
+	                        scrollTop: $($target).offset().top + 100
+	                    }, 200);
+
 						$.when(workUtil.content.applyBlock($target, className)).done(function(){
 							$target.fadeTo(150, 1);
-							$('html, body').animate({
-		                        scrollTop: $($target).offset().top
-		                    }, 200);
 						});
 						
 						$('#default-image').remove();
@@ -500,11 +501,13 @@ var workUtil = {
 									$target = $(ui.draggable).empty()
 										.fadeTo(0, 0.01)
 										.prepend($('<i class="spi spi-close2">close2</i>'));
+
+									$('html, body').animate({
+				                        scrollTop: $($target).offset().top + 100
+				                    }, 200);
+
 									$.when(workUtil.content.applyBlock($target, className)).done(function(){
 										$target.fadeTo(150, 1);
-										$('html, body').animate({
-					                        scrollTop: $($target).offset().top
-					                    }, 200);
 									});
 									$('#default-image').remove();
 									workUtil.discoverbility();
