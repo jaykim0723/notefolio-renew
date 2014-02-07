@@ -1273,7 +1273,7 @@ p.desc {
 }
 
 #mobile-search-box i.spi {
-	vertical-align: middle;
+	vertical-align: sub;
 }
 
 #mobile-search-field{
