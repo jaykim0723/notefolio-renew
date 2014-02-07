@@ -335,6 +335,7 @@ body {
 	background: #999;
 	background-position:center center;
 	padding: 20px 0 0 0;
+	min-height:400px;
 }
 #profile-info {
 }
