@@ -311,6 +311,9 @@ html, body {
 
 
 /* normal gallery list */
+#gallery-search-form {
+	margin-bottom: 20px;
+}
 #gallery-search-form .bootstrap-select {
 	width: 100%;
 }
