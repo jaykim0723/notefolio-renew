@@ -70,7 +70,7 @@ class Nf
         $data = (object)array();
         switch ($service) {
             case 'website':
-                $data->link = ((preg_match('/^http[s]*:\/\//mi', subject))?'':'http://').$id;
+                $data->link = ((preg_match('/^http[s]*:\/\//mi', $id))?'':'http://').$id;
                 break;
             case 'facebook':
                 $data->link = 'http://facebook.com/'.$id;
