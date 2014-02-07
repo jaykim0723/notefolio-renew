@@ -103,7 +103,7 @@ html, body {
 .label-nofol {
 	color: #fff;
 	background: #2ac5c6;
-	padding: 6px;
+	padding: 3px 5px;
 	text-decoration: none;
 }
 .btn-nofol {
@@ -158,6 +158,7 @@ html, body {
 	right: -5px;
 	bottom: -3px;
 	z-index: 4;
+	font-weight:300;
 }
 
 
