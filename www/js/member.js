@@ -242,7 +242,6 @@ var workUtil = {
 				$.each(NFview.contents, function(k, block){
 					$target = $('<li class="block-'+block.t+' block"></li>')
 						.prepend($('<i class="spi spi-close2">close2</i>')).appendTo(sendTo);
-					//$newBlock = workUtil.content.createBlock(className[1]);
 					workUtil.content.applyBlock($target, block.t, block.c, block.i);
 					$('#default-image').remove();
 					workUtil.discoverbility();
@@ -380,7 +379,6 @@ var workUtil = {
 				stop: function(event, ui){
 					if($(ui.item[0]).hasClass('block-text')){
 						var c = $(ui.item[0]).find('textarea').val();
-						console.log(c);
 						var $o = $(ui.item[0]).empty()
 							.prepend($('<i class="spi spi-close2">close2</i>'));
 						workUtil.content.applyBlock($o, 'text', c);
@@ -493,7 +491,6 @@ var workUtil = {
 								if(className){
 									className = className[1];
 									$target = $(ui.draggable).empty().prepend($('<i class="spi spi-close2">close2</i>'));
-									//$newBlock = workUtil.content.createBlock(className[1]);
 									workUtil.content.applyBlock($target, className);
 									$('#default-image').remove();
 									workUtil.discoverbility();
@@ -508,53 +505,6 @@ var workUtil = {
 						$(sendTo).droppable('destroy');
 					}
 				});
-		},
-		createBlock : function(type, c, i, returnType){
-			if(typeof(type)=='undefined'){
-				var type = "text";
-			}
-			if(typeof(c)=='undefined'){
-				var c = '';
-			}
-			if(typeof(i)=='undefined'){
-				var i = '';
-			}
-
-			var output = '';
-			switch(type){
-				case 'line':
-					output = $('<li class="block-line block"></li>');
-				break;
-				
-				case 'image':
-					if(c=='')
-						c = workUtil.defaultValue.image;
-					output = workUtil.content.createUploader($('<li class="block-image block"><img data-id="'+i+'" src="'+c+'"/><button class="btn btn-primary">Upload an image</button></li>'));
-					//output = $('<img>').attr('src', '//renew.notefolio.net/img/thumb6.jpg');
-				break;
-
-				case 'video':
-					if(c=='')
-						c = workUtil.defaultValue.video;
-					output = $('<li class="block-video block"><iframe src="'+c+'?wmode=transparent" frameborder="0" wmode="Opaque"></iframe><div class="block-video-overlay"><textarea></textarea></div><i class="spi spi-close2">close2</i></li>');
-				break;
-
-				case 'text':
-				default:
-					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(nl2br(c));
-					output = $('<li class="block-text block"><i class="spi spi-close2">close2</i></li>').append(textarea);
-				break;
-			}
-			if(typeof(data)!='undefined'){
-				$(output).append($(data));
-			}
-			// if(typeof(returnType)!='undefined' 
-			// && returnType=="list-block"){
-			// 	output =  $('<li></li>')
-			// 				.attr('class','block-'+type)
-			// 				.append(output);
-			// }
-			return output;
 		},
 		applyBlock : function(target, type, c, i){
 			if(typeof(type)=='undefined'){
