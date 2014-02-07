@@ -1273,9 +1273,13 @@ p.desc {
 }
 
 #mobile-search-field{
-    color: #ffffff;
-    background: none;
-    border: 0;
+	color: #ffffff;
+	background: none;
+	border: 0;
+	width: 100%;
+	margin: 0 0 0 -1.3em;
+	padding: 0 0 0 1.3em;
+	font-size: 1.5em;
 }
 #mobile-search-field::-webkit-input-placeholder, /* WebKit browsers */
 #mobile-search-field:-moz-placeholder, /* Mozilla Firefox 4 to 18 */
