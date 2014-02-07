@@ -227,6 +227,8 @@ html, body {
 	height: 50px;
 	z-index: 20;
 	top:0;
+}
+#mobile-header {
 	padding-top: 1em;
 }
 #footer {
