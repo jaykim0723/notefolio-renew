@@ -470,7 +470,7 @@ var workUtil = {
 						$.when(workUtil.content.applyBlock($target, className)).done(function(){
 							$target.fadeTo(150, 1);
 							$('html, body').animate({
-		                        scrollTop: $("#div1").offset().top
+		                        scrollTop: $($target).offset().top
 		                    }, 200);
 						});
 						
