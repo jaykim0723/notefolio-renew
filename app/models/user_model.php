@@ -202,7 +202,10 @@ class user_model extends CI_Model {
                 $user->user_keywords = $user->keywords;
                 $user->sns = (object)array(
                     'facebook' => $user->facebook_id,
-                    'twitter' => $user->twitter_id
+                    'twitter' => $user->twitter_id,
+                    'pinterest' => $user->pinterest_id,
+                    'tumblr' => $user->tumblr_id,
+                    'vimeo' => $user->vimeo_id
                 );
             }
 
