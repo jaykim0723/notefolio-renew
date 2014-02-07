@@ -111,7 +111,7 @@ var workUtil = {
 			return $('#ccl').val()=='' ? 0 : 1
 		},
 		cover : function(){
-			return $('#cover-preview img:first').attr('src').indexOf('cover_default.png')!=-1 ? 0 : 1;
+			return $('#cover-preview .col-md-12').css('display')!='none' ? 0 : 1;
 		}
 
 	},
