@@ -47,7 +47,7 @@ class profile_model extends CI_Model {
             ->update('users');
         $this->db->trans_complete();
 
-        if($this->db->trans_status){
+        if($this->db->trans_status()){
             $data = (object)array(
                 'status' => 'done',
                 'msg' => 'Successed'
@@ -84,7 +84,7 @@ class profile_model extends CI_Model {
             ->update('user_profiles');
         $this->db->trans_complete();
 
-        if($this->db->trans_status){
+        if($this->db->trans_status()){
             $data = (object)array(
                 'status' => 'done',
                 'msg' => 'Successed'
@@ -126,7 +126,7 @@ class profile_model extends CI_Model {
             ->update('user_profiles');
         $this->db->trans_complete();
 
-        if($this->db->trans_status){
+        if($this->db->trans_status()){
             $data = (object)array(
                 'status' => 'done',
                 'msg' => 'Successed'
