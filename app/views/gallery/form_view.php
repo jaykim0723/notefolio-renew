@@ -31,21 +31,6 @@
 				</select>
 
 
-
-						<div class="col-md-3 col-sm-6">
-							<select name="work_categories[]" id="work_categories" multiple title="Choose one of the following...">
-								<?php 
-								$this->load->config('keyword', TRUE);
-								$keyword_list = $this->config->item('keyword', 'keyword');
-
-								foreach ($keyword_list as $key => $keyword) { ?>
-									<option value="<?php echo $key?>"<?=(in_array($key, $work_categories))?' selected':''?>><?php echo $keyword;?></option>
-								<?php }	?>
-							</select>
-						</div>
-
-
-
 				<h4>CCL <a class="tip" href="/info/faq#ccl" target="_blank">자세히보기</a></h4>
 				<select name="ccl" id="ccl" class="" title="Choose one of the following..." >
 					<option value="">CCL 표시 안함</option>
