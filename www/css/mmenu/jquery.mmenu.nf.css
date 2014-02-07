@@ -152,6 +152,8 @@ html.mm-blocking #mm-blocker {
     display: block;
     padding: 10px 10px 10px 10px;
     margin: 0; }
+    .mm-list > li > a > i {
+      margin: 0 0.3em;}
 .mm-list > li:not(.mm-subtitle):not(.mm-label):not(.mm-noresults)::after {
   content: '';
   border-bottom-width: 1px;
