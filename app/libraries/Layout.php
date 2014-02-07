@@ -63,7 +63,7 @@ class Layout
 		// print footer
 		if(!$this->ci->input->is_ajax_request()){
 			$this->ci->load->view('layout/footer_'.$affix.'view');
-			(($areaName!='acp'))?$this->ci->load->view('layout/footer_inc_view', $this->header):'';
+			(($areaName!='acp'))?$this->ci->load->view('layout/footer_inc_view'. array('row'=>$this->ci->nf->get('user')):'';
 		}
 	}
 
