@@ -241,7 +241,7 @@ var workUtil = {
 			if(NFview.contents.length>0){
 				$.each(NFview.contents, function(k, block){
 					$target = $('<li class="block-'+block.t+' block"></li>')
-						.prepend($('<i class="spi spi-close2">close2</i>'));
+						.prepend($('<i class="spi spi-close2">close2</i>')).appendTo(sendTo);
 					//$newBlock = workUtil.content.createBlock(className[1]);
 					workUtil.content.applyBlock($target, block.t, block.c, block.i);
 					$('#default-image').remove();
