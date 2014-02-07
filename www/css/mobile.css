@@ -20,6 +20,11 @@
 	text-indent: 3000px;
 }
 
+.spi-down{
+	height: 23px !important;
+	background-position: -0px -334px !important;
+}
+
 body * {
 	font-family: 'Roboto', sans-serif;
 	/* font-family: 'PT Sans', sans-serif; */

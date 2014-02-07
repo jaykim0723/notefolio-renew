@@ -540,6 +540,13 @@ li#trash-bin{
 	-webkit-overflow-scrolling: touch;
 	overflow-scrolling: touch;
 }
+#alarm-more{
+	color: #7a7880;
+	height: 42px;
+	padding-top: 10px;
+	font-size: 16px;
+	font-weight: 300;
+}
 
 #btn-profile {
 	float: right;
