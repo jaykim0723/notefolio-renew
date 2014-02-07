@@ -196,12 +196,9 @@ class Profile extends CI_Controller {
 	 */
 	function change_username(){
 		$username = $this->input->post('username'); 
-		// ex) $username = 'amxzidell';
+
 		$json = $this->profile_model->set_change_username(USER_ID, $username);
-		// ex) $json = (object)array(
-		// 		'status' => 'done',
-		// 		'msg' => '중복됩니다.' // 에러가 있는 경우 담아서 주세요. 
-		// );
+
 		$this->layout->set_json($json)->render();
 	}
 
@@ -212,12 +209,9 @@ class Profile extends CI_Controller {
 	 */
 	function change_keywords(){
 		$keywords = $this->input->post('keywords');
-		// ex) $keywords = 'A7B7';
+
 		$json = $this->profile_model->set_change_keywords(USER_ID, $keywords);
-		// ex) $json = (object)array(
-		// 		'status' => 'done',
-		// 		'msg' => '' // 에러가 있는 경우 담아서 주세요. 
-		// );
+
 		$json->keywords_string = $this->nf->category_to_string($keywords, true); // php에서 만드는 것을 통일하려고.
 		$this->layout->set_json($json)->render();
 	}
@@ -236,11 +230,8 @@ class Profile extends CI_Controller {
 		// 		'tumblr' => '',
 		// 		'vimeo' => ''
 		// );
-		$json = $this->profile_model->set_change_username(USER_ID, $input);
-		// ex) $json = (object)array(
-		// 		'status' => 'done',
-		// 		'msg' => '' // 에러가 있는 경우 담아서 주세요. 
-		// );
+		$json = $this->profile_model->set_change_sns(USER_ID, $input);
+
 		$json->sns_string = $this->nf->sns_to_string($input);
 		$this->layout->set_json($json)->render();
 	}

@@ -21,8 +21,13 @@ class profile_model extends CI_Model {
     }
 
     function set_change_username($user_id, $username=''){
-        if($this->tank_auth->is_logged_in() 
-            && $this->session->userdata('username')!=$username){
+        if (!$this->tank_auth->is_logged_in()){
+            return (object)array(
+                'status' => 'fail',
+                'msg' => 'please_log_in'
+            );
+        }
+        else if($this->session->userdata('username')!=$username){
             $this->load->model('tank_auth/users');
             $is_useable = $this->users->is_username_available($username);
 
@@ -33,11 +38,6 @@ class profile_model extends CI_Model {
                 );
             }
 
-        } else if (!$this->tank_auth->is_logged_in()){
-            return (object)array(
-                'status' => 'fail',
-                'msg' => 'please_log_in'
-            );
         }
 
         $this->db->trans_start();
@@ -63,24 +63,24 @@ class profile_model extends CI_Model {
     }
 
     function set_change_keywords($user_id, $keywords=''){
-        if($this->tank_auth->is_logged_in() 
-            && $this->session->userdata('username')!=$username){
-            $this->load->model('tank_auth/users');
-            $is_useable = $this->user_model->is_username_available($username);
-
-            if(!$is_useable){
-                return (object)array(
-                    'status' => 'fail',
-                    'msg' => 'cannot_use'
-                );
-            }
-
+        if (!$this->tank_auth->is_logged_in()){
+            return (object)array(
+                'status' => 'fail',
+                'msg' => 'please_log_in'
+            );
         }
+        else if($user_id!=USER_ID){
+            return (object)array(
+                'status' => 'fail',
+                'msg' => 'cannot_change_not_yours'
+            );
+        }
+
 
         $this->db->trans_start();
         $this->db
-            ->set('username', $username)
-            ->where('user_', $user_id)
+            ->set('keywords', $keywords)
+            ->where('user_id', $user_id)
             ->update('user_profiles');
         $this->db->trans_complete();
 
@@ -100,10 +100,44 @@ class profile_model extends CI_Model {
     }
 
     function set_change_sns($user_id, $input=''){
-        $data = (object)array(
-            'status' => 'done',
-            'msg' => ''
-        );
+        if (!$this->tank_auth->is_logged_in()){
+            return (object)array(
+                'status' => 'fail',
+                'msg' => 'please_log_in'
+            );
+        }
+        else if($user_id!=USER_ID){
+            return (object)array(
+                'status' => 'fail',
+                'msg' => 'cannot_change_not_yours'
+            );
+        }
+
+        foreach($input as $key=>$val){
+            if(in_array($key, array('twitter','facebook','pinterest','tumblr','vimeo'))){
+                $this->db->set($key.'_id', $val);
+            }
+        }
+
+
+        $this->db->trans_start();
+        $this->db
+            ->where('user_id', $user_id)
+            ->update('user_profiles');
+        $this->db->trans_complete();
+
+        if($this->db->trans_status){
+            $data = (object)array(
+                'status' => 'done',
+                'msg' => 'Successed'
+            );
+        }
+        else {
+            $data = (object)array(
+                'status' => 'fail',
+                'msg' => 'db update fail'
+            );
+        }
         return $data;
     }
 
