@@ -1221,26 +1221,12 @@ p.desc {
 
 
 /* mobile menu */
-#mobile-menu-signout {
-	display: block;
+#mobile-search-box{
 	width: 100%;
+	position: relative;
+	padding: 0.7em;
+	vertical-align: middle;
 }
-#mobile-menu-signout a {
-	display: block;
-	text-align: center;
-	width: 90%;
-	padding: 10px 0;
-	margin: 0 auto;
-	border-radius: 5px;
-	background: #fff;
-	color:#444;
-}
-
-
-
-
-
-
 
 
 

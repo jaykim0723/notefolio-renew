@@ -3,7 +3,7 @@
 	<ul>
 		<li>
 			<form action="gallery/listing/1" role="form">
-				<div class="input-group input-group-md">
+				<div id="mobile-search-box">
 					<i class="spi spi-search_white"></i>
 					<input type="search" name="q" placeholder="search" class="form-control">
 				</div>
