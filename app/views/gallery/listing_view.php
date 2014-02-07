@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<form action="" class="form-inline" role="form">
+				<form action="" class="form-inline" role="form" id="gallery-search-form">
 
 					<div class="row">
 						

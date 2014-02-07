@@ -311,6 +311,9 @@ html, body {
 
 
 /* normal gallery list */
+#gallery-search-form .bootstrap-select {
+	width: 100%;
+}
 .thumbnail-list {
 	overflow: hidden;
 	position: relative;
