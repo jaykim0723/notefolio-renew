@@ -384,7 +384,7 @@ var workUtil = {
 							.prepend($('<i class="spi spi-close2">close2</i>'));
 						workUtil.content.applyBlock($o, 'text', c);
 					};
-					$('body').scrollTop($(ui.item[0]).offset());
+					$('body').scrollTop($(ui.item[0]).offset().top);
 				},
   				receive: function(event, ui) {
   				},
