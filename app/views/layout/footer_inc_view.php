@@ -13,10 +13,16 @@
 		</li>
 		<?php if (USER_ID==0): ?>
 			<li>
-				<a href="/auth/login">Login</a>
+				<a href="/auth/login">
+					<i class="spi spi-follow"></i>
+					Login
+				</a>
 			</li>
 			<li>
-				<a href="/auth/register">Register</a>
+				<a href="/auth/register">
+					<i class="spi spi-follow"></i>
+					Register
+				</a>
 			</li>
 		<?php endif; ?>
 		<?php if (USER_ID>0): ?>
