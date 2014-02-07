@@ -1303,6 +1303,20 @@ input#mobile-search-field:-moz-placeholder {
     color: #ffffff;
 }
 
+#mobile-menu-profile p.username {
+	font-weight: normal;
+	font-size: 2.5em;
+}
+
+#mobile-menu-profile p.follows  {
+	font-weight: normal;
+	font-size: 1.5em;
+}
+
+#mobile-menu-profile p.follows span.conunt {
+	font-weight: bold;
+	margin-left: 1em;
+}
 
 
 
