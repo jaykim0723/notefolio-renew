@@ -385,7 +385,7 @@ var workUtil = {
 						workUtil.content.applyBlock($o, 'text', c);
 					};
 					$('html, body').animate({
-                        scrollTop: $($(ui.item[0])).offset().top + 200
+	                        scrollTop: $(ui.item[0]).offset().top + 150
                     }, 200);
 				},
   				receive: function(event, ui) {
@@ -471,7 +471,7 @@ var workUtil = {
 							.prepend($('<i class="spi spi-close2">close2</i>'));
 
 						$('html, body').animate({
-	                        scrollTop: $($target).offset().top + 200
+	                        scrollTop: $target.offset().top + 150
 	                    }, 200);
 
 						$.when(workUtil.content.applyBlock($target, className)).done(function(){
@@ -503,7 +503,7 @@ var workUtil = {
 										.prepend($('<i class="spi spi-close2">close2</i>'));
 
 									$('html, body').animate({
-				                        scrollTop: $($target).offset().top + 200
+	                        			scrollTop: $target.offset().top + 150
 				                    }, 200);
 
 									$.when(workUtil.content.applyBlock($target, className)).done(function(){
