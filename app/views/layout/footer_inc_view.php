@@ -23,11 +23,14 @@
 				<a href="/<?php echo $this->nf->get('user')->username ?>">
 					<img src="/data/profiles/<?php echo $this->nf->get('user')->username ?>_face.jpg?_=<?php echo substr($this->nf->get('user')->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
 				</a>
-				<?php echo $this->nf->get('user')->username ?>
-				<br/>
-				followers <?php echo $this->nf->get('user')->following_cnt ?>
-				/
-				followings <?php echo $this->nf->get('user')->follower_cnt ?>
+				<p class="username"><?php echo $this->nf->get('user')->username ?></p>
+				<p class="follows">
+					<span class="count"><?php echo $this->nf->get('user')->following_cnt ?></span>
+					followers 
+					<span class="count"><?php echo $this->nf->get('user')->follower_cnt ?></span>
+					followings 
+				</p>
+
 			</li>
 			<li>
 				<a class="clear-list" href="/alarm/listing">
