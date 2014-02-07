@@ -223,7 +223,7 @@ class work_model extends CI_Model {
                 'pinterest' => $data->row->user_pinterest_id,
                 'tumblr' => $data->row->user_tumblr_id,
                 'vimeo' => $data->row->user_vimeo_id,
-            ) 
+            ),
             'face_color'   => $data->row->user_face_color,
         );
         foreach($user as $key=>$value){
