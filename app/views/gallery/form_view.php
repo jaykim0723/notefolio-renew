@@ -155,7 +155,7 @@
 	<li class="block block-image"><i class="spi spi-work">work</i></li>
 	<li class="block block-video"><i class="spi spi-video">video</i></li>
 	<li class="block block-line"><i class="spi spi-division">division</i></li>
-	<!-- <li id="trash-bin"><i class="spi spi-delete">delete</i></li> -->
+	<li id="trash-bin"><i class="spi spi-delete">delete</i></li>
 </ul>
 <script>
 	$(function() {
