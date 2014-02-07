@@ -376,7 +376,8 @@ var workUtil = {
     			axis: 'y',
         		scroll: true,
     			distance: 15,
-    			containment: 'window',
+    			scrollSpeed: 40,
+    			scrollSensitivity: 10,
 				start: function(event, ui){
 					/*var posOrig = $(ui.helper).offset().top();
 
