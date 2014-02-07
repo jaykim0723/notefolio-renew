@@ -560,6 +560,18 @@ li#trash-bin{
 	border-right: none !important;
 
 }
+#alarm-more:hover .spi-down, 
+#alarm-more .spi-down_point {
+	display:none;
+}
+#alarm-more:hover .spi-down_point,
+#alarm-more .spi-down {
+	display:block;
+}
+
+
+
+
 #btn-profile {
 	float: right;
 	padding: 0;
