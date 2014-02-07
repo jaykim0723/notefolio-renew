@@ -1,8 +1,11 @@
+<?php
+	$keywords_list_key = $this->nf->category_to_array($row->keywords, TRUE);
+?>
 <script>
 	NFview = <?php
 		echo json_encode($row); // view내의 스크립트에서 편리하게 사용하기 위하여 미리 할당
 	?>;
-	NFview.keywords = <?php echo json_encode($this->nf->category_to_array($row->keywords, TRUE)); ?>;
+	NFview.keywords = <?php echo json_encode($keywords_list_key); ?>;
 	NFview.area = 'work-form';
 </script>
 
@@ -26,7 +29,7 @@
 					$keyword_list = $this->config->item('keyword', 'keyword');
 
 					foreach ($keyword_list as $key => $keyword) { ?>
-						<option value="<?php echo $key?>"<?=(in_array($key, $this->nf->category_to_array($row->keywords, TRUE)))?' selected':''?>><?php echo $keyword;?></option>
+						<option value="<?php echo $key?>"<?=(in_array($key, $keywords_list_key))?' selected':''?>><?php echo $keyword;?></option>
 					<?php }	?>
 				</select>
 
