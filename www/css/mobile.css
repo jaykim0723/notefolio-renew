@@ -1231,11 +1231,18 @@ p.desc {
 
 #mobile-search-field{
 	position:absolute;
+	display: block;
 	top: 0;
 	left: 1.5em;
 	bottom: 0;
 	right: 0.5em;
-
+    color: #fffff;
+}
+#mobile-search-field::-webkit-input-placeholder, /* WebKit browsers */
+#mobile-search-field:-moz-placeholder, /* Mozilla Firefox 4 to 18 */
+#mobile-search-field::-moz-placeholder, /* Mozilla Firefox 19+ */
+#mobile-search-field:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #fffff;
 }
 
 
