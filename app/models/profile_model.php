@@ -24,7 +24,7 @@ class profile_model extends CI_Model {
         if($this->tank_auth->is_logged_in() 
             && $this->session->userdata('username')!=$username){
             $this->load->model('tank_auth/users');
-            $is_useable = $this->user_model->is_username_available($username);
+            $is_useable = $this->users->is_username_available($username);
 
             if(!$is_useable){
                 return (object)array(
@@ -33,6 +33,11 @@ class profile_model extends CI_Model {
                 );
             }
 
+        } else if (!$this->tank_auth->is_logged_in()){
+            return (object)array(
+                'status' => 'fail',
+                'msg' => 'please_log_in'
+            );
         }
 
         $this->db->trans_start();
@@ -58,10 +63,39 @@ class profile_model extends CI_Model {
     }
 
     function set_change_keywords($user_id, $keywords=''){
-        $data = (object)array(
-            'status' => 'done',
-            'msg' => ''
-        );
+        if($this->tank_auth->is_logged_in() 
+            && $this->session->userdata('username')!=$username){
+            $this->load->model('tank_auth/users');
+            $is_useable = $this->user_model->is_username_available($username);
+
+            if(!$is_useable){
+                return (object)array(
+                    'status' => 'fail',
+                    'msg' => 'cannot_use'
+                );
+            }
+
+        }
+
+        $this->db->trans_start();
+        $this->db
+            ->set('username', $username)
+            ->where('user_', $user_id)
+            ->update('user_profiles');
+        $this->db->trans_complete();
+
+        if($this->db->trans_status){
+            $data = (object)array(
+                'status' => 'done',
+                'msg' => 'Successed'
+            );
+        }
+        else {
+            $data = (object)array(
+                'status' => 'fail',
+                'msg' => 'db update fail'
+            );
+        }
         return $data;
     }
 
