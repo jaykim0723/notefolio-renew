@@ -534,6 +534,8 @@ li#trash-bin{
 	width: 300px;
 	border: 1px solid #e5e5e5;
 	z-index:99;
+	margin-top: 10px;
+	border-top: 1px solid #fff;
 }
 #alarm-popup-list {
 	overflow: hidden;
