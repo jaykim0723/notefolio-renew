@@ -1270,6 +1270,7 @@ p.desc {
 	padding: 0.7em;
 	vertical-align: middle;
 	background-color: #7bcad4;
+	font-size: 1.5em;
 }
 
 #mobile-search-field{
@@ -1279,7 +1280,6 @@ p.desc {
 	width: 100%;
 	margin: 0 0 0 -1.3em;
 	padding: 0 0 0 1.3em;
-	font-size: 1.5em;
 }
 #mobile-search-field::-webkit-input-placeholder, /* WebKit browsers */
 #mobile-search-field:-moz-placeholder, /* Mozilla Firefox 4 to 18 */
