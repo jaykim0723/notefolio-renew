@@ -167,7 +167,7 @@ var workUtil = {
 			return;
 		}
 		if(value.cover == 0){
-			msg.open('커버를 지정하여 주십시오.', 'error', '#btn-upload-cover', 'y');
+			msg.open('커버를 지정하여 주십시오.', 'error', '#btn-upload-cover-wrapper', 'y');
 			return;
 		}
 		
