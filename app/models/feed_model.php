@@ -122,9 +122,6 @@ class feed_model extends CI_Model {
             'feed_unread' => $feed_count->unread
         );
         
-        // do stuff
-        // 
-        
         return $data;
     }
 
