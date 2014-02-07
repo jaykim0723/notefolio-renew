@@ -546,8 +546,20 @@ li#trash-bin{
 	padding-top: 10px;
 	font-size: 16px;
 	font-weight: 300;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	border-left: none;
+	border-right: none;
 }
+#alarm-more:hover {
+	color:#2ac5c6 !important;
+	background-color:#fff !important;
+	border-top: 1px solid #e5e5e5 !important;
+	border-bottom: 1px solid #e5e5e5 !important;
+	border-left: none !important;
+	border-right: none !important;
 
+}
 #btn-profile {
 	float: right;
 	padding: 0;
