@@ -509,12 +509,16 @@ var workUtil = {
 				                    }, 200);
 
 									alert($('body').scrollTop());
-									
+
 									$.when(workUtil.content.applyBlock($target, className)).done(function(){
 										$target.fadeTo(150, 1);
 									});
+									
+									alert($('body').scrollTop());
 									$('#default-image').remove();
+									alert($('body').scrollTop());
 									workUtil.discoverbility();
+									alert($('body').scrollTop());
 								}else{
 									//$(ui.draggable).remove();
 								}
