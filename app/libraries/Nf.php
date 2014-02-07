@@ -32,7 +32,7 @@ class Nf
         $category_key = $this->category_to_array($category_code, true);
         if($to_href){
             foreach($category as $key => $val){
-                $category[$key] = "<a href=\"/gallery/listing?from=all&work_categories%5B%5D={$category_key[$key]}&q=&order=newest\">$val</a>";
+                $category[$key] = "<a class=\"category\" href=\"/gallery/listing?from=all&work_categories%5B%5D={$category_key[$key]}&q=&order=newest\">$val</a>";
             }
         }
 
