@@ -461,14 +461,16 @@ var workUtil = {
 		    		var className =(""+$(this).attr("class")+"").match(/block-(\w+)/);
 					if(className){
 						className = className[1];
-						$newBlock = workUtil.content.createBlock(className).fadeTo(0, 0.01);
-						$newBlock.append($('<i class="spi spi-close2">close2</i>')).appendTo(sendTo);
-						$('#default-image').remove();
-						$.when(site.scrollToBottom()).done(function(){
-							$newBlock.fadeTo(150, 1);
+						$target = $('<li class="block-'+className+' block"></li>')
+							.fadeTo(0, 0.01)
+							.appendTo(sendTo)
+							.prepend($('<i class="spi spi-close2">close2</i>'));
+
+						$.when(workUtil.content.applyBlock($target, className)).done(function(){
+							$target.fadeTo(150, 1);
 						});
-						if(className =='text')
-							$newBlock.find('textarea').wysihtml5();
+						
+						$('#default-image').remove();
 						workUtil.discoverbility();
 					}
 				})
@@ -487,9 +489,10 @@ var workUtil = {
 								$(ui.draggable).css('outline', 'none');
 					    		var className = $(ui.draggable).attr("class").match(/block-(\w+)/);
 								if(className){
+									className = className[1];
 									$target = $(ui.draggable).empty().prepend($('<i class="spi spi-close2">close2</i>'));
 									//$newBlock = workUtil.content.createBlock(className[1]);
-									workUtil.content.applyBlock($target, className[1]);
+									workUtil.content.applyBlock($target, className);
 									$('#default-image').remove();
 									workUtil.discoverbility();
 								}else{
