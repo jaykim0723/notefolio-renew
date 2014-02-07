@@ -164,6 +164,16 @@ html, body {
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
+.btn-nofol3 {
+	border-radius: 2em;
+	text-decoration: none;
+	color: #7a7880;
+	background: #fff;
+	-webkit-transition: all 0.3s ease;	
+	-moz-transition: all 0.3s ease;	
+	-o-transition: all 0.3s ease;	
+	transition: all 0.3s ease;	
+}
 .btn-no-border {
 	border-width: 0;
 }
@@ -755,6 +765,15 @@ html, body {
 	display:inline-block;
 }
 
+.profile-info .btn-follow:hover .spi-follow_point,
+.profile-info .btn-follow .spi-follow_white {
+	display:none;
+}
+.profile-info .btn-follow:hover .spi-follow_white,
+.profile-info .btn-follow .spi-follow_point {
+	display:inline-block;
+}
+
 .work-addinfo .noted:hover {
 	transition: 0.25s linear;
 	-webkit-transition: 0.25s linear;
@@ -1164,6 +1183,13 @@ p.desc {
 	font-weight: normal;
 	font-family: 'NanumGothic', Dotum !important;
 }
+#profile-info .centered a {
+	color: #2ac5c6;
+}
+#profile-info .centered a:hover {
+	color: #fff;
+}
+
 @media (min-width:481px) {
 	#profile-header {
 		height: 400px;
@@ -1303,21 +1329,6 @@ input#mobile-search-field:-moz-placeholder {
     color: #ffffff;
 }
 
-#mobile-menu-profile p.username {
-	font-weight: normal;
-	font-size: 2.5em;
-}
-
-#mobile-menu-profile p.follows  {
-	font-weight: normal;
-	font-size: 1.2em;
-}
-
-#mobile-menu-profile p.follows span.conunt {
-	font-weight: bold;
-	font-size: 1.2em;
-	margin-left: 1em;
-}
 
 
 
