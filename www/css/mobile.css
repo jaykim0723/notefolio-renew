@@ -180,7 +180,8 @@ html, body {
 .btn-follow {
 }
 .btn-follow.activated {
-	background: orange;
+	background: #2ac5c6;
+	color: #fff !important;
 }
 @media (min-width:768px) {
 	.btn-nofol:hover {
