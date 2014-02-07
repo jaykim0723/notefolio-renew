@@ -384,7 +384,9 @@ var workUtil = {
 							.prepend($('<i class="spi spi-close2">close2</i>'));
 						workUtil.content.applyBlock($o, 'text', c);
 					};
-					$('body').scrollTop($(ui.item[0]).offset().top);
+					$('body').animate({
+	                        scrollTop: $(ui.item[0]).offset().top - 100
+                    }, 200);
 				},
   				receive: function(event, ui) {
   				},
@@ -468,7 +470,9 @@ var workUtil = {
 							.appendTo(sendTo)
 							.prepend($('<i class="spi spi-close2">close2</i>'));
 
-						$('body').scrollTop($target.offset().top - 100);
+						$('body').animate({
+	                        scrollTop: $target.offset().top - 100
+	                    }, 200);
 
 						$.when(workUtil.content.applyBlock($target, className)).done(function(){
 							$target.fadeTo(150, 1);
@@ -497,9 +501,7 @@ var workUtil = {
 									$target = $(ui.draggable).empty()
 										.fadeTo(0, 0.01)
 										.prepend($('<i class="spi spi-close2">close2</i>'));
-
-									$('body').scrollTop($target.offset().top - 100);
-
+										
 									$.when(workUtil.content.applyBlock($target, className)).done(function(){
 										$target.fadeTo(150, 1);
 									});
