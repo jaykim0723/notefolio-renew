@@ -1287,7 +1287,7 @@ p.desc {
 #mobile-search-field:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #ffffff;
 }
-#mobile-search-field i {
+#mobile-search-field .spi {
 	vertical-align: middle;
 }
 
