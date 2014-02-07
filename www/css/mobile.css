@@ -399,6 +399,14 @@ html, body {
 	color:black;
 	padding: 15px 0px;
 }
+.feed-activity-list a:hover {
+	color: #2ac5c6;
+	opacity: 0.7;
+	-webkit-opacity: 0.7;
+	filter: alpha(opacity=70);
+	transition: 0.25s linear;
+	-webkit-transition: 0.25s linear;
+}
 .feed-activity-list a img {
 	float: left;
 	width: 32px;
