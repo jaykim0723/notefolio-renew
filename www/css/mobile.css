@@ -1293,12 +1293,13 @@ p.desc {
 	padding: 0 0 0 1.3em;
 	font-size: 1.5em;
 }
-#mobile-search-field::-webkit-input-placeholder, /* WebKit browsers */
-#mobile-search-field:-moz-placeholder, /* Mozilla Firefox 4 to 18 */
-#mobile-search-field::-moz-placeholder, /* Mozilla Firefox 19+ */
-#mobile-search-field:-ms-input-placeholder { /* Internet Explorer 10+ */
+input#mobile-search-field::-webkit-input-placeholder{
     color: #ffffff;
 }
+input#mobile-search-field:-moz-placeholder {
+    color: #ffffff;
+}
+
 
 
 
