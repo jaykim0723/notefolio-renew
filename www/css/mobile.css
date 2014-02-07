@@ -29,6 +29,36 @@
 	background-position: -46px -334px !important;
 }
 
+.spi-website {
+	height: 29px !important;
+	background-position: -82px -382px !important;
+}
+.spi-facebook {
+	height: 29px !important;
+	background-position: -0px -397px !important;
+}
+.spi-twitter {
+	height: 29px !important;
+	background-position: -209px -385px !important;
+}
+.spi-pinterest {
+	height: 29px !important;
+	background-position: -46px -386px !important;
+}
+.spi-tumblr {
+	height: 29px !important;
+	background-position: -69px -173px !important;
+}
+.spi-vimeo {
+	height: 29px !important;
+	background-position: -121px -201px !important;
+}
+
+
+
+
+
+
 body * {
 	font-family: 'Roboto', sans-serif;
 	/* font-family: 'PT Sans', sans-serif; */
@@ -1132,9 +1162,16 @@ p.desc {
 	text-align:center;
 	margin: 5px 0px 15px 0px;
 }
-#profile-sns-link a {
+#profile-sns-link a:hover {
+	transition: 0.25s linear;
+	-webkit-transition: 0.25s linear;
+	opacity: 0.7;
+	-webkit-opacity: 0.7;
+	filter: alpha(opacity=70);
 }
 #profile-sns-link a .spi {
+	margin-right: 5px;
+	margin-left: 5px;
 }
 @media (max-width:991px) {
 	#profile-header #btn-edit-cover,
