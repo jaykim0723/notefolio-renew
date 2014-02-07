@@ -575,6 +575,10 @@ html, body {
 	background: #fff;
 	padding: 15px 0;
 }
+.work-addinfo .btn .spi {
+	margin-top: -2px;
+	margin-right: 5px;
+}
 	.work-tags {
 	}
 	.work-ccl {
