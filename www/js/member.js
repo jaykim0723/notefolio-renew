@@ -376,12 +376,12 @@ var workUtil = {
         		scroll: true,
     			distance: 15,
 				start: function(event, ui){
-					var posOrig = $(ui.helper).offset().top();
+					/*var posOrig = $(ui.helper).offset().top();
 
                     $(window).scroll(function() {
 						var pos = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
 						$(ui.helper).stop().scrollTop(position+posOrig);
-					});
+					});*/
 				},
 				stop: function(event, ui){
 					if($(ui.item[0]).hasClass('block-text')){
