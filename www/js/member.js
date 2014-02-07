@@ -378,11 +378,6 @@ var workUtil = {
 				start: function(event, ui){
 				},
 				stop: function(event, ui){
-					if($(ui.item[0]).hasClass('block-text')==false) return;
-					var c = $(ui.item[0]).find('textarea').val();
-					var $o = workUtil.content.createBlock('text', c);
-					$(ui.item[0]).replaceWith($o);
-					$o.find('textarea').wysihtml5();
 				},
   				receive: function(event, ui) {
   				},
