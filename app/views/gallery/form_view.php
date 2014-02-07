@@ -33,17 +33,18 @@
 					<?php }	?>
 				</select>
 
-
-				<h4>CCL <a class="tip" href="/info/faq#ccl" target="_blank">자세히보기</a></h4>
-				<select name="ccl" id="ccl" class="" title="Choose one of the following..." >
-					<option value="">CCL 표시 안함</option>
-					<option data-content='<i class="spi spi-ccl-cc-by"></i>저작자표시' value="BY">저작자표시</option>
-					<option data-content='<i class="spi spi-ccl-cc-by-nc"></i>저작자표시-비영리' value="BY-NC">저작자표시-비영리</option>
-					<option data-content='<i class="spi spi-ccl-cc-by-nd"></i>저작자표시-변경금지' value="BY-ND">저작자표시-변경금지</option>
-					<option data-content='<i class="spi spi-ccl-cc-by-sa"></i>저작자표시-동일조건변경허락' value="BY-SA">저작자표시-동일조건변경허락</option>
-					<option data-content='<i class="spi spi-ccl-cc-by-nc-sa"></i>저작자표시-비영리-동일조건변경허락' value="BY-NC-SA">저작자표시-비영리-동일조건변경허락</option>
-					<option data-content='<i class="spi spi-ccl-cc-by-nc-nd"></i>저작자표시-비영리-변경금지' value="BY-NC-ND">저작자표시-비영리-변경금지</option>
-				</select>
+				<div id="ccl-wrapper">
+					<h4>CCL <a class="tip" href="/info/faq#ccl" target="_blank">자세히보기</a></h4>
+					<select name="ccl" id="ccl" class="" title="Choose one of the following..." >
+						<option value="">CCL 표시 안함</option>
+						<option data-content='<i class="spi spi-ccl-cc-by"></i>저작자' value="BY">저작자</option>
+						<option data-content='<i class="spi spi-ccl-cc-by-nc"></i>저작자-비영리' value="BY-NC">저작자-비영리</option>
+						<option data-content='<i class="spi spi-ccl-cc-by-nd"></i>저작자-변경금지' value="BY-ND">저작자-변경금지</option>
+						<option data-content='<i class="spi spi-ccl-cc-by-sa"></i>저작자-동일조건변경허락' value="BY-SA">저작자-동일조건변경허락</option>
+						<option data-content='<i class="spi spi-ccl-cc-by-nc-sa"></i>저작자-비영리-동일조건변경허락' value="BY-NC-SA">저작자-비영리-동일조건변경허락</option>
+						<option data-content='<i class="spi spi-ccl-cc-by-nc-nd"></i>저작자-비영리-변경금지' value="BY-NC-ND">저작자-비영리-변경금지</option>
+					</select>
+				</div>
 
 
 
