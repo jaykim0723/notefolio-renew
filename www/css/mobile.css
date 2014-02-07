@@ -1145,13 +1145,21 @@ p.desc {
 	text-align: center;
 	color: #fff;
 }
+#profile-info a {
+	color: #fff;
+}
+#profile-info a:hover {
+	text-decoration: none;
+}
 #profile-info h2 {
-	margin-top: 10px;
-	font-size: 20px;
+	margin-top: 12px;
+	font-size: 24px;
+	font-weight: 300;
 }
 #profile-info h4 {
-	font-size: 13px;
+	font-size: 12px;
 	font-weight: normal;
+	font-family: 'NanumGothic', Dotum !important;
 }
 @media (min-width:481px) {
 	#profile-header {
@@ -1166,7 +1174,7 @@ p.desc {
 
 #profile-sns-link {
 	text-align:center;
-	margin: 5px 0px 15px 0px;
+	margin: 8px 0px 15px 0px;
 }
 #profile-sns-link a:hover {
 	transition: 0.25s linear;
