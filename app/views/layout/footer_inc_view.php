@@ -4,10 +4,8 @@
 		<li>
 			<form action="gallery/listing/1" role="form">
 				<div class="input-group input-group-md">
+					<i class="spi spi-search"></i>
 					<input type="search" name="q" placeholder="search" class="form-control">
-					<div class="input-group-btn">
-						<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-					</div>					
 				</div>
 			</form> 
 		</li>
