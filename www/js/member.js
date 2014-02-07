@@ -487,15 +487,10 @@ var workUtil = {
 								$(ui.draggable).css('outline', 'none');
 					    		var className = $(ui.draggable).attr("class").match(/block-(\w+)/);
 								if(className){
-									$newBlock = workUtil.content.createBlock(className[1]);
-									// console.log('$newBlock', $newBlock);
-									// console.log('$newBlock.unwrap()', $newBlock.unwrap());
-									// var draggableIndex = $(ui.draggable).index('li.block'));
-									$(ui.draggable).empty().append($newBlock);
-									$(ui.draggable).prepend($('<i class="spi spi-close2">close2</i>'));
+									$target = $(ui.draggable).empty().prepend($('<i class="spi spi-close2">close2</i>'));
+									//$newBlock = workUtil.content.createBlock(className[1]);
+									workUtil.content.applyBlock($target, className[1]);
 									$('#default-image').remove();
-									if(className =='text')
-										$newBlock.find('textarea').wysihtml5();
 									workUtil.discoverbility();
 								}else{
 									//$(ui.draggable).remove();
@@ -555,6 +550,44 @@ var workUtil = {
 			// 				.append(output);
 			// }
 			return output;
+		},
+		applyBlock : function(target, type, c, i){
+			if(typeof(type)=='undefined'){
+				var type = "text";
+			}
+			if(typeof(c)=='undefined'){
+				var c = '';
+			}
+			if(typeof(i)=='undefined'){
+				var i = '';
+			}
+
+			$(target).addClass('block');
+
+			switch(type){
+				case 'line':
+				break;
+				
+				case 'image':
+					if(c=='')
+						c = workUtil.defaultValue.image;
+					var img = $('<img data-id="'+i+'" src="'+c+'"/><button class="btn btn-primary">Upload an image</button>').appendTo($(target));
+					workUtil.content.createUploader($(target));
+				break;
+
+				case 'video':
+					if(c=='')
+						c = workUtil.defaultValue.video;
+					var img = $('<iframe src="'+c+'?wmode=transparent" frameborder="0" wmode="Opaque"></iframe><div class="block-video-overlay"><textarea></textarea></div>').appendTo($(target));
+				break;
+
+				case 'text':
+				default:
+					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(nl2br(c));
+					$(target).append(textarea).find('textarea').wysihtml5();
+				break;
+			}
+			return true;
 		},
 		removeBlock: function(target){
     		$(target).fadeOut(100, function(){
