@@ -1279,6 +1279,7 @@ p.desc {
 	width: 100%;
 	margin: 0 0 0 -1.3em;
 	padding: 0 0 0 1.3em;
+	font-size: 1.5em;
 }
 #mobile-search-field::-webkit-input-placeholder, /* WebKit browsers */
 #mobile-search-field:-moz-placeholder, /* Mozilla Firefox 4 to 18 */
@@ -1286,7 +1287,9 @@ p.desc {
 #mobile-search-field:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #ffffff;
 }
-
+#mobile-search-field > i{
+	vertical-align: middle;
+}
 
 
 
