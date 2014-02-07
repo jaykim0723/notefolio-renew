@@ -671,9 +671,12 @@ html, body {
 }
 
 .work-addinfo .btn-nofol2:hover .spi-love_point,
-.work-addinfo .btn-nofol2 .spi-love_white,
-.work-addinfo .noted .spi-love_point {
+.work-addinfo .btn-nofol2 .spi-love_white {
 	display:none;
+}
+
+.work-addinfo .noted .spi-love_point {
+	display: none !important;
 }
 
 .work-addinfo .btn-nofol2:hover .spi-love_white,
