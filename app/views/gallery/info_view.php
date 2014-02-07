@@ -31,7 +31,7 @@
 								<?php echo $this->nf->sns_to_string($row->user->sns); ?>
 							</div>
 
-							<?php if ($this->tank_auth->is_logged_in() && USER_ID!=$row->user_id): ?>
+							<?php if (USER_ID!=$row->user_id): ?>
 							<div class="centered">
 								<a href="javascript:;" data-id="<?php echo $row->user_id ?>" class="btn btn-follow btn-nofol2 btn-hover <?php echo $row->is_follow=='y'?'activated' : '' ?>" style="border:none;">
 									<i class="spi spi-follow_point"></i>
