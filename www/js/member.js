@@ -803,8 +803,7 @@ var profileUtil = {
 				        		$('#profile-info > h2').text(value);
 				        		dialog.close();
 				        		BootstrapDialog.alert('이름 변경이 완료되었습니다. 정상적인 사용을 위해 새로고침을 하겠습니다.', function(){
-						            blockPage.block();
-						            location.reload();
+						            site.redirect('/'+responseJSON.username);
 						        });
 			        		}else{
 			        			msg.open(responseJSON.msg, 'error');
