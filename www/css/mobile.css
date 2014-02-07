@@ -580,6 +580,19 @@ html, body {
 	margin-right: 5px;
 }
 	.work-tags {
+		color: #7a7880;
+		font-family: 'NanumGothic', Dotum;
+		font-size:12px;
+	}
+	.work-tags a {
+		color: #7a7880;
+		font-family: 'NanumGothic', Dotum;
+		font-size:12px;
+	}
+	.work-tags a:hover {
+		text-decoration: none;
+		color:#2ac5c6;
+
 	}
 	.work-ccl {
 	}

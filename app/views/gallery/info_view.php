@@ -88,7 +88,14 @@
 										</div>
 
 										<!-- 제목 -->
-										<h2 class="work-title"><?php echo $row->title; ?></h2>
+										<h2 class="work-title"><?php echo $row->title; ?>
+											<a href="/hyeryoungkim/9466/update">
+												edit
+											</a>
+											<a href="/hyeryoungkim/9466/delete">
+												delete
+											</a>
+										</h2>
 										<div class="work-info-time">
 											<?php echo $this->nf->print_time($row->regdate) ?>
 											/
@@ -159,7 +166,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-xs-6">
+								<div class="col-xs-6" style="padding-left: 50px;">
 									<i data-toggle="tooltip" data-placement="bottom" title="<?php
 									switch($row->ccl){
 										case 'BY':
