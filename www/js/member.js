@@ -243,7 +243,7 @@ var workUtil = {
 					$target = $('<li class="block-'+block.t+' block"></li>')
 						.prepend($('<i class="spi spi-close2">close2</i>'));
 					//$newBlock = workUtil.content.createBlock(className[1]);
-					workUtil.content.applyBlock($target, className, block.c, block.i);
+					workUtil.content.applyBlock($target, block.t, block.c, block.i);
 					$('#default-image').remove();
 					workUtil.discoverbility();
 				});
