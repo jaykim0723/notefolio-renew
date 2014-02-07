@@ -39,6 +39,8 @@
 <?php if ($page==1): ?>
 <script>
 	$(function(){
+		$('.unread-feed').hide();
+		
 		$('#feed-tab li').on('click', function(){
 			var $tab = $('#feed-tab');
 			$tab.children('li').removeClass('active');

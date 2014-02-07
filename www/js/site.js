@@ -95,9 +95,8 @@ site.alarm = {
 		.height($(window).height()>550 ? 500 : $(window).height()-100)
 		.children('#alarm-popup-list')
 		.load('/alarm/listing/1');
-
-
-		},
+		$('.unread-alarm').hide();
+	},
 	close : function(){
 		site.scroll.unlock(); // 혹시 몰라서 다시 한 번
 		$('#alarm-popup').remove();
