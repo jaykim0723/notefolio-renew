@@ -373,17 +373,30 @@ var workUtil = {
 			$(target).sortable({
   				opacity: 0.6,
     			cursor: 'move',
+    			axis: 'y',
+        		scroll: true,
     			distance: 15,
-				start: function(event, ui){
-					if (navigator.userAgent.toLowerCase().indexOf('webkit')!=-1) {
-            			wscrolltop = $(window).scrollTop();
-        			}
-				},
-				sort: function(event, ui){
-					if (navigator.userAgent.toLowerCase().indexOf('webkit')!=-1) {
-            			ui.helper.css({ 'top': ui.position.top + wscrolltop + 'px' });
-        			}
-				},
+    			scrollSpeed: 40,
+    			scrollSensitivity: 10,
+// 				start: function(event, ui){
+// <<<<<<< HEAD
+// 					if (navigator.userAgent.toLowerCase().indexOf('webkit')!=-1) {
+//             			wscrolltop = $(window).scrollTop();
+//         			}
+// 				},
+// 				sort: function(event, ui){
+// 					if (navigator.userAgent.toLowerCase().indexOf('webkit')!=-1) {
+//             			ui.helper.css({ 'top': ui.position.top + wscrolltop + 'px' });
+//         			}
+// =======
+// 					/*var posOrig = $(ui.helper).offset().top();
+
+//                     $(window).scroll(function() {
+// 						var pos = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+// 						$(ui.helper).stop().scrollTop(position+posOrig);
+// 					});*/
+// >>>>>>> 1816248b5c50d7f294cbfff3a61be416b5849815
+// 				},
 				stop: function(event, ui){
 					if($(ui.item[0]).hasClass('block-text')){
 						var c = $(ui.item[0]).find('textarea').val();
@@ -391,6 +404,9 @@ var workUtil = {
 							.prepend($('<i class="spi spi-close2">close2</i>'));
 						workUtil.content.applyBlock($o, 'text', c);
 					};
+					$('body').animate({
+	                        scrollTop: $(ui.item[0]).offset().top - 100
+                    }, 200);
 				},
   				receive: function(event, ui) {
   				},
@@ -474,6 +490,10 @@ var workUtil = {
 							.appendTo(sendTo)
 							.prepend($('<i class="spi spi-close2">close2</i>'));
 
+						$('body').animate({
+	                        scrollTop: $target.offset().top - 100
+	                    }, 200);
+
 						$.when(workUtil.content.applyBlock($target, className)).done(function(){
 							$target.fadeTo(150, 1);
 						});
@@ -498,8 +518,13 @@ var workUtil = {
 					    		var className = $(ui.draggable).attr("class").match(/block-(\w+)/);
 								if(className){
 									className = className[1];
-									$target = $(ui.draggable).empty().prepend($('<i class="spi spi-close2">close2</i>'));
-									workUtil.content.applyBlock($target, className);
+									$target = $(ui.draggable).empty()
+										.fadeTo(0, 0.01)
+										.prepend($('<i class="spi spi-close2">close2</i>'));
+
+									$.when(workUtil.content.applyBlock($target, className)).done(function(){
+										$target.fadeTo(150, 1);
+									});
 									$('#default-image').remove();
 									workUtil.discoverbility();
 								}else{
