@@ -478,11 +478,11 @@ html, body {
 	color: #999;
 }
 	.work-info .work-info-title {
-		padding: 20px 10px 20px 20px;
+		padding: 20px 10px 20px 37px;
 	}
 	.work-info h2 {
 		font-size: 20px;
-		margin-top: 11px;
+		margin-top: 9px;
 		color: #666;
 		font-weight: 300;
 		margin-bottom: 4px;
@@ -511,6 +511,11 @@ html, body {
 		position: relative;
 		top: 1px;
 		margin-right: 5px;
+		margin-bottom: 8px;
+		opacity: 0.8;
+		-webkit-opacity: 0.8;
+		filter: alpha(opacity=80);
+		margin-left: 3px;
 	}
 	.work-info-icons > div br {
 		display: none;
