@@ -421,20 +421,26 @@ html, body {
 }
 .feed-activity-list a small {
 	display: block;
-	margin-left: 40px;
+	margin-left: 44px;
 	color:#999;
+	text-align: left;
+	margin-top: 6px;
 }
 .feed-activity-list a span {
 	display: block;
-	margin-left: 40px;
+	margin-left: 44px;
 	margin-right: 28px;
 	font-size: 12px;
-	line-height: 1em;
+	line-height: 150%;
+	text-align: left;
 }
 @media (max-width:991px) {
 	#activity-list-wrapper {
 		display: none;
 	}
+}
+#alarm-list li {
+border-bottom: 1px solid #e6e6e6;
 }
 
 /* work */
