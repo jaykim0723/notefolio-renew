@@ -564,8 +564,7 @@ li#trash-bin{
 #alarm-more .spi-down_point {
 	display:none;
 }
-#alarm-more:hover .spi-down_point,
-#alarm-more .spi-down {
+#alarm-more:hover .spi-down_point{
 	display:block;
 }
 
