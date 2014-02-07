@@ -378,7 +378,10 @@ var workUtil = {
     			distance: 15,
     			scrollSpeed: 40,
     			scrollSensitivity: 10,
+    			tolerance: "pointer",
 				start: function(event, ui){
+					sortHeight = $(this).height();
+					$(this).height($(this).height());
 					/*var posOrig = $(ui.helper).offset().top();
 
                     $(window).scroll(function() {
@@ -387,6 +390,7 @@ var workUtil = {
 					});*/
 				},
 				stop: function(event, ui){
+					$(this).css("height","auto");
 					if($(ui.item[0]).hasClass('block-text')){
 						var c = $(ui.item[0]).find('textarea').val();
 						var $o = $(ui.item[0]).empty()
