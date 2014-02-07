@@ -1310,11 +1310,12 @@ input#mobile-search-field:-moz-placeholder {
 
 #mobile-menu-profile p.follows  {
 	font-weight: normal;
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 
 #mobile-menu-profile p.follows span.conunt {
 	font-weight: bold;
+	font-size: 1.2em;
 	margin-left: 1em;
 }
 
