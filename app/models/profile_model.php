@@ -117,6 +117,9 @@ class profile_model extends CI_Model {
             if(in_array($key, array('twitter','facebook','pinterest','tumblr','vimeo'))){
                 $this->db->set($key.'_id', $val);
             }
+            else if(in_array($key, array('website'))){
+                $this->db->set($key, $val);
+            }
         }
 
 
