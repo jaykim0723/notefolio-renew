@@ -253,7 +253,7 @@ var workUtil = {
 			$('#content-block-list').on('click', 'i.spi', function(){
 				workUtil.content.removeBlock($(this).parents('li.block'));
 			});
-
+/*
 
 			// 키워드 셋팅하기
 			$('#keywords').selectpicker('val', NFview.keywords).data('old', NFview.keywords).on('change', function(){
@@ -265,7 +265,7 @@ var workUtil = {
 				}
 	            workUtil.discoverbility();
 			});
-
+*/
 
 			// 태그 셋팅하기
 			var tagsObj = $('#tags');

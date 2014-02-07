@@ -26,10 +26,23 @@
 					$keyword_list = $this->config->item('keyword', 'keyword');
 
 					foreach ($keyword_list as $key => $keyword) { ?>
-						<option value="<?php echo $key?>"><?php echo $keyword;?></option>
+						<option value="<?php echo $key?>"<?=(in_array($key, $keyword_list))?' selected':''?>><?php echo $keyword;?></option>
 					<?php }	?>
 				</select>
 
+
+
+						<div class="col-md-3 col-sm-6">
+							<select name="work_categories[]" id="work_categories" multiple title="Choose one of the following...">
+								<?php 
+								$this->load->config('keyword', TRUE);
+								$keyword_list = $this->config->item('keyword', 'keyword');
+
+								foreach ($keyword_list as $key => $keyword) { ?>
+									<option value="<?php echo $key?>"<?=(in_array($key, $work_categories))?' selected':''?>><?php echo $keyword;?></option>
+								<?php }	?>
+							</select>
+						</div>
 
 
 
