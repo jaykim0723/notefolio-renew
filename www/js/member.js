@@ -376,6 +376,12 @@ var workUtil = {
         		scroll: true,
     			distance: 15,
 				start: function(event, ui){
+					var posOrig = $(ui.item[0]).offset().top();
+
+                    $(window).scroll(function() {
+						var pos = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+						$("#slidemenu").stop().scrollTop(position+posOrig);
+					});
 				},
 				stop: function(event, ui){
 					if($(ui.item[0]).hasClass('block-text')){
@@ -501,7 +507,7 @@ var workUtil = {
 									$target = $(ui.draggable).empty()
 										.fadeTo(0, 0.01)
 										.prepend($('<i class="spi spi-close2">close2</i>'));
-										
+
 									$.when(workUtil.content.applyBlock($target, className)).done(function(){
 										$target.fadeTo(150, 1);
 									});
