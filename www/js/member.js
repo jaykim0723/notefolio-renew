@@ -502,8 +502,12 @@ var workUtil = {
 										.fadeTo(0, 0.01)
 										.prepend($('<i class="spi spi-close2">close2</i>'));
 
+									alert($('body').scrollTop());
+									
 									$('body').animate({
+										alert($('body').scrollTop());
 	                        			scrollTop: $target.offset().top - 100
+										alert($('body').scrollTop());
 				                    }, 200);
 
 									$.when(workUtil.content.applyBlock($target, className)).done(function(){
