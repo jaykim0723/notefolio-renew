@@ -30,33 +30,49 @@
 					<span class="count"><?php echo $this->nf->get('user')->follower_cnt ?></span>
 					followings 
 				</p>
-
 			</li>
 			<li>
 				<a class="clear-list" href="/alarm/listing">
+					<i class="spi spi-follow"></i>
 					Alarm
-					<span class="label label-danger rounded unread-alarm"></span>
+					<span class="label label-mobile-alarm rounded unread-alarm"></span>
 				</a>
 			</li>
 			<li>
 				<a class="clear-list" href="/feed/listing">
+					<i class="spi spi-follow"></i>
 					Feed
-					<span class="label label-danger rounded unread-feed"></span>
+					<span class="label label-mobile-alarm rounded unread-feed"></span>
 				</a>
 			</li>
-
 			<li>
-				<a class="clear-list" href="/<?php echo $this->session->userdata('username') ?>/myworks">My works</a>
+				<a class="clear-list" href="/gallery/listing">
+					<i class="spi spi-gallery"></i>
+					Gallery
+				</a>
 			</li>
 			<li>
-				<a class="clear-list" href="/<?php echo $this->session->userdata('username') ?>/statistics">Statistics</a>
+				<a class="clear-list" href="//magazine.notefolio.net/">
+					<i class="spi spi-follow"></i>
+					Magazine
+				</a>
 			</li>
 			<li>
-				<a href="/auth/setting">Settings</a>
+				<a class="clear-list" href="/info/aboutus/">
+					<i class="spi spi-follow"></i>
+					Notefolio info
+				</a>
 			</li>
-			<li id="mobile-menu-signout">
-				<a href="btn btn-default btn-lg">
-					Sign out
+			<li>
+				<a href="/auth/setting">
+					<i class="spi spi-follow"></i>
+					Settings
+				</a>
+			</li>
+			<li>
+				<a href="/auth/logout">
+					<i class="spi spi-follow"></i>
+					Sign Out
 				</a>
 			</li>
 		<?php endif; ?>
