@@ -21,10 +21,39 @@ class profile_model extends CI_Model {
     }
 
     function set_change_username($user_id, $username=''){
-        $data = (object)array(
-            'status' => 'done',
-            'msg' => ''
-        );
+        if($this->tank_auth->is_logged_in() 
+            && $this->session->userdata('username')!=$username){
+            $this->load->model('tank_auth/users');
+            $is_useable = $this->user_model->is_username_available($username);
+
+            if(!$is_useable){
+                return (object)array(
+                    'status' => 'fail',
+                    'msg' => 'cannot_use'
+                );
+            }
+
+        }
+
+        $this->db->trans_start();
+        $this->db
+            ->set('username', $username)
+            ->where('id', $user_id)
+            ->update('users');
+        $this->db->trans_complete();
+
+        if($this->db->trans_status){
+            $data = (object)array(
+                'status' => 'done',
+                'msg' => 'Successed'
+            );
+        }
+        else {
+            $data = (object)array(
+                'status' => 'fail',
+                'msg' => 'db update fail'
+            );
+        }
         return $data;
     }
 
