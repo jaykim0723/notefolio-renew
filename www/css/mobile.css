@@ -1237,6 +1237,8 @@ p.desc {
 	bottom: 0;
 	right: 0.5em;
     color: #fffff;
+    background: none;
+    border: 0;
 }
 #mobile-search-field::-webkit-input-placeholder, /* WebKit browsers */
 #mobile-search-field:-moz-placeholder, /* Mozilla Firefox 4 to 18 */
