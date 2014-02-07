@@ -380,6 +380,7 @@ var workUtil = {
 				stop: function(event, ui){
 					if($(ui.item[0]).hasClass('block-text')){
 						var c = $(ui.item[0]).find('textarea').val();
+						console.log(c);
 						var $o = $(ui.item[0]).empty()
 							.prepend($('<i class="spi spi-close2">close2</i>'));
 						workUtil.content.applyBlock($o, 'text', c);
