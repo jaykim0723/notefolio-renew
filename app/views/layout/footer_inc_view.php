@@ -64,12 +64,6 @@
 				</a>
 			</li>
 			<li>
-				<a href="/auth/setting">
-					<i class="spi spi-follow"></i>
-					Settings
-				</a>
-			</li>
-			<li>
 				<a href="/auth/logout">
 					<i class="spi spi-follow"></i>
 					Sign Out
