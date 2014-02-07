@@ -505,11 +505,11 @@ var workUtil = {
 									alert($('body').scrollTop());
 									
 									$('body').animate({
-										alert($('body').scrollTop());
 	                        			scrollTop: $target.offset().top - 100
-										alert($('body').scrollTop());
 				                    }, 200);
 
+									alert($('body').scrollTop());
+									
 									$.when(workUtil.content.applyBlock($target, className)).done(function(){
 										$target.fadeTo(150, 1);
 									});
