@@ -141,7 +141,13 @@
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="work-tags">
-										<i class="spi spi-tag"></i> <?php echo @implode(', ', $row->tags) ?>
+										<i class="spi spi-tag"></i>
+										<?php 
+										foreach($row->tags as $key=>$val){
+											echo ($key>0)?',':'';
+											echo "<a class=\"tag\" href=\"/gallery/listing?from=all&q=$val&order=newest\">$val</a>";
+										}
+										?>
 									</div>
 								</div>
 							</div>
