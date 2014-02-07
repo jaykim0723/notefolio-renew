@@ -5,7 +5,7 @@
 			<form action="gallery/listing/1" role="form">
 				<div id="mobile-search-box">
 					<i class="spi spi-search_white"></i>
-					<input type="search" name="q" placeholder="search" class="form-control">
+					<input type="search" name="q" placeholder="search" id="mobile-search-field">
 				</div>
 			</form> 
 		</li>

@@ -1226,9 +1226,17 @@ p.desc {
 	position: relative;
 	padding: 0.7em;
 	vertical-align: middle;
+	background-color: #7bcad4;
 }
 
+#mobile-search-field{
+	position:absolute;
+	top: 0;
+	left: 1.5em;
+	bottom: 0;
+	right: 0.5em;
 
+}
 
 
 
