@@ -198,6 +198,19 @@ class Profile extends CI_Controller {
 		$username = $this->input->post('username'); 
 
 		$json = $this->profile_model->set_change_username(USER_ID, $username);
+		if($json->status=='done'){
+			$this->load->config('upload', TRUE); //load upload config file
+			
+			$old_file = $this->config->item('profile_upload_path', 'upload').$this->session->userdata('username');
+			$new_file = $this->config->item('profile_upload_path', 'upload').$username;
+			foreach(array( '_face.jpg', '_bg.jpg' ) as $file_tail){
+				if(file_exists($old_file.$file_tail)){
+					rename($old_file.$file_tail, $new_file.$file_tail);
+				}
+			}	
+
+			$this->session->set_userdata('username', $username); //change session username
+		}
 
 		$this->layout->set_json($json)->render();
 	}
