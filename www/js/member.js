@@ -465,7 +465,7 @@ var workUtil = {
 						$newBlock.append($('<i class="spi spi-close2">close2</i>')).appendTo(sendTo);
 						$('#default-image').remove();
 						$.when(site.scrollToBottom()).done(function(){
-							$newBlock.fadeTo(300, 1);
+							$newBlock.fadeTo(150, 1);
 						});
 						if(className =='text')
 							$newBlock.find('textarea').wysihtml5();
@@ -892,7 +892,7 @@ var profileUtil = {
 		    message: function(){
 		    	var area = '<label>해당사항이 있는 곳에 아이디를 지정해주세요.</label><br/><br/>';
 				$.each([
-					'facebook', 'twitter', 'pinterest', 'tumblr', 'vimeo'
+					'website', 'facebook', 'twitter', 'pinterest', 'tumblr', 'vimeo'
 				], function(k, v){
 					var value = $('#profile-sns-link > a.'+v).data('value');
 					if(empty(value))

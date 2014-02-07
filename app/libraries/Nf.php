@@ -69,6 +69,9 @@ class Nf
     function sns($service='', $id=''){
         $data = (object)array();
         switch ($service) {
+            case 'website':
+                $data->link = 'http://facebook.com/'.preg_replace('/https?:\/\//', '', $id);
+                break;
             case 'facebook':
                 $data->link = 'http://facebook.com/'.$id;
                 break;
