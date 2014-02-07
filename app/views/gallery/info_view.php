@@ -127,7 +127,7 @@
 						<div class="work-addinfo">
 							<div class="row">
 								<div class="col-xs-12 centered">
-									<a href="javascript:;" class="btn btn-nofol btn-note <?php echo $row->noted=='y' ? 'noted' : '' ?>">
+									<a href="javascript:;" class="btn btn-nofol2 btn-note <?php echo $row->noted=='y' ? 'noted' : '' ?>">
 										<i class="spi spi-love_point">love</i>
 										<i class="spi spi-love_white">love</i>
 										좋아요(<?php echo $row->note_cnt ?>)
