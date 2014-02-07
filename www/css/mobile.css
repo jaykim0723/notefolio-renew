@@ -811,16 +811,23 @@ html.auth body {
 	margin: 30px auto;
 	max-width:320px;
 	width: 100%;
+}
+#auth-header {
+	margin: 20px 0;
+	text-align: center;
+}
+#auth-body {
 	background: #fff;
 	border: 1px solid #ccc;
-	padding: 15px;
+	padding: 20px;
+
 }
 #auth-footer {
 	margin-top: 20px;
 	text-align: center;
-	border-top: 1px solid #ccc;
 	color: #aaa;
 }
+
 
 
 /* info */
