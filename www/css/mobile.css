@@ -602,6 +602,13 @@ html, body {
 	border-bottom: 1px solid #ccc;
 	padding: 15px 0;
 }
+.work-btn{
+	font-size: 14px;
+	color: #7a7880;
+	font-weight: 300;
+	margin-right: 3px;
+
+}
 
 
 .work-contents {

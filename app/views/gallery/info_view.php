@@ -89,10 +89,10 @@
 
 										<!-- 제목 -->
 										<h2 class="work-title"><?php echo $row->title; ?>
-											<a href="/hyeryoungkim/9466/update">
+											<a href="/hyeryoungkim/9466/update" class="work-btn">
 												edit
 											</a>
-											<a href="/hyeryoungkim/9466/delete">
+											<a href="/hyeryoungkim/9466/delete" class="work-btn">
 												delete
 											</a>
 										</h2>
