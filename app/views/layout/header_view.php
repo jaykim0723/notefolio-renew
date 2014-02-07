@@ -28,7 +28,7 @@
 						</a>
 					</li>
 					<li style="margin-left: 32px;">
-						<a class="btn btn-link clear-list" href="/gallery/listing" style="font-size:18px;font-family:'Roboto',sans-serif;color:#6d6e71;font-weight:400;">Gallery</a>
+						<a class="btn btn-link clear-list" href="/gallery/listing" style="font-size:18px;font-family:'Roboto',sans-serif;color:#444;font-weight:400;">Gallery</a>
 					</li>
 				</ul>
 			</div>
