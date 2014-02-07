@@ -35,14 +35,14 @@
 				<a class="clear-list" href="/alarm/listing">
 					<i class="spi spi-follow"></i>
 					Alarm
-					<span class="label label-mobile-alarm rounded unread-alarm"></span>
+					<span class="label rounded unread-alarm"></span>
 				</a>
 			</li>
 			<li>
 				<a class="clear-list" href="/feed/listing">
 					<i class="spi spi-follow"></i>
 					Feed
-					<span class="label label-mobile-alarm rounded unread-feed"></span>
+					<span class="label rounded unread-feed"></span>
 				</a>
 			</li>
 			<li>
