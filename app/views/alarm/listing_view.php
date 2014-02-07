@@ -4,6 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+				<div id="alarm-popup-title">Alarm</div>
 <?php endif ?>
 				<ul id="alarm-list" class="feed-activity-list alarm-list clearfix">
 					<!-- list -->

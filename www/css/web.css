@@ -513,6 +513,18 @@ li#trash-bin{
 	display: inline-block;
 	position: relative;
 }
+#alarm-popup-title {
+	height: 42px;
+	border-bottom: 1px solid #e5e5e5;
+	text-align: center;
+	padding-top: 10px;
+	color: #2ac5c6;
+	font-size: 16px;
+	font-weight: 300;
+	opacity: 0.8;
+	-webkit-opacity: 0.8;
+	filter: alpha(opacity=80);
+}
 #alarm-popup {
 	overflow: scroll;
 	position: absolute;
@@ -520,7 +532,7 @@ li#trash-bin{
 	top: 100%;
 	left: -130px;
 	width: 300px;
-	border: 3px solid silver;
+	border: 1px solid #e5e5e5;
 	z-index:99;
 }
 #alarm-popup-list {
