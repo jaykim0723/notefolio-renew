@@ -4,6 +4,7 @@
 	?>;
 	NFview.keywords = <?php echo json_encode($this->nf->category_to_array($row->keywords, TRUE)); ?>;
 	NFview.area = 'work-form';
+	keywords = $this->nf->category_to_array($row->keywords, TRUE);
 </script>
 
 <?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'role'=>'form')); ?>
@@ -26,7 +27,7 @@
 					$keyword_list = $this->config->item('keyword', 'keyword');
 
 					foreach ($keyword_list as $key => $keyword) { ?>
-						<option value="<?php echo $key?>"<?=(in_array($key, $keyword_list))?' selected':''?>><?php echo $keyword;?></option>
+						<option value="<?php echo $key?>"<?=(in_array($key, $keywords))?' selected':''?>><?php echo $keyword;?></option>
 					<?php }	?>
 				</select>
 
