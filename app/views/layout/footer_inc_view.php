@@ -18,7 +18,8 @@
 			<li>
 				<a href="/auth/register">Register</a>
 			</li>
-		<?php else: ?>
+		<?php endif; ?>
+		<?php if (USER_ID>0): ?>
 			<li id="mobile-menu-profile" class="centered">
 				<a href="/<?php echo $this->nf->get('user')->username ?>">
 					<img src="/data/profiles/<?php echo $this->nf->get('user')->username ?>_face.jpg?_=<?php echo substr($this->nf->get('user')->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
@@ -45,6 +46,7 @@
 					<span class="label rounded unread-feed"></span>
 				</a>
 			</li>
+		<?php endif; ?>
 			<li>
 				<a class="clear-list" href="/gallery/listing">
 					<i class="spi spi-gallery"></i>
@@ -58,11 +60,12 @@
 				</a>
 			</li>
 			<li>
-				<a class="clear-list" href="/info/aboutus/">
+				<a class="clear-list" href="/info/about_us/">
 					<i class="spi spi-follow"></i>
 					Notefolio info
 				</a>
 			</li>
+		<?php if (USER_ID>0): ?>
 			<li>
 				<a href="/auth/logout">
 					<i class="spi spi-follow"></i>
