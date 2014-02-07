@@ -795,8 +795,16 @@ var profileUtil = {
 			        		msg.open('최소한 3글자 이상을 입력하셔야 합니다.');
 			        		return false;
 			        	}
-			        	blockPage.block();
-			        	$.post('')
+			        	$.post('/profile/change_username', {
+			        		username : $.trim(value)
+			        	}, 'json').done(function(responseJSON){
+			        		if(responseJSON.status=='done'){
+				        		$('#profile-info > h2').text(value);
+				        		dialog.close();
+			        		}else{
+			        			msg.open(responseJSON.msg, 'error');
+			        		}
+			        	});
 			        }
 			    },{
 			        label: 'Cancel',
