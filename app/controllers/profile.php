@@ -1,4 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+ini_set('display_errors', 'on');
 
 class Profile extends CI_Controller {
 
@@ -223,13 +224,6 @@ class Profile extends CI_Controller {
 	 */
 	function change_sns(){
 		$input = $this->input->post(); // 값이 비어있으면 그것은 제외하는 것이다.
-		// ex) $input = array(
-		// 		'twitter' => '',
-		// 		'facebook' => 'maxzidell',
-		// 		'pinterest' => '',
-		// 		'tumblr' => '',
-		// 		'vimeo' => ''
-		// );
 		$json = $this->profile_model->set_change_sns(USER_ID, $input);
 
 		$json->sns_string = $this->nf->sns_to_string($input);
