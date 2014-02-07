@@ -25,8 +25,8 @@
 	background-position: -0px -334px !important;
 }
 .spi-down_point {
-height: 23px !important;
-background-position: -46px -334px !important;
+	height: 23px !important;
+	background-position: -46px -334px !important;
 }
 
 body * {
@@ -117,6 +117,17 @@ html, body {
 	-o-transition: all 0.3s ease;	
 	transition: all 0.3s ease;	
 }
+.btn-nofol2 {
+	color: #2ac5c6;
+	border-color: #2ac5c6;
+	text-decoration: none;
+	border-radius: 2em;
+	background: #fff;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
 .btn-no-border {
 	border-width: 0;
 }
@@ -128,6 +139,10 @@ html, body {
 @media (min-width:768px) {
 	.btn-nofol:hover {
 		opacity: 0.5;
+	}
+	.btn-nofol2:hover {
+		background:#2ac5c6;
+		color:#fff;
 	}
 }
 @media (max-width:767px) {
@@ -643,6 +658,17 @@ html, body {
 .work-sns .btn-nofol {
 	border-width: 0;
 }
+
+.work-addinfo .btn-nofol2:hover .spi-love_point,
+.work-addinfo .btn-nofol2 .spi-love_white{
+	display:none;
+}
+
+.work-addinfo .btn-nofol2:hover .spi-love_white,
+.work-addinfo .btn-nofol2 .spi-love_point{
+	display:inline-block;
+}
+
 
 /* comment */
 .comment-wrapper {
