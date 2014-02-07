@@ -137,6 +137,50 @@ class alarm_model extends CI_Model {
         return $data;
 
     }
+
+    function put_readdate($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'readdate' => date('Y-m-d H:i:s'),
+            'user_id' => '', // 필수정보(누구의 피드인지)
+            'id_before'  => 0, // call by...
+            'id_after'  => 0, // call by...
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        if(!empty($params->id_before)   &&$params->id_before!=0)
+            $this->db->where('user_feeds.id <', $params->id_before);
+
+        if(!empty($params->id_after)    &&$params->id_after!=0)
+            $this->db->where('user_feeds.id >', $params->id_after);
+
+        try{
+            $query = $this->db
+                ->set('readdate', $params->readdate)
+                ->where('user_id', $params->user_id)
+                ->where('readdate', NULL)
+                ->update('user_alarms'); //set
+        }
+        catch (Exception $e) {
+            $data = (object)array(
+                'status' => 'fail',
+                'message' => 'db_update_fail'
+            );
+
+            return $data;
+        }
+
+        $data = (object)array(
+            'status' => 'done',
+        );
+
+        return $data;
+    }
+
+
 }
 
 /* End of file work_model.php */

@@ -22,6 +22,11 @@ class Alarm extends CI_Controller {
 			'user_id' => USER_ID
 		));
 		$this->layout->set_view('alarm/listing_view', $alarm_list)->render();
+
+		//-- mark unread to read
+		$this->alarm_model->put_readdate(array(
+			'user_id' => USER_ID
+		));
 	}
 
 

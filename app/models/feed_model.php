@@ -165,6 +165,40 @@ class feed_model extends CI_Model {
         return $data;
 
     }
+
+    function put_readdate($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'readdate' => date('Y-m-d H:i:s'),
+            'user_id' => '' // 필수정보(누구의 피드인지)
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        try{
+            $query = $this->db
+                ->set('readdate', $params->readdate)
+                ->where('user_id', $params->user_id)
+                ->where('readdate', NULL)
+                ->update('user_feeds'); //set
+        }
+        catch (Exception $e) {
+            $data = (object)array(
+                'status' => 'fail',
+                'message' => 'db_update_fail'
+            );
+
+            return $data;
+        }
+
+        $data = (object)array(
+            'status' => 'done',
+        );
+
+        return $data;
+    }
 }
 
 /* End of file work_model.php */
