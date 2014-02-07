@@ -188,22 +188,22 @@
 										default:
 											echo 'CCL 표시 안함';
 									}
-									?>" class="spi spi-ccl-cc-<?php echo strtolower($row->ccl) ?>">CCL</i>
+									?>" class="pi pi-ccl-cc-<?php echo strtolower($row->ccl) ?>">CCL</i>
 								</div>
 								<div class="col-xs-6 righted work-sns">
 									<a href="javascript:;" onclick="snsUtil.twitter(this);">
-										<i class="spi spi-twitter">twit_hover</i>
+										<i class="pi pi-twitter">twit_hover</i>
 									</a>
 									<a href="javascript:;" onclick="snsUtil.facebook(this);">
-										<i class="spi spi-facebook">fb_hover</i>
+										<i class="pi pi-facebook">fb_hover</i>
 									</a>
 									<a href="javascript:;" onclick="snsUtil.pinterest(this);">
-										<i class="spi spi-pinterest">pin_hover</i>
+										<i class="pi pi-pinterest">pin_hover</i>
 									</a>
 									<a href="javascript:;" onclick="snsUtil.tumblr(this);">
-										<i class="spi spi-tumblr">tumblr_hover</i>
+										<i class="pi pi-tumblr">tumblr_hover</i>
 									</a>
-									<!-- <a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="spi spi-fb_hover visible-xs visible-sm">kakaotalk</a> -->
+									<!-- <a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="pi pi-fb_hover visible-xs visible-sm">kakaotalk</a> -->
 								</div>
 							</div>
 						</div>
