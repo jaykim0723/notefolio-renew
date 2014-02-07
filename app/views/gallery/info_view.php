@@ -197,16 +197,16 @@
 								</div>
 								<div class="col-xs-6 righted work-sns">
 									<a href="javascript:;" onclick="snsUtil.twitter(this);" class="btn-nofol">
-										<i class="spi spi-twit">fb_hover</i>
+										<i class="spi spi-twitter">twit_hover</i>
 									</a>
 									<a href="javascript:;" onclick="snsUtil.facebook(this);" class="btn-nofol">
-										<i class="spi spi-fb">fb_hover</i>
+										<i class="spi spi-facebook">fb_hover</i>
 									</a>
 									<a href="javascript:;" onclick="snsUtil.pinterest(this);" class="btn-nofol">
-										<i class="spi spi-pinter">fb_hover</i>
+										<i class="spi spi-pinterest">pin_hover</i>
 									</a>
 									<a href="javascript:;" onclick="snsUtil.tumblr(this);" class="btn-nofol">
-										<i class="spi spi-tumblr">fb_hover</i>
+										<i class="spi spi-tumblr">tumblr_hover</i>
 									</a>
 									<!-- <a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="spi spi-fb_hover visible-xs visible-sm">kakaotalk</a> -->
 								</div>
