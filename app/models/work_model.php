@@ -166,7 +166,8 @@ class work_model extends CI_Model {
     	$this->db
             ->select('works.*')
             ->select('users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
-            ->select('user_profiles.keywords as user_keywords, user_profiles.facebook_id as user_facebook_id, user_profiles.twitter_id as user_twitter_id')
+            ->select('user_profiles.keywords as user_keywords, user_profiles.face_color as user_face_color')
+            ->select('user_profiles.facebook_id as user_facebook_id, user_profiles.twitter_id as user_twitter_id,user_profiles.pinterest_id as user_pinterest_id, user_profiles.tumblr_id as user_tumblr_id, user_profiles.vimeo_id as user_vimeo_id')
     		// ->select('work_id, title, realname as user, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
     		->from('works')
             ->join('users', 'users.id = works.user_id', 'left')
@@ -219,6 +220,9 @@ class work_model extends CI_Model {
             'sns'   => (object)array(
                 'facebook' => $data->row->user_facebook_id,
                 'twitter' => $data->row->user_twitter_id,
+                'pinterest' => $data->row->user_pinterest_id,
+                'tumblr' => $data->row->user_tumblr_id,
+                'vimeo' => $data->row->user_vimeo_id,
             ) 
         );
         foreach($user as $key=>$value){
