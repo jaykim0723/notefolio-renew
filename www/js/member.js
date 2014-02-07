@@ -384,9 +384,7 @@ var workUtil = {
 							.prepend($('<i class="spi spi-close2">close2</i>'));
 						workUtil.content.applyBlock($o, 'text', c);
 					};
-					$('body').animate({
-	                        scrollTop: $(ui.item[0]).offset().top - 100
-                    }, 200);
+					$('body').    scrol(op: $(ui.item[0]).offset());
 				},
   				receive: function(event, ui) {
   				},
@@ -470,9 +468,7 @@ var workUtil = {
 							.appendTo(sendTo)
 							.prepend($('<i class="spi spi-close2">close2</i>'));
 
-						$('body').animate({
-	                        scrollTop: $target.offset().top - 100
-	                    }, 200);
+						$('body').scrollTop($target.offset().top - 100);
 
 						$.when(workUtil.content.applyBlock($target, className)).done(function(){
 							$target.fadeTo(150, 1);
@@ -502,23 +498,13 @@ var workUtil = {
 										.fadeTo(0, 0.01)
 										.prepend($('<i class="spi spi-close2">close2</i>'));
 
-									alert($('body').scrollTop());
-									
-									$('body').animate({
-	                        			scrollTop: $target.offset().top - 100
-				                    }, 200);
-
-									alert($('body').scrollTop());
+									$('body').scrollTop($target.offset().top - 100);
 
 									$.when(workUtil.content.applyBlock($target, className)).done(function(){
 										$target.fadeTo(150, 1);
 									});
-									
-									alert($('body').scrollTop());
 									$('#default-image').remove();
-									alert($('body').scrollTop());
 									workUtil.discoverbility();
-									alert($('body').scrollTop());
 								}else{
 									//$(ui.draggable).remove();
 								}
