@@ -769,12 +769,12 @@ html, body {
 	display:inline-block;
 }
 
-.profile-info .btn-follow:hover .spi-follow_point,
-.profile-info .btn-follow .spi-follow_white {
+#profile-info .btn-follow:hover .spi-follow_point,
+#profile-info .btn-follow .spi-follow_white {
 	display:none;
 }
-.profile-info .btn-follow:hover .spi-follow_white,
-.profile-info .btn-follow .spi-follow_point {
+#profile-info .btn-follow:hover .spi-follow_white,
+#profile-info .btn-follow .spi-follow_point {
 	display:inline-block;
 }
 
