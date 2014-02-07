@@ -237,6 +237,7 @@ html, body {
 	height: 50px;
 	z-index: 20;
 	top:0;
+	padding-top: 1em;
 }
 #footer {
 	background: rgba(255, 255, 255, 0.7);
@@ -1329,6 +1330,22 @@ input#mobile-search-field:-moz-placeholder {
     color: #ffffff;
 }
 
+<<<<<<< HEAD
+=======
+#mobile-menu-profile p.username {
+	font-weight: normal;
+	font-size: 2em;
+}
+
+#mobile-menu-profile p.follows  {
+	font-weight: normal;
+}
+
+#mobile-menu-profile p.follows span.conunt {
+	font-weight: bold;
+	margin-left: 1em;
+}
+>>>>>>> ee2c64967ee6f1dec8050f90be1f73e5e14d0718
 
 
 
