@@ -9,20 +9,6 @@
 				</div>
 			</form> 
 		</li>
-		<?php if (USER_ID==0): ?>
-			<li>
-				<a href="/auth/login">
-					<i class="spi spi-follow"></i>
-					Login
-				</a>
-			</li>
-			<li>
-				<a href="/auth/register">
-					<i class="spi spi-follow"></i>
-					Register
-				</a>
-			</li>
-		<?php endif; ?>
 		<?php if (USER_ID>0): ?>
 			<li id="mobile-menu-profile" class="centered">
 				<a href="/<?php echo $this->nf->get('user')->username ?>">
@@ -69,6 +55,20 @@
 					Notefolio info
 				</a>
 			</li>
+		<?php if (USER_ID==0): ?>
+			<li>
+				<a href="/auth/login">
+					<i class="spi spi-follow"></i>
+					Login
+				</a>
+			</li>
+			<li>
+				<a href="/auth/register">
+					<i class="spi spi-follow"></i>
+					Register
+				</a>
+			</li>
+		<?php endif; ?>
 		<?php if (USER_ID>0): ?>
 			<li>
 				<a href="/auth/logout">
