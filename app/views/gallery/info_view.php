@@ -76,7 +76,7 @@
 							<div class="row">
 								<div class="col-md-7">
 									<div class="work-info-title">
-										<div class="pull-right">
+										<!-- <div class="pull-right">
 											<?php if (USER_ID==$row->user_id): ?>
 											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/update" class="btn btn-nofol">
 												<i class="glyphicon glyphicon-cog"></i>
@@ -85,7 +85,7 @@
 												<i class="spi spi-close">delete</i>
 											</a>
 											<?php endif ?>
-										</div>
+										</div> -->
 
 										<!-- 제목 -->
 										<h2 class="work-title"><?php echo $row->title; ?>
