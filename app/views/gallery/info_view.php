@@ -158,7 +158,7 @@
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="work-tags">
-										<i class="spi spi-tag"></i>
+										<i class="spi spi-tag" style="margin-top: -3px;margin-right: 6px;"></i>
 										<?php 
 										foreach($row->tags as $key=>$val){
 											echo ($key>0)?', ':'';

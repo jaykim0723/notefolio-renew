@@ -585,6 +585,10 @@ html, body {
 	margin-top: -2px;
 	margin-right: 5px;
 }
+.work-addinfo .work-sns {
+	padding-bottom: 20px;
+	padding-right: 50px;
+}
 	.work-tags {
 		color: #7a7880;
 		font-family: 'NanumGothic', Dotum;
