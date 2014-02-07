@@ -494,8 +494,15 @@ var workUtil = {
 					    		var className = $(ui.draggable).attr("class").match(/block-(\w+)/);
 								if(className){
 									className = className[1];
-									$target = $(ui.draggable).empty().prepend($('<i class="spi spi-close2">close2</i>'));
-									workUtil.content.applyBlock($target, className);
+									$target = $(ui.draggable).empty()
+										.fadeTo(0, 0.01)
+										.prepend($('<i class="spi spi-close2">close2</i>'));
+									$.when(workUtil.content.applyBlock($target, className)).done(function(){
+										$target.fadeTo(150, 1);
+										$('html, body').animate({
+					                        scrollTop: $($target).offset().top
+					                    }, 200);
+									});
 									$('#default-image').remove();
 									workUtil.discoverbility();
 								}else{
