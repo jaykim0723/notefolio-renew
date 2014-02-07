@@ -89,12 +89,15 @@
 
 										<!-- 제목 -->
 										<h2 class="work-title"><?php echo $row->title; ?>
-											<a href="/hyeryoungkim/9466/update" class="work-btn">
+											<?php if (USER_ID==$row->user_id): ?>
+											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/update" class="work-btn">
 												edit
 											</a>
-											<a href="/hyeryoungkim/9466/delete" class="work-btn">
+											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/delete" class="work-btn">
 												delete
 											</a>
+											<?php endif ?>
+											
 										</h2>
 										<div class="work-info-time">
 											<?php echo $this->nf->print_time($row->regdate) ?>
