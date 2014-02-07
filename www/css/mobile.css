@@ -1267,12 +1267,6 @@ p.desc {
 }
 
 #mobile-search-field{
-	position:absolute;
-	display: block;
-	top: 0;
-	left: 1.5em;
-	bottom: 0;
-	right: 0.5em;
     color: #ffffff;
     background: none;
     border: 0;
