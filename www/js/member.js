@@ -375,6 +375,14 @@ var workUtil = {
     			cursor: 'move',
     			distance: 15,
 				start: function(event, ui){
+					if (navigator.userAgent.toLowerCase().indexOf('webkit')!=-1) {
+            			wscrolltop = $(window).scrollTop();
+        			}
+				},
+				sort: function(event, ui){
+					if (navigator.userAgent.toLowerCase().indexOf('webkit')!=-1) {
+            			ui.helper.css({ 'top': ui.position.top + wscrolltop + 'px' });
+        			}
 				},
 				stop: function(event, ui){
 					if($(ui.item[0]).hasClass('block-text')){
