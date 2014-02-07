@@ -36,10 +36,12 @@
 							<?php endforeach ?>
 						</div>
 
+						<?php if ($this->tank_auth->is_logged_in() && $this->session->userdata('username')!=$row->username): ?>
 						<a href="javascript:;" data-id="<?php echo $row->user_id ?>" class="btn btn-follow btn-nofol btn-hover <?php echo $row->is_follow=='y'?'activated' : '' ?>">
 							<i class="spi spi-follow"></i>
 							<span>Follow<?php echo $row->is_follow=='y'?'ing' : '' ?></span>
 						</a>
+						<?php endif ?>
 					</div>
 				</div>
 				<div>&nbsp;</div>
