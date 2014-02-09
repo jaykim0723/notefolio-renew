@@ -574,7 +574,7 @@ class Auth extends CI_Controller
                 ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean|is_unique[users.username]|min_length['.$this->config->item('username_min_length','tank_auth').']|max_length['.$this->config->item('username_max_length','tank_auth').']')
                 ->set_rules('mailing', '메일링 동의', 'trim')
 //                ->set_rules('term', '약관 동의', 'trim|required')
-                ->set_rules('fb_num_id', '페이스북 아이', 'trim')
+                ->set_rules('fb_num_id', '페이스북 아이디', 'trim')
                 ;
 
             //-- end
@@ -616,6 +616,8 @@ class Auth extends CI_Controller
                     $params['mailing'] = ($data['mailing']==1)?1:0;
 
                     $result = $this->user_model->put($params, true);
+                    var_export($result);
+                    exit();
                     //-- after process
                     // 이메일을 보낸다.
                     $data['site_name'] = $this->config->item('website_name', 'tank_auth');
