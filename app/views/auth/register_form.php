@@ -96,6 +96,17 @@ if(isset($fb_num_id)) {
 			</div>
 		</div>
 	</div>
+	<?php } else if(isset($submit_error)){?>
+	<div class="center" id="status">
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+			  <h3 class="panel-title">전송 오류</h3>
+			</div>
+			<div class="panel-body">
+				<p>올바른 방법으로 접근하세요.<br/><a href="javascript:$('#status').remove();">닫기</a></p>
+			</div>
+		</div>
+	</div>
 	<?php }?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
