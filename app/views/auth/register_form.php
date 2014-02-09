@@ -39,16 +39,20 @@ $captcha = array(
 	'class' => 'form-control',
 	'maxlength'	=> 8,
 );
-/*
+
+$value['year'] = set_value('year');
+$value['month'] = set_value('month');
+$value['day'] = set_value('day');
 $birth = array(
-	'year' =>(!empty(set_value('year'))) ?set_value('year') :1990,
-	'month'=>(!empty(set_value('month')))?set_value('month'):8,
-	'day'  =>(!empty(set_value('day')))  ?set_value('day')  :8
+	'year' =>(!empty($value['year'])) ?$value['year'] :1990,
+	'month'=>(!empty($value['month']))?$value['month']:8,
+	'day'  =>(!empty($value['day']))  ?$value['day']  :8
 );
-*/
+
+$value['gender'] = set_value('gender');
 $gender = array(
-	'm' => (!empty(set_value('gender'))&&set_value('gender')=='m') ?'checked' :'',
-	'f'	=> (!empty(set_value('gender'))&&set_value('gender')=='f') ?'checked' :''
+	'm' => (!empty($value['gender'])&&$value['gender']=='m') ?'checked' :'',
+	'f'	=> (!empty($value['gender'])&&$value['gender']=='f') ?'checked' :''
 );
 
 if(isset($fb_num_id)) {
