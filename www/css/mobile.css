@@ -30,30 +30,7 @@
 	background-position: -46px -334px !important;
 }
 
-.spi-website {
-	height: 29px !important;
-	background-position: -82px -382px !important;
-}
-.spi-facebook {
-	height: 29px !important;
-	background-position: -0px -397px !important;
-}
-.spi-twitter {
-	height: 29px !important;
-	background-position: -209px -385px !important;
-}
-.spi-pinterest {
-	height: 29px !important;
-	background-position: -46px -386px !important;
-}
-.spi-tumblr {
-	height: 29px !important;
-	background-position: -69px -173px !important;
-}
-.spi-vimeo {
-	height: 29px !important;
-	background-position: -121px -201px !important;
-}
+
 
 
 
@@ -778,6 +755,14 @@ html, body {
 #profile-info .btn-follow .spi-follow_point {
 	display:inline-block;
 }
+#profile-inner .activated .spi-follow,
+#profile-inner .spi-following_white {
+	display:none;
+}
+#profile-inner .activated .spi-following_white{
+	display:inline-block !important;
+}
+
 
 .work-addinfo .noted:hover {
 	transition: 0.25s linear;
