@@ -559,8 +559,10 @@ var gumoFancy = {
 			)
 		).append(
 			$('<img/>', {
+				'id' : 'gumo-fancy-img',
 				'src' : src
 			}).css({
+				visibility : 'hidden'
 			})
 		);
 	},
