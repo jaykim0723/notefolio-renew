@@ -39,12 +39,13 @@ $captcha = array(
 	'class' => 'form-control',
 	'maxlength'	=> 8,
 );
+/*
 $birth = array(
 	'year' =>(!empty(set_value('year'))) ?set_value('year') :1990,
 	'month'=>(!empty(set_value('month')))?set_value('month'):8,
 	'day'  =>(!empty(set_value('day')))  ?set_value('day')  :8
 );
-
+*/
 $gender = array(
 	'm' => (!empty(set_value('gender'))&&set_value('gender')=='m') ?'checked' :'',
 	'f'	=> (!empty(set_value('gender'))&&set_value('gender')=='f') ?'checked' :''
