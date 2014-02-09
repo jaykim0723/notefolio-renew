@@ -563,6 +563,8 @@ var gumoFancy = {
 				'src' : src
 			}).css({
 				visibility : 'hidden'
+			}).on('load', function(){
+				alert($(this).width());
 			})
 		);
 	},
