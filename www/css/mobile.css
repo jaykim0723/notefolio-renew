@@ -850,6 +850,14 @@ form.comment-block.create textarea {
 			width: 50px;
 			height: 50px;
 		}
+		@media(max-width: 767px){
+			.comment-profile-area img {
+				border-radius: 25px;
+			}
+			.comment-profile-area .si {
+				background-image: none !important;
+			}
+		}
 		.comment-profile-area .spi,
 		.comment-profile-area .si {
 			position: absolute;
