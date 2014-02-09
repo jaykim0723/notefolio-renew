@@ -92,11 +92,10 @@ if(isset($fb_num_id)) {
 			  <h3 class="panel-title">확인이 필요합니다</h3>
 			</div>
 			<div class="panel-body">
-				<p>필요한 정보가 빠졌거나 수정이 필요합니다. 아래를 확인해 주세요. <a href="javascript:$('#status').remove();">닫기</a></p>
+				<p>가입에 필요한 정보를 입력하지 않았거나 사용할 수 없어 수정을 해야 합니다. 아래를 확인해 주세요. <a href="javascript:$('#status').remove();">닫기</a></p>
 			</div>
 		</div>
 	</div>
-	<?=$error?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
 	<?php }?>
