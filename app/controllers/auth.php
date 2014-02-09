@@ -599,8 +599,8 @@ class Auth extends CI_Controller
                             '',
                             TRUE,
                             TRUE)) {                                // success
-                        if($data['fb_num_id']) { // facebook 등록 처리 (facebook으로 가입시)
-                            $this->user_model->post_sns_fb(array('id'=>$id, 'fb_num_id'=>$data['fb_num_id']));
+                        if($data['fb_num_id']) { // facebook으로 가입시
+                            $this->user_model->post_sns_fb(array('id'=>$id, 'fb_num_id'=>$data['fb_num_id'])); // facebook 등록 처리 
                         }
 
                         $this->session->set_flashdata('welcome_newmember',true); // 가입환영용
@@ -612,6 +612,7 @@ class Auth extends CI_Controller
                 }       
             }else{
                 // 실패한 경우.
+                exit();
                 if ($this->form_validation->error_string()!='') {
 
                     $data['error'] = var_export($this->form_validation->error_string()!='', true);
