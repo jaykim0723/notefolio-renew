@@ -307,17 +307,17 @@ class user_model extends CI_Model {
             }
         }
         if(empty($input_profiles->mailing))
-            $input_profiles->mailing = 'N';
+            $input_profiles->mailing = 0;
 
         if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
-            $can_delete = true;
+            $can_put_in = true;
         }
         else { // 본인것인지 여부에 따라 message다르게 하기
             $user = $this->db->where('users.id', $id)->get('users')->row();
-            $can_delete = ($user->id == USER_ID)?true:false; 
+            $can_put_in = ($user->id == USER_ID)?true:false; 
         }
 
-        if($can_delete){
+        if($can_put_in){
             $this->db->flush_cache(); //clear active record
 
             $this->db->trans_start();

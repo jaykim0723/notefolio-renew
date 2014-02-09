@@ -615,7 +615,9 @@ class Auth extends CI_Controller
                     if(isset($data['birth']))    $params['bitrh']    = $data['birth'];
                     $params['mailing'] = ($data['mailing']==1)?1:0;
 
-                    $this->user_model->put($params);
+                    $result = $this->user_model->put($params);
+                    var_export($result);
+                    exit();
                     //-- after process
                     // 이메일을 보낸다.
                     $data['site_name'] = $this->config->item('website_name', 'tank_auth');
