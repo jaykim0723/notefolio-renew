@@ -77,8 +77,6 @@ class fbauth extends CI_Controller
     function get_face($w=0, $h=0, $save_to=''){                
         $fb_num_id = $this->fbsdk->getUser();// get the facebook user and save in the session
         
-            var_export($fb_num_id);
-            exit();
         if(!empty($fb_num_id))
         {   
             $result = $this->fbsdk->get_face('fb_'.$fb_num_id);
