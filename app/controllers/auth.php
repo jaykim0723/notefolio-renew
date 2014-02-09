@@ -603,6 +603,7 @@ class Auth extends CI_Controller
 
                         if($fb_num_id==$data['fb_num_id']){
                             $fbme = $this->fbsdk->api('/me');
+                            var_export($fbme);
                             $realname =  $fbme['name'];
 
                             $this->fbsdk->get_face($data['username']);
