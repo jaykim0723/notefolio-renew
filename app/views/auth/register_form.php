@@ -72,10 +72,10 @@ if(isset($fb_num_id)) {
 			;
 	//$email['disabled'] = 'disabled';
 	$gender[substr($fb_info->gender, 0, 1)] = 
-		(!empty($gender[substr($fb_info->gender, 0, 1)]))?
+		(!empty($value['gender']))?
 			$gender[substr($fb_info->gender, 0, 1)]:'checked';
 
-	if(empty($birth['year'])&&empty($birth['month'])&&empty($birth['day'])){
+	if(empty($value['year'])&&empty($value['month'])&&empty($value['day'])){
 		$birthday = explode('/', $fb_info->birthday);
 		$birth = array(
 			'year'=>$birthday[2],
