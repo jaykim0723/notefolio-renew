@@ -55,7 +55,7 @@ $gender = array(
 	'f'	=> set_radio('gender', 'f', '')
 );
 
-$mailing = set_checkbox('mailing', '1', 'checked');
+$mailing = set_checkbox('mailing', '1', 'checked="checked"');
 
 if(isset($fb_num_id)) {
 	$username['value'] = 
