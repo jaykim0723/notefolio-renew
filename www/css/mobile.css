@@ -1122,6 +1122,9 @@ p.desc {
 	right: 10px;
 }
 
+#profile-header #btn-edit-cover .btn{
+	margin-top:5px;
+}
 
 #profile-inner-wrapper {
 	position: relative;
@@ -1190,6 +1193,15 @@ p.desc {
 	right:10px;
 	margin-left: -50px;
 }
+
+@media (max-width:480px){
+	#btn-edit-profile .btn {
+		position: absolute;
+		top: -20px;
+		right: 80px;
+	}
+}
+
 #profile-info {
 	text-align: center;
 	color: #fff;
@@ -1259,7 +1271,7 @@ p.desc {
 	}
 	#profile-header #btn-edit-cover .text,
 	#profile-image #btn-edit-profile .text {
-		display: none;
+		/*display: none;*/
 	}
 }
 #dialog-change-username .modal-dialog {
