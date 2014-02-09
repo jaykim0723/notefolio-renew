@@ -1287,7 +1287,7 @@ var profileUtil = {
 					html += '<tr>' +
 						'<td></td>' +
 						'<td>'+ responseJSON.rows[i].work_id+'</td>' +
-						'<td>'+ responseJSON.rows[i].title+'</td>' +
+						'<td><a href="/'+site.username+'/'+responseJSON.rows[i].work_id+'" targte="_blank">'+ responseJSON.rows[i].title+'</a></td>' +
 						'<td>'+ responseJSON.rows[i].regdate+'</td>' +
 						'<td>'+ responseJSON.rows[i].hit_cnt+'</td>' +
 						'<td>'+ responseJSON.rows[i].note_cnt+'</td>' +

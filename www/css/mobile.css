@@ -1313,6 +1313,11 @@ p.desc {
 	margin: 10px;
 	vertical-align:bottom;	
 }
+.profile-thumbnail-list .thumbbox.disabled {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+	opacity: 0.5;
+}
 @media (max-width:992px){
 	.profile-thumbnail-list .thumbbox {
 		zoom:0.7;
