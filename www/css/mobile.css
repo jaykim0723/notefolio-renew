@@ -764,6 +764,7 @@ html, body {
 }
 .activated .spi-follow,
 .activated .spi-follow_white,
+.activated .spi-follow_point,
 .spi-following_white {
 	display:none;
 }
