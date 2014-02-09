@@ -281,6 +281,7 @@ class user_model extends CI_Model {
      * @return object       (status return object. status=[done|fail])
      */
     function put($input=array(), $force=false){
+        $input = (object)$input;
         //-- id is not for update
         $id = isset($input->id)?$input->id:USER_ID;
         unset($input->id);
