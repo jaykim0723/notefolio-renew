@@ -449,6 +449,20 @@ jQuery.fn.extend({
 
 
 
+$.fn.extend({
+	charToggle: function() { 
+		return $(this).text($(this).text()=='▶'?'▼':'▶');
+	},
+	selectedToggle: function() { 
+		if($(this).hasClass('selected'))
+			return $(this).removeClass('selected');
+		else
+			return $(this).addClass('selected');
+	},
+	charUp: function(pl) { 
+		return $(this).text(parseInt($(this).text(), 10)+(typeof pl=='undefined'?1:pl));
+	}
+});
 
 
 

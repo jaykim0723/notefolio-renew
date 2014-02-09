@@ -621,7 +621,7 @@ var noteUtil = {
 			if(responseJSON.status=='done'){
 				// msg.open('노트되었습니다.');
 				$work.data('noted', 'y'); 
-				$btnNote.addClass('noted');
+				$btnNote.addClass('noted').children('span').charUp();
 			}else
 				msg.open(responseJSON.message, 'info');
 		}, 'json');
@@ -641,7 +641,7 @@ var noteUtil = {
 			if(responseJSON.status=='done'){
 				// msg.open('노트가 취소되었습니다.');
 				$work.data('noted', 'n'); // 취소 상태로 변경을 해준다.
-				$btnNote.removeClass('noted');
+				$btnNote.removeClass('noted').children('span').charUp(-1);
 			}else
 				msg.open(responseJSON.message);
 		}, 'json');
