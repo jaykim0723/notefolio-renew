@@ -328,17 +328,6 @@ body {
 #work-sidebar .bootstrap-select {
 	width: 100%;
 }
-#work-sidebar #ccl-wrapper .filter-option,
-#work-sidebar #ccl-wrapper li {
-	font-size: 12px;
-	color: #888;
-}
-#work-sidebar #ccl-wrapper a {
-	padding-left: 7px;
-}
-#work-sidebar #ccl-wrapper .pi {
-	margin-right: 10px;
-}
 #work-sidebar > .container, 
 #work-sidebar > .container > .row,
 #work-sidebar > .container > .row > .col-md-3 {
