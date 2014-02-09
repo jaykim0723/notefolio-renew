@@ -9,9 +9,9 @@
 				<?php if (empty($rows)): ?>
 				
 					<div class="alert alert-info">
-					  <strong>게시물이 없습니다.</strong>
-					<br/>
-					  작품을 등록해주세요.
+					  	<strong>아직 업로드한 작품이 없습니다.<strong>
+						<br/>
+						<a href="/gallery/create">지금 등록해보세요</a>
 					</div>
 
 				<?php else: ?>

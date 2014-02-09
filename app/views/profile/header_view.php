@@ -33,11 +33,11 @@
 				  <li><a id="btn-select-face" href="#3">사진 작품 중 선택</a></li>
 				  <li><a id="btn-delete-face" href="#3">사진 삭제</a></li>
 				  <li class="divider"></li>
-				  <li><a id="btn-change-color" href="#3">배경색 변경</a></li>
+				  <li><a id="btn-change-color" href="#3">배경색 설정</a></li>
 				  <li class="divider"></li>
-				  <li><a id="btn-change-username" href="#3">사용자명 변경</a></li>
-				  <li><a id="btn-change-keywords" href="#3">카테고리 변경</a></li>
-				  <li><a id="btn-change-sns" href="#3">소셜주소 변경</a></li>
+				  <li><a id="btn-change-username" href="#3">사용자명 설정</a></li>
+				  <li><a id="btn-change-keywords" href="#3">카테고리 설정</a></li>
+				  <li><a id="btn-change-sns" href="#3">소셜주소 설정</a></li>
 				</ul>
 			</div>	
 			<?php endif; ?>
