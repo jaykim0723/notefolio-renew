@@ -1383,6 +1383,9 @@ p.desc {
 	padding-top: 5px;
 	padding-bottom: 5px;	
 } 
+#profile-nav li {
+	text-align: center;
+}
 #profile-nav .number {
 	display: none;
 } 
