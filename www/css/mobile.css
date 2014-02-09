@@ -1191,10 +1191,10 @@ p.desc {
 	#profile_nav_followings, #profile_nav_followers {
 		width: 49% !important;
 		text-align: center !important;
-		border-bottom: 1px solid #dfdfdf !important;
 	}
 	.fol {
 		width:100%;
+		border-bottom: 1px solid #dfdfdf !important;
 	}
 	.promenu {
 		background:#fff;
