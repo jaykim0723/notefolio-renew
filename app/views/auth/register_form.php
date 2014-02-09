@@ -78,7 +78,7 @@ if(isset($fb_num_id)) {
 	<div class="form-group">
 	<?php if($data['error']){?>
 	<?=$data['error']?>
-	<?php}?>
+	<?php }?>
 	<?php if(isset($fb_num_id)){?>
 		<?php echo form_hidden('fb_num_id', $fb_num_id); ?>
 		<a href="javascript:window.location.reload()" class="btn btn-info btn-block">Now with facebook</a>
