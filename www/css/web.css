@@ -361,6 +361,7 @@ body {
 #work-recent-list li {
 	display: block;
 	clear: left;
+	background: #fff;
 }
 #work-recent-list a {
 	color: #444;
