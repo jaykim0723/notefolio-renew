@@ -43,10 +43,11 @@ $captcha = array(
 $value['year'] = set_value('year');
 $value['month'] = set_value('month');
 $value['day'] = set_value('day');
+$value['birth'] = explode('-', set_value('birth'));
 $birth = array(
-	'year' =>(!empty($value['year'])) ?$value['year'] :1990,
-	'month'=>(!empty($value['month']))?$value['month']:8,
-	'day'  =>(!empty($value['day']))  ?$value['day']  :8
+	'year' =>(!empty($value['birth'][0])) ?$value['birth'][0] :1990,
+	'month'=>(!empty($value['birth'][1]))?$value['birth'][1]:8,
+	'day'  =>(!empty($value['birth'][2]))  ?$value['birth'][2]  :8
 );
 
 $value['gender'] = set_value('gender');
