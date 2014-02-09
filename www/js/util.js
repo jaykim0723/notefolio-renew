@@ -564,7 +564,10 @@ var gumoFancy = {
 			}).css({
 				visibility : 'hidden'
 			}).on('load', function(){
-				alert($(this).width());
+				var $o = $(this);
+				$o.css({
+					visibility : 'visible'
+				}).detach().appendTo($('#gumo-fancy-frame').empty());
 			})
 		);
 	},
