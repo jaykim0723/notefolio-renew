@@ -883,11 +883,12 @@ form.comment-block.create textarea {
 		font-size: 13px;
 	}
 	textarea.comment-textarea {
-		background: #f8f8f8;
+		background: #f2f2f2;
 		position: absolute;
 		left: 0;
 		right: 100px;
 		color: #000;
+		margin-top: 5px;
 	}
 	.comment-control-area-mobile {
 		position: absolute;
@@ -911,6 +912,10 @@ form.comment-block.create textarea {
 
 	.comment-action-area {
 		float: right;
+		padding-top: 8px;
+	}
+	.comment-action-area .btn {
+		border:none !important;
 	}
 
 @media (max-width:991px) {
