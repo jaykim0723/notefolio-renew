@@ -242,8 +242,6 @@ class user_model extends CI_Model {
     function post($params=array()){
         $params = (object)$params;
         $default_params = (object)array(
-            'set_profile' => false,
-            'set_sns_fb' => false,
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
