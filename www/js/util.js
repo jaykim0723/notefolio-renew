@@ -518,7 +518,7 @@ var gumoFancy = {
 				width : '100%',
 				height : '100%',
 				'z-index' : 999998,
-				background : 'rgba(0,0,0, 0.2)'
+				background : 'rgba(0,0,0, 0.4)'
 			}).on('click', function(){
 				gumoFancy.close();
 			}).append(
@@ -535,17 +535,33 @@ var gumoFancy = {
 					overflow: 'scroll',
 					'-webkit-overflow-scrolling': 'touch'
 				}).append(
-					jQuery('<img/>', {
-						id : 'gumo-fancy-img',
-						src : src
+					jQuery('<div id="gumo-fancy-loading"/>', {
+						id : 'gumo-fancy-loading'
 					}).css({
+						background : '#000',
 						position : 'absolute',
+						width : '100px',
+						height : '100px',
 						top : '50%',
 						left : '50%',
-						cursor : 'pointer'
-					})
+						'text-align' : 'center',
+						'margin-left':'-50px',
+						'margin-top':'-50px',
+						'border-radius' : '10px'
+					}).append(
+						$('<img/>', {
+							'src' : '/img/gumo-fancy.gif'
+						}).css({
+							'margin' : '40px auto 0 auto'
+						})
+					)
 				)
 			)
+		).append(
+			$('<img/>', {
+				'src' : src
+			}).css({
+			})
 		);
 	},
 	close : function(){
