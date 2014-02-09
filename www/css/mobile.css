@@ -754,7 +754,8 @@ html, body {
 }
 
 .btn-follow:hover .spi-follow_point,
-.btn-follow .spi-follow_white {
+.btn-follow .spi-follow_white,
+.btn-follow .spi-following_white {
 	display:none;
 }
 .btn-follow:hover .spi-follow_white,
