@@ -539,7 +539,7 @@ var gumoFancy = {
 						id : 'gumo-fancy-img',
 						src : src
 					}).css({
-						position : 'fixed',
+						position : 'absolute',
 						top : '50%',
 						left : '50%',
 						cursor : 'pointer'
