@@ -116,10 +116,11 @@ class Fbsdk extends Facebook
         }
 
         $filename = 'facebook_cover_'.$username.'.jpg';
-        $image = $this->api('/me?fields=cover&width=710&height=710&redirect=false');
+        $image = $this->api('/me?fields=cover&width=1600&height=1600');
 
         if(!empty($image['cover']['source'])){
-            $resource = $this->ci->file_save->save_from_url($image['cover']['source'], $filename);
+            $uri = str_replace('s720x720/', '/', $image['cover']['source'])'s720x720'
+            $resource = $this->ci->file_save->save_from_url($uri, $filename);
         }
         if($resource){
             $upload = $this->ci->upload_model->post(array(
