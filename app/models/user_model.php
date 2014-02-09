@@ -242,6 +242,9 @@ class user_model extends CI_Model {
     function post($params=array()){
         $params = (object)$params;
         $default_params = (object)array(
+            'username'  => '',
+            'email'     => '',
+            'password'  => '',
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
