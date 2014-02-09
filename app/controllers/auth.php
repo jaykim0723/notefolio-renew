@@ -562,11 +562,11 @@ class Auth extends CI_Controller
             }
 
             $this->form_validation
-                ->set_rules('email', '이메일', 'trim|required|valid_email|max_length[100]|is_unique[users.email]')
+                ->set_rules('email', '이메일', 'trim|required|valid_email|max_length[100]|is_unique[users.email]|is_unique[users.new_email]')
                 ->set_rules('password', '비밀번호', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']')
                 ->set_rules('confirm_password', '비밀번호 확인', 'trim|required|matches[password]')
                 ->set_rules('gender', '성별', 'trim|required')
-                ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean')
+                ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean|is_unique[users.username]')
                 ->set_rules('mailing', '메일링 동의', 'trim')
 //                ->set_rules('term', '약관 동의', 'trim|required')
                 ;
@@ -580,8 +580,6 @@ class Auth extends CI_Controller
                 
                 //-- 회원가입 처리. with tank_auth
                 $result = $this->user_model->post($data);
-                var_export($result);
-                exit();
                 
                 if($result->status=="done"){ // 회원가입이 정상처리
                     $this->session->unset_userdata('submit_uuid'); // 끝났으면 쓰레기통에 꾸겨 버린다.
@@ -615,27 +613,16 @@ class Auth extends CI_Controller
             }else{
                 // 실패한 경우.
                 if ($this->form_validation->error_string()!='') {
-                    
-                    //-- 검증 check 용
-                    function set_error_data($stage){
-                        $ci =& get_instance();
-                        
-                        foreach ($stage as $v){
-                            if($ci->form_validation->error($v)!=''){
-                                return array("name"=>$v, "errmsg"=>$ci->form_validation->error($v));
-                            }
-                        }
-                        
-                        return array();
-                    }
+
+                    var_export($this->form_validation->error_string()!='');
                     
                     //exit(json_encode(array_merge(array('status'=>'error', 'goStep'=>$error_stage), $error_data)));
                 }
                
                 $data = set_value_to_data($method);
-            }
             
-            $data = $this->_register_create_hash($data);
+                $data = $this->_register_create_hash($data);
+            }
 
             //exit(json_encode($this->input->post()));
             return $data;
