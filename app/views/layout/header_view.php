@@ -3,8 +3,8 @@
 		<div class="row">
 			<div class="col-md-6">
 				<a href="/" class="clear-list"><i class="spi spi-topbar_home"></i></a>
-				<a href="http://magazine.notefolio.net" class="ml"><i class="spi spi-topbar_magazine"></i></a>
-				<a href="http://shop.notefolio.net" class="ml"><i class="spi spi-topbar_shop"></i></a>
+				<a href="http://magazine.notefolio.net" target="_blank" class="ml"><i class="spi spi-topbar_magazine"></i></a>
+				<!-- <a href="http://shop.notefolio.net" class="ml"><i class="spi spi-topbar_shop"></i></a> -->
 			</div>
 			<div class="col-md-6 righted">
 				<?php if (USER_ID==0): ?>

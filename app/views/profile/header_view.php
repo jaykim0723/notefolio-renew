@@ -112,11 +112,14 @@
 							<i class="spi spi-user">check</i><span class="text"> About</span><span class="number"></span>
 						</a>
 					</li>
+					<?php if($this->session->userdata('username')==$row->username): ?>
 					<li id="profile_nav_statistics">
 						<a href="/<?php echo $row->username ?>/statistics">
 							<i class="spi spi-graph">check</i><span class="text"> Statistics</span><span class="number"></span>
 						</a>
 					</li>
+					<?php endif; ?>
+
 				</ul>
 				<script>
 					$('#profile_nav_<?php echo $this->uri->segment(2) ?>').addClass('active');
