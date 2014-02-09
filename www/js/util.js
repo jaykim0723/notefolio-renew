@@ -571,7 +571,7 @@ var gumoFancy = {
 					cursor:'pointer',
 					top : '50%',
 					left : '50%',
-					padding : '10px',
+					padding : '10px 0',
 					'margin-left':'-'+($o.width()/2)+'px',
 					'margin-top':'-'+($o.height()/2)+'px',
 				}).detach().appendTo($('#gumo-fancy-frame').empty());
