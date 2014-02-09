@@ -274,7 +274,7 @@ site.restoreInifiniteScroll = function(target, target_button){
 	$(target_button).remove();
 	var $container = $(target);
 	$container.html(getLocal('listing_html')).after('<a href="'+getLocal('listing_href')+'" class="more-link btn btn-default btn-block btn-more">more</a>');
-	// $(window).scrollTop(getLocal('listing_top'));
+	$(window).scrollTop(getLocal('listing_top'));
 }
 
 $(function() {
