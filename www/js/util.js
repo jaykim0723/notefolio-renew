@@ -530,6 +530,7 @@ var gumoFancy = {
 					top : 0,
 					width : '100%',
 					margin : 0,
+					padding : '10px',
 					height : '100%',
 					'z-index' : 999999,
 					overflow: 'scroll',
@@ -571,7 +572,6 @@ var gumoFancy = {
 					cursor:'pointer',
 					top : '50%',
 					left : '50%',
-					margin : '10px 0',
 					'margin-left':'-'+($o.width()/2)+'px',
 					'margin-top':'-'+($o.height()/2)+'px',
 				}).detach().appendTo($('#gumo-fancy-frame').empty());
