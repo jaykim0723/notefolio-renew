@@ -76,7 +76,7 @@
 <?php
 $querystring = (!empty($_SERVER['QUERY_STRING']))?'?'.$_SERVER['QUERY_STRING']:'';
 ?>
-				<a href="/gallery/listing/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?><?=$querystring?>" class="more-link btn btn-more btn-default btn-block">more</a>
+				<a href="/gallery/listing/<?php echo ($page)?$page+1:2; ?><?=$querystring?>" class="more-link btn btn-more btn-default btn-block">more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 		</div>
@@ -87,4 +87,10 @@ $querystring = (!empty($_SERVER['QUERY_STRING']))?'?'.$_SERVER['QUERY_STRING']:'
 		$('.more-link').trigger('click'); // more버튼을 무조건 한 번 발생시켜준다.
 	})
 </script>
+<?php if ($page==1): ?>
+<script>
+	site.restoreInifiniteScroll();
+</script>
+<?php endif ?>
+
 <?php endif; ?>
