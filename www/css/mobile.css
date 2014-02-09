@@ -1251,6 +1251,8 @@ p.desc {
 #profile-sns-link {
 	text-align:center;
 	margin: 8px 0px 15px 0px;
+	color: #fff;
+	font-size: 12px;
 }
 #profile-sns-link a:hover {
 	transition: 0.25s linear;

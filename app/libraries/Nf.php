@@ -35,8 +35,10 @@ class Nf
                 $category[$key] = "<a class=\"category\" href=\"/gallery/listing?from=all&work_categories%5B%5D={$category_key[$key]}&q=&order=newest\">$val</a>";
             }
         }
-
-        return @implode(' · ', $category);
+        $result = @implode(' · ', $category);
+        if($result=='')
+            $result = '자신의 카테고리를 지정해주세요.';
+        return $result;
     }
     function category_to_array($category_code, $return_key = FALSE){
         $categories = array();
@@ -97,6 +99,8 @@ class Nf
             $tmp = $this->sns($service, $id);
             $s .= '<a href="'.$tmp->link.'" target="_blank" class="'.$service.'" data-value="'.$id.'" class="btn-hover"><i class="pi pi-'.$service.'"></i></a>';
         }
+        if($s=='')
+            $s = '자신의 소셜링크를 지정해주세요';
         return $s;
     }
 
