@@ -56,12 +56,14 @@ class Fbsdk extends Facebook
         $this->ci->load->config('upload', TRUE);
         $this->ci->load->model('upload_model');
         $this->ci->load->library('file_save');
+        
+        echo($username);
+        exit();
+
 
         if(empty($username)){
             $username = $this->ci->tank_auth->get_username();
         }
-        echo($username);
-        exit();
 
         $filename = 'facebook_face_'.$username.'.jpg';
         $image = $this->api('/me/picture/?redirect=false&width=1600');
