@@ -611,7 +611,7 @@ var noteUtil = {
 			return;
 		}
 		$work.data('noted', 'y');
-		if($work.data('collected')=='n'){ // 취소는?
+		if(site.user_id>0 && $work.data('collected')=='n'){ // 취소는?
 			$btnNote.next().css('visibility','visible');
 		}
 
