@@ -568,6 +568,7 @@ var gumoFancy = {
 				$o.css({
 					position : 'absolute',
 					visibility : 'visible',
+					cursor:'pointer',
 					top : '50%',
 					left : '50%',
 					'margin-left':'-'+($o.width()/2)+'px',
