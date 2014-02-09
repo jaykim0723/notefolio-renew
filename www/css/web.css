@@ -237,7 +237,7 @@ body {
 	position: relative;
 	overflow: visible!important;
 }
-#content-block-list > li > i.spi {
+#content-block-list > li > i.pi {
 	position: absolute;
 	z-index: 10;
 	right: -10px;
@@ -336,7 +336,7 @@ body {
 #work-sidebar #ccl-wrapper a {
 	padding-left: 7px;
 }
-#work-sidebar #ccl-wrapper .spi {
+#work-sidebar #ccl-wrapper .pi {
 	margin-right: 10px;
 }
 #work-sidebar > .container, 
