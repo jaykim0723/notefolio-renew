@@ -620,7 +620,7 @@ var noteUtil = {
 		}, function(responseJSON){
 			if(responseJSON.status=='done'){
 				// msg.open('노트되었습니다.');
-				$work.data('noted', 'y');
+				$work.data('noted', 'y'); 
 				$btnNote.addClass('noted');
 			}else
 				msg.open(responseJSON.message, 'info');
