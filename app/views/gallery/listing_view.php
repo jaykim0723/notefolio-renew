@@ -82,4 +82,9 @@ $querystring = (!empty($_SERVER['QUERY_STRING']))?'?'.$_SERVER['QUERY_STRING']:'
 		</div>
 	</div>
 </section>
+<script>
+	$(function(){
+		$('.more-link').trigger('click'); // more버튼을 무조건 한 번 발생시켜준다.
+	})
+</script>
 <?php endif; ?>
