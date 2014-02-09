@@ -87,7 +87,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" style="padding:0px;">
-				<ul class="nav nav-pills pull-right">
+				<ul class="nav nav-pills pull-right fol">
 					<li id="profile_nav_followings">
 						<a href="/<?php echo $row->username ?>/followings" style="color: #7a7880;">followings(<?php echo number_format($total->following_cnt) ?>)</a>
 					</li>

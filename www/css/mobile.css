@@ -1194,6 +1194,9 @@ p.desc {
 		text-align: center !important;
 		border-bottom: 1px solid #dfdfdf !important;
 	}
+	.fol {
+		width:100%;
+	}
 }
 
 #profile-header #btn-edit-cover {
