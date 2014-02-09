@@ -60,6 +60,8 @@ class Fbsdk extends Facebook
         if(empty($username)){
             $username = $this->ci->tank_auth->get_username();
         }
+        echo($username);
+        exit();
 
         $filename = 'facebook_face_'.$username.'.jpg';
         $image = $this->api('/me/picture/?redirect=false&width=1600');
