@@ -54,7 +54,7 @@ $gender = array(
 	'm' => (!empty($value['gender'])&&$value['gender']=='m') ?'checked' :'',
 	'f'	=> (!empty($value['gender'])&&$value['gender']=='f') ?'checked' :''
 );
-exit();
+
 if(isset($fb_num_id)) {
 	$username['value'] = 
 		(!empty($username['value']))?
@@ -85,7 +85,7 @@ if(isset($fb_num_id)) {
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
-	<?php if(isset($error) {?>
+	<?php if(isset($error)){?>
 	<?=$error?>
 	<?php }?>
 	<?php if(isset($fb_num_id)){?>
