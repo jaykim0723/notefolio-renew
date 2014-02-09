@@ -1110,6 +1110,12 @@ p.desc {
 	color: #fff;
 	font-size: 12px;
 }
+@media (max-width: 991px) {
+	#profile-total {
+		display:none;
+	}
+}
+
 #profile-header #btn-edit-cover {
 	position: absolute;
 	top: 10px;
