@@ -116,7 +116,7 @@ class Fbsdk extends Facebook
         }
 
         $filename = 'facebook_cover_'.$username.'.jpg';
-        $image = $this->api('/me?fields=cover&width=1600&height=1600');
+        $image = $this->api('/me?fields=cover');
 
         if(!empty($image['cover']['source'])){
             $uri = str_replace('s720x720/', '/', $image['cover']['source'])'s720x720'
