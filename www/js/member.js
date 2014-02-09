@@ -1273,6 +1273,7 @@ var profileUtil = {
 				var html = '<table class="table">'+
 					'<thead>'+
 						'<tr>'+
+							'<th>순번</th>'+
 							'<th>작품번호</th>'+
 							'<th>작품명</th>'+
 							'<th>날짜</th>'+
@@ -1284,6 +1285,7 @@ var profileUtil = {
 					'<tbody>';
 				for(var i in responseJSON.rows){
 					html += '<tr>' +
+						'<td></td>' +
 						'<td>'+ responseJSON.rows[i].work_id+'</td>' +
 						'<td>'+ responseJSON.rows[i].title+'</td>' +
 						'<td>'+ responseJSON.rows[i].regdate+'</td>' +
@@ -1294,7 +1296,22 @@ var profileUtil = {
 				}
 				html += '</tbody>'+
 					'</table>';
-				$('#statistics-table-area').html(html).children('table').dataTable();
+				$('#statistics-table-area').html(html).children('table').dataTable({
+"fnDrawCallback": function ( oSettings ) {
+			/* Need to redo the counters if filtered or sorted */
+			if ( oSettings.bSorted || oSettings.bFiltered )
+			{
+				for ( var i=0, iLen=oSettings.aiDisplay.length ; i<iLen ; i++ )
+				{
+					$('td:eq(0)', oSettings.aoData[ oSettings.aiDisplay[i] ].nTr ).html( i+1 );
+				}
+			}
+		},
+		"aoColumnDefs": [
+			{ "bSortable": false, "aTargets": [ 0 ] }
+		],
+		"aaSorting": [[ 1, 'asc' ]]					
+				});
 			});
 		}
 	},
