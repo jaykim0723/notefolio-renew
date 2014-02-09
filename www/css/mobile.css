@@ -849,7 +849,7 @@ form.comment-block.create .btn-cancel-comment {
 }
 form.comment-block.create textarea {
 	right: 60px;
-	margin-left: 70px;
+	/*margin-left: 100px;*/
 }
 	.comment-profile-area {
 		float: left;

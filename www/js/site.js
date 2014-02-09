@@ -840,6 +840,9 @@ var workInfoUtil = {
 			$.get(site.url+'profile/my_recent_works/'+NFview.username+'/'+idBefore, {
 			}).done(function(responseHTML){
 				$workRecentList.append(responseHTML);
+				if(isFirst){
+					$workRecentList.children('li:first').addClass('selected');
+				}
 				// 현재 불려진 놈을 선택하기
 				// $workRecentList.children('#work-recent-'+work_id).addClass('selected');
 				// $workRecentList.scrollTo($workRecentList.children('#work-recent-'+work_id));
