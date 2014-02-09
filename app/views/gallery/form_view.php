@@ -11,7 +11,7 @@
 
 <?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'role'=>'form')); ?>
 
-<div id="work-sidebar">
+<div id="work-sidebar" class="create-form">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">
@@ -21,6 +21,35 @@
 			<!-- 사이드바 시작 -->
 			<div class="col-md-3">
 
+
+
+				<button id="work-submit" type="submit" class="btn btn-primary btn-block btn-lg">
+					전송
+				</button>
+			</div>
+			<!-- 사이드바 끝 -->
+		</div>
+	</div>
+</div>
+
+<section id="work-form" class="visible-md visible-lg">
+	<div class="container">
+		<div class="row">
+			<!-- 작품영역 시작 -->
+			<div class="col-md-9">
+				<h4>제목</h4>
+				<input id="title" name="title" type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
+				<br>
+				<h4>내용</h4>
+				<ul style="margin-top:0;" id="content-block-list" class="work-info list-unstyled work-contents">
+				</ul>
+				<div id="content-multiple">
+					<img src="/img/uploadcont2.png" alt=""/>
+				</div>
+			</div>
+			<!-- 작품영역 끝 -->
+
+			<div id="work-sidebar-inner" class="col-md-3">
 
 				<h4>카테고리</h4>
 				<select name="keywords" id="keywords" multiple title="최대 2개까지 선택" >
@@ -114,35 +143,6 @@
 
 				<input type="hidden" name="work_id" value="<?php echo $row->work_id ?>"/>
 				<input type="hidden" name="cover_upload_id" value=""/>
-
-				<button id="work-submit" type="submit" class="btn btn-primary btn-block btn-lg">
-					전송
-				</button>
-			</div>
-			<!-- 사이드바 끝 -->
-		</div>
-	</div>
-</div>
-
-<section class="visible-md visible-lg">
-	<div class="container">
-		<div class="row">
-			<!-- 작품영역 시작 -->
-			<div class="col-md-9">
-				<h4>제목</h4>
-				<input id="title" name="title" type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
-				<br>
-				<h4>내용</h4>
-				<ul style="margin-top:0;" id="content-block-list" class="work-info list-unstyled work-contents">
-				</ul>
-				<div id="content-multiple">
-					<img src="/img/uploadcont2.png" alt=""/>
-				</div>
-			</div>
-			<!-- 작품영역 끝 -->
-
-			<div class="col-md-3">
-				<!-- empty -->	
 			</div>
 		</div>
 	</div>

@@ -355,9 +355,6 @@ html {
 	bottom:0;
 	left:0;
 }
-#work-sidebar .bootstrap-select {
-	width: 100%;
-}
 #work-sidebar > .container, 
 #work-sidebar > .container > .row,
 #work-sidebar > .container > .row > .col-md-3 {
@@ -514,11 +511,28 @@ li#trash-bin{
 	border: 0;
 	padding: 0;
 }
-#work-submit {
-	position: relative;
-	top: 20px;
-	margin-bottom: 30px;
+#work-sidebar.create-form {
+	position: fixed;
+	z-index: 2;
 }
+#work-submit {
+	position: absolute;
+	bottom: 15px;
+	width: 212px;
+}
+@media (min-width:1200px){
+	#work-submit {
+		width: 261px;
+	}
+}
+#work-sidebar-inner .bootstrap-select {
+	width: 100%;
+}
+#work-form {
+	position: relative;
+	z-index: 1;
+}
+
 #work-discoverbility {
 	display: block;
 	background: #888;
