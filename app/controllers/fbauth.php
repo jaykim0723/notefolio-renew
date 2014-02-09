@@ -79,6 +79,8 @@ class fbauth extends CI_Controller
         
         if(!empty($fb_num_id))
         {   
+            var_export($fb_num_id);
+            exit();
             $result = $this->fbsdk->get_face('fb_'.$fb_num_id);
             var_export($result);
             exit();
