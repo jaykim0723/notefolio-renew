@@ -885,7 +885,10 @@ class Auth extends CI_Controller
 					$errors = $this->tank_auth->get_error_message();
 					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
 				}
-			}
+            }else{
+                // form validation failed
+                $data['errors'] = $this->form_validation->error_array();
+            }
             $this->layout->set_view('auth/forgot_password_form', $data)->render();
 		}
 	}
