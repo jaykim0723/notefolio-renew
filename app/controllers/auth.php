@@ -77,6 +77,9 @@ class Auth extends CI_Controller
                         $data['login_by_email']),
                         $go_to, $data
                         );
+            }else{
+                // form validation failed
+                $data['errors'] = $this->form_validation->error_array();
             }
             
             $data['go_to'] = $go_to;
