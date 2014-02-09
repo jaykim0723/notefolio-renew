@@ -513,7 +513,7 @@ var gumoFancy = {
 	},
 	open : function(src){
 		if($(window).width() < gumoFancy.conf.isMobileBase){
-			window.open('', 'gumoFancyPop').document.write('<html><body style="margin:0;background:#000;"><img style="cursor:pointer;" onclick="javascript:window.close(\'gumoFancyPop\')" src="'+src+'"/></body></html>');
+			window.open('', 'gumoFancyPop').document.write('<html><head><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, width=device-width" /></head><body style="margin:0;background:#000;height:100%;" onclick="javascript:window.close(\'gumoFancyPop\');"><table border="0" width="100%" height="100%"><tr><td valign="middle" align="center"><img style="width:100%;" src="'+src+'"/></td></tr></table></body></html>');
 			return;
 		}
 		this.scroll.lock();
