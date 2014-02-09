@@ -67,7 +67,7 @@ class Fbsdk extends Facebook
             $resource = $this->ci->file_save->save_from_url($image['data']['url'], $filename);
         }
         if($resource){
-            $upload = $this->upload_model->post(array(
+            $upload = $this->ci->upload_model->post(array(
                 'work_id' => $this->input->get_post('work_id'),
                 'type' => 'fb',
                 'filename' => $resource['original'],
@@ -120,7 +120,7 @@ class Fbsdk extends Facebook
             $resource = $this->ci->file_save->save_from_url($image['cover']['source'], $filename);
         }
         if($resource){
-            $upload = $this->upload_model->post(array(
+            $upload = $this->ci->upload_model->post(array(
                 'work_id' => $this->input->get_post('work_id'),
                 'type' => 'fb',
                 'filename' => $resource['original'],
