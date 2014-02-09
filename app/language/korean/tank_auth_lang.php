@@ -26,7 +26,7 @@ $lang['auth_message_new_email_sent'] = '확인 메일을 다음 이메일 주소
 $lang['auth_message_new_email_activated'] = '이메일 주소 변경을 완료하였습니다.<br/><br/><a href="/auth/setting" class="underline">돌아가기</a>';
 $lang['auth_message_new_email_failed'] = '입력한 계정 활성화 코드의 유효 기간이 지났거나 올바르지 않습니다. 이메일을 다시 한번 확인하시고 내용을 따라 주십시오.';
 $lang['auth_message_banned'] = '계정이 제한되었습니다.';
-$lang['auth_message_unregistered'] = '계정을 삭제하였습니다...';
+$lang['auth_message_unregistered'] = '계정을 삭제하였습니다.';
 
 // Email subjects
 $lang['auth_subject_welcome'] = '[노트폴리오] 노트폴리오에 오신 것을 환영합니다!';
