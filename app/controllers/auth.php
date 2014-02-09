@@ -566,7 +566,7 @@ class Auth extends CI_Controller
                 ->set_rules('password', '비밀번호', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']')
                 ->set_rules('confirm_password', '비밀번호 확인', 'trim|required|matches[password]')
                 ->set_rules('gender', '성별', 'trim|required')
-                ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean|is_unique[users.username]')
+                ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean|is_unique[users.username]|min_length['.$this->config->item('username_min_length','tank_auth').']|max_length['.$this->config->item('username_max_length','tank_auth').']')
                 ->set_rules('mailing', '메일링 동의', 'trim')
 //                ->set_rules('term', '약관 동의', 'trim|required')
                 ;
@@ -716,20 +716,14 @@ class Auth extends CI_Controller
         }
         
         if($return){
-            $return = $this->auth_model->check_username_available($username!='' ? $username : $this->input->get('username'));
+            $return = $this->users->is_username_available($username);
         }
         
-	    if ($return){
+	    if (!$return){
 	       $this->form_validation->set_message('_check_username_available', '<b>'.$username.'</b>은(는) 사용할 수 없습니다.');
 	        
 	    } else {
 	        
-	    }
-	    
-	    if($username==''){ // ajax check
-	    	echo $return ? 'y' : 'n';
-	    }else{ // function check
-	    
 	    }
         
         return $return;
