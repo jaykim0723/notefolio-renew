@@ -114,6 +114,8 @@ class fbauth extends CI_Controller
         {
             $user_image = $this->fbsdk->api('/me/picture?width=710&height=710&redirect=false');
             echo $user_image;
+            var_export($user_image);
+            exit();
         }
 
         return true;
