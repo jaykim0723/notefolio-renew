@@ -86,13 +86,13 @@
 <section>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12" style="padding:0px;">
 				<ul class="nav nav-pills pull-right">
 					<li id="profile_nav_followings">
-						<a href="/<?php echo $row->username ?>/followings">followings(<?php echo number_format($total->following_cnt) ?>)</a>
+						<a href="/<?php echo $row->username ?>/followings" style="color: #7a7880;">followings(<?php echo number_format($total->following_cnt) ?>)</a>
 					</li>
 					<li id="profile_nav_followers">
-						<a href="/<?php echo $row->username ?>/followers">followers(<?php echo number_format($total->follower_cnt) ?>)</a>
+						<a href="/<?php echo $row->username ?>/followers" style="color: #7a7880;"> followers(<?php echo number_format($total->follower_cnt) ?>)</a>
 					</li>
 				</ul>
 				<div class="clearfix visible-xs"></div>

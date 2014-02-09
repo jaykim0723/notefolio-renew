@@ -1187,6 +1187,11 @@ p.desc {
 		display:none;
 	}
 }
+#profile_nav_followings, #profile_nav_followers {
+	width: 49% !important;
+	text-align: center !important;
+	border-bottom: 1px solid #dfdfdf !important;
+}
 
 #profile-header #btn-edit-cover {
 	position: absolute;
