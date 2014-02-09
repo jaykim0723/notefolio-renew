@@ -119,7 +119,7 @@ class Fbsdk extends Facebook
         $image = $this->api('/me?fields=cover');
 
         if(!empty($image['cover']['source'])){
-            $uri = str_replace('s720x720/', '/', $image['cover']['source'])'s720x720'
+            $uri = str_replace('s720x720/', '/', $image['cover']['source']);
             $resource = $this->ci->file_save->save_from_url($uri, $filename);
         }
         if($resource){
