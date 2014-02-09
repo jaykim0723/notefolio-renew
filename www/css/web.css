@@ -646,6 +646,7 @@ li#trash-bin{
 		display: none;
 		top: 5px;
 		right:5px;
+		padding-top: 12px;
 	}
 	.comment-inner:hover .comment-control-area {
 		display: block;
