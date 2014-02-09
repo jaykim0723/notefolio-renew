@@ -425,6 +425,9 @@ class Profile extends CI_Controller {
 	function statistics($username='', $page=1){
 		log_message('debug','--------- statistics ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		$user = $this->_get_user_info($username);
+		if(USER_ID!=$user->row->id)
+			alert('본인의 통계만 확인할 수 있습니다.');
+
 		$user->total = $this->profile_model->get_statistics_total(array('user_id'=>$this->user_id))->row;
 
 		$data = (object)array(
