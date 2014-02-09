@@ -51,8 +51,8 @@ $birth = array(
 
 $value['gender'] = set_value('gender');
 $gender = array(
-	'm' => (!empty($value['gender'])&&$value['gender']=='m') ?'checked' :'',
-	'f'	=> (!empty($value['gender'])&&$value['gender']=='f') ?'checked' :''
+	'm' => set_radio('gender', 'm', ''),
+	'f'	=> set_radio('gender', 'f', '')
 );
 
 $value['mailing'] = set_value('mailing');
