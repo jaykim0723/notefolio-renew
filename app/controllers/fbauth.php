@@ -80,7 +80,7 @@ class fbauth extends CI_Controller
         if(!empty($fb_num_id))
         {
             var_export($this->fbsdk->get_face($username='fb_'.$fb_num_id));
-            exit()
+            exit();
         }
 
         return true;
@@ -98,7 +98,7 @@ class fbauth extends CI_Controller
         if(!empty($fb_num_id))
         {
             var_export($this->fbsdk->get_bg($username='fb_'.$fb_num_id));
-            exit()
+            exit();
         }
 
         return true;
