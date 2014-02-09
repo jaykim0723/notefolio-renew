@@ -1272,7 +1272,9 @@ p.desc {
 #profile-info a {
 	color: #fff;
 }
-
+#profile-info a:hover {
+	text-decoration: none !important;
+}
 #profile-info h2 {
 	margin-top: 12px;
 	font-size: 24px;
