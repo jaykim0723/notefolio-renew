@@ -610,8 +610,7 @@ var noteUtil = {
 			this.cancel($work);
 			return;
 		}
-		$work.data('noted', 'y');
-		if(site.user_id>0 && $work.data('collected')=='n'){ // 취소는?
+		if(site.user_id>0 && $work.data('collected')=='n'){ // 아직 콜렉트가 되지 않은 상태라면 콜렉트 할 것이냐고 묻는다.
 			$btnNote.next().css('visibility','visible');
 		}
 
@@ -621,6 +620,7 @@ var noteUtil = {
 		}, function(responseJSON){
 			if(responseJSON.status=='done'){
 				// msg.open('노트되었습니다.');
+				$work.data('noted', 'y');
 				$btnNote.addClass('noted');
 			}else
 				msg.open(responseJSON.message, 'info');
@@ -630,7 +630,6 @@ var noteUtil = {
 	cancel : function($work){
 		console.log('site.js > noteUtil > cancel', $work);
 
-		$work.data('noted', 'n');
 		var work_id = $work.data('id');
 		$btnNote = $('.btn-note', $work);
 		$btnNote.next().css('visibility','hidden');
@@ -641,6 +640,7 @@ var noteUtil = {
 		}, function(responseJSON){
 			if(responseJSON.status=='done'){
 				// msg.open('노트가 취소되었습니다.');
+				$work.data('noted', 'n'); // 취소 상태로 변경을 해준다.
 				$btnNote.removeClass('noted');
 			}else
 				msg.open(responseJSON.message);
