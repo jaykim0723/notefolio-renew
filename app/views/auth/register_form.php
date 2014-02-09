@@ -76,7 +76,7 @@ if(isset($fb_num_id)) {
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
-	<?php if($data['error']){?>
+	<?php if($error){?>
 	<?=$error?>
 	<?php }?>
 	<?php if(isset($fb_num_id)){?>
