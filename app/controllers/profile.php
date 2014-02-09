@@ -287,7 +287,7 @@ class Profile extends CI_Controller {
 		$work_list->username = $username;
 		$profile_header = array(
 			'username'=>$user->row->username,
-			'is_follow'=>$user->is_follow,
+			'is_follow'=>$user->row->is_follow,
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
@@ -333,7 +333,7 @@ class Profile extends CI_Controller {
 		$work_list->username = $username;
 		$profile_header = array(
 			'username'=>$user->row->username,
-			'is_follow'=>$user->is_follow,
+			'is_follow'=>$user->row->is_follow,
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/my_pop_recent_works_listing_view', $work_list)->render();
@@ -356,7 +356,7 @@ class Profile extends CI_Controller {
 		
 		$profile_header = array(
 			'username'=>$user->row->username,
-			'is_follow'=>$user->is_follow,
+			'is_follow'=>$user->row->is_follow,
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
@@ -406,7 +406,7 @@ class Profile extends CI_Controller {
 
 		$profile_header = array(
 			'username'=>$user->row->username,
-			'is_follow'=>$user->is_follow,
+			'is_follow'=>$user->row->is_follow,
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
@@ -430,7 +430,7 @@ class Profile extends CI_Controller {
 
 		$profile_header = array(
 			'username'=>$user->row->username,
-			'is_follow'=>$user->is_follow,
+			'is_follow'=>$user->row->is_follow,
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
@@ -521,7 +521,7 @@ class Profile extends CI_Controller {
 		
 		$profile_header = array(
 			'username'=>$user->row->username,
-			'is_follow'=>$user->is_follow,
+			'is_follow'=>$user->row->is_follow,
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/follow_listing_view', $followings_list)->render();
@@ -544,7 +544,7 @@ class Profile extends CI_Controller {
 
 		$profile_header = array(
 			'username'=>$user->row->username,
-			'is_follow'=>$user->is_follow,
+			'is_follow'=>$user->row->is_follow,
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/follow_listing_view', $followers_list)->render();
