@@ -47,6 +47,106 @@ class Fbsdk extends Facebook
         
         return FALSE;
     }
+
+    /**
+     * 프로필사진을 선정하고 크롭까지 지정하고 넘어온다.
+     * @return [type] [description]
+     */
+    function get_face($username=''){
+        $this->ci->load->config('upload', TRUE);
+        $this->ci->load->model('upload_model');
+        $this->ci->load->library('file_save');
+
+        if(empty($username)){
+            $username = $this->tank_auth->get_username();
+        }
+
+        $filename = 'facebook_face_'.$username.'.jpg';
+        $image = $this->api('/me/picture/?redirect=false&width=1600');
+        $resource = $this->ci->file_save->save_from_url($image['data']['url'], $filename);
+        $upload = $this->upload_model->post(array(
+                'work_id' => $this->input->get_post('work_id'),
+                'type' => 'fb',
+                'filename' => $resource['original'],
+                'org_filename' => $filename,
+                'filesize' => 0,
+                'comment' => 'facebook face image'
+            ));
+
+        $filename = preg_replace(
+                        '/^(..)(..)([^\.]+)(\.[a-zA-Z]+)/', 
+                        '$1/$2/$1$2$3$4', 
+                        $resource['original']
+                        );
+
+        $result = $this->ci->file_save->make_thumbnail(
+            $this->ci->config->item('img_upload_path', 'upload').$filename,
+            $this->ci->config->item('profile_upload_path', 'upload').$username.'_face.jpg',
+            'profile_face', 
+            array('crop_to'=>$to_crop, 'spanning'=>true)
+            );
+
+        if($result=='done'){
+            $this->ci->user_model->put_timestamp(array('id'=>USER_ID));
+        }
+
+        //upload_id=111&x=98&y=0&w=293&h=293
+        $json = array(
+            'status'=>($result)?'done':'fail',
+            'src'=>$this->ci->config->item('profile_upload_uri', 'upload').$username.'_face.jpg?_='.time()
+            );
+        $this->layout->set_json($json)->render();
+    }
+
+    /**
+     * 프로필의 배경사진을 바꾸는 것
+     * @return [type] [description]
+     */
+    function get_bg($username=''){
+        $this->load->config('upload', TRUE);
+        $this->load->model('upload_model');
+        $this->load->library('file_save');
+
+        if(empty($username)){
+            $username = $this->tank_auth->get_username();
+        }
+
+        $filename = 'facebook_cover_'.$username.'.jpg';
+        $image = $this->api('/me?fields=cover&width=710&height=710&redirect=false');
+        $resource = $this->ci->file_save->save_from_url($image['data']['url'], $filename);
+        $upload = $this->upload_model->post(array(
+                'work_id' => $this->input->get_post('work_id'),
+                'type' => 'fb',
+                'filename' => $resource['original'],
+                'org_filename' => $filename,
+                'filesize' => 0,
+                'comment' => 'facebook cover image'
+            ));
+
+        $filename = preg_replace(
+                        '/^(..)(..)([^\.]+)(\.[a-zA-Z]+)/', 
+                        '$1/$2/$1$2$3$4', 
+                        $resource['original']
+                        );
+
+        $result = $this->file_save->make_thumbnail(
+            $this->config->item('img_upload_path', 'upload').$filename,
+            $this->config->item('profile_upload_path', 'upload').$username.'_bg.jpg',
+            'large', array('spanning'=>true)
+            );
+
+        if($result=='done'){
+            $this->user_model->put_timestamp(array('id'=>USER_ID));
+        }
+
+        //upload_id=111&x=98&y=0&w=293&h=293
+        $json = array(
+            'status'=>($result)?'done':'fail',
+            'src'=>$this->config->item('profile_upload_uri', 'upload').$username.'_bg.jpg?_='.time()
+            );
+        $this->layout->set_json($json)->render();
+    }
+
     
     /*
      * post data to facebook

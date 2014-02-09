@@ -19,6 +19,42 @@ class file_save {
     }
 
     /**
+     * save from uri
+     * 
+     * @param string $uri
+     * @return array/bool-false
+     */
+    function save_from_url($uri=false, $filename=''){
+        $output = array(
+          'type' => null,
+          'size' => null,
+          'name' => null,
+          'tmp_name' => null
+        );
+
+        if($uri){
+            $tmpfile = tmpfile();
+            $tmpfile_info = stream_get_meta_data($tmpfile);
+            $ch = curl_init($uri);
+            $fp = fopen($tmpfile_info['uri'], 'wb');
+            curl_setopt($ch, CURLOPT_FILE, $fp);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_exec($ch);
+            curl_close($ch);
+            fclose($fp);
+            list($width, $height, $type, $attr) = getimagesize($tmpfile_info['uri']);
+            $output  = array(
+              'type' => $type,
+              'size' => null,
+              'name' => $filename,
+              'tmp_name' => $tmpfile_info['uri']
+            );
+        }
+
+        return $this->save('image', $output);
+    }
+
+    /**
      * save file to disk
      * 
      * @param string $type

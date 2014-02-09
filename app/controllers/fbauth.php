@@ -74,15 +74,13 @@ class fbauth extends CI_Controller
      *
      * @return void
      */
-    function get_img($w, $h, $save_to=''){                
+    function get_face($w, $h, $save_to=''){                
         $fb_num_id = $this->fbsdk->getUser();// get the facebook user and save in the session
         
         if(!empty($fb_num_id))
         {
-            $image = $this->fbsdk->api('/'.$fb_num_id.'?fields=picture&width=710&height=710&redirect=false');
-            $data = file_get_contents($image['picture']['data']['url']);
-            var_export($data);
-            exit();
+            var_export($this->fbsdk->get_face($username='fb_'.$fb_num_id));
+            exit()
         }
 
         return true;
@@ -99,10 +97,8 @@ class fbauth extends CI_Controller
         
         if(!empty($fb_num_id))
         {
-            $image = $this->fbsdk->api('/'.$fb_num_id.'?fields=cover&width=710&height=710&redirect=false');
-            $data = file_get_contents($image['cover']['source']);
-            var_export($data);
-            exit();
+            var_export($this->fbsdk->get_bg($username='fb_'.$fb_num_id));
+            exit()
         }
 
         return true;
