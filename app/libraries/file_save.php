@@ -35,8 +35,6 @@ class file_save {
         if($uri){
             $tmpfile = tmpfile();
             $tmpfile_info = stream_get_meta_data($tmpfile);
-            var_export($tmpfile_info);
-            exit();
             $ch = curl_init($uri);
             $fp = fopen($tmpfile_info['uri'], 'wb');
             curl_setopt($ch, CURLOPT_FILE, $fp);
@@ -52,9 +50,7 @@ class file_save {
               'tmp_name' => $tmpfile_info['uri']
             );
         }
-        var_export($output);
-        exit();
-
+        
         return $this->save('image', $output);
     }
 
