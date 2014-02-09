@@ -916,8 +916,8 @@ var profileUtil = {
 					if(empty(value))
 						value = '';
 					area += '<div class="form-group row">'+
-						'<div class="col-md-2 centered"><i class="pi pi-'+v+'"></i></div>'+
-						'<div class="col-md-10"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>'+
+						'<div class="col-xs-2 centered"><i class="pi pi-'+v+'"></i></div>'+
+						'<div class="col-xs-10"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>'+
 					'</div>';
 				});
 				var $message = $(
