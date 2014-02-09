@@ -1143,6 +1143,18 @@ p.desc {
 	position: relative;
 	padding-top: 40px;
 }
+
+#profile-inner .centered .spi {
+	margin-right: 5px;
+	margin-top: -3px;
+}
+#profile-inner .centered .btn-follow {
+	padding-left: 25px;
+	padding-right: 25px;
+	line-height: 180%;
+}
+
+
 #btn-edit-inner {
 	display: none;
 	position: absolute;
