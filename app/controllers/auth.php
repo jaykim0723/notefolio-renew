@@ -596,11 +596,15 @@ class Auth extends CI_Controller
                         $this->user_model->post_sns_fb(array('id'=>$id, 'fb_num_id'=>$data['fb_num_id'])); // facebook 등록 처리
                         
                         $this->load->library('fbsdk');
-                        $fbme = $this->fbsdk->api('/me');
-                        $realname =  $fbme['name'];
+                        $fb_num_id = $this->fbsdk->getUser();
 
-                        $this->fbsdk->get_face($username);
-                        $this->fbsdk->get_bg($username);
+                        if($fb_num_id==$data['fb_num_id']){
+                            $fbme = $this->fbsdk->api('/me');
+                            $realname =  $fbme['name'];
+
+                            $this->fbsdk->get_face($username);
+                            $this->fbsdk->get_bg($username);
+                        }
                     } else{
                         $data['realname'] = $data['username'];
                     }
