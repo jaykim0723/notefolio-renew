@@ -314,6 +314,7 @@ class Profile extends CI_Controller {
 		$work_list->username = $username;
 		$this->layout->set_view('profile/my_recent_works_listing_view', $work_list)->render();
 	}
+
 	/**
 	 * 작품고르기 팝업에서 호출할 용도
 	 * @param  string  $username [description]
@@ -336,7 +337,8 @@ class Profile extends CI_Controller {
 			'is_follow'=>$user->row->is_follow,
 			);
 		if(!$this->input->is_ajax_request())
-			$this->layout->set_header('profile', $profile_header)->set_view('profile/my_pop_recent_works_listing_view', $work_list)->render();
+			$this->layout->set_header('profile', $profile_header);
+		$this->layout->set_view('profile/my_pop_recent_works_listing_view', $work_list)->render();
 	}
 
 	
