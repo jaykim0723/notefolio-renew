@@ -39,6 +39,7 @@ class file_save {
                 break;
                 case "cover":
                 break;
+                case "acp":
                 default:
                 break;
             }
