@@ -522,7 +522,7 @@ var gumoFancy = {
 			}).on('click', function(){
 				gumoFancy.close();
 			}).append(
-				jQuery('<div/>', {
+				jQuery('<div/>', {	
 					id : 'gumo-fancy-frame'
 				}).css({
 					position:'fixed',
@@ -532,7 +532,8 @@ var gumoFancy = {
 					margin : 0,
 					height : '100%',
 					'z-index' : 999999,
-					overflow: 'scroll'
+					overflow: 'scroll',
+					'-webkit-overflow-scrolling': 'touch'
 				}).append(
 					jQuery('<img/>', {
 						id : 'gumo-fancy-img',
