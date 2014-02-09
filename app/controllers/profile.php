@@ -285,8 +285,12 @@ class Profile extends CI_Controller {
 			'user_id' => $this->user_id
 		));
 		$work_list->username = $username;
+		$profile_header = array(
+			'username'=>$user->row->username,
+			'is_follow'=>$user->is_follow,
+			);
 		if(!$this->input->is_ajax_request())
-			$this->layout->set_view('profile/header_view', $user);
+			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
 		$this->layout->set_view('profile/myworks_listing_view', $work_list)->render();
 	}
 
@@ -327,7 +331,12 @@ class Profile extends CI_Controller {
 			'user_id' => $this->user_id
 		));
 		$work_list->username = $username;
-		$this->layout->set_view('profile/my_pop_recent_works_listing_view', $work_list)->render();
+		$profile_header = array(
+			'username'=>$user->row->username,
+			'is_follow'=>$user->is_follow,
+			);
+		if(!$this->input->is_ajax_request())
+			$this->layout->set_header('profile', $profile_header)->set_view('profile/my_pop_recent_works_listing_view', $work_list)->render();
 	}
 
 	
@@ -345,8 +354,12 @@ class Profile extends CI_Controller {
 		));
 		$data->user = $user;
 		
+		$profile_header = array(
+			'username'=>$user->row->username,
+			'is_follow'=>$user->is_follow,
+			);
 		if(!$this->input->is_ajax_request())
-			$this->layout->set_view('profile/header_view', $user);
+			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
 	
 		$this->layout->set_view('profile/about_view', $data)->render();
 	}
@@ -390,8 +403,13 @@ class Profile extends CI_Controller {
 			'page' => $page,
 			'user_id' => $user->row->id
 		));
+
+		$profile_header = array(
+			'username'=>$user->row->username,
+			'is_follow'=>$user->is_follow,
+			);
 		if(!$this->input->is_ajax_request())
-			$this->layout->set_view('profile/header_view', $user);
+			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
 		$this->layout->set_view('profile/collection_listing_view', $collection_list)->render();
 	}
 
@@ -409,8 +427,13 @@ class Profile extends CI_Controller {
 
 		$data = (object)array(
 		);
+
+		$profile_header = array(
+			'username'=>$user->row->username,
+			'is_follow'=>$user->is_follow,
+			);
 		if(!$this->input->is_ajax_request())
-			$this->layout->set_view('profile/header_view', $user);
+			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
 		$this->layout->set_view('profile/statistics_view', $data)->render();
 	}
 	function _get_date_by_period($period){
@@ -495,7 +518,13 @@ class Profile extends CI_Controller {
 			'page' => $page,
 			'user_id' => $this->user_id
 		));
-		$this->layout->set_view('profile/follow_listing_view', $followings_list)->render();
+		
+		$profile_header = array(
+			'username'=>$user->row->username,
+			'is_follow'=>$user->is_follow,
+			);
+		if(!$this->input->is_ajax_request())
+			$this->layout->set_header('profile', $profile_header)->set_view('profile/follow_listing_view', $followings_list)->render();
 	}
 
 
@@ -512,7 +541,13 @@ class Profile extends CI_Controller {
 			'page' => $page,
 			'user_id' => $this->user_id
 		));
-		$this->layout->set_view('profile/follow_listing_view', $followers_list)->render();
+
+		$profile_header = array(
+			'username'=>$user->row->username,
+			'is_follow'=>$user->is_follow,
+			);
+		if(!$this->input->is_ajax_request())
+			$this->layout->set_header('profile', $profile_header)->set_view('profile/follow_listing_view', $followers_list)->render();
 	}
 
 
