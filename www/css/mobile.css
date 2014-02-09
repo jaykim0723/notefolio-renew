@@ -944,7 +944,7 @@ html.auth body {
 
 /* info */
 .work-small-profile {
-	background: #d9516a;
+	background: #2ac5c6;
 	padding: 20px 10px;
 }
 .work-small-profile .spi {
@@ -953,12 +953,21 @@ html.auth body {
 .work-small-profile > * {
 	display: inline-block;
 	font-size: 17px;
+	color:#fff;
 }
 .work-small-profile img {
 	border-radius: 50%;
 	width: 40px;
 	height: 40px;
 }
+.work-small-profile h2 a {
+	color: #fff;
+}
+.work-small-profile span a {
+	color: #fff !important;
+	font-size: 12px;
+}
+
 #side.info {
 	
 }
