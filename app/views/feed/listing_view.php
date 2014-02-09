@@ -98,6 +98,9 @@
 				$('.more-link').trigger('click');
 			}
 		};
+
+
+		$('.more-link, .activity-more-link').trigger('click');
 	});
 </script>
 <?php endif; ?>
