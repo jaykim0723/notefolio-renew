@@ -62,6 +62,8 @@ class Fbsdk extends Facebook
         }
 
         $filename = 'facebook_face_'.$username.'.jpg';
+        var_export($filename);
+        exit();
         $image = $this->api('/me/picture/?redirect=false&width=1600');
         if(!empty($image['data']['url'])){
             $resource = $this->ci->file_save->save_from_url($image['data']['url'], $filename);
@@ -114,8 +116,6 @@ class Fbsdk extends Facebook
         }
 
         $filename = 'facebook_cover_'.$username.'.jpg';
-        var_export($filename);
-        exit();
         $image = $this->api('/me?fields=cover&width=710&height=710&redirect=false');
 
         if(!empty($image['cover']['source'])){
