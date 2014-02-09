@@ -44,6 +44,7 @@ $value['year'] = set_value('year');
 $value['month'] = set_value('month');
 $value['day'] = set_value('day');
 $value['birth'] = explode('-', set_value('birth'));
+$valuedata = var_export($value,true);
 $birth = array(
 	'year' =>(!empty($value['birth'][0])) ?$value['birth'][0] :1990,
 	'month'=>(!empty($value['birth'][1]))?$value['birth'][1]:8,
@@ -150,6 +151,7 @@ if(isset($fb_num_id)) {
 			</select>
 		</div>
 	</div>
+	<?=$valuedata?>
 
     <div class="form-group checkbox">
         <label class="checked">
