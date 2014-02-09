@@ -76,7 +76,7 @@
 			<div class="row">
 				<div class="col-xs-2">
 					<a href="javascript:$('#mobile-menu').trigger('open');">
-						<i class="spi spi-feed"></i>
+						<i class="spi spi-menu"></i>
 					</a>
 				</div>
 				<div class="col-xs-8 centered">
