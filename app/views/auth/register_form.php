@@ -155,7 +155,7 @@ if(isset($fb_num_id)) {
 
     <div class="form-group checkbox">
         <label class="<?=$mailing?>">
-        	<input type="checkbox" name="mailing" value="1" checked="<?=$mailing?>">노트폴리오의 최신 소식 및 작가/작품 소개를 메일로 받겠습니다.
+        	<input type="checkbox" name="mailing" value="1" <?=$mailing?>>노트폴리오의 최신 소식 및 작가/작품 소개를 메일로 받겠습니다.
         </label> 
     </div>
 
