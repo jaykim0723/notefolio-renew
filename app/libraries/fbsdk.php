@@ -90,7 +90,7 @@ class Fbsdk extends Facebook
             $this->ci->config->item('img_upload_path', 'upload').$filename,
             $this->ci->config->item('profile_upload_path', 'upload').$username.'_face.jpg',
             'profile_face', 
-            array('crop_to'=>$to_crop, 'spanning'=>true)
+            array('autocrop'=>true, 'spanning'=>true)
             );
 
         if($result=='done'){
@@ -105,9 +105,9 @@ class Fbsdk extends Facebook
      * @return [type] [description]
      */
     function get_bg($username=''){
-        $this->load->config('upload', TRUE);
-        $this->load->model('upload_model');
-        $this->load->library('file_save');
+        $this->ci->load->config('upload', TRUE);
+        $this->ci->load->model('upload_model');
+        $this->ci->load->library('file_save');
 
         if(empty($username)){
             $username = $this->ci->tank_auth->get_username();
@@ -139,9 +139,9 @@ class Fbsdk extends Facebook
                         $resource['original']
                         );
 
-        $result = $this->file_save->make_thumbnail(
-            $this->config->item('img_upload_path', 'upload').$filename,
-            $this->config->item('profile_upload_path', 'upload').$username.'_bg.jpg',
+        $result = $this->ci->file_save->make_thumbnail(
+            $this->ci->config->item('img_upload_path', 'upload').$filename,
+            $this->ci->config->item('profile_upload_path', 'upload').$username.'_bg.jpg',
             'large', array('spanning'=>true)
             );
 
