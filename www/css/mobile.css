@@ -1196,6 +1196,9 @@ p.desc {
 	.fol {
 		width:100%;
 	}
+	.promenu {
+		background:#fff;
+	}
 }
 
 #profile-header #btn-edit-cover {

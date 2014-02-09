@@ -85,7 +85,7 @@
 
 <section>
 	<div class="container">
-		<div class="row">
+		<div class="row promenu">
 			<div class="col-md-12" style="padding:0px;">
 				<ul class="nav nav-pills pull-right fol">
 					<li id="profile_nav_followings">
