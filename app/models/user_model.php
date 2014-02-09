@@ -280,7 +280,7 @@ class user_model extends CI_Model {
      * @param  array  $params (depend by field in table `users`)
      * @return object       (status return object. status=[done|fail])
      */
-    function put($input=array()){
+    function put($input=array(), $force=false){
         //-- id is not for update
         $id = isset($input->id)?$input->id:USER_ID;
         unset($input->id);
@@ -311,6 +311,9 @@ class user_model extends CI_Model {
 
         if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
             $can_put_in = true;
+        }
+        else if($force) { // 강제기록
+            $can_put_in = true; 
         }
         else { // 본인것인지 여부에 따라 message다르게 하기
             $user = $this->db->where('users.id', $id)->get('users')->row();
