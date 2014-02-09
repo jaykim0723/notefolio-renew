@@ -114,6 +114,8 @@ class Fbsdk extends Facebook
         }
 
         $filename = 'facebook_cover_'.$username.'.jpg';
+        var_export($filename);
+        exit();
         $image = $this->api('/me?fields=cover&width=710&height=710&redirect=false');
 
         if(!empty($image['cover']['source'])){
