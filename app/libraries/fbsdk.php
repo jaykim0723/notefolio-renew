@@ -58,7 +58,7 @@ class Fbsdk extends Facebook
         $this->ci->load->library('file_save');
 
         if(empty($username)){
-            $username = $this->tank_auth->get_username();
+            $username = $this->ci->tank_auth->get_username();
         }
 
         $filename = 'facebook_face_'.$username.'.jpg';
@@ -108,7 +108,7 @@ class Fbsdk extends Facebook
         $this->load->library('file_save');
 
         if(empty($username)){
-            $username = $this->tank_auth->get_username();
+            $username = $this->ci->tank_auth->get_username();
         }
 
         $filename = 'facebook_cover_'.$username.'.jpg';
