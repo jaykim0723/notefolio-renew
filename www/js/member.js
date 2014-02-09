@@ -241,7 +241,7 @@ var workUtil = {
 			if(NFview.contents.length>0){
 				$.each(NFview.contents, function(k, block){
 					$target = $('<li class="block-'+block.t+' block"></li>')
-						.prepend($('<i class="spi spi-close2">close2</i>')).appendTo(sendTo);
+						.prepend($('<i class="pi pi-close2">close2</i>')).appendTo(sendTo);
 					workUtil.content.applyBlock($target, block.t, block.c, block.i);
 					$('#default-image').remove();
 					workUtil.discoverbility();
@@ -249,7 +249,7 @@ var workUtil = {
 			}else{
 				$('#content-block-list').append('<div id="default-image"><img src="/img/uploadcont1.png"/></div>');
 			}
-			$('#content-block-list').on('click', 'i.spi', function(){
+			$('#content-block-list').on('click', 'i.pi', function(){
 				workUtil.content.removeBlock($(this).parents('li.block'));
 			});
 
@@ -341,7 +341,7 @@ var workUtil = {
 				multiple : true,
 				start : function(elem, id, fileName){
 					$('#default-image').remove();
-					$('#content-block-list').append($('<li class="block-image block" id="temp-'+id+'" style="min-height:100px;"><div class="ajax-loading-overlay"><img src="/img/ajax-loader.gif" class="ajax-loading"/></div><i class="spi spi-close2">close2</i></li>'));
+					$('#content-block-list').append($('<li class="block-image block" id="temp-'+id+'" style="min-height:100px;"><div class="ajax-loading-overlay"><img src="/img/ajax-loader.gif" class="ajax-loading"/></div><i class="pi pi-close2">close2</i></li>'));
 				},
 				cancel : function(elem, id, fileName){
 					console.log(elem, id, fileName);
@@ -394,7 +394,7 @@ var workUtil = {
 					if($(ui.item[0]).hasClass('block-text')){
 						var c = $(ui.item[0]).find('textarea').val();
 						var $o = $(ui.item[0]).empty()
-							.prepend($('<i class="spi spi-close2">close2</i>'));
+							.prepend($('<i class="pi pi-close2">close2</i>'));
 						workUtil.content.applyBlock($o, 'text', c);
 					};
 					$('body').animate({
@@ -481,7 +481,7 @@ var workUtil = {
 						$target = $('<li class="block-'+className+' block"></li>')
 							.fadeTo(0, 0.01)
 							.appendTo(sendTo)
-							.prepend($('<i class="spi spi-close2">close2</i>'));
+							.prepend($('<i class="pi pi-close2">close2</i>'));
 
 						$('body').animate({
 	                        scrollTop: $target.offset().top - 100
@@ -513,7 +513,7 @@ var workUtil = {
 									className = className[1];
 									$target = $(ui.draggable).empty()
 										.fadeTo(0, 0.01)
-										.prepend($('<i class="spi spi-close2">close2</i>'));
+										.prepend($('<i class="pi pi-close2">close2</i>'));
 
 									$.when(workUtil.content.applyBlock($target, className)).done(function(){
 										$target.fadeTo(150, 1);
