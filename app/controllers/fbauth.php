@@ -90,6 +90,26 @@ class fbauth extends CI_Controller
     
 
     /**
+     * check and return fb info
+     *
+     * @return void
+     */
+    function get_cover($w, $h, $save_to=''){                
+        $fb_num_id = $this->fbsdk->getUser();// get the facebook user and save in the session
+        
+        if(!empty($fb_num_id))
+        {
+            $image = $this->fbsdk->api('/'.$fb_num_id.'/cover?width=710&height=710&redirect=false');
+            $data = file_get_contents($image['data']['url']);
+            var_export($data);
+            exit();
+        }
+
+        return true;
+    }
+    
+
+    /**
      * go to facebook app - redirect
      *
      * @return void
