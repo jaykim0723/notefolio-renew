@@ -79,7 +79,7 @@ class fbauth extends CI_Controller
         
         if(!empty($fb_num_id))
         {   
-            $result = $this->fbsdk->get_face('fb_'.$fb_num_id)
+            $result = $this->fbsdk->get_face('fb_'.$fb_num_id);
             var_export($result);
             exit();
         }
@@ -98,7 +98,7 @@ class fbauth extends CI_Controller
         
         if(!empty($fb_num_id))
         {
-            $result = $this->fbsdk->get_cover('fb_'.$fb_num_id)
+            $result = $this->fbsdk->get_cover('fb_'.$fb_num_id);
             var_export($result);
             exit();
         }
