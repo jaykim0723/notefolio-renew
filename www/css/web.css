@@ -6,8 +6,9 @@
 .tooltip {
 	min-width:160px;
 }
-body {
-	overflow-y:scroll;
+html {
+	/*overflow-y:scroll;*/
+	/*overflow-x:visible;*/
 }
 #header {
 	height: 60px;

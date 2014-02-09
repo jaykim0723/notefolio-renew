@@ -104,6 +104,7 @@ site.alarm = {
 };
 site.scroll = {
 	lock : function(){
+		return;
 		 var scrollPosition = [self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft, self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop ];      
 		 var html = jQuery('html');
 		 html.data('scroll-position', scrollPosition);
@@ -112,6 +113,7 @@ site.scroll = {
 		 window.scrollTo(scrollPosition[0], scrollPosition[1]);
 	},
 	unlock : function(){
+		return;
 		var html = jQuery('html');
 		var scrollPosition = html.data('scroll-position');
 		if(empty(scrollPosition)) return;
