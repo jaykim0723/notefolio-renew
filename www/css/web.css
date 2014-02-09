@@ -348,7 +348,7 @@ body {
 	margin-bottom: 20px;
 }
 #work-recent-list {
-	width: 100%;
+	width: 212px;
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -379,6 +379,11 @@ body {
 }
 #side.info > a:hover {	
 	background:#fafafa;
+}
+@media (min-width:1200px) {
+	#work-recent-list {
+		width: 263px;
+	}
 }
 
 
