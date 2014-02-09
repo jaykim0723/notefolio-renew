@@ -55,6 +55,7 @@ class Fbsdk extends Facebook
     function get_face($username=''){
         $this->ci->load->config('upload', TRUE);
         $this->ci->load->model('upload_model');
+        $this->ci->load->model('user_model');
         $this->ci->load->library('file_save');
 
         if(empty($username)){
@@ -69,7 +70,7 @@ class Fbsdk extends Facebook
         if($resource){
             $upload = $this->ci->upload_model->post(array(
                 'work_id' => 0,
-                'type' => 'fb',
+                'type' => 'profile',
                 'filename' => $resource['original'],
                 'org_filename' => $filename,
                 'filesize' => 0,
@@ -107,6 +108,7 @@ class Fbsdk extends Facebook
     function get_bg($username=''){
         $this->ci->load->config('upload', TRUE);
         $this->ci->load->model('upload_model');
+        $this->ci->load->model('user_model');
         $this->ci->load->library('file_save');
 
         if(empty($username)){
@@ -122,7 +124,7 @@ class Fbsdk extends Facebook
         if($resource){
             $upload = $this->ci->upload_model->post(array(
                 'work_id' => 0,
-                'type' => 'fb',
+                'type' => 'profile-bg',
                 'filename' => $resource['original'],
                 'org_filename' => $filename,
                 'filesize' => 0,
