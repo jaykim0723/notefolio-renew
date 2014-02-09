@@ -255,7 +255,6 @@ class user_model extends CI_Model {
         $result = $this->tank_auth->create_user(
             $params->username, $params->email, $params->password, $this->config->item('email_activation', 'tank_auth')
         ); //($username, $email, $password, $email_activation)
-        var_export($result);
 
         if($result){
             $data = (object)array(
