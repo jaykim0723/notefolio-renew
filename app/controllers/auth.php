@@ -632,6 +632,9 @@ class Auth extends CI_Controller
             return $data;
         }
         else{
+            $data = $this->_register_create_hash($data);
+
+            $data['submit_error'] = '올바르지 않은 접근입니다';
             //exit(json_encode(array('status'=>'error','errmsg'=>'올바르지 않은 접근입니다')));
             return $data;
         }
