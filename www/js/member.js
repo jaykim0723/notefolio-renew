@@ -944,6 +944,7 @@ var profileUtil = {
 			        		if(responseJSON.status=='done'){
 				        		$('#profile-sns-link').html('&nbsp;'+responseJSON.sns_string);
 				        		dialog.close();
+				        		msg.open('변경이 완료되었습니다.', 'success', '#profile-sns-link');
 			        		}else{
 			        			msg.open(responseJSON.msg, 'error');
 			        		}

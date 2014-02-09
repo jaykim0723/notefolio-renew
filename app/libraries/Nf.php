@@ -95,7 +95,7 @@ class Nf
         foreach ($sns as $service => $id){
             if(empty($id)) continue;
             $tmp = $this->sns($service, $id);
-            $s .= '<a href="'.$tmp->link.'" class="'.$service.'" data-value="'.$id.'" class="btn-hover"><i class="pi pi-'.$service.'"></i></a>';
+            $s .= '<a href="'.$tmp->link.'" target="_blank" class="'.$service.'" data-value="'.$id.'" class="btn-hover"><i class="pi pi-'.$service.'"></i></a>';
         }
         return $s;
     }
