@@ -74,7 +74,7 @@ class fbauth extends CI_Controller
      *
      * @return void
      */
-    function get_face($w, $h, $save_to=''){                
+    function get_face($w=0, $h=0, $save_to=''){                
         $fb_num_id = $this->fbsdk->getUser();// get the facebook user and save in the session
         
         if(!empty($fb_num_id))
@@ -95,7 +95,7 @@ class fbauth extends CI_Controller
      *
      * @return void
      */
-    function get_cover($w, $h, $save_to=''){                
+    function get_cover($w=0, $h=0, $save_to=''){                
         $fb_num_id = $this->fbsdk->getUser();// get the facebook user and save in the session
         
         if(!empty($fb_num_id))
