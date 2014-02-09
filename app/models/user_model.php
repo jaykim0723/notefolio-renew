@@ -255,6 +255,7 @@ class user_model extends CI_Model {
         $result = $this->tank_auth->create_user(
             $params->username, $params->email, $params->password, $this->config->item('email_activation', 'tank_auth')
         ); //($username, $email, $password, $email_activation)
+        var_export($result);
 
         if($result){
             $data = (object)array(
@@ -284,7 +285,6 @@ class user_model extends CI_Model {
         //-- id is not for update
         $id = isset($input->id)?$input->id:USER_ID;
         unset($input->id);
-        var_export($id);
 
         $input = (object)$input;
         $input_profiles = new stdClass(); //create new Object;

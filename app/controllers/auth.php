@@ -592,7 +592,7 @@ class Auth extends CI_Controller
                     $id = $result->row->id;
                     //define('USER_ID', $id);
 
-                    if($data['fb_num_id']) { // facebook으로 가입시
+                    if(isset($data['fb_num_id']) && $data['fb_num_id']>0) { // facebook으로 가입시
                         $this->user_model->post_sns_fb(array('id'=>$id, 'fb_num_id'=>$data['fb_num_id'])); // facebook 등록 처리
                         
                         $this->load->library('fbsdk');
