@@ -107,7 +107,7 @@ class fbauth extends CI_Controller
      *
      * @return void
      */
-    function _get_img($w, $h,){                
+    function get_img($w, $h,){                
         $fb_num_id = $this->fbsdk->getUser();// get the facebook user and save in the session
         
         if(!empty($fb_num_id))
