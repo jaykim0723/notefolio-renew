@@ -593,14 +593,21 @@ class Auth extends CI_Controller
 
                     if($data['fb_num_id']) { // facebook으로 가입시
                         $this->user_model->post_sns_fb(array('id'=>$id, 'fb_num_id'=>$data['fb_num_id'])); // facebook 등록 처리
-                        $realname =  
+                        
+                        $this->load->library('fbsdk');
+                        $fbme = $this->fbsdk->api('/me');
+                        $realname =  $fbme['name'];
+
+                        
+                    } else{
+                        $data['realname'] = $data['username'];
                     }
 
                     $params = array('id'=>$id);
-                    $params['realname'] = isset($realname)?$realname:'';
-                    $params['gender']   = isset($gender)?$gender:'';
-                    $params['bitrh']    = isset($birth)?$birth:'';
-                    $params['realname'] = isset($realname)?$realname:'';
+                    if(isset($data['realname'])) $params['realname'] = $data['realname'];
+                    if(isset($data['gender']))   $params['gender']   = $data['gender'];
+                    if(isset($data['birth']))    $params['bitrh']    = $data['birth'];
+                    $params['mailing'] = ($data['mailing']==1)?1:0;
 
                     $this->user_model->put($params);
                     //-- after process
