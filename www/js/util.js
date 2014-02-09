@@ -526,7 +526,7 @@ var gumoFancy = {
 				top : 0,
 				width : '100%',
 				height : '100%',
-				'z-index' : 999998,
+				'z-index' : 999997,
 				background : 'rgba(0,0,0, 0.4)'
 			}).on('click', function(){
 				gumoFancy.close();
@@ -540,8 +540,9 @@ var gumoFancy = {
 					width : '100%',
 					margin : 0,
 					height : '100%',
-					'z-index' : 999999,
+					'z-index' : 999998,
 					overflow: 'scroll',
+					'text-align' : 'center',
 					'-webkit-overflow-scrolling': 'touch'
 				}).append(
 					jQuery('<div id="gumo-fancy-loading"/>', {
@@ -559,7 +560,7 @@ var gumoFancy = {
 						'border-radius' : '10px'
 					}).append(
 						$('<img/>', {
-							'src' : '/img/gumo-fancy.gif'
+							// 'src' : '/img/gumo-fancy.gif'
 						}).css({
 							'margin' : '40px auto 0 auto'
 						})
@@ -575,7 +576,7 @@ var gumoFancy = {
 			}).on('load', function(){
 				var $o = $(this);
 				$o.css({
-					position : 'absolute',
+					// position : 'absolute',
 					visibility : 'visible',
 					cursor:'pointer',
 					// top : '50%',
@@ -584,11 +585,32 @@ var gumoFancy = {
 					// 'margin-top':'-'+($o.height()/2)+'px',
 				}).detach().appendTo($('#gumo-fancy-frame').empty());
 			})
+		).append(
+			$('<div/>', {
+				id : 'gumo-fancy-close'
+			}).css({
+				position : 'fixed',
+				top : 0,
+				left : '50%',
+				width : '240px',
+				'z-index' : 999999,
+				'margin-left' : '-120px',
+				background : 'rgba(0,0,0,0.7)',
+				color : '#fff',
+				padding : '10px 0',
+				'text-align' : 'center',
+				'-webkit-border-bottom-right-radius' : '5px',
+				'-webkit-border-bottom-left-radius' : '5px',
+				'-moz-border-radius-bottomright' : '5px',
+				'-moz-border-radius-bottomleft' : '5px',
+				'border-bottom-right-radius' : '5px',
+				'border-bottom-left-radius': '5px'
+			}).html('클릭하면 닫힙니다.')
 		);
 	},
 	close : function(){
 		this.scroll.unlock();
-		jQuery('#gumo-fancy-overlay').remove();
+		jQuery('#gumo-fancy-overlay, #gumo-fancy-close').remove();
 	}
 };
 
