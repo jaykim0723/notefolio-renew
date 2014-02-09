@@ -825,6 +825,9 @@ html, body {
 .comment-prev { /* more button */
 
 }
+.comment-wrapper .btn-comment-prev {
+	margin-bottom:10px;
+}
 .comment-block {
 	float: left;
 	width: 100%;
