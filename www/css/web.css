@@ -513,24 +513,39 @@ li#trash-bin{
 }
 #work-sidebar.create-form {
 	position: fixed;
-	z-index: 2;
+	top: auto;
+	bottom: 0;
+	height: 1px;
+	overflow: visible;
 }
-#work-submit {
+#work-sidebar.create-form > .container > .row > .col-md-3 {
+	overflow: visible;
+	position: relative;
+}
+#work-submit-wrapper {
 	position: absolute;
-	bottom: 15px;
-	width: 212px;
+	bottom: 0;
+	height: 75px;
+	width: 100%;
+	background: url(/img/work-submit-bg.png) left bottom repeat-x;
 }
-@media (min-width:1200px){
-	#work-submit {
-		width: 261px;
+#work-submit-wrapper button {
+	position: absolute;
+	bottom: 10px;
+	width: 262px;
+}
+@media (max-width:1199px){
+	#work-submit-wrapper button {
+		width: 212px;
 	}
+}
+#work-sidebar-inner {
 }
 #work-sidebar-inner .bootstrap-select {
 	width: 100%;
 }
 #work-form {
 	position: relative;
-	z-index: 1;
 }
 
 #work-discoverbility {

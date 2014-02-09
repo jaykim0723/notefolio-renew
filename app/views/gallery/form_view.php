@@ -11,26 +11,6 @@
 
 <?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'role'=>'form')); ?>
 
-<div id="work-sidebar" class="create-form">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-9">
-				<!-- empty -->
-			</div>
-
-			<!-- 사이드바 시작 -->
-			<div class="col-md-3">
-
-
-
-				<button id="work-submit" type="submit" class="btn btn-primary btn-block btn-lg">
-					전송
-				</button>
-			</div>
-			<!-- 사이드바 끝 -->
-		</div>
-	</div>
-</div>
 
 <section id="work-form" class="visible-md visible-lg">
 	<div class="container">
@@ -147,6 +127,29 @@
 		</div>
 	</div>
 </section>
+
+
+<div id="work-sidebar" class="create-form">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<!-- empty -->
+			</div>
+
+			<!-- 사이드바 시작 -->
+			<div class="col-md-3">
+
+
+				<div id="work-submit-wrapper">
+					<button id="work-submit" type="submit" class="btn btn-primary btn-block btn-lg">
+						전송
+					</button>
+				</div>
+			</div>
+			<!-- 사이드바 끝 -->
+		</div>
+	</div>
+</div>
 
 <?php echo form_close(); ?>
 
