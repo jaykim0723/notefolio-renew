@@ -86,8 +86,8 @@
 					<?php if(in_array($this->uri->rsegment(1), array('gallery', 'main'))): // 여기가 메인이나 겔러리이면 ?> 
 						<a href="/random"><i class="spi spi-refresh">random</i></a>	<!-- 랜덤페이지로 -->
 					<?php elseif(in_array($this->uri->rsegment(1), array('profile'))): // 여기가 프로필페이지나 특정 작가의 상세정보페이지라면 ?>
-						<?php if ($this->session->userdata('username')!=$user_profile['username']): // 작가 본인이 아닐 때에만 ?>
-							<a href="javascript:;" class="btn btn-follow"><i class="spi <?=($user_profile['is_follow'])?'spi-following':'spi-follow'?>"></i></a> <!-- 이 작가의 팔로우 버튼 -->
+						<?php if ($this->session->userdata('username')!=$profile['username']): // 작가 본인이 아닐 때에만 ?>
+							<a href="javascript:;" class="btn btn-follow"><i class="spi <?=($profile['is_follow'])?'spi-following':'spi-follow'?>"></i></a> <!-- 이 작가의 팔로우 버튼 -->
 						<?php exit() ?>
 						<?php endif ?>
 					<?php endif;?>
