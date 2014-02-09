@@ -530,6 +530,7 @@ var BootstrapDialog = null;
             closable: false,
             buttons: [{
                     label: 'OK',
+                    cssClass: 'btn-primary',
                     action: function(dialog) {
                         typeof dialog.getData('callback') === 'function' && dialog.getData('callback')(true);
                         dialog.close();

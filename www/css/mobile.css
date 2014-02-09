@@ -822,7 +822,7 @@ form.comment-block.create textarea {
 		.comment-profile-area .spi,
 		.comment-profile-area .si {
 			position: absolute;
-			top: -1px;
+			top: 0;
 			left: 0;
 		}
 	.comment-username {
