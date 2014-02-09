@@ -68,7 +68,7 @@ class Fbsdk extends Facebook
         }
         if($resource){
             $upload = $this->ci->upload_model->post(array(
-                'work_id' => $this->input->get_post('work_id'),
+                'work_id' => 0,
                 'type' => 'fb',
                 'filename' => $resource['original'],
                 'org_filename' => $filename,
@@ -121,7 +121,7 @@ class Fbsdk extends Facebook
         }
         if($resource){
             $upload = $this->ci->upload_model->post(array(
-                'work_id' => $this->input->get_post('work_id'),
+                'work_id' => 0,
                 'type' => 'fb',
                 'filename' => $resource['original'],
                 'org_filename' => $filename,
