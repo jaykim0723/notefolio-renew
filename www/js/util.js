@@ -529,7 +529,7 @@ var gumoFancy = {
 					left : 0,
 					top : 0,
 					width : '100%',
-					margin : '10px',
+					margin : 0,
 					height : '100%',
 					'z-index' : 999999,
 					overflow: 'scroll'
