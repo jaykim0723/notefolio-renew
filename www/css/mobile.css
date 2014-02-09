@@ -1223,7 +1223,7 @@ p.desc {
 #profile-info h4 {
 	font-size: 12px;
 	font-weight: normal;
-	font-family: 'NanumGothic', Dotum !important;
+	/*font-family: 'NanumGothic', Dotum !important;*/
 }
 #profile-info .centered a {
 	color: #2ac5c6;
