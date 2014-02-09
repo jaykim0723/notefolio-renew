@@ -117,6 +117,7 @@ if(isset($fb_num_id)) {
 		<label class="radio-inline">
 			<input type='radio' name='gender' value='m' <?=$gender['m']?> /> 남
 		</label>
+		<?php echo form_error($gender['name']); ?>
 	</div>
 
 	<div class="form-group">
