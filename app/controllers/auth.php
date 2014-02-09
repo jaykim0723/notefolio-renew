@@ -719,8 +719,8 @@ class Auth extends CI_Controller
             $return = $this->users->is_username_available($username);
         }
         
-	    if (!$return){
-	       $this->form_validation->set_message('_check_username_available', '<b>'.$username.'</b>은(는) 사용할 수 없습니다.');
+	    if ($return){
+	       $this->form_validation->set_message('username', '<b>'.$username.'</b>은(는) 사용할 수 없습니다.');
 	        
 	    } else {
 	        
@@ -747,13 +747,17 @@ class Auth extends CI_Controller
         }
         
         if($return){
-            //$this->load->model('tank_auth/users');
-            //$return = (strlen($email) > 0) AND $this->users->is_email_available($email);
-            $this->load->model('oldmodel/auth_model');
-            $return = $this->auth_model->check_email_available($email!='' ? $email : $this->input->get('email'));
+            $return = $this->ci->users->is_email_available($email);
         }
         
-		echo ($return) ? 'y' : 'n';		
+        if ($return){
+           $this->form_validation->set_message('email', '<b>'.$email.'</b>은(는) 사용할 수 없습니다.');
+            
+        } else {
+            
+        }
+        
+		return $email;
 	}	
 
 	/**
