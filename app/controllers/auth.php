@@ -632,6 +632,8 @@ class Auth extends CI_Controller
                
                 $data = set_value_to_data($method);
             }
+            
+            $data = $this->_register_create_hash($data);
 
             //exit(json_encode($this->input->post()));
             return $data;
