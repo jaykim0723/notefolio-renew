@@ -550,7 +550,10 @@ class Auth extends CI_Controller
                     'password'      => $ci->form_validation->set_value('password'),
                     'confirm_password' => $ci->form_validation->set_value('confirm_password'),
                     'gender'        => $ci->form_validation->set_value('gender'),
-                    'birth'         => implode("-", array($ci->input->post('year'),$ci->input->post('month'),$ci->input->post('day'))),
+                    'birth'         => implode("-", array(
+                        $ci->form_validation->set_value('year'),
+                        $ci->form_validation->set_value('month'),
+                        $ci->form_validation->set_value('day'))),
                     'username'      => $ci->form_validation->set_value('username'),
                     'mailing'       => ($ci->form_validation->set_value('mailing')=='1')?1:0,
 //                    'term'          => $ci->form_validation->set_value('term'),
