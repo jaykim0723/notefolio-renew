@@ -55,6 +55,7 @@ body * {
 html, body {
 	width: 100%;
 	overflow-x: hidden;
+	background: #f1f1f1;
 }
 
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
