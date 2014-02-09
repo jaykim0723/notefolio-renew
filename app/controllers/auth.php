@@ -620,6 +620,8 @@ class Auth extends CI_Controller
                     if(isset($data['gender']))   $params['gender']   = $data['gender'];
                     if(isset($data['birth']))    $params['bitrh']    = $data['birth'];
                     $params['mailing'] = ($data['mailing']==1)?1:0;
+                    error_log(var_export($data, true));
+                    error_log(var_export($params, true));
 
                     $result = $this->user_model->put($params, true);
                     //-- after process
