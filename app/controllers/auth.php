@@ -720,7 +720,7 @@ class Auth extends CI_Controller
         }
         
 	    if ($return){
-	       $this->form_validation->set_message('username', '<b>'.$username.'</b>은(는) 사용할 수 없습니다.');
+	       $this->form_validation->set_message('check_username_available', '<b>'.$username.'</b>은(는) 사용할 수 없습니다.');
 	        
 	    } else {
 	        
@@ -751,7 +751,7 @@ class Auth extends CI_Controller
         }
         
         if ($return){
-           $this->form_validation->set_message('email', '<b>'.$email.'</b>은(는) 사용할 수 없습니다.');
+           $this->form_validation->set_message('check_email_available', '<b>'.$email.'</b>은(는) 사용할 수 없습니다.');
             
         } else {
             
