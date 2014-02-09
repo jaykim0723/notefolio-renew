@@ -33,8 +33,6 @@ class file_save {
         );
 
         if($uri){
-            var_export($uri);
-            exit();
             $tmpfile = tmpfile();
             $tmpfile_info = stream_get_meta_data($tmpfile);
             var_export($tmpfile_info);
