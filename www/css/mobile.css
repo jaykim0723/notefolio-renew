@@ -60,7 +60,8 @@ html, body {
 
 @media (max-width:767px) {
 	#work-info-wrapper .col-md-9 {
-	padding: 0 !important;
+	padding-right: 8px !important;
+	padding-left: 8px !important;
 	}
 }
 
