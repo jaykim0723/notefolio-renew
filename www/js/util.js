@@ -588,7 +588,7 @@ var gumoFancy = {
 	close : function(){
 		this.scroll.unlock();
 		if($('#gumo-fancy-img').data('viewport')=='phone'){
-			$('meta[name="viewport"]').attr('content', 'user-scalable=no, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, width=device-width');
+			$('meta[name="viewport"]').attr('content', 'user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width');
 		}
 		jQuery('#gumo-fancy-overlay').remove();
 	}
