@@ -634,10 +634,11 @@ class Auth extends CI_Controller
             }
 
             //exit(json_encode($this->input->post()));
-            exit();
+            return $data;
         }
         else{
-            exit(json_encode(array('status'=>'error','errmsg'=>'올바르지 않은 접근입니다')));
+            //exit(json_encode(array('status'=>'error','errmsg'=>'올바르지 않은 접근입니다')));
+            return $data;
         }
     }
 
