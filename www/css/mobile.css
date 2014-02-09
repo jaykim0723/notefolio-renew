@@ -60,8 +60,11 @@ html, body {
 
 @media (max-width:767px) {
 	#work-info-wrapper .col-md-9 {
-	padding-right: 8px !important;
-	padding-left: 8px !important;
+		padding-right: 8px !important;
+		padding-left: 8px !important;
+	}
+	.work-tags {
+		padding-left:7px;
 	}
 }
 
