@@ -566,7 +566,14 @@ var gumoFancy = {
 			}).on('load', function(){
 				var $o = $(this);
 				$o.css({
-					visibility : 'visible'
+					position : 'absolute',
+					visibility : 'visible',
+					cursor:'pointer',
+					top : '50%',
+					left : '50%',
+					padding : '10px',
+					'margin-left':'-'+($o.width()/2)+'px',
+					'margin-top':'-'+($o.height()/2)+'px',
 				}).detach().appendTo($('#gumo-fancy-frame').empty());
 			})
 		);
