@@ -78,8 +78,9 @@ class fbauth extends CI_Controller
         $fb_num_id = $this->fbsdk->getUser();// get the facebook user and save in the session
         
         if(!empty($fb_num_id))
-        {
-            var_export($this->fbsdk->get_face('fb_'.$fb_num_id));
+        {   
+            $result = $this->fbsdk->get_face('fb_'.$fb_num_id)
+            var_export($result);
             exit();
         }
 
@@ -97,7 +98,8 @@ class fbauth extends CI_Controller
         
         if(!empty($fb_num_id))
         {
-            var_export($this->fbsdk->get_bg('fb_'.$fb_num_id));
+            $result = $this->fbsdk->get_cover('fb_'.$fb_num_id)
+            var_export($result);
             exit();
         }
 
