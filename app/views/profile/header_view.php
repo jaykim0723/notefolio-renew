@@ -99,22 +99,22 @@
 				<ul id="profile-nav" class="nav nav-pills">
 					<li id="profile_nav_">
 						<a href="/<?php echo $row->username ?>">
-							<i class="spi spi-check">check</i><span class="text"> Works</span><span class="number">234</span>
+							<i class="spi spi-work">check</i><span class="text"> Works</span><span class="number">234</span>
 						</a>
 					</li>
 					<li id="profile_nav_collect">
 						<a href="/<?php echo $row->username ?>/collect">
-							<i class="spi spi-check">check</i><span class="text"> Collect</span><span class="number">22</span>
+							<i class="spi spi-love">check</i><span class="text"> Collect</span><span class="number">22</span>
 						</a>
 					</li>
 					<li id="profile_nav_about">
 						<a href="/<?php echo $row->username ?>/about">
-							<i class="spi spi-check">check</i><span class="text"> About</span><span class="number">42</span>
+							<i class="spi spi-user">check</i><span class="text"> About</span><span class="number">42</span>
 						</a>
 					</li>
 					<li id="profile_nav_statistics">
 						<a href="/<?php echo $row->username ?>/statistics">
-							<i class="spi spi-check">check</i><span class="text"> Statistics</span><span class="number">234</span>
+							<i class="spi spi-graph">check</i><span class="text"> Statistics</span><span class="number">234</span>
 						</a>
 					</li>
 				</ul>
