@@ -148,7 +148,7 @@ class Fbsdk extends Facebook
             );
 
         if($result=='done'){
-            $this->user_model->put_timestamp(array('id'=>USER_ID));
+            $this->ci->user_model->put_timestamp(array('id'=>USER_ID));
         }
 
         return $result;
