@@ -82,12 +82,15 @@ body {
 	border-top: 3px solid #2ac5c6;
 	margin: 0;
 	color: #7a7880;
-	padding: 24px 20px 23px 20px;
+	padding: 20px;
 	font-size: 18px;
 	font-weight: 300;
 }
+#main-hot-creators-title {
+	padding: 24px 20px 23px 20px;
+}
 @media (min-width:1200px) { 
-	.nofol-title {
+	#main-hot-creators-title {
 		padding: 21px 20px 21px 20px;
 	}
 }
@@ -348,6 +351,7 @@ body {
 }
 #work-recent-list {
 	width: 212px;
+	top: 432px;
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -355,7 +359,6 @@ body {
 	overflow-x:hidden;
 	position: absolute;
 	bottom: 40px;
-	top:411px;
 }
 #work-recent-list li {
 	display: block;

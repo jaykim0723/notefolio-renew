@@ -830,16 +830,7 @@ var workInfoUtil = {
 		$workRecentList.css('top', top);
 	},
 	initRecentList : function(){
-		var top = $('#work-recent-works').offset().top - $(window).scrollTop();
-		top -= $('#work-recent-works > h2').outerHeight();
-		top += 14; // ? 왜 안맞는지는 모르겠지만 일단 이렇게..
-		$('#work-recent-list').on({
-			mouseenter : function(){
-				site.scroll.lock();
-			},
-			mouseleave : function(){
-				site.scroll.unlock();
-			}
-		}).css('top', top);
+		var top = $('#work-recent-works').offset().top - $('#work-sidebar').offset().top + $('#work-recent-works').outerHeight();
+		$('#work-recent-list').css('top', top);
 	}
 };
