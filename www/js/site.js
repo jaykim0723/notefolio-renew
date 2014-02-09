@@ -358,6 +358,7 @@ $(function() {
 
 	$('.sticky').waypoint('sticky', {
 	  stuckClass: 'stuck',
+	  offset : 80,
 	  handler : function(direction){
 	  	if(!empty(NFview.area) && (NFview.area=='work-info' || NFview.area=='work-form')){
 		  	var $o = $('#work-sidebar');

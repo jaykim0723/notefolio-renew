@@ -467,6 +467,7 @@ html, body {
 
 .sticky-wrapper {
 	/*overflow: hidden;*/
+	height:auto!important;
 }
 
 
