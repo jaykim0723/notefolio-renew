@@ -23,10 +23,18 @@
 				</ul>
 				<?php endif; ?>
 
-				<a href="/<?php echo $this->uri->segment(1); ?>/<?php echo $this->uri->segment(2); ?>/<?php echo ($this->uri->segment(3))?$this->uri->segment(3)+1:2; ?>" class="more-link">more</a>
+				<a href="/<?php echo $this->uri->segment(1); ?>/<?php echo $this->uri->segment(2); ?>/<?php echo ($page)?$page+1:2; ?>" class="more-link">more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 		</div>
 	</div>
 </section>
+
+<?php if ($page==1): ?>
+<script>
+	site.restoreInifiniteScroll();
+</script>
+<?php endif ?>
+
+
 <?php endif; ?>

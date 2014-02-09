@@ -30,6 +30,7 @@
 		</div>
 	</div>
 </section>
+
 <?php if ($page==1): ?>
 <script>
 	site.restoreInifiniteScroll();
