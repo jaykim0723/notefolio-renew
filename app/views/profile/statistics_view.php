@@ -14,11 +14,11 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<h4 id="statistics-header">
-							조회수 <span id="statistics-total-hit">2344</span>
+							조회수 <span id="statistics-total-hit"></span>
 							/
-							노트수 <span id="statistics-total-note">2344</span>
+							노트수 <span id="statistics-total-note"></span>
 							/
-							콜렉트수 <span id="statistics-total-collect">234234</span>
+							콜렉트수 <span id="statistics-total-collect"></span>
 						</h4>
 					</div>
 					<div class="col-sm-6" id="statistics-toolbars">
