@@ -87,9 +87,11 @@ body {
 	font-size: 18px;
 	font-weight: 300;
 }
-
-
-
+@media (min-witdh:1200px) {
+	.nofol-title {
+		padding: 23px 20px 22px 20px;
+	}
+}
 
 
 
