@@ -617,7 +617,6 @@ class Auth extends CI_Controller
 
                     $result = $this->user_model->put($params, true);
                     var_export($result);
-                    echo($this->db->last_query());
                     exit();
                     //-- after process
                     // 이메일을 보낸다.
