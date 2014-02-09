@@ -83,11 +83,10 @@
 					<a href="/"><i class="spi spi-nflogo"></i></a>
 				</div>
 				<div class="col-xs-2 righted">
-					<?=$this->uri->rsegment(1)?>
-					<?php if(1==1): // 여기가 메인이나 겔러리이면 ?> 
+					<?php if(in_array($this->uri->rsegment(1), array('gallery', 'main'))): // 여기가 메인이나 겔러리이면 ?> 
 						<a href="/random"><i class="spi spi-random">random</i></a>	<!-- 랜덤페이지로 -->
-					<?php elseif(1==1): // 여기가 프로필페이지나 특정 작가의 상세정보페이지라면 ?> 
-						<?php if (1==1): // 작가 본인이 아닐 때에만 ?>
+					<?php elseif(in_array($this->uri->rsegment(1), array('profile')): // 여기가 프로필페이지나 특정 작가의 상세정보페이지라면 ?> 
+						<?php if ($this->session->userdata('username')!=$this->uri->rsegment(2)): // 작가 본인이 아닐 때에만 ?>
 							<a href="javascript:;" class="btn btn-follow"><i class="spi spi-follow"></i></a> <!-- 이 작가의 팔로우 버튼 -->
 						<?php endif ?>
 					<?php endif;?>
