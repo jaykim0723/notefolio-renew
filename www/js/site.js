@@ -274,7 +274,7 @@ site.restoreInifiniteScroll = function(target, target_button){
 	$(target_button).remove();
 	var $container = $(target);
 	$container.html(getLocal('listing_html')).after('<a href="'+getLocal('listing_href')+'" class="more-link btn btn-default btn-block btn-more">more</a>');
-	$(window).scrollTop(getLocal('listing_top'));
+	// $(window).scrollTop(getLocal('listing_top'));
 }
 
 $(function() {
@@ -299,7 +299,7 @@ $(function() {
 				var href = $('.more-link', $response).attr('href');
 				$('.more-link', $response).insertAfter($container);
 				$lis.appendTo($container);
-				if(NFview.area!='work-list')
+				if(NFview.area!='work-info')
 					setLocal('listing_html', $container.html());
 					setLocal('listing_url', location.href);
 					setLocal('listing_href', href);
