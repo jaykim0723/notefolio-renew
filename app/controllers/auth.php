@@ -580,6 +580,8 @@ class Auth extends CI_Controller
                 
                 //-- 회원가입 처리. with tank_auth
                 $result = $this->user_model->post($data);
+                var_export($result);
+                exit();
                 
                 if($result->status=="done"){ // 회원가입이 정상처리
                     $this->session->unset_userdata('submit_uuid'); // 끝났으면 쓰레기통에 꾸겨 버린다.
