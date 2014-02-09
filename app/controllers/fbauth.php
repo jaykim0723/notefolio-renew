@@ -74,39 +74,6 @@ class fbauth extends CI_Controller
      *
      * @return void
      */
-    function _check(){
-        parse_str( $_SERVER['QUERY_STRING'], $_REQUEST ); // for prevent $fb_num_id == 0
-                
-        $fb_num_id = $this->fbsdk->getUser();// get the facebook user and save in the session
-        
-        if(!empty($fb_num_id))
-        {
-            $fbme = $this->_check_fb_connection();
-            if($fbme==0){
-                $fb_num_id = null;
-                $this->_go_fb_app();
-            }
-        }
-        else 
-        {
-            if ($this->input->get('error_reason')){
-                return $this->_error($this->input->get('error_reason'));
-            }
-            else {
-                $this->_go_fb_app();
-            } 
-        }
-
-        return $fbme;
-        
-    }
-    
-
-    /**
-     * check and return fb info
-     *
-     * @return void
-     */
     function get_img($w, $h,){                
         $fb_num_id = $this->fbsdk->getUser();// get the facebook user and save in the session
         
