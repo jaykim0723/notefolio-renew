@@ -40,14 +40,14 @@ $captcha = array(
 	'maxlength'	=> 8,
 );
 $birth = array(
-	'year'=>1990,
-	'month'=>8,
-	'day'=>8
+	'year' =>(!empty(set_value('year'))) ?set_value('year') :1990,
+	'month'=>(!empty(set_value('month')))?set_value('month'):8,
+	'day'  =>(!empty(set_value('day')))  ?set_value('day')  :8
 );
 
 $gender = array(
-	'm' => '',
-	'f'	=> ''
+	'm' => (!empty(set_value('gender'))&&set_value('gender')=='m') ?'checked' :'',
+	'f'	=> (!empty(set_value('gender'))&&set_value('gender')=='f') ?'checked' :''
 );
 
 if(isset($fb_num_id)) {
@@ -64,7 +64,9 @@ if(isset($fb_num_id)) {
 			$fb_info->email
 			;
 	//$email['disabled'] = 'disabled';
-	$gender[substr($fb_info->gender, 0, 1)] = 'checked';
+	$gender[substr($fb_info->gender, 0, 1)] = 
+		(!empty($gender[substr($fb_info->gender, 0, 1)]))?
+			$gender[substr($fb_info->gender, 0, 1)]:'checked';
 
 	$birthday = explode('/', $fb_info->birthday);
 	$birth = array(
@@ -76,7 +78,7 @@ if(isset($fb_num_id)) {
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
-	<?php if($error){?>
+	<?php if(isset($error){?>
 	<?=$error?>
 	<?php }?>
 	<?php if(isset($fb_num_id)){?>
