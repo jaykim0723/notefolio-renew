@@ -326,8 +326,10 @@ class user_model extends CI_Model {
 
             $this->db->trans_start();
             if(!empty($id)){
-                $this->db->where('id', $id)->update('users', $input); // 사용자 레코드 수정.
-                $this->db->where('user_id', $id)->update('user_profiles', $input_profiles);
+                if(count($input)>0)
+                    $this->db->where('id', $id)->update('users', $input); // 사용자 레코드 수정.
+                if(count($input_profiles)>0)
+                    $this->db->where('user_id', $id)->update('user_profiles', $input_profiles);
                 $last_query = $this->db->last_query();
             }
             $this->db->trans_complete();
