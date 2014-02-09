@@ -12,7 +12,7 @@
 		}
 	};
 </script>
-<div id="work-sidebar" class="hidden-xs hidden-sm">
+<div id="work-sidebar" class="hidden-xs hidden-sm sticky">
 	<div class="container" style="height:100%;">
 		<div class="row" style="height:100%;">
 			<div class="col-md-9">
