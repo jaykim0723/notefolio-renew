@@ -590,7 +590,6 @@ class Auth extends CI_Controller
                 if($result->status=="done"){ // 회원가입이 정상처리
                     $this->session->unset_userdata('submit_uuid'); // 끝났으면 쓰레기통에 꾸겨 버린다.
                     $id = $result->row->id;
-                    var_export($result->row);
                     //define('USER_ID', $id);
 
                     if(isset($data['fb_num_id']) && $data['fb_num_id']>0) { // facebook으로 가입시
@@ -615,6 +614,7 @@ class Auth extends CI_Controller
                     if(isset($data['gender']))   $params['gender']   = $data['gender'];
                     if(isset($data['birth']))    $params['bitrh']    = $data['birth'];
                     $params['mailing'] = ($data['mailing']==1)?1:0;
+                    var_export($params);
 
                     $result = $this->user_model->put($params, true);
                     var_export($result);
