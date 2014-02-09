@@ -482,16 +482,34 @@ $.fn.extend({
 
 /**
 
-	$('#work-list').on('click', '.block-image > a', function(){
+	jQuery('#work-list').on('click', '.block-image > a', function(){
 		gumoFancy.open($(this).attr('href'));
 		return false;
 	});
 
  *  */
 var gumoFancy = {
+	scroll : {
+		lock : function(){
+			 var scrollPosition = [self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft, self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop ];      
+			 var html = jQuery('html');
+			 html.data('scroll-position', scrollPosition);
+			 html.data('previous-overflow', html.css('overflow'));
+			 html.css('overflow', 'hidden');
+			 window.scrollTo(scrollPosition[0], scrollPosition[1]);
+		},
+		unlock : function(){
+			var html = jQuery('html');
+			var scrollPosition = html.data('scroll-position');
+			if(empty(scrollPosition)) return;
+			html.css('overflow', html.data('previous-overflow'));
+			window.scrollTo(scrollPosition[0], scrollPosition[1]);
+		}
+	},
 	open : function(src){
-		$('body').append(
-			$('<div/>', {
+		this.scroll.lock();
+		jQuery('body').append(
+			jQuery('<div/>', {
 				id : 'gumo-fancy-overlay'
 			}).css({
 				position:'fixed',
@@ -504,7 +522,7 @@ var gumoFancy = {
 			}).on('click', function(){
 				gumoFancy.close();
 			}).append(
-				$('<div/>', {
+				jQuery('<div/>', {
 					id : 'gumo-fancy-frame'
 				}).css({
 					position:'fixed',
@@ -516,7 +534,7 @@ var gumoFancy = {
 					'z-index' : 999999,
 					overflow: 'scroll'
 				}).append(
-					$('<img/>', {
+					jQuery('<img/>', {
 						id : 'gumo-fancy-img',
 						src : src
 					}).css({
@@ -527,7 +545,8 @@ var gumoFancy = {
 		);
 	},
 	close : function(){
-		$('#gumo-fancy-overlay').remove();
+		this.scroll.unlock();
+		jQuery('#gumo-fancy-overlay').remove();
 	}
 };
 
