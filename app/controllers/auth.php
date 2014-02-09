@@ -599,7 +599,8 @@ class Auth extends CI_Controller
                         $fbme = $this->fbsdk->api('/me');
                         $realname =  $fbme['name'];
 
-                        $this->fbsdk->get_images($data['fb_num_id']);
+                        $this->fbsdk->get_face($username);
+                        $this->fbsdk->get_bg($username);
                     } else{
                         $data['realname'] = $data['username'];
                     }
