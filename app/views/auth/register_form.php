@@ -92,7 +92,7 @@ if(isset($fb_num_id)) {
 			  <h3 class="panel-title">확인이 필요합니다</h3>
 			</div>
 			<div class="panel-body">
-				<p>가입에 필요한 정보를 입력하지 않았거나 사용할 수 없어 수정을 해야 합니다. 아래를 확인해 주세요. <a href="javascript:$('#status').remove();">닫기</a></p>
+				<p>필요한 정보를 입력하지 않았거나,<br/>사용할 수 없어 수정해야 합니다.<br/>아래를 확인해 주세요. <a href="javascript:$('#status').remove();">닫기</a></p>
 			</div>
 		</div>
 	</div>
