@@ -161,6 +161,12 @@ html, body {
 	background: #2ac5c6;
 	color: #fff !important;
 }
+.btn-follow.activated:hover {
+	text-decoration: none;
+	opacity: 0.7;
+	-webkit-opacity: 0.7;
+	filter: alpha(opacity=70);
+}
 @media (min-width:768px) {
 	.btn-nofol:hover {
 		opacity: 0.5;
@@ -747,19 +753,19 @@ html, body {
 	display:inline-block;
 }
 
-#profile-info .btn-follow:hover .spi-follow_point,
-#profile-info .btn-follow .spi-follow_white {
+.btn-follow:hover .spi-follow_point,
+.btn-follow .spi-follow_white {
 	display:none;
 }
-#profile-info .btn-follow:hover .spi-follow_white,
-#profile-info .btn-follow .spi-follow_point {
+.btn-follow:hover .spi-follow_white,
+.btn-follow .spi-follow_point {
 	display:inline-block;
 }
-#profile-inner .activated .spi-follow,
-#profile-inner .spi-following_white {
+.activated .spi-follow,
+.spi-following_white {
 	display:none;
 }
-#profile-inner .activated .spi-following_white{
+.activated .spi-following_white{
 	display:inline-block !important;
 }
 
@@ -1200,12 +1206,7 @@ p.desc {
 #profile-info a {
 	color: #fff;
 }
-#profile-info a:hover {
-	text-decoration: none;
-	opacity: 0.7;
-	-webkit-opacity: 0.7;
-	filter: alpha(opacity=70);
-}
+
 #profile-info h2 {
 	margin-top: 12px;
 	font-size: 24px;
