@@ -54,7 +54,7 @@ $gender = array(
 	'm' => (!empty($value['gender'])&&$value['gender']=='m') ?'checked' :'',
 	'f'	=> (!empty($value['gender'])&&$value['gender']=='f') ?'checked' :''
 );
-
+exit();
 if(isset($fb_num_id)) {
 	$username['value'] = 
 		(!empty($username['value']))?
