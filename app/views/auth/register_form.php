@@ -73,17 +73,19 @@ if(isset($fb_num_id)) {
 		(!empty($gender[substr($fb_info->gender, 0, 1)]))?
 			$gender[substr($fb_info->gender, 0, 1)]:'checked';
 
-	$birthday = explode('/', $fb_info->birthday);
-	$birth = array(
-		'year'=>$birthday[2],
-		'month'=>$birthday[0],
-		'day'=>$birthday[1]
-	);
+	if(empty($birth['year'])&&empty($birth['month'])&&empty($birth['day'])){
+		$birthday = explode('/', $fb_info->birthday);
+		$birth = array(
+			'year'=>$birthday[2],
+			'month'=>$birthday[0],
+			'day'=>$birthday[1]
+		);
+	}
 }
 ?>
 <?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
-	<?php if(isset($error){?>
+	<?php if(isset($error) {?>
 	<?=$error?>
 	<?php }?>
 	<?php if(isset($fb_num_id)){?>
