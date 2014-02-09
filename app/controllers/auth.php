@@ -547,7 +547,7 @@ class Auth extends CI_Controller
                     'gender'        => $ci->form_validation->set_value('gender'),
                     'birth'         => implode("-", array($ci->input->post('year'),$ci->input->post('month'),$ci->input->post('day'))),
                     'username'      => $ci->form_validation->set_value('username'),
-//                    'mailing'       => ($ci->form_validation->set_value('mailing')=='1')?1:0,
+                    'mailing'       => ($ci->form_validation->set_value('mailing')=='1')?1:0,
 //                    'term'          => $ci->form_validation->set_value('term'),
                     
                 );
@@ -567,7 +567,7 @@ class Auth extends CI_Controller
                 ->set_rules('confirm_password', '비밀번호 확인', 'trim|required|matches[password]')
                 ->set_rules('gender', '성별', 'trim|required')
                 ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean')
-//                ->set_rules('mailing', '메일링 동의', 'trim')
+                ->set_rules('mailing', '메일링 동의', 'trim')
 //                ->set_rules('term', '약관 동의', 'trim|required')
                 ;
 
