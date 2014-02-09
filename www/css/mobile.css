@@ -1148,7 +1148,7 @@ p.desc {
 	display: block;
 	margin:0 auto;
 	border-radius: 50%;
-	border:9px solid rgba(255, 255, 255, 0.5);
+	border:9px solid rgba(255, 255, 255, 0.2);
 	width: 145px;
 	height: 145px;
 }
