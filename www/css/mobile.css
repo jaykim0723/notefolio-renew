@@ -156,6 +156,10 @@ html, body {
 	border-width: 0;
 }
 .btn-follow {
+	position: relative;
+}
+.btn-follow .ajax-loading-overlay {
+	border-radius: 2em;
 }
 .btn-follow.activated {
 	background: #2ac5c6;

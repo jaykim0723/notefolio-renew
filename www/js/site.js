@@ -232,11 +232,12 @@ $(document).on('click', '.btn-follow', function(){
 		user_id : $o.data('id'),
 		follow : $o.hasClass('activated') ? 'n' : 'y'
 	};
+	$o.append('<div class="ajax-loading-overlay"><img src="/img/ajax-loader.gif" class="ajax-loading"/></div>');
 	$.post(site.url+'profile/follow_action', data, function(responseJSON){
 		console.log($o, responseJSON);
 		if(responseJSON.status=='done'){
 			// msg.open($o.hasClass('activated') ? '팔로우를 취소하였습니다.' : '팔로우 하였습니다.');
-			$o[(responseJSON.is_follow == 'y' ? 'add' : 'remove')+'Class']('activated').children('span').html(responseJSON.is_follow == 'y' ? 'Following' : 'Follow');
+			$o[(responseJSON.is_follow == 'y' ? 'add' : 'remove')+'Class']('activated').children('span').html(responseJSON.is_follow == 'y' ? 'Following' : 'Follow').next().remove();
 		}else
 			msg.open(responseJSON.message);
 
