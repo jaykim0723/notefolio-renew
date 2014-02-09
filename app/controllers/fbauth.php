@@ -99,8 +99,8 @@ class fbauth extends CI_Controller
         
         if(!empty($fb_num_id))
         {
-            $image = $this->fbsdk->api('/'.$fb_num_id.'?fields=cover&width=710&height=710&redirect=false');
-            $data = file_get_contents($image['data']['source']);
+            $image = $this->fbsdk->api('/'.$fb_num_id.'?fields=cover,picture&width=710&height=710&redirect=false');
+            $data = file_get_contents($image['cover']['source']);
             var_export($image);
             exit();
         }
