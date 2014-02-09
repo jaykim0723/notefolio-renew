@@ -55,6 +55,9 @@ $gender = array(
 	'f'	=> (!empty($value['gender'])&&$value['gender']=='f') ?'checked' :''
 );
 
+$value['mailing'] = set_value('mailing');
+$mailing = (!empty($value['mailing'])) ?'checked' :'';
+
 if(isset($fb_num_id)) {
 	$username['value'] = 
 		(!empty($username['value']))?
@@ -151,8 +154,8 @@ if(isset($fb_num_id)) {
 	</div>
 
     <div class="form-group checkbox">
-        <label class="checked">
-        	<input type="checkbox" name="mailing" value="1" checked="checked">노트폴리오의 최신 소식 및 작가/작품 소개를 메일로 받겠습니다.
+        <label class="<?=$mailing?>">
+        	<input type="checkbox" name="mailing" value="1" checked="<?=$mailing?>">노트폴리오의 최신 소식 및 작가/작품 소개를 메일로 받겠습니다.
         </label> 
     </div>
 
