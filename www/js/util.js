@@ -489,6 +489,9 @@ $.fn.extend({
 
  *  */
 var gumoFancy = {
+	conf : {
+		isMobileBase : 992
+	},
 	scroll : {
 		lock : function(){
 			 var scrollPosition = [self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft, self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop ];      
@@ -518,7 +521,7 @@ var gumoFancy = {
 				width : '100%',
 				height : '100%',
 				'z-index' : 999998,
-				background : 'rgba(0,0,0, 0.4)'
+				background : 'rgba(0,0,0, 0.6)'
 			}).on('click', function(){
 				gumoFancy.close();
 			}).append(
@@ -560,7 +563,8 @@ var gumoFancy = {
 		).append(
 			$('<img/>', {
 				'id' : 'gumo-fancy-img',
-				'src' : src
+				'src' : src,
+				'data-viewport' : ($(window).width() < gumoFancy.conf.isMobileBase ? 'phone' : 'desktop')
 			}).css({
 				visibility : 'hidden'
 			}).on('load', function(){
@@ -569,6 +573,7 @@ var gumoFancy = {
 					position : 'absolute',
 					visibility : 'visible',
 					cursor:'pointer',
+					width : ($(window).width() < gumoFancy.conf.isMobileBase ? '100%' : 'auto'),
 					// top : '50%',
 					// left : '50%',
 					// 'margin-left':'-'+($o.width()/2)+'px',
@@ -576,9 +581,15 @@ var gumoFancy = {
 				}).detach().appendTo($('#gumo-fancy-frame').empty());
 			})
 		);
+		if($(window).width() < gumoFancy.conf.isMobileBase){
+			$('meta[name="viewport"]').attr('content', 'user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, width=device-width');
+		}
 	},
 	close : function(){
 		this.scroll.unlock();
+		if($('#gumo-fancy-img').data('viewport')=='phone'){
+			$('meta[name="viewport"]').attr('content', 'user-scalable=no, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0, width=device-width');
+		}
 		jQuery('#gumo-fancy-overlay').remove();
 	}
 };
