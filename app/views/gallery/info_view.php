@@ -34,6 +34,7 @@
 							<?php if (USER_ID!=$row->user_id): ?>
 							<div class="centered">
 								<a href="javascript:;" data-id="<?php echo $row->user_id ?>" class="btn btn-follow btn-nofol2 btn-hover <?php echo $row->is_follow=='y'?'activated' : '' ?>" style="border:none;">
+									<i class="spi spi-following_white"></i>
 									<i class="spi spi-follow_point"></i>
 									<i class="spi spi-follow_white"></i>
 									<span>Follow<?php echo $row->is_follow=='y'?'ing' : '' ?></span>
