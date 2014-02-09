@@ -99,6 +99,7 @@
 			}
 		};
 
+		site.restoreInifiniteScroll();
 
 		$('.more-link, .activity-more-link').trigger('click');
 	});
