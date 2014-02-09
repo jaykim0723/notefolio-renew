@@ -20,7 +20,7 @@
 			</div>
 			<div class="col-md-3" style="height:100%;">
 				<div id="work-profile-image-wrapper" style="background-image:url(/data/profiles/<?php echo $row->user->username ?>_bg.jpg?_=<?php echo substr($row->user->modified,-2) ?>);">
-					<div id="work-profile-image" style="background-color:<?php echo $row->user->face_color ?>;<?php if (USER_ID!=$row->user_id){echo 'padding-top:20px'; } ?>">
+					<div id="work-profile-image" style="background-color:<?php echo $row->user->face_color ?>">
 						<a id="profile-image" href="<?php echo site_url($row->user->username) ?>">
 							<img src="/data/profiles/<?php echo $row->user->username ?>_face.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt=""/>
 						</a>
