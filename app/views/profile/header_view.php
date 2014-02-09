@@ -19,7 +19,7 @@
 		<span>콜렉트당한 수 : <?php echo number_format($total->collect_cnt) ?></span>
 	</div>
 
-	<div id="profile-inner-wrapper" style="background-color:<?php echo $row->face_color ?>">
+	<div id="profile-inner-wrapper" style="background-color:<?php echo $row->face_color ?>;<?php if (USER_ID!=$row->user_id){echo 'padding-top:25px'; } ?>">
 			
 		<div id="profile-inner" style="<?php if (USER_ID!=$row->user_id){echo 'padding-top:30px !important;'; } ?>">
 			<?php if($this->session->userdata('username')==$row->username): ?>

@@ -1138,13 +1138,19 @@ p.desc {
 
 @media (max-width:480px) {
 	#profile-inner-wrapper {
-		padding-top: 25px;
+		padding-top: 45px;
+	}
+}
+
+@media (min-width:481px) {
+	#profile-inner-wrapper {
+		padding-top: 0 !important;
 	}
 }
 
 #profile-inner {
 	position: relative;
-	padding-top: 40px;
+	padding-top: 50px;
 }
 
 #profile-inner .centered .spi {
@@ -1197,7 +1203,7 @@ p.desc {
 @media (max-width:480px){
 	#btn-edit-profile .btn {
 		position: absolute;
-		top: -20px;
+		top: -40px;
 		right: 80px;
 	}
 }
