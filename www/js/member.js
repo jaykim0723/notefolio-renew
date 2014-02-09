@@ -329,10 +329,14 @@ var workUtil = {
 				// call current images
 				selectCover.getModal().addClass('dialog-work-list-wrapper');
 				$list = $('<ul class="dialog-work-list"></ul>');
-				$('#content-block-list .block-image').each(function(index){
-					var $img = $(this).children('img');
-					$list.append('<li><img src="'+$img.prop('src')+'" data-id="'+$img.data('id')+'"/></li>');
-				});
+				if($('#content-block-list .block-image').length>0){
+					$('#content-block-list .block-image').each(function(index){
+						var $img = $(this).children('img');
+						$list.append('<li><img src="'+$img.prop('src')+'" data-id="'+$img.data('id')+'"/></li>');
+					});
+				}else{
+					$list.html('<div class="centered">작품내의 이미지가 존재하지 않습니다.</div>');
+				}
 				selectCover.getModalBody().html($list);
 			});
 
