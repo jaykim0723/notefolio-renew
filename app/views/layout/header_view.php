@@ -17,7 +17,7 @@
 		</div>
 	</div>
 </div>
-<header id="header" class="hidden-xs hidden-sm sticky">
+<header id="header" class="hidden-xs hidden-sm">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5">

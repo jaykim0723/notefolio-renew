@@ -481,10 +481,11 @@ $.fn.extend({
 
 
 /**
+	HTML
+	<a href="원본크기">본문</a>
 
+	BINDING
 	$('#work-list').on('click', '.block-image > a', function(){
-		if($(window).width() < 992) // mobile
-			return true;
 		gumoFancy.open($(this).attr('href'));
 		return false;
 	});
@@ -526,8 +527,11 @@ var gumoFancy = {
 				top : 0,
 				width : '100%',
 				height : '100%',
+				padding : '0',
+				margin : '0',
 				'z-index' : 999997,
-				background : 'rgba(0,0,0, 0.4)'
+				'background' : 'rgb(0,0,0)',
+				'background-color' : 'rgba(0, 0, 0, 0.5)'
 			}).on('click', function(){
 				gumoFancy.close();
 			}).append(
@@ -539,9 +543,11 @@ var gumoFancy = {
 					top : 0,
 					width : '100%',
 					margin : 0,
+					padding : 0,
 					height : '100%',
 					'z-index' : 999998,
-					overflow: 'scroll',
+					'overflow-y' : 'scroll',
+					'overflow-x' : 'hidden1',
 					'text-align' : 'center',
 					'-webkit-overflow-scrolling': 'touch'
 				}).append(
@@ -560,9 +566,9 @@ var gumoFancy = {
 						'border-radius' : '10px'
 					}).append(
 						$('<img/>', {
-							// 'src' : '/img/gumo-fancy.gif'
+							'src' : '/img/gumo-fancy.gif'
 						}).css({
-							'margin' : '40px auto 0 auto'
+							'margin' : '45px auto 0 auto'
 						})
 					)
 				)
@@ -574,11 +580,12 @@ var gumoFancy = {
 			}).css({
 				visibility : 'hidden'
 			}).on('load', function(){
-				var $o = $(this);
-				$o.css({
+				if($('#gumo-fancy-frame').length==0) return;
+				$(this).css({
 					visibility : 'visible',
 					cursor:'pointer',
-					width : '100%'
+					width : 'auto',
+					'max-width' : '100%'
 				}).detach().appendTo($('#gumo-fancy-frame').empty());
 			})
 		).append(
@@ -591,7 +598,8 @@ var gumoFancy = {
 				width : '240px',
 				'z-index' : 999999,
 				'margin-left' : '-120px',
-				background : 'rgba(0,0,0,0.7)',
+				'background' : 'rgb(0,0,0)',
+				'background-color' : 'rgba(0, 0, 0, 0.7)',
 				color : '#fff',
 				padding : '10px 0',
 				'text-align' : 'center',

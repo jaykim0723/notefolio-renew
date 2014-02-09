@@ -30,6 +30,10 @@ body {
 	text-align: center;
 }
 #top-menu {
+	width: 100%;
+	top: 0;
+	position: fixed;
+	z-index: 19;
 	background: #fff;
 	padding: 6px 0 3px 0;
 	border-bottom: 1px solid #eee;
@@ -40,6 +44,22 @@ body {
 #top-menu .ml {
 	margin-left: 40px;
 }
+#header {
+	position: fixed;
+	top: 30px;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-ms-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+	
+}
+.mm-page {
+	margin-top: 90px;
+}
+
+
+
 #footer a {
 	text-decoration: none;
 	color: #666;

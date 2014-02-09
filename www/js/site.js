@@ -214,12 +214,31 @@ site.checkFlashMsg(); // 페이지가 전환된 이후에 메시지를 표시할
 
 
 
+lastScrollTop = 0;
 /* live binding */
 $(window).on('beforeunload', function(){
 	localStorage.setItem('prevPage', JSON.stringify({
 		top : $(window).scrollTop(),
 		url : location.href
 	}));
+}).on('scroll', function(){
+	var currentScrollTop = $(this).scrollTop();
+	if(currentScrollTop > lastScrollTop){
+		// down
+		// console.log('scroll down', currentScrollTop);
+		if(currentScrollTop > 30){
+			console.log('trigger show');
+			$('#header').css('top', 0);
+		}
+	}else if(currentScrollTop < lastScrollTop){
+		// up
+		// console.log('scroll up', currentScrollTop);
+		if(currentScrollTop <= 30){
+			console.log('trigger hide');
+			$('#header').css('top', '30px');
+		}
+	}
+	lastScrollTop = currentScrollTop;
 });
 site.prevPage = empty(localStorage.getItem('prevPage')) ? {top:0, url:''} : JSON.parse(localStorage.getItem('prevPage'));
 $(document).on('click', '.btn-follow', function(){
