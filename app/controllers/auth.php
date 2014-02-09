@@ -618,7 +618,8 @@ class Auth extends CI_Controller
                     
                     //exit(json_encode(array_merge(array('status'=>'error', 'goStep'=>$error_stage), $error_data)));
                 }
-               
+                
+                exit();
                 $data = set_value_to_data($method);
             
                 $data = $this->_register_create_hash($data);
