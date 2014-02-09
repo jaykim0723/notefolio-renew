@@ -46,7 +46,7 @@
 				</div>
 				<div>&nbsp;</div>
 				<div id="work-recent-works">
-					<h2 class="nofol-title">Recent Works</h2>
+					<h2 class="nofol-title2">Recent Works</h2>
 					<ul id="work-recent-list">
 					</ul>
 				</div>

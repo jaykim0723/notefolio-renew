@@ -86,6 +86,13 @@ body {
 	font-size: 18px;
 	font-weight: 300;
 }
+.nofol-title2 {
+	margin: 0;
+	color: #7a7880;
+	padding: 20px;
+	font-size: 18px;
+	font-weight: 300;
+}
 #main-hot-creators-title {
 	padding: 24px 20px 23px 20px;
 }
@@ -377,7 +384,10 @@ body {
 	height: 100px;
 }
 #work-recent-list .selected {
-	background: yellow;
+	background: #2ac5c6;
+}
+#work-recent-list .selected a {
+	color: #fff;
 }
 #side.info > a:hover {	
 	background:#fafafa;
