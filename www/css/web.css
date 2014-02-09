@@ -655,7 +655,13 @@ li#trash-bin{
 		padding: 10px 4px;
 	}
 
+.comment-wrapper .create {
+	padding:10px 30px;
+}
 
+textarea.comment-textarea {
+	margin-left: 100px;
+}
 
 
 
