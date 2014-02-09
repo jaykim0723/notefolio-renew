@@ -377,6 +377,8 @@ body {
 	font-size: 14px;
 	position: relative;
 	display: block;
+	font-weight: 300;
+	line-height: 700%;
 }
 #work-recent-list img {
 	float: left;
