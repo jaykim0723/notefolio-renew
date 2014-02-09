@@ -264,8 +264,6 @@ class user_model extends CI_Model {
                     )
             );
         } else {
-            var_export($result);
-            exit();
             $data = (object)array(
                 'status' => 'fail',
                 'message' => 'error'
