@@ -470,6 +470,81 @@ $.fn.extend({
 
 
 
+
+
+
+
+
+
+
+
+
+
+/**
+
+	$('#work-list').on('click', '.block-image > a', function(){
+		gumoFancy.open($(this).attr('href'));
+		return false;
+	});
+
+ *  */
+var gumoFancy = {
+	open : function(src){
+		$('body').append(
+			$('<div/>', {
+				id : 'gumo-fancy-overlay'
+			}).css({
+				position:'fixed',
+				left : 0,
+				top : 0,
+				width : '100%',
+				height : '100%',
+				'z-index' : 999998,
+				background : 'rgba(0,0,0, 0.2)'
+			}).on('click', function(){
+				gumoFancy.close();
+			}).append(
+				$('<div/>', {
+					id : 'gumo-fancy-frame'
+				}).css({
+					position:'fixed',
+					left : 0,
+					top : 0,
+					width : '100%',
+					margin : '10px',
+					height : '100%',
+					'z-index' : 999999,
+					overflow: 'scroll'
+				}).append(
+					$('<img/>', {
+						id : 'gumo-fancy-img',
+						src : src
+					}).css({
+						cursor : 'pointer'
+					})
+				)
+			)
+		);
+	},
+	close : function(){
+		$('#gumo-fancy-overlay').remove();
+	}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // http://techpatterns.com/downloads/javascript_cookies.php
 function setLocal( name, value, expires, path, domain, secure )
 {

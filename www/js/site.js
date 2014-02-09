@@ -262,6 +262,8 @@ $(function() {
 	    placement : $(this).data('placement')
 	});
 
+
+
 	// infinite scroll binding
 	$(document).on('click', '.more-link', function(event){
 		event.preventDefault();
@@ -295,6 +297,12 @@ $(function() {
 		delLocal('listing_href');
 		return true;
 	});
+
+	$('#work-list').on('click', '.block-image > a', function(){
+		gumoFancy.open($(this).attr('href'));
+		return false;
+	});
+
 
 	$(window).on('scroll', function() {
 		var $list = $('.infinite-list');
@@ -760,7 +768,6 @@ var collectUtil = {
 		}, 'json');
 	}
 };
-
 
 
 var workInfoUtil = {

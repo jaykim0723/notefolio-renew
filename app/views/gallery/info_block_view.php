@@ -1,6 +1,6 @@
 <?php switch($t){ case 'image':  ?>
 <li class="block-image" data-id="<?php echo $i ?>">
-	<img src="<?php echo htmlentities($c, ENT_COMPAT, 'utf-8') ?>" alt="">
+	<a href="<?php echo htmlentities(str_replace('_v2', '_v1', $c), ENT_COMPAT, 'utf-8') ?>" target="_blank"><img src="<?php echo htmlentities($c, ENT_COMPAT, 'utf-8') ?>" alt=""></a>
 </li>
 
 
