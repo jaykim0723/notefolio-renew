@@ -96,7 +96,7 @@
 					</li>
 				</ul>
 				<div class="clearfix visible-xs"></div>
-				<ul id="profile-nav" class="nav nav-pills">
+				<ul id="profile-nav" class="nav nav-pills  item<?php echo $this->session->userdata('username')==$row->username ? '4' : '3' ?>">
 					<li id="profile_nav_">
 						<a href="/<?php echo $row->username ?>">
 							<i class="spi spi-work"></i><i class="spi spi-work_point"></i><span class="text"> Works</span><span class="number"></span>
