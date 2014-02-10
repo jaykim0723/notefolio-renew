@@ -1459,7 +1459,16 @@ p.desc {
 	padding-bottom: 5px;	
 	padding-left: 10px;
 }
-
+@media (max-width: 991px){
+	#profile-nav {
+		margin-top:20px;
+	}
+}
+@media (max-width: 767px){
+	#profile-nav {
+		margin-top:0px;
+	}
+}
 @media (max-width: 480px){
 	.item3 li{
 		width:32% !important;
