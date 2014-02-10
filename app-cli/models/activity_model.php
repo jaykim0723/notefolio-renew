@@ -218,7 +218,7 @@ VALUES
         try{
             if(   ($params->crud=="update")
                 &&($params->area=="work")
-                &&($params->type=="enable")   ){
+                &&($params->type=="enabled")   ){
                 $sql = "INSERT INTO `user_feeds` (`user_id`,`ref_id`,`regdate`)
                     (
                         SELECT 
