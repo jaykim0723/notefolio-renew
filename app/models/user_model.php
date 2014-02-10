@@ -230,8 +230,6 @@ class user_model extends CI_Model {
             );
         }
 
-        var_export($data);
-        exit();
     	return $data;
     }
 

@@ -148,6 +148,8 @@ class work_model extends CI_Model {
             $data->status = 'fail';
             return $data;
         }
+        var_export($data);
+        exit();
         return $data;
     }
 
