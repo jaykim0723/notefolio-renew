@@ -22,6 +22,8 @@ class Feed extends CI_Controller {
 			'user_id' => USER_ID,
 			'type' => 'work'
 		));
+		var_export($feed_list);
+		exit();
 		// 첫페이지 출력을 위하여 이곳에서 불러들이기
 		$feed_list->activity = 	$this->feed_model->get_list(array(
 			'page' => $page,
