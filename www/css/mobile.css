@@ -540,6 +540,9 @@ html, body {
 	.follow-recent-works {
 		display: none;
 	}
+	.follow-list .follow-face {
+		margin: 15px 20px 15px 10px;
+	}
 }
 
 
