@@ -1415,7 +1415,7 @@ p.desc {
 #profile-nav .active .spi-work_point, #profile-nav li:hover .spi-work_point,
 #profile-nav .active .spi-love_point, #profile-nav li:hover .spi-love_point,
 #profile-nav .active .spi-user_point, #profile-nav li:hover .spi-user_point,
-#profile-nav .active .spi-work_graph, #profile-nav li:hover .spi-graph_point {
+#profile-nav .active .spi-graph_point, #profile-nav li:hover .spi-graph_point {
 	display:inline-block;
 }
 #profile-nav .active .spi-work, #profile-nav li:hover .spi-work,#profile-nav li .spi-work_point,
