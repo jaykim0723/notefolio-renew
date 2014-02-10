@@ -30,9 +30,14 @@ div.dataTables_paginate {
 	margin: 0;
 }
 
+div.dataTables_paginate .pagination a {
+	border: none;
+}
+
 div.dataTables_paginate ul.pagination {
 	margin: 2px 0;
 	white-space: nowrap;
+	font-size:12px;
 }
 
 table.dataTable,
