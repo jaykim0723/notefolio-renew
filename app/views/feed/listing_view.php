@@ -19,7 +19,9 @@
 				<ul id="feed-list" class="thumbnail-list infinite-list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
-					<?php print_r($row); ?>
+					<pre>
+					<?=var_export($row,true) ?>
+					</pre>
 					<?php $this->load->view('gallery/thumbnail_inc_view', array('row'=>$row->data)) ?>
 					<?php endforeach ?>
 
