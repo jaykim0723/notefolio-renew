@@ -481,9 +481,13 @@ class activity extends CI_Controller {
         if(($params->area=="work")&&(!empty($params->point_get))){
             //add point
             $this->db->query("UPDATE works 
-                set nofol_rank = nofol_rank - {$params->point_get} 
+                set nofol_rank = nofol_rank + {$params->point_get} 
                 where work_id = {$params->ref_id};
                 ");
+            echo "UPDATE works 
+                set nofol_rank = nofol_rank + {$params->point_get} 
+                where work_id = {$params->ref_id};
+                ";
         }
         echo '!';
 
