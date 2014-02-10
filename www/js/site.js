@@ -299,11 +299,12 @@ $(function() {
 				var href = $('.more-link', $response).attr('href');
 				$('.more-link', $response).insertAfter($container);
 				$lis.appendTo($container);
-				if(NFview.area!='work-info')
+				if(NFview.area!='work-info'){
 					setLocal('listing_html', $container.html());
 					setLocal('listing_url', location.href);
 					setLocal('listing_href', href);
 					setLocal('listing_top', $(window).scrollTop());
+				}
 			}
 			$(window).trigger('scroll');
 			$('#loading-indicator').fadeOut();
