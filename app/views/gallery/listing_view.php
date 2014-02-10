@@ -67,7 +67,7 @@
 		<div class="row">
 			<div class="col-md-12">
 <?php endif ?>
-				<ul class="thumbnail-list infinite-list">
+				<ul id="gallery-list" class="thumbnail-list infinite-list">
 					<?php if (empty($rows)): ?>
 						<div class="centered" style="padding: 100px 0;">해당되는 작품이 없습니다.</div>
 					<?php else: ?>

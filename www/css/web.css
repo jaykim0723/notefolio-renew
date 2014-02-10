@@ -132,7 +132,7 @@ html {
 
 
 /* main list */
-.main-thumbnail-list .main-work-title {
+.thumbbox .main-work-title {
 	position: absolute;
 	display: block;
 	background: #fff;
@@ -147,26 +147,28 @@ html {
 	-o-transition: all 0.3s ease;	
 	transition: all 0.3s ease;	
 }
-.main-thumbnail-list .thumbbox:hover .main-work-title {
+.thumbbox:hover .main-work-title {
 	bottom:0px;
 }
-.main-thumbnail-list .main-work-face {
+.main-work-face {
 	display: block;
 	position: relative;
 }
-.main-thumbnail-list .main-work-face img {
+.main-work-face img {
 	width: 28px;
 	height: 28px;
 }
-.main-thumbnail-list .main-work-face .si {
+.main-work-face .si {
 	position: absolute;
 	left: 0;
 	top: 0;
 	margin-top:0;
 }
-.main-thumbnail-list .main-work-face .pull-right {
+.main-work-face .pull-right {
 	display: block;
 }
+
+
 
 /* main hot creators */
 #main-hot-creators {
@@ -259,7 +261,10 @@ html {
 	}
 }
 
-
+/* gallery */
+#gallery-list .main-work-title .pull-right {
+	display: ;	
+}
 
 /* work */
 

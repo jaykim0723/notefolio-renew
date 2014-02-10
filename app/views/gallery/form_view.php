@@ -101,6 +101,18 @@
 				</div>
 
 
+				<h4>동영상여부</h4>
+				<div class="control-group">
+                    <label class="notefolio-radio inline<?if($row->is_video=='y'){?> checked<?}?>">
+                        <input type="radio" name="is_video" value="y" <?if($row->is_video=='y'){?> checked<?}?>> 예
+                    </label>
+                    &nbsp; &nbsp; &nbsp;
+                    <label class="notefolio-radio inline<?if($row->is_video=='n'){?> checked<?}?>">
+                        <input type="radio" name="is_video" value="n" <?if($row->is_video=='n'){?> checked<?}?>> 아니오
+                    </label>
+				</div>
+
+
 				
 				<h4>공개여부</h4>
 				<div class="control-group">

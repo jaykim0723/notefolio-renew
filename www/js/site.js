@@ -662,6 +662,8 @@ var noteUtil = {
 	cancel : function($work){
 		console.log('site.js > noteUtil > cancel', $work);
 
+		if(site.user_id==0) return; // 비회원은 취소 따위 없다. 
+
 		var work_id = $work.data('id');
 		$btnNote = $('.btn-note', $work);
 		$btnNote.next().css('visibility','hidden');
