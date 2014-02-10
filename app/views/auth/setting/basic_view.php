@@ -4,7 +4,7 @@
 	<div class="form-group">
 		<label>URL</label>
 		<p><?=$this->input->server('BASE_PATH')?></p>
-		<input class="form-control" type='text' id='username' name='username' value="<?php echo $username?>" minlength='3' maxlength='20' rel='tooltip' title="실명을 권장합니다."/>
+		<input class="form-control" type='text' id='username' name='username' value="<?php echo $username?>" minlength='3' maxlength='20' rel='tooltip' placeholder="영문자,숫자,_,-"/>
 	</div>
 	<div class="form-group">
 		<label>성별</label><br/>
