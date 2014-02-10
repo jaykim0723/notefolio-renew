@@ -1657,6 +1657,9 @@ input#mobile-search-field:-moz-placeholder {
 	font-weight: bold;
 }
 
+.count:last-child {
+	padding-left: 10px;
+}
 
 
 
