@@ -837,6 +837,7 @@ textarea.comment-textarea {
 
 .follow-list .follow-center a:hover {
 	color: #2ac5c6;
+	text-decoration: none;
 	transition: 0.25s linear;
 	-webkit-transition: 0.25s linear;
 }
