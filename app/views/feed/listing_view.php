@@ -19,7 +19,7 @@
 				<ul id="feed-list" class="thumbnail-list infinite-list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
-					<?php $this->load->view('feed/thumbnail_inc_view', array('row'=>$row)) ?>
+					<?php $this->load->view('gallery/thumbnail_inc_view', array('row'=>$row)) ?>
 					<?php endforeach ?>
 
 				</ul>
@@ -35,6 +35,7 @@
 		</div>
 	</div>
 </section>
+
 
 <?php if ($page==1): ?>
 <script>

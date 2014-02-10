@@ -5,7 +5,7 @@
 			<span class="pull-right">
 				<!-- <span class="pull-right ellipsis" style="margin-top: 6px;margin-left: 5px;"><?php echo $row->user->realname; ?></span> -->
 				<span class="pull-right main-work-face">
-					<img src="/data/profiles/<?=$row->user->username?>_face.jpg?h=1385655105" alt=""/>
+					<img src="/data/profiles/<?=$row->user->username?>_face.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt=""/>
 					<i class="si si-face-small"></i>
 				</span>
 			</span>
