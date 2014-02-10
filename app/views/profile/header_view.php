@@ -151,9 +151,17 @@
 		echo json_encode($keyword_list);
 	?>;
 </script>
-
-
-
+<?php
+	// /app/controller/auth.php line 
+	$this->session->set_flashdata('welcome_newmember',true); // 가입환영용
+	if($this->session->flashdata('welcome_newmember')){
+?>
+<script type="text/javascript">
+	alert('whooing?');
+</script>
+<?php
+	}
+?>
 <?php
 
 /*
