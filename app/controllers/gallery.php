@@ -82,7 +82,7 @@ class Gallery extends CI_Controller {
             'url' => site_url($work->row->user->username.'/'.$work->row->work_id),
             'image' => site_url('data/covers/'.$work->row->work_id.'_t2.jpg?_='.substr($work->row->moddate, -2)),
             'title' => $work->row->title,
-            'profile' => array('username'=>$work->row->user->username, 'is_follow'=>$work->row->user->is_follow)
+            'profile' => array('username'=>$work->row->user->username, 'is_follow'=>$work->row->is_follow)
         ))->set_view('gallery/info_view', $work)->render();
 
         //-- view count up
