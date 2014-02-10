@@ -112,12 +112,18 @@ class feed_model extends CI_Model {
             );
 
             if($params->type=='activity'){
-
             }
-            //-- end
-
-            //-- type:work
-            if($params->type=='work'){
+            else if($params->type=='work'){
+                $obj->data = (object)array(
+                    'user' => (object)array(
+                        'username' => $row->user_username,
+                        'realname' => $row->user_realname,
+                        'modified' => $row->user_modified,
+                        ),
+                    'work_id' => $row->ref_id,
+                    'title' => $row->title,
+                    'is_video' => $row->is_video,
+                    );
             }
 
             $rows[] = $obj;
