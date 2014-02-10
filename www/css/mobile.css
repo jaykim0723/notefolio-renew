@@ -349,7 +349,7 @@ html, body {
 	-webkit-transition: all 0.3s ease;
 	
 }
-.main-thumbnail-list .main-work-title {
+.main-work-title {
 	display: none;
 }
 @media (max-width:991px) {
