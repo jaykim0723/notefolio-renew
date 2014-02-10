@@ -126,7 +126,6 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 	<?=form_hidden('submit_uuid', $submit_uuid); ?>
 	</div>
 	<?php if ($use_username) { ?>
-	<?=var_export(($errors),true)?>
 	<div class="form-group <?=isset($errors[$username['name']]) ? 'error' : ''?>">
 		<?=form_label('Username', $username['id']); ?>
 		<?=form_input($username); ?>
