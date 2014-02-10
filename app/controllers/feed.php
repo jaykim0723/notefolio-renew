@@ -30,6 +30,7 @@ class Feed extends CI_Controller {
 		));
 
 		$this->layout->set_view('feed/listing_view', $feed_list)->render();
+		exit();
 
 		//-- mark unread to read
 		$this->feed_model->put_readdate(array(
