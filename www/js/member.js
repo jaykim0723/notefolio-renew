@@ -1297,6 +1297,9 @@ var profileUtil = {
 				html += '</tbody>'+
 					'</table>';
 				$('#statistics-table-area').html(html).children('table').dataTable({
+					"oLanguage": {
+"sEmptyTable": "아직 업로드한 작품이 없습니다."
+},
 "fnDrawCallback": function ( oSettings ) {
 			/* Need to redo the counters if filtered or sorted */
 			if ( oSettings.bSorted || oSettings.bFiltered )

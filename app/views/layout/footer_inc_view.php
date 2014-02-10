@@ -44,7 +44,7 @@
 				</a>
 			</li>
 			<li>
-				<a class="clear-list" href="//magazine.notefolio.net/">
+				<a class="clear-list" href="//magazine.notefolio.net/" target="_blank">
 					<i class="spi spi-magazine_white"></i>
 					Magazine
 				</a>
