@@ -1654,7 +1654,7 @@ input#mobile-search-field:-moz-placeholder {
 }
 
 #mobile-menu-profile p.follows .conunt {
-	font-weight: 700;
+	font-weight: 700 !important;
 	margin-left: 1em;
 }
 
