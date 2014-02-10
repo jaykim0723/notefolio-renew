@@ -97,6 +97,8 @@ class feed_model extends CI_Model {
             ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter))
             ->get('user_feeds');
 
+        error_log($this->db->last_query());
+
         $rows = array();
         foreach($query->result() as $row){
             $info = unserialize($row->data);
