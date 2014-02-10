@@ -519,6 +519,11 @@ html, body {
 	}
 }
 
+@media (max-width: 599px) {
+	.follow-recent-works {
+		display: none;
+	}
+}
 
 
 
