@@ -1653,7 +1653,7 @@ input#mobile-search-field:-moz-placeholder {
 	padding: 20px 20px 0 20px;
 }
 
-#statistics-chart-area .btn-smallgray {
+#statistics-chart-area .btn-smallgray:hover {
 	color: #333;
 	background-color: #fff;
 	border-color: #e1e1e1;
