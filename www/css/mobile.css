@@ -492,7 +492,7 @@ html, body {
 	.follow-list .follow-recent-works {
 		margin: 30px 20px;
 	}
-	.follow-recent-works a:first-child {
+	.follow-recent-works a:last-child {
 		display: none;
 	}
 }
