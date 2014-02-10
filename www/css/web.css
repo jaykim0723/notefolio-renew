@@ -724,8 +724,12 @@ li#trash-bin{
 }
 
 textarea.comment-textarea {
-	margin-left: 100px;
+	margin-left: 130px;
 	min-width: 70%;
+}
+
+.comment-replies .comment-profile-area {
+	margin-left: 30px;
 }
 
 
