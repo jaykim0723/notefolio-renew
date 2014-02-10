@@ -1687,6 +1687,9 @@ input#mobile-search-field:-moz-placeholder {
 }
 #statistics-table-area table {
 }
+#DataTables_Table_0 a {
+	color: #333;
+}
 #select-range-wrapper .modal-dialog {
 	max-width: 420px;
 }
