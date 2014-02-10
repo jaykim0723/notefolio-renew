@@ -451,6 +451,7 @@ html {
 	float: left;
 	width: 100px;
 	height: 100px;
+	margin-right: 10px;
 }
 #work-recent-list .selected {
 	background: #2ac5c6;
