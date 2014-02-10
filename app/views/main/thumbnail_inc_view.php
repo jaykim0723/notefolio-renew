@@ -7,7 +7,7 @@ $wide = in_array($row->key, array(4,11));
 		<span class="videoicon <?php echo $row->is_video ?>">
 			<i class="spi spi-video_white <?php echo $row->is_video ?>"></i>video
 		</span>
-		<em class="pi pi-videoy"></em>
+		<em class="pi pi-videoy <?php echo $row->is_video ?>"></em>
 		<span class="main-work-info si-main-info-bg" style="">
 			<i class="spi spi-view" style="margin-top:-2px;margin-right:5px;">Hit</i> <?php echo $row->hit_cnt ?>
 			<i class="spi spi-love" style="margin-top:-2px;margin-right:5px;margin-left:5px;">Note</i> <?php echo $row->note_cnt ?>
