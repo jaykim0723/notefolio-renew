@@ -1461,7 +1461,7 @@ p.desc {
 }
 
 @media (max-width: 480px){
-	#profile-nav .item3 li{
+	.item3 li{
 		width:33% !important;
 	} 
 }
