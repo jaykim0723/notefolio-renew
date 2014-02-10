@@ -439,7 +439,7 @@ class Auth extends CI_Controller
 
             if(!$username_useable){
                 $data['form']['username'] = $this->session->userdata('username');
-                $data['errors']['username'] = "↑ {$errors['login']}";
+                $data['errors'] = array('username' => "↑ {$errors['login']}" );
             }
 
         }
