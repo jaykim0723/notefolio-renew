@@ -787,4 +787,39 @@ textarea.comment-textarea {
 	display:none;
 }
 
+/*button hover*/
+
+.work-addinfo .btn-nofol2:hover .spi-love_point,
+.work-addinfo .btn-nofol2 .spi-love_white {
+	display:none;
+}
+
+.work-addinfo .noted .spi-love_point {
+	display: none !important;
+}
+
+.work-addinfo .btn-nofol2:hover .spi-love_white,
+.work-addinfo .btn-nofol2 .spi-love_point,
+.work-addinfo .noted .spi-love_white{
+	display:inline-block;
+}
+
+.btn-follow:hover .spi-follow_point,
+.btn-follow .spi-follow_white,
+.btn-follow .spi-following_white {
+	display:none;
+}
+.btn-follow:hover .spi-follow_white,
+.btn-follow .spi-follow_point {
+	display:inline-block;
+}
+.activated .spi-follow,
+.activated .spi-follow_white,
+.activated .spi-follow_point,
+.spi-following_white {
+	display:none !important;
+}
+.activated .spi-following_white{
+	display:inline-block !important;
+}
 
