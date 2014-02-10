@@ -1064,6 +1064,10 @@ html.auth body {
 .work-small-profile .spi {
 	float: right;
 }
+.work-small-profile > h2 {
+	font-size:13px;
+	font-weight:700;
+}
 .work-small-profile > * {
 	display: inline-block;
 	font-size: 12px;
