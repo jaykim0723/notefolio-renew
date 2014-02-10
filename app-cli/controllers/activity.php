@@ -391,7 +391,6 @@ class activity extends CI_Controller {
         }
         echo '!';
 
-            echo($params->crud);
         if($params->crud == 'create'){
             switch($params->area){
                 case "user":
@@ -443,6 +442,7 @@ class activity extends CI_Controller {
             }
         }
         else if($params->crud == 'update'){
+            echo($params->area);
             switch($params->area){
                 case "work":
                     if(in_array($params->type, array('enable',))){
