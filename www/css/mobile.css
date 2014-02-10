@@ -1458,7 +1458,13 @@ p.desc {
 	padding-top: 5px;
 	padding-bottom: 5px;	
 	padding-left: 10px;
-} 
+}
+
+@media (max-width: 480px){
+	#profile-nav .item3 li{
+		width:33%;
+	} 
+}
 #profile-nav li {
 	text-align: center;
 }
