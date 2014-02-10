@@ -412,9 +412,12 @@ html {
 #work-sidebar > .container > .row > .col-md-3 {
 	overflow: auto;
 }
+
+#work-profile-image-wrapper {
+	background-position: center center;
+}
 #work-profile-image {
 	background: #999;
-	background-position:center center;
 	padding: 20px 0 0 0;
 	min-height: 350px;
 }
