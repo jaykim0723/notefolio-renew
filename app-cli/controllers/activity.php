@@ -470,7 +470,7 @@ class activity extends CI_Controller {
                             'parent_id' => $params->parent_id,
                             'activity_id' => $params->activity_id,
                             ));
-                        echo $this->db->last_error();
+                        echo $this->db->last_query();
                     }
                 break;
                 default:
