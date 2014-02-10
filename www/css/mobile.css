@@ -458,6 +458,9 @@ html, body {
 	color: #7a7880;
 	font-weight: 300;
 }
+.follow-list .follow-center h3 {
+	margin-top:30px;
+}
 .follow-list .follow-center h3 a {
 	font-size: 18px;
 }
