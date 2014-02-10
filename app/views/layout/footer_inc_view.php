@@ -2,7 +2,7 @@
 
 	<ul>
 		<li>
-			<form action="gallery/listing/1" role="form">
+			<form action="/gallery/listing/" role="form">
 				<div id="mobile-search-box">
 					<i class="spi spi-search_white"></i>
 					<input type="search" name="q" placeholder="Search" id="mobile-search-field">
