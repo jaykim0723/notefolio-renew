@@ -181,6 +181,8 @@ html {
 	line-height: 10%;
 	color: #fff;
 	display:none;
+	transition: 0.35s linear;
+	-webkit-transition: 0.35s linear;
 }
 
 .thumbbox .spi-video_white.y {
