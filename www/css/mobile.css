@@ -302,7 +302,7 @@ html, body {
 	.videoicon {
 		display:none !important;
 	}
-	.pi-videoy {
+	.pi-videoy.y {
 		display: inline-block !important;
 	}
 }
