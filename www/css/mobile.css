@@ -318,8 +318,8 @@ html, body {
 .main-thumbnail-list .thumbbox.wide {
 	width: 66.6666666666%;
 }
-.main-thumbnail-list .thumbbox a {
-/*.main-thumbnail-list .thumbbox img {*/
+.main-thumbnail-list .thumbbox a,
+.main-thumbnail-list .thumbbox img {
 	width: 100%;
 }
 .thumbbox:hover .main-work-info {
@@ -1459,11 +1459,7 @@ p.desc {
 	padding-bottom: 5px;	
 	padding-left: 10px;
 }
-@media (max-width: 991px){
-	#profile-nav {
-		margin-top:20px;
-	}
-}
+
 @media (max-width: 480px){
 	.item3 li{
 		width:32% !important;
