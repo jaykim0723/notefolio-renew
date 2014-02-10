@@ -30,6 +30,11 @@ class Feed extends CI_Controller {
 		));
 
 		$this->layout->set_view('feed/listing_view', $feed_list)->render();
+
+		//-- mark unread to read
+		$this->feed_model->put_readdate(array(
+			'user_id' => USER_ID
+		));
 	}
 	function activity_listing($page=1){
 		$feed_activity_list = $this->feed_model->get_list(array(
@@ -38,6 +43,11 @@ class Feed extends CI_Controller {
 			'type' => 'activity'
 		));
 		$this->layout->set_view('feed/activity_listing_view', $feed_activity_list)->render();
+
+		//-- mark unread to read
+		$this->feed_model->put_readdate(array(
+			'user_id' => USER_ID
+		));
 	}
 
 	function check_unread(){
