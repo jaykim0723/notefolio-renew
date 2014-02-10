@@ -1653,9 +1653,8 @@ input#mobile-search-field:-moz-placeholder {
 	margin-bottom: 20px;
 }
 
-#mobile-menu-profile p.follows .conunt {
-	font-weight: 700 !important;
-	margin-left: 1em;
+.count {
+	font-weight: bold;
 }
 
 
