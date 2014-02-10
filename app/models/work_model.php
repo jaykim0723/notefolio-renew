@@ -40,7 +40,7 @@ class work_model extends CI_Model {
         }
 
         if($params->exclude_deleted){
-            $this->db->where('works.status', 'deleted');
+            $this->db->where('works.status !=', 'deleted');
         }
 
         switch($params->from){
@@ -148,7 +148,7 @@ class work_model extends CI_Model {
             $data->status = 'fail';
             return $data;
         }
-        
+
         return $data;
     }
 
