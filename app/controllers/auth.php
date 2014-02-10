@@ -508,6 +508,7 @@ class Auth extends CI_Controller
         }
         //-- end
 
+        exit();
         return $data;
     }
 
