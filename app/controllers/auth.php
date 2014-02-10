@@ -431,24 +431,22 @@ class Auth extends CI_Controller
      * @return array
      */
     function _setting_put($data=array()){
-        $this->form_validation->set_error_delimiters('↑ ', '');
-        //$this->form_validation->set_error_delimiters('<p class="alert alert-danger">', '</p>');
 
-        //-- form validation
-        $this->form_validation
-            ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean|is_unique[users.username]|min_length['.$this->config->item('username_min_length','tank_auth').']|max_length['.$this->config->item('username_max_length','tank_auth').']')
-            ;
-        //-- end
+        //-- username
+        if($this->session->userdata('username')!=$data['username']){
+            $this->load->model('tank_auth/users');
+            $username_useable = $this->users->is_username_available($data['username']);
 
-        if($this->form_validation->run() === FALSE){
-            // 실패한 경우.
-            if ($this->form_validation->error_string()!='') {
-                unset($data['username']);
-                $data['error'] = var_export($this->form_validation->error_string(), true);
-                $data['errors'] = $this->form_validation->error_array();
-                //exit(json_encode(array_merge(array('status'=>'error', 'goStep'=>$error_stage), $error_data)));
+            if(!$username_useable){
+                $data['username'] = $this->session->userdata('username')
+                $data['errors']['username'] = "↑ {$errors['login']}";
             }
+
         }
+        else{
+            $username_useable = false;
+        }
+        //--end
 
         $allowed_user_key = array(
                 'id',
@@ -491,9 +489,25 @@ class Auth extends CI_Controller
                 $param[($key=='fb_num_id')?$key:str_replace('fb_', '', $key)] = $val;
             
         }
-        $this->user_model->put_sns_fb($param);
+        $result = $this->user_model->put_sns_fb($param);
         //-- end          
         
+        //-- after process
+        if($result->status=='done' && $username_useable){
+            $this->load->config('upload', TRUE); //load upload config file
+            
+            $old_file = $this->config->item('profile_upload_path', 'upload').$this->session->userdata('username');
+            $new_file = $this->config->item('profile_upload_path', 'upload').$data['username'];
+            foreach(array( '_face.jpg', '_bg.jpg' ) as $file_tail){
+                if(file_exists($old_file.$file_tail)){
+                    rename($old_file.$file_tail, $new_file.$file_tail);
+                }
+            }   
+
+            $this->session->set_userdata('username', $data['username']); //change session username 
+        }
+        //-- end
+
         return $data;
     }
 
