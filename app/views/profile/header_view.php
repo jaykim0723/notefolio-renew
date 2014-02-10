@@ -99,23 +99,23 @@
 				<ul id="profile-nav" class="nav nav-pills">
 					<li id="profile_nav_">
 						<a href="/<?php echo $row->username ?>">
-							<i class="spi spi-work">check</i><span class="text"> Works</span><span class="number"></span>
+							<i class="spi spi-work"></i><i class="spi spi-work_point"></i><span class="text"> Works</span><span class="number"></span>
 						</a>
 					</li>
 					<li id="profile_nav_collect">
 						<a href="/<?php echo $row->username ?>/collect">
-							<i class="spi spi-love">check</i><span class="text"> Collect</span><span class="number"></span>
+							<i class="spi spi-love"></i><i class="spi spi-love_point"></i><span class="text"> Collect</span><span class="number"></span>
 						</a>
 					</li>
 					<li id="profile_nav_about">
 						<a href="/<?php echo $row->username ?>/about">
-							<i class="spi spi-user">check</i><span class="text"> About</span><span class="number"></span>
+							<i class="spi spi-user"></i><i class="spi spi-user_point"></i><span class="text"> About</span><span class="number"></span>
 						</a>
 					</li>
 					<?php if($this->session->userdata('username')==$row->username): ?>
 					<li id="profile_nav_statistics">
 						<a href="/<?php echo $row->username ?>/statistics">
-							<i class="spi spi-graph">check</i><span class="text"> Statistics</span><span class="number"></span>
+							<i class="spi spi-graph"></i><i class="spi spi-graph_point"></i><span class="text"> Statistics</span><span class="number"></span>
 						</a>
 					</li>
 					<?php endif; ?>

@@ -1405,6 +1405,20 @@ p.desc {
 #profile-nav .text {
 	line-height: 180%;
 }
+#profile-nav .active .spi-work_point, #profile-nav li:hover .spi-work_point,
+#profile-nav .active .spi-love_point, #profile-nav li:hover .spi-love_point,
+#profile-nav .active .spi-user_point, #profile-nav li:hover .spi-user_point,
+#profile-nav .active .spi-work_graph, #profile-nav li:hover .spi-graph_point {
+	display:inline-block;
+}
+#profile-nav .active .spi-work, #profile-nav li:hover .spi-work,
+#profile-nav .active .spi-love, #profile-nav li:hover .spi-love,
+#profile-nav .active .spi-user, #profile-nav li:hover .spi-user,
+#profile-nav .active .spi-work, #profile-nav li:hover .spi-graph {
+	display:none;
+}
+
+
 @media (max-width:480px) {
 	#profile-nav .number {
 		display: inline-block;
