@@ -157,11 +157,21 @@ class profile_model extends CI_Model {
             'order_by'  => 'newest', // newest, oldest
             'folder'    => '', // ''면 전체
             'user_id'   => '' // 어느 작가의 콜렉션인지
+            'only_enable'   => true, // enable된 작품만
+            'exclude_deleted'   => true, // deleted 태그된 작품 제외
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
     			$params->{$key} = $value;
     	}
+
+        if($params->only_enable){
+            $this->db->where('works.status', 'enabled');
+        }
+
+        if($params->exclude_deleted){
+            $this->db->where('works.status !=', 'deleted');
+        }
 
     	$this->db
             ->select('works.*, users.*, users.id as user_id')
