@@ -438,7 +438,7 @@ class Auth extends CI_Controller
             $username_useable = $this->users->is_username_available($data['username']);
 
             if(!$username_useable){
-                $data['username'] = $this->session->userdata('username')
+                $data['username'] = $this->session->userdata('username');
                 $data['errors']['username'] = "↑ {$errors['login']}";
             }
 
