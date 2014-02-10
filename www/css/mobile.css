@@ -1653,7 +1653,7 @@ input#mobile-search-field:-moz-placeholder {
 	margin-bottom: 20px;
 }
 
-#mobile-menu-profile p.follows span.conunt {
+#mobile-menu-profile p.follows .conunt {
 	font-weight: 700;
 	margin-left: 1em;
 }
