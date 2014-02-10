@@ -462,6 +462,7 @@ html, body {
 .follow-list .follow-face img {
 	width: 129px;
 	height: 129px;
+	border-radius: 50%;
 }
 .follow-list .follow-face .si {
 	position: absolute;
