@@ -59,7 +59,8 @@ class work_model extends CI_Model {
                 break;
         }
         if($params->from!='all'){
-            $this->db->having("(works.regdate >= ".$this->db->escape($from)." or works.moddate >= ".$this->db->escape($from).")", NULL, FALSE);
+            $this->db->having("(works.regdate >= ".$this->db->escape($from).")", NULL, FALSE); // 모든 기준이 regdate로 하기 때문에
+            // $this->db->having("(works.regdate >= ".$this->db->escape($from)." or works.moddate >= ".$this->db->escape($from).")", NULL, FALSE);
         }
 
         foreach($params->keywords as $val){
@@ -93,10 +94,10 @@ class work_model extends CI_Model {
                 $this->db->order_by('work_id', 'asc');
             break;
     		case "newest":
-    			$this->db->order_by('moddate', 'desc');
+    			$this->db->order_by('regdate', 'desc');
     		break;
             case "oldest":
-                $this->db->order_by('moddate', 'asc');
+                $this->db->order_by('regdate', 'asc');
             break;
             case "noted":
                 $this->db->order_by('note_cnt', 'desc');
