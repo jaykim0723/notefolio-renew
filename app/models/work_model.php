@@ -28,7 +28,7 @@ class work_model extends CI_Model {
             'folder'    => '', // ''면 전체
             'user_id'   => '', // 프로필 등 특정 작가의 작품만을 조회할 때
             'only_enable'   => false, // enable된 작품만
-            'exclude_enable'   => true, // enable된 작품만
+            'exclude_deleted'   => true, // enable된 작품만
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
@@ -148,8 +148,7 @@ class work_model extends CI_Model {
             $data->status = 'fail';
             return $data;
         }
-        var_export($data);
-        exit();
+        
         return $data;
     }
 
