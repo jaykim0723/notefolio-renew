@@ -299,6 +299,9 @@ html, body {
 	/*background-color: #000;*/
 	/*background-color: rgba(0,0,0,0.5);*/
 }
+#main-list-top {
+	margin-top: 20px;
+}
 .main-thumbnail-list {
 	overflow: hidden;
 	position: relative;
