@@ -91,6 +91,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 }
 ?>
 	<?php if(isset($error)){?>
+<!--
 	<div class="center" id="status">
 		<div class="panel panel-danger">
 			<div class="panel-heading">
@@ -101,6 +102,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 			</div>
 		</div>
 	</div>
+-->
 	<?php } else if(isset($submit_error)){?>
 	<div class="center" id="status">
 		<div class="panel panel-danger">
@@ -124,28 +126,28 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 	<?php echo form_hidden('submit_uuid', $submit_uuid); ?>
 	</div>
 	<?php if ($use_username) { ?>
-	<div class="form-group <?php echo !empty(form_error($username['name'])) ? 'error' : ''?>">
+	<div class="form-group <?php echo isset($errors[$username['name']]) ? 'error' : ''?>">
 		<?php echo form_label('Username', $username['id']); ?>
 		<?php echo form_input($username); ?>
 		<div class="form-error"><?php echo form_error($username['name']); ?></div>
 	</div>
 	<?php } ?>
-	<div class="form-group <?php echo !empty(form_error($email['name'])) ? 'error' : ''?>">
+	<div class="form-group <?php echo isset($errors[$email['name']]) ? 'error' : ''?>">
 		<?php echo form_label('Email Address', $email['id']); ?>
 		<?php echo form_input($email); ?>
 		<div class="form-error"><?php echo form_error($email['name']); ?></div>
 	</div>
-	<div class="form-group <?php echo !empty(form_error($password['name'])) ? 'error' : ''?>">
+	<div class="form-group <?php echo isset($errors[$password['name']]) ? 'error' : ''?>">
 		<?php echo form_label('Password', $password['id']); ?>
 		<?php echo form_password($password); ?>
 		<div class="form-error"><?php echo form_error($password['name']); ?></div>
 	</div>
-	<div class="form-group <?php echo !empty(form_error($confirm_password['name'])) ? 'error' : ''?>">
+	<div class="form-group <?php echo isset($errors[$confirm_password['name']]) ? 'error' : ''?>">
 		<?php echo form_label('Confirm Password', $confirm_password['id']); ?>
 		<?php echo form_password($confirm_password); ?>
 		<div class="form-error"><?php echo form_error($confirm_password['name']); ?></div>
 	</div>
-	<div class="form-group <?php echo !empty(form_error('gender')) ? 'error' : ''?>">
+	<div class="form-group <?php echo isset($errors['gender']) ? 'error' : ''?>">
 		<label>성별</label><br/>
 		<label class="radio-inline">
 			<input type='radio' name='gender' value='f' <?=$gender['f']?> /> 여
@@ -156,7 +158,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		<div class="form-error"><?php echo form_error('gender'); ?></div>
 	</div>
 
-	<div class="form-group <?php echo !empty(form_error('year'))&&!empty(form_error('month'))&&!empty(form_error('day')) ? 'error' : ''?>">
+	<div class="form-group <?php echo isset($errors['year'])&&isset($errors['month'])&&isset($errors['day']) ? 'error' : ''?>">
 		<label>생년월일</label>
 		<div id='birth_field'>
 			<select name='year' class='no-jquery'>
