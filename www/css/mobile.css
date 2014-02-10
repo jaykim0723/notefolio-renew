@@ -300,6 +300,12 @@ html, body {
 	/*background-color: rgba(0,0,0,0.5);*/
 }
 
+@media (max-width: 767px){
+	.videoicon {
+		display:none !important;
+	}
+}
+
 @media (max-width: 991px){
 	#main-list-top {
 		margin-top: 20px;
