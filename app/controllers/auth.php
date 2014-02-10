@@ -492,7 +492,7 @@ class Auth extends CI_Controller
 
         $allowed_user_key = array(
                 'id',
-                //'username',
+                'username',
                 'realname',
                 'email',
                 'gender',

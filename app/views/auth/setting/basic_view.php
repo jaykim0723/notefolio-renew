@@ -3,7 +3,7 @@
 
 	<div class="form-group">
 		<label>URL</label>
-		<p><?=$this->input->server('BASE_PATH')?>
+		<p><?=$this->input->server('BASE_PATH')?></p>
 		<input class="form-control" type='text' id='username' name='username' value="<?php echo $username?>" minlength='3' maxlength='20' rel='tooltip' title="실명을 권장합니다."/>
 	</div>
 	<div class="form-group">
