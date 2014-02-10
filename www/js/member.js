@@ -466,6 +466,8 @@ var workUtil = {
 							textSrc	= textSrc.replace('www.youtube.com/watch?v=', 'www.youtube.com/embed/');
 						}else if(textSrc.indexOf('youtu.be/')!=-1){
 							textSrc	= textSrc.replace('youtu.be/', 'www.youtube.com/embed/');
+						}else if(textSrc.indexOf('//vimeo.com/')!=-1){
+							textSrc = textSrc.replace('//vimeo.com/', '//player.vimeo.com/video/');
 						}
 						textSrc = '<iframe src="'+textSrc+'"></iframe>';
 					}
