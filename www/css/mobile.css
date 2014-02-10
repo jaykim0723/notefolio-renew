@@ -1404,6 +1404,7 @@ p.desc {
 }
 #profile-nav .text {
 	line-height: 180%;
+	padding-right: 5px;
 }
 #profile-nav .active .spi-work_point, #profile-nav li:hover .spi-work_point,
 #profile-nav .active .spi-love_point, #profile-nav li:hover .spi-love_point,
@@ -1622,6 +1623,7 @@ input#mobile-search-field:-moz-placeholder {
 #about-container {
 	background: #fff;
 	padding: 30px;
+	margin-top: 20px;
 }
 #about-cont {
 	min-height: 400px;
