@@ -191,7 +191,7 @@ html {
 	display:none;
 }
 
-.thumbbox:hover .videoicon, .thumbbox .spi-video_white.y {
+.thumbbox:hover .videoicon.y, .thumbbox .spi-video_white.y {
 	display:inline-block !important;
 }
 
