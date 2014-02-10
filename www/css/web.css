@@ -183,12 +183,7 @@ html {
 	display:none;
 }
 
-.thumbbox .spi-video_white.y {
-	display: block;
-	position: absolute;
-	left: 19px;
-	top: 13px;
-}
+
 
 .thumbbox:hover .videoicon {
 	display:inline-block !important;
