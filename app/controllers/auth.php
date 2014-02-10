@@ -155,7 +155,7 @@ class Auth extends CI_Controller
                     :redirect($go_to);
 
         } else {
-            $auth_error = $this->tank_auth->get_error_message();
+            $data['auth_error'] = $this->tank_auth->get_error_message();
             $errors = $this->tank_auth->get_error_message();
             if (isset($errors['banned'])) {                             
             // banned user
