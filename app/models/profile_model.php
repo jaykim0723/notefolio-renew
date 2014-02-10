@@ -27,18 +27,6 @@ class profile_model extends CI_Model {
                 'msg' => 'please_log_in'
             );
         }
-        else if($this->session->userdata('realname')!=$realname){
-            $this->load->model('tank_auth/users');
-            $is_useable = $this->users->is_realname_available($realname);
-
-            if(!$is_useable){
-                return (object)array(
-                    'status' => 'fail',
-                    'msg' => 'cannot_use'
-                );
-            }
-
-        }
 
         $this->db->trans_start();
         $this->db
