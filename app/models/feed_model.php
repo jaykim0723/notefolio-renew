@@ -83,7 +83,7 @@ class feed_model extends CI_Model {
             $this->db->join($table, 'user_feeds.ref_id='.$table.'.work_id', 'left');
             unset($table, $fields, $field);
             $table = "users";
-            $fields = array('id as user_id', 'username as user_username', 'realname as user_realname', 'modified as user_modified');
+            $fields = array('id as work_user_id', 'username as user_username', 'realname as user_realname', 'modified as user_modified');
             foreach($fields as $field){
                 $this->db->select($table.'.'.$field);
             }
@@ -118,7 +118,7 @@ class feed_model extends CI_Model {
             else if($params->type=='work'){
                 $obj->data = (object)array(
                     'user' => (object)array(
-                        'username' => $row->user_username,
+                        'username' => $row->work_user_username,
                         'realname' => $row->user_realname,
                         'modified' => $row->user_modified,
                         ),
