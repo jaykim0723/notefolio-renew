@@ -484,10 +484,6 @@ class activity extends CI_Controller {
                 set nofol_rank = nofol_rank + {$params->point_get} 
                 where work_id = {$params->ref_id};
                 ");
-            echo "UPDATE works 
-                set nofol_rank = nofol_rank + {$params->point_get} 
-                where work_id = {$params->ref_id};
-                ";
         }
         echo '!';
 
