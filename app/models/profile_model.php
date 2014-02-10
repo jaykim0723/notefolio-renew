@@ -156,7 +156,7 @@ class profile_model extends CI_Model {
             'delimiter' => 12, // 한 페이지당 작품 수
             'order_by'  => 'newest', // newest, oldest
             'folder'    => '', // ''면 전체
-            'user_id'   => '' // 어느 작가의 콜렉션인지
+            'user_id'   => '', // 어느 작가의 콜렉션인지
             'only_enable'   => true, // enable된 작품만
             'exclude_deleted'   => true, // deleted 태그된 작품 제외
     	);
