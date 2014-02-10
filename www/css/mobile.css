@@ -454,6 +454,10 @@ html, body {
 .follow-list .follow-center {
 	margin-left: 120px;
 }
+.follow-center .spi {
+	margin-right: 5px;
+	margin-top: -3px;
+}
 .follow-list .follow-center a {
 	color: #aaa;
 	font-weight: 300;
