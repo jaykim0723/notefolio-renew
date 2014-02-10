@@ -917,6 +917,11 @@ html, body {
 	border-top: 1px solid #eee;
 	padding: 10px 0;
 }
+.comment-block .btn-reply-comment {
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+}
 .comment-inner .dropdown-menu li {
 	float: left;
 }

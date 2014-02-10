@@ -1,13 +1,13 @@
 <div id="comment-<?php echo $row->comment_id ?>" data-id="<?php echo $row->comment_id ?>" class="comment-block">
+			<?php if (USER_ID!=0): ?>
+			<a href="javascript:;" class="btn btn-nofol btn-no-border btn-reply-comment"><i class="spi spi-reply">reply</i></a>
+			<?php endif ?>
 
 	<div class="comment-inner">
 		<div class="comment-control-area">
 			<?php if (USER_ID!=0 && $row->user->user_id==USER_ID): ?>
 			<a href="javascript:;" class="btn btn-nofol btn-no-border btn-update-comment"><i class="spi spi-edit">edit</i></a>
 			<a href="javascript:;" class="btn btn-nofol btn-no-border btn-delete-comment"><i class="spi spi-delete">delete</i></a>
-			<?php endif ?>
-			<?php if (USER_ID!=0): ?>
-			<a href="javascript:;" class="btn btn-nofol btn-no-border btn-reply-comment"><i class="spi spi-reply">reply</i></a>
 			<?php endif ?>
 		</div>
 		<div class="comment-control-area-mobile visible-xs visible-sm">
