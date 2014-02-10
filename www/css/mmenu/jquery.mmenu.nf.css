@@ -261,7 +261,7 @@ html.mm-blocking #mm-blocker {
     right: 16px; }
 
 html.mm-opened .mm-page {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); }
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
 
 .mm-ismenu {
   background: #45B8CC; }
