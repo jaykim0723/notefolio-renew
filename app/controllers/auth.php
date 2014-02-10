@@ -651,9 +651,7 @@ class Auth extends CI_Controller
                 if ($this->form_validation->error_string()!='') {
 
                     $data['error'] = var_export($this->form_validation->error_string(), true);
-                    $errors = $this->form_validation->error_string();
-                    foreach ($errors as $k => $v)
-                        $data['errors'][$k] = $v;
+                    $data['errors'] = $this->form_validation->error_array();
                     //exit(json_encode(array_merge(array('status'=>'error', 'goStep'=>$error_stage), $error_data)));
                 }
 
