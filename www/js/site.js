@@ -1,3 +1,7 @@
+jQuery.ajaxSetup({   
+    'cache' : false
+});
+
 var msg = {
 	open : function(msg, type, tObj, doFocus){
 		if(typeof type=='undefined')

@@ -1553,6 +1553,13 @@ p.desc {
 	margin: 10px;
 	vertical-align:bottom;	
 }
+.profile-thumbnail-list .thumbbox a {
+	color: #888;
+	text-decoration: none;
+}
+.profile-thumbnail-list .thumbbox a img {
+	display: block;
+}
 .profile-thumbnail-list .thumbbox.disabled {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);

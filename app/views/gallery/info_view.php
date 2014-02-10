@@ -156,7 +156,9 @@
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="work-tags">
+										<?php if (!empty($row->tags)): ?>
 										<i class="spi spi-tag" style="margin-top: -3px;"></i>
+										<?php endif ?>
 										<?php 
 										foreach($row->tags as $key=>$val){
 											echo ($key>0)?', ':'';
