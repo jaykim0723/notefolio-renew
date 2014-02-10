@@ -20,7 +20,7 @@
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
 					<?php print_r($row); ?>
-					<?php $this->load->view('gallery/thumbnail_inc_view', array('row'=>$row)) ?>
+					<?php $this->load->view('gallery/thumbnail_inc_view', array('row'=>$row->data)) ?>
 					<?php endforeach ?>
 
 				</ul>
