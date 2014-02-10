@@ -455,11 +455,20 @@ var workUtil = {
 				}
 			});
 			$(sendTo).on('mouseenter', '.block-video', function(event){
-				$(this).find('.block-video-overlay').show().find('textarea').val('<iframe src="'+$(this).find('iframe').attr('src').replace('?wmode=transparent', '')+'"></iframe>');
+				$o = $(this).find('.block-video-overlay').show().find('textarea').val('<iframe src="'+$(this).find('iframe').attr('src').replace('?wmode=transparent', '')+'"></iframe>');
+				$o.focus().select();
 			}).on('change mouseleave', '.block-video', function(event){
 				var videoSrc = $(this).find('iframe').attr('src').replace('?wmode=transparent', '');
 				var textSrc = $(this).find('.block-video-overlay').hide().find('textarea').val();
 				if(textSrc.indexOf(videoSrc)==-1){
+					if(textSrc.indexOf('iframe')==-1){
+						if(textSrc.indexOf('www.youtube.com/watch')!=-1){
+							textSrc	= textSrc.replace('www.youtube.com/watch?v=', 'www.youtube.com/embed/');
+						}else if(textSrc.indexOf('youtu.be/')!=-1){
+							textSrc	= textSrc.replace('youtu.be/', 'www.youtube.com/embed/');
+						}
+						textSrc = '<iframe src="'+textSrc+'"></iframe>';
+					}
 					$(this).find('iframe').prop('src', $(textSrc).attr('src')+'?wmode=transparent');
 					workUtil.discoverbility();
 				}
@@ -820,7 +829,7 @@ var profileUtil = {
 			        		if(responseJSON.status=='done'){
 				        		$('#profile-info > h2').text(value);
 				        		dialog.close();
-				        		BootstrapDialog.alert('이름 변경이 완료되었습니다. 정상적인 사용을 위해 새로고침을 하겠습니다.', function(){
+				        		BootstrapDialog.alert('작가명 설정이 완료되었습니다. 정상적인 사용을 위해 새로고침을 하겠습니다.', function(){
 						            blockPage.block();
 						            site.redirect('/'+site.username);
 						        });
@@ -875,16 +884,19 @@ var profileUtil = {
 			        		if($(this).is(':checked'))
 			        			value += $(this).val();
 			        	});
-			        	// if(value.length < 3){
-			        	// 	msg.open('최소한 3글자 이상을 입력하셔야 합니다.');
-			        	// 	return false;
-			        	// }
+			        	if(value.length < 2 || value.length > 6){
+			        		msg.open('1~3개를 하나 이상을 입력하셔야 합니다.');
+			        		return false;
+			        	}
 			        	$.post('/profile/change_keywords', {
 			        		keywords : value
 			        	}, 'json').done(function(responseJSON){
 			        		if(responseJSON.status=='done'){
 				        		$('#profile-keywords').data('value', value).html('&nbsp;'+responseJSON.keywords_string);
 				        		dialog.close();
+				        		if(typeof firstTimeHelper!='undefined'){
+				        			profileUtil.changeRealname();
+				        		}
 			        		}else{
 			        			msg.open(responseJSON.msg, 'error');
 			        		}

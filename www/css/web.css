@@ -152,6 +152,16 @@ html {
 .thumbbox:hover .main-work-title {
 	bottom:0px;
 }
+.thumbbox .main-work-title .work-title-char {
+	display: block;
+     white-space:nowrap;
+     text-overflow:ellipsis;          /* IE, Safari */
+     -o-text-overflow: ellipsis;     /* Opera under 10.7 */
+     overflow:hidden;               /* "overflow" value must be different from "visible" */
+     -moz-binding: url('ellipsis.xml#ellipsis');
+		text-overflow:ellipsis;
+		margin-top: 4px;
+}
 .main-work-face {
 	display: block;
 	position: relative;

@@ -1455,10 +1455,10 @@ p.desc {
 	}
 }
 #dialog-change-realname .modal-dialog {
-    max-width: 320px;
+    max-width: 300px;
 }
 #dialog-change-keywords .modal-dialog {
-    max-width: 320px;
+    max-width: 300px;
 }
 #dialog-change-keywords label {
 	display: block;

@@ -157,7 +157,24 @@
 	if($this->session->flashdata('welcome_newmember')){
 ?>
 <script type="text/javascript">
-	alert('whooing?');
+	var firstTimeHelper = new BootstrapDialog({
+        message: function(dialogRef){
+            var $message = $('<div><h4>안녕하세요. 노트폴리오에 가입해 주셔서 감사드립니다.</h4>원활한 사용을 위하여 개인정보 설정을 하여주십시오.</div>');
+            var $button = $('<button style="margin-top:30px;" class="btn btn-primary btn-lg btn-block">계속 진행</button>');
+            $button.on('click', {dialogRef: dialogRef}, function(event){
+                event.data.dialogRef.close();
+                profileUtil.changeKeywords();
+            });
+            $message.append($button);
+    
+            return $message;
+        },
+        closable: false
+    });
+    firstTimeHelper.realize();
+    firstTimeHelper.getModalHeader().hide();
+    firstTimeHelper.getModalFooter().hide();
+    firstTimeHelper.open();	
 </script>
 <?php
 	}

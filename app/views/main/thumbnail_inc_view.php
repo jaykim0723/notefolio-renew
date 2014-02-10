@@ -18,7 +18,7 @@ $wide = in_array($row->key, array(4,11));
 					<i class="si si-face-small"></i>
 				</span>
 			</span>
-			<span style="line-height:240%"><?php echo $row->title; ?></span>
+			<span class="work-title-char"><?php echo $row->title; ?></span>
 		</span>
 	</a>
 </li>
