@@ -497,7 +497,7 @@ html, body {
 	}
 }
 
-@media (max-width: 666px) {
+@media (max-width: 680px) {
 	.follow-recent-works a:first-child {
 		display: none;
 	}
