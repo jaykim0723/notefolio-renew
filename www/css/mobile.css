@@ -299,8 +299,8 @@ html, body {
 }
 
 @media (max-width: 767px){
-	.videoicon {
-		display:none;
+	.videoicon, .pi-videoy.n {
+		display:none !important;
 	}
 	.pi-videoy.y {
 		display: inline-block !important;
