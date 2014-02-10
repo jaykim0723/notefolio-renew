@@ -300,7 +300,7 @@ html, body {
 
 @media (max-width: 767px){
 	.videoicon {
-		display:none !important;
+		display:none;
 	}
 	.pi-videoy.y {
 		display: inline-block !important;
