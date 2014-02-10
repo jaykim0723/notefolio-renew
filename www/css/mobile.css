@@ -1267,7 +1267,14 @@ p.desc {
 	.promenu {
 		background:#fff;
 	}
+	#profile-nav li {
+		width: 24%;
+	}
+	.item3 li {
+		width: 32% !important;
+	}
 }
+
 
 @media (min-width: 768px) {
 	.fol {
