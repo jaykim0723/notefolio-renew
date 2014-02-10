@@ -27,9 +27,9 @@
  			'update'			=> 0,
  			'delete'			=> 0,
 
- 			'view'				=> 0,
- 			'comment'			=> 0,
- 			'note'				=> 0,
- 			'collect'			=> 0,
+ 			'view'				=> 0.5,
+ 			'comment'			=> 0.5,
+ 			'note'				=> 1.5,
+ 			'collect'			=> 2,
  		),
  	);
