@@ -302,7 +302,7 @@ html, body {
 	.videoicon {
 		display:none !important;
 	}
-	.thumbbox:hover .pi-videoy {
+	.pi-videoy {
 		display: inline-block !important;
 	}
 }
