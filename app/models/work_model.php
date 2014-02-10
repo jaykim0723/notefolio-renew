@@ -28,6 +28,7 @@ class work_model extends CI_Model {
             'folder'    => '', // ''면 전체
             'user_id'   => '', // 프로필 등 특정 작가의 작품만을 조회할 때
             'only_enable'   => false, // enable된 작품만
+            'exclude_enable'   => true, // enable된 작품만
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
@@ -36,6 +37,10 @@ class work_model extends CI_Model {
 
         if($params->only_enable){
             $this->db->where('works.status', 'enabled');
+        }
+
+        if($params->exclude_deleted){
+            $this->db->where('works.status', 'deleted');
         }
 
         switch($params->from){
@@ -62,7 +67,7 @@ class work_model extends CI_Model {
         }
 
         if(!empty($params->q)){
-            $this->db->where('MATCH (works.title, works.tags) AGAINST ('.$this->db->escape($params->q).')', NULL, FALSE);
+            $this->db->where('MATCH (works.title, works.tags) AGAINST ('.$this->db->escape($params->q).') or MATCH (users.username, users.realname) AGAINST ('.$this->db->escape($params->q).')', NULL, FALSE);
         }
 
     	$this->db
@@ -354,7 +359,8 @@ class work_model extends CI_Model {
             $this->db->flush_cache(); //clear active record
             
             $this->db->trans_start();
-            $this->db->where('work_id', $work_id)->delete('works'); 
+            //$this->db->where('work_id', $work_id)->delete('works'); //delete
+            $this->db->where('work_id', $work_id)->set('status', 'deleted')->update('works'); //mark
             $this->db->trans_complete();
 
             if($this->db->trans_status()){
