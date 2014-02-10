@@ -1222,6 +1222,7 @@ p.desc {
 @media (min-width: 768px) {
 	.fol {
 		margin-top:7px;
+		margin-right: 16px;
 	}
 }
 
