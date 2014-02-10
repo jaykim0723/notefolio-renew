@@ -1,7 +1,11 @@
 <li class="thumbbox infinite-item">
 	<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>">
 		<img src="/data/covers/<?=($row->work_id)?>_t2.jpg"/>
-		<i class="spi spi-video_white <?php echo $row->is_video ?>">video_white</i>
+
+		<span class="videoicon <?php echo $row->is_video ?>">
+			<i class="spi spi-video_white <?php echo $row->is_video ?>"></i>video
+			<em class="pi pi-videoy">videoy</em>
+		</span>
 		<span class="main-work-title">
 			<span class="pull-right">
 				<!-- <span class="pull-right ellipsis" style="margin-top: 6px;margin-left: 5px;"><?php echo $row->user->realname; ?></span> -->
