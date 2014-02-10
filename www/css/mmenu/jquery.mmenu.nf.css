@@ -151,8 +151,8 @@ html.mm-blocking #mm-blocker {
     white-space: nowrap;
     overflow: hidden;
     color: inherit;
-    font-size: 1.4em;
-    font-weight: normal;
+    font-size: 1.2em;
+    font-weight: 300;
     line-height: 2em;
     display: block;
     padding: 10px 10px 10px 10px;
