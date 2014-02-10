@@ -30,11 +30,11 @@ class Gallery extends CI_Controller {
                 $this->input->get_post('q'):'';
         $order = ($this->input->get_post('order'))?
                 $this->input->get_post('order'):'newest';
-        error_log(var_export($work_categories, true));
+
         $work_list = $this->work_model->get_list(array(
             'page' => $page,
             'only_enable'=> true,
-            'keyword' => $work_categories,
+            'keywords' => $work_categories,
             'order_by' => $order,
             'from' => $from,
             'q' => $q,
