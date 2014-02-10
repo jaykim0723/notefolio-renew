@@ -29,14 +29,14 @@ class profile_model extends CI_Model {
         }
         else if($this->session->userdata('realname')!=$realname){
             $this->load->model('tank_auth/users');
-            $is_useable = $this->users->is_realname_available($realname);
+            // $is_useable = $this->users->is_realname_available($realname);
 
-            if(!$is_useable){
-                return (object)array(
-                    'status' => 'fail',
-                    'msg' => 'cannot_use'
-                );
-            }
+            // if(!$is_useable){
+            //     return (object)array(
+            //         'status' => 'fail',
+            //         'msg' => 'cannot_use'
+            //     );
+            // }
 
         }
 
