@@ -1202,6 +1202,12 @@ p.desc {
 	}
 }
 
+@media (min-width: 768px) {
+	.fol {
+		margin-top:7px;
+	}
+}
+
 #profile-header #btn-edit-cover {
 	position: absolute;
 	top: 10px;
