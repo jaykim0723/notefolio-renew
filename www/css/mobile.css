@@ -1659,6 +1659,11 @@ input#mobile-search-field:-moz-placeholder {
 	border-color: #e1e1e1;
 	border-radius: 5px;
 }
+#statistics-chart-area .open .btn-smallgray {
+	color: #333;
+	background-color: #fff;
+	border-color: #fff !important;
+}
 
 #statistics-chart-area .row {
 	margin-bottom: 10px;
