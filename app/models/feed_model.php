@@ -80,7 +80,7 @@ class feed_model extends CI_Model {
             foreach($fields as $field){
                 $this->db->select($table.'.'.$field);
             }
-            $this->db->join($table, 'user_feeds.ref_id='.$table.'.work_id', 'left');
+            $this->db->join($table, 'log_activity.ref_id='.$table.'.work_id', 'left');
             unset($table, $fields, $field);
             $table = "users";
             $fields = array('id as work_user_id', 'username as work_user_username', 'realname as work_user_realname', 'modified as work_user_modified');
