@@ -441,6 +441,7 @@ html, body {
 	display: block;
 	position: relative;
 	float: left;
+	margin: 15px 20px;
 }
 .follow-list .follow-face img {
 	width: 129px;
