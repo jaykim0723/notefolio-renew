@@ -121,6 +121,11 @@ html.mm-blocking #mm-blocker {
   .mm-panel > .mm-list:first-child {
     padding-top: 0; }
 
+#mobile-menu-profile {
+  padding-top: 10px;
+}
+
+
 .mm-list,
 .mm-list > li {
   list-style: none;
@@ -150,7 +155,7 @@ html.mm-blocking #mm-blocker {
     font-weight: normal;
     line-height: 2em;
     display: block;
-    padding: 20px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
     margin: 0; }
     .mm-list > li > a > i {
       margin: 0 0.3em;
