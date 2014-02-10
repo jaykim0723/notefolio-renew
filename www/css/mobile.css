@@ -482,7 +482,7 @@ html, body {
 }
 
 
-@media (min-width: 768px)and(max-width: 991px) {
+@media (max-width: 991px) {
 	.follow-center .btn-follow {
 		margin-top:-5px;
 	}
