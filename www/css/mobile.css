@@ -1397,6 +1397,14 @@ p.desc {
 #profile-nav .number {
 	display: none;
 } 
+#profile-nav .spi {
+	margin-left: 5px;
+	margin-right: 6px;
+	margin-top: -3px;
+}
+#profile-nav .text {
+	line-height: 180%;
+}
 @media (max-width:480px) {
 	#profile-nav .number {
 		display: inline-block;
