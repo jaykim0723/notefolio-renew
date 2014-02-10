@@ -433,12 +433,12 @@ class Auth extends CI_Controller
     function _setting_put($data=array()){
 
         //-- username
-        if($this->session->userdata('username')!=$data['username']){
+        if($this->session->userdata('username')!=$data['form']['username']){
             $this->load->model('tank_auth/users');
-            $username_useable = $this->users->is_username_available($data['username']);
+            $username_useable = $this->users->is_username_available($data['form']['username']);
 
             if(!$username_useable){
-                $data['username'] = $this->session->userdata('username');
+                $data['form']['username'] = $this->session->userdata('username');
                 $data['errors']['username'] = "↑ {$errors['login']}";
             }
 
@@ -497,14 +497,14 @@ class Auth extends CI_Controller
             $this->load->config('upload', TRUE); //load upload config file
             
             $old_file = $this->config->item('profile_upload_path', 'upload').$this->session->userdata('username');
-            $new_file = $this->config->item('profile_upload_path', 'upload').$data['username'];
+            $new_file = $this->config->item('profile_upload_path', 'upload').$data['form']['username'];
             foreach(array( '_face.jpg', '_bg.jpg' ) as $file_tail){
                 if(file_exists($old_file.$file_tail)){
                     rename($old_file.$file_tail, $new_file.$file_tail);
                 }
             }   
 
-            $this->session->set_userdata('username', $data['username']); //change session username 
+            $this->session->set_userdata('username', $data['form']['username']); //change session username 
         }
         //-- end
 
