@@ -14,11 +14,6 @@
 			<div id="feed-list-wrapper" class="col-md-9 col-sm-12 col-xs-12">
 <?php endif ?>
 
-
-					<pre>
-					<?=var_export($rows,true) ?>
-					</pre>
-
 				<ul id="feed-list" class="thumbnail-list infinite-list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
