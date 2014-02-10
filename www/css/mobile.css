@@ -1428,8 +1428,8 @@ p.desc {
 	}
 }
 
-@media (max-width: 991px) {
-	
+@media (min-width: 768px)and(max-width: 991px) {
+
 	#profile-nav .active .spi-work_point, #profile-nav li:hover .spi-work_point,
 	#profile-nav .active .spi-love_point, #profile-nav li:hover .spi-love_point,
 	#profile-nav .active .spi-user_point, #profile-nav li:hover .spi-user_point,
