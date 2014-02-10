@@ -293,8 +293,8 @@ html, body {
 
 .pi-videoy {
 	position: absolute;
-	top: 10px;
-	left: 15px;
+	top: 5px;
+	left: 8px;
 	display:none;
 }
 
