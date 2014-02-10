@@ -318,8 +318,8 @@ html, body {
 .main-thumbnail-list .thumbbox.wide {
 	width: 66.6666666666%;
 }
-.main-thumbnail-list .thumbbox a,
-.main-thumbnail-list .thumbbox img {
+.main-thumbnail-list .thumbbox a {
+/*.main-thumbnail-list .thumbbox img {*/
 	width: 100%;
 }
 .thumbbox:hover .main-work-info {
