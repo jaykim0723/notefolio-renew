@@ -1418,7 +1418,7 @@ p.desc {
 	#profile-nav .active .spi-love_point,
 	#profile-nav .active .spi-user_point,
 	#profile-nav .active .spi-graph_point {
-		display:inline-block;
+		display:inline-block !important;
 	}
 	#profile-nav .active .spi-work, #profile-nav li .spi-work_point,
 	#profile-nav .active .spi-love, #profile-nav li .spi-love_point,
