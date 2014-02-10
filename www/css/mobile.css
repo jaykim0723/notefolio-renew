@@ -1388,6 +1388,12 @@ p.desc {
 #profile-nav li {
 	text-align: center;
 }
+#profile-nav li a {
+	color: #7a7880;
+}
+#profile-nav li a:hover {
+	color: #2ac5c6;
+}
 #profile-nav .number {
 	display: none;
 } 
@@ -1402,7 +1408,9 @@ p.desc {
 		width: 24%;
 	}
 }
-
+#profile_nav_followings a:hover{
+	color:#2ac5c6;
+}
 
 .profile-thumbnail-list {
 	text-align: center;
