@@ -22,17 +22,19 @@ class Feed extends CI_Controller {
 			'user_id' => USER_ID
 		));
 		// 첫페이지 출력을 위하여 이곳에서 불러들이기
-		$feed_list->activity = 	$this->alarm_model->get_list(array(
+		$feed_list->activity = 	$this->feed_model->get_list(array(
 			'page' => $page,
-			'user_id' => USER_ID
+			'user_id' => USER_ID,
+			'type' => 'work'
 		));
 
 		$this->layout->set_view('feed/listing_view', $feed_list)->render();
 	}
 	function activity_listing($page=1){
-		$feed_activity_list = $this->alarm_model->get_list(array(
+		$feed_activity_list = $this->feed_model->get_list(array(
 			'page' => $page,
-			'user_id' => USER_ID
+			'user_id' => USER_ID,
+			'type' => 'activity'
 		));
 		$this->layout->set_view('feed/activity_listing_view', $feed_activity_list)->render();
 	}

@@ -17,7 +17,8 @@ class feed_model extends CI_Model {
     		'page' => 1,
             'delimiter' => 20, // 한 페이지당 작품 수
             'order_by'  => 'newest', // newest, oldest
-            'user_id' => '' // 필수정보(누구의 피드인지)
+            'user_id' => '', // 필수정보(누구의 피드인지)
+            'type' => 'all' //type
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
@@ -64,16 +65,43 @@ class feed_model extends CI_Model {
         unset($table, $fields, $field);
         //-- end
 
+        //-- type:activity
+        if($params->type=='activity'){
+            $this->db->where_in('type', array('collect', 'comment', 'note'));
+        }
+        //-- end
+
+        //-- type:work
+        if($params->type=='work'){
+            $this->db->where_in('type', array('enabled'));
+
+            $table = "works";
+            $fields = array('work_id', 'title', 'is_video');
+            foreach($fields as $field){
+                $this->db->select($table.'.'.$field);
+            }
+            $this->db->join($table, 'user_feeds.ref_id='.$table.'.work_id', 'left');
+            unset($table, $fields, $field);
+            $table = "users";
+            $fields = array('id as user_id', 'username as user_username', 'realname as user_realname', 'modified as user_modified');
+            foreach($fields as $field){
+                $this->db->select($table.'.'.$field);
+            }
+            $this->db->join($table, 'works.work_id='.$table.'.id', 'left');
+            unset($table, $fields, $field);
+        }
+        //-- end
+
         $query = $this->db
-            //->where('user_feeds.user_id', $params->user_id)
-        ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter))
+            ->where('user_feeds.user_id', $params->user_id)
+            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter))
             ->get('user_feeds');
 
         $rows = array();
         foreach($query->result() as $row){
             $info = unserialize($row->data);
 
-            $rows[] = (object)array(
+            $obj = (object)array(
                 'regdate' => $row->regdate,
                 'readdate' => $row->readdate,
                 'area' => $row->area,
@@ -82,6 +110,17 @@ class feed_model extends CI_Model {
                 'message' => $row->data,
                 'info' => $info
             );
+
+            if($params->type=='activity'){
+
+            }
+            //-- end
+
+            //-- type:work
+            if($params->type=='work'){
+            }
+
+            $rows[] = $obj;
         }
         $data = (object)array(
             'status' => 'done',
