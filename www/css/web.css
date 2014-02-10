@@ -823,3 +823,17 @@ textarea.comment-textarea {
 	display:inline-block !important;
 }
 
+
+/*follow*/
+
+
+.follow-list .follow-face {
+	margin: 15px 20px;
+}
+.follow-list .follow-recent-works {
+	float: right;
+	margin: 30px 20px;
+}
+
+
+

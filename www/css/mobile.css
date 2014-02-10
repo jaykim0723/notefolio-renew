@@ -454,6 +454,18 @@ html, body {
 .follow-list .follow-center {
 	margin-left: 120px;
 }
+.follow-list .follow-center a {
+	color: #7a7880;
+	font-weight: 300;
+}
+.follow-list .follow-center h3 a {
+	font-size: 18px;
+}
+.follow-list .follow-center p {
+	font-family: 'NanumGothic', Dotum;
+	font-size: 12px;
+	color: #aaa;
+}
 .follow-list .btn.activated {
 	background: #2ac5c6;
 	color: #fff;
