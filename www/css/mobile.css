@@ -712,7 +712,7 @@ html, body {
 	visibility: visible;
 }
 .add-collection.collected .collect-collected {
-	display: block;
+	/*display: block;*/
 }
 .add-collection.collected .collect-question {
 	display: none;
