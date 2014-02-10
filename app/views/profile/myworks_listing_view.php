@@ -1,6 +1,6 @@
 <?php if (!$this->input->is_ajax_request()): ?> 
 
-<section class="listing" style="padding-top:20px;">
+<section class="listing" style="margin-top:20px;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
