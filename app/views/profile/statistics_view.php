@@ -23,7 +23,7 @@
 					</div>
 					<div class="col-sm-6" id="statistics-toolbars">
 						<div class="btn-group pull-right">
-							<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+							<button type="button" class="btn btn-default btn-sm dropdown-toggle btn-smallgray" data-toggle="dropdown">
 								<span id="statistics-period">기간설정</span> <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
@@ -36,7 +36,7 @@
 							</ul>
 						</div>
 						<div class="btn-group pull-right">
-							<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+							<button type="button" class="btn btn-default btn-sm dropdown-toggle btn-smallgray" data-toggle="dropdown">
 								<span id="statistics-type">기간내 조회수 변동</span> <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
