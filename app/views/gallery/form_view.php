@@ -104,7 +104,7 @@
 				
 				<h4>공개여부</h4>
 				<div class="control-group">
-                    <label class="notefolio-radio inline<?if($row->status=='enabled'){?> checked<?}?>">
+                    <label class="notefolio-radio inline<?if($row->status!='disabled'){?> checked<?}?>">
                         <input type="radio" name="status" value="enabled" <?if($row->status=='enabled'){?> checked<?}?>> 공개
                     </label>
                     &nbsp; &nbsp; &nbsp;
