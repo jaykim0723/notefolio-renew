@@ -23,7 +23,7 @@
 									</span>
 									<span class="hot-center">
 										<span class="hot-username">
-											<?php echo $row->username; ?>
+											<?php echo $row->realname; ?>
 										</span>
 										<span class="hot-keywords">
 											<?php echo $this->nf->category_to_string($row->user_keywords); ?>

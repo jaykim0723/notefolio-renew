@@ -61,7 +61,7 @@
 							<img src="/data/profiles/<?php echo $this->session->userdata('username') ?>_face.jpg" alt=""/>
 							<i class="si si-face-medium"></i>
 						</div>
-						<span><?php echo $this->session->userdata('username'); ?></span>
+						<span><?php echo $this->session->userdata('realname'); ?></span>
 					</a>
 				<?php endif ?>
 			</div>

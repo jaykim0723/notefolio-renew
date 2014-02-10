@@ -194,26 +194,26 @@ class Profile extends CI_Controller {
 	 * 사용자의 사용자명을 변경하는 것
 	 * @return [type] [description]
 	 */
-	function change_username(){
-		$username = $this->input->post('username'); 
+	function change_realname(){
+		$realname = $this->input->post('realname'); 
 
-		$json = $this->profile_model->set_change_username(USER_ID, $username);
+		$json = $this->profile_model->set_change_realname(USER_ID, $realname);
 		if($json->status=='done'){
 			$this->load->config('upload', TRUE); //load upload config file
 			
-			$old_file = $this->config->item('profile_upload_path', 'upload').$this->session->userdata('username');
-			$new_file = $this->config->item('profile_upload_path', 'upload').$username;
+			$old_file = $this->config->item('profile_upload_path', 'upload').$this->session->userdata('realname');
+			$new_file = $this->config->item('profile_upload_path', 'upload').$realname;
 			foreach(array( '_face.jpg', '_bg.jpg' ) as $file_tail){
 				if(file_exists($old_file.$file_tail)){
 					rename($old_file.$file_tail, $new_file.$file_tail);
 				}
 			}	
 
-			$this->session->set_userdata('username', $username); //change session username
-			$json->username = $username;	
+			$this->session->set_userdata('realname', $realname); //change session realname
+			$json->realname = $realname;	
 		}
 		else{
-			$json->username = $this->session->userdata('username');
+			$json->realname = $this->session->userdata('realname');
 		}
 		
 		$this->layout->set_json($json)->render();

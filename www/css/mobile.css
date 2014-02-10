@@ -1396,7 +1396,7 @@ p.desc {
 		/*display: none;*/
 	}
 }
-#dialog-change-username .modal-dialog {
+#dialog-change-realname .modal-dialog {
     max-width: 320px;
 }
 #dialog-change-keywords .modal-dialog {

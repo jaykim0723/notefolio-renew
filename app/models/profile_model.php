@@ -20,16 +20,16 @@ class profile_model extends CI_Model {
         return $data;
     }
 
-    function set_change_username($user_id, $username=''){
+    function set_change_realname($user_id, $realname=''){
         if (!$this->tank_auth->is_logged_in()){
             return (object)array(
                 'status' => 'fail',
                 'msg' => 'please_log_in'
             );
         }
-        else if($this->session->userdata('username')!=$username){
+        else if($this->session->userdata('realname')!=$realname){
             $this->load->model('tank_auth/users');
-            $is_useable = $this->users->is_username_available($username);
+            $is_useable = $this->users->is_realname_available($realname);
 
             if(!$is_useable){
                 return (object)array(
@@ -42,7 +42,7 @@ class profile_model extends CI_Model {
 
         $this->db->trans_start();
         $this->db
-            ->set('username', $username)
+            ->set('realname', $realname)
             ->where('id', $user_id)
             ->update('users');
         $this->db->trans_complete();

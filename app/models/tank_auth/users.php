@@ -107,6 +107,21 @@ class Users extends CI_Model
 	}
 
 	/**
+	 * Check if realname available for registering
+	 *
+	 * @param	string
+	 * @return	bool
+	 */
+	function is_realname_available($realname)
+	{
+		$this->db->select('1', FALSE);
+		$this->db->where('LOWER(realname)=', strtolower($realname));
+
+		$query = $this->db->get($this->table_name);
+		return $query->num_rows() == 0;
+	}
+
+	/**
 	 * Check if email available for registering
 	 *
 	 * @param	string

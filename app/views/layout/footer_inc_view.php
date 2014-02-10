@@ -14,7 +14,7 @@
 				<a href="/<?php echo $this->nf->get('user')->username ?>">
 					<img src="/data/profiles/<?php echo $this->nf->get('user')->username ?>_face.jpg?_=<?php echo substr($this->nf->get('user')->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
 				</a>
-				<p class="username"><?php echo $this->nf->get('user')->username ?></p>
+				<p class="username"><?php echo $this->nf->get('user')->realname ?></p>
 				<p class="follows">
 					<span class="count"><?php echo $this->nf->get('user')->following_cnt ?></span>
 					followers 

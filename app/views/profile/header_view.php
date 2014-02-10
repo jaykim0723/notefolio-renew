@@ -35,7 +35,7 @@
 				  <li class="divider"></li>
 				  <li><a id="btn-change-color" href="#3">배경색 설정</a></li>
 				  <li class="divider"></li>
-				  <li><a id="btn-change-username" href="#3">사용자명 설정</a></li>
+				  <li><a id="btn-change-realname" href="#3">작가명 설정</a></li>
 				  <li><a id="btn-change-keywords" href="#3">카테고리 설정</a></li>
 				  <li><a id="btn-change-sns" href="#3">소셜주소 설정</a></li>
 				</ul>
@@ -45,7 +45,7 @@
 				<img src="/data/profiles/<?php echo $row->username ?>_face.jpg?_=<?php echo substr($row->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
 			</div>
 			<div id="profile-info">
-				<h2><?php echo $row->username; ?></h2>
+				<h2><?php echo $row->realname; ?></h2>
 				<h4 id="profile-keywords" data-value="<?php echo $row->user_keywords ?>">&nbsp;<?php echo $this->nf->category_to_string($row->user_keywords, true); ?>&nbsp;</h4>
 			</div>
 

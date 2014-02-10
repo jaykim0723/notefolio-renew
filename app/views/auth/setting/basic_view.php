@@ -2,8 +2,8 @@
 	<legend>기본정보</legend>
 
 	<div class="form-group">
-		<label>이름</label>
-		<input class="form-control" type='text' id='realname' name='realname' value="<?php echo $realname?>" minlength='3' maxlength='20' rel='tooltip' title="실명을 권장합니다."/>
+		<label>URL</label>
+		<input class="form-control" type='text' id='username' name='username' value="<?php echo $username?>" minlength='3' maxlength='20' rel='tooltip' title="실명을 권장합니다."/>
 	</div>
 	<div class="form-group">
 		<label>성별</label><br/>

@@ -792,12 +792,12 @@ var profileUtil = {
 			$('#profile-header').css('background-image', 'url('+responseJSON.src+')');
 		});
 	},
-	changeUsername : function(){
+	changeRealname : function(){
 		var dialog = new BootstrapDialog({
 		    title: '사용자명 변경',
 		    message: function(){
 				var $message = $(
-					'<div id="dialog-change-username">'+
+					'<div id="dialog-change-realname">'+
 						'<label>변경할 사용자명</label><br/>'+
 						'<input type="text" class="form-control" value="'+$('#profile-info > h2').text()+'"/>'+
 					'</div>'
@@ -809,20 +809,20 @@ var profileUtil = {
 			        label: 'Change',
 			        cssClass: 'btn-primary',
 			        action: function(dialog){
-			        	var value = $('#dialog-change-username').find('input').val();
+			        	var value = $('#dialog-change-realname').find('input').val();
 			        	if(value.length < 3){
 			        		msg.open('최소한 3글자 이상을 입력하셔야 합니다.');
 			        		return false;
 			        	}
-			        	$.post('/profile/change_username', {
-			        		username : $.trim(value)
+			        	$.post('/profile/change_realname', {
+			        		realname : $.trim(value)
 			        	}, 'json').done(function(responseJSON){
 			        		if(responseJSON.status=='done'){
 				        		$('#profile-info > h2').text(value);
 				        		dialog.close();
 				        		BootstrapDialog.alert('이름 변경이 완료되었습니다. 정상적인 사용을 위해 새로고침을 하겠습니다.', function(){
 						            blockPage.block();
-						            site.redirect('/'+responseJSON.username);
+						            site.redirect('/'+site.username);
 						        });
 			        		}else{
 			        			msg.open(responseJSON.msg, 'error');
@@ -840,10 +840,10 @@ var profileUtil = {
 		    ]
 		});
 		dialog.realize();
-		dialog.getModal().prop('id', 'dialog-change-username'); // cssClass 버그로 인해서 이 꼼수로..
+		dialog.getModal().prop('id', 'dialog-change-realname'); // cssClass 버그로 인해서 이 꼼수로..
 		dialog.open();
 		setTimeout(function(){
-			$('#dialog-change-username').find('input').focus();
+			$('#dialog-change-realname').find('input').focus();
 		}, 500);
 	},
 	changeKeywords : function(){
@@ -1089,8 +1089,8 @@ var profileUtil = {
 		});
 
 
-		$('#btn-change-username').on('click', function(){
-			profileUtil.changeUsername();
+		$('#btn-change-realname').on('click', function(){
+			profileUtil.changeRealname();
 		});
 		$('#btn-change-keywords').on('click', function(){
 			profileUtil.changeKeywords();

@@ -11,7 +11,7 @@
 		<i class="si si-face-large"></i>
 	</a>
 	<div class="follow-center">
-		<h3><a href="/<?php echo $row->username; ?>"><?php echo $row->username; ?></a></h3>
+		<h3><a href="/<?php echo $row->username; ?>"><?php echo $row->realname; ?></a></h3>
 		<p><?php echo $this->nf->category_to_string($row->user_keywords, true); ?></p>
 		<button data-id="<?php echo $row->user_id ?>" class="btn btn-follow btn-nofol2 btn-hover <?php echo $row->is_follow=='y'?'activated' : '' ?>">
 			<i class="spi spi-following_white"></i>
