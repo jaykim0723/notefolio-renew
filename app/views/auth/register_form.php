@@ -115,39 +115,39 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		</div>
 	</div>
 	<?php }?>
-<?php echo form_open($this->uri->uri_string(), array('role'=>'form')); ?>
+<?=form_open($this->uri->uri_string(), array('role'=>'form')); ?>
 	<div class="form-group">
 	<?php if(isset($fb_num_id)){?>
-		<?php echo form_hidden('fb_num_id', $fb_num_id); ?>
+		<?=form_hidden('fb_num_id', $fb_num_id); ?>
 		<a href="javascript:window.location.reload()" class="btn btn-info btn-block">Now with facebook</a>
 	<?php }else{?>
 		<a href="" class="btn btn-info btn-block" id="signup-with-fb">Signup with facebook</a>
 	<?php }?>
-	<?php echo form_hidden('submit_uuid', $submit_uuid); ?>
+	<?=form_hidden('submit_uuid', $submit_uuid); ?>
 	</div>
 	<?php if ($use_username) { ?>
-	<div class="form-group <?php echo isset($errors[$username['name']]) ? 'error' : ''?>">
-		<?php echo form_label('Username', $username['id']); ?>
-		<?php echo form_input($username); ?>
-		<div class="form-error"><?php echo form_error($username['name']); ?></div>
+	<div class="form-group <?=isset($errors[$username['name']]) ? 'error' : ''?>">
+		<?=form_label('Username', $username['id']); ?>
+		<?=form_input($username); ?>
+		<div class="form-error"><?=form_error($username['name']); ?></div>
 	</div>
 	<?php } ?>
-	<div class="form-group <?php echo isset($errors[$email['name']]) ? 'error' : ''?>">
-		<?php echo form_label('Email Address', $email['id']); ?>
-		<?php echo form_input($email); ?>
-		<div class="form-error"><?php echo form_error($email['name']); ?></div>
+	<div class="form-group <?=isset($errors[$email['name']]) ? 'error' : ''?>">
+		<?=form_label('Email Address', $email['id']); ?>
+		<?=form_input($email); ?>
+		<div class="form-error"><?=form_error($email['name']); ?></div>
 	</div>
-	<div class="form-group <?php echo isset($errors[$password['name']]) ? 'error' : ''?>">
-		<?php echo form_label('Password', $password['id']); ?>
-		<?php echo form_password($password); ?>
-		<div class="form-error"><?php echo form_error($password['name']); ?></div>
+	<div class="form-group <?=isset($errors[$password['name']]) ? 'error' : ''?>">
+		<?=form_label('Password', $password['id']); ?>
+		<?=form_password($password); ?>
+		<div class="form-error"><?=form_error($password['name']); ?></div>
 	</div>
-	<div class="form-group <?php echo isset($errors[$confirm_password['name']]) ? 'error' : ''?>">
-		<?php echo form_label('Confirm Password', $confirm_password['id']); ?>
-		<?php echo form_password($confirm_password); ?>
-		<div class="form-error"><?php echo form_error($confirm_password['name']); ?></div>
+	<div class="form-group <?=isset($errors[$confirm_password['name']]) ? 'error' : ''?>">
+		<?=form_label('Confirm Password', $confirm_password['id']); ?>
+		<?=form_password($confirm_password); ?>
+		<div class="form-error"><?=form_error($confirm_password['name']); ?></div>
 	</div>
-	<div class="form-group <?php echo isset($errors['gender']) ? 'error' : ''?>">
+	<div class="form-group <?=isset($errors['gender']) ? 'error' : ''?>">
 		<label>성별</label><br/>
 		<label class="radio-inline">
 			<input type='radio' name='gender' value='f' <?=$gender['f']?> /> 여
@@ -155,25 +155,25 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		<label class="radio-inline">
 			<input type='radio' name='gender' value='m' <?=$gender['m']?> /> 남
 		</label>
-		<div class="form-error"><?php echo form_error('gender'); ?></div>
+		<div class="form-error"><?=form_error('gender'); ?></div>
 	</div>
 
-	<div class="form-group <?php echo isset($errors['year'])&&isset($errors['month'])&&isset($errors['day']) ? 'error' : ''?>">
+	<div class="form-group <?=isset($errors['year'])&&isset($errors['month'])&&isset($errors['day']) ? 'error' : ''?>">
 		<label>생년월일</label>
 		<div id='birth_field'>
 			<select name='year' class='no-jquery'>
 				<?php for($i=date('Y'); $i>1900; $i--): ?>
-					<option value="<?php echo $i?>"<?if($birth['year']==$i){?> selected<?}?>><?php echo $i?>년</option>
+					<option value="<?=$i?>"<?if($birth['year']==$i){?> selected<?}?>><?=$i?>년</option>
 				<?php endfor;?>
 			</select>
 			<select name='month' class='no-jquery'>
 				<?php for($i=1; $i<13; $i++): ?>
-					<option value="<?php echo $i?>"<?if($birth['month']==$i){?> selected<?}?>><?php echo $i?>월</option>
+					<option value="<?=$i?>"<?if($birth['month']==$i){?> selected<?}?>><?=$i?>월</option>
 				<?php endfor;?>
 			</select>
 			<select name='day' class='no-jquery'>
 				<?php for($i=1; $i<32; $i++): ?>
-					<option value="<?php echo $i?>"<?if($birth['day']==$i){?> selected<?}?>><?php echo $i?>일</option>
+					<option value="<?=$i?>"<?if($birth['day']==$i){?> selected<?}?>><?=$i?>일</option>
 				<?php endfor;?>
 			</select>
 		</div>
@@ -199,25 +199,25 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		<div class="recaptcha_only_if_image">Enter the words above</div>
 		<div class="recaptcha_only_if_audio">Enter the numbers you hear</div>
 		<input type="text" id="recaptcha_response_field" name="recaptcha_response_field" class="form-control"/>
-		<?php echo form_error('recaptcha_response_field'); ?>
-		<?php echo $recaptcha_html; ?>
+		<?=form_error('recaptcha_response_field'); ?>
+		<?=$recaptcha_html; ?>
 	</div>
 	<?php } else { ?>
 	<div class="form-group">
 		<p>Enter the code exactly as it appears:</p>
-		<?php echo $captcha_html; ?>
+		<?=$captcha_html; ?>
 	</div>
 	<div class="form-group">
-		<?php echo form_label('Confirmation Code', $captcha['id']); ?>
-		<?php echo form_input($captcha); ?>
-		<?php echo form_error($captcha['name']); ?>
+		<?=form_label('Confirmation Code', $captcha['id']); ?>
+		<?=form_input($captcha); ?>
+		<?=form_error($captcha['name']); ?>
 	</div>
 	<?php }
 	} ?>
 
 	<div style="color:#888;font-size:12px;margin-top:5px;">버튼을 클릭함으로써 노트폴리오의 <a href="/info/terms" class="register-ajax">약관</a>과 <a href="/info/privacy" class="register-ajax">개인정보보호정책</a>에 동의합니다.</div>
 	<button type="submit" name="register" class="btn btn-primary">Register</button>
-<?php echo form_close(); ?>
+<?=form_close(); ?>
 
 
 <script>

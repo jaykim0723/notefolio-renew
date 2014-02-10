@@ -539,7 +539,7 @@ class Auth extends CI_Controller
             $this->load->library(array('form_validation'));
             $this->load->model('user_model');
 
-            $this->form_validation->set_error_delimiters('', '');
+            $this->form_validation->set_error_delimiters('↑ ', '');
             //$this->form_validation->set_error_delimiters('<p class="alert alert-danger">', '</p>');
 
             //-- form validation
