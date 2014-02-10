@@ -193,6 +193,10 @@ html {
 	display:none;
 }
 
+.thumbbox .pi-videoy {
+	display:none;
+}
+
 .thumbbox .spi-video_white.y {
 	display: block;
 	position: absolute;
