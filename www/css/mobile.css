@@ -416,7 +416,7 @@ html, body {
 	text-decoration: none;
 }
 #feed-list .thumbbox {
-	width: 33.33333333333333333;
+	width: 33.33333333333333333%;
 }
 .thumbnail-list .thumbbox a,
 .thumbnail-list .thumbbox img {
