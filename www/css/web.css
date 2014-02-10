@@ -352,6 +352,10 @@ html {
 
 
 
+
+
+
+
 /* sidebar */
 #work-sidebar {
 	position:absolute;
@@ -549,9 +553,15 @@ li#trash-bin{
 #work-sidebar-inner .bootstrap-select {
 	width: 100%;
 }
+#gallery-form {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=1);
+	opacity: 0.01;
+}
 #work-form {
 	position: relative;
 }
+
 
 #work-discoverbility {
 	display: block;

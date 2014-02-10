@@ -9,7 +9,7 @@
 	NFview.area = 'work-form';
 </script>
 
-<?php echo form_open('/gallery/save', array('id'=>'gallery_form', 'role'=>'form')); ?>
+<?php echo form_open('/gallery/save', array('id'=>'gallery-form', 'role'=>'form')); ?>
 
 
 <section id="work-form" class="visible-md visible-lg">
@@ -32,7 +32,7 @@
 			<div id="work-sidebar-inner" class="col-md-3">
 
 				<h4>카테고리</h4>
-				<select name="keywords" id="keywords" multiple title="최대 2개까지 선택" >
+				<select name="keywords" id="keywords" multiple title="최대 2개까지 선택">
 					<?php 
 					$this->load->config('keyword', TRUE);
 					$keyword_list = $this->config->item('keyword', 'keyword');
@@ -44,7 +44,7 @@
 
 				<div id="ccl-wrapper">
 					<h4>CCL <a class="tip" href="/info/faq#ccl" target="_blank">자세히보기</a></h4>
-					<select name="ccl" id="ccl" class="" title="Choose one of the following..." >
+					<select name="ccl" id="ccl" class="" title="Choose one of the following...">
 						<option value="">CCL 표시 안함</option>
 						<option value="BY">저작자</option>
 						<option value="BY-NC">저작자-비영리</option>
@@ -176,11 +176,15 @@
 <script>
 	$(function() {
 		// form이 전송이 되면 hook하여 ajax로 호출을 한다.
-		$('#gallery_form').on('submit', function(e){
+		$('#gallery-form').on('submit', function(e){
 			e.preventDefault();
 			e.stopPropagation();
 			workUtil.save($(this));
-		})
+		});
+		setTimeout(function(){
+			$('#gallery-form').fadeTo(500, 1);
+		}, 500);
+
 		//Content Ground Setting 살림.
 		workUtil.content.setGround('#content-block-list', '.trashable');
 		workUtil.content.setTool('.block-text, .block-image, .block-video, .block-line', '#work-content-blockadder', '#content-block-list');
