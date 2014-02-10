@@ -89,7 +89,6 @@
 						if($this->uri->rsegment(1)=='gallery' && $this->uri->rsegment(2)=='info'){
 							$button['follow'] = true;
 							$button['random'] = false;
-							$profile['username'] = $this->uri->rsegment(1);
 						}
 					?>
 					<?php if($button['random']): // 여기가 메인이나 겔러리이면 ?> 
