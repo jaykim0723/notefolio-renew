@@ -1408,8 +1408,8 @@ p.desc {
 		width: 24%;
 	}
 }
-#profile_nav_followings a:hover{
-	color:#2ac5c6;
+#profile_nav_followings a:hover, #profile_nav_followers a:hover{
+	color:#2ac5c6 !important;
 }
 
 .profile-thumbnail-list {
