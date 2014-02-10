@@ -835,5 +835,9 @@ textarea.comment-textarea {
 	margin: 30px 20px;
 }
 
-
+.follow-list .follow-center a:hover {
+	color: #2ac5c6;
+	transition: 0.25s linear;
+	-webkit-transition: 0.25s linear;
+}
 
