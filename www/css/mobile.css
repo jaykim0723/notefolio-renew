@@ -497,6 +497,11 @@ html, body {
 	}
 }
 
+@media (max-width: 666px) {
+	.follow-recent-works a:first-child {
+		display: none;
+	}
+}
 
 
 
