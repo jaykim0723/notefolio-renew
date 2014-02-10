@@ -507,8 +507,7 @@ class Auth extends CI_Controller
             $this->session->set_userdata('username', $data['form']['username']); //change session username 
         }
         //-- end
-
-        exit();
+        
         return $data;
     }
 
