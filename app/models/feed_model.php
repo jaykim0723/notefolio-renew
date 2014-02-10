@@ -87,7 +87,7 @@ class feed_model extends CI_Model {
             foreach($fields as $field){
                 $this->db->select($table.'.'.$field);
             }
-            $this->db->join($table, 'works.work_id='.$table.'.id', 'left');
+            $this->db->join($table, 'works.user_id='.$table.'.id', 'left');
             unset($table, $fields, $field);
         }
         //-- end
@@ -123,7 +123,7 @@ class feed_model extends CI_Model {
                         'realname' => $row->work_user_realname,
                         'modified' => $row->work_user_modified,
                         ),
-                    'work_id' => $row->ref_id,
+                    'work_id' => $row->work_id,
                     'title' => $row->title,
                     'is_video' => $row->is_video,
                     );
