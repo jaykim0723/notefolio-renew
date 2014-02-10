@@ -6,7 +6,7 @@ $wide = in_array($row->key, array(4,11));
 		<img src="/data/covers/<?=($row->work_id).(($wide)?'_t3':'_t2')?>.jpg"/>
 		<span class="videoicon <?php echo $row->is_video ?>">
 			<i class="spi spi-video_white <?php echo $row->is_video ?>"></i>video
-			<em class="pi pi-videoy">videoy</em>
+			<em class="pi pi-videoy"></em>
 		</span>
 		<span class="main-work-info si-main-info-bg" style="">
 			<i class="spi spi-view" style="margin-top:-2px;margin-right:5px;">Hit</i> <?php echo $row->hit_cnt ?>
