@@ -1411,10 +1411,10 @@ p.desc {
 #profile-nav .active .spi-work_graph, #profile-nav li:hover .spi-graph_point {
 	display:inline-block;
 }
-#profile-nav .active .spi-work, #profile-nav li:hover .spi-work,
-#profile-nav .active .spi-love, #profile-nav li:hover .spi-love,
-#profile-nav .active .spi-user, #profile-nav li:hover .spi-user,
-#profile-nav .active .spi-work, #profile-nav li:hover .spi-graph {
+#profile-nav .active .spi-work, #profile-nav li:hover .spi-work,#profile-nav li .spi-work_point,
+#profile-nav .active .spi-love, #profile-nav li:hover .spi-love,#profile-nav li .spi-love_point,
+#profile-nav .active .spi-user, #profile-nav li:hover .spi-user,#profile-nav li .spi-user_point,
+#profile-nav .active .spi-work, #profile-nav li:hover .spi-graph,#profile-nav li .spi-graph_point {
 	display:none;
 }
 
