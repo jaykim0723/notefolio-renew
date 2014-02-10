@@ -68,7 +68,7 @@ class Auth extends CI_Controller
             $data['errors'] = array();
 
             if ($this->form_validation->run()) {                                // validation ok
-                $this->_login_after(
+                $data = $this->_login_after(
                         $this->tank_auth->login(
                         $this->form_validation->set_value('login'),
                         $this->form_validation->set_value('password'),
@@ -171,13 +171,16 @@ class Auth extends CI_Controller
             } elseif ($is_ajax) {                                       
             // fail for ajax
                 foreach ($errors as $k => $v)   $data['errors'][$k] = $this->lang->line($v);
-                die(json_encode(array('status'=>'error', 'type'=>'post_data_error', 'errors'=>$data['errors'])));
+                $is_ajax?
+                    die(json_encode(array('status'=>'error', 'type'=>'post_data_error', 'errors'=>$data['errors']))):
+                    '';
 
             } else {                                                    
             // fail
                 foreach ($errors as $k => $v)   $data['errors'][$k] = '<span class="error">'.$this->lang->line($v).'</span>';
             }
         }
+        return $data;
     }
 
     /**

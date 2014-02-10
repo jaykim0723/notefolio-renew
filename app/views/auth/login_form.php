@@ -44,7 +44,20 @@ if ($this->input->get('go_to')) {
 ?>
 
 <section>
-				
+	<?php if(isset($auth_error)){?>
+	<div class="center" id="status">
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+			  <h3 class="panel-title">확인이 필요합니다</h3>
+			</div>
+			<div class="panel-body">
+				<p>로그인에 필요한 정보를 잘못 입력하셨습니다.
+					<br/>가입하지 않았다면, <a href="/auth/register">지금 가입하세요</a>.
+					<br/><a href="javascript:$('#status').remove();">닫기</a></p>
+			</div>
+		</div>
+	</div>
+	<?php } ?>				
 	<?php echo form_open($this->uri->uri_string(), array('role'=>'form','id'=>'login-form'), array(
 	    'go_to' => $site_to,
 	)); ?>
