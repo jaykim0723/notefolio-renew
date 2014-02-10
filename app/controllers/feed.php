@@ -19,13 +19,14 @@ class Feed extends CI_Controller {
 	function listing($page=1){
 		$feed_list = $this->feed_model->get_list(array(
 			'page' => $page,
-			'user_id' => USER_ID
+			'user_id' => USER_ID,
+			'type' => 'work'
 		));
 		// 첫페이지 출력을 위하여 이곳에서 불러들이기
 		$feed_list->activity = 	$this->feed_model->get_list(array(
 			'page' => $page,
 			'user_id' => USER_ID,
-			'type' => 'work'
+			'type' => 'activity'
 		));
 
 		$this->layout->set_view('feed/listing_view', $feed_list)->render();
