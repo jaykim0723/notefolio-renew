@@ -391,8 +391,8 @@ class activity extends CI_Controller {
         }
         echo '!';
 
+            echo($params->crud);
         if($params->crud == 'create'){
-            echo('qqq');
             switch($params->area){
                 case "user":
                     if(in_array($params->type, array('follow'))){
