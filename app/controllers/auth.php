@@ -431,10 +431,28 @@ class Auth extends CI_Controller
      * @return array
      */
     function _setting_put($data=array()){
-        
+        $this->form_validation->set_error_delimiters('↑ ', '');
+        //$this->form_validation->set_error_delimiters('<p class="alert alert-danger">', '</p>');
+
+        //-- form validation
+        $this->form_validation
+            ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean|is_unique[users.username]|min_length['.$this->config->item('username_min_length','tank_auth').']|max_length['.$this->config->item('username_max_length','tank_auth').']')
+            ;
+        //-- end
+
+        if($this->form_validation->run() === FALSE){
+            // 실패한 경우.
+            if ($this->form_validation->error_string()!='') {
+                unset($data['username']);
+                $data['error'] = var_export($this->form_validation->error_string(), true);
+                $data['errors'] = $this->form_validation->error_array();
+                //exit(json_encode(array_merge(array('status'=>'error', 'goStep'=>$error_stage), $error_data)));
+            }
+        }
+
         $allowed_user_key = array(
                 'id',
-                //'username',
+                'username',
                 'realname',
                 //'email',
                 'gender',
@@ -474,6 +492,7 @@ class Auth extends CI_Controller
             
         }
         $this->user_model->put_sns_fb($param);
+        //-- end          
         
         return $data;
     }
@@ -484,27 +503,34 @@ class Auth extends CI_Controller
      * @return void
      */
     function _setting_form($data=array()){
-        $user = $this->user_model->get_info(array(
-                'id'=> USER_ID,
-                'get_profile'=> true,
-                'get_sns_fb'=> true
-            ));
+        if(isset($data['user'])){
+            $user = (object)array(
+                'row'=>(object)$data['user']
+                );
+        }
+        else{
+            $user = $this->user_model->get_info(array(
+                    'id'=> USER_ID,
+                    'get_profile'=> true,
+                    'get_sns_fb'=> true
+                ));
 
-        $allowed_user_key = array(
-                'id',
-                'username',
-                'realname',
-                'email',
-                'gender',
-                'birth',
-                'mailing',
-                'fb_num_id',
-            );
-        $allowed_user_key_fb = array(
-                'post_work',
-                'post_comment',
-                'post_note',
-            );
+            $allowed_user_key = array(
+                    'id',
+                    'username',
+                    'realname',
+                    'email',
+                    'gender',
+                    'birth',
+                    'mailing',
+                    'fb_num_id',
+                );
+            $allowed_user_key_fb = array(
+                    'post_work',
+                    'post_comment',
+                    'post_note',
+                );
+        }
 
         foreach($user->row as $key=>$val){
             if(in_array($key, $allowed_user_key))

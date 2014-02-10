@@ -1,10 +1,11 @@
 <fieldset id='auth_basic'>
 	<legend>기본정보</legend>
 
-	<div class="form-group">
+	<div class="form-group <?php echo isset($errors['username']) ? 'error' : ''?>">
 		<label>URL</label>
 		<p>ex) http://<?=$this->input->server('HTTP_HOST')?>/<?=$username?></p>
 		<input class="form-control" type='text' id='username' name='username' value="<?php echo $username?>" minlength='3' maxlength='20' rel='tooltip' placeholder="영문자,숫자,_,-"/>
+		<div class="form-error"><?php echo isset($errors['username']) ? '↑ '.$errors['username'] : '' ?></div>
 	</div>
 	<div class="form-group">
 		<label>성별</label><br/>
