@@ -442,10 +442,10 @@ class activity extends CI_Controller {
             }
         }
         else if($params->crud == 'update'){
-            echo($params->area);
             switch($params->area){
                 case "work":
                     if(in_array($params->type, array('enable',))){
+            echo($params->type);
                         //send to-> alarm
                         $this->activity_model->post_alarm(array(
                             'crud' => $params->crud,
