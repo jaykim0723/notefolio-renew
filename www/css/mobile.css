@@ -455,14 +455,16 @@ html, body {
 	margin-left: 120px;
 }
 .follow-list .follow-center a {
-	color: #7a7880;
+	color: #aaa;
 	font-weight: 300;
 }
 .follow-list .follow-center h3 {
 	margin-top:30px;
+	margin-bottom: 4px;
 }
 .follow-list .follow-center h3 a {
 	font-size: 18px;
+	color:#444;
 }
 .follow-list .follow-center p {
 	font-family: 'NanumGothic', Dotum;
