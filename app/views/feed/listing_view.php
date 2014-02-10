@@ -15,13 +15,13 @@
 <?php endif ?>
 
 
+					<pre>
+					<?=var_export($rows,true) ?>
+					</pre>
 
 				<ul id="feed-list" class="thumbnail-list infinite-list">
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
-					<pre>
-					<?=var_export($row,true) ?>
-					</pre>
 					<?php $this->load->view('gallery/thumbnail_inc_view', array('row'=>$row->data)) ?>
 					<?php endforeach ?>
 
