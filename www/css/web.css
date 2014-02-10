@@ -170,7 +170,7 @@ html {
 	display: block;
 }
 
-.videoicon {
+.thumbbox .videoicon {
 	background: rgba(42,197,198,0.6);
 	padding: 24px 45px 24px 50px;
 	position: absolute;
