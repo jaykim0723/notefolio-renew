@@ -81,6 +81,7 @@ html, body {
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
 	background: #2ac5c6;
 	border-color: #2ac5c6;
+	border-radius: 25px;
 }
 .ajax-loading-overlay {
 	position: absolute;
