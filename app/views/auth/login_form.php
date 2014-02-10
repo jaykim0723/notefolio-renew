@@ -45,6 +45,7 @@ if ($this->input->get('go_to')) {
 
 <section>
 	<?php if(isset($auth_error)){?>
+	<!--
 	<div class="center" id="status">
 		<div class="panel panel-warning">
 			<div class="panel-heading">
@@ -57,6 +58,7 @@ if ($this->input->get('go_to')) {
 			</div>
 		</div>
 	</div>
+	-->
 	<?php } ?>				
 	<?php echo form_open($this->uri->uri_string(), array('role'=>'form','id'=>'login-form'), array(
 	    'go_to' => $site_to,
