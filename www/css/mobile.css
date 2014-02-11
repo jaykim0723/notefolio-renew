@@ -1115,6 +1115,13 @@ html.auth body {
 	.auth-or {
 		background: #333 !important;
 	}
+	.btn-login {
+		margin-top:20px !important;
+	}
+	.form-group.auth-sub {
+		border-top: 1px solid #3d3d3d !important;
+		padding-top: 5px !important;
+	}
 }
 #auth-footer {
 	margin-top: 20px;
@@ -1148,7 +1155,7 @@ html.auth body {
 	color: #fff;
 	font-weight: 700;
 	margin-bottom: 20px;
-	margin-top: 20px;
+	margin-top: 0px;
 }
 
 .auth-or {
@@ -1165,8 +1172,8 @@ html.auth body {
 	margin-top: 20px;
 }
 .form-group.auth-sub {
-	border-top: 1px solid #3d3d3d;
-	padding-top: 5px;
+	border-top: 1px solid #ddd;
+	padding-top: 10px;
 	width: 266px;
 }
 .form-group.auth-sub a {
