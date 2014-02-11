@@ -1102,7 +1102,7 @@ html.auth body {
 }
 
 .bg-info {
-	position: absolute;
+	position: fixed;
 	bottom: 20px;
 	right: 30px;
 	color: #fff;
