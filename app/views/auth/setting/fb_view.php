@@ -1,6 +1,6 @@
 
 <?php $ci = get_instance(); ?>
-<div class="biggroup">
+<div class="biggroup" style="margin-top:20px;">
 <fieldset id='auth_facebook' <?php echo $this->uri->segment(2) == 'setting' ? 'style="margin-bottom:30px;"' : ''?>>
     <div class="labeltext3">페이스북 연동</div>
 <?php
