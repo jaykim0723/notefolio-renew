@@ -1138,7 +1138,13 @@ html.auth body {
 .form-group.auth-sub a {
 	color: #bbb;
 }
-
+.form-group.auth-sub a:last-child {
+	float: right;
+	margin-right: 10px;
+}
+.form-group.auth-sub a:first-child {
+	margin-left: 10px;
+}
 
 /* info */
 .work-small-profile {
