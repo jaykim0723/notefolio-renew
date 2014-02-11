@@ -77,7 +77,6 @@ class work extends CI_Controller {
                     $user = new stdClass();
                     foreach($val as $sub_key =>$sub_val){
                         if(preg_match('/^user_/', $sub_key)){
-                            echo str_replace('user_', '', $sub_val);
                             $user->{str_replace('user_', '', $sub_key)} = $sub_val; 
                         }
                     }
