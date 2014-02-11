@@ -1,4 +1,4 @@
-<script src="/js/libs/jquery.placeholder.js"></script>
+
 
 <div id="auth-wrapper">
 	<header id="auth-header">

@@ -42,6 +42,7 @@
 	
 	<script src="/js/libs/jquery-1.10.2.min.js"></script>
 	<script src="/js/util.js"></script>
+	<script src="/js/libs/jquery.placeholder.js"></script>
 	<script>
 		NFview = {};
 		var common_assets = '';
