@@ -6,7 +6,7 @@
       <div class="container">
 
 
-    <h2>접속 로그 목록</h2>
+    <h2>작품 목록</h2>
 
     <p class="lead">총 <?=$all_count?> 개 / <?=$all_page?> 페이지 중 <?=$now_page?> 번째</p>
 
@@ -29,7 +29,7 @@
           foreach($list as $k=>$v){
     ?>
         <tr class="">
-          <td><a href="/acp/site/access_log/view/id/<?=$v['id']?>"><?=$v['id']?></a></td>
+          <td><a href="/acp/work/works/view/id/<?=$v['id']?>"><?=$v['id']?></a></td>
           <td><a href="http://whois.net/ip-address-lookup/<?=$v['remote_addr']?>"><?=$v['remote_addr']?></a></td>  
           <td><a href="<?=$v['to_access']?>">
               <?=mb_substr($v['to_access'], 0, 50, 'UTF-8')?>
@@ -38,16 +38,16 @@
               <?=mb_substr($v['referer'],  0, 50, 'UTF-8')?>
                   <?=((mb_strlen($v['referer'],  'UTF-8')>50)?'...':'')?></a></td>
           <td><?=$v['regdate']?></td>
-          <td><a class="btn" href="/acp/site/access_log/view/id/<?=$v['id']?>">보기</a></td>
-          <td><a class="btn btn-primary" href="/acp/site/access_log/modify/id/<?=$v['id']?>">수정</a></td>
-          <td><a class="btn btn-danger" href="/acp/site/access_log/delete/id/<?=$v['id']?>">삭제</a></td>
+          <td><a class="btn" href="/acp/work/works/view/id/<?=$v['id']?>">보기</a></td>
+          <td><a class="btn btn-primary" href="/acp/work/works/modify/id/<?=$v['id']?>">수정</a></td>
+          <td><a class="btn btn-danger" href="/acp/work/works/delete/id/<?=$v['id']?>">삭제</a></td>
         </tr>
     <?php
           }
         } else {
     ?>
         <tr class="info">
-          <td colspan="7">접속 로그가 없습니다.</td>
+          <td colspan="7">작품이 없습니다.</td>
         </tr>
     <?php   
         }
@@ -55,7 +55,7 @@
       </tbody>
     </table>
     <div class="row-fluid">
-      <?=get_paging($params=array('now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/site/access_log/list'.$search_url))?>
+      <?=get_paging($params=array('now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/work/works/list'.$search_url))?>
     </div>
 
 
