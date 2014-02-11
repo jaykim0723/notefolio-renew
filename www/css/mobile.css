@@ -1079,7 +1079,7 @@ html.auth body {
 	width: 100%;
 }
 #auth-header {
-	margin: 20px 0;
+	margin: 20px 0 10px;
 	text-align: center;
 }
 #auth-body {
