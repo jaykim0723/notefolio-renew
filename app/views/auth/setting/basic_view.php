@@ -3,13 +3,13 @@
 	<div class="labeltext3">기본정보</div>
 
 	<div class="form-group <?php echo isset($errors['username']) ? 'error' : ''?>">
-		<label>URL</label>
+		<label class="labeltext">URL</label>
 		<p><?=$this->input->server('HTTP_HOST')?>/<span style="color: #333 !important;font-weight: bold;"><?=$username?></span></p>
 		<input class="form-control" type='text' id='username' name='username' value="<?php echo $username?>" minlength='3' maxlength='20' rel='tooltip' placeholder="영문자,숫자,_,-"/>
 		<div class="form-error"><?php echo isset($errors['username']) ? '↑ '.$errors['username'] : '' ?></div>
 	</div>
 	<div class="form-group">
-		<label>성별</label><br/>
+		<label class="labeltext">성별</label><br/>
 		<label class="radio-inline">
 			<input type='radio' name='gender' value='f'/> 여
 		</label>
@@ -27,7 +27,7 @@
 			<a href="/auth/change_email" class="btn btn-link">이메일 변경하기</a>
 		</div>
 		<div class="col-md-6">
-			비밀번호
+			<span class="labeltext">비밀번호</span>
 			<a href="/auth/change_password" class="btn btn-link">비밀번호 변경하기</a>
 		</div>
 	</div>
@@ -126,7 +126,7 @@
 		$birth=array('year'=>1990,'month'=>8,'day'=>8);
 	?>
 	<div class="form-group">
-		<label>생년월일</label>
+		<label class="labeltext">생년월일</label>
 		<div id='birth_field'>
 			<select name='year' class='no-jquery'>
 				<?php for($i=date('Y'); $i>1900; $i--): ?>

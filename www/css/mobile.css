@@ -1284,6 +1284,7 @@ html.auth body {
 	font-family: "NanumGothic";
 	color: #7a7880;
 	margin-bottom: 10px;
+	font-weight: bold;
 }
 .labeltext2 {
 	font-size: 12px;
