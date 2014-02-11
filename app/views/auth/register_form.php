@@ -137,6 +137,8 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		<div class="form-error"><?=form_error($username['name']); ?></div>
 	</div>
 	<?php } ?>
+
+<div class="biggroup">
 	<div class="form-group <?=isset($errors[$email['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Email Address', $email['id']); ?>-->
 		<?=form_input($email); ?>
@@ -190,6 +192,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
         	<input type="checkbox" name="mailing" value="1" <?=$mailing?>>노트폴리오의 최신 소식 및 작가/작품 소개를 메일로 받겠습니다.
         </label> 
     </div>
+   </div> 
 
 
 
