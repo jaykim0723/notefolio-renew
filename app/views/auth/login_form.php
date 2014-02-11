@@ -6,7 +6,7 @@ $login = array(
 	'maxlength'	=> 80,
 	'size'	=> 30,
 	'class' => 'form-control',
-	'autofocus' => 'autofocus'
+	'autofocus' => 'autofocus',
 	'placeholder' => 'Email'
 
 );
