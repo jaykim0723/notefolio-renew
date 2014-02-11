@@ -39,8 +39,8 @@ class Accesslog {
             }
         }
         
-        $this->ci->db->set('remote_addr',$this->input->server('REMOTE_ADDR'));
-        $this->ci->db->set('regdate',date("Y-m-d H:i:s"));
+        $this->ci->db->set('remote_addr', $this->ci->input->server('REMOTE_ADDR'));
+        $this->ci->db->set('regdate', date("Y-m-d H:i:s"));
         $return = $this->ci->db->insert('log_access');
         log_message('debug', "Last Query: ".$this->ci->db->last_query());
         $this->ci->db->flush_cache();
