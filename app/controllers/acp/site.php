@@ -160,12 +160,12 @@ class site extends CI_Controller {
                 break;
         }
 
-        $this->data['subtab'] = $this->acp->get_subtab(array("list"=>"목록",
-                                                             "list/search/only_outside"=>"목록(외부접속)",
-                                                             "view"=>"보기", 
-                                                             "write"=>"쓰기", 
-                                                             "modify"=>"수정"), 
-                                                        $mode.(($only_outside)?'/search/only_outside':''), strtolower(get_class($this)).'/'.strtolower(__FUNCTION__).'/');
+        // $this->data['subtab'] = $this->acp->get_subtab(array("list"=>"목록",
+        //                                                      "list/search/only_outside"=>"목록(외부접속)",
+        //                                                      "view"=>"보기", 
+        //                                                      "write"=>"쓰기", 
+        //                                                      "modify"=>"수정"), 
+        //                                                 $mode.(($only_outside)?'/search/only_outside':''), strtolower(get_class($this)).'/'.strtolower(__FUNCTION__).'/');
         
         $this->data['form_attr'] = array('class' => 'form', 'id' => 'access_log_'.$mode.'_form');
         $this->layout->set_header('title', '키워드')->set_view('acp/site_access_log_'.$mode,$data)->render();
