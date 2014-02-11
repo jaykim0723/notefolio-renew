@@ -194,8 +194,8 @@
 	});
 	if($('#style_tagsinput').length==0)
 		$('head').append('<link id="style_tagsinput" href="/css/bootstrap-tagsinput.css" rel="stylesheet"/>');
-	if($('#style_wysihtml').length==0)
-		$('head').append('<link id="style_wysihtml" rel="stylesheet" type="text/css" href="/css/bootstrap-wysihtml5-0.0.2.css"/>');
+	if($('#style_cleditor').length==0)
+		$('head').append('<link id="style_cleditor" rel="stylesheet" type="text/css" href="/js/libs/cleditor/jquery.cleditor.css"/>');
 	if($('#style_crop').length==0)
 		$('head').append('<link id="style_crop" rel="stylesheet" type="text/css" href="/css/crop/jquery.Jcrop.css"/>');
 
@@ -221,5 +221,4 @@
 <script src="/js/member.js"></script>
 <script src="/js/libs/jquery.Jcrop.min.js"></script>
 <script src="/js/libs/bootstrap-tagsinput.min.js"></script>
-<script src="/js/libs/wysihtml5-0.3.0.js"></script>
-<script src="/js/libs/bootstrap-wysihtml5-0.0.2.js"></script>
+<script src="/js/libs/cleditor/jquery.cleditor.min.js"></script>

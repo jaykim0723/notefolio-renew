@@ -1,4 +1,9 @@
 var workUtil = {
+	clConf : {
+		controls: "bold italic underline strikethrough subscript superscript | font size " +
+          "style | color highlight removeformat | bullets numbering | outdent " +
+          "indent | alignleft center alignright justify | undo redo | "
+	},
 	defaultValue : {
 		image : '/img/thumb_wide4.jpg',
 		video : '//www.youtube.com/embed/wnnOf05WKEs'
@@ -594,7 +599,7 @@ var workUtil = {
 				case 'text':
 				default:
 					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(nl2br(c));
-					$(target).append(textarea).find('textarea').wysihtml5();
+					$(target).append(textarea).find('textarea').cleditor(workUtil.clConf);
 				break;
 			}
 			return true;
@@ -1388,7 +1393,8 @@ var profileUtil = {
 			// init exist attachments list
 			// 오래 머물러 있을 수 있으므로 수정을 했을 때 최신 정보를 다시 불러온다.
 			$.get('/profile/read_about', {}, 'json').done(function(responseJSON){
-				$('#about-edit-area').show().children('textarea').val(responseJSON.row.contents).wysihtml5(); // 현재의 값을 배치하고 위지윅에디터 활성화
+				workUtil.clConf.height = 400;
+				$('#about-edit-area').show().children('textarea').val(responseJSON.row.contents).cleditor(workUtil.clConf); // 현재의 값을 배치하고 위지윅에디터 활성화
 				$.each(responseJSON.row.attachments, function(k,v){
 					profileUtil.about.createAttachmentBlock(v).insertBefore('#about-upload');
 				});

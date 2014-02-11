@@ -32,11 +32,10 @@
 						<button id="btn-cancel-about" class="btn btn-default">취소</button>
 					</div>
 				</div>
-				<script src="/js/libs/wysihtml5-0.3.0.min.js"></script>
-				<script src="/js/libs/bootstrap-wysihtml5-0.0.2.js"></script>
+				<script src="/js/libs/cleditor/jquery.cleditor.min.js"></script>
 				<script>
-					if($('#style_wysihtml').length==0)
-						$('head').append('<link id="style_wysihtml" rel="stylesheet" type="text/css" href="/css/bootstrap-wysihtml5-0.0.2.css"/>');
+					if($('#style_cleditor').length==0)
+						$('head').append('<link id="style_cleditor" rel="stylesheet" type="text/css" href="/js/libs/cleditor/jquery.cleditor.css"/>');
 					$(function(){
 						profileUtil.about.setGround();
 					});
