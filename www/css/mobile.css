@@ -1130,6 +1130,15 @@ html.auth body {
 	margin-bottom: 20px;
 	margin-top: 20px;
 }
+.form-group.auth-sub {
+	border-top: 1px solid #3d3d3d;
+	padding-top: 5px;
+	width: 266px;
+}
+.form-group.auth-sub a {
+	color: #bbb;
+}
+
 
 /* info */
 .work-small-profile {

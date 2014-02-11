@@ -86,7 +86,7 @@ if ($this->input->get('go_to')) {
 
 	<button type="submit" class="btn btn-primary btn-login">Login</button>	
 	
-	<div class="form-group">
+	<div class="form-group auth-sub">
 		
 		<?php echo anchor('/auth/forgot_password/', 'Forgot password'); ?>
 		<?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('/auth/register/', 'Register'); ?>
