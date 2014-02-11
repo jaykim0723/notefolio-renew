@@ -84,7 +84,7 @@ if ($this->input->get('go_to')) {
 		<?php echo form_label('Remember me', $remember['id']); ?>
 	</div>
 
-	<button type="submit" class="btn btn-primary btn-login">Login</button>	
+	<button type="submit" class="btn btn-login">Login</button>	
 	
 	<div class="form-group auth-sub">
 		
