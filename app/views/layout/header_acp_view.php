@@ -89,8 +89,8 @@
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
-            <li><a href="icons.html">목록</a></li>
-            <li><a href="icons.html">업로드</a></li>
+            <li><a href="/acp/work/list">목록</a></li>
+            <li><a href="/acp/work/uploads">업로드</a></li>
           </ul>
         </li>
         <li id="menu-act" class="dropdown<?=($this->uri->segment(2)=='act')?' active':''?>">
