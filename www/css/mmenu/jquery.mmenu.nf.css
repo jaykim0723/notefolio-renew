@@ -270,6 +270,15 @@ html.mm-blocking #mm-blocker {
     top: 16px;
     right: 16px; }
 
+.mm-list .label {
+    float: right;
+    margin-top: 5px;
+    background: #222;
+    padding: 4px 8px;
+    padding: 5px 8px;
+}
+
+
 html.mm-opened .mm-page {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
 
