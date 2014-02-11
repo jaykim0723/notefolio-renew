@@ -882,7 +882,7 @@ textarea.comment-textarea {
 	-webkit-transition: 0.25s linear;
 }
 
-.bootstrap-tagsinput {
+.bootstrap-tagsinput > input {
 	min-width: 200px!important;
 	background: pink!important;
 }
