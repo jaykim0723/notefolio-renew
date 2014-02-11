@@ -32,14 +32,17 @@
           <td><a href="/acp/work/works/view/id/<?=$v->work_id?>"><?=$v->work_id?></a></td>
           <td><a href="/<?=$v->user->username?>/<?=$v->work_id?>">
             <img src="/data/covers/<?=$v->work_id?>_t2.jpg" width="200"><br/>
-            <p><?=((mb_strlen($v->title, 'UTF-8')>50)?'...':'')?> / <?=$v->regdate?></p>
+            <p><?=mb_substr($v->title, 0, 50, 'UTF-8')?>
+                  <?=((mb_strlen($v->title, 'UTF-8')>50)?'...':'')?> / <?=$v->regdate?></p>
           </a></td>  
           <td><a href="/acp/user/member/view/id/<?=$v->user->id?>">
             <?=$v->user->realname?>
               </a></td>
           <td>
-            총계    : <?=$v->nofol_rank?><br />
+            피드백총계 : <?=$v->nofol_rank?><br />
+
             충실도  : <?=$v->discoverbility?><br />
+            피드백기간계 : <?=$v->feedback_point?><br />
             스탭점수 : <?=$v->staffpoint?><br />
               / <?=$v->regdate?></td>
           <td><?=$v->regdate?></td>

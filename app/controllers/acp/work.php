@@ -66,6 +66,16 @@ class work extends CI_Controller {
 
                 $limit = array($args['page'], $args['delimiter']);
 
+                $this->load->config('activity_point', TRUE);
+                $this->db->join('(SELECT
+                    ref_id as work_id,
+                    ifnull(sum(point_get), 0) as point 
+                    FROM `notefolio-renew`.log_activity
+                    where area=\'work\' 
+                    and regdate >= '.$this->db->escape($this->config->item('period', 'activity_point')).'
+                    group by work_id) feedback_point', 'works.work_id = feedback_point.work_id', 'left');
+                $this->db->select('(works.discoverbility + ifnull(feedback_point.point, 0) + works.staffpoint) as rank_point', FALSE);
+
                 $data['list'] = $this->db
                     ->select('works.*, users.id as user_id, users.username as user_username, users.realname as user_realname')
                     ->limit($limit[1],($limit[0]-1)*$limit[1])
