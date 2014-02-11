@@ -1309,6 +1309,7 @@ html.auth body {
 }
 .fb_label {
 	float: left;
+	margin-bottom: 8px;
 }
 .fb_button {
 	float: right;
@@ -1317,6 +1318,7 @@ html.auth body {
 	font-size: 12px;
 	font-family: "NanumGothic";
 	color: #7a7880;
+	margin-bottom: 20px;
 }
 
 

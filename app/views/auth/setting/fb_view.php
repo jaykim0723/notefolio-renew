@@ -9,7 +9,7 @@
     <div class="row-fluid">
         <div class="span12">
             <div class="fb_connect">
-                <div class="fb_label">
+                <div class="fb_label" style="margin-bottom: 20px;">
                     <label class="labeltext">Facebook과 연동되어 있습니다.</label>
                     <?php /* ?><p class="small">Number ID: <?=$fb_num_id?></p><?php */ ?>
                     <input type='hidden' id='fb_num_id' name='fb_num_id' value='<?=$fb_num_id?>' />
@@ -20,7 +20,7 @@
             </div>
             <div class="fb_connect">
                 <div class="fb_label" >
-                    <div class='fb_check'>새로운 작품을 업로드 했을 때 Facebook에 알립니다.</div>
+                    <div class='fb_check'>새 작품을 업로드 했을 때 Facebook에 알립니다.</div>
                 </div>
                 <div class="fb_button">
                     <label class='notefolio-checkbox inline'>
@@ -92,7 +92,7 @@
     <div class="row-fluid">
         <div class="span12">
             <div class="fb_connect">
-                <div class="fb_label">
+                <div class="fb_label"  style="margin-bottom: 20px;">
                     <label class="labeltext">Facebook과 연동되어있지 않습니다.</label>
                 </div>
                 <div class="fb_button">
