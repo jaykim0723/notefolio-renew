@@ -1,11 +1,4 @@
 <?php 
-$keyword = array(
-    'name'  => 'keyword',
-    'id'    => 'keyword',
-    'value' => $default_keyword,
-    'placeholder'   => "keyword",
-    'style' =>  "width: 100%; height: 5em;"
-);
 
 ?>
 <div class="main">
