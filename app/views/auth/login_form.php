@@ -83,6 +83,8 @@ if ($this->input->get('go_to')) {
 		<?php echo form_checkbox($remember); ?>
 		<?php echo form_label('Remember me', $remember['id']); ?>
 	</div>
+
+	<button type="submit" class="btn btn-primary btn-login">Login</button>	
 	
 	<div class="form-group">
 		
@@ -90,7 +92,7 @@ if ($this->input->get('go_to')) {
 		<?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('/auth/register/', 'Register'); ?>
 	</div>
 							
-	<button type="submit" class="btn btn-primary btn-login">Login</button>				
+				
 	<?php echo form_close(); ?>
 
 </section>
