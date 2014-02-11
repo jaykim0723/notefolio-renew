@@ -1103,7 +1103,21 @@ html.auth body {
 		background: #333;
 		border: none;
 		padding: 25px;
-
+	}
+	.fblogin #login-with-fb {
+		border:none;
+	}
+	.or-line {
+		width: 267px;
+		height: 1px;
+		background: #555;
+		margin-bottom: -10px;
+	}
+	.auth-or {
+		color: #bbb;
+		margin-left: 106px;
+		padding: 2px 20px;
+		background: #333;
 	}
 }
 #auth-footer {
@@ -1116,7 +1130,7 @@ html.auth body {
 	padding: 10px 68px 10px 69px;
 	border-radius: 5px;
 	background: #fff;
-	border: none;
+	border: 1px solid #ddd;
 	color: #357ebd;
 	font-weight: 700;
 	margin-bottom: 20px;
@@ -1145,12 +1159,12 @@ html.auth body {
 	color: #bbb;
 	margin-left: 106px;
 	padding: 2px 20px;
-	background: #333;
+	background: #fff;
 }
 .or-line {
 	width: 267px;
 	height: 1px;
-	background: #555;
+	background: #ddd;
 	margin-bottom: -10px;
 }
 .form-group.auth-sub {
