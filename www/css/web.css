@@ -180,35 +180,7 @@ html {
 	display: block;
 }
 
-.thumbbox .videoicon {
-	background: rgba(42,197,198,0.6);
-	padding: 24px 45px 24px 50px;
-	position: absolute;
-	right: 11px;
-	top: 70px;
-	border-radius: 25px;
-	width: 100px;
-	line-height: 10%;
-	color: #fff;
-	display:none;
-}
 
-.thumbbox .pi-videoy {
-	display:none;
-}
-
-
-.thumbbox .spi-video_white.y {
-	display: block;
-	position: absolute;
-	left: 19px;
-	top: 13px;
-	display:none;
-}
-
-.thumbbox:hover .videoicon.y, .thumbbox .spi-video_white.y {
-	display:inline-block !important;
-}
 
 /* main hot creators */
 #main-hot-creators {

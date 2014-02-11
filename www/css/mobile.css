@@ -298,21 +298,18 @@ html, body {
 	display:none;
 }
 
-@media (max-width: 767px){
-	
-	.pi-videoy.y {
+
+.pi-videoy.y {
 		display: inline-block !important;
 	}
+
+#main-list-top {
+	margin-top: 20px;
+}
+.videoicon, .pi-videoy.n {
+	display:none !important;
 }
 
-@media (max-width: 991px){
-	#main-list-top {
-		margin-top: 20px;
-	}
-	.videoicon, .pi-videoy.n {
-		display:none !important;
-	}
-}
 .main-thumbnail-list {
 	overflow: hidden;
 	position: relative;
