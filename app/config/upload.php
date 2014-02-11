@@ -18,6 +18,9 @@ $config['profile_upload_uri']  = $config['upload_uri'].'profiles/';
 $config['img_allowed_types'] = 'gif|jpg|jpeg|png|bmp';
 
 //manage size
+$config['thumbnail_exlarge']=array('max_width'  => 1920, //pixel
+                                'max_height'  =>   0  //pixel, not using
+                                );
 $config['thumbnail_large']=array('max_width'  => 1600, //pixel
                                 'max_height'  =>   0  //pixel, not using
                                 );

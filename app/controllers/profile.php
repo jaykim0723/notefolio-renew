@@ -144,7 +144,7 @@ class Profile extends CI_Controller {
 		$result = $this->file_save->make_thumbnail(
 			$this->config->item('img_upload_path', 'upload').$filename,
 			$this->config->item('profile_upload_path', 'upload').$username.'_bg.jpg',
-			'large', array('spanning'=>true)
+			'exlarge', array('spanning'=>true)
 			);
 
 		if($result=='done'){

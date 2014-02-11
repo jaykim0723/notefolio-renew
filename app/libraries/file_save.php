@@ -173,6 +173,9 @@ class file_save {
             $max_width = $maxsize['max_width'];
             $max_height = $maxsize['max_height'];
             switch($type){
+                case "exlarge":
+                    $todo = array('resize');
+                break;
                 case "large":
                     $todo = array('resize');
                 break;
