@@ -24,7 +24,7 @@ echo form_open('', array(
 	</div>
 	<div class='center'>
 		<br/>
-		<button type="submit" id='btnSubmit' class='btn btn-primary btn-block pure-button-big pure-button'>Submit</button>
+		<button type="submit" id='btnSubmit' class='btn btn-darkgray btn-block pure-button-big pure-button'>Submit</button>
 	</div>
 
 
