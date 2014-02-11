@@ -105,39 +105,39 @@ class site extends CI_Controller {
 
                 $limit = array($args['page'], $args['delimiter']);
 
-                $this->data['list'] = $this->db
+                $data['list'] = $this->db
                     ->select('*')
                     ->limit($limit[1],($limit[0]-1)*$limit[1])
                     ->get('log_access')->result_array();
                 //var_export($this->db->last_query());
 
-                $this->data['all_count'] = isset($page_info[0])?$page_info[0]['count']:0;
-                $this->data['all_page'] = isset($page_info[0])?$page_info[0]['all_page']:1;
-                $this->data['now_page'] = isset($args['page'])?$args['page']:1;
-                $this->data['delimiter'] = isset($args['page'])?$args['delimiter']:30;
-                // $this->data['paging'] = $this->acp->get_paging($args['page'], $page_info[0]['all_page'], 'site/access_log/list'.(($only_outside)?'/search/only_outside':''));
+                $data['all_count'] = isset($page_info[0])?$page_info[0]['count']:0;
+                $data['all_page'] = isset($page_info[0])?$page_info[0]['all_page']:1;
+                $data['now_page'] = isset($args['page'])?$args['page']:1;
+                $data['delimiter'] = isset($args['page'])?$args['delimiter']:30;
+                // $data['paging'] = $this->acp->get_paging($args['page'], $page_info[0]['all_page'], 'site/access_log/list'.(($only_outside)?'/search/only_outside':''));
                 break;
             case "view":
                 if (isset($args['id'])) {
-                    $this->data['view'] = $this->log_db->_get_list('access', array('id'=>$args['id']), array(), array(1,1));
+                    $data['view'] = $this->log_db->_get_list('access', array('id'=>$args['id']), array(), array(1,1));
                 } else {
                    redirect('/acp/site/access_log/list/');
                 }
                 break;
             case "write":
-                $this->data['field'] = array();
+                $data['field'] = array();
                 
-                $this->data['field']['mode'] = 'write';
-                $this->data['field']['prefix']='TT';
-                $this->data['field']['length']='8';
-                $this->data['field']['amount']='1';
-                $this->data['field']['comment']='';
+                $data['field']['mode'] = 'write';
+                $data['field']['prefix']='TT';
+                $data['field']['length']='8';
+                $data['field']['amount']='1';
+                $data['field']['comment']='';
                 
                 break;
             case "modify":
                 if (isset($args['id'])) {
                     $form_data = $this->log_db->_get_list('access', array('id'=>$args['id']), array(), array(1,1));
-                    $this->data['field'] = $form_data[0];
+                    $data['field'] = $form_data[0];
                 } else {
                    redirect('/acp/site/access_log/list/');
                 }
@@ -145,7 +145,7 @@ class site extends CI_Controller {
             case "delete":
                 if (isset($args['id'])) {
                     $form_data = $this->log_db->_get_list('access', array('id'=>$args['id']), array(), array(1,1));
-                    $this->data['field'] = $form_data[0];
+                    $data['field'] = $form_data[0];
                 } else {
                    redirect('/acp/site/access_log/list/');
                 }
@@ -160,15 +160,15 @@ class site extends CI_Controller {
                 break;
         }
 
-        // $this->data['subtab'] = $this->acp->get_subtab(array("list"=>"목록",
+        // $data['subtab'] = $this->acp->get_subtab(array("list"=>"목록",
         //                                                      "list/search/only_outside"=>"목록(외부접속)",
         //                                                      "view"=>"보기", 
         //                                                      "write"=>"쓰기", 
         //                                                      "modify"=>"수정"), 
         //                                                 $mode.(($only_outside)?'/search/only_outside':''), strtolower(get_class($this)).'/'.strtolower(__FUNCTION__).'/');
         
-        $this->data['form_attr'] = array('class' => 'form', 'id' => 'access_log_'.$mode.'_form');
-        $this->layout->set_header('title', '접속로그')->set_view('acp/site_access_log_'.$mode,$data)->render();
+        $data['form_attr'] = array('class' => 'form', 'id' => 'access_log_'.$mode.'_form');
+        $this->layout->set_header('title', '접속로긩ㅓ')->set_view('acp/site_access_log_'.$mode,$data)->render();
     }
 
     
