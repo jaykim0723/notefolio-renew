@@ -88,7 +88,9 @@ class site extends CI_Controller {
                 }
                 //var_export($args['order']);
                 
-                $page_info = $this->log_db->_get_list('access', $args['search'], array('count(*) as count', 'ceil(count(*)/'.$args['delimiter'].') as all_page'));
+                $page_info = $this->db
+                    ->select('count(*) as count, ceil(count(*)/'.$args['delimiter'].') as all_page')
+                    ->get->result_array();
                 
                 $this->data['list'] = $this->log_db->_get_list('access', $args['search'], array(), array($args['page'], $args['delimiter']), $args['order']);
                 //var_export($this->db->last_query());
