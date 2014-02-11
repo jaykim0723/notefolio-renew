@@ -1178,6 +1178,10 @@ html.auth body {
 	.form-group.fblogin {
 		margin-bottom: 10px !important;
 	}
+	.auth-agree {
+		margin-bottom: 0px !important;
+		padding-top: 15px !important;
+	}	
 }
 #auth-footer {
 	margin-top: 20px;
