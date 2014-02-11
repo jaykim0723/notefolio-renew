@@ -40,16 +40,6 @@ class work extends CI_Controller {
                 parse_str(str_replace(array(":",'+'), array("=", "&"), $args['order']), $args['order']);
                 if(!isset($args['search'])) $args['search'] ="";
                 parse_str(str_replace(array(":",'+'), array("=", "&"), $args['search']), $args['search']);
-                if(isset($args['search']['only_outside'])){
-                    unset($args['search']['only_outside']);
-                    $only_outside = true;
-                    $args['search']['(to_access not like "/feed/check_unread%" and remote_addr != "127.0.0.1" and referer is not null and referer not like "%.notefolio.net%" and referer not like "%.localhost%")'] = null;
-                    $data['search_url'] = '/search/only_outside';
-                }
-                if(isset($args['search']['to_access'])){
-                    $args['search']['to_access like'] = $args['search']['to_access'];
-                    unset($args['search']['to_access']);
-                }
 
                 if(is_array($args['search'])&&count($args['search'])>0){
                     foreach($args['search'] as $q_key=>$q_val){
@@ -59,7 +49,7 @@ class work extends CI_Controller {
 
                 $page_info = $this->db
                     ->select('count(*) as count, ceil(count(*)/'.$args['delimiter'].') as all_page')
-                    ->get('log_access')->result_array();
+                    ->get('works')->result_array();
                 error_log($this->db->last_query());
 
 
@@ -78,9 +68,11 @@ class work extends CI_Controller {
                 $limit = array($args['page'], $args['delimiter']);
 
                 $data['list'] = $this->db
-                    ->select('*')
+                    ->select('works.*')
                     ->limit($limit[1],($limit[0]-1)*$limit[1])
-                    ->get('log_access')->result_array();
+                    ->join('users', 'works.user_id=users.id', 'left')
+                    ->join('user_profiles', 'users.id=user_profiles.user_id', 'left')
+                    ->get('works')->result_array();
                 error_log($this->db->last_query());
 
                 $data['all_count'] = isset($page_info[0])?$page_info[0]['count']:0;
@@ -100,12 +92,6 @@ class work extends CI_Controller {
             case "write":
                 $data['field'] = array();
                 
-                $data['field']['mode'] = 'write';
-                $data['field']['prefix']='TT';
-                $data['field']['length']='8';
-                $data['field']['amount']='1';
-                $data['field']['comment']='';
-                
                 break;
             case "modify":
                 if (isset($args['id'])) {
@@ -123,9 +109,6 @@ class work extends CI_Controller {
                    redirect('/acp/work/works/list/');
                 }
                 break;
-            //case "brief":
-            //    return $this->_works_brief($this->input->post('mode'));
-            //    break;
             case "proc":
                 return $this->_works_proc($this->input->post('mode'));
                 break;
@@ -133,15 +116,8 @@ class work extends CI_Controller {
                 break;
         }
 
-        // $data['subtab'] = $this->acp->get_subtab(array("list"=>"목록",
-        //                                                      "list/search/only_outside"=>"목록(외부접속)",
-        //                                                      "view"=>"보기", 
-        //                                                      "write"=>"쓰기", 
-        //                                                      "modify"=>"수정"), 
-        //                                                 $mode.(($only_outside)?'/search/only_outside':''), strtolower(get_class($this)).'/'.strtolower(__FUNCTION__).'/');
-        
         $data['form_attr'] = array('class' => 'form', 'id' => 'works_'.$mode.'_form');
-        $this->layout->set_header('title', '접속로그')->set_view('acp/work_works_'.$mode,$data)->render();
+        $this->layout->set_header('title', '작품 목록')->set_view('acp/work_works_'.$mode,$data)->render();
     }
 
     
