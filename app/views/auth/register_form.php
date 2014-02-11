@@ -153,7 +153,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		<div class="form-error"><?=form_error($confirm_password['name']); ?></div>
 	</div>
 	<div class="form-group <?=isset($errors['gender']) ? 'error' : ''?>">
-		<label>성별</label><br/>
+		<!--<label>성별</label><br/>-->
 		<label class="radio-inline">
 			<input type='radio' name='gender' value='f' <?=$gender['f']?> /> 여
 		</label>
