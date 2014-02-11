@@ -15,7 +15,7 @@
         <tr>
           <th>순번</th>
           <th>&nbsp;</th>
-          <th>접속위치</th>
+          <th>작성</th>
           <th>리퍼러</th>
           <th>생성일</th>
           <th>보기</th>
@@ -40,9 +40,9 @@
               </a></td>
           <td>/ <?=$v->user->regdate?></td>
           <td><?=$v->regdate?></td>
-          <td><a class="btn" href="/acp/work/works/view/id/<?=$v->id?>">보기</a></td>
-          <td><a class="btn btn-primary" href="/acp/work/works/modify/id/<?=$v->id?>">수정</a></td>
-          <td><a class="btn btn-danger" href="/acp/work/works/delete/id/<?=$v->id?>">삭제</a></td>
+          <td><a class="btn" href="/acp/work/works/view/id/<?=$v->work_id?>">보기</a></td>
+          <td><a class="btn btn-primary" href="/acp/work/works/modify/id/<?=$v->work_id?>">수정</a></td>
+          <td><a class="btn btn-danger" href="/acp/work/works/delete/id/<?=$v->work_id?>">삭제</a></td>
         </tr>
     <?php
           }
