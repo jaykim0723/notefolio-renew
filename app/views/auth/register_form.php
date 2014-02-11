@@ -124,6 +124,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		<a href="" class="btn btn-info btn-block" id="signup-with-fb">Signup with facebook</a>
 	<?php }?>
 	<?=form_hidden('submit_uuid', $submit_uuid); ?>
+	<div class="or-line"></div><span class="auth-or">or</span>
 	</div>
 	<?php if ($use_username) { ?>
 	<div class="form-group <?=isset($errors[$username['name']]) ? 'error' : ''?>">
