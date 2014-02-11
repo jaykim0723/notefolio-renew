@@ -1176,6 +1176,9 @@ html.auth body {
 .form-group.fblogin {
 	margin-bottom: 10px;
 }
+#signup-with-fb {
+	margin-bottom: 30px;
+}
 .fblogin #login-with-fb, #signup-with-fb {
 	padding: 10px 68px 10px 69px;
 	border-radius: 5px;

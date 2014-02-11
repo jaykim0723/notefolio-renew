@@ -7,6 +7,7 @@ if ($use_username) {
 		'value' => set_value('username'),
 		'maxlength'	=> $this->config->item('username_max_length', 'tank_auth'),
 		'size'	=> 30,
+		'placeholder' => 'User name'
 	);
 }
 $email = array(
@@ -16,6 +17,7 @@ $email = array(
 	'value'	=> set_value('email'),
 	'maxlength'	=> 80,
 	'size'	=> 30,
+	'placeholder' => 'Email address'
 );
 $password = array(
 	'name'	=> 'password',
@@ -24,6 +26,7 @@ $password = array(
 	'value' => '',
 	'maxlength'	=> $this->config->item('password_max_length', 'tank_auth'),
 	'size'	=> 30,
+	'placeholder' => 'Password'
 );
 $confirm_password = array(
 	'name'	=> 'confirm_password',
@@ -32,6 +35,7 @@ $confirm_password = array(
 	'value' => '',
 	'maxlength'	=> $this->config->item('password_max_length', 'tank_auth'),
 	'size'	=> 30,
+	'placeholder' => 'Confirm password'
 );
 $captcha = array(
 	'name'	=> 'captcha',
@@ -128,23 +132,23 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 	</div>
 	<?php if ($use_username) { ?>
 	<div class="form-group <?=isset($errors[$username['name']]) ? 'error' : ''?>">
-		<?=form_label('Username', $username['id']); ?>
+		<!--<?=form_label('Username', $username['id']); ?>-->
 		<?=form_input($username); ?>
 		<div class="form-error"><?=form_error($username['name']); ?></div>
 	</div>
 	<?php } ?>
 	<div class="form-group <?=isset($errors[$email['name']]) ? 'error' : ''?>">
-		<?=form_label('Email Address', $email['id']); ?>
+		<!--<?=form_label('Email Address', $email['id']); ?>-->
 		<?=form_input($email); ?>
 		<div class="form-error"><?=form_error($email['name']); ?></div>
 	</div>
 	<div class="form-group <?=isset($errors[$password['name']]) ? 'error' : ''?>">
-		<?=form_label('Password', $password['id']); ?>
+		<!--<?=form_label('Password', $password['id']); ?>-->
 		<?=form_password($password); ?>
 		<div class="form-error"><?=form_error($password['name']); ?></div>
 	</div>
 	<div class="form-group <?=isset($errors[$confirm_password['name']]) ? 'error' : ''?>">
-		<?=form_label('Confirm Password', $confirm_password['id']); ?>
+		<!--<?=form_label('Confirm Password', $confirm_password['id']); ?>-->
 		<?=form_password($confirm_password); ?>
 		<div class="form-error"><?=form_error($confirm_password['name']); ?></div>
 	</div>
