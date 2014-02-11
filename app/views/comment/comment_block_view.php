@@ -1,7 +1,7 @@
 <div id="comment-<?php echo $row->comment_id ?>" data-id="<?php echo $row->comment_id ?>" class="comment-block">
-			<?php if (USER_ID!=0): ?>
-			<a href="javascript:;" class="btn btn-nofol btn-no-border btn-reply-comment"><i class="spi spi-reply">reply</i></a>
-			<?php endif ?>
+	<?php if (USER_ID!=0): ?>
+	<a href="javascript:;" class="btn btn-nofol btn-no-border">reply</a>
+	<?php endif ?>
 
 	<div class="comment-inner">
 		<div class="comment-control-area">

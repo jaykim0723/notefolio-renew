@@ -116,12 +116,12 @@
 				
 				<h4>공개여부</h4>
 				<div class="control-group">
-                    <label class="notefolio-radio inline<?if($row->status=='enabled'){?> checked<?}?>">
-                        <input type="radio" name="status" value="enabled" <?if($row->status=='enabled'){?> checked<?}?>> 공개
+                    <label class="notefolio-radio inline<?php echo $row->status!='disbaled' ? 'checked' : ''?>">
+                        <input type="radio" name="status" value="enabled" <?php echo $row->status!='disbaled' ? 'checked' : ''?>> 공개
                     </label>
                     &nbsp; &nbsp; &nbsp;
-                    <label class="notefolio-radio inline<?if(in_array($row->status, array('disabled', 'deleted'))){?> checked<?}?>">
-                        <input type="radio" name="status" value="disabled" <?if(in_array($row->status, array('disabled', 'deleted'))){?> checked<?}?>> 비공개
+                    <label class="notefolio-radio inline<?php echo $row->status=='disbaled' ? 'checked' : ''?>">
+                        <input type="radio" name="status" value="disabled" <?php echo $row->status=='disbaled' ? 'checked' : ''?>> 비공개
                     </label>
 				</div>
 
