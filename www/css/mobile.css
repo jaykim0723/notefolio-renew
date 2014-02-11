@@ -1088,6 +1088,14 @@ html.auth body {
 	padding: 20px;
 
 }
+@media (max-width: 767px) {
+	#auth-body {
+		background: #333;
+		border: none;
+		padding: 25px;
+
+	}
+}
 #auth-footer {
 	margin-top: 20px;
 	text-align: center;
