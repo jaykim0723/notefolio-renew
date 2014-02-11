@@ -49,7 +49,7 @@
                 </table>
               </div>
               <!-- /table-responsive -->
-              <?=get_paging($params=array('now_page'=>$page, 'now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/user/member/list'))?>
+              <?=get_paging($params=array('now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/user/member/list'))?>
             </div>
           </div>
           <!-- /widget-content -->
