@@ -374,6 +374,7 @@ html, body {
 @media (max-width:599px) {
 	.main-thumbnail-list .thumbbox {
 		width:50%;
+		outline:1px solid #efefef;
 	}
 	.main-thumbnail-list .thumbbox.wide {
 		width:100%;
@@ -427,6 +428,7 @@ html, body {
 @media (max-width:599px) {
 	.thumbnail-list .thumbbox {
 		width: 33.3333333333%;
+		outline:1px solid #efefef;
 	}
 }
 @media (min-width:768px) {
