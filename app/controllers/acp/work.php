@@ -50,7 +50,6 @@ class work extends CI_Controller {
                 $page_info = $this->db
                     ->select('count(*) as count, ceil(count(*)/'.$args['delimiter'].') as all_page')
                     ->get('works')->result_array();
-                error_log($this->db->last_query());
 
 
                 if(is_array($args['search'])&&count($args['search'])>0){
@@ -77,7 +76,7 @@ class work extends CI_Controller {
                 foreach($data['list'] as $key=>$val){
                     $user = new stdClass();
                     foreach($val as $sub_key =>$sub_val){
-                        if(preg_match('/user_/', $sub_key)){
+                        if(preg_match('/^user\_/', $sub_key)){
                             echo str_replace('user_', '', $sub_val);
                             $user->{str_replace('user_', '', $sub_key)} = $sub_val; 
                         }
