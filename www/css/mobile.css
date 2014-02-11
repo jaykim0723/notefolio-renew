@@ -1078,7 +1078,6 @@ html.auth,
 html.auth body {
 	background: url(http://magazine.notefolio.net/nf-bg.jpg);
 	background-attachment: fixed;
-	background-position: center center;
 	background-size: cover;
 }
 #auth-wrapper {
