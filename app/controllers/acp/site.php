@@ -103,6 +103,7 @@ class site extends CI_Controller {
                 $page_info = $this->db
                     ->select('count(*) as count, ceil(count(*)/'.$args['delimiter'].') as all_page')
                     ->get('log_access')->result_array();
+                error_log($this->db->last_query());
 
                 $limit = array($args['page'], $args['delimiter']);
 
