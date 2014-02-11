@@ -64,8 +64,8 @@ class work_model extends CI_Model {
             // $this->db->having("(works.regdate >= ".$this->db->escape($from)." or works.moddate >= ".$this->db->escape($from).")", NULL, FALSE);
         }
 
-        foreach($params->keywords as $val){
-            $this->db->like('works.keywords', $val, 'both');
+        if(count($params->keywords)>0){
+            $this->db->like('works.keywords', '%'.implode('%', $params->keywords).'%', 'both');
         }
 
         if(!empty($params->q)){
