@@ -16,7 +16,7 @@
           <th>순번</th>
           <th>&nbsp;</th>
           <th>작성자</th>
-          <th>리퍼러</th>
+          <th>노폴랭크</th>
           <th>생성일</th>
           <th>보기</th>
           <th>수정</th>
@@ -32,13 +32,12 @@
           <td><a href="/acp/work/works/view/id/<?=$v->work_id?>"><?=$v->work_id?></a></td>
           <td><a href="/<?=$v->user->username?>/<?=$v->work_id?>">
             <img src="/data/covers/<?=$v->work_id?>_t2.jpg" width="200"><br/>
-            <p><?=mb_substr($v->title, 0, 50, 'UTF-8')?>
-                  <?=((mb_strlen($v->title, 'UTF-8')>50)?'...':'')?></p>
+            <p><?=((mb_strlen($v->title, 'UTF-8')>50)?'...':'')?> / <?=$v->regdate?></p>
           </a></td>  
           <td><a href="/acp/user/member/view/id/<?=$v->user->id?>">
             <?=$v->user->realname?>
               </a></td>
-          <td>/ <?=$v->regdate?></td>
+          <td><?=$v->nofol_rank?>/ <?=$v->regdate?></td>
           <td><?=$v->regdate?></td>
           <td><a class="btn" href="/acp/work/works/view/id/<?=$v->work_id?>">보기</a></td>
           <td><a class="btn btn-primary" href="/acp/work/works/modify/id/<?=$v->work_id?>">수정</a></td>
