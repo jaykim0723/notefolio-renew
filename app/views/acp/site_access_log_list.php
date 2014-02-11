@@ -7,7 +7,6 @@
 
 
     <h2>접속 로그 목록</h2>
-    <?php echo $subtab?>
 
     <p class="lead">총 <?=$all_count?> 개 / <?=$all_page?> 페이지 중 <?=$now_page?> 번째</p>
 
