@@ -406,6 +406,7 @@ class file_save {
 
         //-- get ratio
         $ratio = $size['width']/$max_width;
+        if($ratio<1) = $ratio = 1;
 
         return array(
             'width'  =>round($crop['width']*$ratio), 
