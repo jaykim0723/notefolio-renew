@@ -46,8 +46,8 @@
             스탭점수 : <?=$v->staffpoint?><br />
             랭크총계 : <?=$v->rank_point?><br />
 
-            스탭포인트 수정:
-            <input type="text" value="<?=$v->staffpoint?>" name="staffpoint"  />
+            스탭포인트 수정: <br/>
+            <input type="text" value="<?=$v->staffpoint?>" name="staffpoint" size="4"  />
             <a>
               <span>수정</span>
             </a>
