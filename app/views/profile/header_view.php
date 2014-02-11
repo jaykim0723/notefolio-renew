@@ -10,7 +10,14 @@
 	</script>
 <?php endif ?>
 
-<div id="profile-header" style="background-image:url(/data/profiles/<?php echo $row->username ?>_bg.jpg?_=<?php echo substr($row->modified,-2) ?>);">
+<?php
+$filename = '/data/profiles/'.$row->username.'_bg.jpg';
+if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
+	$filename = '/img/bg4.png';
+}
+
+?>
+<div id="profile-header" style="background-image:url(<?=$filename?>?_=<?php echo substr($row->modified,-2) ?>);">
 
 	<div id="profile-total">
 		<span>총 작품수 : <?php echo number_format($total->work_cnt) ?></span>
