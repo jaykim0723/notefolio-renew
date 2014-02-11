@@ -125,6 +125,11 @@ html.mm-blocking #mm-blocker {
   padding-top: 10px;
 }
 
+.mm-list.spi.spi-logout_white {
+  margin-left: 1px;
+  margin-right: 8px;
+}
+
 
 .mm-list,
 .mm-list > li {
