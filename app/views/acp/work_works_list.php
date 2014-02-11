@@ -48,7 +48,7 @@
 
             스탭포인트 수정: <br/>
             <input type="text" value="<?=$v->staffpoint?>" name="staffpoint" style="width: 4em;"  />
-            <a>
+            <a href="">
               <span class="btn btn-info">수정</span>
             </a>
           </td>
