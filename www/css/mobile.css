@@ -1185,6 +1185,9 @@ html.auth body {
 	#auth_basic div {
 		width: 247px !important;
 	}
+	#auth_facebook {
+		margin-top: 0px !important;
+	}
 }
 #auth-footer {
 	margin-top: 20px;
@@ -1306,6 +1309,9 @@ html.auth body {
 	background: #efefef;
 	border-radius: 2em;
 	margin-left: 10px;
+}
+#auth_facebook {
+	margin-top: 40px;
 }
 .fb_label {
 	float: left;
