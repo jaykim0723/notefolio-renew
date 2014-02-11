@@ -203,7 +203,7 @@ var workUtil = {
     			break;
 
     			case 'text':
-    				o.c = br2nl($(this).children('textarea').val());
+    				o.c = br2nl($(this).find('textarea').val());
     			break;
 
     			case 'line':
@@ -337,9 +337,9 @@ var workUtil = {
 				if($('#content-block-list .block-image').length>0){
 					$('#content-block-list .block-image').each(function(index){
 						var $img = $(this).children('img');
-						if($img.prop('src')==workUtil.defaultValue.image)
+						if($img.attr('src')==workUtil.defaultValue.image)
 							return true;
-						$list.append('<li><img src="'+$img.prop('src')+'" data-id="'+$img.data('id')+'"/></li>');
+						$list.append('<li><img src="'+$img.attr('src')+'" data-id="'+$img.data('id')+'"/></li>');
 					});
 				}else{
 					$list.html('<div class="centered">작품내의 이미지가 존재하지 않습니다.</div>');
