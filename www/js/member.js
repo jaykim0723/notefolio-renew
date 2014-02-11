@@ -410,6 +410,18 @@ var workUtil = {
 				update: function(event, ui){
 				}
 			});
+
+			window.onbeforeunload = function (e) {
+			  var message = '수정사항을 전송하지 않고 나가면 정보들이 저장되지 않습니다.',
+			  e = e || window.event;
+			  // For IE and Firefox
+			  if (e) {
+			    e.returnValue = message;
+			  }
+
+			  // For Safari
+			  return message;
+			};
 		},
 
 		setTrashBin: function(target, sendTo){

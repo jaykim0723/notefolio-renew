@@ -317,11 +317,17 @@ $(function() {
 			}
 		});
 		$(this).remove();
-	}).on('click', '.clear-list', function(){
+	})
+	.on('click', '.clear-list', function(){
 		delLocal('listing_html');
 		delLocal('listing_url');
 		delLocal('listing_href');
 		return true;
+	})
+	.on('click', '.go-profile-area', function(event){
+		event.preventDefault();
+		event.stopPropagation();
+		site.redirect($(this).data('username'));
 	});
 
 	$('#work-list').on('click', '.block-image > a', function(){
