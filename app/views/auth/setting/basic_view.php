@@ -26,7 +26,7 @@
 			<p style="margin: 10px 0px;"><span class="labeltext">이메일</span><a href="/auth/change_email" class="btn btn-link labeltext2 auth-smallbtn" style="">이메일 변경하기</a></p>
 			<?php echo $email?>
 		</div>
-		<div class="col-md-6">
+		<div class="form-group" style="margin-bottom: 0px;margin-left:15px;">
 			<span class="labeltext">비밀번호</span>
 			<a href="/auth/change_password" class="btn btn-link호 labeltext2 auth-smallbtn">비밀번호 변경하기</a>
 		</div>
