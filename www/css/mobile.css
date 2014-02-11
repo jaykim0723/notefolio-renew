@@ -1100,12 +1100,13 @@ html.auth body {
 }
 @media (max-width: 767px) {
 	#auth-body {
-		background: #333;
+		background: #333 !important;
 		border: none;
 		padding: 25px;
+		margin-top:0px !important;
 	}
 	.fblogin #login-with-fb {
-		border:none;
+		border:none !important;
 	}
 	.or-line {
 		background: #555 !important;
