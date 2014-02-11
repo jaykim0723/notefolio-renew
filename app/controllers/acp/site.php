@@ -159,7 +159,7 @@ class site extends CI_Controller {
             default:
                 break;
         }
-
+        exit();
         // $this->data['subtab'] = $this->acp->get_subtab(array("list"=>"목록",
         //                                                      "list/search/only_outside"=>"목록(외부접속)",
         //                                                      "view"=>"보기", 
