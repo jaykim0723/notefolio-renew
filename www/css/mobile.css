@@ -1307,14 +1307,14 @@ html.auth body {
 	border-radius: 2em;
 	margin-left: 10px;
 }
-#auth_facebook .fb-connect {
+.fb-connect {
 	float: left;
 	width:100%;
 }
-#auth_facebook .fb-connect .fb_button {
+.fb-connect .fb_button {
 	float: right;
 }
-.fb-connect .fb_check {
+.fb_check {
 	font-size: 12px;
 	font-family: "NanumGothic";
 	color: #7a7880;
