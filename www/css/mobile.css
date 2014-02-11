@@ -305,6 +305,12 @@ html, body {
 
 #main-list-top {
 	margin-top: 20px;
+	margin-bottom: 3px;
+}
+@media (max-width:600px) {
+	#main-list-top {
+		margin-bottom: 1px;
+	}
 }
 .videoicon, .pi-videoy.n {
 	display:none !important;
