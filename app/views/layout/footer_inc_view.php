@@ -60,7 +60,7 @@
 				</a>
 			</li>
 		<?php if (USER_ID==0): ?>
-			<li>
+			<li class="guestmenu">
 				<a href="/auth/login">
 					<i class="spi spi-login_white"></i>
 					Login

@@ -125,9 +125,10 @@ html.mm-blocking #mm-blocker {
   padding-top: 10px;
 }
 
-.mm-list .spi-logout_white {
+.mm-list .spi-logout_white, .mm-list .spi-login_white {
   margin-left: 2px;
   margin-right: 8px;
+
 }
 
 
@@ -160,7 +161,7 @@ html.mm-blocking #mm-blocker {
     font-weight: 300;
     line-height: 2em;
     display: block;
-    padding: 10px 10px 10px 10px;
+    padding: 12px 10px 12px 10px;
     margin: 0; }
     .mm-list > li > a > i {
       margin: 0 0.3em;
@@ -280,6 +281,10 @@ html.mm-blocking #mm-blocker {
     right: 15px;
 }
 
+.guestmenu {
+    border-top: 10px solid #78cad5;
+}
+
 
 html.mm-opened .mm-page {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
@@ -290,7 +295,7 @@ html.mm-opened .mm-page {
 .mm-menu {
   color: #ffffff; }
   .mm-menu .mm-list > li:after {
-    border-color: rgba(255, 255, 255, 0.2); }
+    border-color: #78cad5; }
     .mm-menu .mm-list > li:first-child {
     border-color: none; }
   .mm-menu .mm-list > li > a.mm-subclose {
