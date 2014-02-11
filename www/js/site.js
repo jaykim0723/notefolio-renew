@@ -247,27 +247,7 @@ $(window).on('beforeunload', function(){
 	lastScrollTop = currentScrollTop;
 });
 site.prevPage = empty(localStorage.getItem('prevPage')) ? {top:0, url:''} : JSON.parse(localStorage.getItem('prevPage'));
-$(document).on('click', '.btn-follow', function(){
 
-	if(site.user_id==0){
-		return site.requireLogin();
-	}
-	var $o = $(this);
-	var data = {
-		user_id : $o.data('id'),
-		follow : $o.hasClass('activated') ? 'n' : 'y'
-	};
-	$o.append('<div class="ajax-loading-overlay"><img src="/img/ajax-loader.gif" class="ajax-loading"/></div>');
-	$.post(site.url+'profile/follow_action', data, function(responseJSON){
-		console.log($o, responseJSON);
-		if(responseJSON.status=='done'){
-			// msg.open($o.hasClass('activated') ? '팔로우를 취소하였습니다.' : '팔로우 하였습니다.');
-			$o[(responseJSON.is_follow == 'y' ? 'add' : 'remove')+'Class']('activated').children('span').html(responseJSON.is_follow == 'y' ? 'Following' : 'Follow').next().remove();
-		}else
-			msg.open(responseJSON.message);
-
-	}, 'json');
-});
 
 site.restoreInifiniteScroll = function(target, target_button){
 	if(typeof target=='undefined')
@@ -328,6 +308,32 @@ $(function() {
 		event.preventDefault();
 		event.stopPropagation();
 		site.redirect($(this).data('username'));
+	})
+	.on('click', '.btn-follow', function(){
+		if(site.user_id==0){
+			return site.requireLogin();
+		}
+		var $o = $(this);
+		var data = {
+			user_id : $o.data('id'),
+			follow : $o.hasClass('activated') ? 'n' : 'y'
+		};
+		$o.append('<div class="ajax-loading-overlay"><img src="/img/ajax-loader.gif" class="ajax-loading"/></div>');
+		$.post(site.url+'profile/follow_action', data, function(responseJSON){
+			console.log($o, responseJSON);
+			if(responseJSON.status=='done'){
+				// msg.open($o.hasClass('activated') ? '팔로우를 취소하였습니다.' : '팔로우 하였습니다.');
+				var $a = $o[(responseJSON.is_follow == 'y' ? 'add' : 'remove')+'Class']('activated');
+				if($a.children('span').length>0) // 일반적인 팔로우에 대한 대책
+					$a.children('span').html(responseJSON.is_follow == 'y' ? 'Following' : 'Follow').next().remove();
+				else{ // 모바일 우상단의 축소된 팔로우 버튼에서의 일
+					$a.children('.ajax-loading-overlay').remove();
+					msg.open(responseJSON.is_follow == 'y' ? '팔로우 하였습니다.' : '팔로우를 취소하였습니다.'); // 모바일은 티가 잘 안나므로 표시
+				}
+			}else
+				msg.open(responseJSON.message);
+
+		}, 'json');
 	});
 
 	$('#work-list').on('click', '.block-image > a', function(){

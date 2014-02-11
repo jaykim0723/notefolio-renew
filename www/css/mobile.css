@@ -248,6 +248,7 @@ html, body {
 	height: 50px;
 	z-index: 20;
 	top:0;
+	box-shadow: rgba(0,0,0,0.1) 0px 4px 3px -2px;
 }
 #mobile-header {
 	padding-top: 1em;
@@ -1780,6 +1781,15 @@ input#mobile-search-field:-moz-placeholder {
 #about-cont {
 	min-height: 400px;
 }
+#about-cont img {
+	max-width: 100%;
+}
+#btn-update-about {
+	position: absolute;
+	top: 5px;
+	right: 20px;
+}
+
 
 #statistics-widgets {
 	width: 300px;
@@ -1910,3 +1920,21 @@ input#mobile-search-field:-moz-placeholder {
 #mobile-menu a {
 	color: #fff;
 }
+
+
+#mobile-header-follow .spi {
+	display: none;
+}
+#mobile-header-follow .spi-follow {
+	display: block;
+}
+#mobile-header-follow.activated {
+	background: transparent;
+}
+#mobile-header-follow.activated .spi-following {
+	display: block;
+}
+
+
+
+

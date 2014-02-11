@@ -95,7 +95,7 @@
 						<a href="/random"><i class="spi spi-refresh">random</i></a>	<!-- 랜덤페이지로 -->
 					<?php elseif($button['follow']): // 여기가 프로필페이지나 특정 작가의 상세정보페이지라면 ?>
 						<?php if ($this->session->userdata('username')!=$profile['username']): // 작가 본인이 아닐 때에만 ?>
-							<a href="javascript:;" class="btn btn-follow" style="padding: 0;margin-top: -1px;"><i class="spi <?=($profile['is_follow']=='y')?'spi-following':'spi-follow'?>"></i></a> <!-- 이 작가의 팔로우 버튼 -->
+							<a id="mobile-header-follow" href="javascript:;" data-id="<?php echo $profile['user_id'] ?>" class="btn btn-follow <?=($profile['is_follow']=='y')?'activated':''?>" style="padding: 0;margin-top: -1px;"><i class="spi spi-following"></i><i class="spi spi-follow"></i></a> <!-- 이 작가의 팔로우 버튼 -->
 						<?php endif ?>
 					<?php endif;?>
 				</div>

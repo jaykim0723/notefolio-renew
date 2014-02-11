@@ -69,7 +69,9 @@
 				<div id="work-list" class="work-list infinite-list">
 					<div class="work-wrapper infinite-item" id="work-<?php echo $row->work_id ?>" data-id="<?php echo $row->work_id ?>" data-noted="<?php echo $row->noted; ?>" data-collected="<?php echo $row->collected; ?>" data-moddate="<?php echo substr($row->regdate, -2); ?>">
 						<div class="work-small-profile bg1 visible-xs visible-sm">
-							<a href="<?php echo site_url($row->user->username) ?>"><img src="/data/profiles/<?php echo $row->user->username ?>_face.jpg"/></h2>
+							<a href="<?php echo site_url($row->user->username) ?>">
+								<img src="/data/profiles/<?php echo $row->user->username ?>_face.jpg?_=<?php echo substr($row->user->modified,-2) ?>" onerror="this.src='/img/default_profile_face.png'"/>
+							</h2>
 							<h2><a href="<?php echo site_url($row->user->username) ?>"><?php echo $row->user->realname ?></a></h2>
 							<span><?php echo $this->nf->category_to_string($row->user->user_keywords, true); ?></span>
 							<div class="work-url" style="display:none;"><?php echo site_url($row->user->username.'/'.$row->work_id); ?></div>

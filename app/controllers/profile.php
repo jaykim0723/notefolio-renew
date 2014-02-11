@@ -286,9 +286,10 @@ class Profile extends CI_Controller {
 		));
 		$work_list->username = $username;
 		$profile_header = array(
-			'username'=>$user->row->username,
-			'is_follow'=>$user->row->is_follow,
-			);
+			'username'  =>$user->row->username,
+			'is_follow' =>$user->row->is_follow,
+			'user_id'   =>$user->row->user_id,
+		);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
 		$this->layout->set_view('profile/myworks_listing_view', $work_list)->render();
