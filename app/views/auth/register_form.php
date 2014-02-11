@@ -130,6 +130,9 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 	<?=form_hidden('submit_uuid', $submit_uuid); ?>
 	<div class="or-line"></div><span class="auth-or">or</span>
 	</div>
+
+
+<div class="biggroup">	
 	<?php if ($use_username) { ?>
 	<div class="form-group <?=isset($errors[$username['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Username', $username['id']); ?>-->
@@ -138,7 +141,6 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 	</div>
 	<?php } ?>
 
-<div class="biggroup">
 	<div class="form-group <?=isset($errors[$email['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Email Address', $email['id']); ?>-->
 		<?=form_input($email); ?>
