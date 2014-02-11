@@ -74,7 +74,7 @@ class work extends CI_Controller {
                     ->join('users', 'works.user_id=users.id', 'left')
                     ->join('user_profiles', 'users.id=user_profiles.user_id', 'left')
                     ->get('works')->result();
-                error_log($this->db->last_query());
+                echo($this->db->last_query());
 
                 foreach($data['list'] as $key=>$val){
                     $user = new stdClass();
