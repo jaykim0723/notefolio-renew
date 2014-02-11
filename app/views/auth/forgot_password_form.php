@@ -22,10 +22,11 @@ echo form_open('', array(
 		<input class="form-control" type="text" name="login" value="" id="login" maxlength="30" size="30" value="<?php echo set_value('login') ?>">
 		<div class="form-error"><?php echo isset($errors['login']) ? '↑ '.$errors['login'] : '' ?></div>
 	</div>
+</div>
 	<div class='center'>
 		<button type="submit" id='btnSubmit' class='btn btn-darkgray2 btn-block pure-button-big pure-button'>Submit</button>
 	</div>
-</div>
+
 
 
 <?php echo form_close(); ?>
