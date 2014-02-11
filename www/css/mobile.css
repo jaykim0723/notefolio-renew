@@ -1110,6 +1110,7 @@ html.auth body {
 	}
 	.or-line {
 		background: #555 !important;
+		margin-top:0 !important;
 	}
 	.auth-or {
 		background: #333 !important;
@@ -1161,6 +1162,7 @@ html.auth body {
 	height: 1px;
 	background: #ddd;
 	margin-bottom: -10px;
+	margin-top: 20px;
 }
 .form-group.auth-sub {
 	border-top: 1px solid #3d3d3d;
