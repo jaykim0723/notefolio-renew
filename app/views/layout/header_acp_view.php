@@ -89,7 +89,7 @@
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
-            <li><a href="/acp/work/list">목록</a></li>
+            <li><a href="/acp/work/works">목록</a></li>
             <li><a href="/acp/work/uploads">업로드</a></li>
           </ul>
         </li>
