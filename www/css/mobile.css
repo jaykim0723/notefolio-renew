@@ -1113,6 +1113,10 @@ html.auth body {
 	font-family: "NanumGothic";
 }
 
+.bg-info a{
+	color:#fff !important;
+}
+
 .bg-info .spi-work_white {
 	margin-right: 12px;
 	margin-top: -2px;
