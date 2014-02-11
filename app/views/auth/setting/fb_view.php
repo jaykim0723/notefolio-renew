@@ -1,6 +1,8 @@
+
 <?php $ci = get_instance(); ?>
+<div class="biggroup">
 <fieldset id='auth_facebook' <?php echo $this->uri->segment(2) == 'setting' ? 'style="margin-bottom:30px;"' : ''?>>
-    <legend>페이스북 연동</legend>
+    <div class="labeltext3">페이스북 연동</div>
 <?php
  if ($fb_num_id&&$fb_num_id>0){
 ?>    
@@ -113,5 +115,5 @@
  }
 ?>
 </fieldset>
-
+</div>
 

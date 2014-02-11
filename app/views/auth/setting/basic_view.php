@@ -24,11 +24,11 @@
 	<div class="row">
 		<div class="col-md-6">
 			<?php echo $email?>
-			<a href="/auth/change_email" class="btn btn-link">이메일 변경하기</a>
+			<a href="/auth/change_email" class="btn btn-link labeltext2 auth-smallbtn">이메일 변경하기</a>
 		</div>
 		<div class="col-md-6">
 			<span class="labeltext">비밀번호</span>
-			<a href="/auth/change_password" class="btn btn-link">비밀번호 변경하기</a>
+			<a href="/auth/change_password" class="btn btn-link호 labeltext2 auth-smallbtn">비밀번호 변경하기</a>
 		</div>
 	</div>
 <!-- 

@@ -1302,6 +1302,11 @@ html.auth body {
 .register-ajax, .register-ajax:hover {
 	color: #2ac5c6;
 }
+.auth-smallbtn {
+	background: #efefef;
+	border-radius: 2em;
+	margin-left: 10px;
+}
 
 
 
