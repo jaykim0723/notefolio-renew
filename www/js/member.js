@@ -691,7 +691,7 @@ var memberUtil = {
 					var $imageWrapper = $(
 						'<div class="crop-image-wrapper">'+
 							(options.message[i]!='' ? (i==1 ? '<br/>' : '')+ '<h2>'+options.message[i]+'</h2>' : '' ) +
-							'<img class="crop-image" src="'+options.src+'"/>' +
+							'<img class="crop-image" src="'+options.src+'" width="760"/>' +
 						'</div>'
 					);
 					$imageWrapper.children('img').Jcrop({
