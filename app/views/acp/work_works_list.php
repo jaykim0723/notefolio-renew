@@ -38,7 +38,7 @@
           <td><a href="/acp/user/member/view/id/<?$v->user->id?>">
             <?=$v->user->realname?>
               </a></td>
-          <td>/ <?=$v->user->regdate?></td>
+          <td>/ <?=$v->regdate?></td>
           <td><?=$v->regdate?></td>
           <td><a class="btn" href="/acp/work/works/view/id/<?=$v->work_id?>">보기</a></td>
           <td><a class="btn btn-primary" href="/acp/work/works/modify/id/<?=$v->work_id?>">수정</a></td>
