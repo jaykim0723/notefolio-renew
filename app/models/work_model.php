@@ -119,6 +119,7 @@ class work_model extends CI_Model {
                     group by work_id) feedback_point', 'works.work_id = feedback_point.work_id', 'left');
                 $this->db->select('(works.discoverbility + ifnull(feedback_point.point, 0) + works.staffpoint) as rank_point', FALSE);
                 $this->db->order_by('rank_point', 'desc');
+                $this->db->order_by('regdate', 'desc');
             break;
     		default:
     			if(is_array($params->order_by))
