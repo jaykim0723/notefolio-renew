@@ -396,7 +396,7 @@ class Gallery extends CI_Controller {
                     $result = $this->work_model->post_note($params);
 
 
-                    if($result->status=="done"){
+                    if(!empty($params->work_id) && $result->status=="done"){
                         //-- write activity
                         $this->load->library('activity');
                         $this->activity->post(array(
