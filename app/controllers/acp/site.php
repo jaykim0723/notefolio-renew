@@ -89,13 +89,13 @@ class site extends CI_Controller {
 
                 if(is_array($args['search'])&&count($args['search'])>0){
                     foreach($args['search'] as $q_key=>$q_val){
-                        $this->db->where($args['search']);
+                        $this->db->where($q_key, $q_val);
                     }
                 }
 
                 if(is_array($args['order'])&&count($args['order'])>0){
                     foreach($args['order'] as $o_key=>$o_val){
-                        $this->db->order_by($args['order']);
+                        $this->db->order_by($o_key,$o_val);
                     }
                 }
 
