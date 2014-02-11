@@ -114,8 +114,8 @@ class work_model extends CI_Model {
                     ifnull(sum(point_get), 0) as point 
                     FROM `notefolio-renew`.log_activity
                     where area=\'work\' 
-                    group by work_id) feedback_point', 'works.work_id = feedback_point.work_id', 'left')
-                $this->db->select('(  + feedback_point.point +  ) as rank_point', FALSE)
+                    group by work_id) feedback_point', 'works.work_id = feedback_point.work_id', 'left');
+                $this->db->select('(works.discoverbility  + feedback_point.point +  works.staffpoint) as rank_point', FALSE);
                 $this->db->order_by('rank_point', 'desc');
             break;
     		default:
