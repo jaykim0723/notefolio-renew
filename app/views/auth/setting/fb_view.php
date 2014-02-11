@@ -10,7 +10,7 @@
         <div class="span12">
             <div class="fb_connect">
                 <div class="fb_label">
-                    <label>Facebook과 연동되어 있습니다.</label>
+                    <label class="labeltext">Facebook과 연동되어 있습니다.</label>
                     <?php /* ?><p class="small">Number ID: <?=$fb_num_id?></p><?php */ ?>
                     <input type='hidden' id='fb_num_id' name='fb_num_id' value='<?=$fb_num_id?>' />
                 </div>

@@ -22,9 +22,9 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-6">
+		<div class="form-group" style="margin-bottom:20px;margin-left:15px;">
+			<p style="margin: 10px 0px;"><span class="labeltext">이메일</span><a href="/auth/change_email" class="btn btn-link labeltext2 auth-smallbtn" style="">이메일 변경하기</a></p>
 			<?php echo $email?>
-			<a href="/auth/change_email" class="btn btn-link labeltext2 auth-smallbtn">이메일 변경하기</a>
 		</div>
 		<div class="col-md-6">
 			<span class="labeltext">비밀번호</span>
