@@ -1147,6 +1147,10 @@ html.auth body {
 	.big-left {
 		margin-left: 0px !important;
 	}
+	.biggroup {
+		padding: 20px 10px 10px !important;
+		width: 267px !important;
+	}
 	.fblogin #login-with-fb {
 		border:none !important;
 	}
@@ -1191,9 +1195,9 @@ html.auth body {
 
 .biggroup {
 	background: #fff;
-	padding: 20px 10px 10px;
+	padding: 0px;
 	border-radius: 5px;
-	width: 267px;
+	width: 100%;
 	color: #7a7880;
 }
 .big-left{
