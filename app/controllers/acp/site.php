@@ -115,7 +115,7 @@ class site extends CI_Controller {
                 $this->data['all_page'] = isset($page_info[0])?$page_info[0]['all_page']:1;
                 $this->data['now_page'] = isset($args['page'])?$args['page']:1;
                 $this->data['delimiter'] = isset($args['page'])?$args['delimiter']:30;
-                $this->data['paging'] = $this->acp->get_paging($args['page'], $page_info[0]['all_page'], 'site/access_log/list'.(($only_outside)?'/search/only_outside':''));
+                // $this->data['paging'] = $this->acp->get_paging($args['page'], $page_info[0]['all_page'], 'site/access_log/list'.(($only_outside)?'/search/only_outside':''));
                 break;
             case "view":
                 if (isset($args['id'])) {
