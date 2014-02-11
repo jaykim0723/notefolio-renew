@@ -14,7 +14,7 @@
       <thead>
         <tr>
           <th>순번</th>
-          <th>제목</th>
+          <th>&nbsp;</th>
           <th>접속위치</th>
           <th>리퍼러</th>
           <th>생성일</th>
@@ -32,7 +32,7 @@
           <td><a href="/acp/work/works/view/id/<?=$v->work_id?>"><?=$v->work_id?></a></td>
           <td><a href="/<?=$v->user->username?>/<?=$v->work_id?>">
             <img src="/data/covers/<?=$v->work_id?>_t2.jpg"><br/>
-            <p><?=$v->title?></p>
+            <p><?=$v->title?> / <?=$v->user->realname?></p>
           </a></td>  
           <td><a href="<?=$v->to_access?>">
               <?=mb_substr($v->to_access, 0, 50, 'UTF-8')?>
