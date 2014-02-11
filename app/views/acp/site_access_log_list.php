@@ -55,7 +55,7 @@
       </tbody>
     </table>
     <div class="row-fluid">
-      <?=get_paging($params=array('now_page'=>$page, 'now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/acp/site/access_log/list'))?>
+      <?=get_paging($params=array('now_page'=>$page, 'now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/site/access_log/list'))?>
     </div>
 
 
