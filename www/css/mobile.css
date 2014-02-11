@@ -1182,6 +1182,9 @@ html.auth body {
 		margin-bottom: 0px !important;
 		padding-top: 15px !important;
 	}	
+	#auth_basic div {
+		width: 247px !important;
+	}
 }
 #auth-footer {
 	margin-top: 20px;
