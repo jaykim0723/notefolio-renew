@@ -25,7 +25,7 @@
       </thead>
       <tbody>
     <?php
-        if(isset($list)&&$list!=array()) {
+        if(isset($list)&&count($list)>0) {
           foreach($list as $k=>$v){
     ?>
         <tr class="">
