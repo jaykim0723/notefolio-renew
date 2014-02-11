@@ -1,6 +1,6 @@
 <?php
 if (!is_file($this->input->server('DOCUMENT_ROOT')."/data/profiles/{$row->info->user_A['username']}_face.jpg"))
-    $profile_image = '';
+    $profile_image = '/img/default_profile_face.png';
 else
     $profile_image = "/data/profiles/{$row->info->user_A['username']}_face.jpg";
 
