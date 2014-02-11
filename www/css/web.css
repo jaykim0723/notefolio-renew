@@ -470,6 +470,9 @@ html {
 	position: relative;
 }
 */
+.work-contents {
+	padding-top:25px;
+}
 .work-contents > .block-text {
 	position: relative;
 }
