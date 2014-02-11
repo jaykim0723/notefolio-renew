@@ -35,7 +35,7 @@
             <p><?=mb_substr($v->title, 0, 50, 'UTF-8')?>
                   <?=((mb_strlen($v->title, 'UTF-8')>50)?'...':'')?></p>
           </a></td>  
-          <td><a href="/acp/user/member/view/id/<?$v->user->id?>">
+          <td><a href="/acp/user/member/view/id/<?=$v->user->id?>">
             <?=$v->user->realname?>
               </a></td>
           <td>/ <?=$v->regdate?></td>
