@@ -1120,7 +1120,15 @@ html.auth body {
 	color: #7a7880;
 }
 
-
+.btn-login {
+	padding: 10px 115px 10px 116px;
+	border-radius: 5px;
+	background: #555;
+	border: none;
+	color: #fff;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
 
 /* info */
 .work-small-profile {

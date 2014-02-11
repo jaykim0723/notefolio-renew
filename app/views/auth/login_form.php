@@ -86,7 +86,7 @@ if ($this->input->get('go_to')) {
 		<?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('/auth/register/', 'Register'); ?>
 	</div>
 							
-	<button type="submit" class="btn btn-primary">Login</button>				
+	<button type="submit" class="btn btn-primary btn-login">Login</button>				
 	<?php echo form_close(); ?>
 
 </section>
