@@ -337,10 +337,13 @@ $(function() {
 
 
 	$(window).on('scroll', function() {
-		var $list = $('.infinite-list');
 		if(site.scrollCount > site.scrollLimit) return;
+		if($('html').hasClass('mm-opened')) return;
+
+		var $list = $('.infinite-list');
 		if($list.hasClass('disabled')) return;
 		if(!site.checkNewBottom($list)) return;
+
 		if($('#loading-indicator').css('display')=='block') return;
 		$('.more-link').trigger('click');
 		if(NFview.area!='work-list')
