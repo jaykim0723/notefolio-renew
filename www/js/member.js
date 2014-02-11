@@ -389,7 +389,7 @@ var workUtil = {
     			distance: 15,
     			scrollSpeed: 40,
     			scrollSensitivity: 10,
-    			tolerance: "pointer",
+    			tolerance: "intersect",
 				start: function(event, ui){
 					sortHeight = $(this).height();
 					$(this).height($(this).height());
