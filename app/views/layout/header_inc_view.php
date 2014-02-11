@@ -51,6 +51,8 @@
 		site.username = '<?php echo $this->session->userdata('username'); ?>';
 		site.url = '<?php echo site_url() ?>';
 		site.segment = ['<?php echo implode("','", $this->uri->segment_array()); ?>'];
+
+		$('input, textarea').placeholder();
 	</script>
 	<script src="/js/site.js"></script>
 
