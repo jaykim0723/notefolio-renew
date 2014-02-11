@@ -1074,9 +1074,14 @@ html.auth body {
 	background: #333;
 }
 #auth-wrapper {
-	margin: 40px auto;
+	margin: 100px auto;
 	max-width:320px;
 	width: 100%;
+}
+@media (max-width: 767px) {
+	#auth-wrapper {
+	margin: 40px auto;
+}
 }
 #auth-header {
 	margin: 20px 0 10px;
@@ -1084,9 +1089,9 @@ html.auth body {
 }
 #auth-body {
 	background: #fff;
-	border: 1px solid #ccc;
 	padding: 20px;
-
+	margin-top: 30px;
+	border-radius: 5px;
 }
 @media (max-width: 767px) {
 	#auth-body {
