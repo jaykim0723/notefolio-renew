@@ -1636,6 +1636,7 @@ p.desc {
 	padding: 0.7em;
 	vertical-align: middle;
 	background-color: #7bcad4;
+	border-bottom: 1px solid #7bcad4;
 }
 
 #mobile-search-box i.spi {
