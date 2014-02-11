@@ -1071,7 +1071,7 @@ form.comment-block.create textarea {
 /* auth */
 html.auth,
 html.auth body {
-	background: #eee;
+	background: #333;
 }
 #auth-wrapper {
 	margin: 30px auto;
