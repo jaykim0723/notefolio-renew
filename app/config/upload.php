@@ -21,18 +21,18 @@ $config['img_allowed_types'] = 'gif|jpg|jpeg|png|bmp';
 $config['thumbnail_large']=array('max_width'  => 1600, //pixel
                                 'max_height'  =>   0  //pixel, not using
                                 );
-$config['thumbnail_medium']=array('max_width' => 800,  //pixel
+$config['thumbnail_medium']=array('max_width' => 760,  //pixel
                                 'max_height'  =>   0  //pixel, not using
                                 );
-$config['thumbnail_small']= array('max_width' => 400,  //pixel
-                                'max_height'  => 400  //pixel
+$config['thumbnail_small']= array('max_width' => 380,  //pixel
+                                'max_height'  => 380  //pixel
                                 );
 
-$config['thumbnail_wide']= array('max_width'  => 800,  //pixel
-                                'max_height'  => 400  //pixel
+$config['thumbnail_wide']= array('max_width'  => 760,  //pixel
+                                'max_height'  => 380  //pixel
                                 );
-$config['thumbnail_single']=array('max_width' => 400,  //pixel
-                                'max_height'  => 400  //pixel
+$config['thumbnail_single']=array('max_width' => 380,  //pixel
+                                'max_height'  => 380  //pixel
                                 );
 
 
