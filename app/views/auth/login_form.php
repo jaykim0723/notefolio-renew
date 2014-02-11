@@ -63,7 +63,7 @@ if ($this->input->get('go_to')) {
 	</div>
 	-->
 	<?php } ?>				
-	<?php echo form_open($this->uri->uri_string(), array('role'=>'form','id'=>'login-form'), array(
+	<?php echo form_open($this->uri->uri_string(), array('role'=>'form','id'=>'login-form','style'=>'margin-left: 5px;'), array(
 	    'go_to' => $site_to,
 	)); ?>
 	<div class="form-group fblogin">
