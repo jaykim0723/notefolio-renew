@@ -32,7 +32,7 @@
 						<button id="btn-cancel-about" class="btn btn-default">취소</button>
 					</div>
 				</div>
-				<script src="/js/libs/cleditor/jquery.cleditor.min.js"></script>
+				<script src="/js/libs/cleditor/jquery.cleditor.js"></script>
 				<script>
 					if($('#style_cleditor').length==0)
 						$('head').append('<link id="style_cleditor" rel="stylesheet" type="text/css" href="/js/libs/cleditor/jquery.cleditor.css"/>');
