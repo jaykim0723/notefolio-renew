@@ -1102,6 +1102,14 @@ html.auth body {
 	color: #aaa;
 }
 
+.fblogin #login-with-fb {
+	padding: 10px 68px 10px 69px;
+	border-radius: 5px;
+	background: #fff;
+	border: none;
+	color: #357ebd;
+	font-weight: 700;
+}
 
 
 /* info */
