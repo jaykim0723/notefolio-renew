@@ -77,7 +77,7 @@ class work extends CI_Controller {
                 $this->db->select('(works.discoverbility + ifnull(feedback_point.point, 0) + works.staffpoint) as rank_point', FALSE);
 
                 $data['list'] = $this->db
-                    ->select('works.*, feedback_point, users.id as user_id, users.username as user_username, users.realname as user_realname')
+                    ->select('works.*, feedback_point.point as point, users.id as user_id, users.username as user_username, users.realname as user_realname')
                     ->limit($limit[1],($limit[0]-1)*$limit[1])
                     ->join('users', 'works.user_id=users.id', 'left')
                     ->join('user_profiles', 'users.id=user_profiles.user_id', 'left')
