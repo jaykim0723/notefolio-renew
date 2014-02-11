@@ -98,7 +98,7 @@ class site extends CI_Controller {
 
                 $this->data['list'] = $page_info = $this->db
                     ->select('*')
-                    ->limit($limit[1],($limit[0]-1)*$limit[1]);
+                    ->limit($limit[1],($limit[0]-1)*$limit[1])
                     ->order_by($args['order'])
                     ->get('log_access')->result_array();
                 //var_export($this->db->last_query());
