@@ -16,7 +16,7 @@ echo form_open('', array(
 	'submitting' => 1
 ));
 ?>
-<div class="biggroup big-left">
+<div class="biggroup">
 	<div class="form-group <?php echo isset($errors['login']) ? 'error' : ''?>">
 		<label for="" class="labeltext"><?php echo $login_label ?></label>
 		<input class="form-control" type="text" name="login" value="" id="login" maxlength="30" size="30" value="<?php echo set_value('login') ?>">
