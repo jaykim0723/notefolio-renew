@@ -883,6 +883,6 @@ textarea.comment-textarea {
 }
 
 .bootstrap-tagsinput {
-	min-width: 200px;
-	background: pink;
+	min-width: 200px!important;
+	background: pink!important;
 }
