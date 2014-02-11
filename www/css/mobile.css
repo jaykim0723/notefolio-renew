@@ -1232,6 +1232,9 @@ html.auth body {
 	margin-bottom: 20px;
 	margin-top: 0px;
 }
+.btn-darkgray:hover, .btn-darkgray2:hover {
+	color:#2ac5c6;
+}
 
 .auth-or {
 	color: #bbb;
