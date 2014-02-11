@@ -68,6 +68,7 @@ if ($this->input->get('go_to')) {
 	)); ?>
 	<div class="form-group fblogin">
 		<span class="btn btn-primary" id="login-with-fb">Login with Facebook</span>
+		<div class="or-line"></div><span class="auth-or">or</span>
 	</div>
 	<div class="biggroup">
 		<div class="form-group <?php echo isset($errors['login']) ? 'error' : ''?>">
