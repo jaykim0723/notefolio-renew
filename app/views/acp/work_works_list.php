@@ -30,7 +30,7 @@
     ?>
         <tr class="">
           <td><a href="/acp/work/works/view/id/<?=$v->work_id?>"><?=$v->work_id?></a></td>
-          <td><a href="/<?$v->username?>/<?=$v->work_id?>"><img src="/data/cover/<?=$v->work_id?>_t2.jpg"></a></td>  
+          <td><a href="/<?$v->user->username?>/<?=$v->work_id?>"><img src="/data/cover/<?=$v->work_id?>_t2.jpg"></a></td>  
           <td><a href="<?=$v->to_access?>">
               <?=mb_substr($v->to_access, 0, 50, 'UTF-8')?>
                   <?=((mb_strlen($v->to_access, 'UTF-8')>50)?'...':'')?></a></td>
