@@ -45,7 +45,13 @@
             피드백기간계 : <?=$v->point?><br />
             스탭점수 : <?=$v->staffpoint?><br />
             랭크총계 : <?=$v->rank_point?><br />
-              / <?=$v->regdate?></td>
+
+            스탭포인트 수정:
+            <input type="text" value="<?=$v->staffpoint?>" name="staffpoint"  />
+            <a>
+              <span>수정</span>
+            </a>
+          </td>
           <td><?=$v->regdate?></td>
           <td><a class="btn" href="/acp/work/works/view/id/<?=$v->work_id?>">보기</a></td>
           <td><a class="btn btn-primary" href="/acp/work/works/modify/id/<?=$v->work_id?>">수정</a></td>
