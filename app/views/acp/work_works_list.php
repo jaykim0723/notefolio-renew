@@ -32,14 +32,13 @@
           <td><a href="/acp/work/works/view/id/<?=$v->work_id?>"><?=$v->work_id?></a></td>
           <td><a href="/<?=$v->user->username?>/<?=$v->work_id?>">
             <img src="/data/covers/<?=$v->work_id?>_t2.jpg"><br/>
-            <p><?=$v->title?> / <?=$v->user->realname?> / <?=$v->user->regdate?></p>
+            <p><?=mb_substr($v->title, 0, 50, 'UTF-8')?>
+                  <?=((mb_strlen($v->title, 'UTF-8')>50)?'...':'')?></p>
           </a></td>  
-          <td><a href="<?=$v->to_access?>">
-              <?=mb_substr($v->to_access, 0, 50, 'UTF-8')?>
-                  <?=((mb_strlen($v->to_access, 'UTF-8')>50)?'...':'')?></a></td>
-          <td><a href="<?=$v->referer?>">
-              <?=mb_substr($v->referer,  0, 50, 'UTF-8')?>
-                  <?=((mb_strlen($v->referer,  'UTF-8')>50)?'...':'')?></a></td>
+          <td><a href="/acp/user/member/view/id/<?$v->user->id?>">
+            <?=$v->user->realname?>
+              </a></td>
+          <td>/ <?=$v->user->regdate?></td>
           <td><?=$v->regdate?></td>
           <td><a class="btn" href="/acp/work/works/view/id/<?=$v->id?>">보기</a></td>
           <td><a class="btn btn-primary" href="/acp/work/works/modify/id/<?=$v->id?>">수정</a></td>
