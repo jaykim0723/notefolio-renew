@@ -86,13 +86,21 @@ class site extends CI_Controller {
                     $args['search']['to_access like'] = $args['search']['to_access'];
                     unset($args['search']['to_access']);
                 }
-                //var_export($args['order']);
-                
+
+                foreach($args['search'] as $q_key=>$q_val){
+                    $this->db->where($args['search']);
+                }
                 $page_info = $this->db
                     ->select('count(*) as count, ceil(count(*)/'.$args['delimiter'].') as all_page')
                     ->get('log_access')->result_array();
-                
-                $this->data['list'] = $this->log_db->_get_list('access', $args['search'], array(), array($args['page'], $args['delimiter']), $args['order']);
+
+                $limit = array($args['page'], $args['delimiter']);
+
+                $this->data['list'] = $page_info = $this->db
+                    ->select('*')
+                    ->limit($limit[1],($limit[0]-1)*$limit[1]);
+                    ->order_by($args['order']);
+                    ->get('log_access')->result_array();
                 //var_export($this->db->last_query());
 
                 $this->data['all_count'] = isset($page_info[0])?$page_info[0]['count']:0;
