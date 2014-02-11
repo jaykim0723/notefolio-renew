@@ -299,9 +299,7 @@ html, body {
 }
 
 @media (max-width: 767px){
-	.videoicon, .pi-videoy.n {
-		display:none !important;
-	}
+	
 	.pi-videoy.y {
 		display: inline-block !important;
 	}
@@ -310,6 +308,9 @@ html, body {
 @media (max-width: 991px){
 	#main-list-top {
 		margin-top: 20px;
+	}
+	.videoicon, .pi-videoy.n {
+		display:none !important;
 	}
 }
 .main-thumbnail-list {
