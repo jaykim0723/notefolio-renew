@@ -108,6 +108,16 @@ class work_model extends CI_Model {
             case "featured":
                 $this->db->order_by('nofol_rank', 'desc');
             break;
+            case "nofol_rank":
+                $this->db->join('(SELECT
+                    ref_id as work_id,
+                    ifnull(sum(point_get), 0) as point 
+                    FROM `notefolio-renew`.log_activity
+                    where area=\'work\' 
+                    group by work_id) feedback_point', 'works.work_id = feedback_point.work_id', 'left')
+                $this->db->select('(  + feedback_point.point +  ) as rank_point', FALSE)
+                $this->db->order_by('rank_point', 'desc');
+            break;
     		default:
     			if(is_array($params->order_by))
     				$this->db->order_by($params->order_by);
