@@ -34,9 +34,9 @@
           <td><a href="<?=$v['to_access']?>">
               <?=mb_substr($v['to_access'], 0, 50, 'UTF-8')?>
                   <?=((mb_strlen($v['to_access'], 'UTF-8')>50)?'...':'')?></a></td>
-          <td><a href="<?=$v['referrer']?>">
-              <?=mb_substr($v['referrer'],  0, 50, 'UTF-8')?>
-                  <?=((mb_strlen($v['referrer'],  'UTF-8')>50)?'...':'')?></a></td>
+          <td><a href="<?=$v['referer']?>">
+              <?=mb_substr($v['referer'],  0, 50, 'UTF-8')?>
+                  <?=((mb_strlen($v['referer'],  'UTF-8')>50)?'...':'')?></a></td>
           <td><?=$v['regdate']?></td>
           <td><a class="btn" href="/acp/site/access_log/view/id/<?=$v['id']?>">보기</a></td>
           <td><a class="btn btn-primary" href="/acp/site/access_log/modify/id/<?=$v['id']?>">수정</a></td>
