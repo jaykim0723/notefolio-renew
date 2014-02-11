@@ -274,8 +274,9 @@ html.mm-blocking #mm-blocker {
     float: right;
     margin-top: 5px;
     background: #222;
-    padding: 4px 8px;
     padding: 5px 8px;
+    font-size: 13px;
+    line-height: 100%;
 }
 
 
