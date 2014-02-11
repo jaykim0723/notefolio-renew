@@ -1,7 +1,7 @@
 <?php if (!$this->input->is_ajax_request()): ?> 
 
 <section class="listing" style="margin-top:20px;">
-	<div class="container">
+	<div class="container" style="width: 100% !important;">
 		<div class="row">
 			<div class="col-md-12">
 <?php endif ?>
