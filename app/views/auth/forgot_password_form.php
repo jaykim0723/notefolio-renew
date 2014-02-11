@@ -1,6 +1,6 @@
 <?php
 if ($this->config->item('use_username', 'tank_auth')) {
-	$login_label = 'Email or login';
+	$login_label = 'Email을 적어주세요';
 } else {
 	$login_label = 'Email';
 }
