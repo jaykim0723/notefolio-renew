@@ -550,6 +550,8 @@ var commentUtil = {
 		});
 		if(exist) return; // reply form이 이미 존재하는 상태라면 추가로 열지 않기
 
+		$commentBlock.find('.btn-reply-comment').hide();
+
 		var $f = commentUtil.formHTML.clone();
 		$f.find('textarea').val('');
 		$f.data('mode','reply');
@@ -588,6 +590,7 @@ var commentUtil = {
 			break;
 			
 			case 'reply':
+				$f.parents('.comment-block').find('.btn-reply-comment').show();
 				$f.remove();
 			break;
 		}
@@ -625,6 +628,7 @@ var commentUtil = {
 				break;
 
 				case 'reply':
+					$f.parents('.comment-block').find('.btn-reply-comment').show();
 					$f.before(responseHTML);
 					$f.remove();
 				break;
