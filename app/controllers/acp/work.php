@@ -75,6 +75,18 @@ class work extends CI_Controller {
                     ->get('works')->result();
                 error_log($this->db->last_query());
 
+                foreach($data['list'] as $key=>$val){
+                    $user = new stdClass();
+
+                    foreach($val as $sub_key =>$sub_val){
+                        if(strpos('user_', $sub_key)){
+                            $user->{str_replace('user_', '', $sub_key)} = $sub_val; 
+                        }
+                    }
+
+                    $data['list']->{$key}->user = $user;
+                }
+
                 $data['all_count'] = isset($page_info[0])?$page_info[0]['count']:0;
                 $data['all_page'] = isset($page_info[0])?$page_info[0]['all_page']:1;
                 $data['now_page'] = isset($args['page'])?$args['page']:1;
