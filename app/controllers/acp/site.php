@@ -87,7 +87,6 @@ class site extends CI_Controller {
                     unset($args['search']['to_access']);
                 }
 
-                exit();
                 foreach($args['search'] as $q_key=>$q_val){
                     $this->db->where($args['search']);
                 }
@@ -100,7 +99,7 @@ class site extends CI_Controller {
                 $this->data['list'] = $page_info = $this->db
                     ->select('*')
                     ->limit($limit[1],($limit[0]-1)*$limit[1]);
-                    ->order_by($args['order']);
+                    ->order_by($args['order'])
                     ->get('log_access')->result_array();
                 //var_export($this->db->last_query());
 
