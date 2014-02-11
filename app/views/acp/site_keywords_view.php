@@ -13,58 +13,61 @@ $keyword = array(
       <div class="container">
 
 
-    <h2>접속 로그 목록</h2>
-    <?php echo $subtab?>
+    <h2>키워드</h2>
+    <div class="info">
+      <p>키워드를 추가 및 삭제할 수 있습니다.</p>
+      <p>저장을 누를 때까지 반영하지 않습니다.</p>
+    </div>
 
-    <p class="lead">총 <?=$all_count?> 개 / <?=$all_page?> 페이지 중 <?=$now_page?> 번째</p>
-
-    <table  class="table table-hover">
+    <table class="table table-bordered" id="keyword-list">
+      <caption></caption>
       <thead>
         <tr>
-          <th>순번</th>
-          <th>IP</th>
-          <th>접속위치</th>
-          <th>리퍼러</th>
-          <th>생성일</th>
-          <th>보기</th>
-          <th>수정</th>
-          <th>삭제</th>
+          <th>식별기호</th>
+          <th>한글출력</th>
+          <th>수정/삭제</th>
+        </tr>
+        <tr id="keyword-insert">
+          <td><?=form_input(array(
+            'id'=>'keyword-key', 
+            'name'=>'keyword-key', 
+            'placeholder'=>'key'))?></td>
+          <td><?=form_input(array(
+            'id'=>'keyword-val', 
+            'name'=>'keyword-val', 
+            'placeholder'=>'value'))?></td>
+          <td>
+            <a href="javascript:keywordUtil.insert()">
+              <span class="btn btn-success">추가</span>
+            </a>
+          </td>
         </tr>
       </thead>
       <tbody>
-    <?php
-        if(isset($list)&&$list!=array()) {
-          foreach($list as $k=>$v){
-    ?>
-        <tr class="<?=$tr_class?>">
-          <td><a href="/acp/site/access_log/view/id/<?=$v['id']?>"><?=$v['id']?></a></td>
-          <td><a href="http://whois.net/ip-address-lookup/<?=$v['remote_addr']?>"><?=$v['remote_addr']?></a></td>  
-          <td><a href="<?=$v['to_access']?>">
-              <?=mb_substr($v['to_access'], 0, 50, 'UTF-8')?>
-                  <?=((mb_strlen($v['to_access'], 'UTF-8')>50)?'...':'')?></a></td>
-          <td><a href="<?=$v['referrer']?>">
-              <?=mb_substr($v['referrer'],  0, 50, 'UTF-8')?>
-                  <?=((mb_strlen($v['referrer'],  'UTF-8')>50)?'...':'')?></a></td>
-          <td><?=$v['regdate']?></td>
-          <td><a class="btn" href="/acp/site/access_log/view/id/<?=$v['id']?>">보기</a></td>
-          <td><a class="btn btn-primary" href="/acp/site/access_log/modify/id/<?=$v['id']?>">수정</a></td>
-          <td><a class="btn btn-danger" href="/acp/site/access_log/delete/id/<?=$v['id']?>">삭제</a></td>
+        <?php foreach($keyword_list as $key => $val): ?>
+        <tr id="keyword-<?=$key?>">
+          <td><?=$key?></td>
+          <td><?=$val?></td>
+          <td>
+            <a href="javascript:keywordUtil.update('<?=$key?>'); return;">
+              <span class="btn btn-primary">수정</span>
+            </a>
+            <a href="javascript:keywordUtil.delete('<?=$key?>'); return;">
+              <span class="btn btn-danger">삭제</span>
+            </a>
+            <input type="hidden" name="keyword" value='<?=json_encode(array($key=>$val))?>' />
+          </td>
         </tr>
-    <?php
-          }
-        } else {
-    ?>
-        <tr class="info">
-          <td colspan="7">접속 로그가 없습니다.</td>
-        </tr>
-    <?php   
-        }
-    ?>
+        <?php endforeach; ?>
       </tbody>
     </table>
-    <div class="row-fluid">
-        <?=$paging?>
-    </div>
+
+<?php echo form_open("acp/site/keywords/save", $form_attr); ?>
+    <p>for debug:</p>
+    <p><?php echo form_textarea($keyword); ?></p>
+    <?php if($save_result!='') {?><p class="info">결과: <?php echo $save_result; ?></p><?php }?>
+    <button class="btn btn-large btn-primary" type="submit">전송</button>
+<?php echo form_close(); ?>
 
 
       </div> <!-- /container -->
