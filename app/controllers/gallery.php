@@ -176,8 +176,11 @@ class Gallery extends CI_Controller {
         if($upload->status=='done')
             $upload = $upload->row;
 
-        $filename = $upload->filename;
-        $filename = substr($filename, 0,2).'/'.substr($filename, 2, 2).'/'.$filename;
+        $filename = preg_replace(
+                        '/^(..)(..)([^\.]+)(\.[a-zA-Z]+)/', 
+                        '$1/$2/$1$2$3$4', 
+                        $upload->filename
+                        );
 
         list($width, $height) = getimagesize($this->config->item('img_upload_path', 'upload').$filename);
 
