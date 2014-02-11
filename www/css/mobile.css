@@ -1212,7 +1212,7 @@ html.auth body {
 }
 .btn-darkgray {
 	padding: 10px 0px;
-	border-radius: 5px;
+	border-radius: 2em;
 	background: #555;
 	border: none;
 	color: #fff;
@@ -1224,7 +1224,7 @@ html.auth body {
 .btn-darkgray2 {
 	padding: 10px 0px;
 	width:100%;
-	border-radius: 5px;
+	border-radius: 2em;
 	background: #555;
 	border: none;
 	color: #fff;
