@@ -65,7 +65,7 @@ class work_model extends CI_Model {
         }
 
         if(count($params->keywords)>0){
-            $this->db->where('( works.keywords like "%'.$this->db->escape(implode('%" or works.keywords like ', $params->keywords)).'%" )', NULL, FALSE);
+            $this->db->where('( works.keywords like "%'.implode('%" or works.keywords like ', $params->keywords).'%" )', NULL, FALSE);
         }
 
         if(!empty($params->q)){
@@ -133,8 +133,6 @@ class work_model extends CI_Model {
         }
 
     	$works = $this->db->get();
-
-        error_log($this->db->last_query());
 
     	$rows = array();
     	foreach ($works->result() as $row)
