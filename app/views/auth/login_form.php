@@ -7,9 +7,11 @@ $login = array(
 	'size'	=> 30,
 	'class' => 'form-control',
 	'autofocus' => 'autofocus'
+	'placeholder' => 'Email'
+
 );
 if ($login_by_username AND $login_by_email) {
-	$login_label = 'Email or login';
+	$login_label = 'Email';
 } else if ($login_by_username) {
 	$login_label = 'Login';
 } else {
