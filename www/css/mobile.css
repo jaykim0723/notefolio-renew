@@ -1226,6 +1226,18 @@ html.auth body {
 	margin-left: 10px;
 }
 
+.labeltext {
+	font-size: 13px;
+	font-family: "NanumGothic";
+	color: #7a7880;
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
 /* info */
 .work-small-profile {
 	background: #2ac5c6;
