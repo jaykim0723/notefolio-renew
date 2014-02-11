@@ -212,11 +212,11 @@ html, body {
 
 
 .error .form-control {
-	border : 1px solid red;
+	border : 1px solid #2ac5c6;
 }
 .error .form-error {
 	margin:2px 0;
-	color: red;
+	color: #2ac5c6;
 }
 
 
