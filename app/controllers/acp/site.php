@@ -168,7 +168,7 @@ class site extends CI_Controller {
         //                                                 $mode.(($only_outside)?'/search/only_outside':''), strtolower(get_class($this)).'/'.strtolower(__FUNCTION__).'/');
         
         $data['form_attr'] = array('class' => 'form', 'id' => 'access_log_'.$mode.'_form');
-        $this->layout->set_header('title', '접속로긩ㅓ')->set_view('acp/site_access_log_'.$mode,$data)->render();
+        $this->layout->set_header('title', '접속로그')->set_view('acp/site_access_log_'.$mode,$data)->render();
     }
 
     
