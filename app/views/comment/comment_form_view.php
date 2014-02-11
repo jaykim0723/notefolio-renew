@@ -4,7 +4,11 @@
 		<a class="btn btn-nofol btn-cancel-comment"><i class="spi spi-close">close</i></a>
 	</div>
 	<a class="comment-profile-area" href="<?php echo site_url($this->session->userdata('username')) ?>" target="_blank">
-		<img src="<?php echo '/data/profiles/'.$this->session->userdata('username').'_face.jpg?_='.substr($this->nf->get('user')->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
+		<?php if (USER_ID==0): ?>
+			<img src="/img/default_profile_face.png"/>
+		<?php else: ?>
+			<img src="<?php echo '/data/profiles/'.$this->session->userdata('username').'_face.jpg?_='.substr($this->nf->get('user')->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'"/>
+		<?php endif ?>
 		<i class="si si-face-medium"></i>
 	</a>
 	<textarea tabindex="1" name="content" class="comment-textarea"></textarea>

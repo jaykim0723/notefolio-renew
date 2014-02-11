@@ -605,6 +605,10 @@ var commentUtil = {
 	submitComment : function(f){
 		event.preventDefault();
 		event.stopPropagation();
+		if(site.user_id==0){
+			site.requireLogin();
+			return;
+		}
 
 		var $f = $(f);
 		var params = {
@@ -849,6 +853,12 @@ var workInfoUtil = {
 			collectUtil.open(this);
 		}).on('click', '.btn-cancel-collect', function(){
 			collectUtil.close(this);
+		}).on('click', '.comment-textarea', function(){
+			if(site.user_id==0){
+				site.requireLogin();
+				$(this).blur();
+				return;
+			}
 		});
 	},
 

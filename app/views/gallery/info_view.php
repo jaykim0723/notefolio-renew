@@ -227,9 +227,7 @@
 									<div class="col-xs-12">
 										<a href="javascript:;" class="btn-comment-prev btn btn-link btn-block"><i class="spi spi-up">up</i> 이전 댓글보기</a>
 										<!-- comment-block will be displayed here -->
-										<?php if (USER_ID!=0): ?>
 										<?php echo $this->load->view('comment/comment_form_view'); ?>
-										<?php endif ?>
 									</div>
 								</div>					
 								<div class="note-wrapper" data-id="<?php echo $row->work_id ?>">>
