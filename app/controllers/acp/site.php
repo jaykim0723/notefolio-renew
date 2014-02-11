@@ -150,8 +150,9 @@ class site extends CI_Controller {
                                                         $mode.(($only_outside)?'/search/only_outside':''), strtolower(get_class($this)).'/'.strtolower(__FUNCTION__).'/');
         
         $this->data['form_attr'] = array('class' => 'form', 'id' => 'access_log_'.$mode.'_form');
-        $this->layout->view('acp/site_access_log_'.$mode, $this->data);
+        $this->layout->set_header('title', '키워드')->set_view('acp/site_access_log_'.$mode,$data)->render();
     }
+
     
     /*
      * @brief process for access log
