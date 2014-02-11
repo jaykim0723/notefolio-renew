@@ -1248,7 +1248,7 @@ html.auth body {
 .auth-sub {
 	border-top: 1px solid #ddd;
 	padding-top: 10px;
-	width: 266px;
+	width: 100%;
 }
 .form-group.auth-sub a {
 	color: #bbb;
