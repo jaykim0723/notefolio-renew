@@ -1,6 +1,6 @@
 <div id="auth-wrapper">
 	<header id="auth-header">
-		<a href="/"><i class="spi spi-nflogo">nflogo</i></a>
+		<a href="/"><i class="pi pi-nflogo2">nflogo2</i></a>
 	</header>
 
 
