@@ -4,7 +4,7 @@
 
 	<div class="form-group <?php echo isset($errors['username']) ? 'error' : ''?>">
 		<label>URL</label>
-		<p><?=$this->input->server('HTTP_HOST')?>/<?=$username?></p>
+		<p><?=$this->input->server('HTTP_HOST')?>/<span style="color: #333 !important;font-weight: bold;"><?=$username?></span></p>
 		<input class="form-control" type='text' id='username' name='username' value="<?php echo $username?>" minlength='3' maxlength='20' rel='tooltip' placeholder="영문자,숫자,_,-"/>
 		<div class="form-error"><?php echo isset($errors['username']) ? '↑ '.$errors['username'] : '' ?></div>
 	</div>
