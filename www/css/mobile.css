@@ -1174,6 +1174,9 @@ html.auth body {
 	#login-with-fb {
 		margin-bottom:20px !important;
 	}
+	.form-group.fblogin {
+		margin-bottom: 10px !important;
+	}
 }
 #auth-footer {
 	margin-top: 20px;
@@ -1181,7 +1184,7 @@ html.auth body {
 	color: #aaa;
 }
 .form-group.fblogin {
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 }
 #signup-with-fb {
 	margin-bottom: 30px;
