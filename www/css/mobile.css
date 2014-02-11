@@ -1307,11 +1307,10 @@ html.auth body {
 	border-radius: 2em;
 	margin-left: 10px;
 }
-.fb-connect {
+.fb_label {
 	float: left;
-	width:100%;
 }
-.fb-connect .fb_button {
+.fb_button {
 	float: right;
 }
 .fb_check {
