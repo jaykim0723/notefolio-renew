@@ -212,7 +212,7 @@
     var $main = editor.$main = $(DIV_TAG)
       .addClass(MAIN_CLASS)
       .width(options.width)
-      .height(options.height+2);
+      .height(options.height+4);
 
     // Create the toolbar
     var $toolbar = editor.$toolbar = $(DIV_TAG)
