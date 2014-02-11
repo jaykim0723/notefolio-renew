@@ -1268,12 +1268,15 @@ html.auth body {
 	color: #7a7880;
 	margin-bottom: 10px;
 }
-
 .labeltext2 {
 	font-size: 12px;
 	font-family: "NanumGothic";
 	color: #7a7880;
 }
+.register-ajax, .register-ajax:hover {
+	color: #2ac5c6;
+}
+
 
 
 
