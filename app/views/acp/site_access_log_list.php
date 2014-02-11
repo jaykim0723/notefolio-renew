@@ -28,7 +28,7 @@
         if(isset($list)&&$list!=array()) {
           foreach($list as $k=>$v){
     ?>
-        <tr class="<?=$tr_class?>">
+        <tr class="">
           <td><a href="/acp/site/access_log/view/id/<?=$v['id']?>"><?=$v['id']?></a></td>
           <td><a href="http://whois.net/ip-address-lookup/<?=$v['remote_addr']?>"><?=$v['remote_addr']?></a></td>  
           <td><a href="<?=$v['to_access']?>">
