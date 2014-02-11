@@ -1106,7 +1106,7 @@ html.auth body {
 	right: 30px;
 	color: #fff;
 	background: rgba(0,0,0,0.2);
-	padding: 10px 20px;
+	padding: 11px 20px 10px;
 	border-radius: 5px;
 	font-size: 13px;
 	line-height: 160%;
@@ -1115,6 +1115,12 @@ html.auth body {
 
 .bg-info a{
 	color:#fff !important;
+	font-family: "NanumGothic";
+}
+
+.bg-info a:hover{
+	text-decoration: none;
+	color:#2ac5c6;
 }
 
 .bg-info .spi-work_white {
