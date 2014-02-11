@@ -77,11 +77,12 @@ if ($this->input->get('go_to')) {
 			<?php echo form_password($password); ?>
 			<div class="form-error"><?php echo isset($errors['password']) ? '↑ '.$errors['password'] : '' ?></div>
 		</div>
+		<?php echo form_checkbox($remember); ?>
+		<?php echo form_label('Remember me', $remember['id']); ?>
 	</div>
 	
 	<div class="form-group">
-		<?php echo form_checkbox($remember); ?>
-		<?php echo form_label('Remember me', $remember['id']); ?>
+		
 		<?php echo anchor('/auth/forgot_password/', 'Forgot password'); ?>
 		<?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('/auth/register/', 'Register'); ?>
 	</div>
