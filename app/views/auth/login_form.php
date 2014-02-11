@@ -63,6 +63,9 @@ if ($this->input->get('go_to')) {
 	<?php echo form_open($this->uri->uri_string(), array('role'=>'form','id'=>'login-form'), array(
 	    'go_to' => $site_to,
 	)); ?>
+	<div class="form-group">
+		<span class="btn btn-primary" id="login-with-fb">Login with Facebook</span>
+	</div>
 	<div class="form-group <?php echo isset($errors['login']) ? 'error' : ''?>">
 		<?php echo form_label($login_label, $login['id']); ?>
 		<?php echo form_input($login); ?>
@@ -80,8 +83,7 @@ if ($this->input->get('go_to')) {
 		<?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('/auth/register/', 'Register'); ?>
 	</div>
 							
-	<button type="submit" class="btn btn-primary">Let me in</button>				
-	<span class="btn btn-primary" id="login-with-fb">Facebook</span>
+	<button type="submit" class="btn btn-primary">Login</button>				
 	<?php echo form_close(); ?>
 
 </section>
