@@ -81,7 +81,7 @@ class site extends CI_Controller {
                     unset($args['search']['only_outside']);
                     $only_outside = true;
                     $args['search']['referer is not null and referer not like "%notefolio.net%"'] = null;
-                    $data['search'] = 'search/only_outside/';
+                    $data['search_url'] = 'search/only_outside/';
                 }
                 if(isset($args['search']['to_access'])){
                     $args['search']['to_access like'] = $args['search']['to_access'];
