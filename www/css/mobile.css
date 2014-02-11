@@ -1213,6 +1213,7 @@ html.auth body {
 	font-weight: 700;
 	margin-bottom: 20px;
 	margin-top: 0px;
+	width: 100%;
 }
 .btn-darkgray2 {
 	padding: 10px 0px;
