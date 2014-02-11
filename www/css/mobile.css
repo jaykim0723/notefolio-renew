@@ -1309,9 +1309,15 @@ html.auth body {
 }
 #auth_facebook .fb-connect {
 	float: left;
+	width:100%;
 }
 #auth_facebook .fb-connect .fb_button {
 	float: right;
+}
+.fb-connect .fb_check {
+	font-size: 12px;
+	font-family: "NanumGothic";
+	color: #7a7880;
 }
 
 
