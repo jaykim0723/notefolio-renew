@@ -84,7 +84,7 @@ class work extends CI_Controller {
                         }
                     }
 
-                    $data['list'][{$key}]->user = $user;
+                    $data['list'][$key]->user = $user;
                 }
 
                 $data['all_count'] = isset($page_info[0])?$page_info[0]['count']:0;
