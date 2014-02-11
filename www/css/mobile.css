@@ -1109,7 +1109,17 @@ html.auth body {
 	border: none;
 	color: #357ebd;
 	font-weight: 700;
+	margin-bottom: 20px;
 }
+
+.biggroup {
+	background: #fff;
+	padding: 20px 10px;
+	border-radius: 5px;
+	width: 267px;
+	color: #7a7880;
+}
+
 
 
 /* info */
