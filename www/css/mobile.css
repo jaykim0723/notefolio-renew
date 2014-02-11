@@ -1076,7 +1076,8 @@ form.comment-block.create textarea {
 /* auth */
 html.auth,
 html.auth body {
-	background: #333;
+	background: url(http://magazine.notefolio.net/nf-bg.jpg);
+	background-attachment: fixed;
 }
 #auth-wrapper {
 	margin: 100px auto;
@@ -1099,6 +1100,10 @@ html.auth body {
 	border-radius: 5px;
 }
 @media (max-width: 767px) {
+	html.auth,
+	html.auth body {
+		background: #333 !important;
+	}
 	#auth-body {
 		background: #333 !important;
 		border: none;
