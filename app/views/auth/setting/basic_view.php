@@ -1,5 +1,6 @@
+<div class="biggroup">
 <fieldset id='auth_basic'>
-	<legend>기본정보</legend>
+	<div class="labeltext3">기본정보</div>
 
 	<div class="form-group <?php echo isset($errors['username']) ? 'error' : ''?>">
 		<label>URL</label>
@@ -208,3 +209,4 @@
 	</script>
 	
 </fieldset>
+</div>
