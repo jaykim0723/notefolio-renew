@@ -16,10 +16,14 @@
 				</a>
 				<p class="username"><?php echo $this->nf->get('user')->realname ?></p>
 				<p class="follows">
-					<span class="count"><?php echo $this->nf->get('user')->following_cnt ?></span>
-					followers 
-					<span class="count"><?php echo $this->nf->get('user')->follower_cnt ?></span>
-					followings 
+					<a href="/<?php echo $this->nf->get('user')->username ?>/followers">
+						<span class="count"><?php echo $this->nf->get('user')->following_cnt ?></span>
+						followers 
+					</a>
+					<a href="/<?php echo $this->nf->get('user')->username ?>/followings">
+						<span class="count"><?php echo $this->nf->get('user')->follower_cnt ?></span>
+						followings 
+					</a>
 				</p>
 			</li>
 			<li>
