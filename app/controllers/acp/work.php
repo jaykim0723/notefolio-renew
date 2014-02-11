@@ -68,7 +68,8 @@ class work extends CI_Controller {
                 $limit = array($args['page'], $args['delimiter']);
 
                 $data['list'] = $this->db
-                    ->select('works.*, users.id as user_id, users.username as user_username, users.realname as user_realname')
+                    ->select('works.*')
+                    ->select('users.id as user_id, users.username as user_username, users.realname as user_realname')
                     ->limit($limit[1],($limit[0]-1)*$limit[1])
                     ->join('users', 'works.user_id=users.id', 'left')
                     ->join('user_profiles', 'users.id=user_profiles.user_id', 'left')
