@@ -1184,7 +1184,8 @@ html.auth body {
 	margin-bottom: 30px;
 }
 .fblogin #login-with-fb, #signup-with-fb {
-	padding: 10px 68px 10px 69px;
+	padding: 10px 0;
+	width:100%;
 	border-radius: 5px;
 	background: #fff;
 	border: 1px solid #ddd;
@@ -1204,7 +1205,7 @@ html.auth body {
 	margin-left: 5px;
 }
 .btn-darkgray {
-	padding: 10px 115px 10px 116px;
+	padding: 10px 0px;
 	border-radius: 5px;
 	background: #555;
 	border: none;
