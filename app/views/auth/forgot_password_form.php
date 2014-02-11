@@ -16,14 +16,13 @@ echo form_open('', array(
 	'submitting' => 1
 ));
 ?>
-<div class="biggroup">
+<div class="biggroup big-left">
 	<div class="form-group <?php echo isset($errors['login']) ? 'error' : ''?>">
 		<label for="" class="labeltext"><?php echo $login_label ?></label>
 		<input class="form-control" type="text" name="login" value="" id="login" maxlength="30" size="30" value="<?php echo set_value('login') ?>">
 		<div class="form-error"><?php echo isset($errors['login']) ? '↑ '.$errors['login'] : '' ?></div>
 	</div>
 	<div class='center'>
-		<br/>
 		<button type="submit" id='btnSubmit' class='btn btn-darkgray btn-block pure-button-big pure-button'>Submit</button>
 	</div>
 </div>
