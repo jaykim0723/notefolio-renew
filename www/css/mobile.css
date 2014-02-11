@@ -248,7 +248,7 @@ html, body {
 	height: 50px;
 	z-index: 20;
 	top:0;
-	box-shadow: rgba(0,0,0,0.1) 0px 4px 3px -2px;
+	box-shadow: rgba(150,150,150,0.1) 0px 4px 3px -2px;
 }
 #mobile-header {
 	padding-top: 1em;
