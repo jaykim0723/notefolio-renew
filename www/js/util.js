@@ -493,7 +493,8 @@ $.fn.extend({
  *  */
 var gumoFancy = {
 	conf : {
-		isMobileBase : 992
+		isMobileBase : 992, // 반응형웹인 경우 이 크기 '미만'으로는 모바일(뉴탭)으로 작동될
+		img : '/img/gumo-fancy.gif' // loading image 주소
 	},
 	scroll : {
 		lock : function(){
@@ -514,7 +515,7 @@ var gumoFancy = {
 	},
 	open : function(src){
 		if($(window).width() < gumoFancy.conf.isMobileBase){
-			window.open('', 'gumoFancyPop').document.write('<html><head><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, width=device-width" /></head><body style="margin:0;background:#000;height:100%;" onclick="javascript:window.close(\'gumoFancyPop\');"><table border="0" width="100%" height="100%"><tr><td valign="middle" align="center"><img style="width:100%;" src="'+src+'"/></td></tr></table></body></html>');
+			window.open('', 'gumoFancyPop').document.write('<html><head><meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, width=device-width" /></head><body style="margin:0;background:#000;height:100%;" onclick="javascript:window.close(\'gumoFancyPop\');"><table border="0" width="100%" height="100%"><tr><td valign="middle" align="center"><img src="'+gumoFancy.conf.img+'" style="position:absolute;top:50%;left:50%;z-index:1;"/><img style="position:relative;z-index:2;width:100%;" src="'+src+'"/></td></tr></table></body></html>');
 			return;
 		}
 		this.scroll.lock();
@@ -566,7 +567,7 @@ var gumoFancy = {
 						'border-radius' : '10px'
 					}).append(
 						$('<img/>', {
-							'src' : '/img/gumo-fancy.gif'
+							'src' : gumoFancy.conf.img
 						}).css({
 							'margin' : '45px auto 0 auto'
 						})
