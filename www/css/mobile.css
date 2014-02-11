@@ -1157,7 +1157,7 @@ html.auth body {
 	.auth-or {
 		background: #333 !important;
 	}
-	.btn-darkgray {
+	.btn-darkgray, .btn-darkgray2 {
 		margin-top:20px !important;
 	}
 	.form-group.auth-sub {
@@ -1196,6 +1196,17 @@ html.auth body {
 }
 .btn-darkgray {
 	padding: 10px 115px 10px 116px;
+	border-radius: 5px;
+	background: #555;
+	border: none;
+	color: #fff;
+	font-weight: 700;
+	margin-bottom: 20px;
+	margin-top: 0px;
+}
+.btn-darkgray2 {
+	padding: 10px 0px;
+	width:100%;
 	border-radius: 5px;
 	background: #555;
 	border: none;

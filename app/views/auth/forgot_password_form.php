@@ -23,7 +23,7 @@ echo form_open('', array(
 		<div class="form-error"><?php echo isset($errors['login']) ? '↑ '.$errors['login'] : '' ?></div>
 	</div>
 	<div class='center'>
-		<button type="submit" id='btnSubmit' class='btn btn-darkgray btn-block pure-button-big pure-button'>Submit</button>
+		<button type="submit" id='btnSubmit' class='btn btn-darkgray2 btn-block pure-button-big pure-button'>Submit</button>
 	</div>
 </div>
 
