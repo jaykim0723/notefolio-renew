@@ -490,6 +490,7 @@ html, body {
 	position: absolute;
 	left: 0;
 	top: 0;
+	background-image: none !important;
 }
 .follow-list .follow-center {
 	margin-left: 120px;
@@ -547,7 +548,7 @@ html, body {
 		display: none;
 	}
 	.follow-list .follow-face {
-		margin: 15px 20px 15px 10px;
+		margin: 15px 10px 15px 10px;
 	}
 }
 
