@@ -337,6 +337,8 @@ var workUtil = {
 				if($('#content-block-list .block-image').length>0){
 					$('#content-block-list .block-image').each(function(index){
 						var $img = $(this).children('img');
+						if($img.prop('src')==workUtil.defaultValue.image)
+							return true;
 						$list.append('<li><img src="'+$img.prop('src')+'" data-id="'+$img.data('id')+'"/></li>');
 					});
 				}else{
