@@ -7,7 +7,7 @@ $login = array(
 	'size'	=> 30,
 	'class' => 'form-control',
 	'autofocus' => 'autofocus',
-	'placeholder' => 'Email'
+	'placeholder' => 'email'
 
 );
 if ($login_by_username AND $login_by_email) {
@@ -21,7 +21,8 @@ $password = array(
 	'name'	=> 'password',
 	'id'	=> 'password',
 	'size'	=> 30,
-	'class' => 'form-control'
+	'class' => 'form-control',
+	'placeholder' => 'password'
 );
 $remember = array(
 	'name'	=> 'remember',
