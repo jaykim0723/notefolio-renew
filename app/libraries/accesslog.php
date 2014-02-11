@@ -16,7 +16,6 @@ class Accesslog {
     function __construct($config=null) {
         $this->ci =& get_instance();
         $this->ci->load->library('user_agent');
-        $this->ci->load->model('oldmodel/log_db');
     }
     
     /*
@@ -35,16 +34,16 @@ class Accesslog {
         foreach($params as $k=>$v) {
             switch($k) {
                 default:
-                    $this->db->set($k, $v);
+                    $this->ci->db->set($k, $v);
                     break;
             }
         }
         
-        $this->db->set('remote_addr',$this->input->server('REMOTE_ADDR'));
-        $this->db->set('regdate',date("Y-m-d H:i:s"));
-        $return = $this->db->insert('log_access');
-        log_message('debug', "Last Query: ".$this->db->last_query());
-        $this->db->flush_cache();
+        $this->ci->db->set('remote_addr',$this->input->server('REMOTE_ADDR'));
+        $this->ci->db->set('regdate',date("Y-m-d H:i:s"));
+        $return = $this->ci->db->insert('log_access');
+        log_message('debug', "Last Query: ".$this->ci->db->last_query());
+        $this->ci->db->flush_cache();
         
         $data['accesslog_id'] = $this->ci->db->insert_id();
         
