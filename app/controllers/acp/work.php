@@ -36,7 +36,7 @@ class work extends CI_Controller {
             case "list":
                 if(!isset($args['page'])) $args['page'] = 1;
                 if(!isset($args['delimiter'])) $args['delimiter'] = 30;
-                if(!isset($args['order'])) $args['order'] ="id=desc";
+                if(!isset($args['order'])) $args['order'] ="work_id=desc";
                 parse_str(str_replace(array(":",'+'), array("=", "&"), $args['order']), $args['order']);
                 if(!isset($args['search'])) $args['search'] ="";
                 parse_str(str_replace(array(":",'+'), array("=", "&"), $args['search']), $args['search']);
