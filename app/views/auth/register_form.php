@@ -226,7 +226,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 	<?php }
 	} ?>
 
-	<div class="auth-sub labeltext2" style="color:#888;font-size:12px;margin-top: 15px;margin-bottom: 15px;padding-top: 15px;">버튼을 클릭함으로써 노트폴리오의 <a href="/info/terms" class="register-ajax">약관</a>과 <a href="/info/privacy" class="register-ajax">개인정보보호정책</a>에 동의합니다.</div>
+	<div class="auth-sub labeltext2 auth-agree" style="">버튼을 클릭함으로써 노트폴리오의 <a href="/info/terms" class="register-ajax">약관</a>과 <a href="/info/privacy" class="register-ajax">개인정보보호정책</a>에 동의합니다.</div>
 	<button type="submit" name="register" class="btn btn-darkgray">Register</button>
 <?=form_close(); ?>
 
