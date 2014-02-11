@@ -44,6 +44,7 @@
             충실도  : <?=$v->discoverbility?><br />
             피드백기간계 : <?=$v->feedback_point?><br />
             스탭점수 : <?=$v->staffpoint?><br />
+            랭크총계 : <?=$v->rank_point?><br />
               / <?=$v->regdate?></td>
           <td><?=$v->regdate?></td>
           <td><a class="btn" href="/acp/work/works/view/id/<?=$v->work_id?>">보기</a></td>
