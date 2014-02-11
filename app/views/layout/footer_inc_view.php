@@ -74,7 +74,7 @@
 			</li>
 		<?php endif; ?>
 		<?php if (USER_ID>0): ?>
-			<li>
+			<li class="guestmenu">
 				<a href="/auth/logout">
 					<i class="spi spi-logout_white"></i>
 					Sign Out
