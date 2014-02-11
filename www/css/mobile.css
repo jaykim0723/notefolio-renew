@@ -1161,6 +1161,9 @@ html.auth body {
 		border-top: 1px solid #3d3d3d !important;
 		padding-top: 5px !important;
 	}
+	.auth-formleft {
+		margin-left: 0px !important;
+	}
 }
 #auth-footer {
 	margin-top: 20px;
@@ -1233,6 +1236,9 @@ html.auth body {
 	margin-bottom: 10px;
 }
 
+.auth-formleft {
+	margin-left: 5px;
+}
 
 
 
