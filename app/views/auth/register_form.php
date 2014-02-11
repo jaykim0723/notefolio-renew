@@ -164,8 +164,9 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 	</div>
 
 	<div class="form-group <?=isset($errors['year'])&&isset($errors['month'])&&isset($errors['day']) ? 'error' : ''?>">
-		<label>생년월일</label>
+		
 		<div id='birth_field'>
+			<label class="labeltext" style="margin-right:10px">생년월일</label>
 			<select name='year' class='no-jquery'>
 				<?php for($i=date('Y'); $i>1900; $i--): ?>
 					<option value="<?=$i?>"<?if($birth['year']==$i){?> selected<?}?>><?=$i?>년</option>
