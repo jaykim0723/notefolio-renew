@@ -90,6 +90,7 @@ class site extends CI_Controller {
                 foreach($args['search'] as $q_key=>$q_val){
                     $this->db->where($args['search']);
                 }
+                exit();
                 $page_info = $this->db
                     ->select('count(*) as count, ceil(count(*)/'.$args['delimiter'].') as all_page')
                     ->get('log_access')->result_array();
