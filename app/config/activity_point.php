@@ -33,3 +33,5 @@
  			'collect'			=> 2,
  		),
  	);
+
+ $config['period'] = date('Y-m-d 00:00:00', strtotime('-1 week'));
