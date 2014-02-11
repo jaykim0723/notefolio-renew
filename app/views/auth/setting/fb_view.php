@@ -15,11 +15,11 @@
                     <input type='hidden' id='fb_num_id' name='fb_num_id' value='<?=$fb_num_id?>' />
                 </div>
                 <div class="fb_button">
-                    <a class="pure-button btn-fbconnect pure-button-selected">Connected</a>
+                    <a class="pure-button btn-fbconnect pure-button-selected auth-smallbtn labeltext2 btn-link btn" style="margin-top: -6px;">연동됨</a>
                 </div>
             </div>
             <div class="fb_connect">
-                <div class="fb_label">
+                <div class="fb_label" >
                     <div class='fb_check'>새로운 작품을 업로드 했을 때 Facebook에 알립니다.</div>
                 </div>
                 <div class="fb_button">
@@ -93,10 +93,10 @@
         <div class="span12">
             <div class="fb_connect">
                 <div class="fb_label">
-                    <label>Facebook과 연동되어있지 않습니다.</label>
+                    <label class="labeltext">Facebook과 연동되어있지 않습니다.</label>
                 </div>
                 <div class="fb_button">
-                    <a class="btn btn-default btn-fbconnect">Connect</a>
+                    <a class="pure-button btn-fbconnect pure-button-selected auth-smallbtn labeltext2 btn-link btn" style="margin-top: -6px;">연동</a>
                 </div>
             </div>                          
         </div>

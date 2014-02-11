@@ -1307,8 +1307,12 @@ html.auth body {
 	border-radius: 2em;
 	margin-left: 10px;
 }
-
-
+#auth_facebook .fb-connect {
+	float: left;
+}
+#auth_facebook .fb-connect .fb_button {
+	float: right;
+}
 
 
 
