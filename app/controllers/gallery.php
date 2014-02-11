@@ -149,12 +149,12 @@ class Gallery extends CI_Controller {
         // upload_id:184
         // t2[x]:0
         // t2[y]:0
-        // t2[w]:800
-        // t2[h]:400
+        // t2[w]:760
+        // t2[h]:380
         // t3[x]:0
         // t3[y]:0
-        // t3[w]:400
-        // t3[h]:400
+        // t3[w]:380
+        // t3[h]:380
 
         # do stuff
         $this->load->config('upload', TRUE);

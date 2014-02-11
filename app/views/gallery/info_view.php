@@ -22,7 +22,7 @@
 				<div id="work-profile-image-wrapper" style="background-image:url(/data/profiles/<?php echo $row->user->username ?>_bg.jpg?_=<?php echo substr($row->user->modified,-2) ?>);">
 					<div id="work-profile-image" style="background-color:<?php echo $row->user->face_color ?>">
 						<a id="profile-image" href="<?php echo site_url($row->user->username) ?>">
-							<img src="/data/profiles/<?php echo $row->user->username ?>_face.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt=""/>
+							<img src="/data/profiles/<?php echo $row->user->username ?>_face.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'"/>
 						</a>
 						<div id="profile-info">
 							<h2><a href="<?php echo site_url($row->user->username) ?>"><?php echo $row->user->realname ?></a></h2>

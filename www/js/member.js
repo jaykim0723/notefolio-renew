@@ -10,10 +10,10 @@ var workUtil = {
 	saveCover : function(upload_id, src){
 		site.scroll.lock();
 		memberUtil.popCrop({
-			message : ['400x400 크기의 정사각형 썸네일을 지정해주세요.', '800x400의 직사각형 썸네일을 지정해주세요'],
+			message : ['380x380 크기의 정사각형 썸네일을 지정해주세요.', '760x380의 직사각형 썸네일을 지정해주세요'],
 			src : src,
-			width : [400, 800],
-			height: [400, 400],
+			width : [380, 760],
+			height: [380, 380],
 			done : function(dialog){
 				var crop1 = NFview.popCrop[0].tellSelect();
 				var crop2 = NFview.popCrop[1].tellSelect();
@@ -660,8 +660,8 @@ var memberUtil = {
 		var defaults = {
 			title : 'Crop',
 			message : ['',''],
-			width : [400, 800],
-			height : [400, 400],
+			width : [380, 760],
+			height : [380, 380],
 			src : '/img/dummy_big.jpg',
 			done : function(dialog){
 				console.log('commonUtil > popCrop > done', dialog, NFview.popCrop);
@@ -777,8 +777,8 @@ var profileUtil = {
 		memberUtil.popCrop({
 			message : '프로필 사진으로 쓸 영역을 지정해주세요.',
 			src : src,
-			width : 400,
-			height: 400,
+			width : 380,
+			height: 380,
 			done : function(dialog){
 				var crop = NFview.popCrop[0].tellSelect();
 				// 이미지 src, crop 정보를 토대로 사진을 잘라내는 명령을 내린다.
