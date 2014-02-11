@@ -31,7 +31,7 @@
         <tr class="">
           <td><a href="/acp/work/works/view/id/<?=$v->work_id?>"><?=$v->work_id?></a></td>
           <td><a href="/<?=$v->user->username?>/<?=$v->work_id?>">
-            <img src="/data/covers/<?=$v->work_id?>_t2.jpg"><br/>
+            <img src="/data/covers/<?=$v->work_id?>_t2.jpg" width="200"><br/>
             <p><?=mb_substr($v->title, 0, 50, 'UTF-8')?>
                   <?=((mb_strlen($v->title, 'UTF-8')>50)?'...':'')?></p>
           </a></td>  
