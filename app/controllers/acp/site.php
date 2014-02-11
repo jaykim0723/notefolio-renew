@@ -94,16 +94,23 @@ class site extends CI_Controller {
                     }
                 }
 
+                $page_info = $this->db
+                    ->select('count(*) as count, ceil(count(*)/'.$args['delimiter'].') as all_page')
+                    ->get('log_access')->result_array();
+                error_log($this->db->last_query());
+
+
+                if(is_array($args['search'])&&count($args['search'])>0){
+                    foreach($args['search'] as $q_key=>$q_val){
+                        $this->db->where($q_key, $q_val);
+                    }
+                }
+
                 if(is_array($args['order'])&&count($args['order'])>0){
                     foreach($args['order'] as $o_key=>$o_val){
                         $this->db->order_by($o_key,$o_val);
                     }
                 }
-
-                $page_info = $this->db
-                    ->select('count(*) as count, ceil(count(*)/'.$args['delimiter'].') as all_page')
-                    ->get('log_access')->result_array();
-                error_log($this->db->last_query());
 
                 $limit = array($args['page'], $args['delimiter']);
 
