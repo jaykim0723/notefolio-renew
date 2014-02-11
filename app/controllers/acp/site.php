@@ -110,7 +110,7 @@ class site extends CI_Controller {
                     ->select('*')
                     ->limit($limit[1],($limit[0]-1)*$limit[1])
                     ->get('log_access')->result_array();
-                //var_export($this->db->last_query());
+                error_log($this->db->last_query());
 
                 $data['all_count'] = isset($page_info[0])?$page_info[0]['count']:0;
                 $data['all_page'] = isset($page_info[0])?$page_info[0]['all_page']:1;
