@@ -421,6 +421,7 @@ html, body {
 	position: relative;
 	text-decoration: none;
 	outline:3px solid #efefef;
+	overflow: hidden;
 }
 #feed-list .thumbbox {
 	width: 33.33333333333333333%;
