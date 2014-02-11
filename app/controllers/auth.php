@@ -438,7 +438,7 @@ class Auth extends CI_Controller
             $username_useable = $this->users->is_username_available($data['form']['username']);
 
             if(!$username_useable){
-                $data['errors'] = array('username' => $data['form']['username']."'는 이미 사용 중입니다. 다른 문구를 입력해 주세요." );
+                $data['errors'] = array('username' => "'".$data['form']['username']."'은(는) 이미 사용 중입니다. 다른 문구를 입력해 주세요." );
                 $data['form']['username'] = $this->session->userdata('username');
             }
 
