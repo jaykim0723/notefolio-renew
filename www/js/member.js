@@ -412,6 +412,8 @@ var workUtil = {
 			});
 
 			window.onbeforeunload = function (e) {
+				if(site.redirecting)
+					return;
 			  var message = '수정사항을 전송하지 않고 나가면 정보들이 저장되지 않습니다.',
 			  e = e || window.event;
 			  // For IE and Firefox

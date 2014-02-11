@@ -29,7 +29,7 @@ site.redirect = function(url, msg){
 	delLocal('listing_html');
 	delLocal('listing_url');
 	delLocal('listing_href');
-
+	site.redirecting = true;
 	location.href = url;
 };
 site.scrollToBottom = function(obj){
