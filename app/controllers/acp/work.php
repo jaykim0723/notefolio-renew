@@ -72,7 +72,7 @@ class work extends CI_Controller {
                     ->limit($limit[1],($limit[0]-1)*$limit[1])
                     ->join('users', 'works.user_id=users.id', 'left')
                     ->join('user_profiles', 'users.id=user_profiles.user_id', 'left')
-                    ->get('works')->result_array();
+                    ->get('works')->result();
                 error_log($this->db->last_query());
 
                 $data['all_count'] = isset($page_info[0])?$page_info[0]['count']:0;

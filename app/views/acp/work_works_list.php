@@ -29,18 +29,18 @@
           foreach($list as $k=>$v){
     ?>
         <tr class="">
-          <td><a href="/acp/work/works/view/id/<?=$v['id']?>"><?=$v['id']?></a></td>
-          <td><a href="http://whois.net/ip-address-lookup/<?=$v['remote_addr']?>"><?=$v['remote_addr']?></a></td>  
-          <td><a href="<?=$v['to_access']?>">
-              <?=mb_substr($v['to_access'], 0, 50, 'UTF-8')?>
-                  <?=((mb_strlen($v['to_access'], 'UTF-8')>50)?'...':'')?></a></td>
-          <td><a href="<?=$v['referer']?>">
-              <?=mb_substr($v['referer'],  0, 50, 'UTF-8')?>
-                  <?=((mb_strlen($v['referer'],  'UTF-8')>50)?'...':'')?></a></td>
-          <td><?=$v['regdate']?></td>
-          <td><a class="btn" href="/acp/work/works/view/id/<?=$v['id']?>">보기</a></td>
-          <td><a class="btn btn-primary" href="/acp/work/works/modify/id/<?=$v['id']?>">수정</a></td>
-          <td><a class="btn btn-danger" href="/acp/work/works/delete/id/<?=$v['id']?>">삭제</a></td>
+          <td><a href="/acp/work/works/view/id/<?=$v->work_id?>"><?=$v->work_id?></a></td>
+          <td><a href="http://whois.net/ip-address-lookup/<?=$v->remote_addr?>"><?=$v->remote_addr?></a></td>  
+          <td><a href="<?=$v->to_access?>">
+              <?=mb_substr($v->to_access, 0, 50, 'UTF-8')?>
+                  <?=((mb_strlen($v->to_access, 'UTF-8')>50)?'...':'')?></a></td>
+          <td><a href="<?=$v->referer?>">
+              <?=mb_substr($v->referer,  0, 50, 'UTF-8')?>
+                  <?=((mb_strlen($v->referer,  'UTF-8')>50)?'...':'')?></a></td>
+          <td><?=$v->regdate?></td>
+          <td><a class="btn" href="/acp/work/works/view/id/<?=$v->id?>">보기</a></td>
+          <td><a class="btn btn-primary" href="/acp/work/works/modify/id/<?=$v->id?>">수정</a></td>
+          <td><a class="btn btn-danger" href="/acp/work/works/delete/id/<?=$v->id?>">삭제</a></td>
         </tr>
     <?php
           }
