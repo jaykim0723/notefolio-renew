@@ -71,12 +71,12 @@ if ($this->input->get('go_to')) {
 	</div>
 	<div class="biggroup">
 		<div class="form-group <?php echo isset($errors['login']) ? 'error' : ''?>">
-			<?php echo form_label($login_label, $login['id']); ?>
+			<!--<?php echo form_label($login_label, $login['id']); ?>-->
 			<?php echo form_input($login); ?>
 			<div class="form-error"><?php echo isset($errors['login']) ? '↑ '.$errors['login'] : '' ?></div>
 		</div>
 		<div class="form-group <?php echo isset($errors['password']) ? 'error' : ''?>">
-			<?php echo form_label('Password', $password['id']); ?>
+			<!--<?php echo form_label('Password', $password['id']); ?>-->
 			<?php echo form_password($password); ?>
 			<div class="form-error"><?php echo isset($errors['password']) ? '↑ '.$errors['password'] : '' ?></div>
 		</div>
