@@ -134,6 +134,8 @@ class work_model extends CI_Model {
 
     	$works = $this->db->get();
 
+        error_log($this->db->last_query());
+
     	$rows = array();
     	foreach ($works->result() as $row)
 		{
