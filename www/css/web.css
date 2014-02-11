@@ -614,6 +614,7 @@ li#trash-bin{
 	top: -20px;
 	position: relative;
 	height: 550px;
+	background-position: center center;
 }
 #profile-inner-wrapper {
 	width: 400px;
