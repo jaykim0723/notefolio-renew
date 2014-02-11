@@ -833,6 +833,11 @@ html, body {
 	margin: 10px 0 0 0;
 	position: relative;
 }
+.work-contents > .block-text > div,
+.work-contents > .block-text > p {
+	margin: 5px 0;
+}
+
 .work-contents > .block-image:first-child,
 .work-contents > .block-video:first-child,
 .work-contents > .block-text:first-child {
