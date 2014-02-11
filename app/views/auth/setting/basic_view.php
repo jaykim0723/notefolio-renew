@@ -147,7 +147,7 @@
 	</div>
 
     <div class="form-group checkbox">
-        <label class=" <?if($mailing==1){?> checked<?}?>">
+        <label class=" <?if($mailing==1){?> checked<?}?> labeltext2">
         	<input type="checkbox" name="mailing" value="1" <?if($mailing==1){?>checked="checked"<?}?>>노트폴리오의 최신 소식 및 작가/작품 소개를 메일로 받겠습니다.
         </label> 
     </div>
