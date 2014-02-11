@@ -1188,6 +1188,9 @@ html.auth body {
 	#auth_facebook {
 		margin-top: 0px !important;
 	}
+	.fb_check {
+		width:220px !important;
+	}
 }
 #auth-footer {
 	margin-top: 20px;
@@ -1324,6 +1327,7 @@ html.auth body {
 	font-family: "NanumGothic";
 	color: #7a7880;
 	margin-bottom: 20px;
+	width: 250px;
 }
 
 
