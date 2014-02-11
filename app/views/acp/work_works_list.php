@@ -15,7 +15,7 @@
         <tr>
           <th>순번</th>
           <th>&nbsp;</th>
-          <th>작성</th>
+          <th>작성자</th>
           <th>리퍼러</th>
           <th>생성일</th>
           <th>보기</th>
