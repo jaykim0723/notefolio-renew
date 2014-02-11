@@ -284,6 +284,9 @@ html.mm-blocking #mm-blocker {
 .guestmenu {
     border-top: 10px solid #78cad5;
 }
+.commonmenu {
+    border-bottom: 10px solid #78cad5;
+}
 
 
 html.mm-opened .mm-page {

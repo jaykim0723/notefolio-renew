@@ -33,7 +33,7 @@
 					<span class="label rounded unread-alarm"></span>
 				</a>
 			</li>
-			<li>
+			<li class="commonmenu">
 				<a class="clear-list" href="/feed/listing">
 					<i class="spi spi-feed_white"></i>
 					Feed
