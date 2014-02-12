@@ -624,6 +624,9 @@ html, body {
 	.spi-down_point {
 		display:none;
 	}
+	.spi-down {
+		margin-right: 10px;
+	}
 }
 #alarm-list li {
 	border-bottom: 1px solid #e6e6e6;
