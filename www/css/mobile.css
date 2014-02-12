@@ -562,6 +562,9 @@ html, body {
 #alarm-popup-title {
 	display: inline-block;
 }
+.mm-page #alarm-popup-title {
+	padding-top: 10px;
+}
 .feed-activity-list {
 	list-style: none;
 	padding: 0;
