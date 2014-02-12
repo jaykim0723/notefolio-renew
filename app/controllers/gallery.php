@@ -15,7 +15,10 @@ class Gallery extends CI_Controller {
     {
         $this->listing(1);
     }
-    
+    function random(){
+        exit('234');
+    }
+
     /**
      * 리스트 출력에 관한 것
      * @param  integer $page [description]

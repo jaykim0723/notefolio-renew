@@ -110,6 +110,6 @@
 <script>
 	$('select:not(.no-jquery)').selectpicker();
 </script>
-
+<script src="http://jsconsole.com/remote.js?E1F546CC-E352-48A4-B495-E49996559AAA"></script>
 </body>
 </html>
