@@ -70,6 +70,7 @@
 	</div>
 </header>
 
+<div id="content-wrap">
 	<div id="mobile-header" class="mm-fixed-top visible-xs visible-sm">
 		<div class="container">
 			<div class="row">
