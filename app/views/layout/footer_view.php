@@ -147,7 +147,7 @@
 		$('#mobile-menu-open').click(function(e){
 			e.preventDefault();
 			$('#mobile-menu')
-				.trigger(is_mobile_menu_opened?'open.mm':'close.mm')
+				.trigger('open.mm')
 				.on("opened.mm", function(){
 					is_mobile_menu_opened = true;
 				})
