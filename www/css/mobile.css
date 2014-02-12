@@ -668,7 +668,8 @@ html, body {
 #alarm-more .spi-down_point {
 	display:none;
 }
-#alarm-more:hover .spi-down_point{
+#alarm-more:hover .spi-down_point,
+#alarm-more .spi-down {
 	display:inline-block !important;
 }
 
