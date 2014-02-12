@@ -57,7 +57,6 @@
 			});
 	</script>
 	<script src="/js/site.js"></script>
-
 </head>
 
 <body>
