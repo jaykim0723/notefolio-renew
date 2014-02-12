@@ -13,7 +13,7 @@
 					<?php $this->load->view('feed/activity_inc_view', array('row'=>$row)) ?>
 					<?php endforeach ?>
 				</ul>
-				<a href="/alarm/listing/<?php echo $page+1; ?>" id="alarm-more" class="alarm-more-link btn btn-default btn-block btn-alarm-more" style="line-height: 230%;"><i class="spi spi-down"></i><i class="spi spi-down_point"></i>see more</a>
+				<a href="/alarm/listing/<?php echo $page+1; ?>" id="alarm-more" class="alarm-more-link btn btn-default btn-block btn-alarm-more alarm-height"><i class="spi spi-down"></i><i class="spi spi-down_point"></i>see more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 		</div>

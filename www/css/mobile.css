@@ -639,10 +639,17 @@ html, body {
 	.spi-down {
 		margin-right: 10px;
 	}
+	.alarm-height {
+	line-height: 230%;
+	}
 }
 #alarm-list li {
 	border-bottom: 1px solid #e6e6e6;
 	padding-left: 10px;
+}
+.alarm-height {
+	line-height: 130%;
+	border-radius: 2em;
 }
 #feed-activity-list .activity-infinite-icon,
 #alarm-list .activity-infinite-icon {
