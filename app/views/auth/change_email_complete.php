@@ -8,7 +8,7 @@ echo form_open('', array(
 	'submitting' => 1
 ));
 ?>
-
+<div class="biggroup">
 	<div class="form-group">
 		<?php if($is_success){ ?>
 		<p><?php echo $this->lang->line('auth_message_new_email_activated') ?></p>
@@ -19,11 +19,12 @@ echo form_open('', array(
 		<?php
 		} ?>
 	</div>
+</div>
 
 	<div class='center'>
-		<br/>
+		
 		<?php if($is_success){ ?>
-		<a class='btn btn-primary btn-block pure-button-big pure-button' href="/auth/login">로그인</a>
+		<a class='btn btn-darkgray btn-block pure-button-big pure-button' href="/auth/login">로그인</a>
 		<?php
 		}?>
 	</div>
