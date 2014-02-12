@@ -1,8 +1,8 @@
 var workUtil = {
 	clConf : {
-		controls: "bold italic underline strikethrough subscript superscript | font size " +
-          "style | color highlight removeformat | bullets numbering | outdent " +
-          "indent | alignleft center alignright justify | undo redo | ",
+		controls: "bold italic underline strikethrough | font size " +
+          "style | color highlight removeformat | " +
+          "alignleft center alignright justify | undo redo | ",
          docCSSFile : '/css/cleditor.css'
 	},
 	defaultValue : {
@@ -385,7 +385,7 @@ var workUtil = {
 			$(target).sortable({
   				opacity: 0.6,
     			cursor: 'move',
-    			axis: 'y',
+    			// axis: 'y',
         		scroll: true,
     			distance: 15,
     			scrollSpeed: 40,
