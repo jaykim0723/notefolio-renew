@@ -340,9 +340,12 @@ class work_model extends CI_Model {
         $work_id = $input->work_id;
         unset($input->work_id);
 
+        if(!$this->nf->admin_is_elevated()){
+            $this->db->where('user_id', USER_ID);
+        }
+
         $this->db
             ->where('work_id', $work_id)
-            ->where('user_id', USER_ID)
             ->update('works', $input);
 
         $data = (object)array(
