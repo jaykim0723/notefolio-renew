@@ -601,6 +601,7 @@ html, body {
 .feed-activity-list a small {
 	display: block;
 	margin-left: 44px;
+	font-family: "NanumGothic";
 	color:#999;
 	text-align: left;
 	margin-top: 6px;
@@ -609,6 +610,7 @@ html, body {
 	display: block;
 	margin-left: 44px;
 	margin-right: 28px;
+	font-family: "NanumGothic";
 	font-size: 12px;
 	line-height: 150%;
 	text-align: left;
