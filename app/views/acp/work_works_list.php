@@ -28,7 +28,7 @@
         if(isset($list)&&count($list)>0) {
           foreach($list as $k=>$v){
     ?>
-        <tr class="">
+        <tr class="" data-id="<?=$v->work_id?>">
           <td><a href="/acp/work/works/view/id/<?=$v->work_id?>"><?=$v->work_id?></a></td>
           <td><a href="/<?=$v->user->username?>/<?=$v->work_id?>">
             <img src="/data/covers/<?=$v->work_id?>_t2.jpg" width="200"><br/>

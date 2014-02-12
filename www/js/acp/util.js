@@ -74,9 +74,19 @@
   
   $(function(){
     $('.staffpoint-btn').on('click.staffpoint', function(e){
+      var $root = $(this).closest('tr');
       e.preventDefault();
-      var staffpoint = $('input[name="staffpoint"]', $(this).parent()).val();
-      alert(staffpoint);
-
+      var staffpoint = $('input[name="staffpoint"]', $root).val();
+      var work_id = $root.data('id');
+      $.post('/acp/work/works/proc/staffpoint', 
+            {work_id: work_id, staffpoint: staffpoint}, 
+            function(data, textStatus, xhr) {
+              var response = $.parseJSON(data);
+              if(response.status=='done'){
+                alert('반영 완료');
+              }else{
+                alert('오류');
+              }
+            });
     });
   }); 
