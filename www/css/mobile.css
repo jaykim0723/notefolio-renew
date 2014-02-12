@@ -1465,8 +1465,13 @@ html.auth body {
 	padding: 40px;
 }
 
-#contact_us_container, #faq_container, #about_us_container {
-	margin-bottom: -60px;
+@media(max-width: 991px){
+	#contact_us_container, #about_us_container {
+		margin-bottom: -60px;
+	}
+	#faq_container .container {
+		margin-bottom: -120px;
+	}
 }
 
 #term_container h1, #privacy_container h1, #faq_container h1, #contact_us_container h1 {
