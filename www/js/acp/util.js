@@ -73,4 +73,9 @@
       
   
   $(function(){
+    $('.staffpoint-btn').on('click.staffpoint', function(){
+      var staffpoint = $('input[name="staffpoint"]', $(this).parent()).val();
+      alert(staffpoint);
+
+    });
   }); 

@@ -202,6 +202,15 @@ class work extends CI_Controller {
                 redirect('/acp/work/works/view/id/'.$this->input->post('id'));
                 
                 break;
+            case "staffpoint":
+                $args = $this->uri->ruri_to_assoc(4);
+                $this->work_model->put_info(array(
+                    'work_id' => $args['id'],
+                    'staffpoint' => $args['staffpoint'],
+                    ));
+                redirect('/acp/work/works/list/');
+                
+                break;
             case "delete":
                 $this->work_model->delete_info(array(
                     'work_id' => $this->input->post('id'),
