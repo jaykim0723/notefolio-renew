@@ -392,7 +392,7 @@ $(function() {
 
 	$('#mobile-menu').mmenu({
     	dragOpen: {
-			open:	false,
+			open:	true,
 			pageNode:	null,
 			threshold:	50,
 			maxStartPos:	150,
