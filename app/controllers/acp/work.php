@@ -205,8 +205,8 @@ class work extends CI_Controller {
             case "delete":
                 
                 $this->work_model->delete_info(array(
-                    'work_id' => $this->input->post('work_id'),
-                    'work_id' => $this->input->post('work_id')
+                    'work_id' => $this->input->post('id'),
+                    'force_delete' => ($this->input->post('force_delete')=='y'),
                     ));
                 redirect('/acp/work/works/list/');
                 
