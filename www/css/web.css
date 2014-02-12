@@ -627,10 +627,11 @@ li#trash-bin{
 	position: relative;
 }
 #alarm-popup-title {
+	width: 100%;
 	height: 42px;
 	border-bottom: 1px solid #e5e5e5;
 	text-align: center;
-	padding-top: 10px;
+	padding-top: 5px;
 	color: #2ac5c6;
 	font-size: 16px;
 	font-weight: 300;
@@ -647,7 +648,7 @@ li#trash-bin{
 	width: 300px;
 	border: 1px solid #e5e5e5;
 	z-index:99;
-	margin-top: 15px;
+	margin-top: 13px;
 	border-top: 1px solid #fff;
 }
 #alarm-popup-list {
