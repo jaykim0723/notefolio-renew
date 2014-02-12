@@ -1460,6 +1460,9 @@ html.auth body {
 #term {
 	border:0;
 	background-color:white;
+	font-family: "NanumGothic";
+	font-size: 12px;
+	padding: 40px;
 }
 
 #term_container h1 {
