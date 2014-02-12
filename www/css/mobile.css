@@ -608,6 +608,15 @@ html, body {
 .feed-activity-list a i {
 	float: right!important;
 }
+
+@media (max-width: 540px){
+	.feed-activity-list .si-face-medium {
+		display:none;
+	}
+	.feed-activity-list a img {
+		border-radius: 2em;
+	}
+}
 .feed-activity-list a small {
 	display: block;
 	margin-left: 64px;
