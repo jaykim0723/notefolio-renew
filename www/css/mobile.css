@@ -1465,7 +1465,11 @@ html.auth body {
 	padding: 40px;
 }
 
-#term_container h1 {
+#privacy_container #term {
+	line-height: 190%;
+}
+
+#term_container h1, #privacy_container h1 {
 	font-size: 20px;
 	font-family: 'Roboto',sans-serif;
 	color: #444;
