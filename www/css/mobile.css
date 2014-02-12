@@ -1475,7 +1475,7 @@ html.auth body {
 	line-height: 180%;
 }
 #side_about a:hover {
-	border: none !important;
+	border: 1px solid #fff !important;
 }
 #side_about h4{
 	font-size: 18px;
