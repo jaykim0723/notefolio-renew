@@ -1465,7 +1465,7 @@ html.auth body {
 	padding: 40px;
 }
 
-#term_container h1, #privacy_container h1 {
+#term_container h1, #privacy_container h1, #faq_container h1, #contact_us_container h1 {
 	font-size: 20px;
 	font-family: 'Roboto',sans-serif;
 	color: #444;
