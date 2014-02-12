@@ -664,6 +664,7 @@ li#trash-bin{
 	border-top: 1px solid #fff;
 	border-left: none;
 	border-right: none;
+	border-bottom: none;
 }
 #alarm-more:hover {
 	color:#2ac5c6 !important;

@@ -643,9 +643,6 @@ html, body {
 	line-height: 130%;
 	border-radius: 2em;
 }
-#alarm-more:hover {
-	border:none;
-}
 #feed-activity-list .activity-infinite-icon,
 #alarm-list .activity-infinite-icon {
 	position: relative;
@@ -660,10 +657,7 @@ html, body {
 #alarm-more .spi-down_point {
 	display:none;
 }
-#alarm-more:hover .spi-down_point,
-#alarm-more .spi-down {
-	display:inline-block;
-}
+
 
 
 
