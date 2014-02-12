@@ -38,7 +38,7 @@ echo form_open('', array(
 
 	<div class='center'>
 		
-		<button type="submit" id='btnSubmit' class='btn btn-block btn-drakgray pure-button-big pure-button'>Submit</button>
+		<button type="submit" id='btnSubmit' class='btn btn-block btn-darkgray pure-button-big pure-button'>Submit</button>
 	</div>
 
 <?php echo form_close(); ?>
