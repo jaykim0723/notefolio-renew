@@ -1474,6 +1474,9 @@ html.auth body {
 	margin-bottom: 30px;
 	line-height: 180%;
 }
+#side_about a:hover {
+	border: none !important;
+}
 #side_about h4{
 	font-size: 18px;
 	font-family: 'Roboto',sans-serif;
