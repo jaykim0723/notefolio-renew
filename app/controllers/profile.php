@@ -336,6 +336,7 @@ class Profile extends CI_Controller {
 		$profile_header = array(
 			'username'=>$user->row->username,
 			'is_follow'=>$user->row->is_follow,
+			'user_id'   =>$user->row->user_id,
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header);
@@ -360,6 +361,7 @@ class Profile extends CI_Controller {
 		$profile_header = array(
 			'username'=>$user->row->username,
 			'is_follow'=>$user->row->is_follow,
+			'user_id'   =>$user->row->user_id,
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
@@ -410,6 +412,7 @@ class Profile extends CI_Controller {
 		$profile_header = array(
 			'username'=>$user->row->username,
 			'is_follow'=>$user->row->is_follow,
+			'user_id'   =>$user->row->user_id,
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
@@ -437,6 +440,7 @@ class Profile extends CI_Controller {
 		$profile_header = array(
 			'username'=>$user->row->username,
 			'is_follow'=>$user->row->is_follow,
+			'user_id'   =>$user->row->user_id,
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
