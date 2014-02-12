@@ -664,6 +664,13 @@ html, body {
 	top: 0;
 	left: 0;
 }
+#alarm-more:hover .spi-down, 
+#alarm-more .spi-down_point {
+	display:none;
+}
+#alarm-more:hover .spi-down_point{
+	display:inline-block !important;
+}
 
 
 
