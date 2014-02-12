@@ -73,7 +73,8 @@
       
   
   $(function(){
-    $('.staffpoint-btn').on('click.staffpoint', function(){
+    $('.staffpoint-btn').on('click.staffpoint', function(e){
+      e.preventDefault();
       var staffpoint = $('input[name="staffpoint"]', $(this).parent()).val();
       alert(staffpoint);
 
