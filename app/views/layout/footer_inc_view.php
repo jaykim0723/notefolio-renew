@@ -110,8 +110,8 @@
 <script>
 	$('select:not(.no-jquery)').selectpicker();
 </script>
-<?php if (strpos($_SERVER['HTTP_HOST'], 'renew')!==FALSE): ?>
-<script src="http://jsconsole.com/remote.js?E1F546CC-E352-48A4-B495-E49996559AAA"></script>
+<?php if (strpos($_SERVER['HTTP_HOST'], 'renew.')!==FALSE && USER_ID==3): ?>
+<script src="http://jsconsole.com/remote.js?122CF29F-EC33-4FB8-A8A4-588666EE5850"></script>
 <?php endif ?>
 </body>
 </html>
