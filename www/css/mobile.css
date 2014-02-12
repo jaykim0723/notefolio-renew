@@ -1524,6 +1524,8 @@ html.auth body {
 #faq_search {
 	width: 90%;
 	margin-left: 5%;
+	font-family: "NanumGothic";
+	font-size: 12px;
 }
 
 
