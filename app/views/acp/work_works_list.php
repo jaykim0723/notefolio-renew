@@ -55,7 +55,7 @@
           <td><?=$v->regdate?></td>
           <td><a class="btn" href="/acp/work/works/view/id/<?=$v->work_id?>">보기</a></td>
           <td>
-            <a class="btn btn-primary" href="/acp/work/works/modify/id/<?=$v->work_id?>">수정</a>정
+            <a class="btn btn-primary" href="/acp/work/works/modify/id/<?=$v->work_id?>">수정</a><br/>
             <a class="btn btn-primary" href="/gallery/update/<?=$v->work_id?>">작품수정</a>
           </td>
           <td><a class="btn btn-danger" href="/acp/work/works/delete/id/<?=$v->work_id?>">삭제</a></td>
