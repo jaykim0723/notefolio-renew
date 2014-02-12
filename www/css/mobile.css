@@ -1479,6 +1479,9 @@ html.auth body {
 	#faq_list {
 		padding: 20px 20px 50px;
 	}
+	#cont_gallery {
+		margin-top: 30px;
+	}
 }
 
 #term_container h1, #privacy_container h1, #faq_container h1, #contact_us_container h1 {
@@ -1493,7 +1496,7 @@ html.auth body {
 #cont_gallery {
 	background: #fff;
 	margin-bottom: 30px;
-	margin-top: 30px;
+	margin-top: 0px;
 	padding-top: 10px;
 }
 
@@ -1517,6 +1520,10 @@ html.auth body {
 	background: none;
 	font-family: "NanumGothic";
 	padding-left: 0;
+}
+#faq_search {
+	width: 90%;
+	margin-left: 5%;
 }
 
 
