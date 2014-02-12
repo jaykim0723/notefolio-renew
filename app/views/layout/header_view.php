@@ -75,7 +75,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-2">
-					<a href="javascript:$('#mobile-menu').trigger('toggle');">
+					<a href="javascript:$('#mobile-menu').trigger('open');">
 						<i class="spi spi-menu"></i>
 					</a>
 				</div>
