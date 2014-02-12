@@ -144,16 +144,16 @@
 	</ul>
 </nav>
 <script>
-	var is_mobile_menu_opened = false;
+	var mmenu_trigger = 'open.mm';
 	$('#mobile-menu-open').click(function(e){
 		e.preventDefault();
 		$('#mobile-menu')
-			.trigger('open.mm')
+			.trigger(mmenu_trigger)
 			.on("opened.mm", function(){
-				is_mobile_menu_opened = true;
+				mmenu_trigger = 'close.mm';
 			})
 			.on("closed.mm", function(){
-				is_mobile_menu_opened = false;
+				mmenu_trigger = 'open.mm';
 			})
 	});
 </script>
