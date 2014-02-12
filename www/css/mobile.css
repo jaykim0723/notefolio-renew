@@ -592,7 +592,7 @@ html, body {
 	display:block;
 	text-decoration: none;
 	color:black;
-	padding: 15px 0px;
+	padding: 15px 0px 22px;
 }
 .feed-activity-list a:hover {
 	color: #2ac5c6;
@@ -606,14 +606,13 @@ html, body {
 	float: left;
 	width: 50px;
 	height: 50px;
-	margin-right: 10px;
 }
 .feed-activity-list a i {
 	float: right!important;
 }
 .feed-activity-list a small {
 	display: block;
-	margin-left: 44px;
+	margin-left: 64px;
 	font-family: "NanumGothic";
 	color:#999;
 	text-align: left;
@@ -621,7 +620,7 @@ html, body {
 }
 .feed-activity-list a span {
 	display: block;
-	margin-left: 44px;
+	margin-left: 64px;
 	margin-right: 28px;
 	font-family: "NanumGothic";
 	color:#222;
@@ -650,6 +649,9 @@ html, body {
 .alarm-height {
 	line-height: 130%;
 	border-radius: 2em;
+}
+#alarm-more:hover {
+	border:none;
 }
 #feed-activity-list .activity-infinite-icon,
 #alarm-list .activity-infinite-icon {
