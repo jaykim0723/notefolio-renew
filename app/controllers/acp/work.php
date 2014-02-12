@@ -203,11 +203,12 @@ class work extends CI_Controller {
                 
                 break;
             case "staffpoint":
+                exit('aaa');
                 $result =  $this->work_model->put_info(array(
                     'work_id' => $this->input->post('work_id'),
                     'staffpoint' => $this->input->post('staffpoint'),
                     ));
-                
+
                 exit(json_encode($result));
 
                 break;
