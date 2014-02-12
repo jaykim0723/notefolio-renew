@@ -1471,6 +1471,7 @@ html.auth body {
 	}
 	#faq_container .container {
 		margin-bottom: -120px;
+		padding: 0;
 	}
 	#faq_list {
 		padding: 20px 20px 50px;
@@ -1486,6 +1487,13 @@ html.auth body {
 	margin-bottom: 30px;
 	line-height: 180%;
 }
+#cont_gallery {
+	background: #fff;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	padding-top: 10px;
+}
+
 #side_about a:hover {
 	border: 1px solid #fff !important;
 }
