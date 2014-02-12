@@ -1463,10 +1463,12 @@ html.auth body {
 }
 
 #term_container h1 {
-	font-size: 18px;
+	font-size: 20px;
 	font-family: 'Roboto',sans-serif;
 	color: #444;
 	font-weight: 400;
+	text-align: center;
+	margin-bottom: 30px;
 }
 
 
