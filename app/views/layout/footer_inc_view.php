@@ -33,11 +33,17 @@
 					<span class="label rounded unread-alarm"></span>
 				</a>
 			</li>
-			<li class="commonmenu">
+			<li>
 				<a class="clear-list" href="/feed/listing">
 					<i class="spi spi-feed_white"></i>
 					Feed
 					<span class="label rounded unread-feed"></span>
+				</a>
+			</li>
+			<li class="commonmenu">
+				<a href="/auth/setting">
+					<i class="spi spi-setting_white"></i>
+					Setting
 				</a>
 			</li>
 		<?php endif; ?>
