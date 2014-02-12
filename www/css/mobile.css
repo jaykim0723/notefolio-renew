@@ -560,7 +560,7 @@ html, body {
 
 /* feed */
 #alarm-popup-title {
-	display: none;
+	display: inline-block;
 }
 .feed-activity-list {
 	list-style: none;
@@ -579,7 +579,7 @@ html, body {
 		margin-top:20px;
 	}
 	#alarm-popup-title {
-	display: inline-block;
+		display: none !important;
 	}
 }
 
