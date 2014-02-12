@@ -377,7 +377,7 @@ class work_model extends CI_Model {
 
 
         $work_id = @$data['work_id'];
-        $force_delete = (isset(@$data['force_delete'])?@$data['force_delete']:false);
+        $force_delete = (isset($data['force_delete'])?$data['force_delete']:false);
 
         if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
             $can_delete = true;
