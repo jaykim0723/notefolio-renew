@@ -1,7 +1,7 @@
 <?php
 $hidden_field = array(
     'mode' => 'delete',
-    'id' => isset($field->id)?$field->id:0,
+    'id' => isset($field->work_id)?$field->work_id:0,
 );
 
 ?>
