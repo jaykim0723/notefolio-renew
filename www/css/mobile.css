@@ -1594,6 +1594,19 @@ html.auth body {
 
 }
 
+.answer a {
+	color: #222;
+	font-weight: bold;
+}
+.answer img {
+	width:inherit;
+}
+@media (max-width: 700px) {
+	.answer img {
+		width:100%;
+	}
+}
+
 
 /* info : contact us */
 p.desc {
