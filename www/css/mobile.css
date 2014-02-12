@@ -670,7 +670,7 @@ html, body {
 }
 #alarm-more:hover .spi-down_point,
 #alarm-more .spi-down {
-	display:inline-block !important;
+	display:inline-block;
 }
 
 
