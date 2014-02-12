@@ -144,17 +144,9 @@
 	</ul>
 </nav>
 <script>
-	var mmenu_trigger = 'open.mm';
 	$('#mobile-menu-open').click(function(e){
-		console.log('aaa');
 		e.preventDefault();
 		$('#mobile-menu')
-			.trigger(mmenu_trigger)
-			.on("opened.mm", function(){
-				mmenu_trigger = 'close.mm';
-			})
-			.on("closed.mm", function(){
-				mmenu_trigger = 'open.mm';
-			})
+			.trigger('open.mm');
 	});
 </script>
