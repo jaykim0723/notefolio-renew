@@ -15,7 +15,7 @@ echo form_open('', array(
 	<div class="center" id="status">
 		<div class="panel panel-success">
 			<div class="panel-heading">
-			  <h3 class="panel-title">정보 변경 완료</h3>
+			  <h3 class="panel-title"><i class="spi spi-check_white">check_white</i><br><br>정보 변경 완료</h3>
 			</div>
 			<div class="panel-body">
 				<p>개인 정보를 변경하였습니다. <a href="javascript:$('#status').remove();">닫기</a></p>
