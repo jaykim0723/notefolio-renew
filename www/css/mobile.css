@@ -1462,6 +1462,12 @@ html.auth body {
 	background-color:white;
 }
 
+#term_container h1 {
+	font-size: 18px;
+	font-family: 'Roboto',sans-serif;
+	color: #444;
+	font-weight: 400;
+}
 
 
 /* info : about_us */
