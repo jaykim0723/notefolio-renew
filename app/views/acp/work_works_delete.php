@@ -33,11 +33,11 @@ $hidden_field = array(
           </tbody>
         </table>
         <div style="width:100%;text-align:center;">
-            <a class="btn btn-danger" href="javascript:$('#work_works_delete_form').submit();">삭제</a>
+            <a class="btn btn-danger" href="javascript:$('#works_delete_form').submit();">삭제</a>
             <a class="btn" href='/acp/work/works/list'>취소</a>
         </div>
         <?php echo form_close(); ?>
-        
+
       </div> <!-- /container -->
   </div> <!-- /main-inner -->
 </div>
