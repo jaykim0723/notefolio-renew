@@ -207,8 +207,6 @@ class work extends CI_Controller {
                     'work_id' => $this->input->post('id'),
                     'force_delete' => ($this->input->post('force_delete')=='y'),
                     ));
-                
-                exit();
                 redirect('/acp/work/works/list/');
                 
                 break;
