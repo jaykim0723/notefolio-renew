@@ -146,12 +146,12 @@
 		var is_mobile_menu_opened = false;
 		$('#mobile-menu-open').click(function(e){
 			e.preventDefault();
-			$('$mobile-menu')
-				.trigger('open')
-				.on("opened", function(){
+			$('#mobile-menu')
+				.trigger(is_mobile_menu_opened?'open.mm':'close.mm')
+				.on("opened.mm", function(){
 					is_mobile_menu_opened = true;
 				})
-				.on("closed", function(){
+				.on("closed.mm", function(){
 					is_mobile_menu_opened = false;
 				})
 		});
