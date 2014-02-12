@@ -22,10 +22,12 @@
 
 <?php if($this->input->get('rotate-my-eye')!==FALSE){  //joke www  ?>
 <style type="text/css">
-.container {
-	width: 750px;
-	-webkit-transform: rotate(180deg);
-}
+	.container {
+		transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+	}
 </style>
 <?php }?>
 
