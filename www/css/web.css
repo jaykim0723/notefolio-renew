@@ -669,7 +669,6 @@ li#trash-bin{
 #alarm-more:hover {
 	color:#2ac5c6 !important;
 	background-color:#fff !important;
-	border-bottom: 1px solid #e5e5e5 !important;
 	border-left: none !important;
 	border-right: none !important;
 
@@ -679,7 +678,7 @@ li#trash-bin{
 	display:none;
 }
 #alarm-more:hover .spi-down_point{
-	display:inline-block;
+	display:inline-block !important;
 }
 
 
