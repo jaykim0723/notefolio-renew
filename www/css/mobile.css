@@ -576,6 +576,14 @@ html, body {
 	margin: 0;
 	margin-top: 20px;
 }
+@media (max-width: 991px){
+	.feed-activity-list {
+		background:#fff;
+		border-radius:5px;
+		margin-bottom: 10px;
+	}
+}
+
 .feed-activity-list a {
 	display:block;
 	text-decoration: none;
