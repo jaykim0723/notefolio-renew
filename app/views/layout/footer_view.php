@@ -142,18 +142,18 @@
 		<?php endif; ?>
 
 	</ul>
-	<script>
-		var is_mobile_menu_opened = false;
-		$('#mobile-menu-open').click(function(e){
-			e.preventDefault();
-			$('#mobile-menu')
-				.trigger('open.mm')
-				.on("opened.mm", function(){
-					is_mobile_menu_opened = true;
-				})
-				.on("closed.mm", function(){
-					is_mobile_menu_opened = false;
-				})
-		});
-	</script>
 </nav>
+<script>
+	var is_mobile_menu_opened = false;
+	$('#mobile-menu-open').click(function(e){
+		e.preventDefault();
+		$('#mobile-menu')
+			.trigger('open.mm')
+			.on("opened.mm", function(){
+				is_mobile_menu_opened = true;
+			})
+			.on("closed.mm", function(){
+				is_mobile_menu_opened = false;
+			})
+	});
+</script>
