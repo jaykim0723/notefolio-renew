@@ -16,7 +16,8 @@ class Gallery extends CI_Controller {
         $this->listing(1);
     }
     function random(){
-        exit('234');
+        $work = $this->work_model->get_random_work_info();
+        redirect($work->username.'/'.$work->work_id);
     }
 
     /**

@@ -9,6 +9,19 @@ class work_model extends CI_Model {
         
     }
 
+    function get_random_work_info(){
+        return $this->db
+            ->select('works.work_id, users.username')
+            ->from('works')
+            ->join('users', 'works.user_id=users.id', 'left')
+            ->where('works.status', 'enabled')
+            ->where('works.user_id !=', '0')
+            ->order_by('works.work_id', 'random')
+            ->limit(1)
+            ->get()
+            ->row();
+    }
+    
     /**
      * 작품의 리스트를 불러온다.
      * @param  array  $params 
