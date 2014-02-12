@@ -398,6 +398,16 @@ $(function() {
 			maxStartPos:	150,
 		}
     })
+	$('#mobile-menu-open').click(function(e){
+		e.preventDefault();
+		$('#mobile-menu')
+			.trigger('open.mm');
+	});
+	$(function(){
+		$('#mm-blocker').on('click',function(){
+			$('#mobile-menu').trigger('close.mm');
+		});
+	});
 
     $('#btn-alarm').on('click', function(){
     	site.alarm.open();

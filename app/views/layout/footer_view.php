@@ -143,15 +143,3 @@
 
 	</ul>
 </nav>
-<script>
-	$('#mobile-menu-open').click(function(e){
-		e.preventDefault();
-		$('#mobile-menu')
-			.trigger('open.mm');
-	});
-	$(function(){
-		$('#mm-blocker').on('click',function(){
-			$('#mobile-menu').trigger('close.mm');
-		});
-	});
-</script>
