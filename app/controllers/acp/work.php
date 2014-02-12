@@ -203,10 +203,9 @@ class work extends CI_Controller {
                 
                 break;
             case "staffpoint":
-                $args = $this->uri->ruri_to_assoc(4);
                 $this->work_model->put_info(array(
-                    'work_id' => $args['id'],
-                    'staffpoint' => $args['staffpoint'],
+                    'work_id' => $this->input->post('work_id'),
+                    'staffpoint' => $this->input->post('staffpoint'),
                     ));
                 redirect('/acp/work/works/list/');
                 
