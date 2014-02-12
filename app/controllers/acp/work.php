@@ -203,12 +203,12 @@ class work extends CI_Controller {
                 
                 break;
             case "delete":
-                var_export($this->input->post('force_delete')=='y');
-                exit();
                 $this->work_model->delete_info(array(
                     'work_id' => $this->input->post('id'),
                     'force_delete' => ($this->input->post('force_delete')=='y'),
                     ));
+                
+                exit();
                 redirect('/acp/work/works/list/');
                 
                 break;
