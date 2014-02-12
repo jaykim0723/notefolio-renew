@@ -210,6 +210,8 @@ html, body {
 .error .form-error {
 	margin:2px 0;
 	color: #2ac5c6;
+	font-family: "NanumGothic" !important;
+	font-size: 11px;
 }
 
 
