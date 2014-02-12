@@ -1,7 +1,4 @@
-aonetuhaonteuhanoeuh
-aoehu
-aoehu
-aoehuntaoehunatoeh
+
 
 <section id="about_us_container">
     <div class="container">
