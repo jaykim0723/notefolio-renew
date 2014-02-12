@@ -378,14 +378,22 @@ class work_model extends CI_Model {
 
         $work_id = @$data['work_id'];
 
-        // 본인것인지 여부에 따라 message다르게 하기
-        $work = $this->db->where('work_id', $work_id)->get('works')->row(); 
-        if($work->user_id == USER_ID){
+        if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
+            $can_delete = true;
+        }
+        else { // 본인것인지 여부에 따라 message다르게 하기
+            $work = $this->db->where('works.user_id', $user_id)->get('works')->row();
+            $can_delete = ($work->user_id == USER_ID)?true:false; 
+        }
+
+        if($can_delete){
             $this->db->flush_cache(); //clear active record
-            
+
             $this->db->trans_start();
-            //$this->db->where('work_id', $work_id)->delete('works'); //delete
-            $this->db->where('work_id', $work_id)->set('status', 'deleted')->update('works'); //mark
+            if($this->nf->admin_is_elevated())
+                $this->db->where('work_id', $work_id)->delete('works'); //delete
+            else
+                $this->db->where('work_id', $work_id)->set('status', 'deleted')->update('works'); //mark
             $this->db->trans_complete();
 
             if($this->db->trans_status()){
