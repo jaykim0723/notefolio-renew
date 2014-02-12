@@ -139,7 +139,7 @@ class work extends CI_Controller {
         }
 
         $data['form_attr'] = array('class' => 'form', 'id' => 'works_'.$mode.'_form');
-        $this->layout->set_header('title', '작품 목록')->set_view('acp/work_works_'.$mode,$data)->render();
+        $this->layout->set_header('title', '작품 관리')->set_view('acp/work_works_'.$mode,$data)->render();
     }
 
     
