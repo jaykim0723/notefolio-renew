@@ -79,7 +79,7 @@
       var staffpoint = $('input[name="staffpoint"]', $root).val();
       var work_id = $root.data('id');
       $.post('/acp/work/works/proc/staffpoint', 
-            {work_id: work_id, staffpoint: staffpoint}, 
+            {mode: 'staffpoint', work_id: work_id, staffpoint: staffpoint}, 
             function(data, textStatus, xhr) {
               var response = $.parseJSON(data);
               if(response.status=='done'){
