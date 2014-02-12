@@ -377,6 +377,7 @@ class work_model extends CI_Model {
 
 
         $work_id = @$data['work_id'];
+        $force_delete = (isset(@$data['force_delete'])?@$data['force_delete']:false);
 
         if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
             $can_delete = true;
@@ -390,7 +391,7 @@ class work_model extends CI_Model {
             $this->db->flush_cache(); //clear active record
 
             $this->db->trans_start();
-            if($this->nf->admin_is_elevated())
+            if($this->nf->admin_is_elevated() && $force_delete)
                 $this->db->where('work_id', $work_id)->delete('works'); //delete
             else
                 $this->db->where('work_id', $work_id)->set('status', 'deleted')->update('works'); //mark

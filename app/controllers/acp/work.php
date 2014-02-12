@@ -8,6 +8,7 @@ class work extends CI_Controller {
 		$this->nf->admin_check();
 
 		$this->load->helper('form');
+        $this->load->model('work_model');
     }
 	
     /**
@@ -122,8 +123,10 @@ class work extends CI_Controller {
                 break;
             case "delete":
                 if (isset($args['id'])) {
-                    $form_data = $this->log_db->_get_list('access', array('id'=>$args['id']), array(), array(1,1));
-                    $data['field'] = $form_data[0];
+                    $work = $this->work_model->get_info(array(
+                        'work_id' => $args['id'],
+                    ));
+                    $data['field'] = $work->row;
                 } else {
                    redirect('/acp/work/works/list/');
                 }
@@ -201,7 +204,10 @@ class work extends CI_Controller {
                 break;
             case "delete":
                 
-                $this->invite_code_db->_delete($this->input->post('id'));
+                $this->work_model->delete_info(array(
+                    'work_id' => $this->input->post('work_id'),
+                    'work_id' => $this->input->post('work_id')
+                    ));
                 redirect('/acp/work/works/list/');
                 
                 break;
