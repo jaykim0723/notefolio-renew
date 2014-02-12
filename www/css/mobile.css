@@ -1480,8 +1480,14 @@ html.auth body {
 	color: #7a7880;
 	font-weight: 400;
 	text-align: center;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
+#side_about p {
+	font-family: "NanumGothic";
+	font-size: 13px;
+}
+
+
 
 /* info : about_us */
 #title_image {
