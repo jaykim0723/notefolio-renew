@@ -1474,7 +1474,14 @@ html.auth body {
 	margin-bottom: 30px;
 	line-height: 180%;
 }
-
+#side_about h4{
+	font-size: 20px;
+	font-family: 'Roboto',sans-serif;
+	color: #7a7880;
+	font-weight: 400;
+	text-align: center;
+	margin-bottom: 30px;
+}
 
 /* info : about_us */
 #title_image {
