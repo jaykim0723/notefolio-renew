@@ -1,4 +1,3 @@
-
 <script src="/js/libs/bootstrap.min.js"></script>
 <script src="/js/libs/bootstrap-dialog.js"></script>
 <script src="/js/libs/bootstrap-select.js"></script>
