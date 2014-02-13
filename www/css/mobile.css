@@ -1566,6 +1566,14 @@ html.auth body {
 #contact_form  .contact-sumbit {
 	margin-left: 15%;
 }
+#contact_form .alert-success {
+	color: #7a7880;
+	background-color: #efefef;
+	border-color: #fff;
+	font-family: "NanumGothic";
+	font-size: 12px;
+	text-align: center;
+}
 @media (max-width: 767px) {
 	#contact_form .col-sm-3.control-label {
 		margin-left: 0 !important;
