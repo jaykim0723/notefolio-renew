@@ -1413,14 +1413,12 @@ var profileUtil = {
 			location.reload();
 		},
 		submit : function(){
-			var contents = $('#about-edit-area > textarea').val();
+			var contents = $('#about-text').val();
+			contents = br2nl(contents);
 			var attachments = [];
 			$('#about-attachments > .about-attachment-li').each(function(){
 				attachments.push(this.id.replace('attach-', ''));
 			});
-			$('#about-edit-area textarea').val();
-			console.log('contents', contents);
-			contents = br2nl(contents);
 			$.post('/profile/update_about', {
 				contents : contents,
 				attachments : attachments
