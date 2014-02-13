@@ -78,30 +78,30 @@ class work_model extends CI_Model {
         
         switch($params->order_by){
             case "idlarger":
-                $this->db->order_by('work_id', 'desc');
+                $this->db->order_by('works.work_id', 'desc');
             break;
             case "idsmaller":
-                $this->db->order_by('work_id', 'asc');
+                $this->db->order_by('works.work_id', 'asc');
             break;
             case "newest":
-                $this->db->order_by('regdate', 'desc');
+                $this->db->order_by('works.regdate', 'desc');
             break;
             case "oldest":
-                $this->db->order_by('regdate', 'asc');
+                $this->db->order_by('works.regdate', 'asc');
             break;
             case "noted":
-                $this->db->order_by('note_cnt', 'desc');
+                $this->db->order_by('works.note_cnt', 'desc');
             break;
             case "viewed":
-                $this->db->order_by('hit_cnt', 'desc');
+                $this->db->order_by('works.hit_cnt', 'desc');
             break;
             case "featured":
-                $this->db->order_by('nofol_rank', 'desc');
+                $this->db->order_by('works.nofol_rank', 'desc');
             break;
             case "nofol_rank":
                 $params->view_rank_point = true;
                 $this->db->order_by('rank_point', 'desc');
-                $this->db->order_by('regdate', 'desc');
+                $this->db->order_by('works.regdate', 'desc');
             break;
             default:
                 if(is_array($params->order_by))
