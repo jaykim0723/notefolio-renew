@@ -37,7 +37,7 @@
 									<option value="day"<?=($from=="day")?' selected':''?>>오늘</option>
 									<option value="week"<?=($from=="week")?' selected':''?>>이번 주</option>
 									<option value="month"<?=($from=="month")?' selected':''?>>이번 달</option>
-									<option value="month3"<?=($from=="month")?' selected':''?>>최근 3달</option>
+									<option value="month3"<?=($from=="month3")?' selected':''?>>최근 3달</option>
 								</select>
 							</div>
 						</div>
