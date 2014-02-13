@@ -117,8 +117,9 @@ class work_model extends CI_Model {
                 FROM `notefolio-renew`.log_activity
                 where area=\'work\' 
                 and regdate >= '.$this->db->escape($this->config->item('period', 'activity_point')).'
-                group by work_id) feedback_point', 'works.work_id = feedback_point.work_id', 'left');
-            $this->db->select('(works.discoverbility + ifnull(feedback_point.point, 0) + works.staffpoint) as rank_point', FALSE);
+                group by work_id) feedbacks', 'works.work_id = feedbacks.work_id', 'left');
+            $this->db->select('feedbacks.point as feedback_point');
+            $this->db->select('(works.discoverbility + ifnull(feedbacks.point, 0) + works.staffpoint) as rank_point', FALSE);
         }
         
     }
