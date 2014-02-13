@@ -30,7 +30,7 @@ class work extends CI_Controller {
      */
     function works($mode='list')
     {
-        if($this->uri->segment(4)==FALSE) redirect('/acp/user/member/list');
+        if($this->uri->segment(4)==FALSE) redirect('/acp/work/works/list');
         $args = $this->uri->ruri_to_assoc(5);
         //var_export($args);
                 
