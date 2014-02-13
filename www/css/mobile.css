@@ -1557,7 +1557,14 @@ html.auth body {
 .form-group .btn-pointgreen .spi-email_white {
 	margin-right:5px;
 }
-
+#contact_form .col-sm-3.control-label {
+	margin-left: 10%;
+}
+@media (max-width: 767px) {
+	#contact_form .col-sm-3.control-label {
+		margin-left: none;
+	}
+}
 
 
 /* info : about_us */
