@@ -18,11 +18,11 @@
 				</button>
 				<ul class="dropdown-menu">
 					<?php if (USER_ID!=0 && $row->user->user_id==USER_ID): ?>
-						<li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-update-comment"><i class="spi spi-edit">edit</i></a></li>
-						<li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-delete-comment"><i class="spi spi-delete">delete</i></a></li>
+						<li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-update-comment">edit</a></li>
+						<li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-delete-comment">delete</a></li>
 						<?php endif ?>
-						<?php if (USER_ID!=0): ?>
-						<li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-reply-comment"><i class="spi spi-reply">reply</i></a></li>
+						<!-- <?php if (USER_ID!=0): ?> -->
+						<!-- <li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-reply-comment"><i class="spi spi-reply">reply</i></a></li> -->
 					<?php endif ?>
 				</ul>
 			</div>
