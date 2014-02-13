@@ -612,12 +612,12 @@ var commentUtil = {
 		}
 	},
 
-	submitComment : function(f){
+	submitComment : function(f, event){
 		event.preventDefault();
 		event.stopPropagation();
 		if(site.user_id==0){
 			site.requireLogin();
-			return;
+			return false;
 		}
 
 		var $f = $(f);
@@ -629,7 +629,7 @@ var commentUtil = {
 		}
 		if(empty($.trim(params.content))){
 			msg.open('내용을 작성하여 주십시오.', 'error', $('textarea[name=content]', $f), 'y');
-			return;
+			return false;
 		}
 
 		console.log(params);
