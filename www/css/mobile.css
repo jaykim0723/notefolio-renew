@@ -741,7 +741,7 @@ html, body {
 		text-align: center;
 		font-size: 14px;
 		font-weight: normal;
-		padding: 15px 0;
+		padding: 15px 0 10px;
 	}
 	.work-info-icons .spi {
 		position: relative;
@@ -762,6 +762,9 @@ html, body {
 		background: #fff;
 		color: #444;
 	}	
+	.work-info .work-info-title {
+		border-bottom: 1px solid #efefef;
+	}
 }
 
 
