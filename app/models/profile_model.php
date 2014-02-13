@@ -690,6 +690,7 @@ class profile_model extends CI_Model {
                     works.status != 'disabled'
                     and user_profiles.user_id = ".$this->db->escape($params->user_id).";";
         $query = $this->db->query($sql);
+        error_log($this->db->last_query());
 
         $data = (object)array(
             'status' => 'done',
