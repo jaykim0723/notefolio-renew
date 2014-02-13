@@ -82,7 +82,7 @@ class Profile extends CI_Controller {
 			$this->config->item('img_upload_path', 'upload').$filename,
 			$this->config->item('profile_upload_path', 'upload').$username.'_face.jpg',
 			'profile_face', 
-			array('crop_to'=>$to_crop, 'spanning'=>true)
+			array('crop_to'=>$to_crop)
 			);
 
 		if($result=='done'){
