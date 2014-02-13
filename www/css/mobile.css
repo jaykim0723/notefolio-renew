@@ -2333,7 +2333,11 @@ input#mobile-search-field:-moz-placeholder {
 	cursor: pointer;
 	padding-top: 10px;
 }
-
+@media (max-width:480px) {
+	#about-attachments li {
+		width: 31%;
+	}
+}
 
 
 
