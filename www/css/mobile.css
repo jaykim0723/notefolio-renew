@@ -2322,8 +2322,8 @@ input#mobile-search-field:-moz-placeholder {
 }
 #about-attachments li i {
 	position: absolute;
-	right: 0;
-	top: 0;
+	right: 1px;
+	top: 1px;
 	cursor:pointer;
 }
 #about-attachments li img {
