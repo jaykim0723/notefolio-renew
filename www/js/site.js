@@ -612,15 +612,13 @@ var commentUtil = {
 		}
 	},
 
-	submitComment : function(event){
-		event.preventDefault();
-		event.stopPropagation();
+	submitComment : function(f){
 		if(site.user_id==0){
 			site.requireLogin();
 			return false;
 		}
 
-		var $f = $(this);
+		var $f = $(f);
 		var params = {
 			mode : $f.data('mode'),
 			content : $('textarea[name=content]', $f).val(),
@@ -843,7 +841,9 @@ var collectUtil = {
 var workInfoUtil = {
 
 	setGround : function(){
-		$('#work-info-wrapper').on('submit', 'form.comment-block', function(){
+		$('#work-info-wrapper').on('submit', 'form.comment-block', function(event){
+			event.preventDefault();
+			event.stopPropagation();
 			commentUtil.submitComment(this);
 		}).on('click', '.btn-open-comment', function(){
 			commentUtil.open(this);
