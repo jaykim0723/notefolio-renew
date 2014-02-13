@@ -905,8 +905,11 @@ var profileUtil = {
 			        		if($(this).is(':checked'))
 			        			value += $(this).val();
 			        	});
-			        	if(value.length < 2 || value.length > 6){
-			        		msg.open('1~3개를 하나 이상을 입력하셔야 합니다.');
+			        	if(value.length < 2){
+			        		msg.open('카테고리를 하나 이상을 선택하셔야 합니다.');
+			        		return false;
+			        	}else if(value.length > 4){
+			        		msg.open('카테고리를 두개까지 선택하셔야 합니다.');
 			        		return false;
 			        	}
 			        	$.post('/profile/change_keywords', {
