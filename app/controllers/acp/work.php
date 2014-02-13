@@ -55,7 +55,7 @@ class work extends CI_Controller {
                     'from' => $args['period'],
                     'q' => $args['q'],
                 ));
-
+                exit();
 
                 $this->load->config('activity_point', TRUE);
 
