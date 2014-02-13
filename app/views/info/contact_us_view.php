@@ -22,7 +22,7 @@
                 ?>
                     <div class='alert alert-success contact-success'>
 
-                        <h2>감사합니다.</h2>
+                        <h2><i class="spi spi-check">check</i><br><br>감사합니다.</h2>
                         
                         정상적으로 접수되었습니다.<br/>
                         확인 후 최대한 빠른 시일 안에 연락 드리겠습니다.

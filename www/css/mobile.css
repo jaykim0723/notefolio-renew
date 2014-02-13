@@ -1574,6 +1574,11 @@ html.auth body {
 	font-size: 12px;
 	text-align: center;
 }
+#contact_form .alert-success h2 {
+	font-size: 15px;
+	font-family: "NanumGothic";
+	font-weight: bold;
+}
 @media (max-width: 767px) {
 	#contact_form .col-sm-3.control-label {
 		margin-left: 0 !important;
