@@ -16,6 +16,7 @@
           <th>순번</th>
           <th>&nbsp;</th>
           <th>작성자</th>
+          <th>공개여부:</th>
           <th>노폴랭크</th>
           <th>생성일</th>
           <th>보기</th>
@@ -38,6 +39,8 @@
           <td><a href="/acp/user/member/view/id/<?=$v->user->id?>">
             <?=$v->user->realname?>
               </a></td>
+          <td>
+          <td><?=$v->status?></td>
           <td>
             피드백총계 : <?=$v->nofol_rank?><br />
 
