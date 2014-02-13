@@ -721,6 +721,7 @@ li#trash-bin{
 	color: #2ac5c6;
 	font-weight:300;
 	font-size:16px;
+	font-family: 'Nanum Gothic', '나눔고딕';
 	opacity: 0.8;
 	-webkit-opacity: 0.8;
 	filter: alpha(opacity=80);
