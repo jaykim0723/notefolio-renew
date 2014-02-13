@@ -17,7 +17,7 @@ class work extends CI_Controller {
 	 */
 	public function index()
 	{
-		redirect('/acp/work/works');
+		redirect('/acp/work/works/list');
 	}
     
     
@@ -30,7 +30,8 @@ class work extends CI_Controller {
      */
     function works($mode='list')
     {
-        $args = $this->uri->ruri_to_assoc(4);
+        if($this->uri->segment(4)==FALSE) redirect('/acp/user/member/list');
+        $args = $this->uri->ruri_to_assoc(5);
         //var_export($args);
                 
         switch($mode) {
