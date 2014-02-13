@@ -27,8 +27,6 @@
     <?php
         if(isset($list)&&count($list)>0) {
           foreach($list as $k=>$v){
-            var_export($v);
-            exit();
     ?>
         <tr class="" data-id="<?=$v->work_id?>">
           <td><a href="/acp/work/works/view/id/<?=$v->work_id?>"><?=$v->work_id?></a></td>

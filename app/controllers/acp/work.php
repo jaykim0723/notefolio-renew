@@ -68,20 +68,8 @@ class work extends CI_Controller {
                     'from' => $args['period'],
                     'q' => $args['q'],
                 ));
-                var_export($works);
 
                 $data['list'] = $works->rows;
-
-                foreach($data['list'] as $key=>$val){
-                    $user = new stdClass();
-                    foreach($val as $sub_key =>$sub_val){
-                        if(preg_match('/^user_/', $sub_key)){
-                            $user->{str_replace('user_', '', $sub_key)} = $sub_val; 
-                        }
-                    }
-
-                    $data['list'][$key]->user = $user;
-                }
 
                 $data['all_count'] = isset($page_info->row->count)?$page_info->row->count:0;
                 $data['all_page'] = isset($page_info->row->all_page)?$page_info->row->all_page:1;
