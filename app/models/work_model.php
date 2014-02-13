@@ -166,6 +166,7 @@ class work_model extends CI_Model {
 
         $this->db->stop_cache();
     	$works = $this->db->get();
+        echo($this->db->last_query());
         $this->db->flush_cache();
 
     	$rows = array();
