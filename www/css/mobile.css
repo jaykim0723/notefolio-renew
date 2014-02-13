@@ -1558,7 +1558,7 @@ html.auth body {
 	margin-right:5px;
 }
 #contact_form .col-sm-3.control-label {
-	margin-left: 10%;
+	margin-left: -10%;
 }
 @media (max-width: 767px) {
 	#contact_form .col-sm-3.control-label {
