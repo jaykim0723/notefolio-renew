@@ -1852,7 +1852,7 @@ p.desc {
 @media (max-width:480px){
 	#btn-edit-profile {
 		position: absolute;
-		top: -40px;
+		top: -30px;
 		right: 80px;
 	}
 }
