@@ -141,9 +141,9 @@ class work_model extends CI_Model {
             'q'  => '', 
             'folder'    => '', // ''면 전체
             'user_id'   => '', // 프로필 등 특정 작가의 작품만을 조회할 때
-            'only_enabled'      => false, // enable된 작품만
-            'only_disabled'     => false, // disabled된 작품만
-            'only_deleted'      => false, // deleted된 작품만
+            'allow_enabled'      => false, // enable된 작품만
+            'allow_disabled'     => false, // disabled된 작품만
+            'allow_deleted'      => false, // deleted된 작품만
             'exclude_enabled'   => false, // enabled 태그된 작품 제외
             'exclude_disabled'   => false, // disabled 태그된 작품 제외
             'exclude_deleted'   => true, // deleted 태그된 작품 제외
@@ -223,9 +223,9 @@ class work_model extends CI_Model {
             'q'  => '', 
             'folder'    => '', // ''면 전체
             'user_id'   => '', // 프로필 등 특정 작가의 작품만을 조회할 때
-            'only_enabled'      => false, // enable된 작품만
-            'only_disabled'     => false, // disabled된 작품만
-            'only_deleted'      => false, // deleted된 작품만
+            'allow_enabled'      => false, // enable된 작품만
+            'allow_disabled'     => false, // disabled된 작품만
+            'allow_deleted'      => false, // deleted된 작품만
             'exclude_enabled'   => false, // enabled 태그된 작품 제외
             'exclude_disabled'   => false, // disabled 태그된 작품 제외
             'exclude_deleted'   => true, // deleted 태그된 작품 제외
