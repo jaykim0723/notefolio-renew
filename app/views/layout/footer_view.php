@@ -2,7 +2,7 @@
 <footer id="footer" class="navbar-fixed-bottom visible-md visible-lg">
 	<div class="container">
 		<div class="row">
-			<div id="footer-menu" class="col-md-7">
+			<div id="footer-menu" class="col-md-9">
 				&copy;
 				Copyright 노트폴리오
 				<a href="/info/about_us">About Us</a>
