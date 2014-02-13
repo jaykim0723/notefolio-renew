@@ -395,6 +395,9 @@ html {
 }
 #profile-info {
 }
+#profile-info a {
+	font-family: 'Nanum Gothic', '나눔고딕';
+}
 #profile-info .btn-follow {
 	margin-bottom: 20px;
 }
