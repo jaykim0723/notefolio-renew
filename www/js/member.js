@@ -851,12 +851,8 @@ var profileUtil = {
 			        		realname : $.trim(value)
 			        	}, 'json').done(function(responseJSON){
 			        		if(responseJSON.status=='done'){
-				        		$('#profile-info > h2').text(value);
+				        		$('#profile-info > h2, #btn-profile > span').text(value);
 				        		dialog.close();
-				        		BootstrapDialog.alert('작가명 설정이 완료되었습니다. 정상적인 사용을 위해 새로고침을 하겠습니다.', function(){
-						            blockPage.block();
-						            site.redirect('/'+site.username);
-						        });
 			        		}else{
 			        			msg.open(responseJSON.msg, 'error');
 			        		}
