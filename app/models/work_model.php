@@ -28,11 +28,11 @@ class work_model extends CI_Model {
      */
     function get_list_prep($params){
         foreach(array('enabled', 'disabled', 'deleted') as $type){
-            if($params->{'only_'.$type}){
+            if($params->only_{$type}){
                 $this->db->where('works.status', $type);
             }
 
-            if($params->{'exclude_'.$type}){
+            if($params->exclude_{$type}){
                 $this->db->where('works.status !=', $type);
             }
         }
