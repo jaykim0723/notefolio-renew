@@ -14,11 +14,11 @@
 			<div id="footer-gap" class="col-md-3">
 			</div>
 			<div class="col-md-3 righted" style="padding-top:3px;">
-				<a target="_blank" href="http://twitter.com/notefoliotwt"><img src="http://magazine.notefolio.net/theme_assets/img/twitter.png" style="width:20px;height:20px;">
+				<a data-toggle="tooltip" title="twitter" data-placement="top" target="_blank" href="http://twitter.com/notefoliotwt"><img src="http://magazine.notefolio.net/theme_assets/img/twitter.png" style="width:20px;height:20px;">
 				<span class="footerlink" style="display:none;">twitter</span></a>
-				<a target="_blank" href="http://notefolio.tistory.com/"><img src="http://magazine.notefolio.net/theme_assets/img/blog.png" style="width:20px;height:20px;">
+				<a data-toggle="tooltip" title="twitter" data-placement="top" target="_blank" href="http://notefolio.tistory.com/"><img src="http://magazine.notefolio.net/theme_assets/img/blog.png" style="width:20px;height:20px;">
 				<span class="footerlink" style="display:none;">blog</span></a>
-				<a target="_blank" href="https://www.facebook.com/notefolio"><img src="http://magazine.notefolio.net/theme_assets/img/facebook.png" style="width:20px;height:20px;">
+				<a data-toggle="tooltip" title="twitter" data-placement="top" target="_blank" href="https://www.facebook.com/notefolio"><img src="http://magazine.notefolio.net/theme_assets/img/facebook.png" style="width:20px;height:20px;">
 				<span class="footerlink" style="display:none;">facebook</span></a>
 			</div>
 		</div>
