@@ -44,6 +44,8 @@ class work extends CI_Controller {
                 if(!isset($args['allow_disabled'])) $args['allow_disabled'] = true;
                 if(!isset($args['allow_deleted'])) $args['allow_deleted'] = true;
                 if(!isset($args['exclude_deleted'])) $args['exclude_deleted'] = false;
+                if(!isset($args['period'])) $args['period'] = 'all';
+                if(!isset($args['q'])) $args['q'] = '';
                 
                 $page_info = $this->work_model->get_list_count(array(
                     'delimiter' => $args['delimiter'],
@@ -54,20 +56,6 @@ class work extends CI_Controller {
                     'q' => $args['q'],
                 ));
 
-
-                if(is_array($args['search'])&&count($args['search'])>0){
-                    foreach($args['search'] as $q_key=>$q_val){
-                        $this->db->where($q_key, $q_val);
-                    }
-                }
-
-                if(is_array($args['order'])&&count($args['order'])>0){
-                    foreach($args['order'] as $o_key=>$o_val){
-                        $this->db->order_by($o_key,$o_val);
-                    }
-                }
-
-                $limit = array($args['page'], $args['delimiter']);
 
                 $this->load->config('activity_point', TRUE);
                 $this->db->join('(SELECT
