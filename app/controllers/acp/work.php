@@ -38,7 +38,11 @@ class work extends CI_Controller {
             case "list":
                 if(!isset($args['page'])) $args['page'] = 1;
                 if(!isset($args['delimiter'])) $args['delimiter'] = 30;
-                if(!isset($args['allow_enabled'])) $args['allow_enabled'] = false;
+                if(!isset($args['keywords'])) $args['keywords'] = array();
+                if(!isset($args['allow_enabled'])) $args['allow_enabled'] = true;
+                if(!isset($args['allow_disabled'])) $args['allow_disabled'] = true;
+                if(!isset($args['allow_deleted'])) $args['allow_deleted'] = true;
+                if(!isset($args['exclude_deleted'])) $args['exclude_deleted'] = false;
                 
                 $page_info = $this->work_model->get_list_count(array(
                     'delimiter' => $args['delimiter'],
