@@ -1,12 +1,12 @@
 <section id="contact_us_container">
     <div class="container">
         <div class="row">
-            <div id="content" class="col-md-9">
+            <div id="content" class="col-md-9 contact-content">
 
                 <h1>Contact Us</h1>
 
-                <p class="lead">노트폴리오는 격의없는 커뮤니케이션을 지향합니다.</p>
-                <p>
+                <p class="lead labeltext">노트폴리오는 격의없는 커뮤니케이션을 지향합니다.</p>
+                <p class="labeltext2">
                     제안, 요청, 신고, 문의사항 등이 있다면 언제든 이야기해주세요.<br/>
                         빠른 시일 내에 답변드리겠습니다.<br/>
                     
@@ -20,7 +20,7 @@
 
                     if(isset($success)): // normal
                 ?>
-                    <div class='alert alert-success'>
+                    <div class='alert alert-success contact-success'>
 
                         <h2>감사합니다.</h2>
                         
@@ -33,8 +33,8 @@
                     echo validation_errors(); 
 
                 ?>
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">종류</label>
+                    <div class="form-group contact-select">
+                        <label for="" class="col-sm-3 control-label" style="border: 1px solid #ccc;">종류</label>
                         <div class="col-sm-9">
                             <select name='type' class="selectpicker">
                                 <option value="제안">제안</option>

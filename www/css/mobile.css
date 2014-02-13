@@ -105,6 +105,7 @@ html, body {
 	box-shadow: none;
 	border-radius:0;
 	border:0;
+	background: #fff;
 }
 .form-control,
 .input-group-addon,
@@ -1290,7 +1291,18 @@ html.auth body {
 	margin-bottom: 20px;
 	margin-top: 0px;
 }
-.btn-darkgray:hover, .btn-darkgray2:hover {
+.btn-darkgray3 {
+	padding: 10px 0px;
+	border-radius: 2em;
+	background: #2ac5c6;
+	border: none;
+	color: #fff;
+	font-weight: 700;
+	margin-bottom: 20px;
+	margin-top: 0px;
+	width: 100%;
+}
+.btn-darkgray:hover, .btn-darkgray2:hover, .btn-darkgray3:hover {
 	color:#fff;
 }
 
@@ -1497,7 +1509,15 @@ html.auth body {
 	margin-top: 0px;
 	padding-top: 10px;
 }
-
+.contact-content {
+	background: #fff;
+}
+.contact-content p {
+	text-align:center;
+}
+#contact_form .form-control {
+	box-shadow: none !important;
+}
 #side_about a:hover {
 	border: 1px solid #fff !important;
 }
@@ -1527,6 +1547,9 @@ html.auth body {
 	margin-left: 5%;
 	font-family: "NanumGothic";
 	font-size: 12px;
+}
+.contact-select .btn-group.bootstrap-select {
+	width: 100% !important;
 }
 
 
