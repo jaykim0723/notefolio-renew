@@ -851,6 +851,7 @@ var profileUtil = {
 			        		realname : $.trim(value)
 			        	}, 'json').done(function(responseJSON){
 			        		if(responseJSON.status=='done'){
+				        		msg.open('변경이 완료되었습니다.', 'success', '#profile-info');
 				        		$('#profile-info > h2, #btn-profile > span').text(value);
 				        		dialog.close();
 			        		}else{
@@ -914,7 +915,7 @@ var profileUtil = {
 			        		if(responseJSON.status=='done'){
 				        		$('#profile-keywords').data('value', value).html('&nbsp;'+responseJSON.keywords_string);
 				        		dialog.close();
-				        		msg.open('변경이 완료되었습니다.', 'success', '#profile-info');
+				        		msg.open('변경이 완료되었습니다.', 'success', '#profile-keywords');
 				        		if(typeof firstTimeHelper!='undefined'){
 				        			profileUtil.changeRealname();
 				        		}
