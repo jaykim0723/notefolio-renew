@@ -931,11 +931,7 @@ var profileUtil = {
 			        cssClass: 'btn-default',
 			        action: function(dialog){
 			        	var value = '';
-			        	$('#dialog-change-keywords').find(':checkbox').each(function(){
-			        		if($(this).is(':checked'))
-			        			value += $(this).val();
-			        	});
-			        	if(value.length < 2 || value.length > 6){
+			        	if($('#dialog-change-keywords').find(':checkbox:checked').length==0){
 			        		msg.open('1~3개를 하나 이상을 입력하셔야 합니다.');
 			        		return false;
 			        	}
