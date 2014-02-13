@@ -9,7 +9,7 @@
 
 
 						<div class="col-md-3 col-sm-6">
-							<select name="work_categories[]" id="work_categories" multiple title="카테고리 선택">
+							<select name="work_categories[]" id="work_categories" multiple title="카테고리 선택" onchange="$('#gallery-search-form').submit()">
 								<?php 
 								$this->load->config('keyword', TRUE);
 								$keyword_list = $this->config->item('keyword', 'keyword');
@@ -21,7 +21,7 @@
 						</div>
 
 						<div class="col-md-2 col-sm-6">
-							<select name="order" id="order">
+							<select name="order" id="order" onchange="$('#gallery-search-form').submit()">
 								<option value="newest"<?=($order=="newest")?' selected':''?>>최신순</option>
 								<option value="noted"<?=($order=="noted")?' selected':''?>>인기순</option>
 								<option value="viewed"<?=($order=="viewed")?' selected':''?>>조회순</option>
@@ -32,7 +32,7 @@
 						<div class="col-md-3 col-sm-6">
 							<div class="input-group">
 			  					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-								<select class="" name="from" id="from">
+								<select class="" name="from" id="from" onchange="$('#gallery-search-form').submit()">
 									<option value="all"<?=($from=="all")?' selected':''?>>전체 기간</option>
 									<option value="day"<?=($from=="day")?' selected':''?>>오늘</option>
 									<option value="week"<?=($from=="week")?' selected':''?>>이번 주</option>
