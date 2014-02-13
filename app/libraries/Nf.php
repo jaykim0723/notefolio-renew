@@ -99,8 +99,8 @@ class Nf
             $tmp = $this->sns($service, $id);
             $s .= '<a href="'.$tmp->link.'" target="_blank" class="'.$service.'" data-value="'.$id.'" class="btn-hover"><i class="pi pi-'.$service.'"></i></a>';
         }
-        if($s=='')
-            $s = '자신의 소셜링크를 지정해주세요';
+        // if($s=='')
+            // $s = '자신의 소셜링크를 지정해주세요';
         return $s;
     }
 

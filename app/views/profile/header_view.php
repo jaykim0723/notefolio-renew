@@ -46,7 +46,7 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 				  <li><a id="btn-change-keywords" href="#3">카테고리 설정</a></li>
 				  <li><a id="btn-change-sns" href="#3">소셜주소 설정</a></li>
 				</ul>
-			</div>	
+			</div>
 			<?php endif; ?>
 			<div id="profile-image">
 				<img src="/data/profiles/<?php echo $row->username ?>_face.jpg?_=<?php echo substr($row->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
@@ -57,7 +57,13 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 			</div>
 
 			<div id="profile-sns-link">
-				<?php echo $this->nf->sns_to_string($row->sns); ?>
+				<?php 
+				$s = $this->nf->sns_to_string($row->sns);
+				if($s!='')
+					echo $s;
+				else if(USER_ID==$row->user_id)
+					echo '<a href="javascript:profileUtil.changeSNS();">자신의 소셜을 지정해주세요</a>';
+				?>
 			</div>
 
 			<?php if (USER_ID!=$row->user_id): ?>
