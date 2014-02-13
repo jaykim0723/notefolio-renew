@@ -297,7 +297,7 @@ class profile_model extends CI_Model {
                     works
                 WHERE
                     user_id = ?
-                    and work.status = "enabled"
+                    and works.status = "enabled"
                 order by moddate desc
                 LIMIT ?, ?;', array($row->user_id, 0, 4));
             foreach ($work_query->result() as $work_row){
@@ -386,7 +386,7 @@ class profile_model extends CI_Model {
                     works
                 WHERE
                     user_id = ?
-                    and work.status = "enabled"
+                    and works.status = "enabled"
                 order by moddate desc
                 LIMIT ?, ?;', array($row->user_id, 0, 4));
             foreach ($work_query->result() as $work_row){
