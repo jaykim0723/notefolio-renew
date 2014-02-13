@@ -38,15 +38,24 @@ class work extends CI_Controller {
             case "list":
                 if(!isset($args['page'])) $args['page'] = 1;
                 if(!isset($args['delimiter'])) $args['delimiter'] = 30;
-                if(!isset($args['allow_enabled'])) $args['allow_enabled'] = false;
-                
+                if(!isset($args['order'])) $args['order'] ="work_id=desc";
+                parse_str(str_replace(array(":",'+'), array("=", "&"), $args['order']), $args['order']);
+                if(!isset($args['search'])) $args['search'] ="";
+                parse_str(str_replace(array(":",'+'), array("=", "&"), $args['search']), $args['search']);
+
+                if(is_array($args['search'])&&count($args['search'])>0){
+                    foreach($args['search'] as $q_key=>$q_val){
+                        $this->db->where($q_key, $q_val);
+                    }
+                }
+
                 $page_info = $this->work_model->get_list_count(array(
                     'delimiter' => $args['delimiter'],
-                    'allow_enabled'=> $args['allow_enabled'],
+                    'only_enabled'=> $args['only_enabled'],
                     'keywords' => $args['keywords'],
                     'order_by' => $$args['order'],
                     'from' => $args['period'],
-                    'q' => $args['q'],
+                    'q' => $args['search'],
                 ));
 
 
