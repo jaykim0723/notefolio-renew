@@ -34,7 +34,7 @@
 
                 ?>
                     <div class="form-group contact-select">
-                        <label for="" class="col-sm-3 control-label" style="border: 1px solid #ccc;">종류</label>
+                        <label for="" class="col-sm-3 control-label">종류</label>
                         <div class="col-sm-9">
                             <select name='type' class="selectpicker">
                                 <option value="제안">제안</option>
