@@ -640,7 +640,8 @@ li#trash-bin{
 	filter: alpha(opacity=80);
 }
 #alarm-popup {
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	position: absolute;
 	background: #fff;
 	top: 100%;
