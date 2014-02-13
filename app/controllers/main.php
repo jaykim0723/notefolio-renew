@@ -19,7 +19,7 @@ class Main extends CI_Controller {
 	function listing($page=1){
 
 		$work_list = $this->work_model->get_list(array(
-			'only_enabled' => true,
+			'only_enable' => true,
 			'page'      => $page,
 			'delimiter' => $page==1 ? 17 : 16 , // 처음일 때에는 하나를 따로 뺀다
 			'order_by' => 'nofol_rank'

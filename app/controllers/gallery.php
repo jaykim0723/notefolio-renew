@@ -37,7 +37,7 @@ class Gallery extends CI_Controller {
 
         $work_list = $this->work_model->get_list(array(
             'page' => $page,
-            'only_enabled'=> true,
+            'only_enable'=> true,
             'keywords' => $work_categories,
             'order_by' => $order,
             'from' => $from,
