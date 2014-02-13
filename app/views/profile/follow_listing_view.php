@@ -12,7 +12,7 @@
 					<?php endforeach ?>
 				</ul>
 
-				<a href="/<?php echo $this->uri->segment(1) ?>/<?php echo $mode ?>/<?php echo ($page)?$page+1:2; ?>" class="more-link">more</a>
+				<a href="/<?php echo $this->uri->segment(1) ?>/<?php echo $mode ?>/<?php echo ($page)?$page+1:2; ?>" class="more-link btn btn-default btn-more">more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
 		</div>
