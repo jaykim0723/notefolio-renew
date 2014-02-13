@@ -889,7 +889,7 @@ var profileUtil = {
 		    	}
 				var $message = $(
 					'<div id="dialog-change-keywords">'+
-						'<label>최대 3개를 선택하여 주세요.</label>'+
+						'<label>최대 2개를 선택하여 주세요.</label>'+
 						area + 
 					'</div>'
 					);
