@@ -68,7 +68,7 @@ class work extends CI_Controller {
                     'from' => $args['period'],
                     'q' => $args['q'],
                 ));
-                var_export($this->db->last_query());
+                var_export($works);
 
                 $data['list'] = $works->rows;
 
