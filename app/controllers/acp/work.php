@@ -54,6 +54,7 @@ class work extends CI_Controller {
                     'order_by' => $args['order'],
                     'from' => $args['period'],
                     'q' => $args['q'],
+                    'view_rank_point' => true
                 ));
 
                 $this->load->config('activity_point', TRUE);
@@ -67,6 +68,7 @@ class work extends CI_Controller {
                     'order_by' => $args['order'],
                     'from' => $args['period'],
                     'q' => $args['q'],
+                    'view_rank_point' => true
                 ));
                 var_export($works);
 
