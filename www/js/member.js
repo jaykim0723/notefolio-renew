@@ -1418,7 +1418,7 @@ var profileUtil = {
 			$('#about-attachments > .about-attachment-li').each(function(){
 				attachments.push(this.id.replace('attach-', ''));
 			});
-			$('#about-edit-area > textarea').val();
+			$('#about-edit-area textarea').val();
 			console.log('contents', contents);
 			contents = br2nl(contents);
 			$.post('/profile/update_about', {
