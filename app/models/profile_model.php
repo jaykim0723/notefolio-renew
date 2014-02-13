@@ -696,6 +696,7 @@ class profile_model extends CI_Model {
                         works
                     where
                         works.status != 'disabled'
+                    group by user_id
                     ) w ON up.user_id = w.user_id
                 where up.user_id = ".$this->db->escape($params->user_id).";";
         $query = $this->db->query($sql);
