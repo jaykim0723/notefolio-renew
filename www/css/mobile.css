@@ -1850,7 +1850,7 @@ p.desc {
 }
 
 @media (max-width:480px){
-	#btn-edit-profile .btn {
+	#btn-edit-profile {
 		position: absolute;
 		top: -40px;
 		right: 80px;
