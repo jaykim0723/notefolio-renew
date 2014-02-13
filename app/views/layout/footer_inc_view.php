@@ -16,9 +16,6 @@
 <script>
 	$('select:not(.no-jquery)').selectpicker();
 </script>
-<?php if (strpos($_SERVER['HTTP_HOST'], 'renew.')!==FALSE && USER_ID==3): ?>
-<script src="http://jsconsole.com/remote.js?122CF29F-EC33-4FB8-A8A4-588666EE5850"></script>
-<?php endif ?>
 
 <?php if($this->input->get('rotate-my-eye')!==FALSE){  //joke www  ?>
 <style type="text/css">
