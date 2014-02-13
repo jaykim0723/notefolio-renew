@@ -301,11 +301,11 @@ class Profile extends CI_Controller {
 	 * @param  integer $page     [description]
 	 * @return [type]            [description]
 	 */
-	function my_recent_works($username='', $id_before=''){
+	function my_recent_works($username=''){
 		log_message('debug','--------- profile.php > my_recent_works ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->_get_user_info($username);
-
+		$id_before =  $this->input->get('id_before');
         $this->load->model('work_model');
 		$work_list = $this->work_model->get_list(array(
 			'id_before' => $id_before,

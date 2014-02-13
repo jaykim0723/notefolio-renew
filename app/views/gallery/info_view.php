@@ -54,6 +54,7 @@
 				<div id="work-recent-works">
 					<h2 class="nofol-title2">Recent Works</h2>
 					<ul id="work-recent-list">
+						<a href="#a" id="btn-prev-work" class="btn btn-block btn-more"><i class="spi spi-up">up</i> Previous</a>
 					</ul>
 				</div>
 			</div>
@@ -280,8 +281,6 @@
 	$(function() {
 		NFview.infiniteCallback();
 		workInfoUtil.setGround();		
-	});
-	$(window).on('load', function(){
 		workInfoUtil.initRecentList();
 	});
 </script>

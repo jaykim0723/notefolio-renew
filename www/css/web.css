@@ -422,6 +422,12 @@ html {
 	font-weight: 300;
 	line-height: 700%;
 }
+#work-recent-list a.btn-more {
+	background: #fff;
+	padding: 5px 0;
+	text-align: center;
+	line-height: 1em;
+}
 #work-recent-list img {
 	float: left;
 	width: 100px;

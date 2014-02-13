@@ -870,8 +870,24 @@ var workInfoUtil = {
 				return;
 			}
 		});
+
+		$('#btn-prev-work').on('click', function(){
+			workInfoUtil.getPrevRecentList();
+		});
 	},
 
+	getPrevRecentList : function(){
+		var idAfter = $('#work-recent-list > li:first').attr('id').replace('work-recent-', '');
+		$.get(site.url+'profile/my_recent_works/'+NFview.username, {
+			id_after : idAfter
+		}).done(function(responseHTML){
+			var $btn = $('#btn-prev-work');
+			if(empty(responseHTML))
+				$btn.remove();
+			else
+				$btn.after(responseHTML);
+		});
+	},
 	getRecentList : function(work_id){
 		console.log('site.js > workInfoUtil > getRecentList', work_id);
 
@@ -891,7 +907,8 @@ var workInfoUtil = {
 		});	
 
 		if(isFirst || idBefore==work_id){
-			$.get(site.url+'profile/my_recent_works/'+NFview.username+'/'+idBefore, {
+			$.get(site.url+'profile/my_recent_works/'+NFview.username, {
+				id_before : idBefore
 			}).done(function(responseHTML){
 				$workRecentList.append(responseHTML);
 				if(isFirst){
