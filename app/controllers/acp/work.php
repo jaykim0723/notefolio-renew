@@ -70,7 +70,6 @@ class work extends CI_Controller {
                     'q' => $args['q'],
                     'view_rank_point' => true
                 ));
-                var_export($works);
 
                 $data['list'] = $works->rows;
 
