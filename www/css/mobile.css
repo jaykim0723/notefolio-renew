@@ -1562,7 +1562,7 @@ html.auth body {
 }
 @media (max-width: 767px) {
 	#contact_form .col-sm-3.control-label {
-		margin-left: none !important;
+		margin-left: 0 !important;
 	}
 }
 
