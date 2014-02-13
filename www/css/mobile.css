@@ -1302,7 +1302,7 @@ html.auth body {
 	margin-top: 0px;
 	width: 100%;
 }
-.btn-darkgray:hover, .btn-darkgray2:hover, .btn-pointgreen:hover {
+.btn-darkgray:hover, .btn-darkgray2:hover, .btn-pointgreen:hover, .btn-pointgreen:active {
 	color:#fff;
 }
 
