@@ -81,7 +81,7 @@
                     
                     <div class='form-group'>
                         <div class="col-sm-offset-3 col-sm-9">
-                            <button type='submit' name='submit' value='1' class='btn btn-pointgreen btn-lg'>Submit</button>
+                            <button type='submit' name='submit' value='1' class='btn btn-pointgreen btn-lg'><i class="spi spi-email_white">email_white</i>Submit</button>
                         </div>
                     </div>
                 <?php 

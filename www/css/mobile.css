@@ -1554,6 +1554,9 @@ html.auth body {
 .contact-select .selectpicker {
 	border-color: #ccc;
 }
+.form-group .btn-pointgreen {
+	margin-right:5px;
+}
 
 
 
