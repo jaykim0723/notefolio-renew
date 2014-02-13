@@ -316,7 +316,7 @@ class Gallery extends CI_Controller {
             'crud' => 'update',
             'area' => 'work',
             'type'  => $input['status'].
-                (($input['status']=='enabled'&&$work->row->contents==$input['status'])?'_cont':''),
+                (($input['status']=='enabled'&&$work->row->status==$input['status'])?'_cont':''),
             'work_id' => $input['work_id'],
             'user_A' => USER_ID,
             ));
