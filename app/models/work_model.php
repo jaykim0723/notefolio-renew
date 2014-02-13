@@ -121,7 +121,6 @@ class work_model extends CI_Model {
             $this->db->select('(works.discoverbility + ifnull(feedback_point.point, 0) + works.staffpoint) as rank_point', FALSE);
         }
         
-        return $this;
     }
     
     /**
@@ -155,7 +154,8 @@ class work_model extends CI_Model {
     			$params->{$key} = $value;
     	}
 
-        $this = $this->get_list_prep($params);
+        $this->db->start_cache();
+        $this->get_list_prep($params);
 
         $this->db
             ->select('works.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
@@ -164,6 +164,7 @@ class work_model extends CI_Model {
             ->join('users', 'users.id = works.user_id', 'left')
             ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
 
+        $this->db->stop_cache();
     	$works = $this->db->get();
 
     	$rows = array();
