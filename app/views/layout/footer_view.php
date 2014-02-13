@@ -14,11 +14,11 @@
 			<div id="footer-gap" class="col-md-4">
 			</div>
 			<div class="col-md-2" style="padding-top:3px;">
-				<a href="http://twitter.com/notefoliotwt"><img src="http://magazine.notefolio.net/theme_assets/img/twitter.png" style="width:20px;height:20px;">
+				<a target="_blank" href="http://twitter.com/notefoliotwt"><img src="http://magazine.notefolio.net/theme_assets/img/twitter.png" style="width:20px;height:20px;">
 				<span class="footerlink">twitter</span></a>
-				<a href="http://notefolio.tistory.com/"><img src="http://magazine.notefolio.net/theme_assets/img/blog.png" style="width:20px;height:20px;margin-left:15px;">
+				<a target="_blank" href="http://notefolio.tistory.com/"><img src="http://magazine.notefolio.net/theme_assets/img/blog.png" style="width:20px;height:20px;margin-left:15px;">
 				<span class="footerlink">blog</span></a>
-				<a href="https://www.facebook.com/notefolio"><img src="http://magazine.notefolio.net/theme_assets/img/facebook.png" style="width:20px;height:20px;margin-left:15px;">
+				<a target="_blank" href="https://www.facebook.com/notefolio"><img src="http://magazine.notefolio.net/theme_assets/img/facebook.png" style="width:20px;height:20px;margin-left:15px;">
 				<span class="footerlink">facebook</span></a>
 			</div>
 		</div>
