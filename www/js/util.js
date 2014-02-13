@@ -494,7 +494,7 @@ $.fn.extend({
 var gumoFancy = {
 	conf : {
 		isMobileBase : 992, // 반응형웹인 경우 이 크기 '미만'으로는 모바일(뉴탭)으로 작동될
-		img : '/img/gumo-fancy.gif' // loading image 주소,
+		img : '/img/gumo-fancy.gif', // loading image 주소
 		imageWidth : 43,
 		imageHeight : 11
 	},
