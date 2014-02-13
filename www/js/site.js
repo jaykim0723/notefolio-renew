@@ -884,8 +884,11 @@ var workInfoUtil = {
 			var $btn = $('#btn-prev-work');
 			if(empty(responseHTML))
 				$btn.remove();
-			else
+			else{
 				$btn.after(responseHTML);
+				if($('<div>'+responseHTML+'</div>').length<24)
+					$btn.remove();
+			}
 		});
 	},
 	getRecentList : function(work_id){

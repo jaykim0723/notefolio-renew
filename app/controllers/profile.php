@@ -305,13 +305,18 @@ class Profile extends CI_Controller {
 		log_message('debug','--------- profile.php > my_recent_works ( params : '.print_r(get_defined_vars(),TRUE)).')';
 		
 		$user = $this->_get_user_info($username);
-		$id_before =  $this->input->get('id_before');
         $this->load->model('work_model');
-		$work_list = $this->work_model->get_list(array(
-			'id_before' => $id_before,
+        $params = array(
 			'user_id' => $this->user_id,
-			'order_by' => 'idlarger'
-		));
+		);
+        if($this->input->get('id_before')!=''){
+        	$params['id_before'] = $this->input->get('id_before');
+        	$params['order_by'] = 'idlarger';
+        }else{
+         	$params['id_after'] = $this->input->get('id_after');
+        	$params['order_by'] = 'idsmaller';
+       }
+		$work_list = $this->work_model->get_list($params);
 		$work_list->username = $username;
 		$this->layout->set_view('profile/my_recent_works_listing_view', $work_list)->render();
 	}

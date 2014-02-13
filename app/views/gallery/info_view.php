@@ -54,7 +54,7 @@
 				<div id="work-recent-works">
 					<h2 class="nofol-title2">Recent Works</h2>
 					<ul id="work-recent-list">
-						<a href="#a" id="btn-prev-work" class="btn btn-block btn-more"><i class="spi spi-up">up</i> Previous</a>
+						<a href="javascript:;" id="btn-prev-work" class="btn btn-block btn-more"><i class="spi spi-up">up</i> Previous</a>
 					</ul>
 				</div>
 			</div>
