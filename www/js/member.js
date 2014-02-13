@@ -1310,8 +1310,7 @@ var profileUtil = {
 				var html = '<table class="table">'+
 					'<thead>'+
 						'<tr>'+
-							'<th>순번</th>'+
-							'<th>작품번호</th>'+
+							'<th>순번</th>'+ 
 							'<th>작품명</th>'+
 							'<th>날짜</th>'+
 							'<th>조회수</th>'+
