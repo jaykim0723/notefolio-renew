@@ -129,6 +129,88 @@ class work_model extends CI_Model {
      * @return object          상태와 데이터값을 반환한다
      */
     function get_list($params=array()){
+        $params = (object)$params;
+        $default_params = (object)array(
+            'id_before'  => 0, // call by...
+            'id_after'  => 0, // call by...
+            'page'      => 1, // 불러올 페이지
+            'delimiter' => 24, // 한 페이지당 작품 수
+            'from'  => 'all', // 조회기간
+            'order_by'  => 'newest', // newest, oldest
+            'keywords'  => array(), 
+            'q'  => '', 
+            'folder'    => '', // ''면 전체
+            'user_id'   => '', // 프로필 등 특정 작가의 작품만을 조회할 때
+            'only_enabled'      => false, // enable된 작품만
+            'only_disabled'     => false, // disabled된 작품만
+            'only_deleted'      => false, // deleted된 작품만
+            'exclude_enabled'   => false, // enabled 태그된 작품 제외
+            'exclude_disabled'   => false, // disabled 태그된 작품 제외
+            'exclude_deleted'   => true, // deleted 태그된 작품 제외
+            'view_rank_point'   => false, // deleted 태그된 작품 제외
+        );
+        foreach($default_params as $key => $value){
+            if(!isset($params->{$key}))
+                $params->{$key} = $value;
+        }
+
+        $this->db->start_cache();
+        $this->get_list_prep($params);
+
+        $this->db
+            ->select('works.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
+            // ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
+            ->from('works')
+            ->join('users', 'users.id = works.user_id', 'left')
+            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
+
+        $this->db->stop_cache();
+        $works = $this->db->get();
+        $this->db->flush_cache();
+
+        $rows = array();
+        foreach ($works->result() as $row)
+        {
+            // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
+            if(substr($row->contents, 0, 2)=='a:')
+                $row->contents = unserialize($row->contents);
+
+            $user = (object)array(
+                'id'         => $row->id,
+                'username'   => $row->username,
+                'email'      => $row->email,
+                'level'      => $row->level,
+                'realname'   => $row->realname,
+                'last_ip'    => $row->last_ip,
+                'last_login' => $row->last_login,
+                'created'    => $row->created,
+                'modified'   => $row->modified
+            );
+            foreach($user as $key=>$value){
+                unset($row->{$key});
+            }
+            $row->user = $user;
+            $rows[] = $row;
+        }
+        $data = (object)array(
+            'status' => 'done',
+            'page'   => $params->page,
+            'rows'   => $rows
+        );
+        if(sizeof($rows)==0){
+            $data->status = 'fail';
+            return $data;
+        }
+
+        return $data;
+    }
+    
+    /**
+     * 작품의 리스트 카운트를 불러온다.
+     * @param  array  $params 
+     * @return object          상태와 데이터값을 반환한다
+     */
+    function get_list_count($params=array()){
     	$params = (object)$params;
     	$default_params = (object)array(
             'id_before'  => 0, // call by...
@@ -158,8 +240,7 @@ class work_model extends CI_Model {
         $this->get_list_prep($params);
 
         $this->db
-            ->select('works.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
-            // ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
+            ->select('count(*) as count, ceil(count(*)/'.$args['delimiter'].') as all_page')
             ->from('works')
             ->join('users', 'users.id = works.user_id', 'left')
             ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
@@ -168,34 +249,12 @@ class work_model extends CI_Model {
     	$works = $this->db->get();
         $this->db->flush_cache();
 
-    	$rows = array();
-    	foreach ($works->result() as $row)
-		{
-            // 값을 조작해야할 필요가 있을 때에는 여기에서 한다
-            if(substr($row->contents, 0, 2)=='a:')
-                $row->contents = unserialize($row->contents);
+    	$row = $works->row();
 
-            $user = (object)array(
-                'id'         => $row->id,
-                'username'   => $row->username,
-                'email'      => $row->email,
-                'level'      => $row->level,
-                'realname'   => $row->realname,
-                'last_ip'    => $row->last_ip,
-                'last_login' => $row->last_login,
-                'created'    => $row->created,
-                'modified'   => $row->modified
-            );
-            foreach($user as $key=>$value){
-                unset($row->{$key});
-            }
-            $row->user = $user;
-		    $rows[] = $row;
-		}
         $data = (object)array(
             'status' => 'done',
             'page'   => $params->page,
-            'rows'   => $rows
+            'row'   => $row
         );
         if(sizeof($rows)==0){
             $data->status = 'fail';
