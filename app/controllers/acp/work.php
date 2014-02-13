@@ -78,7 +78,8 @@ class work extends CI_Controller {
                     'q' => $args['q'],
                     'view_rank_point' => true
                 ));
-
+                var_export($this->db->last_query());
+                exit();
                 $data['list'] = $works->rows;
 
                 $data['all_count'] = isset($page_info->row->count)?$page_info->row->count:0;
