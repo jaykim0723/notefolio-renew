@@ -1588,6 +1588,13 @@ html.auth body {
 	}
 }
 
+@media(max-width: 991px) {
+	#side_about.info {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+}
+
 
 /* info : about_us */
 #title_image {
