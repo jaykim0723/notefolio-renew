@@ -141,7 +141,8 @@ class Gallery extends CI_Controller {
     function update($work_id=''){
         $work = $this->work_model->get_info(array('work_id'=>$work_id)); 
         if($work->status==='fail') alert('작품이 존재하지 않습니다.');
-        // if($work->row->user_id!==USER_ID) alert('본인의 작품만 수정할 수 있습니다.');
+        if(!$this->nf->admin_is_elevated()&&$work->row->user_id!==USER_ID)
+         alert('본인의 작품만 수정할 수 있습니다.');
 
         $this->form($work);
     }
@@ -314,7 +315,8 @@ class Gallery extends CI_Controller {
         $this->activity->post(array(
             'crud' => 'update',
             'area' => 'work',
-            'type'  => $input['status'],
+            'type'  => $input['status'].
+                (($input['status']=='enabled'&&$work->row->contents==$input['status'])?'_cont':''),
             'work_id' => $input['work_id'],
             'user_A' => USER_ID,
             ));
