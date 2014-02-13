@@ -2,7 +2,7 @@
 <footer id="footer" class="navbar-fixed-bottom visible-md visible-lg">
 	<div class="container">
 		<div class="row">
-			<div id="footer-menu" class="col-md-10">
+			<div id="footer-menu" class="col-md-6">
 				&copy;
 				Copyright 노트폴리오
 				<a href="/info/about_us">About Us</a>
@@ -11,7 +11,7 @@
 				<a class="admin-none" href="/info/privacy">Privacy Policy</a>
 				<a class="admin-none" href="/info/terms">Terms of use</a>
 			</div>
-			<div id="footer-gap" class="col-md-2">
+			<div id="footer-gap" class="col-md-3">
 			</div>
 			<div class="col-md-4" style="padding-top:3px;">
 				<a target="_blank" href="http://twitter.com/notefoliotwt"><img src="http://magazine.notefolio.net/theme_assets/img/twitter.png" style="width:20px;height:20px;">
