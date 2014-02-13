@@ -485,7 +485,7 @@ class work_model extends CI_Model {
             $can_delete = true;
         }
         else { // 본인것인지 여부에 따라 message다르게 하기
-            $work = $this->db->where('works.user_id', $user_id)->get('works')->row();
+            $work = $this->db->where('works.work_id', $work_id)->get('works')->row();
             $can_delete = ($work->user_id == USER_ID)?true:false; 
         }
 
@@ -704,7 +704,7 @@ class work_model extends CI_Model {
             if(!isset($params->{$key}))
                 $params->{$key} = $value;
         }
-        
+
         $data = (object)array(
                 'status' => 'fail',
                 'message' => 'no_process'
