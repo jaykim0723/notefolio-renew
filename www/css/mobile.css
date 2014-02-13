@@ -751,7 +751,8 @@ html, body {
 		opacity: 0.8;
 		-webkit-opacity: 0.8;
 		filter: alpha(opacity=80);
-		margin-left: 3px;
+		margin-left: 5px;
+		margin-top: -3px;
 	}
 	.work-info-icons > div br {
 		display: none;
@@ -760,7 +761,9 @@ html, body {
 @media (max-width:991px) {
 	#work-list .work-info-icons > div {
 		background: #fff;
-		color: #444;
+		color: #7a7880;
+		font-weight: 300;
+		line-height: 170%;
 	}	
 	.work-info .work-info-title {
 		border-bottom: 1px solid #efefef;
