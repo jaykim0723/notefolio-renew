@@ -1554,7 +1554,7 @@ html.auth body {
 .contact-select .selectpicker {
 	border-color: #ccc;
 }
-.form-group .btn-pointgreen {
+.form-group .btn-pointgreen .spi-email_white {
 	margin-right:5px;
 }
 
