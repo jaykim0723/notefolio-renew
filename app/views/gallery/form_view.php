@@ -1,6 +1,7 @@
 <?php
 	$keywords_list_key = $this->nf->category_to_array($row->keywords, TRUE);
 ?>
+<script src="/js/member.js"></script>
 <script>
 	NFview = <?php
 		echo json_encode($row); // view내의 스크립트에서 편리하게 사용하기 위하여 미리 할당
@@ -218,7 +219,6 @@
 
 
 
-<script src="/js/member.js"></script>
 <script src="/js/libs/jquery.Jcrop.min.js"></script>
 <script src="/js/libs/bootstrap-tagsinput.min.js"></script>
 <script src="/js/libs/cleditor/jquery.cleditor.js"></script>
