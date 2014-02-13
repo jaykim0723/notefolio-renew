@@ -36,8 +36,8 @@ class Nf
             }
         }
         $result = @implode(' · ', $category);
-        if($result=='')
-            $result = '자신의 카테고리를 지정해주세요.';
+        // if($result=='')
+            // $result = '자신의 카테고리를 지정해주세요.';
         return $result;
     }
     function category_to_array($category_code, $return_key = FALSE){

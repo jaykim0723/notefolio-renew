@@ -52,7 +52,7 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 				<img src="/data/profiles/<?php echo $row->username ?>_face.jpg?_=<?php echo substr($row->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
 			</div>
 			<div id="profile-info">
-				<h2><?php echo $row->realname; ?></h2>
+				<h2><a href="javascript:profileUtil.changeRealname();"><?php echo $row->realname; ?></a></h2>
 				<h4 id="profile-keywords" data-value="<?php echo $row->user_keywords ?>">&nbsp;<?php echo $this->nf->category_to_string($row->user_keywords, true); ?>&nbsp;</h4>
 			</div>
 
