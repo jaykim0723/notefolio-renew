@@ -3,7 +3,7 @@
 		<button tabindex="2" class="btn btn-nofol" type="submit"><i class="spi spi-write"></i></button>
 		<a class="btn btn-nofol btn-cancel-comment"><i class="spi spi-close">close</i></a>
 	</div>
-	<a class="comment-profile-area" href="<?=(USER_ID>0)?site_url($this->session->userdata('username')):'#'?>" target="_blank">
+	<a class="comment-profile-area" href="<?=(USER_ID>0)?site_url($this->session->userdata('username')):'#'?>" <?php if(USER_ID>0){?>target="_blank"<?php }?>>
 		<?php if (USER_ID==0): ?>
 			<img src="/img/default_profile_face.png"/>
 		<?php else: ?>
