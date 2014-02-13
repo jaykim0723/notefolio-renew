@@ -6,18 +6,6 @@
 				<form action="" class="form-inline" role="form" id="gallery-search-form">
 
 					<div class="row">
-						
-						<div class="col-md-3 col-sm-6">
-							<div class="input-group">
-			  					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-								<select class="" name="from" id="from">
-									<option value="all"<?=($from=="all")?' selected':''?>>전체 기간</option>
-									<option value="day"<?=($from=="day")?' selected':''?>>오늘</option>
-									<option value="week"<?=($from=="week")?' selected':''?>>이번 주</option>
-									<option value="month"<?=($from=="month")?' selected':''?>>이번 달</option>
-								</select>
-							</div>
-						</div>
 
 
 						<div class="col-md-3 col-sm-6">
@@ -32,14 +20,6 @@
 							</select>
 						</div>
 
-						
-
-						<div class="col-md-3 col-sm-6">
-							<input class="col-xs-2 form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
-						</div>
-
-
-
 						<div class="col-md-2 col-sm-6">
 							<select name="order" id="order">
 								<option value="newest"<?=($order=="newest")?' selected':''?>>최신순</option>
@@ -47,6 +27,25 @@
 								<option value="viewed"<?=($order=="viewed")?' selected':''?>>조회순</option>
 								<option value="featured"<?=($order=="featured")?' selected':''?>>추천순</option>
 							</select>
+						</div>
+						
+						<div class="col-md-3 col-sm-6">
+							<div class="input-group">
+			  					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+								<select class="" name="from" id="from">
+									<option value="all"<?=($from=="all")?' selected':''?>>전체 기간</option>
+									<option value="day"<?=($from=="day")?' selected':''?>>오늘</option>
+									<option value="week"<?=($from=="week")?' selected':''?>>이번 주</option>
+									<option value="month"<?=($from=="month")?' selected':''?>>이번 달</option>
+									<option value="month3"<?=($from=="month")?' selected':''?>>최근 3달</option>
+								</select>
+							</div>
+						</div>
+
+						
+
+						<div class="col-md-3 col-sm-6">
+							<input class="col-xs-2 form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
 						</div>
 
 						<div class="col-md-1 col-sm-12">
