@@ -21,108 +21,6 @@ class work_model extends CI_Model {
             ->get()
             ->row();
     }
-
-    /**
-     * 미리 설정하는 환경설정.
-     * @param object $params
-     */
-    function get_list_prep($params){
-        foreach(array('enabled', 'disabled', 'deleted') as $type){
-            if($params->{'only_'.$type}){
-                $this->db->where('works.status', $type);
-            }
-
-            if($params->{'exclude_'.$type}){
-                $this->db->where('works.status !=', $type);
-            }
-        }
-
-        switch($params->from){
-            case 'day':
-                $from = date('Y-m-d');
-                break;
-            case 'week':
-                $from = date('Y-m-d', strtotime('-1 week'));
-                break;
-            case 'month':
-                $from = date('Y-m-d', strtotime('-1 month'));
-                break;
-            case 'month3':
-                $from = date('Y-m-d', strtotime('-3 month'));
-                break;
-            case 'all':
-            default:
-                $params->from = 'all';
-                break;
-        }
-        if($params->from!='all'){
-            $this->db->having("(works.regdate >= ".$this->db->escape($from).")", NULL, FALSE); // 모든 기준이 regdate로 하기 때문에
-            // $this->db->having("(works.regdate >= ".$this->db->escape($from)." or works.moddate >= ".$this->db->escape($from).")", NULL, FALSE);
-        }
-
-        if(count($params->keywords)>0){
-            $this->db->where('( works.keywords like "%'.implode('%" or works.keywords like "%', $params->keywords).'%" )', NULL, FALSE);
-        }
-
-        if(!empty($params->q)){
-            $this->db->where('(MATCH (works.title, works.tags) AGAINST ('.$this->db->escape($params->q).') or users.username like \'%'.$this->db->escape_str($params->q).'%\' or users.realname like \'%'.$this->db->escape_str($params->q).'%\'  )', NULL, FALSE);
-        }
-
-        if(!empty($params->user_id))
-            $this->db->where('user_id', $params->user_id);
-        if(!empty($params->id_before)   &&$params->id_before!=0)
-            $this->db->where('works.work_id <', $params->id_before);
-
-        if(!empty($params->id_after)    &&$params->id_after!=0)
-            $this->db->where('works.work_id >', $params->id_after);
-        
-        switch($params->order_by){
-            case "idlarger":
-                $this->db->order_by('work_id', 'desc');
-            break;
-            case "idsmaller":
-                $this->db->order_by('work_id', 'asc');
-            break;
-            case "newest":
-                $this->db->order_by('regdate', 'desc');
-            break;
-            case "oldest":
-                $this->db->order_by('regdate', 'asc');
-            break;
-            case "noted":
-                $this->db->order_by('note_cnt', 'desc');
-            break;
-            case "viewed":
-                $this->db->order_by('hit_cnt', 'desc');
-            break;
-            case "featured":
-                $this->db->order_by('nofol_rank', 'desc');
-            break;
-            case "nofol_rank":
-                $params->view_rank_point = true;
-                $this->db->order_by('rank_point', 'desc');
-                $this->db->order_by('regdate', 'desc');
-            break;
-            default:
-                if(is_array($params->order_by))
-                    $this->db->order_by($params->order_by);
-            break;
-        }
-
-        if($params->view_rank_point){
-            $this->load->config('activity_point', TRUE);
-            $this->db->join('(SELECT
-                ref_id as work_id,
-                ifnull(sum(point_get), 0) as point 
-                FROM `notefolio-renew`.log_activity
-                where area=\'work\' 
-                and regdate >= '.$this->db->escape($this->config->item('period', 'activity_point')).'
-                group by work_id) feedback_point', 'works.work_id = feedback_point.work_id', 'left');
-            $this->db->select('(works.discoverbility + ifnull(feedback_point.point, 0) + works.staffpoint) as rank_point', FALSE);
-        }
-        
-        return $this;
-    }
     
     /**
      * 작품의 리스트를 불러온다.
@@ -142,12 +40,8 @@ class work_model extends CI_Model {
             'q'  => '', 
             'folder'    => '', // ''면 전체
             'user_id'   => '', // 프로필 등 특정 작가의 작품만을 조회할 때
-            'only_enabled'      => false, // enable된 작품만
-            'only_disabled'     => false, // disabled된 작품만
-            'only_deleted'      => false, // deleted된 작품만
-            'exclude_enabled'   => true, // enabled 태그된 작품 제외
-            'exclude_disabled'   => false, // disabled 태그된 작품 제외
-            'exclude_deleted'   => false, // deleted 태그된 작품 제외
+            'only_enable'   => false, // enable된 작품만
+            'exclude_deleted'   => true, // deleted 태그된 작품 제외
             'view_rank_point'   => false, // deleted 태그된 작품 제외
     	);
     	foreach($default_params as $key => $value){
@@ -155,14 +49,101 @@ class work_model extends CI_Model {
     			$params->{$key} = $value;
     	}
 
-        $this = $this->get_list_prep($params);
+        if($params->only_enable){
+            $this->db->where('works.status', 'enabled');
+        }
 
-        $this->db
+        if($params->exclude_deleted){
+            $this->db->where('works.status !=', 'deleted');
+        }
+
+        switch($params->from){
+            case 'day':
+                $from = date('Y-m-d');
+                break;
+            case 'week':
+                $from = date('Y-m-d', strtotime('-1 week'));
+                break;
+            case 'month':
+                $from = date('Y-m-d', strtotime('-1 month'));
+                break;
+            case 'all':
+            default:
+                $params->from = 'all';
+                break;
+        }
+        if($params->from!='all'){
+            $this->db->having("(works.regdate >= ".$this->db->escape($from).")", NULL, FALSE); // 모든 기준이 regdate로 하기 때문에
+            // $this->db->having("(works.regdate >= ".$this->db->escape($from)." or works.moddate >= ".$this->db->escape($from).")", NULL, FALSE);
+        }
+
+        if(count($params->keywords)>0){
+            $this->db->where('( works.keywords like "%'.implode('%" or works.keywords like "%', $params->keywords).'%" )', NULL, FALSE);
+        }
+
+        if(!empty($params->q)){
+            $this->db->where('(MATCH (works.title, works.tags) AGAINST ('.$this->db->escape($params->q).') or users.username like \'%'.$this->db->escape_str($params->q).'%\' or users.realname like \'%'.$this->db->escape_str($params->q).'%\'  )', NULL, FALSE);
+        }
+
+    	$this->db
             ->select('works.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
-            // ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
-            ->from('works')
-            ->join('users', 'users.id = works.user_id', 'left')
-            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
+    		// ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
+    		->from('works')
+    		->join('users', 'users.id = works.user_id', 'left')
+    		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
+
+        if(!empty($params->user_id))
+            $this->db->where('user_id', $params->user_id);
+        if(!empty($params->id_before)   &&$params->id_before!=0)
+            $this->db->where('works.work_id <', $params->id_before);
+
+        if(!empty($params->id_after)    &&$params->id_after!=0)
+            $this->db->where('works.work_id >', $params->id_after);
+        
+    	switch($params->order_by){
+            case "idlarger":
+                $this->db->order_by('work_id', 'desc');
+            break;
+            case "idsmaller":
+                $this->db->order_by('work_id', 'asc');
+            break;
+    		case "newest":
+    			$this->db->order_by('regdate', 'desc');
+    		break;
+            case "oldest":
+                $this->db->order_by('regdate', 'asc');
+            break;
+            case "noted":
+                $this->db->order_by('note_cnt', 'desc');
+            break;
+            case "viewed":
+                $this->db->order_by('hit_cnt', 'desc');
+            break;
+            case "featured":
+                $this->db->order_by('nofol_rank', 'desc');
+            break;
+            case "nofol_rank":
+                $params->view_rank_point = true;
+                $this->db->order_by('rank_point', 'desc');
+                $this->db->order_by('regdate', 'desc');
+            break;
+    		default:
+    			if(is_array($params->order_by))
+    				$this->db->order_by($params->order_by);
+    		break;
+    	}
+
+        if($params->view_rank_point){
+            $this->load->config('activity_point', TRUE);
+            $this->db->join('(SELECT
+                ref_id as work_id,
+                ifnull(sum(point_get), 0) as point 
+                FROM `notefolio-renew`.log_activity
+                where area=\'work\' 
+                and regdate >= '.$this->db->escape($this->config->item('period', 'activity_point')).'
+                group by work_id) feedback_point', 'works.work_id = feedback_point.work_id', 'left');
+            $this->db->select('(works.discoverbility + ifnull(feedback_point.point, 0) + works.staffpoint) as rank_point', FALSE);
+        }
 
     	$works = $this->db->get();
 
