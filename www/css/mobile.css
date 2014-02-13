@@ -1291,7 +1291,7 @@ html.auth body {
 	margin-bottom: 20px;
 	margin-top: 0px;
 }
-.btn-darkgray3 {
+.btn-pointgreen {
 	padding: 10px 0px;
 	border-radius: 2em;
 	background: #2ac5c6;
@@ -1302,7 +1302,7 @@ html.auth body {
 	margin-top: 0px;
 	width: 100%;
 }
-.btn-darkgray:hover, .btn-darkgray2:hover, .btn-darkgray3:hover {
+.btn-darkgray:hover, .btn-darkgray2:hover, .btn-pointgreen:hover {
 	color:#fff;
 }
 
