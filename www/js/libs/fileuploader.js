@@ -556,7 +556,7 @@ qq.extend(qq.FileUploader.prototype, {
         var dz = new qq.UploadDropZone({
             element: dropArea,
             onEnter: function(e){
-                console.log('dz.onEnter', e.target);
+//                console.log('dz.onEnter', e.target);
                 // dropArea.style.display = 'block';
                 qq.addClass(dropArea, self._classes.dropActive);
                 e.stopPropagation();
@@ -572,7 +572,7 @@ qq.extend(qq.FileUploader.prototype, {
                 qq.removeClass(dropArea, self._classes.dropActive);  
             },
             onDrop: function(e){
-                console.log('dz.onDrop');
+//                console.log('dz.onDrop');
                 dropArea.style.display = 'none';
                 qq.removeClass(dropArea, self._classes.dropActive);
                 self._uploadFileList(e.dataTransfer.files);    
@@ -586,7 +586,7 @@ qq.extend(qq.FileUploader.prototype, {
             if (!dz._isValidFileDrag(e)) return; 
             var relatedTarget = document.elementFromPoint(e.clientX, e.clientY);
             var targetDom = $(relatedTarget).closest('.uploader-area');
-            console.log('targetDom', targetDom);
+//            console.log('targetDom', targetDom);
             if(targetDom){
                 $('.qq-upload-drop-area', targetDom).show();
             }

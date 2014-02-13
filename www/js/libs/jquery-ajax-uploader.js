@@ -11,22 +11,22 @@ $.fn.ajaxUploader = function(opts) {
 		allowedExtensions : ['jpg','jpeg','gif','bmp','tiff','png'],
 		sizeLimit : 10000, // KB
 		start : function(elem, id, fileName){
-			console.log(elem, id, fileName);
+//			console.log(elem, id, fileName);
 		},
 		cancel : function(elem, id, fileName){
-			console.log(elem, id, fileName);
+//			console.log(elem, id, fileName);
 		},
 		done : function(responseJSON, elem, id, fileName){
-			console.log('default', responseJSON, elem, id, fileName);
+//			console.log('default', responseJSON, elem, id, fileName);
 		},
 		fail : function(responseJSON, elem, id, fileName){
-			console.log(responseJSON, elem, id, fileName);
+//			console.log(responseJSON, elem, id, fileName);
 		}
 	};
 
 	// extend the options from defaults with user's options
 	var options = $.extend(defaults, opts || {});
-	console.log('options >done', options.done);
+//	console.log('options >done', options.done);
 
 	// console.log('ajaxUploader', options, this);
 	$(this).addClass('uploader-wrapper').append('<div class="uploader-area"></div>');

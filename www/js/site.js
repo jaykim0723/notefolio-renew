@@ -58,7 +58,7 @@ site.checkFlashMsg = function(){
 site.alarm = {
 	checkUnread : function(){
 		$.getJSON('/feed/check_unread').done(function(d){
-			console.log(d);
+//			console.log(d);
 			if(d.status=='done'){
 				$('.unread-alarm').text(d.alarm_unread)[d.alarm_unread>0?'show':'hide']();
 				$('.unread-feed').text(d.feed_unread)[d.feed_unread>0?'show':'hide']();
@@ -150,7 +150,7 @@ site.popWorkList = function(opts){
 		id_before : '',
 		id : 'ajax-dialog-wrapper',
 		done : function(dialog){
-			console.log('site > popWorkList > done', dialog);
+//			console.log('site > popWorkList > done', dialog);
             dialog.close();
 			site.scroll.unlock();
 		}
@@ -233,14 +233,14 @@ $(window).on('beforeunload', function(){
 		// down
 		// console.log('scroll down', currentScrollTop);
 		if(currentScrollTop > 30){
-			console.log('trigger show');
+//			console.log('trigger show');
 			$('#header').css('top', 0);
 		}
 	}else if(currentScrollTop < lastScrollTop){
 		// up
 		// console.log('scroll up', currentScrollTop);
 		if(currentScrollTop <= 30){
-			console.log('trigger hide');
+//			console.log('trigger hide');
 			$('#header').css('top', '30px');
 		}
 	}
@@ -320,7 +320,7 @@ $(function() {
 		};
 		$o.append('<div class="ajax-loading-overlay"><img src="/img/ajax-loader.gif" class="ajax-loading"/></div>');
 		$.post(site.url+'profile/follow_action', data, function(responseJSON){
-			console.log($o, responseJSON);
+//			console.log($o, responseJSON);
 			if(responseJSON.status=='done'){
 				// msg.open($o.hasClass('activated') ? '팔로우를 취소하였습니다.' : '팔로우 하였습니다.');
 				var $a = $o[(responseJSON.is_follow == 'y' ? 'add' : 'remove')+'Class']('activated');
@@ -441,19 +441,19 @@ var commentUtil = {
 	formHTML : null,
 
 	open : function($work){
-		console.log('site.js > commentUtil > open', $work);
+//		console.log('site.js > commentUtil > open', $work);
 
 		// var $work = $('#work-'+work_id);
 		var work_id = $work.data('id');
 		if($work.data('comment_opened')=='y'){ // 현재 코멘트창이 열려있다면 닫아준다(같은 버은으로 토글)
-			console.log('이미 열려있다.');
+//			console.log('이미 열려있다.');
 			this.close($work);
 			return;
 		}
 		$work.data('comment_opened', 'y'); // 다음의 코멘트열기 버튼에 대응하기 위하여 값을 지정해준다.
 
 		if($work.data('comment_loaded')=='y'){ // 이미 한 번 열린 놈이라면 그냥 단순히 보여주기만 한다.
-			console.log('이미 로딩되어 있다.');
+//			console.log('이미 로딩되어 있다.');
 			$('.comment-wrapper', $work).show();
 			return;
 		}
@@ -475,7 +475,7 @@ var commentUtil = {
 				var mode = 'show';
 				$o.children('.comment-block:first').remove();
 			}
-			console.log($o);
+//			console.log($o);
 			$('.btn-comment-prev', $work)[mode]().after($o.html());
 		});
 
@@ -496,13 +496,13 @@ var commentUtil = {
 				var mode = 'show';
 				$o.children('.comment-block:last').remove();
 			}
-			console.log($o);
+//			console.log($o);
 			$('.btn-comment-prev', $work)[mode]().after($o.html());
 		});
 	},
 
 	readList : function(work_id, idBefore, delimiter){
-		console.log('site.js > commentUtil > readList', work_id, idBefore);
+//		console.log('site.js > commentUtil > readList', work_id, idBefore);
 		if(typeof delimiter=='undefined')
 			delimiter = 11;
 
@@ -529,7 +529,7 @@ var commentUtil = {
 
 	// },
 	update : function(o){
-		console.log('site.js > commentUtil > update', o);
+//		console.log('site.js > commentUtil > update', o);
 		// 기존의 폼을 가지고 와서
 		var $commentInner = $(o).closest('.comment-inner');
 		var $commentBlock = $commentInner.closest('.comment-block');
@@ -549,7 +549,7 @@ var commentUtil = {
 	},
 
 	reply : function(o){
-		console.log('site.js > commentUtil > reply', o);
+//		console.log('site.js > commentUtil > reply', o);
 
 		var $commentBlock = $(o).closest('.comment-block');
 		var $commentReplies = $('.comment-replies', $commentBlock);
@@ -578,7 +578,7 @@ var commentUtil = {
 	},
 
 	'delete' : function(o){
-		console.log('site.js > commentUtil > delete', o);
+//		console.log('site.js > commentUtil > delete', o);
 		var $work = $(o).parents('.work-wrapper');	
 		var work_id = $work.data('id');
 		var params = {
@@ -596,7 +596,7 @@ var commentUtil = {
 	},
 
 	cancel : function(o){
-		console.log('site.js > commentUtil > cancel', o);
+//		console.log('site.js > commentUtil > cancel', o);
 
 		var $f = $(o).closest('form.comment-block');
 		switch($f.data('mode')){
@@ -630,7 +630,7 @@ var commentUtil = {
 			return false;
 		}
 
-		console.log(params);
+//		console.log(params);
 		var $work = $f.parents('.work-wrapper');	
 		var work_id = $work.data('id');
 
@@ -661,7 +661,7 @@ var commentUtil = {
 
 
 	close : function($work){
-		console.log('site.js > commentUtil > close', $work);
+//		console.log('site.js > commentUtil > close', $work);
 		if($work.data('comment_opened')=='n') return;
 		$work.data('comment_opened', 'n');
 		$('.comment-wrapper', $work).hide(); // 추후에 다시 열릴 것을 감안하여 숨겨만 준다.
@@ -670,7 +670,7 @@ var commentUtil = {
 };
 var noteUtil = {
 	open : function(o){
-		console.log('site.js > noteUtil > open', o);
+//		console.log('site.js > noteUtil > open', o);
 
 		var $work = $(o).parents('.work-wrapper');
 		var work_id = $work.data('id');
@@ -700,7 +700,7 @@ var noteUtil = {
 	},
 
 	cancel : function($work){
-		console.log('site.js > noteUtil > cancel', $work);
+//		console.log('site.js > noteUtil > cancel', $work);
 
 		if(site.user_id==0){
 			msg.open('비회원은 취소할 수 없습니다.', 'info');
@@ -726,7 +726,7 @@ var noteUtil = {
 	},
 
 	close : function($work){
-		console.log('site.js > noteUtil > close', $work);
+//		console.log('site.js > noteUtil > close', $work);
 
 		if($work.data('noted')=='n') return;
 		$('.note-wrapper', $work).hide(); // 추후에 다시 열릴 것을 감안하여 숨겨만 준다.
@@ -751,51 +751,51 @@ var snsUtil = {
 		workInfo.title = encodeURIComponent($('.work-title', $work).text());
 		workInfo.cover = '/data/covers/'+workInfo.id+'_t2.jpg?_='+$work.data('moddate');
 		workInfo.summary = $.trim($('.work-contents', $work).text().substr(0,100));
-		console.log('workInfo', workInfo);
+//		console.log('workInfo', workInfo);
 		return workInfo;
 	},
 
 	twitter : function(o){
-		console.log('site.js > snsUtil > twitter');
+//		console.log('site.js > snsUtil > twitter');
 		var workInfo = this.getInfo(o);
 		this.newPop('https://twitter.com/intent/tweet?original_referer='+workInfo.url+'&text='+workInfo.summary+'&url='+location.href, 620, 310);
 	},
 
 	facebook : function(o){
-		console.log('site.js > snsUtil > facebook');
+//		console.log('site.js > snsUtil > facebook');
 		var workInfo = this.getInfo(o);
 		this.newPop('http://www.facebook.com/sharer.php?u=' + workInfo.url + '&t=' + workInfo.title, 510, 368);
 		// this.newPop('http://www.facebook.com/sharer.php?s=100&p[url]=' + workInfo.url + '&p[images][0]=' + workInfo.cover + '&p[title]=' + workInfo.title + '&p[summary]=' + workInfo.summary, 510, 368);
 	},
 
 	kakaotalk : function(o){
-		console.log('site.js > snsUtil > kakaotalk');
+//		console.log('site.js > snsUtil > kakaotalk');
 
 		// 정책적으로 추가가 필요하다면 추가할 수 있음.
 		// https://github.com/kakao/kakaolink-web
 	},
 
 	pinterest : function(o){
-		console.log('site.js > snsUtil > pinterest');
+//		console.log('site.js > snsUtil > pinterest');
 		var workInfo = this.getInfo(o);
 		this.newPop('http://pinterest.com/pin/create/button/?url='+workInfo.url+'&media='+workInfo.cover+'&description='+workInfo.summary, 510, 368);
 	},
 
 	tumblr : function(o){
-		console.log('site.js > snsUtil > tumblr');
+//		console.log('site.js > snsUtil > tumblr');
 		var workInfo = this.getInfo(o);
 		this.newPop('http://www.tumblr.com/share?s=&t='+workInfo.title+'&u='+workInfo.url+'&v=3', 510, 368);
 	},
 
 	path : function(o){
-		console.log('site.js > snsUtil > path');
+//		console.log('site.js > snsUtil > path');
 		
 	}
 };
 
 var collectUtil = {
 	add : function(o){
-		console.log('site.js > collectUtil > add');
+//		console.log('site.js > collectUtil > add');
 		var $work = $(o).parents('.work-wrapper');
 		var work_id = $work.data('id');
 		var $btnCollect = $('.add-collection', $work);
@@ -812,13 +812,13 @@ var collectUtil = {
 		}, 'json');
 	},
 	hide : function(o){
-		console.log('site.js > collectUtil > hide');
+//		console.log('site.js > collectUtil > hide');
 
 		var $work = $(o).parents('.work-wrapper');
 		$('.add-collection', $work).css('visibility','hidden');
 	},
 	cancel : function(o){
-		console.log('site.js > collectUtil > cancel');
+//		console.log('site.js > collectUtil > cancel');
 
 		var $work = $(o).parents('.work-wrapper');
 		var work_id = $work.data('id');
@@ -892,7 +892,7 @@ var workInfoUtil = {
 		});
 	},
 	getRecentList : function(work_id){
-		console.log('site.js > workInfoUtil > getRecentList', work_id);
+//		console.log('site.js > workInfoUtil > getRecentList', work_id);
 
 		// 지금 막 불러온 것이 사이드바에서 마지막인지 확인을 해보고,
 		// 마지막이라면 리스트 불러와서 추가해주기

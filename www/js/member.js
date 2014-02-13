@@ -48,7 +48,7 @@ var workUtil = {
 						h : tmp[2].h
 					}
 				}, 'json').done(function(responseJSON){
-					console.log('crop cover done > responseJSON', responseJSON);
+//					console.log('crop cover done > responseJSON', responseJSON);
 					blockPage.unblock();
 					if(responseJSON.status=='done'){
 
@@ -131,7 +131,7 @@ var workUtil = {
 			ccl : workUtil.checkValue.ccl(),
 			cover : workUtil.checkValue.cover()
 		};
-		console.log(value.contents);
+//		console.log(value.contents);
 		if(value.contents.image == 1)
 			total += 20;
 		else if(value.contents.image == 2)
@@ -151,7 +151,7 @@ var workUtil = {
 		$('#work-discoverbility > span').stop().animate({
 			width : total+'%'
 		}, 1000);
-		console.log('discoverbility', total, value);
+//		console.log('discoverbility', total, value);
 		return value;
 	},
 	save : function(form, returnType){
@@ -356,7 +356,7 @@ var workUtil = {
 					$('#content-block-list').append($('<li class="block-image block" id="temp-'+id+'" style="min-height:100px;"><div class="ajax-loading-overlay"><img src="/img/ajax-loader.gif" class="ajax-loading"/></div><i class="pi pi-close2">close2</i></li>'));
 				},
 				cancel : function(elem, id, fileName){
-					console.log(elem, id, fileName);
+//					console.log(elem, id, fileName);
 				},
 				done : function(responseJSON, elem, id, fileName){
 					var $o = $('#temp-'+id);
@@ -367,7 +367,7 @@ var workUtil = {
 					workUtil.discoverbility();
 				},
 				fail : function(responseJSON, elem, id, fileName){
-					console.log(responseJSON, elem, id, fileName);
+//					console.log(responseJSON, elem, id, fileName);
 				}
 			});
 
@@ -621,7 +621,7 @@ var workUtil = {
 					elem.append('<div class="ajax-loading-overlay"><img src="/img/ajax-loader.gif" class="ajax-loading"/></div>');
 				},
 				cancel : function(elem, id, fileName){
-					console.log(elem, id, fileName);
+//					console.log(elem, id, fileName);
 				},
 				done : function(responseJSON, elem, id, fileName){
 					elem.children('.ajax-loading-overlay').remove();
@@ -629,7 +629,7 @@ var workUtil = {
 					workUtil.discoverbility();
 				},
 				fail : function(responseJSON, elem, id, fileName){
-					console.log(responseJSON, elem, id, fileName);
+//					console.log(responseJSON, elem, id, fileName);
 				}
 			});
 		},
@@ -674,7 +674,7 @@ var memberUtil = {
 			height : [380, 380],
 			src : '/img/dummy_big.jpg',
 			done : function(dialog){
-				console.log('commonUtil > popCrop > done', dialog, NFview.popCrop);
+//				console.log('commonUtil > popCrop > done', dialog, NFview.popCrop);
 				NFview.popCrop = null;
 	            dialog.close();
 			}
@@ -745,7 +745,7 @@ var memberUtil = {
 			title : 'Loading',
 			id : 'ajax-dialog-wrapper',
 			done : function(dialog){
-				console.log('commonUtil > popLoading > done', dialog);
+//				console.log('commonUtil > popLoading > done', dialog);
 	            dialog.close();
 			}
 		};
@@ -800,7 +800,7 @@ var profileUtil = {
 					w : crop.w,
 					h : crop.h
 				}, 'json').done(function(responseJSON){
-					console.log('crop profile face done > responseJSON', responseJSON);
+//					console.log('crop profile face done > responseJSON', responseJSON);
 					blockPage.unblock();
 					// 프로필 이미지를 응답받은 주소로 갱신을 해준다.
 					msg.open('적용이 완료되었습니다.');
@@ -819,7 +819,7 @@ var profileUtil = {
 			upload_id : upload_id
 		}, 'json').done(function(responseJSON){
 			blockPage.unblock();
-			console.log('crop profile bg done > responseJSON', responseJSON);
+//			console.log('crop profile bg done > responseJSON', responseJSON);
 			// 프로필 배경을 응답받은 주소로 갱신을 해준다.
 			msg.open('적용이 완료되었습니다.');
 			$('#profile-header').css('background-image', 'url('+responseJSON.src+')');
@@ -1057,9 +1057,9 @@ var profileUtil = {
 			site.popWorkList({
 				username :site.segment[0],
 				done : function(dialog){
-					console.log('profile headialoger done', dialog);
+//					console.log('profile headialoger done', dialog);
 					var work_id = dialog.getModalBody().find('.selected').prop('id').replace('work-recent-', '');
-					console.log('work_id : ', work_id);
+//					console.log('work_id : ', work_id);
 					dialog.close();
 					site.scroll.unlock();
 
@@ -1200,7 +1200,7 @@ var profileUtil = {
 		},
 
 		clickEvent : function(type, value){
-			console.log('profileUtil > statistics > clickEvent ', type, value);
+//			console.log('profileUtil > statistics > clickEvent ', type, value);
 			if(type=='period'){
 				// 기간이 달라지는 경우 아래의 두 가지에 대해서 조회를 한다.
 				profileUtil.statistics.reLoadTopCount(value);

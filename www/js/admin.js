@@ -10,7 +10,7 @@ var adminMenu = {
 	initBottom : function(){
 		if(typeof NFview=='undefined') return;
 		if(typeof NFview.area=='undefined') return;
-		console.log('NFview.area', NFview.area);
+//		console.log('NFview.area', NFview.area);
 
 		$('#footer .admin-none').remove();
 		$('#footer-menu').prop('class', 'col-md-6').next().show();
