@@ -15,11 +15,11 @@
 			</div>
 			<div class="col-md-3" style="padding-top:3px;">
 				<a target="_blank" href="http://twitter.com/notefoliotwt"><img src="http://magazine.notefolio.net/theme_assets/img/twitter.png" style="width:20px;height:20px;">
-				<span class="footerlink">twitter</span></a>
+				<span class="footerlink" style="display:hidden;">twitter</span></a>
 				<a target="_blank" href="http://notefolio.tistory.com/"><img src="http://magazine.notefolio.net/theme_assets/img/blog.png" style="width:20px;height:20px;">
-				<span class="footerlink">blog</span></a>
+				<span class="footerlink" style="display:hidden;">blog</span></a>
 				<a target="_blank" href="https://www.facebook.com/notefolio"><img src="http://magazine.notefolio.net/theme_assets/img/facebook.png" style="width:20px;height:20px;">
-				<span class="footerlink">facebook</span></a>
+				<span class="footerlink" style="display:hidden;">facebook</span></a>
 			</div>
 		</div>
 	</div>
