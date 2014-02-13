@@ -144,9 +144,9 @@ class work_model extends CI_Model {
             'only_enabled'      => false, // enable된 작품만
             'only_disabled'     => false, // disabled된 작품만
             'only_deleted'      => false, // deleted된 작품만
-            'exclude_enabled'   => true, // enabled 태그된 작품 제외
+            'exclude_enabled'   => false, // enabled 태그된 작품 제외
             'exclude_disabled'   => false, // disabled 태그된 작품 제외
-            'exclude_deleted'   => false, // deleted 태그된 작품 제외
+            'exclude_deleted'   => true, // deleted 태그된 작품 제외
             'view_rank_point'   => false, // deleted 태그된 작품 제외
     	);
     	foreach($default_params as $key => $value){
