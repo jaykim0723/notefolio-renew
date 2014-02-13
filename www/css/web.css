@@ -229,11 +229,11 @@ html {
 		font-size: 18px;
 		font-weight:300;
 		margin-top: 8px;
-		font-family: 'NanumGothic', Dotum;
+		font-family: 'Nanum Gothic', Dotum;
 	}
 	#main-hot-creators a .hot-keywords {
 		display: block;
-		font-family: 'NanumGothic', Dotum;
+		font-family: 'Nanum Gothic', Dotum;
 		font-size: 12px;
 		color: #aaa;
 	}
