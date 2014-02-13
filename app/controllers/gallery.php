@@ -43,7 +43,7 @@ class Gallery extends CI_Controller {
             'from' => $from,
             'q' => $q,
         ));
-        
+
         $work_list->work_categories = $work_categories;
         $work_list->q = $q;
         $work_list->order = $order;
@@ -381,36 +381,12 @@ class Gallery extends CI_Controller {
             unset($params->note);
             switch($note){
                 case 'n':
-                    $result = $this->work_model->delete_note($params);
-
-                    if($result->status=="done"){
-                        //-- write activity
-                        $this->load->library('activity');
-                        $this->activity->post(array(
-                            'crud' => 'delete',
-                            'area' => 'work',
-                            'type'  => 'note',
-                            'work_id' => $params->work_id,
-                            'user_A' => $params->user_id,
-                            ));
-                    }
+                    $result = $this->_note_cancel($params);
+                    $result_collect = $this->_collect_cancel($params);
                 break;
                 case 'y':
                 default:
-                    $result = $this->work_model->post_note($params);
-
-
-                    if(!empty($params->work_id) && $result->status=="done"){
-                        //-- write activity
-                        $this->load->library('activity');
-                        $this->activity->post(array(
-                            'crud' => 'create',
-                            'area' => 'work',
-                            'type'  => 'note',
-                            'work_id' => $params->work_id,
-                            'user_A' => $params->user_id,
-                            ));
-                    }
+                    $result = $this->_note_write($params);
                 break;
             }
         }
@@ -424,6 +400,42 @@ class Gallery extends CI_Controller {
         $this->layout->set_json($result)->render();
     }
 
+    function _note_write($params){
+        $result = $this->work_model->delete_note($params);
+
+        if($result->status=="done"){
+            //-- write activity
+            $this->load->library('activity');
+            $this->activity->post(array(
+                'crud' => 'delete',
+                'area' => 'work',
+                'type'  => 'note',
+                'work_id' => $params->work_id,
+                'user_A' => $params->user_id,
+                ));
+        }
+
+        return $result;
+    }
+
+    function _note_cancel($params){
+        $this->work_model->post_note($params);
+
+        if(!empty($params->work_id) && $result->status=="done"){
+            //-- write activity
+            $this->load->library('activity');
+            $this->activity->post(array(
+                'crud' => 'create',
+                'area' => 'work',
+                'type'  => 'note',
+                'work_id' => $params->work_id,
+                'user_A' => $params->user_id,
+                ));
+        }
+
+        return $result;
+    }
+
     function collect(){
         $params = (object)$this->input->post();
         //$result = $this->work_model->collect($params);
@@ -434,37 +446,11 @@ class Gallery extends CI_Controller {
                 unset($params->collect);
                 switch($collect){
                     case 'n':
-                        $result = $this->work_model->delete_collect($params);
-
-                        if($result->status=="done"){
-                            //-- write activity
-                            $this->load->library('activity');
-                            $this->activity->post(array(
-                                'crud' => 'delete',
-                                'area' => 'work',
-                                'type'  => 'collect',
-                                'work_id' => $params->work_id,
-                                'user_A' => $params->user_id,
-                                'comment' => ''
-                                ));
-                        }
+                        $result = $this->_collect_cancel($params);
                     break;
                     case 'y':
                     default:
-                        $result = $this->work_model->post_collect($params);
-
-                        if($result->status=="done"){
-                            //-- write activity
-                            $this->load->library('activity');
-                            $this->activity->post(array(
-                                'crud' => 'create',
-                                'area' => 'work',
-                                'type'  => 'collect',
-                                'work_id' => $params->work_id,
-                                'user_A' => $params->user_id,
-                                'comment' => ''
-                                ));
-                        }
+                        $result = $this->_collect_write($params);
                     break;
                 }
             }
@@ -483,6 +469,44 @@ class Gallery extends CI_Controller {
         }
 
         $this->layout->set_json($result)->render();
+    }
+
+    function _collect_write($params){
+        $result = $this->work_model->post_collect($params);
+
+        if($result->status=="done"){
+            //-- write activity
+            $this->load->library('activity');
+            $this->activity->post(array(
+                'crud' => 'create',
+                'area' => 'work',
+                'type'  => 'collect',
+                'work_id' => $params->work_id,
+                'user_A' => $params->user_id,
+                'comment' => ''
+                ));
+        }
+
+        return $result;
+    }
+
+    function _collect_cancel($params){
+        $result = $this->work_model->delete_collect($params);
+
+        if($result->status=="done"){
+            //-- write activity
+            $this->load->library('activity');
+            $this->activity->post(array(
+                'crud' => 'delete',
+                'area' => 'work',
+                'type'  => 'collect',
+                'work_id' => $params->work_id,
+                'user_A' => $params->user_id,
+                'comment' => ''
+                ));
+        }
+
+        return $result;
     }
 
 
