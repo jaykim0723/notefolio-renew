@@ -2318,6 +2318,7 @@ input#mobile-search-field:-moz-placeholder {
 	text-align: center;
 	position: relative;
 	overflow: hidden;
+	border:1px solid #eee;
 }
 #about-attachments li i {
 	position: absolute;
@@ -2330,6 +2331,7 @@ input#mobile-search-field:-moz-placeholder {
 }
 #about-attachments #about-upload {
 	cursor: pointer;
+	padding-top: 10px;
 }
 
 
