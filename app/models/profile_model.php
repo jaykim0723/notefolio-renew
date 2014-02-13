@@ -675,20 +675,29 @@ class profile_model extends CI_Model {
         }
 
         $sql = "SELECT 
-                    ifnull(count(work_id), 0) as work_cnt,
-                    ifnull(sum(hit_cnt), 0) as hit_cnt,
-                    ifnull(sum(note_cnt), 0) as note_cnt,
-                    ifnull(sum(comment_cnt), 0) as comment_cnt,
-                    ifnull(sum(collect_cnt), 0) as collect_cnt,
+                    ifnull(work_cnt, 0) as work_cnt,
+                    ifnull(hit_cnt, 0) as hit_cnt,
+                    ifnull(note_cnt, 0) as note_cnt,
+                    ifnull(comment_cnt, 0) as comment_cnt,
+                    ifnull(collect_cnt, 0) as collect_cnt,
                     ifnull(following_cnt, 0) as following_cnt,
                     ifnull(follower_cnt, 0) as follower_cnt
                 from
-                    user_profiles
+                    user_profiles as up
                         left join
-                    works ON works.user_id = user_profiles.user_id
-                where
-                    works.status != 'disabled'
-                    and user_profiles.user_id = ".$this->db->escape($params->user_id).";";
+                    (select 
+                        user_id,
+                        ifnull(count(work_id), 0) as work_cnt,
+                        ifnull(sum(hit_cnt), 0) as hit_cnt,
+                        ifnull(sum(note_cnt), 0) as note_cnt,
+                        ifnull(sum(comment_cnt), 0) as comment_cnt,
+                        ifnull(sum(collect_cnt), 0) as collect_cnt
+                    from
+                        works
+                    where
+                        works.status != 'disabled'
+                    ) w ON up.user_id = w.user_id
+                where up.user_id = ".$this->db->escape($params->user_id).";";
         $query = $this->db->query($sql);
         error_log($this->db->last_query());
 
