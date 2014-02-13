@@ -1322,7 +1322,6 @@ var profileUtil = {
 				for(var i in responseJSON.rows){
 					html += '<tr>' +
 						'<td></td>' +
-						'<td>'+ responseJSON.rows[i].work_id+'</td>' +
 						'<td><a href="/'+site.username+'/'+responseJSON.rows[i].work_id+'" targte="_blank">'+ responseJSON.rows[i].title+'</a></td>' +
 						'<td>'+ responseJSON.rows[i].regdate+'</td>' +
 						'<td>'+ responseJSON.rows[i].hit_cnt+'</td>' +
