@@ -39,7 +39,6 @@
           <td><a href="/acp/user/member/view/id/<?=$v->user->id?>">
             <?=$v->user->realname?>
               </a></td>
-          <td>
           <td><?=$v->status?></td>
           <td>
             피드백총계 : <?=$v->nofol_rank?><br />
