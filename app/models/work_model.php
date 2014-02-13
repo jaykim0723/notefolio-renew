@@ -36,6 +36,7 @@ class work_model extends CI_Model {
                 $this->db->where('works.status !=', $type);
             }
         }
+        exit();
 
         switch($params->from){
             case 'day':
