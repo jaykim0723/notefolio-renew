@@ -401,13 +401,13 @@ class Gallery extends CI_Controller {
     }
 
     function _note_write($params){
-        $result = $this->work_model->delete_note($params);
+        $result = $this->work_model->post_note($params);
 
-        if($result->status=="done"){
+        if(!empty($params->work_id) && $result->status=="done"){
             //-- write activity
             $this->load->library('activity');
             $this->activity->post(array(
-                'crud' => 'delete',
+                'crud' => 'create',
                 'area' => 'work',
                 'type'  => 'note',
                 'work_id' => $params->work_id,
@@ -419,13 +419,13 @@ class Gallery extends CI_Controller {
     }
 
     function _note_cancel($params){
-        $this->work_model->post_note($params);
+        $result = $this->work_model->delete_note($params);
 
-        if(!empty($params->work_id) && $result->status=="done"){
+        if($result->status=="done"){
             //-- write activity
             $this->load->library('activity');
             $this->activity->post(array(
-                'crud' => 'create',
+                'crud' => 'delete',
                 'area' => 'work',
                 'type'  => 'note',
                 'work_id' => $params->work_id,
