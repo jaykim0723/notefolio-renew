@@ -16,7 +16,7 @@
           <th>순번</th>
           <th>&nbsp;</th>
           <th>작성자</th>
-          <th>공개여부:</th>
+          <th>공개여부</th>
           <th>노폴랭크</th>
           <th>생성일</th>
           <th>보기</th>
