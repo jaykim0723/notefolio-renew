@@ -120,6 +120,8 @@ class work_model extends CI_Model {
                 group by work_id) feedback_point', 'works.work_id = feedback_point.work_id', 'left');
             $this->db->select('(works.discoverbility + ifnull(feedback_point.point, 0) + works.staffpoint) as rank_point', FALSE);
         }
+        
+        return $this;
     }
     
     /**
@@ -153,7 +155,7 @@ class work_model extends CI_Model {
     			$params->{$key} = $value;
     	}
 
-        $this->get_list_prep($params);
+        $this = $this->get_list_prep($params);
 
         $this->db
             ->select('works.*, users.id, users.username, users.email, users.level, users.realname, users.last_ip, users.last_login, users.created, users.modified')
