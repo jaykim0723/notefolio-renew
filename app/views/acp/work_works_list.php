@@ -42,7 +42,7 @@
             피드백총계 : <?=$v->nofol_rank?><br />
 
             충실도  : <?=$v->discoverbility?><br />
-            피드백기간계 : <?=$v->point?><br />
+            피드백기간계 : <?=$v->staff_point?><br />
             스탭점수 : <?=$v->staffpoint?><br />
             랭크총계 : <?=$v->rank_point?><br />
 
