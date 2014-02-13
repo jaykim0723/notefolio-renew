@@ -32,7 +32,7 @@ class work_model extends CI_Model {
                 $this->db->where('works.status', $type);
             }
 
-            if($params->exclude_{$type}){
+            if($params->{'exclude_'.$type}){
                 $this->db->where('works.status !=', $type);
             }
         }
