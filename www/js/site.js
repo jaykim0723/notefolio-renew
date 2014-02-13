@@ -612,7 +612,7 @@ var commentUtil = {
 		}
 	},
 
-	submitComment : function(f, event){
+	submitComment : function(event){
 		event.preventDefault();
 		event.stopPropagation();
 		if(site.user_id==0){
@@ -620,7 +620,7 @@ var commentUtil = {
 			return false;
 		}
 
-		var $f = $(f);
+		var $f = $(this);
 		var params = {
 			mode : $f.data('mode'),
 			content : $('textarea[name=content]', $f).val(),
