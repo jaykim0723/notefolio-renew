@@ -51,28 +51,26 @@ class work extends CI_Controller {
                     'delimiter' => $args['delimiter'],
                     'allow_enabled'=> $args['allow_enabled'],
                     'keywords' => $args['keywords'],
-                    'order_by' => $$args['order'],
+                    'order_by' => $args['order'],
                     'from' => $args['period'],
                     'q' => $args['q'],
                 ));
 
 
                 $this->load->config('activity_point', TRUE);
-                $this->db->join('(SELECT
-                    ref_id as work_id,
-                    ifnull(sum(point_get), 0) as point 
-                    FROM `notefolio-renew`.log_activity
-                    where area=\'work\' 
-                    and regdate >= '.$this->db->escape($this->config->item('period', 'activity_point')).'
-                    group by work_id) feedback_point', 'works.work_id = feedback_point.work_id', 'left');
-                $this->db->select('(works.discoverbility + ifnull(feedback_point.point, 0) + works.staffpoint) as rank_point', FALSE);
 
-                $data['list'] = $this->db
-                    ->select('works.*, feedback_point.point as point, users.id as user_id, users.username as user_username, users.realname as user_realname')
-                    ->limit($limit[1],($limit[0]-1)*$limit[1])
-                    ->join('users', 'works.user_id=users.id', 'left')
-                    ->join('user_profiles', 'users.id=user_profiles.user_id', 'left')
-                    ->get('works')->result();
+                
+                $works = $this->work_model->get_list(array(
+                    'page' => $args['page'],
+                    'delimiter' => $args['delimiter'],
+                    'allow_enabled'=> $args['allow_enabled'],
+                    'keywords' => $args['keywords'],
+                    'order_by' => $args['order'],
+                    'from' => $args['period'],
+                    'q' => $args['q'],
+                ));
+
+                $data['list'] = $works->rows;
 
                 foreach($data['list'] as $key=>$val){
                     $user = new stdClass();
@@ -85,8 +83,8 @@ class work extends CI_Controller {
                     $data['list'][$key]->user = $user;
                 }
 
-                $data['all_count'] = isset($page_info[0])?$page_info[0]['count']:0;
-                $data['all_page'] = isset($page_info[0])?$page_info[0]['all_page']:1;
+                $data['all_count'] = isset($page_info->row->count)?$page_info->row->count:0;
+                $data['all_page'] = isset($page_info->row->all_page)?$page_info->row->all_page:1;
                 $data['now_page'] = isset($args['page'])?$args['page']:1;
                 $data['delimiter'] = isset($args['page'])?$args['delimiter']:30;
 
