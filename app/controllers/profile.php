@@ -314,7 +314,7 @@ class Profile extends CI_Controller {
         	$params['order_by'] = 'idlarger';
         }else{
          	$params['id_after'] = $this->input->get('id_after');
-        	$params['order_by'] = 'idsmaller';
+        	$params['order_by'] = 'idlarger';
        }
 		$work_list = $this->work_model->get_list($params);
 		$work_list->username = $username;
