@@ -281,6 +281,7 @@ html {
 }
 
 /* work */
+.work-info h2,
 #work-form h4 {
 	font-family: 'Nanum Gothic', '나눔고딕';
 }
