@@ -1726,7 +1726,10 @@ p.desc {
 	position: relative;
 	padding-top: 50px;
 }
-
+#profile-inner a {
+	color: #fff;
+	text-decoration: none;
+}
 #profile-inner .centered .spi {
 	margin-right: 5px;
 	margin-top: -3px;
