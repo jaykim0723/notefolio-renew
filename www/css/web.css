@@ -1,5 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
+.btn-lg {
+	font-family: 'Nanum Gothic', '나눔고딕';
+}
 .btn-nofol:hover {
 	color: #2ac5c6;
 	border-color: #2ac5c6;
