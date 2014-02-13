@@ -27,14 +27,23 @@ class work_model extends CI_Model {
      * @param object $params
      */
     function get_list_prep($params){
+        $allows = array();
+        $excludes = array();
         foreach(array('enabled', 'disabled', 'deleted') as $type){
             if($params->{'allow_'.$type}){
-                $this->db->where('works.status', $type);
+                $allows[] = $type;
             }
 
             if($params->{'exclude_'.$type}){
-                $this->db->where('works.status !=', $type);
+                $excludes[] = $type;
             }
+        }
+
+        if(count($allows)>0){
+            $this->db->where_in('works.status', $allows);
+        }
+        if(count($excludes)>0){
+            $this->db->where_not_in('works.status', $excludes);
         }
 
         switch($params->from){
