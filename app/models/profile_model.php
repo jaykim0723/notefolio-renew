@@ -746,7 +746,7 @@ class profile_model extends CI_Model {
             from works
             left join log_work_view as t on works.work_id = t.work_id
             where t.user_id = ? 
-                and t.status != 'deleted' 
+                and works.status != 'deleted' 
                 and t.regdate between ? and ?
         ) v,
         (
@@ -754,7 +754,7 @@ class profile_model extends CI_Model {
             from works
             left join log_work_note as t on works.work_id = t.work_id
             where t.user_id = ? 
-                and t.status != 'deleted' 
+                and works.status != 'deleted' 
                 and t.regdate between ? and ?
         ) n,
         (
@@ -763,7 +763,7 @@ class profile_model extends CI_Model {
             left join work_comments as t on works.work_id = t.work_id
             where
                 t.user_id = ? 
-                and t.status != 'deleted' 
+                and works.status != 'deleted' 
                 and t.parent_id = 0 
                 and t.regdate between ? and ?
         ) c,
@@ -773,7 +773,7 @@ class profile_model extends CI_Model {
             left join user_work_collect as t on works.work_id = t.work_id
             where
                 t.user_id = ? 
-                and t.status != 'deleted' 
+                and works.status != 'deleted' 
                 and t.regdate between ? and ?
         ) cl";
 
