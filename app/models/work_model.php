@@ -240,10 +240,9 @@ class work_model extends CI_Model {
         $this->get_list_prep($params);
 
         $this->db
-            ->select('count(*) as count, ceil(count(*)/'.$args['delimiter'].') as all_page')
+            ->select('count(*) as count, ceil(count(*)/'.$params->delimiter.') as all_page')
             ->from('works')
-            ->join('users', 'users.id = works.user_id', 'left')
-            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
+            ->join('users', 'users.id = works.user_id', 'left'); //set
 
         $this->db->stop_cache();
     	$works = $this->db->get();

@@ -49,9 +49,14 @@ class work extends CI_Controller {
                     }
                 }
 
-                $page_info = $this->db
-                    ->select('count(*) as count, ceil(count(*)/'.$args['delimiter'].') as all_page')
-                    ->get('works')->result_array();
+                $page_info = $this->work_model->get_list_count(array(
+                    'delimiter' => $args['delimiter'],
+                    'only_enabled'=> $args['only_enabled'],
+                    'keywords' => $args['keywords'],
+                    'order_by' => $$args['order'],
+                    'from' => $args['period'],
+                    'q' => $args['search'],
+                ));
 
 
                 if(is_array($args['search'])&&count($args['search'])>0){
