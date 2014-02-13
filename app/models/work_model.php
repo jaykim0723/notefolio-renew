@@ -255,7 +255,7 @@ class work_model extends CI_Model {
             'page'   => $params->page,
             'row'   => $row
         );
-        if(sizeof($rows)==0){
+        if(!isset($row)){
             $data->status = 'fail';
             return $data;
         }
