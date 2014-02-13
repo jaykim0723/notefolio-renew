@@ -704,8 +704,7 @@ class work_model extends CI_Model {
             if(!isset($params->{$key}))
                 $params->{$key} = $value;
         }
-        var_export($params);
-        exit();
+        
         $data = (object)array(
                 'status' => 'fail',
                 'message' => 'no_process'
