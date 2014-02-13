@@ -43,7 +43,7 @@ class Gallery extends CI_Controller {
             'from' => $from,
             'q' => $q,
         ));
-
+        exit();
         $work_list->work_categories = $work_categories;
         $work_list->q = $q;
         $work_list->order = $order;
