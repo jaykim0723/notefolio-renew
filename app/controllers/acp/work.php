@@ -43,6 +43,8 @@ class work extends CI_Controller {
                 if(!isset($args['allow_enabled'])) $args['allow_enabled'] = true;
                 if(!isset($args['allow_disabled'])) $args['allow_disabled'] = true;
                 if(!isset($args['allow_deleted'])) $args['allow_deleted'] = true;
+                if(!isset($args['exclude_enabled'])) $args['exclude_enabled'] = false;
+                if(!isset($args['exclude_disabled'])) $args['exclude_disabled'] = false;
                 if(!isset($args['exclude_deleted'])) $args['exclude_deleted'] = false;
                 if(!isset($args['period'])) $args['period'] = 'all';
                 if(!isset($args['q'])) $args['q'] = '';
@@ -50,6 +52,11 @@ class work extends CI_Controller {
                 $page_info = $this->work_model->get_list_count(array(
                     'delimiter' => $args['delimiter'],
                     'allow_enabled'=> $args['allow_enabled'],
+                    'allow_disabled'=> $args['allow_disabled'],
+                    'allow_deleted'=> $args['allow_deleted'],
+                    'exclude_enabled'=> $args['exclude_enabled'],
+                    'exclude_disabled'=> $args['exclude_disabled'],
+                    'exclude_deleted'=> $args['exclude_deleted'],
                     'keywords' => $args['keywords'],
                     'order_by' => $args['order'],
                     'from' => $args['period'],
@@ -64,6 +71,11 @@ class work extends CI_Controller {
                     'page' => $args['page'],
                     'delimiter' => $args['delimiter'],
                     'allow_enabled'=> $args['allow_enabled'],
+                    'allow_disabled'=> $args['allow_disabled'],
+                    'allow_deleted'=> $args['allow_deleted'],
+                    'exclude_enabled'=> $args['exclude_enabled'],
+                    'exclude_disabled'=> $args['exclude_disabled'],
+                    'exclude_deleted'=> $args['exclude_deleted'],
                     'keywords' => $args['keywords'],
                     'order_by' => $args['order'],
                     'from' => $args['period'],
