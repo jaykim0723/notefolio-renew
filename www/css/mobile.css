@@ -403,6 +403,7 @@ html, body {
 #search_form .form-control {
 	border:#fff;
 	height: 38px;
+	padding-left: 18px !important;
 }
 #search_form .btn.dropdown-toggle,  #search_form .form-control {
 	border-radius: 2em ;
@@ -598,6 +599,7 @@ html, body {
 		background:#fff;
 		border-radius:5px;
 		margin-bottom: 10px;
+		margin-top: 20px;
 	}
 	#alarm-popup-title {
 		display: none !important;
