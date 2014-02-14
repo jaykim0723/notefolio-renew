@@ -287,6 +287,9 @@ html {
 	font-size: 15px;
 	color: #222;
 }
+.pad7 {
+	padding-top:7px;
+}
 .notefolio-radio {
 	font-size: 12px;
 	font-family: "NanumGothic";
@@ -584,7 +587,15 @@ li#trash-bin{
 	position: absolute;
 	bottom: 10px;
 	width: 262px;
+	font-weight: normal;
+	background: #d1d1d1;
+
 }
+#work-submit-wrapper button:hover {
+	background:#2ac5c6;
+	color:#fff;
+}
+
 @media (max-width:1199px){
 	#work-submit-wrapper button {
 		width: 212px;
