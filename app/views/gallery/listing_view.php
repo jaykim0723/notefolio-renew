@@ -31,7 +31,7 @@
 						
 						<div class="col-md-3 col-sm-6">
 							<div class="input-group">
-			  					<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+			  					<!-- <span class="input-group-addon"></span> -->
 								<select class="" name="from" id="from" onchange="$('#gallery-search-form').submit()">
 									<option value="all"<?=($from=="all")?' selected':''?>>전체 기간</option>
 									<option value="day"<?=($from=="day")?' selected':''?>>오늘</option>
