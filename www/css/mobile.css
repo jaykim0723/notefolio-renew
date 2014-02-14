@@ -393,6 +393,20 @@ html, body {
 #gallery-search-form {
 	margin-bottom: 20px;
 	padding: 13px;
+	margin-top: 5px;
+}
+@media (max-width: 991px){
+		#gallery-search-form {
+		margin-top: 0px;
+		background: #fff;
+		}
+}
+@media (max-width: 767px) {
+	#gallery-search-form {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+
 }
 #gallery-search-form .bootstrap-select {
 	width: 100%;
