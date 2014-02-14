@@ -110,9 +110,8 @@
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
-            <li><a href="icons.html">분석</a></li>
-            <li><a href="icons.html">Icons</a></li>
-            <li><a href="icons.html">Icons</a></li>
+            <li><a href="/acp/statics/research">분석</a></li>
+            <li><a href="/acp/statics/stat">현황</a></li>
           </ul>
         </li>
       </ul>
