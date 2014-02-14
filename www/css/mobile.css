@@ -691,6 +691,7 @@ html, body {
 #feed-tab .active a {
 	color: #222 !important;
 	font-weight: bold;
+	border-color: #fff;
 }
 
 
