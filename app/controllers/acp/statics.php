@@ -13,22 +13,11 @@ class Statics extends CI_Controller
     
     function __construct()
     {
+
         parent::__construct();
-        $this->load->library('acp');
-        
-        $this->title = get_class($this);
-        $this->data['acp_menu_html'] =  $this->acp->get_menu(strtolower($this->title));
-        
-        if ($message = $this->session->flashdata('message')) {
-            $this->load->view('auth/general_message', array('message' => $message));
-        } else if ($this->acp->is_elevated()==0) {     // not elevated
-            redirect('/acp/auth/login/?go_to=/'.$this->uri->uri_string());
-        }
-        
-        $this->load->model('api/work_model');
-        $this->load->model('db/work_db');
-		
-        $this->load->helper(array('form'));
+        $this->nf->admin_check();
+
+        $this->load->helper('form');
     }
 
     /*
