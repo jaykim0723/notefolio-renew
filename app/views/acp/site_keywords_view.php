@@ -7,17 +7,75 @@ $keyword = array(
     'style' =>  "width: 100%; height: 5em;"
 );
 
-?>
-<div class="main">
+?><div class="main">
   <div class="main-inner">
-      <div class="container">
-
-
-    <h2>키워드</h2>
-    <div class="info">
-      <p>키워드를 추가 및 삭제할 수 있습니다.</p>
-      <p>저장을 누를 때까지 반영하지 않습니다.</p>
+    <div class="container">
+      <div class="row">
+        <div class="widget ">
+          <div class="widget-header">
+            <i class="icon-user"></i>
+            <h3>키워드</h3>
+            <div class="alert alert-info">
+              <p>키워드를 추가 및 삭제할 수 있습니다.</p>
+              <p>저장을 누를 때까지 반영하지 않습니다.</p>
+            </div>
+          </div>
+          <!-- /widget-header -->
+          <div class="widget-content">
+            <div class="container">
+              <p>전체: <?=$all_count?>개</p>
+              <p>페이지: <?=$page?>/<?=$all_page?> 페이지</p>
+            </div>
+            <div class="container">
+              <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>아이디</th>
+                      <th>실명</th>
+                      <th>이메일</th>
+                      <th>가입일</th>
+                      <th>
+                        <? for ($i=0;$i<11;$i++) { ?>
+                        <i class="icon-wrench"></i>
+                        <? } ?>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <? foreach ($rows as $key=>$row) { ?>
+                    <tr>
+                      <td><a href="/acp/user/member/view/id/<?=$row->id?>"><?=$row->id?></a></td>
+                      <td><a href="/acp/user/member/view/id/<?=$row->id?>"><?=$row->username?></a></td>
+                      <td><a href="/acp/user/member/view/id/<?=$row->id?>"><?=$row->realname?></a></td>
+                      <td><?=$row->email?></td>
+                      <td><?=$row->created?></td>
+                      <td>
+                        <a href="/acp/user/member/view/id/<?=$row->id?>"><span class="btn btn-info">보기</span></a>
+                        <a href="/acp/user/member/edit/id/<?=$row->id?>"><span class="btn">수정</span></a>
+                        <a href="/acp/user/member/del/id/<?=$row->id?>"><span class="btn btn-danger">삭제</span></a>
+                      </td>
+                    </tr>
+                    <? } ?>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /table-responsive -->
+              <?=get_paging($params=array('now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/user/member/list'))?>
+            </div>
+          </div>
+          <!-- /widget-content -->
+        </div>
+      </div>
+      
+      <!-- /row --> 
     </div>
+    <!-- /container --> 
+  </div>
+  <!-- /main-inner --> 
+</div>
+<!-- /main -->
 
     <table class="table table-bordered" id="keyword-list">
       <caption></caption>
