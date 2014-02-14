@@ -397,10 +397,21 @@ html, body {
 #gallery-search-form .bootstrap-select {
 	width: 100%;
 }
+#gallery-search-form .filter-option {
+	left: 17px !important;
+}
+#search_form .form-control {
+	border:#fff;
+	height: 38px;
+}
 #search_form .btn.dropdown-toggle,  #search_form .form-control {
 	border-radius: 2em ;
 	padding: 9px 12px;
 	font-size: 13px;
+}
+#search_form .btn.dropdown-toggle:hover, #search_form .form-control:hover {
+	border-color: #fff;
+	color: #2ac5c6;
 }
 .thumbnail-list {
 	overflow: hidden;
