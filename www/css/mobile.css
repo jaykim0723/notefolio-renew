@@ -1578,6 +1578,7 @@ html.auth body {
 }
 .form-group .btn-pointgreen .spi-email_white {
 	margin-right:5px;
+	margin-top: 2px;
 }
 #contact_form .col-sm-3.control-label {
 	margin-left: -10%;
