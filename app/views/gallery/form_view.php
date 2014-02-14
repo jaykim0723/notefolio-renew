@@ -103,7 +103,7 @@
 				</div>
 
 
-				<h4 class="pad7 class="hide-h2"">동영상여부</h4>
+				<h4 class="pad7">동영상여부</h4>
 				<div class="control-group">
                     <label class="notefolio-radio inline<?if($row->is_video=='y'){?> checked<?}?>">
                         <input type="radio" name="is_video" value="y" <?if($row->is_video=='y'){?> checked<?}?>> 예
@@ -116,7 +116,7 @@
 
 
 				
-				<h4 class="hide-h2">공개여부</h4>
+				<h4 class="pad7">공개여부</h4>
 				<div class="control-group">
                     <label class="notefolio-radio inline<?php echo $row->status!='disbaled' ? 'checked' : ''?>">
                         <input type="radio" name="status" value="enabled" <?php echo $row->status!='disbaled' ? 'checked' : ''?>> 공개
@@ -130,7 +130,7 @@
 
 
 
-				<h4 class="hide-h2">충실도 <a class="tip" href="/info/faq#discoverbility" target="_blank">자세히보기</a></h4>
+				<h4 class="pad7">충실도 <a class="tip" href="/info/faq#discoverbility" target="_blank">자세히보기</a></h4>
 				<div id="work-discoverbility"><span style="width:0%;"></span></div>
 
 
