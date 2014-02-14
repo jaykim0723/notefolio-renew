@@ -1344,7 +1344,7 @@ html.auth body {
 	margin-top: 0px;
 	width: 100%;
 }
-.btn-darkgray:hover, .btn-darkgray2:hover, .btn-pointgreen:hover, .btn-pointgreen:active {
+.btn-darkgray:hover, .btn-darkgray2:hover, .btn-pointgreen:hover, .btn-pointgreen:active, .search-green:active {
 	color:#fff;
 }
 .search-green {
