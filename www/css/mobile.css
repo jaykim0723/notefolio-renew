@@ -1347,6 +1347,14 @@ html.auth body {
 .btn-darkgray:hover, .btn-darkgray2:hover, .btn-pointgreen:hover, .btn-pointgreen:active {
 	color:#fff;
 }
+.search-green {
+	padding: 9px 9px 6px;
+	width: 80%;
+	float: right;
+	font-family: "NanumGothic";
+	font-weight: normal;
+	margin-bottom: 0;
+}
 
 .auth-or {
 	color: #bbb;
