@@ -104,8 +104,8 @@
 				</div>
 
 
-				<h4 class="pad7" style="background: #fff;margin-bottom: 0;padding-top: 20px;padding-left: 15px;padding-bottom: 10px;">동영상여부</h4>
-				<div class="control-group" style="background: #fff;margin-top: -28px;padding-bottom: 15px;padding-right: 15px;">
+				<h4 class="pad7" style="background: #fff;margin-bottom: 0;padding-top: 20px;padding-left: 15px;padding-bottom: 20px;">동영상여부</h4>
+				<div class="control-group" style="background: #fff;margin-top: -38px;padding-right: 15px;float: right;">
                     <label class="notefolio-radio inline<?if($row->is_video=='y'){?> checked<?}?>">
                         <input type="radio" name="is_video" value="y" <?if($row->is_video=='y'){?> checked<?}?>> 예
                     </label>
@@ -117,8 +117,8 @@
 
 
 				
-				<h4 class="pad7">공개여부</h4>
-				<div class="control-group">
+				<h4 class="pad7" style="background: #fff;margin-top: 0;border-top: 1px solid #efefef;padding-top: 18px;padding-bottom: 17px;padding-left: 15px;">공개여부</h4>
+				<div class="control-group" style="float: right;margin-top: -45px;padding-right: 15px;">
                     <label class="notefolio-radio inline<?php echo $row->status!='disbaled' ? 'checked' : ''?>">
                         <input type="radio" name="status" value="enabled" <?php echo $row->status!='disbaled' ? 'checked' : ''?>> 공개
                     </label>
