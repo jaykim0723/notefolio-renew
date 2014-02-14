@@ -39,7 +39,7 @@ class User extends CI_Controller {
 				$args['get_profile'] = true;
 				$args['get_sns_fb'] = true;
 				$data = $this->user_model->get_info($args);
-                var_export($data);
+                var_export($args);
                 exit();
 			break;
 			default:
