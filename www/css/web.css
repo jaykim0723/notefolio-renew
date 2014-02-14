@@ -607,10 +607,11 @@ li#trash-bin{
 
 #work-discoverbility {
 	display: block;
-	background: #888;
+	background: #fff;
 	overflow: hidden;
 	height: 20px;
 	width:100%;
+	border-radius: 2em;
 }
 #work-discoverbility span {
 	display: block;
