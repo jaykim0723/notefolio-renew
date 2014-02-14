@@ -924,7 +924,7 @@ html, body {
 	background: #2ac5c6;
 	color: #fff;
 }
-.block-image {
+.block-image, .block-text, .block-video, .block-line {
 	text-align: center;
 }
 .block-image img {
