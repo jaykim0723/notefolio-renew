@@ -399,6 +399,8 @@ html, body {
 }
 #search_form .btn.dropdown-toggle,  #search_form .form-control {
 	border-radius: 2em ;
+	padding: 9px 12px;
+	font-size: 13px;
 }
 .thumbnail-list {
 	overflow: hidden;
