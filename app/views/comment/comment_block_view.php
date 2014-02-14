@@ -13,8 +13,8 @@
 		<div class="comment-control-area-mobile visible-xs visible-sm">
 			<?php if (USER_ID!=0): ?>
 			<div class="btn-group pull-right">
-				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" >
-					<span class="caret" style="border-top-color:#fff;cursor:default;<?php if (USER_ID!=0 && $row->user->user_id==USER_ID){echo 'border-top-color:#ccc !important;cursor:pointer !important';} ?>"></span>
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="cursor:default;<?php if (USER_ID!=0 && $row->user->user_id==USER_ID){echo 'cursor:pointer !important';} ?>">
+					<span class="caret" style="border-top-color:#fff;<?php if (USER_ID!=0 && $row->user->user_id==USER_ID){echo 'border-top-color:#ccc !important;';} ?>"></span>
 				</button>
 				<ul class="dropdown-menu">
 					<?php if (USER_ID!=0 && $row->user->user_id==USER_ID): ?>
