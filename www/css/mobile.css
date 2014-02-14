@@ -408,6 +408,7 @@ html, body {
 	border-radius: 2em ;
 	padding: 9px 12px;
 	font-size: 13px;
+	border-color: #fff;
 }
 #search_form .btn.dropdown-toggle:hover, #search_form .form-control:hover {
 	border-color: #fff;
@@ -1348,12 +1349,13 @@ html.auth body {
 	color:#fff;
 }
 .search-green {
-	padding: 9px 9px 6px;
+	padding: 10px 9px 5px;
 	width: 80%;
 	float: right;
 	font-family: "NanumGothic";
 	font-weight: normal;
 	margin-bottom: 0;
+	font-size: 13px;
 }
 
 .auth-or {
