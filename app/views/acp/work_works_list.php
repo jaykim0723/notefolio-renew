@@ -16,7 +16,7 @@
               <p>페이지: <?=$page?>/<?=$all_page?> 페이지</p>
             </div>
             <div class="container">
-              <div class="table-responsive">
+              <!-- div class="table-responsive" -->
                 <table class="table table-striped table-hover">
                   <thead>
                     <tr>
@@ -84,7 +84,7 @@
                 <div class="row-fluid">
                   <?=get_paging($params=array('now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/work/works/list'))?>
                 </div>
-              </div>
+              <!-- /div -->
             </div>
           </div>
         </div>
