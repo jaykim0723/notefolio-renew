@@ -15,13 +15,13 @@ $keyword = array(
           <div class="widget-header">
             <i class="icon-user"></i>
             <h3>키워드</h3>
+          </div>
+          <!-- /widget-header -->
+          <div class="widget-content">
             <div class="alert alert-info">
               <p>키워드를 추가 및 삭제할 수 있습니다.</p>
               <p>저장을 누를 때까지 반영하지 않습니다.</p>
             </div>
-          </div>
-          <!-- /widget-header -->
-          <div class="widget-content">
             <table class="table table-striped table-hover table-bordered" id="keyword-list">
               <caption></caption>
               <thead>
