@@ -1373,6 +1373,15 @@ html.auth body {
 	margin-bottom: 0;
 	font-size: 13px;
 }
+@media (max-width: 991px) {
+	.search-center {
+		text-align: center;
+	}
+	.search-green {
+		float:none !important;
+	}
+
+}
 
 .auth-or {
 	color: #bbb;

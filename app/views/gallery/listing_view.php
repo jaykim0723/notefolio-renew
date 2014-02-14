@@ -48,7 +48,7 @@
 							<input class="col-xs-2 form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
 						</div>
 
-						<div class="col-md-2 col-sm-12">
+						<div class="col-md-2 col-sm-12 search-center">
 							<button type="submit" class="btn btn-pointgreen search-green"><i class="spi spi-search_white" style="margin-right: 5px;margin-top: -3px;margin-bottom: 3px;">search_white</i>작품 조회</button>
 						</div>
 					</div>
