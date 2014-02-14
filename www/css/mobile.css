@@ -927,6 +927,9 @@ html, body {
 .block-image, .block-text, .block-video, .block-line {
 	text-align: center;
 }
+.block-text {
+	margin-top: 10px;
+}
 .block-image img {
 	max-width: 100%;
 }
