@@ -586,7 +586,9 @@ html, body {
 		display: none !important;
 	}
 }
-
+#feed-activity-list a {
+	margin-left: 10px;
+}
 .feed-activity-list a {
 	display:block;
 	text-decoration: none;
@@ -673,7 +675,9 @@ html, body {
 #alarm-more .spi-down_point {
 	display:none;
 }
-
+.activity-more-link:hover {
+	border-color: #fff;
+}
 
 
 
