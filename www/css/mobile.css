@@ -679,8 +679,19 @@ html, body {
 	border-color: #fff;
 }
 
+#feed-tab {
+	margin-top: 20px;
+	font-size: 13px;
+}
 
-
+#feed-tab li a {
+	font-family: "NanumGothic";
+	color: #7a7880;
+}
+#feed-tab .active a {
+	color: #222 !important;
+	font-weight: bold;
+}
 
 
 
