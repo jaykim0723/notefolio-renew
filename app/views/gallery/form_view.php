@@ -71,7 +71,7 @@
 
 				<div>
 					<div class="pull-right btn-group" style="padding-bottom:5px;">
-						<button id="btn-upload-cover-wrapper" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" style="height: 36px;padding: 1px 18px;">
+						<button id="btn-upload-cover-wrapper" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" style="height: 36px;padding: 1px 18px 1px 170px;">
 						 	커버업로드
 						  <span class="caret"></span>
 						</button>
@@ -86,7 +86,8 @@
 				<div class="row" id="cover-preview">
 					<div class="col-md-12" style="display:none;">
 						<div>
-							<img src="/img/coverupload.png" alt=""/>
+							커버업로드 버튼을 클릭해주세요
+							<!-- <img src="/img/coverupload.png" alt=""/> -->
 						</div>
 					</div>
 
