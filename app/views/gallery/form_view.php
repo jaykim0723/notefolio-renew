@@ -18,10 +18,10 @@
 		<div class="row">
 			<!-- 작품영역 시작 -->
 			<div class="col-md-9">
-				<h4>제목</h4>
-				<input id="title" name="title" type="text" class="form-control input-lg col-md-12" placeholder="Title"/>
+				<h4 class="hide-h2">제목</h4>
+				<input id="title" name="title" type="text" class="form-control input-lg col-md-12" style="border-color: #fff;box-shadow: none !important;"placeholder="Title"/>
 				<br>
-				<h4>내용</h4>
+				<h4 class="hide-h2">내용</h4>
 				<ul style="margin-top:0;" id="content-block-list" class="work-info list-unstyled work-contents">
 				</ul>
 				<div id="content-multiple">
