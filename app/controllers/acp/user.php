@@ -25,7 +25,7 @@ class User extends CI_Controller {
 	public function member($mode='list')
 	{
 		if($this->uri->segment(4)==FALSE) redirect('/acp/user/member/list');
-		$args = $this->uri->uri_to_assoc(5);
+		$args = $this->uri->uri_to_assoc(4);
 
 		switch($mode){
 			case "list":
@@ -39,6 +39,8 @@ class User extends CI_Controller {
 				$args['get_profile'] = true;
 				$args['get_sns_fb'] = true;
 				$data = $this->user_model->get_info($args);
+                var_export($data);
+                exit();
 			break;
 			default:
 				exit('error');
