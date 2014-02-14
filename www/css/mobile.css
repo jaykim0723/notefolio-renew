@@ -1124,6 +1124,9 @@ form.comment-block.create textarea {
 	}
 }
 
+.reply-display {
+	display: none;
+}
 
 /* note */
 .note-wrapper {
