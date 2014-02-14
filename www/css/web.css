@@ -611,6 +611,7 @@ li#trash-bin{
 }
 #work-sidebar-inner .bootstrap-select {
 	width: 100%;
+	margin-bottom: 0;
 }
 #gallery-form {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";

@@ -62,7 +62,7 @@
 
 
 				<h4 class="hide-h2">태그</h4>
-				<input id="tags" name="tags" type="text" class="form-control" placeholder="태그 입">
+				<input id="tags" name="tags" type="text" class="form-control" placeholder="  태그 입력">
 
 
 
