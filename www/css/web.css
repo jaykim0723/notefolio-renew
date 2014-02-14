@@ -284,6 +284,8 @@ html {
 .work-info h2,
 #work-form h4 {
 	font-family: 'Nanum Gothic', '나눔고딕';
+	font-size: 15px;
+	color: #222;
 }
 #content-block-list > li {
 	position: relative;
