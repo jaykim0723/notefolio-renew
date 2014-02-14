@@ -32,8 +32,8 @@
 
 			<div id="work-sidebar-inner" class="col-md-3">
 
-				<h4>카테고리</h4>
-				<select name="keywords" id="keywords" multiple title="최대 2개까지 선택">
+				<h4 class="hide-h2">카테고리</h4>
+				<select name="keywords" id="keywords" multiple title="최대 2개까지 카테고리 선택">
 					<?php 
 					$this->load->config('keyword', TRUE);
 					$keyword_list = $this->config->item('keyword', 'keyword');
@@ -44,7 +44,8 @@
 				</select>
 
 				<div id="ccl-wrapper">
-					<h4>CCL <a class="tip" href="/info/faq#ccl" target="_blank">자세히보기</a></h4>
+					<div style="position:absolute;top: 60px;right: -15px;"><a class="tip" href="/info/faq#ccl" target="_blank"><i class="spi spi-q"></i></a></div>
+					<h4 class="hide-h2">CCL <a class="tip" href="/info/faq#ccl" target="_blank">자세히보기</a></h4>
 					<select name="ccl" id="ccl" class="" title="Choose one of the following...">
 						<option value="">CCL 표시 안함</option>
 						<option value="BY">저작자</option>
@@ -60,8 +61,8 @@
 
 
 
-				<h4>태그</h4>
-				<input id="tags" name="tags" type="text" class="form-control">
+				<h4 class="hide-h2">태그</h4>
+				<input id="tags" name="tags" type="text" class="form-control" placeholder="태그 입">
 
 
 
@@ -69,8 +70,8 @@
 				
 
 				<div>
-					<div class="pull-right btn-group">
-						<button id="btn-upload-cover-wrapper" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+					<div class="pull-right btn-group" style="padding-bottom:5px;">
+						<button id="btn-upload-cover-wrapper" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" style="height: 36px;">
 						 	커버업로드
 						  <span class="caret"></span>
 						</button>
@@ -79,7 +80,7 @@
 						  <li><a id="btn-select-cover" href="#">작품내용 중 선택</a></li>
 						</ul>
 					</div>	
-					<h4>커버</h4>
+					<h4 style="padding-top: 10px;color: #efefef;">커버</h4>
 				</div>
 
 				<div class="row" id="cover-preview">
@@ -102,7 +103,7 @@
 				</div>
 
 
-				<h4 class="pad7">동영상여부</h4>
+				<h4 class="pad7 class="hide-h2"">동영상여부</h4>
 				<div class="control-group">
                     <label class="notefolio-radio inline<?if($row->is_video=='y'){?> checked<?}?>">
                         <input type="radio" name="is_video" value="y" <?if($row->is_video=='y'){?> checked<?}?>> 예
@@ -115,7 +116,7 @@
 
 
 				
-				<h4 class="pad7">공개여부</h4>
+				<h4 class="hide-h2">공개여부</h4>
 				<div class="control-group">
                     <label class="notefolio-radio inline<?php echo $row->status!='disbaled' ? 'checked' : ''?>">
                         <input type="radio" name="status" value="enabled" <?php echo $row->status!='disbaled' ? 'checked' : ''?>> 공개
@@ -129,7 +130,7 @@
 
 
 
-				<h4 class="pad7">충실도 <a class="tip" href="/info/faq#discoverbility" target="_blank">자세히보기</a></h4>
+				<h4 class="hide-h2">충실도 <a class="tip" href="/info/faq#discoverbility" target="_blank">자세히보기</a></h4>
 				<div id="work-discoverbility"><span style="width:0%;"></span></div>
 
 
