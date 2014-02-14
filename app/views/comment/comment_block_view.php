@@ -14,7 +14,7 @@
 			<?php if (USER_ID!=0): ?>
 			<div class="btn-group pull-right">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" >
-					<span class="caret" style="<?php if (USER_ID!=0 && $row->user->user_id==USER_ID){echo 'display:inline-block !important'} ?>"></span>
+					<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
 					<?php if (USER_ID!=0 && $row->user->user_id==USER_ID): ?>
