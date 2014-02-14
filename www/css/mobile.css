@@ -43,6 +43,10 @@ body * {
 	font-weight: normal;
 	float: right;
 }
+.tip:hover {
+	text-decoration: none;
+	color: #2ac5c6;
+}
 
 .placeholder { color: #b2b2b2; }
 
