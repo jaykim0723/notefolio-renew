@@ -392,9 +392,13 @@ html, body {
 /* normal gallery list */
 #gallery-search-form {
 	margin-bottom: 20px;
+	padding: 13px;
 }
 #gallery-search-form .bootstrap-select {
 	width: 100%;
+}
+#search_form .btn.dropdown-toggle,  #search_form .form-control {
+	border-radius: 2em ;
 }
 .thumbnail-list {
 	overflow: hidden;
