@@ -13,7 +13,7 @@
 		<div class="comment-control-area-mobile visible-xs visible-sm">
 			<?php if (USER_ID!=0): ?>
 			<div class="btn-group pull-right">
-				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="display:none;<?php if (USER_ID!=$row->user_id){echo 'display:inline-block !important'; } ?>">
 					<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
