@@ -6,7 +6,7 @@
  * 
  */
 
-class Activity extends NF_ACP_Controller
+class Activity extends CI_Controller
 {
     private $title;
     private $data;
