@@ -580,7 +580,6 @@ html, body {
 		background:#fff;
 		border-radius:5px;
 		margin-bottom: 10px;
-		margin-top:20px;
 	}
 	#alarm-popup-title {
 		display: none !important;
@@ -682,6 +681,7 @@ html, body {
 #feed-tab {
 	margin-top: 20px;
 	font-size: 13px;
+	border-bottom: none;
 }
 
 #feed-tab li a {
