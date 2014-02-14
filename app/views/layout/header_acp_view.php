@@ -100,9 +100,9 @@
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
-            <li><a href="/acp/activity/logs/"></a>활동로그</li>
-            <li><a href="/acp/activity/alarms/"></a>알림</li>
-            <li><a href="/acp/activity/feeds/"></a>피드</li>
+            <li><a href="/acp/activity/logs/">활동로그</a></li>
+            <li><a href="/acp/activity/alarms/">알림</a></li>
+            <li><a href="/acp/activity/feeds/">피드</a></li>
           </ul>
         </li>
         <li id="menu-stat" class="dropdown<?=($this->uri->segment(2)=='stat')?' active':''?>">
