@@ -71,7 +71,7 @@
 
 				<div>
 					<div class="pull-right btn-group" style="padding-bottom:5px;">
-						<button id="btn-upload-cover-wrapper" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" style="height: 36px;">
+						<button id="btn-upload-cover-wrapper" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" style="height: 36px;padding: 1px 18px;">
 						 	커버업로드
 						  <span class="caret"></span>
 						</button>

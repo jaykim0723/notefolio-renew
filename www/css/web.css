@@ -638,6 +638,10 @@ li#trash-bin{
 }
 #cover-preview .col-md-12 div {
 	background: #fff;
+	padding: 20px;
+	text-align: center;
+	font-family: "NanumGothic";
+	color: #7a7880;
 }
 #cover-preview .col-md-12 img {
 	width: 100%;
