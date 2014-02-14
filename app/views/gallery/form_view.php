@@ -71,7 +71,7 @@
 
 				<div>
 					<div class="pull-right btn-group" style="padding-bottom:5px;">
-						<button id="btn-upload-cover-wrapper" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" style="height: 36px;padding: 1px 18px 1px 170px;">
+						<button id="btn-upload-cover-wrapper" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" style="height: 36px;padding: 1px 18px 1px 171px;border-color: #fff;">
 						 	커버업로드
 						  <span class="caret"></span>
 						</button>
@@ -83,7 +83,7 @@
 					<h4 style="padding-top: 10px;color: #efefef;">커버</h4>
 				</div>
 
-				<div class="row" id="cover-preview">
+				<div class="row" id="cover-preview" style="margin-bottom: 20px;">
 					<div class="col-md-12" style="display:none;">
 						<div>
 							커버업로드 버튼을 클릭해주세요
@@ -104,8 +104,8 @@
 				</div>
 
 
-				<h4 class="pad7">동영상여부</h4>
-				<div class="control-group">
+				<h4 class="pad7" style="background: #fff;margin-bottom: 0;padding-top: 20px;padding-left: 15px;padding-bottom: 10px;">동영상여부</h4>
+				<div class="control-group" style="background: #fff;margin-top: -28px;padding-bottom: 15px;padding-right: 15px;">
                     <label class="notefolio-radio inline<?if($row->is_video=='y'){?> checked<?}?>">
                         <input type="radio" name="is_video" value="y" <?if($row->is_video=='y'){?> checked<?}?>> 예
                     </label>
