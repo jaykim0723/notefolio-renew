@@ -29,7 +29,7 @@
 							</select>
 						</div>
 						
-						<div class="col-md-3 col-sm-6">
+						<div class="col-md-2 col-sm-6">
 							<div class="input-group">
 			  					<!-- <span class="input-group-addon"></span> -->
 								<select class="" name="from" id="from" onchange="$('#gallery-search-form').submit()">
@@ -48,8 +48,8 @@
 							<input class="col-xs-2 form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
 						</div>
 
-						<div class="col-md-1 col-sm-12">
-							<button type="submit" class="btn btn-primary">조회</button>
+						<div class="col-md-2 col-sm-12">
+							<button type="submit" class="btn btn-pointgreen search-green"><i class="spi spi-search_white" style="margin-right: 5px;">search_white</i>조회</button>
 						</div>
 					</div>
 
