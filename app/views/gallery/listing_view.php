@@ -88,7 +88,7 @@ $querystring = (!empty($_SERVER['QUERY_STRING']))?'?'.$_SERVER['QUERY_STRING']:'
 <script>
 	$('#search_form').slideUp(0).fadeOut(0);
 	$(function(){
-		$('#search_form').stop(true, true).slideUp(500).fadeIn(500);
+		$('#search_form').stop(true, true).slideUp(1500).fadeIn(500);
 		$('.more-link').trigger('click'); // more버튼을 무조건 한 번 발생시켜준다.
 	})
 </script>
