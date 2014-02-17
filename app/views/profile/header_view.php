@@ -31,7 +31,7 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 		<div id="profile-inner" style="<?php if (USER_ID!=$row->user_id){echo 'padding-top:30px !important;'; } ?>">
 			<?php if($this->session->userdata('username')==$row->username): ?>
 			<div id="btn-edit-profile" class="pull-right btn-group">
-				<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+				<button type="button" class="btn btn-default btn-xs dropdown-toggle btn-profilemini" data-toggle="dropdown">
 				  <span class="text">정보 편집</span>
 				  <span class="caret"></span>
 				</button>
@@ -111,7 +111,7 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 	<?php if($this->session->userdata('username')==$row->username): ?>
 	<div id="btn-edit-cover">
 		<div class="pull-right btn-group">
-			<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+			<button type="button" class="btn btn-default btn-xs dropdown-toggle btn-profilemini" data-toggle="dropdown">
 			  <span class="text">배경 편집</span>
 			  <span class="caret"></span>
 			</button>
