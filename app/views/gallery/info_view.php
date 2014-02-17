@@ -99,7 +99,7 @@
 										<h2 class="work-title"><?php echo $row->title; ?>
 											<?php if (USER_ID==$row->user_id): ?>
 											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/update" class="work-btn btn-update-work">
-												edit
+												edit ·
 											</a>
 											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/delete" class="work-btn btn-delete-work">
 												delete
