@@ -55,7 +55,7 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 				<h2><a href="javascript:profileUtil.changeRealname();">
 					<?php 
 					if(USER_ID==$row->user_id && empty($row->realname)){
-						echo '<a href="javascript:profileUtil.changeKeywords();">작가명을 지정해주세요</a>';
+						echo '작가명을 지정해주세요';
 					} else {
 						echo $row->realname;
 					}
