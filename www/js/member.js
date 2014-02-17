@@ -944,8 +944,10 @@ var profileUtil = {
 		    onshow: function(){
 		    	setTimeout(function(){
 		    		$(':checkbox', '#dialog-change-keywords').on('click.dialog', function(){
-			    		if($(':checkbox:checked', $('#dialog-change-keywords')).length>2)
+			    		if($(':checkbox:checked', $('#dialog-change-keywords')).length>2){
+			        		msg.open('카테고리를 두개까지 선택하셔야 합니다.', 'error');
 			    			$(this).removeAttr('checked');
+			    		}
 			    	});
 		    	},500);
 		    	
