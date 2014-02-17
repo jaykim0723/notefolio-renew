@@ -67,7 +67,10 @@
 					$('head').append('<link id="style_datepicker" href="/css/datepicker.css" rel="stylesheet"/>');
 
 				$(function(){
-					profileUtil.statistics.setGround();
+					$('#loading-indicator').fadeIn();
+					$.when(profileUtil.statistics.setGround()).done(function(){
+						$('#loading-indicator').fadeOut();
+					});
 				})
 			</script>
 <?php if (!$this->input->is_ajax_request()): ?>
