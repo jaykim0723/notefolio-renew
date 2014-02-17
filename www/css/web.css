@@ -454,9 +454,10 @@ html {
 }
 #work-recent-list a.btn-more {
 	background: #fff;
-	padding: 5px 0;
+	padding: 12px 0 8px;
 	text-align: center;
 	line-height: 1em;
+	color: #7a7880;
 }
 #work-recent-list img {
 	float: left;
