@@ -12,7 +12,7 @@
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('feed/activity_inc_view', array('row'=>$row)) ?>
 					<?php endforeach ?>
-					<?php if(count($rows)==0) { ?>
+					<?php if($this->uri->segment(3)==1 && count($rows)==0) { ?>
 					<li class="empty-list">
 						새로운 알림이 없습니다.
 					</li>
