@@ -772,7 +772,7 @@ html, body {
 		padding: 20px 10px 20px 37px;
 	}
 	.work-info h2 {
-		font-size: 20px;
+		font-size: 20px !important;
 		margin-top: 7px;
 		color: #666;
 		font-weight: 300;
