@@ -989,7 +989,10 @@ var profileUtil = {
 			        cssClass: 'btn-primary',
 			        action: function(dialog){
 			        	var sns = {};
+			        	var emptyCnt = 0;
 			        	$('#dialog-change-sns').find('input').each(function(){
+			        		if($(this).val()=='')
+			        			emptyCnt++;
 			        		sns[$(this).attr('name')] = $(this).val();
 			        	});
 			        	// if(value.length < 3){
@@ -1001,6 +1004,10 @@ var profileUtil = {
 				        		$('#profile-sns-link').html('&nbsp;'+responseJSON.sns_string);
 				        		dialog.close();
 				        		msg.open('변경이 완료되었습니다.', 'success', '#profile-sns-link');
+
+				        		if(emptyCnt==$('#dialog-change-sns').find('input').length){
+				        			$('#profile-sns-link').html('자신의 소셜을 지정해주세요');
+				        		}
 			        		}else{
 			        			msg.open(responseJSON.msg, 'error');
 			        		}
