@@ -52,15 +52,26 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 				<img src="/data/profiles/<?php echo $row->username ?>_face.jpg?_=<?php echo substr($row->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
 			</div>
 			<div id="profile-info">
-				<h2><a href="javascript:profileUtil.changeRealname();">
+				<h2>
 					<?php 
-					if(USER_ID==$row->user_id && empty($row->realname)){
-						echo '작가명을 지정해주세요';
-					} else {
+					if(USER_ID==$row->user_id){
+					?>
+					<a href="javascript:profileUtil.changeRealname();">
+					<?php
+						if(empty($row->realname)){
+							echo '작가명을 지정해주세요';
+						} else {
+							echo $row->realname;
+						}
+					?>
+					</a>
+					<?php
+					}
+					else {
 						echo $row->realname;
 					}
 					?>
-				</a></h2>
+				</h2>
 				<h4 id="profile-keywords" data-value="<?php echo $row->user_keywords ?>">
 					&nbsp;
 					<?php 
