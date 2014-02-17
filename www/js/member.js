@@ -909,7 +909,7 @@ var profileUtil = {
 			        		msg.open('카테고리를 하나 이상을 선하셔야 합니다.');
 			        		return false;
 			        	}else if(value.length > 4){
-			        		msg.error('카테고리를 두개까지 선택하셔야 합니다.');
+			        		msg.open('카테고리를 두개까지 선택하셔야 합니다.', 'error');
 			        		return false;
 			        	}
 			        	$.post('/profile/change_keywords', {
