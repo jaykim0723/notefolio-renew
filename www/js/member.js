@@ -942,10 +942,13 @@ var profileUtil = {
 			    }
 		    ],
 		    onshow: function(){
-		    	$(':checkbox', '#dialog-change-keywords').on('click.dialog', function(){
-		    		if($(':checkbox:checked', $('#dialog-change-keywords')).length>2)
-		    			$(this).removeAttr('checked');
-		    	});
+		    	setTimeout(function(){
+		    		$(':checkbox', '#dialog-change-keywords').on('click.dialog', function(){
+			    		if($(':checkbox:checked', $('#dialog-change-keywords')).length>2)
+			    			$(this).removeAttr('checked');
+			    	});
+		    	},500);
+		    	
 		    },
 		    onhide: function(){
 		    	$(':checkbox', '#dialog-change-keywords').off('click.dialog')
