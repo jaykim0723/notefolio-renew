@@ -1,3 +1,5 @@
+
+
 <?php if (!$this->input->is_ajax_request()): ?>
 
 <section class="listing">
@@ -19,7 +21,11 @@
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('gallery/thumbnail_inc_view', array('row'=>$row->data)) ?>
 					<?php endforeach ?>
-
+					<?php if($this->uri->segment(3)==1 && count($rows)==0) { ?>
+					<li class="empty-list">
+						새로운 피드가 없습니다.
+					</li>
+					<?php } ?>
 				</ul>
 				<a href="/feed/listing/<?php echo ($page)?$page+1:2; ?>" class="more-link btn btn-default btn-block btn-more">more</a>
 
