@@ -55,11 +55,13 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 				<h2><a href="javascript:profileUtil.changeRealname();"><?php echo $row->realname; ?></a></h2>
 				<h4 id="profile-keywords" data-value="<?php echo $row->user_keywords ?>">
 					&nbsp;
-					<?php if(empty($row->user_keywords)){
-						echo '<a href="javascript:profileUtil.changeKeywords();">자신의 카테고리 지정해주세요</a>';
+					<?php 
+					if(USER_ID==$row->user_id && empty($row->user_keywords)){
+						echo '<a href="javascript:profileUtil.changeKeywords();">자신의 카테고리를 지정해주세요</a>';
 					} else
 						echo $this->nf->category_to_string($row->user_keywords, true); 
-					} ?>
+					}
+					?>
 					&nbsp;
 				</h4>
 			</div>
