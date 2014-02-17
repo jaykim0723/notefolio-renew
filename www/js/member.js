@@ -905,10 +905,10 @@ var profileUtil = {
 			        		if($(this).is(':checked'))
 			        			value += $(this).val();
 			        	});
-			        	if(value.length < 2){
-			        		msg.open('카테고리를 하나 이상을 선하셔야 합니다.');
+			        	if(value.length == 0){
+			        		msg.open('카테고리를 하나 이상을 선택하셔야 합니다.', 'error');
 			        		return false;
-			        	}else if(value.length > 4){
+			        	}else if(value.length > 2){
 			        		msg.open('카테고리를 두개까지 선택하셔야 합니다.', 'error');
 			        		return false;
 			        	}
@@ -933,14 +933,23 @@ var profileUtil = {
 			        action: function(dialog){
 			        	var value = '';
 			        	if($('#dialog-change-keywords').find(':checkbox:checked').length==0){
-			        		msg.open('1~3개를 하나 이상을 입력하셔야 합니다.');
+			        		msg.open('카테고리를 하나 이상을 선택하셔야 합니다.', 'error');
 			        		return false;
 			        	}
 						NFview.popCrop = null;
 			            dialog.close();
 			        }
 			    }
-		    ]
+		    ],
+		    onshow: function(){
+		    	$(':checkbox', '#dialog-change-keywords').on('click.dialog', function(){
+		    		if($(':checkbox:checked', $(this).parent()).length>2)
+		    			$(this).removeAttr('checked');
+		    	};
+		    },
+		    onhide: function(){
+		    	$(':checkbox', '#dialog-change-keywords').off('click.dialog')
+		    }
 		});
 		dialog.realize();
 		dialog.getModal().prop('id', 'dialog-change-keywords'); // cssClass 버그로 인해서 이 꼼수로..
