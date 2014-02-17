@@ -80,7 +80,7 @@
 						  <li><a id="btn-select-cover" href="#">작품내용 중 선택</a></li>
 						</ul>
 					</div>	
-					<h4 style="padding-top: 10px;color: #efefef;height: 26px;">커버</h4>
+					<h4 style="padding-top: 10px;color: #fff;height: 26px;">커버</h4>
 				</div>
 
 				<div class="row" id="cover-preview" style="margin-bottom: 20px;background: #fff;width: 263px;margin-left: 0px;padding-bottom: 10px;">
