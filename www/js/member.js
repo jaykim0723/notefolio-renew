@@ -945,7 +945,7 @@ var profileUtil = {
 		    	$(':checkbox', '#dialog-change-keywords').on('click.dialog', function(){
 		    		if($(':checkbox:checked', $(this).parent()).length>2)
 		    			$(this).removeAttr('checked');
-		    	};
+		    	});
 		    },
 		    onhide: function(){
 		    	$(':checkbox', '#dialog-change-keywords').off('click.dialog')
