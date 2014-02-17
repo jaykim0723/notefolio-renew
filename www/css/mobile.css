@@ -1901,7 +1901,7 @@ p.desc {
 	filter: alpha(opacity=80);
 }
 
-.btn-profilemini:active {
+.btn-profilemini:active, .btn-profilemini:focus {
 	opacity: 1;
 	-webkit-opacity: 1;
 	filter: alpha(opacity=100);
