@@ -12,13 +12,14 @@
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('feed/activity_inc_view', array('row'=>$row)) ?>
 					<?php endforeach ?>
+					<?php if(count($rows)==0) { ?>
+					<li class="empty-list">
+						새로운 알림이 없습니다.
+					</li>
+					<?php } ?>
 				</ul>
 				<?php if(count($rows)>0){ ?>
 				<a href="/alarm/listing/<?php echo $page+1; ?>" id="alarm-more" class="alarm-more-link btn btn-default btn-block btn-alarm-more alarm-height"><i class="spi spi-down"></i><i class="spi spi-down_point"></i>see more</a>
-				<?php } else { ?>
-				<div class="empty-list">
-					새로운 알림이 없습니다.
-				</div>
 				<?php } ?>
 <?php if (!$this->input->is_ajax_request()): ?>
 			</div>
