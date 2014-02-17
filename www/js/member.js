@@ -905,10 +905,10 @@ var profileUtil = {
 			        		if($(this).is(':checked'))
 			        			value += $(this).val();
 			        	});
-			        	if(value.length == 0){
+			        	if(value.length < 2){
 			        		msg.open('카테고리를 하나 이상을 선택하셔야 합니다.', 'error');
 			        		return false;
-			        	}else if(value.length > 2){
+			        	}else if(value.length > 4){
 			        		msg.open('카테고리를 두개까지 선택하셔야 합니다.', 'error');
 			        		return false;
 			        	}
