@@ -1901,6 +1901,9 @@ p.desc {
 	filter: alpha(opacity=80);
 }
 
+.btn-profilemini:hover {
+	border-color:#fff;
+}
 .btn-profilemini:active, .btn-profilemini:focus {
 	opacity: 1;
 	-webkit-opacity: 1;
