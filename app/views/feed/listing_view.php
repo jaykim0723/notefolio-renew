@@ -21,7 +21,7 @@
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('gallery/thumbnail_inc_view', array('row'=>$row->data)) ?>
 					<?php endforeach ?>
-					<?php echo var_export( (($this->uri->segment(3)==FALSE || $this->uri->segment(3)==1) && count($rows)==0), true )
+					<?php echo var_export( ($this->uri->segment(3)==FALSE || $this->uri->segment(3)==1) && count($rows)==0, true )
 					<?php if(($this->uri->segment(3)==FALSE || $this->uri->segment(3)==1) && count($rows)==0) { ?>
 					<li class="empty-list">
 						새로운 피드가 없습니다.
