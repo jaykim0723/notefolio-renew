@@ -392,11 +392,10 @@ var workUtil = {
     			scrollSensitivity: 10,
     			tolerance: "pointer",
 				start: function(event, ui){
-					sortHeight = $(this).height();
-					$(this).height($(this).height());
-					/*var posOrig = $(ui.helper).offset().top();
+					$(ui.helper).css({top:$(ui.helper).offset().top()+$('body').offset().top()})
+					posOrig = $(ui.helper).offset().top();
 
-                    $(window).scroll(function() {
+                    /*$(window).scroll(function() {
 						var pos = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
 						$(ui.helper).stop().scrollTop(position+posOrig);
 					});*/
