@@ -26,7 +26,6 @@ body {
 	margin-bottom: 0;
 }
 #content-wrap {
-	padding-top: 20px;
 }
 #btn-feed,
 #btn-alarm {
@@ -62,7 +61,7 @@ body {
 	
 }
 .mm-page {
-	margin-top: 90px;
+	/*margin-top: 90px;*/
 }
 
 
