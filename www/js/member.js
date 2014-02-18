@@ -392,7 +392,7 @@ var workUtil = {
     			scrollSensitivity: 10,
     			tolerance: "pointer",
 				start: function(event, ui){
-					$(ui.helper).css({top:($(ui.helper).offset().top()+$('body').offset().top())+'px'})
+					$(ui.helper).css({top:($(ui.item[0]).offset().top()+$('body').offset().top())+'px'})
 
                     /*$(window).scroll(function() {
 						var pos = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
