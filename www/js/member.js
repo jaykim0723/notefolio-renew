@@ -403,6 +403,11 @@ var workUtil = {
 						$(ui.helper).stop().scrollTop(position+posOrig);
 					});*/
 				},
+				sort: function(event, ui){
+					posTop = $(ui.helper).position().top;
+					$(ui.helper).css('top', (top+$(document).scrollTop())+"px");
+					console.log($(ui.helper).position().top);
+				},
 				stop: function(event, ui){
 					$(this).css("height","auto");
 					if($(ui.item[0]).hasClass('block-text')){
