@@ -779,13 +779,13 @@ var snsUtil = {
 //		console.log('site.js > snsUtil > kakaotalk');
 		//storylink://posting?post=[post]&appid=[appid]&appver=[appver]&apiver=[apiver]&appname=[appname]&urlinfo= [urlinfo]
 		alert('storylink://posting?urlinfo='+workInfo.url+'&post='+workInfo.summary);
-		this.newPop('storylink://posting?urlinfo='+workInfo.url+'&post='+workInfo.summary, 620, 310);
+		//this.newPop('storylink://posting?urlinfo='+workInfo.url+'&post='+workInfo.summary, 620, 310);
 	},
 
 	pinterest : function(o){
 //		console.log('site.js > snsUtil > pinterest');
 		var workInfo = this.getInfo(o);
-		this.newPop('http://pinterest.com/pin/create/button/?url='+workInfo.url+'&media='+workInfo.cover+'&description='+workInfo.summary, 510, 368);
+		//this.newPop('http://pinterest.com/pin/create/button/?url='+workInfo.url+'&media='+workInfo.cover+'&description='+workInfo.summary, 510, 368);
 	},
 
 	tumblr : function(o){
