@@ -207,12 +207,6 @@
 									?>" class="pi pi-ccl-cc-<?php echo strtolower($row->ccl) ?>">CCL</i>
 								</div>
 								<div class="col-xs-6 righted work-sns">
-									<a class="hidden-md hidden-lg" href="javascript:;" onclick="snsUtil.kakaotalk(this);">
-										<i class="pi pi-twitter">kakaotalk_hover</i>
-									</a>
-									<a class="hidden-md hidden-lg" href="javascript:;" onclick="snsUtil.kakaostory(this);">
-										<i class="pi pi-facebook">kakaostory_hover</i>
-									</a>
 									<a href="javascript:;" onclick="snsUtil.twitter(this);">
 										<i class="pi pi-twitter">twit_hover</i>
 									</a>
@@ -224,6 +218,12 @@
 									</a>
 									<a href="javascript:;" onclick="snsUtil.tumblr(this);">
 										<i class="pi pi-tumblr">tumblr_hover</i>
+									</a>
+									<a class="hidden-md hidden-lg" href="javascript:;" onclick="snsUtil.kakaotalk(this);">
+										<i class="pi pi-twitter">kakaotalk_hover</i>
+									</a>
+									<a class="hidden-md hidden-lg" href="javascript:;" onclick="snsUtil.kakaostory(this);">
+										<i class="pi pi-facebook">kakaostory_hover</i>
 									</a>
 									<!-- <a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="pi pi-fb_hover visible-xs visible-sm">kakaotalk</a> -->
 								</div>
