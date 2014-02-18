@@ -392,8 +392,10 @@ var workUtil = {
     			scrollSensitivity: 10,
     			tolerance: "pointer",
 				start: function(event, ui){
-					sortHeight = $(this).height();
-					$(this).height($(this).height());
+					posTop = $(ui.helper).position().top;
+					$(ui.helper).css('top', (top+$(document).scrollTop())+"px");
+					console.log($(ui.helper).position().top());
+
 					/*var posOrig = $(ui.helper).offset().top();
 
                     $(window).scroll(function() {
