@@ -779,7 +779,7 @@ var snsUtil = {
 //		console.log('site.js > snsUtil > kakaotalk');
 		var workInfo = this.getInfo(o);
 		//storylink://posting?post=[post]&appid=[appid]&appver=[appver]&apiver=[apiver]&appname=[appname]&urlinfo= [urlinfo]
-		this.newPop('storylink://posting?post='+workInfo.title+' '+workInfo.summary+' '+workInfo.url+'&type=link&appid=notefolio.net&appname=notefolio&appver=2.0&apiver=1.0', 620, 310);
+		this.newPop('storylink://posting?post='+workInfo.title+'\n'+workInfo.summary+'\n'+workInfo.url+'&type=link&appid=notefolio.net&appname=notefolio&appver=2.0&apiver=1.0', 620, 310);
 	},
 
 	pinterest : function(o){
