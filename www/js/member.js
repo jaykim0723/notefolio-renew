@@ -392,8 +392,8 @@ var workUtil = {
     			scrollSensitivity: 10,
     			tolerance: "pointer",
 				start: function(event, ui){
-					posTop = $(ui.helper).position().top - 75;
-					console.log($(ui.helper).position().top - 75);
+					posTop = $(ui.helper).position().top;
+					console.log($(ui.helper).position().top);
 
 					/*var posOrig = $(ui.helper).offset().top();
 
