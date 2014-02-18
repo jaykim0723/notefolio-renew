@@ -741,6 +741,7 @@ html, body {
 
 /* work */
 .work-wrapper {
+	overflow: hidden;
 	margin-bottom: 100px;
 }
 #work-content-blockadder{
