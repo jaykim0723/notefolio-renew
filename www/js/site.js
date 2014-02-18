@@ -772,7 +772,7 @@ var snsUtil = {
 //		console.log('site.js > snsUtil > kakaotalk');
 		var workInfo = this.getInfo(o);
 		//kakaolink://sendurl?msg=[message]&url=[url]&appid=[appid]&appver= [appver]
-		this.newPop('kakaolink://sendurl?url='+workInfo.url+'&msg='+workInfo.title+'%0A'+workInfo.summary+'&type=link&appid=notefolio.net&appname=notefolio&appver=2.0', 620, 310);
+		this.newPop('kakaolink://sendurl?url='+workInfo.url+'&msg='+workInfo.title+'%0A'+workInfo.summary+'&type=link&appid=notefolio.net&appname=Notefolio&appver=2.0', 620, 310);
 	},
 
 	kakaostory : function(o){
