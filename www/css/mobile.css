@@ -21,7 +21,9 @@
 	text-indent: 3000px;
 }
 
-
+img.icon-round{
+	border-radius: 50%;
+}
 
 
 
