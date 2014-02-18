@@ -180,7 +180,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-xs-5 text-left" style="padding-left: 50px;">
+								<div class="col-xs-5 text-left">
 									<i data-toggle="tooltip" data-placement="bottom" title="<?php
 									switch($row->ccl){
 										case 'BY':

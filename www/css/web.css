@@ -576,6 +576,11 @@ li#trash-bin{
 	.work-ccl {
 		padding-right: 20px;
 	}
+@media (min-width:992px) {
+	.work-addinfo .work-sns {
+	padding-right: 50px;
+	}
+}
 
 .work-actions {
 	border: 0;
