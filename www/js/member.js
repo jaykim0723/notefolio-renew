@@ -382,7 +382,16 @@ var workUtil = {
 			if(typeof(target)=='undefined'){
 				var target = "#content-block-list";
 			}
-			$(target).sortable({
+			$(target).draggable({
+				   scroll:true,
+				   start: function(){
+				      $(this).data("startingScrollTop",$(this).parent().scrollTop());
+				   },
+				   drag: function(event,ui){
+				      var st = parseInt($(this).data("startingScrollTop"));
+				      ui.position.top -= $(this).parent().scrollTop() - st;
+				   }
+				}).sortable({
   				opacity: 0.6,
     			cursor: 'move',
     			// axis: 'y',
