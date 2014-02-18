@@ -19,7 +19,7 @@
 									<span class="hot-face"> <!-- bg here -->
 										<img class="icon-round" src="/data/profiles/<?=$row->username?>_face.jpg?_=<?php echo substr($row->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'"/>
 										<!--[if lte IE 9]><i class="si si-face-medium"></i><![endif]-->
-										<i class="si si-face-medium_point"></i>
+										<!--[if lte IE 9]><i class="si si-face-medium_point"></i><![endif]-->
 									</span>
 									<span class="hot-center">
 										<span class="hot-username">
