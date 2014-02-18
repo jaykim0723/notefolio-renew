@@ -404,7 +404,7 @@ var workUtil = {
 					});*/
 				},
 				sort: function(event, ui){
-					$(ui.helper).css('top', (posTop+$(document).scrollTop())+"px");
+					$(ui.helper).css('top', (posTop+$(document).scrollTop()-$(this).position().top)+"px");
 					console.log($(ui.helper).position().top);
 				},
 				stop: function(event, ui){
