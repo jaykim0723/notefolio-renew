@@ -906,22 +906,25 @@ var workInfoUtil = {
 			isFirst = true;
 		}
 		$('#work-'+work_id).waypoint(function() {
-			var work_id = this.id.replace('work-','');
-			workInfoUtil.selectRecentList(work_id);
-			History.replaceState(null, 'gallery-info', work_id); // pushState로 주소 바꾸기
-
+			if(direction=='down'){
+				var work_id = this.id.replace('work-','');
+				workInfoUtil.selectRecentList(work_id);
+				History.replaceState(null, 'gallery-info', work_id); // pushState로 주소 바꾸기
+			}
 		}, {
 			offset: function() {
 				    return 500;
 				  },
 			horizontal: false
-		}).waypoint(function() {
-			var work_id = this.id.replace('work-','');
-			workInfoUtil.selectRecentList(work_id);
-			History.replaceState(null, 'gallery-info', work_id); // pushState로 주소 바꾸기
+		}).waypoint(function(direction) {
+			if(direction=='up'){
+				var work_id = this.id.replace('work-','');
+				workInfoUtil.selectRecentList(work_id);
+				History.replaceState(null, 'gallery-info', work_id); // pushState로 주소 바꾸기
+			}
 
 		}, {
-			offset: function() {
+			offset: function(direction) {
 				    return - $(this).height() + 500;
 				  },
 			horizontal: false
