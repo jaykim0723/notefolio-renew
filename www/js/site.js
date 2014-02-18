@@ -772,6 +772,7 @@ var snsUtil = {
 //		console.log('site.js > snsUtil > kakaotalk');
 		var workInfo = this.getInfo(o);
 		//kakaolink://sendurl?msg=[message]&url=[url]&appid=[appid]&appver= [appver]
+		alert('kakaolink://sendurl?url='+workInfo.url+'&msg='+workInfo.title+'%0A'+workInfo.summary+'&type=link&appid=notefolio.net&appname=Notefolio&appver=2.0');
 		this.newPop('kakaolink://sendurl?url='+workInfo.url+'&msg='+workInfo.title+'%0A'+workInfo.summary+'&type=link&appid=notefolio.net&appname=Notefolio&appver=2.0', 620, 310);
 	},
 
@@ -785,7 +786,7 @@ var snsUtil = {
 	pinterest : function(o){
 //		console.log('site.js > snsUtil > pinterest');
 		var workInfo = this.getInfo(o);
-		//this.newPop('http://pinterest.com/pin/create/button/?url='+workInfo.url+'&media='+workInfo.cover+'&description='+workInfo.summary, 510, 368);
+		this.newPop('http://pinterest.com/pin/create/button/?url='+workInfo.url+'&media='+workInfo.cover+'&description='+workInfo.summary, 510, 368);
 	},
 
 	tumblr : function(o){
