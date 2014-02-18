@@ -772,14 +772,14 @@ var snsUtil = {
 //		console.log('site.js > snsUtil > kakaotalk');
 		var workInfo = this.getInfo(o);
 		//kakaolink://sendurl?msg=[message]&url=[url]&appid=[appid]&appver= [appver]
-		this.newPop('kakaolink://sendurl?url='+workInfo.url+'&msg='+workInfo.summary, 620, 310);
+		this.newPop('kakaolink://sendurl?url='+workInfo.url+'&msg='+workInfo.summary+'&type=link&appid=net.notefolio&appname=notefolio', 620, 310);
 	},
 
 	kakaostory : function(o){
 //		console.log('site.js > snsUtil > kakaotalk');
 		var workInfo = this.getInfo(o);
 		//storylink://posting?post=[post]&appid=[appid]&appver=[appver]&apiver=[apiver]&appname=[appname]&urlinfo= [urlinfo]
-		this.newPop('storylink://posting?urlinfo='+workInfo.url+'&post='+workInfo.summary, 620, 310);
+		this.newPop('storylink://posting?urlinfo='+workInfo.url+'&post='+workInfo.summary+'&type=link&appid=net.notefolio&appname=notefolio', 620, 310);
 	},
 
 	pinterest : function(o){
