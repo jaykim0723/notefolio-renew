@@ -403,7 +403,7 @@ var workUtil = {
 					});*/
 				},
 				sort: function(event, ui){
-					$(ui.helper).css('top', (posTop+$(document).scrollTop()-$('#content-block-list').offset().top+100)+"px");
+					//$(ui.helper).css('top', (posTop+$(document).scrollTop()-$('#content-block-list').offset().top+100)+"px");
 					console.log($(ui.helper).position().top);
 				},
 				stop: function(event, ui){
