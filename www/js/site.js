@@ -905,7 +905,8 @@ var workInfoUtil = {
 			idBefore = parseInt(work_id) + 1; // 현재 열린것 이전부터 들여오기
 			isFirst = true;
 		}
-		$('#work-'+work_id).waypoint(function() {
+		$('#work-'+work_id)
+		.waypoint(function(direction) {
 			if(direction=='down'){
 				var work_id = this.id.replace('work-','');
 				workInfoUtil.selectRecentList(work_id);
@@ -916,7 +917,8 @@ var workInfoUtil = {
 				    return 500;
 				  },
 			horizontal: false
-		}).waypoint(function(direction) {
+		})
+		.waypoint(function(direction) {
 			if(direction=='up'){
 				var work_id = this.id.replace('work-','');
 				workInfoUtil.selectRecentList(work_id);
@@ -924,7 +926,7 @@ var workInfoUtil = {
 			}
 
 		}, {
-			offset: function(direction) {
+			offset: function() {
 				    return - $(this).height() + 500;
 				  },
 			horizontal: false
