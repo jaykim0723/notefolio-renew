@@ -123,7 +123,42 @@ class Info extends CI_Controller
 
 
 	function test(){
-		$this->layout->set_view('info/test_view')->render();
+		
+		$directory = '/Users/zidell/data/htdocs/notefolio_renew/app/11055';
+		$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
+		while($it->valid()) {
+			if (!$it->isDot()) {
+				exit('aoenthu');
+				$name = $it->getFilename();
+				// gumopress
+				$gumo_file = $it->getSubPathName();
+				$gumo_full_file = $this->htdocs.'/gumopress/'.$gumo_file;		
+
+				$size = getimagesize($gumo_full_file);
+				$source = imagecreatefrompng($gumo_full_file);
+
+				$dest = @imagecreatetruecolor($size[0]+2, $size[1]+2);
+				imagesavealpha($dest, true);
+				$trans_colour = imagecolorallocatealpha($dest, 0, 0, 0, 127);
+				imagefill($dest, 0, 0, $trans_colour);
+
+				imagecopy(
+					// destination
+					$dest, 
+					// source
+					$source,
+					// destination x and y 
+					1, 1,
+					// source x and y
+					0, 0,
+					// width and height of the area of the source to copy
+					$size[0], $size[1]
+				);			
+				imagepng($dest, $gumo_full_file);
+				echo 'ok<br/>';
+			}
+		}
+
 	}
 
 
