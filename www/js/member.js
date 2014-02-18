@@ -410,6 +410,10 @@ var workUtil = {
   				},
 				update: function(event, ui){
 				}
+			}).on('mouseenter', function(){
+				$(this).sortable('option','enable',true);
+			}).on('mouseleave', function(){
+				$(this).sortable('option','disable',true);
 			});
 
 			window.onbeforeunload = function (e) {
