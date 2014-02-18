@@ -934,6 +934,7 @@ var workInfoUtil = {
 		$workRecentList.children('#work-recent-'+work_id).addClass('selected');
 		$workRecentList.scrollTo($workRecentList.children('#work-recent-'+work_id));
 		$workRecentList.css('top', top);
+		History.pushState(null, null, $('a', $workRecentList.children('#work-recent-'+work_id)).attr('href')); // pushState로 주소 바꾸기
 	},
 	initRecentList : function(){
 		var top = $('#work-recent-works').offset().top - $('#work-sidebar').offset().top + $('#work-recent-works').outerHeight();

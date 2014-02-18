@@ -4,8 +4,6 @@
 		username : '<?php echo $row->user->username ?>',
 		area : 'work-info',
 		infiniteCallback : function(){
-			History.pushState(null, null, $('.more-link').attr('href')); // pushState로 주소 바꾸기
-
 			var $work = $('#work-list').children('.infinite-item').last();
 			commentUtil.open($work); // 코멘트 열기
 
