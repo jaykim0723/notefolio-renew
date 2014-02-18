@@ -180,7 +180,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-xs-6" style="padding-left: 50px;">
+								<div class="col-xs-5 text-left" style="padding-left: 50px;">
 									<i data-toggle="tooltip" data-placement="bottom" title="<?php
 									switch($row->ccl){
 										case 'BY':
@@ -206,7 +206,7 @@
 									}
 									?>" class="pi pi-ccl-cc-<?php echo strtolower($row->ccl) ?>">CCL</i>
 								</div>
-								<div class="col-xs-6 righted work-sns">
+								<div class="col-xs-7 text-right work-sns">
 									<a href="javascript:;" onclick="snsUtil.twitter(this);">
 										<i class="pi pi-twitter">twit_hover</i>
 									</a>
