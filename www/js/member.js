@@ -391,7 +391,7 @@ var workUtil = {
     			scrollSpeed: 40,
     			scrollSensitivity: 10,
     			tolerance: "pointer",
-    			containment: "parent",
+    			containment: "window",
 				start: function(event, ui){
 				},
 				stop: function(event, ui){
