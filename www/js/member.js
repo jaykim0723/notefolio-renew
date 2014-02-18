@@ -392,7 +392,8 @@ var workUtil = {
     			scrollSensitivity: 10,
     			tolerance: "pointer",
 				start: function(event, ui){
-					console.log($(ui.helper).position());
+					$(ui.helper).css('top', ($(ui.helper).position().top()+$(document).scrollTop())+"px");
+					console.log($(ui.helper).position().top());
 				},
 				stop: function(event, ui){
 					$(this).css("height","auto");
