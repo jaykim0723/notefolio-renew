@@ -750,7 +750,7 @@ var snsUtil = {
 		workInfo.url = encodeURIComponent($('.work-url', $work).text());
 		workInfo.title = encodeURIComponent($('.work-title', $work).text());
 		workInfo.cover = '/data/covers/'+workInfo.id+'_t2.jpg?_='+$work.data('moddate');
-		workInfo.summary = $.trim($('.work-contents', $work).text().substr(0,100));
+		workInfo.summary = encodeURIComponent($.trim($('.work-contents', $work).text().substr(0,100)));
 //		console.log('workInfo', workInfo);
 		return workInfo;
 	},
