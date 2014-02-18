@@ -914,7 +914,7 @@ var workInfoUtil = {
 			}
 		}, {
 			offset: function() {
-				    return 1000;
+				    return 500;
 				  },
 			horizontal: false
 		})
@@ -927,7 +927,7 @@ var workInfoUtil = {
 
 		}, {
 			offset: function() {
-				    return - $(this).height() + 1000;
+				    return - $(this).height() + 500;
 				  },
 			horizontal: false
 		});	
