@@ -394,7 +394,7 @@ var workUtil = {
 				start: function(event, ui){
 					posTop = $(ui.helper).position().top;
 					$(ui.helper).css('top', (top+$(document).scrollTop())+"px");
-					console.log($(ui.helper).position().top());
+					console.log($(ui.helper).position().top;
 
 					/*var posOrig = $(ui.helper).offset().top();
 
