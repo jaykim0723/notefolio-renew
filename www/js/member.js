@@ -392,8 +392,8 @@ var workUtil = {
     			scrollSensitivity: 10,
     			tolerance: "pointer",
 				start: function(event, ui){
-					posTop = $(ui.helper).position().top;
-					console.log($(ui.helper).position().top);
+					posTop = $(ui.helper).position().top - 75;
+					console.log($(ui.helper).position().top - 75);
 
 					/*var posOrig = $(ui.helper).offset().top();
 
@@ -403,7 +403,7 @@ var workUtil = {
 					});*/
 				},
 				sort: function(event, ui){
-					$(ui.helper).css('top', (posTop+$(document).scrollTop()-250)+"px");
+					$(ui.helper).css('top', (posTop+$(document).scrollTop()-$('#content-block-list').offset().top)+"px");
 					console.log($(ui.helper).position().top);
 				},
 				stop: function(event, ui){
