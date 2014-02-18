@@ -12,9 +12,9 @@
 html {
 	/*overflow-y:scroll;*/
 	/*overflow-x:visible;*/
+	overflow-y:scroll;
 }
 body {
-	overflow-y:scroll;
 }
 #header {
 	height: 60px;
