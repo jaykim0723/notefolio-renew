@@ -770,9 +770,14 @@ var snsUtil = {
 
 	kakaotalk : function(o){
 //		console.log('site.js > snsUtil > kakaotalk');
+		//kakaolink://sendurl?msg=[message]&url=[url]&appid=[appid]&appver= [appver]
+		this.newPop('kakaolink://sendurl?url='+workInfo.url+'&msg='+workInfo.summary, 620, 310);
+	},
 
-		// 정책적으로 추가가 필요하다면 추가할 수 있음.
-		// https://github.com/kakao/kakaolink-web
+	kakaostory : function(o){
+//		console.log('site.js > snsUtil > kakaotalk');
+		//storylink://posting?post=[post]&appid=[appid]&appver=[appver]&apiver=[apiver]&appname=[appname]&urlinfo= [urlinfo]
+		this.newPop('storylink://posting?urlinfo='+workInfo.url+'&post='+workInfo.summary, 620, 310);
 	},
 
 	pinterest : function(o){
