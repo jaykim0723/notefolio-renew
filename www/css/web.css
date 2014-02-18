@@ -63,7 +63,9 @@ body {
 .mm-page {
 	/*margin-top: 90px;*/
 }
-
+#header-gap {
+	height: 40px;
+}
 
 
 #footer a {

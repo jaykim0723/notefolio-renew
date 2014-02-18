@@ -17,7 +17,7 @@
 		</div>
 	</div>
 </div>
-<div><h1>oaentuhonteuh</h1></div>
+<div id="header-gap" class="visible-md visible-lg">&nbsp;</div>
 <header id="header" class="hidden-xs hidden-sm">
 	<div class="container">
 		<div class="row">
