@@ -25,7 +25,7 @@ img.icon-round{
 	border-radius: 50%;
 }
 .no-block{
-	display: '';
+	display: inline!important;
 }
 
 
