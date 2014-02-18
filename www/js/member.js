@@ -391,8 +391,8 @@ var workUtil = {
     			scrollSpeed: 40,
     			scrollSensitivity: 10,
     			tolerance: "pointer",
-    			containment: "document",
 				start: function(event, ui){
+					console.log($(ui.helper).position());
 				},
 				stop: function(event, ui){
 					$(this).css("height","auto");
