@@ -906,9 +906,12 @@ var workInfoUtil = {
 			isFirst = true;
 		}
 		$('#work-'+work_id).waypoint(function() {
-			workInfoUtil.selectRecentList(this.id.replace('work-',''));
+			var work_id = this.id.replace('work-','');
+			workInfoUtil.selectRecentList(work_id);
+			History.replaceState(null, 'gallery-info', work_id); // pushState로 주소 바꾸기
+
 		}, {
-			offset: -100,
+			offset: '-5%',
 			horizontal: false
 		});	
 
@@ -937,7 +940,6 @@ var workInfoUtil = {
 		$workRecentList.children('#work-recent-'+work_id).addClass('selected');
 		$workRecentList.scrollTo($workRecentList.children('#work-recent-'+work_id));
 		$workRecentList.css('top', top);
-		History.replaceState(null, 'gallery-info', $('a', $workRecentList.children('#work-recent-'+work_id)).attr('href')); // pushState로 주소 바꾸기
 	},
 	initRecentList : function(){
 		var top = $('#work-recent-works').offset().top - $('#work-sidebar').offset().top + $('#work-recent-works').outerHeight();
