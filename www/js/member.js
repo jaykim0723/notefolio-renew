@@ -391,13 +391,8 @@ var workUtil = {
     			scrollSpeed: 40,
     			scrollSensitivity: 10,
     			tolerance: "pointer",
+    			containment: 'document',
 				start: function(event, ui){
-					$(ui.helper).css({top:($(ui.item[0]).offset().top()+$('body').offset().top())+'px'})
-
-                    /*$(window).scroll(function() {
-						var pos = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
-						$(ui.helper).stop().scrollTop(position+posOrig);
-					});*/
 				},
 				stop: function(event, ui){
 					$(this).css("height","auto");
