@@ -913,6 +913,16 @@ var workInfoUtil = {
 		}, {
 			offset: '-5%',
 			horizontal: false
+		}).waypoint(function() {
+			var work_id = this.id.replace('work-','');
+			workInfoUtil.selectRecentList(work_id);
+			History.replaceState(null, 'gallery-info', work_id); // pushState로 주소 바꾸기
+
+		}, {
+			offset: function() {
+				    return -$(this).height() -100;
+				  },
+			horizontal: false
 		});	
 
 		if(isFirst || idBefore==work_id){
