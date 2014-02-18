@@ -391,7 +391,6 @@ var workUtil = {
     			scrollSpeed: 40,
     			scrollSensitivity: 10,
     			tolerance: "pointer",
-    			helper: "clone",
 				start: function(event, ui){
 					sortHeight = $(this).height();
 					$(this).height($(this).height());
