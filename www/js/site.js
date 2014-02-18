@@ -920,7 +920,7 @@ var workInfoUtil = {
 
 		}, {
 			offset: function() {
-				    return -$(this).height() -100;
+				    return $(this).height() - 200;
 				  },
 			horizontal: false
 		});	
