@@ -907,6 +907,9 @@ var workInfoUtil = {
 		}
 		$('#work-'+work_id).waypoint(function() {
 			workInfoUtil.selectRecentList(this.id.replace('work-',''));
+		}, {
+			offset: '-100',
+			horizontal: true
 		});	
 
 		if(isFirst || idBefore==work_id){
