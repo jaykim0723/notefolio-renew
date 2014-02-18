@@ -771,12 +771,14 @@ var snsUtil = {
 	kakaotalk : function(o){
 //		console.log('site.js > snsUtil > kakaotalk');
 		//kakaolink://sendurl?msg=[message]&url=[url]&appid=[appid]&appver= [appver]
+		alert('kakaolink://sendurl?url='+workInfo.url+'&msg='+workInfo.summary);
 		this.newPop('kakaolink://sendurl?url='+workInfo.url+'&msg='+workInfo.summary, 620, 310);
 	},
 
 	kakaostory : function(o){
 //		console.log('site.js > snsUtil > kakaotalk');
 		//storylink://posting?post=[post]&appid=[appid]&appver=[appver]&apiver=[apiver]&appname=[appname]&urlinfo= [urlinfo]
+		alert('storylink://posting?urlinfo='+workInfo.url+'&post='+workInfo.summary);
 		this.newPop('storylink://posting?urlinfo='+workInfo.url+'&post='+workInfo.summary, 620, 310);
 	},
 
