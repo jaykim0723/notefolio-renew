@@ -382,16 +382,7 @@ var workUtil = {
 			if(typeof(target)=='undefined'){
 				var target = "#content-block-list";
 			}
-			$(target).draggable({
-				   scroll:true,
-				   start: function(){
-				      $(this).data("startingScrollTop",$(this).parent().scrollTop());
-				   },
-				   drag: function(event,ui){
-				      var st = parseInt($(this).data("startingScrollTop"));
-				      ui.position.top -= $(this).parent().scrollTop() - st;
-				   }
-				}).sortable({
+			$(target).sortable({
   				opacity: 0.6,
     			cursor: 'move',
     			// axis: 'y',
@@ -400,16 +391,23 @@ var workUtil = {
     			scrollSpeed: 40,
     			scrollSensitivity: 10,
     			tolerance: "pointer",
-				start: function(event, ui){
+				/*start: function(event, ui){
 					sortHeight = $(this).height();
 					$(this).height($(this).height());
-					/*var posOrig = $(ui.helper).offset().top();
+					var posOrig = $(ui.helper).offset().top();
 
                     $(window).scroll(function() {
 						var pos = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
 						$(ui.helper).stop().scrollTop(position+posOrig);
-					});*/
-				},
+					});
+				},*/
+			    start: function(event, ui){
+			       $(this).data("startingScrollTop",$(this).parent().scrollTop());
+			    },
+			    drag: function(event,ui){
+			       var st = parseInt($(this).data("startingScrollTop"));
+			       ui.position.top -= $(this).parent().scrollTop() - st;
+			    },
 				stop: function(event, ui){
 					$(this).css("height","auto");
 					if($(ui.item[0]).hasClass('block-text')){
