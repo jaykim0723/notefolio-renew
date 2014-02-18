@@ -392,6 +392,7 @@ var workUtil = {
     			scrollSensitivity: 10,
     			tolerance: "pointer",
     			containment: 'document',
+    			helper: 'clone',
 				start: function(event, ui){
 				},
 				stop: function(event, ui){
