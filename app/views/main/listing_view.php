@@ -17,8 +17,8 @@
 										<i class="spi spi-next_white">next</i>
 									</span>
 									<span class="hot-face"> <!-- bg here -->
-										<img src="/data/profiles/<?=$row->username?>_face.jpg?_=<?php echo substr($row->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'"/>
-										<i class="si si-face-medium"></i>
+										<img class="icon-round" src="/data/profiles/<?=$row->username?>_face.jpg?_=<?php echo substr($row->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'"/>
+										<!--[if lte IE 9]><i class="si si-face-medium"></i><![endif]-->
 										<i class="si si-face-medium_point"></i>
 									</span>
 									<span class="hot-center">
