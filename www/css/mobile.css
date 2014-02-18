@@ -24,7 +24,9 @@
 img.icon-round{
 	border-radius: 50%;
 }
-
+.no-block{
+	display: auto!important;
+}
 
 
 
