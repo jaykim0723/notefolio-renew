@@ -911,7 +911,9 @@ var workInfoUtil = {
 			History.replaceState(null, 'gallery-info', work_id); // pushState로 주소 바꾸기
 
 		}, {
-			offset: '-5%',
+			offset: function() {
+				    return 500;
+				  },
 			horizontal: false
 		}).waypoint(function() {
 			var work_id = this.id.replace('work-','');
@@ -920,7 +922,7 @@ var workInfoUtil = {
 
 		}, {
 			offset: function() {
-				    return - $(this).height() + 200;
+				    return - $(this).height() + 500;
 				  },
 			horizontal: false
 		});	
