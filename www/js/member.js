@@ -393,7 +393,7 @@ var workUtil = {
     			tolerance: "pointer",
 				start: function(event, ui){
 					posTop = $(ui.helper).position().top;
-					$(ui.helper).css('top', (top+$(document).scrollTop())+"px");
+					$(ui.helper).css('top', (posTop+$(document).scrollTop())+"px");
 					console.log($(ui.helper).position().top);
 
 					/*var posOrig = $(ui.helper).offset().top();
@@ -404,8 +404,7 @@ var workUtil = {
 					});*/
 				},
 				sort: function(event, ui){
-					posTop = $(ui.helper).position().top;
-					$(ui.helper).css('top', (top+$(document).scrollTop())+"px");
+					$(ui.helper).css('top', (posTop+$(document).scrollTop())+"px");
 					console.log($(ui.helper).position().top);
 				},
 				stop: function(event, ui){
