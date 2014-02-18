@@ -909,7 +909,7 @@ var workInfoUtil = {
 			workInfoUtil.selectRecentList(this.id.replace('work-',''));
 		}, {
 			offset: '-100',
-			horizontal: true
+			horizontal: false
 		});	
 
 		if(isFirst || idBefore==work_id){
