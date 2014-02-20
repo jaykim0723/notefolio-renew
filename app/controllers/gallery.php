@@ -439,6 +439,7 @@ class Gallery extends CI_Controller {
                 ));
             $cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'/../app-cli/cli.php fbconnect post "'.$fb_query.'"';
             exec($cmd . " > /dev/null &");  
+            error_log($cmd);
         }
 
         return $result;
