@@ -536,9 +536,6 @@ class work_model extends CI_Model {
             ->get()
             ->result();
         
-        foreach($result as &$row){
-            $row->user_keywords = 'A7B7'; // dummy
-        }
         return $result;
     }
     
