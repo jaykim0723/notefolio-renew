@@ -218,7 +218,7 @@ var formFeedback = function(f, type, msg, tObj, doFocus, callback){
 	
 	// object의 w, h, l, t를 구한다. formFeedback을 엘리먼트의 중앙지점을 기반으로 계산하여 표시를 한다.
 	
-	var background = 'green';
+	var background = '#2ac5c6';
 	if(type.indexOf('-')>0){ // 분리기호가 들어갔다면 뒤에는 배경색 지정이다.
 		var type_background = type.split('-')[1];
 		type = type.split('-')[0];
@@ -227,8 +227,8 @@ var formFeedback = function(f, type, msg, tObj, doFocus, callback){
 		var type = 'success';
 	}
 	switch(type){
-		case 'error': background = '#a70000'; break;
-		case 'info' : background = '#b07014'; break;
+		case 'error': background = '#ff3366'; break;
+		case 'info' : background = '#2ac5c6'; break;
 	}
 	if(typeof type_background!='undefined')
 		background = type_background;
