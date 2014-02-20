@@ -64,7 +64,7 @@ echo form_open('', array(
                 }
 				
 			});
-			$('span.example','#form-username').text('↑ '+val);
+			$('span.example','#form-username').text(val);
 		})
 	});
 </script>
