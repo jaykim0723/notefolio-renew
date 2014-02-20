@@ -8,7 +8,7 @@
 					<div class="row">
 
 
-						<div class="col-md-3 col-sm-6">
+						<div class="col-md-3 col-sm-6" style="border-bottom: 1px solid #efefef;">
 							<select name="work_categories[]" id="work_categories" multiple title="카테고리 선택" onchange="$('#gallery-search-form').submit()">
 								<?php 
 								$this->load->config('keyword', TRUE);
@@ -20,7 +20,7 @@
 							</select>
 						</div>
 
-						<div class="col-md-2 col-sm-6">
+						<div class="col-md-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
 							<select name="order" id="order" onchange="$('#gallery-search-form').submit()">
 								<option value="newest"<?=($order=="newest")?' selected':''?>>최신순</option>
 								<option value="noted"<?=($order=="noted")?' selected':''?>>인기순</option>
@@ -29,7 +29,7 @@
 							</select>
 						</div>
 						
-						<div class="col-md-2 col-sm-6">
+						<div class="col-md-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
 							<div class="input-group">
 			  					<!-- <span class="input-group-addon"></span> -->
 								<select class="" name="from" id="from" onchange="$('#gallery-search-form').submit()">

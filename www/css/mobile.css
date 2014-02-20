@@ -415,6 +415,7 @@ html, body {
 		.searchword {
 			float:left !important;
 			width:80%;
+			padding-top: 15px;
 		}
 }
 @media (max-width: 767px) {
@@ -1402,6 +1403,8 @@ html.auth body {
 @media (max-width: 991px) {
 	.search-center {
 		text-align: center;
+		padding-top: 15px;
+
 	}
 	.search-green {
 		float:right !important;
