@@ -195,9 +195,9 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 </script>
 <?php
 	// /app/controller/auth.php line 653
-	$this->session->set_flashdata('welcome_newmember',true); // 가입환영용
-	var_export($this->session->flashdata('welcome_newmember'));
-	if($this->session->flashdata('welcome_newmember')){
+	$this->session->set_userdata('welcome_newmember',true); // 가입환영용
+	var_export($this->session->userdata('welcome_newmember'));
+	if($this->session->userdata('welcome_newmember')){
 ?>
 <script type="text/javascript">
 	var firstTimeHelper = new BootstrapDialog({
