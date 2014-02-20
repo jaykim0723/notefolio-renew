@@ -783,6 +783,7 @@ class Auth extends CI_Controller
             $_POST['username'] = $username;
         }
 
+        $return = true;
         //-- username
         if($this->session->userdata('username')!=$username){
             $this->load->model('tank_auth/users');
