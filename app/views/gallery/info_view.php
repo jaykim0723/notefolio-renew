@@ -224,9 +224,9 @@
 									<a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="hidden-md hidden-lg no-block">
 										<i class="pi pi-twitter">kakaotalk_hover</i><!-- replace pi-twitter to pi-kakaotalk --> 
 									</a>
-									<a href="javascript:;" onclick="snsUtil.kakaostory(this);" class="hidden-md hidden-lg no-block">
-										<i class="pi pi-facebook">kakaostory_hover</i><!-- replace pi-facebook to pi-kakaostory --> 
-									</a>
+									<!-- <a href="javascript:;" onclick="snsUtil.kakaostory(this);" class="hidden-md hidden-lg no-block">
+										<i class="pi pi-facebook">kakaostory_hover</i>
+									</a> -->
 									<!-- <a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="pi pi-fb_hover visible-xs visible-sm">kakaotalk</a> -->
 								</div>
 							</div>
