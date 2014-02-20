@@ -56,9 +56,11 @@ echo form_open('', array(
 			$.post('/auth/check_username_available', {username: val}, function(data, textStatus, xhr) {
                 var response = $.parseJSON(data);
                 if(response.status=='done'){
-                	alert('aaa');
+                	$('#form-username').removeClass('error');
+                	$('.form-error','#form-username').text('');
                 }else{
-                	
+                	$('#form-username').addClass('error');
+                	$('.form-error','#form-username').text('↑ '+response.error);
                 }
 				
 			});
