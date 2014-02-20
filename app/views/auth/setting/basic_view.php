@@ -31,90 +31,14 @@
 			<a href="/auth/change_password" class="btn btn-link호 labeltext2 auth-smallbtn">비밀번호 변경하기</a>
 		</div>
 	</div>
-<!-- 
+	<!-- 
 	<div class="form-group">
 		<label>이메일</label>
 		<input type='text' class="form-control" name='email' data-last='' id='email' value="<?php echo $email?>"/>
 		<span class="check" id='email_checker' rel='tooltip' title="로그인시 ID로 활용됩니다."></span>
-	</div> -->
-	<script>
-		var timeout = '';
-		var check_reg_email = function(v){
-			return /^[_a-zA-Z0-9\-\.\+]+@[\.\_a-zA-Z0-9\-\+]+\.[a-zA-Z]+$/.test(v); // 정규식 검사하기.	
-		};
-		var autoCheckEmail = function(){
-			var o = $('#email');
-			$.get('/auth/check_email_available', { email : o.val() }, function(d){
-				o = o.data('last', o.val()).next();
-				if(d=='y')
-					o.html('<img src="/images/signup/check.png">').removeClass('unavailable');
-				else
-					o.html('<img src="/images/signup/x.png">').addClass('unavailable');
-			});
-		};
-		$('#email').keyup(function(){
-			// 키 입력마다 검사하기
-			var v = $.trim($(this).val());
-			if($(this).data('last') == v) return false;
-			var o = $('#email_checker').html('').removeClass('unavailable');
-			if(!check_reg_email(v)){
-				if(v!='')
-					$(this).focus();
-				return false;
-			}
-			o.html('<img src="/images/block.gif"/>');
-			clearTimeout(timeout);
-			timeout = setTimeout(function(){
-				autoCheckEmail();
-			},800);
-		}).trigger('keyup');				
-	</script>
+	</div> 
+	-->
 
-	
-	<div class="form-group">
-<!-- 		<label>개인url</label>
-		<span class='url_hint'>http://www.notefolio.net/</span><input type='text' class="form-control" id='username' name='username' value="<?php echo $username?>" minlength='3' maxlength='20'/>
-		<span class="check" id='checker'></span> -->
-		<script>
-			var timeout='';
-            var username_checked=false;
-			var check_reg = function(v){
-				return /^[a-zA-Z0-9\_\-]+$/.test(v); // 정규식 검사하기.	
-			};
-			var autoCheck = function(){
-				var o = $('#username');
-				$.get('/auth/check_username_available', { username : o.val() }, function(d){
-					o = o.data('last', o.val()).next();
-					if(d=='y'){
-						o.html('<img src="/images/signup/check.png">').removeClass('unavailable');
-						//'✔'
-                        username_checked=true;
-					}
-                    else{
-						o.html('<img src="/images/signup/x.png">').addClass('unavailable');
-                        username_checked=false;
-                    }
-				});
-			};
-            
-			$('#username').keyup(function(){
-				// 키 입력마다 검사하기
-				var v = $.trim($(this).val());
-				if($(this).data('last') == v) return false;
-				var o = $('#checker').html('').removeClass('unavailable');
-				if(!check_reg(v)){
-					if(v!='')
-						$(this).focus();
-					return false;
-				}
-				o.html('<img src="/images/block.gif"/>');
-				clearTimeout(timeout);
-				timeout = setTimeout(function(){
-					autoCheck();
-				},800);
-			}).trigger('keyup');				
-		</script>
-	</div>
 
     <?php
     if(isset($birth) && !empty($birth)) {
@@ -151,10 +75,6 @@
         	<input type="checkbox" name="mailing" value="1" <?if($mailing==1){?>checked="checked"<?}?>>노트폴리오의 최신 소식 및 작가/작품 소개를 메일로 받겠습니다.
         </label> 
     </div>
-
-	
-	<script>
-	</script>
 	
 </fieldset>
 </div>
