@@ -222,7 +222,7 @@
 										<i class="pi pi-tumblr">tumblr_hover</i>
 									</a>
 									<a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="hidden-md hidden-lg no-block">
-										<i class="pi pi-twitter">kakaotalk_hover</i><!-- replace pi-twitter to pi-kakaotalk --> 
+										<em class="pi pi-kakao">kakao</em><!-- replace pi-twitter to pi-kakaotalk --> 
 									</a>
 									<!-- <a href="javascript:;" onclick="snsUtil.kakaostory(this);" class="hidden-md hidden-lg no-block">
 										<i class="pi pi-facebook">kakaostory_hover</i>
