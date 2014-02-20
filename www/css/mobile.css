@@ -414,7 +414,7 @@ html, body {
 			width:100% !important;
 		}
 		#search_form .btn.dropdown-toggle,  #search_form .form-control {
-			padding:12px 12px;
+			padding:12px 12px !important;
 		}
 		.searchword {
 			width:80%;
