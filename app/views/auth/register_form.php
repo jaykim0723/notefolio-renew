@@ -149,7 +149,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 
 <div class="biggroup">	
 	<?php if ($use_username) { ?>
-	<div class="form-group <?=isset($errors[$username['name']]) ? 'error' : ''?>">
+	<div id="form-username" class="form-group <?=isset($errors[$username['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Username', $username['id']); ?>-->
 		<?=form_input($username); ?>
 		<div class="form-error"><?=form_error($username['name']); ?></div>
@@ -286,5 +286,22 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 
 
 
+	$(function(){
+		$('input[type="text"]','#form-username').on('keyup', function(){
+			var val = $(this).val();
+			$.post('/auth/check_username_available', {username: val}, function(data, textStatus, xhr) {
+	            var response = $.parseJSON(data);
+	            if(response.status=='done'){
+	            	$('#form-username').removeClass('error');
+	            	$('.form-error','#form-username').text('');
+	            }else{
+	            	$('#form-username').addClass('error');
+	            	$('.form-error','#form-username').text('↑ '+response.error);
+	            }
+				
+			});
+			$('span.example','#form-username').text(val);
+		})
+	});
 
 </script>
