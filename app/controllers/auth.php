@@ -473,7 +473,7 @@ class Auth extends CI_Controller
             unset($params['year'],$params['month'],$params['day']);
         }
 
-        $this->user_model->put($params);
+        $result = $this->user_model->put($params);
 
         
         $allowed_user_key = array(
@@ -508,7 +508,7 @@ class Auth extends CI_Controller
             $this->session->set_userdata('username', $data['form']['username']); //change session username 
         }
         //-- end
-        exit();
+        
         return $data;
     }
 
