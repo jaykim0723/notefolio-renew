@@ -431,6 +431,16 @@ body {
 	padding: 23px 0 0 0;
 	min-height: 350px;
 }
+/*scrollbar for windows*/
+#work-recent-works {
+	scrollbar-3dlight-color:#fff;
+    scrollbar-arrow-color:#efefef;
+    scrollbar-base-color:#fff;
+    scrollbar-darkshadow-color:#fff;
+    scrollbar-face-color:#efefef;
+    scrollbar-highlight-color:#fff;
+    scrollbar-shadow-color:#fff;
+}
 #profile-info {
 }
 #profile-info a {
