@@ -791,14 +791,11 @@ class Auth extends CI_Controller
 
             if(!$username_useable){
                 $error = "'".$username."'은(는) 이미 사용 중입니다. 다른 문구를 입력해 주세요.";
+                $return = false;
             }
-
-            $return = false;
-
         }
 
         if($return){
-            var_export($return);
             //-- get from /app/config/user_restrict.php
             $this->config->load('user_restrict', TRUE, TRUE);
             
@@ -816,11 +813,9 @@ class Auth extends CI_Controller
         }
 
         if($return){
-            var_export($return);
             $return = $this->form_validation
             ->set_rules('username', '개인url', 'trim|required|alpha_dash|xss_clean|min_length['.$this->config->item('username_min_length','tank_auth').']|max_length['.$this->config->item('username_max_length','tank_auth').']')
             ;
-            var_export(($this->form_validation->run() !== FALSE));
 
             if(!$return){
                 // 실패한 경우.
