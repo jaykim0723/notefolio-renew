@@ -429,6 +429,7 @@ html, body {
 		float:left !important;
 		margin-top: 3px;
 		width:80%;
+		border:none;
 	}
 
 }
