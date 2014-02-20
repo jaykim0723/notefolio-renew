@@ -8,7 +8,7 @@
 					<div class="row">
 
 
-						<div class="col-md-3 col-sm-6" style="border-bottom: 1px solid #efefef;">
+						<div class="col-md-3 col-sm-6 gal-cate" style="border-bottom: 1px solid #efefef;">
 							<select name="work_categories[]" id="work_categories" multiple title="카테고리 선택" onchange="$('#gallery-search-form').submit()">
 								<?php 
 								$this->load->config('keyword', TRUE);

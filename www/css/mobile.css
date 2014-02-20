@@ -417,7 +417,11 @@ html, body {
 			padding:12px 12px;
 		}
 		.searchword {
-			border-bottom: 1px solid #efefef;
+			width:80%;
+			padding-top: 5px;
+		}
+		.gal-cate {
+			width:100%;
 		}
 }
 @media (max-width: 767px) {
@@ -430,6 +434,7 @@ html, body {
 		margin-top: 3px;
 		width:80%;
 		border:none;
+		padding-top:0px;
 	}
 
 }
@@ -1409,10 +1414,18 @@ html.auth body {
 	margin-bottom: 0;
 	font-size: 13px;
 }
+@media (max-width: 767px) {
+	.search-center {
+		padding-top: 0px;
+	}
+
+}
 @media (max-width: 991px) {
 	.search-center {
 		text-align: center;
 		margin-top: 3px;
+		width:20%;
+		padding-top: 5px;
 	}
 	.search-green {
 		float:right !important;
