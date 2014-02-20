@@ -49,7 +49,7 @@
 						</div>
 
 						<div class="col-md-1 col-sm-12 search-center">
-							<button type="submit" class="btn btn-pointgreen search-green"><i class="spi spi-search_white" style="margin-right: 5px;margin-top: -3px;margin-bottom: 3px;">search_white</i></button>
+							<button type="submit" class="btn btn-pointgreen search-green"><i class="spi spi-search_white" style="margin-top: -3px;margin-bottom: 3px;">search_white</i></button>
 						</div>
 					</div>
 
