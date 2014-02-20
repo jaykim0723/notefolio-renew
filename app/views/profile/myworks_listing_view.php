@@ -11,7 +11,9 @@
 					<div class="alert alert-info" style="color:#7a7880;text-align:center;">
 					  	<strong>아직 업로드한 작품이 없습니다<strong>
 						<br/>
+						<?php if(isset($this->nf->get('user')->username) && $this->nf->get('user')->username == $user->row->username){ ?>
 						<a href="/gallery/create">지금 등록해보세요</a>
+						<?php } ?>
 					</div>
 
 				<?php else: ?>

@@ -750,7 +750,7 @@ var snsUtil = {
 		workInfo.url = encodeURIComponent($('.work-url', $work).text());
 		workInfo.title = encodeURIComponent($('.work-title', $work).text());
 		workInfo.cover = '/data/covers/'+workInfo.id+'_t2.jpg?_='+$work.data('moddate');
-		workInfo.summary = $.trim($('.work-contents', $work).text().substr(0,100));
+		workInfo.summary = encodeURIComponent($.trim($('.work-contents', $work).text().substr(0,100)));
 //		console.log('workInfo', workInfo);
 		return workInfo;
 	},
@@ -770,9 +770,16 @@ var snsUtil = {
 
 	kakaotalk : function(o){
 //		console.log('site.js > snsUtil > kakaotalk');
+		var workInfo = this.getInfo(o);
+		//kakaolink://sendurl?msg=[message]&url=[url]&appid=[appid]&appver= [appver]
+		this.newPop('kakaolink://sendurl?url='+workInfo.url+'&msg='+workInfo.title+'%0A'+workInfo.summary+'&type=link&appid=notefolio.net&appname=Notefolio&appver=2.0', 620, 310);
+	},
 
-		// 정책적으로 추가가 필요하다면 추가할 수 있음.
-		// https://github.com/kakao/kakaolink-web
+	kakaostory : function(o){
+//		console.log('site.js > snsUtil > kakaotalk');
+		var workInfo = this.getInfo(o);
+		//storylink://posting?post=[post]&appid=[appid]&appver=[appver]&apiver=[apiver]&appname=[appname]&urlinfo= [urlinfo]
+		this.newPop('storylink://posting?post='+workInfo.title+'%0A'+workInfo.summary+'%0A%0A'+workInfo.url+'&type=link&appid=notefolio.net&appname=notefolio&appver=2.0&apiver=1.0', 620, 310);
 	},
 
 	pinterest : function(o){
@@ -905,8 +912,31 @@ var workInfoUtil = {
 			idBefore = parseInt(work_id) + 1; // 현재 열린것 이전부터 들여오기
 			isFirst = true;
 		}
-		$('#work-'+work_id).waypoint(function() {
-			workInfoUtil.selectRecentList(this.id.replace('work-',''));
+		$('#work-'+work_id)
+		.waypoint(function(direction) {
+			if(direction=='down'){
+				var work_id = this.id.replace('work-','');
+				workInfoUtil.selectRecentList(work_id);
+				History.replaceState(null, 'gallery-info', work_id); // pushState로 주소 바꾸기
+			}
+		}, {
+			offset: function() {
+				    return 500;
+				  },
+			horizontal: false
+		})
+		.waypoint(function(direction) {
+			if(direction=='up'){
+				var work_id = this.id.replace('work-','');
+				workInfoUtil.selectRecentList(work_id);
+				History.replaceState(null, 'gallery-info', work_id); // pushState로 주소 바꾸기
+			}
+
+		}, {
+			offset: function() {
+				    return - $(this).height() + 500;
+				  },
+			horizontal: false
 		});	
 
 		if(isFirst || idBefore==work_id){

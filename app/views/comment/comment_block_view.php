@@ -29,8 +29,8 @@
 			<?php endif; ?>
 		</div>
 		<a class="comment-profile-area" target="_blank" href="<?php echo site_url($row->user->username); ?>">
-			<img src="<?php echo site_url('data/profiles/'.$row->user->username) ?>_face.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'"/>
-			<i class="si si-face-medium"></i>
+			<img class="icon-round" src="<?php echo site_url('data/profiles/'.$row->user->username) ?>_face.jpg?_=<?php echo substr($row->user->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'"/>
+			<!--[if lte IE 9]><i class="si si-face-medium"></i><![endif]-->
 		</a>
 		<div class="comment-username">
 			<a target="_blank" href="<?php echo site_url($row->user->username); ?>"><?php echo $row->user->realname; ?></a>

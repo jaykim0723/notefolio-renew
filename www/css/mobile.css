@@ -21,8 +21,12 @@
 	text-indent: 3000px;
 }
 
-
-
+img.icon-round{
+	border-radius: 50%;
+}
+.no-block{
+	display: inline!important;
+}
 
 
 
@@ -434,6 +438,9 @@ html, body {
 	border-color: #fff;
 	color: #2ac5c6;
 }
+#gallery-search-form div {
+	overflow: hidden;
+}
 .thumbnail-list {
 	overflow: hidden;
 	position: relative;
@@ -739,6 +746,7 @@ html, body {
 
 /* work */
 .work-wrapper {
+	overflow: hidden;
 	margin-bottom: 100px;
 }
 #work-content-blockadder{
@@ -848,8 +856,8 @@ html, body {
 	.work-addinfo .work-sns {
 	padding-right: 20px;
 	}
-	.work-addinfo .col-xs-6 {
-		padding-left: 20px !important;
+	.work-addinfo .col-xs-5 {
+		padding-left: 20px;
 	}
 	.work-addinfo .work-sns {
 		margin-top: -6px;

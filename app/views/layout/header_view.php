@@ -17,6 +17,7 @@
 		</div>
 	</div>
 </div>
+<div id="header-gap" class="visible-md visible-lg">&nbsp;</div>
 <header id="header" class="hidden-xs hidden-sm">
 	<div class="container">
 		<div class="row">
@@ -58,8 +59,8 @@
 					</a>
 					<a id="btn-profile" href="/<?php echo $this->session->userdata('username') ?>">
 						<div id="btn-profile-icon">
-							<img src="/data/profiles/<?php echo $this->session->userdata('username') ?>_face.jpg?_=<?php echo substr($this->nf->get('user')->modified,-2) ?>" onerror="this.src='/img/default_profile_face.png'"/>
-							<i class="si si-face-medium"></i>
+							<img class="icon-round" src="/data/profiles/<?php echo $this->session->userdata('username') ?>_face.jpg?_=<?php echo substr($this->nf->get('user')->modified,-2) ?>" onerror="this.src='/img/default_profile_face.png'"/>
+							<!--[if lte IE 9]><i class="si si-face-medium"></i><![endif]-->
 						</div>
 						<span><?php echo $this->session->userdata('realname'); ?></span>
 					</a>

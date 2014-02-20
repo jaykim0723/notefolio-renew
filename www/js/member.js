@@ -392,14 +392,19 @@ var workUtil = {
     			scrollSensitivity: 10,
     			tolerance: "pointer",
 				start: function(event, ui){
-					sortHeight = $(this).height();
-					$(this).height($(this).height());
+					posTop = $(ui.helper).position().top;
+					console.log($(ui.helper).position().top);
+
 					/*var posOrig = $(ui.helper).offset().top();
 
                     $(window).scroll(function() {
 						var pos = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
 						$(ui.helper).stop().scrollTop(position+posOrig);
 					});*/
+				},
+				sort: function(event, ui){
+					//$(ui.helper).css('top', (posTop+$(document).scrollTop()-$('#content-block-list').offset().top+100)+"px");
+					console.log($(ui.helper).position().top);
 				},
 				stop: function(event, ui){
 					$(this).css("height","auto");

@@ -54,7 +54,9 @@
 				<div id="work-recent-works">
 					<h2 class="nofol-title2">Recent Works</h2>
 					<ul id="work-recent-list">
+						<?php if ($row->next_work_id!=0){ ?>
 						<a href="javascript:;" id="btn-prev-work" class="btn btn-block btn-more"><i class="spi spi-up">up</i> Previous</a>
+						<?php } ?>
 					</ul>
 				</div>
 			</div>
@@ -180,7 +182,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-xs-6" style="padding-left: 50px;">
+								<div class="col-xs-5 text-left">
 									<i data-toggle="tooltip" data-placement="bottom" title="<?php
 									switch($row->ccl){
 										case 'BY':
@@ -206,7 +208,7 @@
 									}
 									?>" class="pi pi-ccl-cc-<?php echo strtolower($row->ccl) ?>">CCL</i>
 								</div>
-								<div class="col-xs-6 righted work-sns">
+								<div class="col-xs-7 text-right work-sns">
 									<a href="javascript:;" onclick="snsUtil.twitter(this);">
 										<i class="pi pi-twitter">twit_hover</i>
 									</a>
@@ -218,6 +220,12 @@
 									</a>
 									<a href="javascript:;" onclick="snsUtil.tumblr(this);">
 										<i class="pi pi-tumblr">tumblr_hover</i>
+									</a>
+									<a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="hidden-md hidden-lg no-block">
+										<i class="pi pi-twitter">kakaotalk_hover</i><!-- replace pi-twitter to pi-kakaotalk --> 
+									</a>
+									<a href="javascript:;" onclick="snsUtil.kakaostory(this);" class="hidden-md hidden-lg no-block">
+										<i class="pi pi-facebook">kakaostory_hover</i><!-- replace pi-facebook to pi-kakaostory --> 
 									</a>
 									<!-- <a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="pi pi-fb_hover visible-xs visible-sm">kakaotalk</a> -->
 								</div>

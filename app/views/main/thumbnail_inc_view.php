@@ -22,8 +22,8 @@ $wide = in_array($row->key, array(4,11));
 			<span class="pull-right go-profile-area" data-username="<?php echo $row->user->username ?>">
 				<span class="pull-right ellipsis" style="margin-top: 6px;margin-left: 5px;"><?php echo $row->user->realname; ?></span>
 				<span class="pull-right main-work-face">
-					<img src="<?php echo $profile_image ?>"/>
-					<i class="si si-face-small"></i>
+					<img class="icon-round" src="<?php echo $profile_image ?>"/>
+					<!--[if lte IE 9]><i class="si si-face-small"></i><![endif]-->
 				</span>
 			</span>
 			<span class="work-title-char"><?php echo $row->title; ?></span>
