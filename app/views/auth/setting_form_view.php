@@ -51,7 +51,7 @@ echo form_open('', array(
 	});
 	
 	$(function(){
-		$('input[type="text"]','#form-username').on({'keypress','change'}, function(){
+		$('input[type="text"]','#form-username').on('keyup keypress blur change', function(){
 			$.post('/auth/check_username_available', {username: val}, function(data, textStatus, xhr) {
                 var response = $.parseJSON(data);
                 if(response.status=='done'){
