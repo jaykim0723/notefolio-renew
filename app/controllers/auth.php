@@ -821,9 +821,8 @@ class Auth extends CI_Controller
                 // 실패한 경우.
                 if ($this->form_validation->error_string()!='') {
                     $errors = $this->form_validation->error_array();
-                    var_export($errors);
 
-                    $error = $error['username'];
+                    $error = $errors['username'];
                 }
 
                 $return = false;
