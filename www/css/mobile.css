@@ -1428,6 +1428,7 @@ html.auth body {
 	}
 	.search-green {
 		float:right !important;
+		margin-right: 10px;
 	}
 
 }
