@@ -22,10 +22,6 @@
 }
 
 img.icon-round{
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	-o-border-radius: 50%;
-	-ms-border-radius: 50%;
 	border-radius: 50%;
 }
 .no-block{
@@ -552,10 +548,6 @@ html, body {
 .follow-list .follow-face img {
 	width: 129px;
 	height: 129px;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	-o-border-radius: 50%;
-	-ms-border-radius: 50%;
 	border-radius: 50%;
 }
 .follow-list .follow-face .si {
@@ -1543,10 +1535,6 @@ html.auth body {
 	color:#fff;
 }
 .work-small-profile img {
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	-o-border-radius: 50%;
-	-ms-border-radius: 50%;
 	border-radius: 50%;
 	width: 40px;
 	height: 40px;
@@ -1982,10 +1970,6 @@ p.desc {
 #mobile-menu-profile img {
 	display: block;
 	margin:0 auto;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	-o-border-radius: 50%;
-	-ms-border-radius: 50%;
 	border-radius: 50%;
 	border:9px solid rgba(255, 255, 255, 0.2);
 	width: 145px;
