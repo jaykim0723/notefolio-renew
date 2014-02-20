@@ -321,7 +321,7 @@ class Gallery extends CI_Controller {
             'user_A' => USER_ID,
             ));
 
-        if($input['status']=='enabled'&&$work->row->status==$input['status']){
+        if($input['status']=='enabled'&&$work->row->status!=$input['status']){
             //-- facebook post 
             $fb_query = http_build_query(array(
                 'user_id'=>USER_ID,
