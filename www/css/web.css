@@ -171,8 +171,8 @@ body {
      -o-text-overflow: ellipsis;     /* Opera under 10.7 */
      overflow:hidden;               /* "overflow" value must be different from "visible" */
      -moz-binding: url('ellipsis.xml#ellipsis');
-		text-overflow:ellipsis;
-		margin-top: 4px;
+	text-overflow:ellipsis;
+	margin-top: 4px;
 }
 .main-work-face {
 	display: block;
