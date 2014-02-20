@@ -51,7 +51,7 @@ echo form_open('', array(
 	});
 	
 	$(function(){
-		$('input[type="text"]','#form-username').on('keypress', function(){
+		$('input[type="text"]','#form-username').on('keypress,change', function(){
 			var val = $(this).val();
 			$.post('/auth/check_username_available', {username: val}, function(data, textStatus, xhr) {
                 var response = $.parseJSON(data);
@@ -65,7 +65,7 @@ echo form_open('', array(
 				
 			});
 		});
-		$('input[type="text"]','#form-email').on('keypress', function(){
+		$('input[type="text"]','#form-email').on('keypress,change', function(){
 			var val = $(this).val();
 			$.post('/auth/check_email_available', {email: val}, function(data, textStatus, xhr) {
                 var response = $.parseJSON(data);
