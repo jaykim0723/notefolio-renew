@@ -8,13 +8,22 @@
 
 			<div id="about-container">
 				
-				<?php if($this->nf->get('user')->username == $user->row->username): ?>
+				<?php if(!empty($user->row->username) && $this->nf->get('user')->username == $user->row->username): ?>
 				<a id="btn-update-about" class="pull-right btn btn-default">수정</a>
 				<?php endif; ?>
 
+				<?php if(!empty($row->contents)){ ?>
 				<div id="about-cont">
 					<?php echo nl2br($row->contents); ?>
-				</div>			
+				</div>
+				<?php } else { ?>
+				<div id="about-cont empty-about">
+					About을 작성하지 않았습니다. 
+					<?php if($this->nf->get('user')->username == $user->row->username){ ?>
+					<a href="javascript:$('#btn-update-about').trigger('click');">지금 작성해 보세요.</a>
+					<?php } ?>
+				</div>
+				<?php } ?>
 
 				<?php if($this->nf->get('user')->username == $user->row->username): ?>
 				<div id="about-edit-area">
