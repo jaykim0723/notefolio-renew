@@ -1970,7 +1970,7 @@ p.desc {
 	border:9px solid rgba(255, 255, 255, 0.2);
 }
 #profile-image > img,
-#mobile-menu-profile img {
+#mobile-menu-profile-image > img {
 	display: block;
 	margin:0 auto;
 	width: 145px;
