@@ -51,9 +51,7 @@ echo form_open('', array(
 	});
 	
 	$(function(){
-		$('input[type="text"]','#form-username').on('keypress', function(){
-			var val = $(this).val();
-			alert(val);
+		$('input[type="text"]','#form-username').on('keypress,change', function(){
 			$.post('/auth/check_username_available', {username: val}, function(data, textStatus, xhr) {
                 var response = $.parseJSON(data);
                 if(response.status=='done'){
@@ -62,20 +60,6 @@ echo form_open('', array(
                 }else{
                 	$('#form-username').addClass('error');
                 	$('.form-error','#form-username').text('↑ '+response.error);
-                }
-				
-			});
-		});
-		$('input[type="text"]','#form-email').on('keypress', function(){
-			var val = $(this).val();
-			$.post('/auth/check_email_available', {email: val}, function(data, textStatus, xhr) {
-                var response = $.parseJSON(data);
-                if(response.status=='done'){
-                	$('#form-email').removeClass('error');
-                	$('.form-error','#form-email').text('');
-                }else{
-                	$('#form-email').addClass('error');
-                	$('.form-error','#form-email').text('↑ '+response.error);
                 }
 				
 			});

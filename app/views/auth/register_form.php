@@ -287,8 +287,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 
 
 	$(function(){
-		$('input[type="text"]','#form-username').on('keypress', function(){
-			var val = $(this).val();
+		$('input[type="text"]','#form-username').on('keypress,change', function(){
 			$.post('/auth/check_username_available', {username: val}, function(data, textStatus, xhr) {
 	            var response = $.parseJSON(data);
 	            if(response.status=='done'){
@@ -301,7 +300,21 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 				
 			});
 			$('span.example','#form-username').text(val);
-		})
+		});
+		$('input[type="text"]','#form-email').on('keypress,change', function(){
+			var val = $(this).val();
+			$.post('/auth/check_email_available', {email: val}, function(data, textStatus, xhr) {
+                var response = $.parseJSON(data);
+                if(response.status=='done'){
+                	$('#form-email').removeClass('error');
+                	$('.form-error','#form-email').text('');
+                }else{
+                	$('#form-email').addClass('error');
+                	$('.form-error','#form-email').text('↑ '+response.error);
+                }
+				
+			});
+		});
 	});
 
 </script>
