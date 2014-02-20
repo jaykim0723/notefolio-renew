@@ -77,6 +77,12 @@ if(isset($fb_num_id)) {
 			:
 			(isset($fb_info->username) ? $fb_info->username : '')
 			;
+	$realname['value'] = 
+		(!empty($realname['value']))?
+			$realname['value']
+			:
+			(isset($fb_info->realname) ? $fb_info->name : '')
+			;
 	$email['value'] = 
 		(!empty($email['value']))?
 			$email['value']

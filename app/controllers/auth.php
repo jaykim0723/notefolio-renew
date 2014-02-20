@@ -652,14 +652,9 @@ class Auth extends CI_Controller
                         $fb_num_id = $this->fbsdk->getUser();
 
                         if($fb_num_id==$data['fb_num_id']){
-                            $fbme = $this->fbsdk->api('/me');
-                            $data['realname'] =  $fbme['name'];
-
                             $this->fbsdk->get_face($data['username']);
                             $this->fbsdk->get_bg($data['username']);
                         }
-                    } else{
-                        $data['realname'] = $data['username'];
                     }
 
                     $params = array('id'=>$id);
