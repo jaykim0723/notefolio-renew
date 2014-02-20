@@ -119,15 +119,14 @@
 				
 				<h4 class="pad7" style="background: #fff;margin-top: 0;border-top: 1px solid #efefef;padding-top: 18px;padding-bottom: 17px;padding-left: 15px;">공개여부</h4>
 				<div class="control-group" style="float: right;margin-top: -45px;padding-right: 15px;">
-                    <label class="notefolio-radio inline<?php echo $row->status!='disbaled' ? 'checked' : ''?>">
-                        <input type="radio" name="status" value="enabled" <?php echo $row->status!='disbaled' ? 'checked' : ''?>> 공개
+                    <label class="notefolio-radio inline<?php echo $row->status!='disabled' ? 'checked' : ''?>">
+                        <input type="radio" name="status" value="enabled" <?php echo $row->status!='disabled' ? 'checked' : ''?>> 공개
                     </label>
                     &nbsp; &nbsp; &nbsp;
-                    <label class="notefolio-radio inline<?php echo $row->status=='disbaled' ? 'checked' : ''?>">
-                        <input type="radio" name="status" value="disabled" <?php echo $row->status=='disbaled' ? 'checked' : ''?>> 비공개
+                    <label class="notefolio-radio inline<?php echo $row->status=='disabled' ? 'checked' : ''?>">
+                        <input type="radio" name="status" value="disabled" <?php echo $row->status=='disabled' ? 'checked' : ''?>> 비공개
                     </label>
 				</div>
-				<?php echo $row->status ?>
 				
 
 
