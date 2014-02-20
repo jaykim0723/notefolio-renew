@@ -409,6 +409,9 @@ html, body {
 		margin-top: 0px;
 		background: #fff;
 		}
+		#search_form .form-control {
+		width:100%;
+		}
 }
 @media (max-width: 767px) {
 	#gallery-search-form {
@@ -427,6 +430,8 @@ html, body {
 	border:#fff;
 	height: 38px;
 	padding-left: 18px !important;
+	float:right;
+	width:70%;
 }
 #search_form .btn.dropdown-toggle,  #search_form .form-control {
 	border-radius: 2em ;
@@ -1382,8 +1387,8 @@ html.auth body {
 	color:#fff;
 }
 .search-green {
-	padding: 10px 9px 5px;
-	width: 80%;
+	padding: 10px 0px 5px;
+	width: 39px;
 	float: right;
 	font-family: "NanumGothic";
 	font-weight: normal;
@@ -1395,7 +1400,7 @@ html.auth body {
 		text-align: center;
 	}
 	.search-green {
-		float:none !important;
+		float:right !important;
 	}
 
 }
