@@ -461,7 +461,7 @@ html, body {
 	border-color: #fff;
 	color: #2ac5c6;
 }
-#gallery-search-form div {
+#gallery-search-form div.searchword {
 	overflow: hidden;
 }
 .thumbnail-list {
