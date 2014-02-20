@@ -160,7 +160,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		<?=form_input($realname); ?>
 		<div class="form-error"><?=form_error($realname['name']); ?></div>
 	</div>
-	<div class="form-group <?=isset($errors[$email['name']]) ? 'error' : ''?>">
+	<div id="form-email" class="form-group <?=isset($errors[$email['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Email Address', $email['id']); ?>-->
 		<?=form_input($email); ?>
 		<div class="form-error"><?=form_error($email['name']); ?></div>
