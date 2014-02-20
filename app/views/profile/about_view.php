@@ -25,7 +25,7 @@
 				</div>
 				<?php } ?>
 
-				<?php if($this->nf->get('user')->username == $user->row->username): ?>
+				<?php if(isset($this->nf->get('user')->username) && $this->nf->get('user')->username == $user->row->username): ?>
 				<div id="about-edit-area">
 					<textarea name="about-text" id="about-text" cols="30" rows="20"></textarea>
 					<ul id="about-attachments">
