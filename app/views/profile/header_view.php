@@ -49,7 +49,7 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 			</div>
 			<?php endif; ?>
 			<div id="profile-image">
-				<img src="/data/profiles/<?php echo $row->username ?>_face.jpg?_=<?php echo substr($row->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'" style="overflow:hidden;">
+				<img src="/data/profiles/<?php echo $row->username ?>_face.jpg?_=<?php echo substr($row->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
 			</div>
 			<div id="profile-info">
 				<h2>
