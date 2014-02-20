@@ -406,21 +406,29 @@ html, body {
 }
 @media (max-width: 991px){
 		#gallery-search-form {
-		margin-top: 0px;
-		background: #fff;
+			margin-top: 0px;
+			background: #fff;
+			padding-bottom: 5px;
 		}
 		#search_form .form-control {
-		width:100% !important;
+			width:100% !important;
+		}
+		#search_form .btn.dropdown-toggle,  #search_form .form-control {
+			padding:12px 12px;
 		}
 		.searchword {
-			float:left !important;
-			width:80%;
+			border-bottom: 1px solid #efefef;
 		}
 }
 @media (max-width: 767px) {
 	#gallery-search-form {
 		margin-left: -15px;
 		margin-right: -15px;
+	}
+	.searchword {
+		float:left !important;
+		margin-top: 3px;
+		width:80%;
 	}
 
 }
@@ -1403,7 +1411,7 @@ html.auth body {
 @media (max-width: 991px) {
 	.search-center {
 		text-align: center;
-
+		margin-top: 3px;
 	}
 	.search-green {
 		float:right !important;
