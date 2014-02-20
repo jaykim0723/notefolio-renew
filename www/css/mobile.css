@@ -2246,6 +2246,18 @@ input#mobile-search-field:-moz-placeholder {
 	font-family: 'NanumGothic', Dotum;
 }
 
+
+#mobile-menu-profile #mobile-menu-profile-image {
+	display: block;
+	position: relative;
+	width: 145px;
+	height: 145px;
+	margin: 0 auto;
+	overflow:hidden;
+	border-radius: 50%;
+	border:9px solid rgba(255, 255, 255, 0.2);
+}
+
 #mobile-menu-profile p.follows  {
 	font-weight: 300;
 	margin-bottom: 20px;
