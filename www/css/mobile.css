@@ -23,7 +23,6 @@
 
 img.icon-round{
 	border-radius: 50%;
-	overflow: hidden;
 }
 .no-block{
 	display: inline!important;
@@ -85,7 +84,6 @@ html, body {
 	background: #2ac5c6;
 	border-color: #2ac5c6;
 	border-radius: 25px;
-	overflow: hidden;
 }
 .ajax-loading-overlay {
 	position: absolute;
@@ -115,8 +113,7 @@ html, body {
 	-webkit-box-shadow:none;
 	box-shadow: none;
 	border-radius:0;
-	border:
-	overflow: hidden;0;
+	border:0;
 	background: #fff;
 }
 .form-control,
@@ -126,7 +123,6 @@ html, body {
 .btn-sm,
 .btn-lg {
 	border-radius: 0;
-	overflow: hidden;
 }
 .centered {
 	text-align:center;
@@ -136,7 +132,6 @@ html, body {
 }
 .rounded {
 	border-radius: 1em;
-	overflow: hidden;
 }
 .label-nofol {
 	color: #fff;
@@ -146,8 +141,7 @@ html, body {
 }
 .btn-nofol {
 	border-radius: 2em;
-	text-decora
-	overflow: hidden;tion: none;
+	text-decoration: none;
 	color: gray;
 	border:1px solid gray;
 	background: #fff;
@@ -161,8 +155,7 @@ html, body {
 	border-color: #2ac5c6;
 	text-decoration: none;
 	border-radius: 2em;
-	background:
-	overflow: hidden; #fff;
+	background: #fff;
 	font-size: 14px;
 	font-family: 'PT Sans', sans-serif;
 	font-weight: 400;
@@ -176,8 +169,7 @@ html, body {
 }
 .btn-nofol3 {
 	border-radius: 2em;
-	text-decora
-	overflow: hidden;tion: none;
+	text-decoration: none;
 	color: #7a7880;
 	background: #fff;
 	-webkit-transition: all 0.3s ease;	
@@ -193,7 +185,6 @@ html, body {
 }
 .btn-follow .ajax-loading-overlay {
 	border-radius: 2em;
-	overflow: hidden;
 }
 .btn-follow.activated {
 	background: #2ac5c6;
@@ -368,8 +359,7 @@ html, body {
 	padding: 13px 16px;
 	text-decoration: none;
 	border-radius: 25px;
-	background-
-	overflow: hidden;image: url("//s3.amazonaws.com/css_sprites/713/10713/768bef68df_raw.png");
+	background-image: url("//s3.amazonaws.com/css_sprites/713/10713/768bef68df_raw.png");
 	background-repeat: no-repeat;	
 	height: auto!important;
 	width: auto!important;
@@ -462,8 +452,7 @@ html, body {
 }
 #search_form .btn.dropdown-toggle,  #search_form .form-control {
 	border-radius: 2em ;
-	padding: 9p
-	overflow: hidden;x 12px;
+	padding: 9px 12px;
 	font-size: 13px;
 	border-color: #fff;
 	box-shadow: none !important;
@@ -560,7 +549,6 @@ html, body {
 	width: 129px;
 	height: 129px;
 	border-radius: 50%;
-	overflow: hidden;
 }
 .follow-list .follow-face .si {
 	position: absolute;
@@ -653,15 +641,13 @@ html, body {
 	margin-top: 0px;
 	background:#fff;
 	border-radius:5px;
-	margin-bott
-	overflow: hidden;om: 10px;
+	margin-bottom: 10px;
 }
 @media (max-width: 991px){
 	.feed-activity-list {
 		background:#fff;
 		border-radius:5px;
-		margin-bott
-		overflow: hidden;om: 10px;
+		margin-bottom: 10px;
 		margin-top: 20px;
 	}
 	#alarm-popup-title {
@@ -701,8 +687,7 @@ html, body {
 	}
 	.feed-activity-list a img {
 		border-radius: 2em;
-
-overflow: hidden;	}
+	}
 }
 .feed-activity-list a small {
 	display: block;
@@ -744,7 +729,6 @@ overflow: hidden;	}
 .alarm-height {
 	line-height: 130%;
 	border-radius: 2em;
-	overflow: hidden;
 }
 #feed-activity-list .activity-infinite-icon,
 #alarm-list .activity-infinite-icon {
@@ -1141,8 +1125,7 @@ form.comment-block.create textarea {
 		@media(max-width: 767px){
 			.comment-profile-area img {
 				border-radius: 25px;
-		
-		overflow: hidden;	}
+			}
 			.comment-profile-area .si {
 				background-image: none !important;
 			}
@@ -1262,7 +1245,6 @@ html.auth body {
 	padding: 30px 20px 20px;
 	margin-top: 30px;
 	border-radius: 5px;
-	overflow: hidden;
 }
 
 .bg-info {
@@ -1273,8 +1255,7 @@ html.auth body {
 	background: rgba(0,0,0,0.2);
 	padding: 11px 20px 10px;
 	border-radius: 2em;
-	font-size: 
-	overflow: hidden;13px;
+	font-size: 13px;
 	line-height: 160%;
 	font-family: "NanumGothic";
 }
@@ -1374,8 +1355,7 @@ html.auth body {
 	padding: 10px 0;
 	width:100%;
 	border-radius: 5px;
-	background:
-	overflow: hidden; #fff;
+	background: #fff;
 	border: 1px solid #ddd;
 	color: #357ebd;
 	font-weight: 700;
@@ -1385,15 +1365,13 @@ html.auth body {
 	background: #fff;
 	padding: 0px;
 	border-radius: 5px;
-	width: 100
-	overflow: hidden;%;
+	width: 100%;
 	color: #7a7880;
 }
 .btn-darkgray {
 	padding: 10px 0px;
 	border-radius: 2em;
-	background:
-	overflow: hidden; #555;
+	background: #555;
 	border: none;
 	color: #fff;
 	font-weight: 700;
@@ -1405,8 +1383,7 @@ html.auth body {
 	padding: 10px 0px;
 	width:100%;
 	border-radius: 2em;
-	background:
-	overflow: hidden; #555;
+	background: #555;
 	border: none;
 	color: #fff;
 	font-weight: 700;
@@ -1416,8 +1393,7 @@ html.auth body {
 .btn-pointgreen {
 	padding: 10px 0px;
 	border-radius: 2em;
-	background:
-	overflow: hidden; #2ac5c6;
+	background: #2ac5c6;
 	border: none;
 	color: #fff;
 	font-weight: 700;
@@ -1519,8 +1495,7 @@ html.auth body {
 .auth-smallbtn {
 	background: #efefef;
 	border-radius: 2em;
-	margin-left
-	overflow: hidden;: 10px;
+	margin-left: 10px;
 }
 #auth_facebook {
 	margin-top: 40px;
@@ -1561,8 +1536,7 @@ html.auth body {
 }
 .work-small-profile img {
 	border-radius: 50%;
-	width: 40p
-	overflow: hidden;x;
+	width: 40px;
 	height: 40px;
 	margin-left: 5px;
 	margin-right: 5px;
@@ -1585,7 +1559,6 @@ html.auth body {
 	margin-bottom:10px;
 	cursor:pointer;
 	border-radius:5px;
-	overflow: hidden;
 }
 #side.info > a.current {
 	background:#f0f0f0;
@@ -1819,8 +1792,7 @@ html.auth body {
 	margin-left: 10px;
 	margin-right: 10px;
 	border-radius: 5px;
-	margin-top:
-	overflow: hidden; 10px;
+	margin-top: 10px;
 	font-size: 12px;
 
 }
@@ -1964,8 +1936,7 @@ p.desc {
 
 .btn-profilemini {
 	border-radius: 2em;
-	padding: 3p
-	overflow: hidden;x 8px 3px 10px;
+	padding: 3px 8px 3px 10px;
 	opacity: 0.8;
 	-webkit-opacity: 0.8;
 	filter: alpha(opacity=80);
@@ -2000,10 +1971,10 @@ p.desc {
 	display: block;
 	margin:0 auto;
 	border-radius: 50%;
-	border:9px 
-	overflow: hidden;solid rgba(255, 255, 255, 0.2);
+	border:9px solid rgba(255, 255, 255, 0.2);
 	width: 145px;
 	height: 145px;
+	overflow: hidden;
 }
 @media \0screen {
 	#profile-image > img {
@@ -2423,7 +2394,6 @@ input#mobile-search-field:-moz-placeholder {
 	background-color: #fff;
 	border-color: #e1e1e1;
 	border-radius: 5px;
-	overflow: hidden;
 }
 #statistics-chart-area .open .btn-smallgray {
 	color: #333;
@@ -2528,7 +2498,6 @@ input#mobile-search-field:-moz-placeholder {
 	padding: 10px 0;
 	text-align: center;
 	border-radius: 5px;
-	overflow: hidden;
 }
 #loading-indicator img {
 	margin-right: 10px;
