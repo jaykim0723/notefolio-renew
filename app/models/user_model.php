@@ -499,7 +499,7 @@ class user_model extends CI_Model {
         if(!empty($params->sns_fb_num_id))
             $this->db->where('fb_num_id', $params->sns_fb_num_id);
         if(!empty($params->id))
-            $this->db->where('users.id', $params->id);
+            $this->db->where('id', $params->id);
 
         try{
             $info = $this->db->get()->row();
