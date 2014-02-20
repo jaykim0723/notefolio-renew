@@ -20,10 +20,10 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 <div id="profile-header" style="background-image:url(<?=$filename?>?_=<?php echo substr($row->modified,-2) ?>);">
 
 	<div id="profile-total">
-		<span>총 작품수 : <?php echo number_format($total->work_cnt) ?></span>
-		<span>조회받은 수 : <?php echo number_format($total->hit_cnt) ?></span>
-		<span>노트받은 수 : <?php echo number_format($total->note_cnt) ?></span>
-		<span>콜렉트당한 수 : <?php echo number_format($total->collect_cnt) ?></span>
+		<span>총 작품수  <span style="color:#fff"><?php echo number_format($total->work_cnt) ?></span></span>
+		<span>조회받은 수  <span style="color:#fff"><?php echo number_format($total->hit_cnt) ?></span></span>
+		<span>노트받은 수  <span style="color:#fff"><?php echo number_format($total->note_cnt) ?></span></span>
+		<span>콜렉트당한 수  <span style="color:#fff"><?php echo number_format($total->collect_cnt) ?></span></span>
 	</div>
 
 	<div id="profile-inner-wrapper" style="background-color:<?php echo $row->face_color ?>;<?php if (USER_ID!=$row->user_id){echo 'padding-top:25px'; } ?>">
