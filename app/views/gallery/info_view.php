@@ -209,21 +209,20 @@
 									?>" class="pi pi-ccl-cc-<?php echo strtolower($row->ccl) ?>">CCL</i>
 								</div>
 								<div class="col-xs-7 text-right work-sns">
-									<a href="javascript:;" onclick="snsUtil.twitter(this);">
+									<a href="#" onclick="snsUtil.twitter(this);">
 										<i class="pi pi-twitter">twit_hover</i>
 									</a>
-									<a href="javascript:;" onclick="snsUtil.facebook(this);">
+									<a href="#" onclick="snsUtil.facebook(this);">
 										<i class="pi pi-facebook">fb_hover</i>
 									</a>
-									<a href="javascript:;" onclick="snsUtil.pinterest(this);">
+									<a href="#" onclick="snsUtil.pinterest(this);">
 										<i class="pi pi-pinterest">pin_hover</i>
 									</a>
-									<a href="javascript:;" onclick="snsUtil.tumblr(this);">
+									<a href="#" onclick="snsUtil.tumblr(this);">
 										<i class="pi pi-tumblr">tumblr_hover</i>
 									</a>
-									<a href="javascript:;" onclick="snsUtil.kakaotalk(this);" class="hidden-md hidden-lg no-block">
-										<em class="pi pi-kakao">kakao</em><!-- replace pi-twitter to pi-kakaotalk --> 
-									</a>
+									<a href="#" onclick="snsUtil.kakaotalk(this);" class="hidden-md hidden-lg no-block">
+										<em class="pi pi-kakao">kakao</em>
 									<!-- <a href="javascript:;" onclick="snsUtil.kakaostory(this);" class="hidden-md hidden-lg no-block">
 										<i class="pi pi-facebook">kakaostory_hover</i>
 									</a> -->
