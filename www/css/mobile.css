@@ -410,7 +410,11 @@ html, body {
 		background: #fff;
 		}
 		#search_form .form-control {
-		width:100%;
+		width:100% !important;
+		}
+		.searchword {
+			float:left !important;
+			width:80%;
 		}
 }
 @media (max-width: 767px) {
