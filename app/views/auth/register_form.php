@@ -10,6 +10,15 @@ if ($use_username) {
 		'placeholder' => 'User name'
 	);
 }
+$realname = array(
+	'name'	=> 'realname',
+	'id'	=> 'realname',
+	'class' => 'form-control',
+	'value' => set_value('realname'),
+	'maxlength'	=> 45,
+	'size'	=> 30,
+	'placeholder' => 'Screen name'
+);
 $email = array(
 	'name'	=> 'email',
 	'id'	=> 'email',
@@ -140,7 +149,11 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		<div class="form-error"><?=form_error($username['name']); ?></div>
 	</div>
 	<?php } ?>
-
+	<div class="form-group <?=isset($errors[$realname['name']]) ? 'error' : ''?>">
+		<!--<?=form_label('realname', $realname['id']); ?>-->
+		<?=form_input($realname); ?>
+		<div class="form-error"><?=form_error($realname['name']); ?></div>
+	</div>
 	<div class="form-group <?=isset($errors[$email['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Email Address', $email['id']); ?>-->
 		<?=form_input($email); ?>

@@ -600,6 +600,7 @@ class Auth extends CI_Controller
                         $ci->form_validation->set_value('month'),
                         $ci->form_validation->set_value('day'))),
                     'username'      => $ci->form_validation->set_value('username'),
+                    'realname'      => $ci->form_validation->set_value('realname'),
                     'mailing'       => ($ci->form_validation->set_value('mailing')=='1')?1:0,
 //                    'term'          => $ci->form_validation->set_value('term'),
                     
@@ -623,6 +624,7 @@ class Auth extends CI_Controller
                 ->set_rules('month', '생월', 'trim|numeric')
                 ->set_rules('day', '생일', 'trim|numeric')
                 ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean|is_unique[users.username]|min_length['.$this->config->item('username_min_length','tank_auth').']|max_length['.$this->config->item('username_max_length','tank_auth').']')
+                ->set_rules('realname', '이름', 'trim|max_length[45]')
                 ->set_rules('mailing', '메일링 동의', 'trim')
 //                ->set_rules('term', '약관 동의', 'trim|required')
                 ->set_rules('fb_num_id', '페이스북 아이디', 'trim')
@@ -801,6 +803,10 @@ class Auth extends CI_Controller
         if($return){
             $return = $this->users->is_username_available($username);
         }
+
+        $this->form_validation
+            ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean|is_unique[users.username]|min_length['.$this->config->item('username_min_length','tank_auth').']|max_length['.$this->config->item('username_max_length','tank_auth').']')
+            ;
         
 	    if ($return){
 	       $this->form_validation->set_message('check_username_available', '<b>'.$username.'</b>은(는) 사용할 수 없습니다.');

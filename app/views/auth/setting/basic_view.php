@@ -2,7 +2,7 @@
 <fieldset id='auth_basic'>
 	<div class="labeltext3">기본정보</div>
 
-	<div class="form-group <?php echo isset($errors['username']) ? 'error' : ''?>">
+	<div id="form-username" class="form-group <?php echo isset($errors['username']) ? 'error' : ''?>">
 		<label class="labeltext">URL</label>
 		<p><?=$this->input->server('HTTP_HOST')?>/<span style="color: #333 !important;font-weight: bold;"><?=$username?></span></p>
 		<input class="form-control" type='text' id='username' name='username' value="<?php echo $username?>" minlength='3' maxlength='20' rel='tooltip' placeholder="영문자,숫자,_,-"/>
@@ -154,58 +154,6 @@
 
 	
 	<script>
-		// basic에 관한 폼 검증
-		// register_form_view나 setting_form_view에서 호출된다.
-		var check_basic = function(){
-			var f = $('#auth_basic');
-			f.find('label').children('span').remove(); // reset
-			var o = o2 = '';
-			if(workSpace == 'register'){ 
-				/* register form(step by step) */
-				
-				// 이메일
-				o = f.find('input[name=email]');
-				o2 = f.find('input[name=confirm_email]');
-				if(!validation(o.val(), true, 'email'))
-					error(o, '정상적으로 입력하여 주십시오.');
-				else if(o.next().html() != '<img src="/images/signup/check.png">')
-					error(o, '이미 사용중인 주소입니다.');
-				else if(o.val() != o2.val())
-					error(o2, '이메일이 동일하여야 합니다.');
-						
-				// 비밀번호
-				o = f.find('input[name=password]');
-				o2 = f.find('input[name=confirm_password]');
-				if(empty(o.val()))
-					error(o, '필수 입력입니다.');
-				else if(o.val() != o2.val())
-					error(o2, '비밀번호가 동일하여야 합니다.');
-			
-				
-			}else{
-				/* setting */
-				
-				// 생년월일
-				// -- 검증 필요없음 --	
-			
-			}
-			// 성별
-			o = f.find(':radio[name=gender]');
-			if(!o.is(':checked'))
-				error(o, '성별을 선택하여 주십시오.');
-			
-			// 이름
-			o = f.find('input[name=realname]');
-			if(empty(o.val()))
-				error(o, '필수 입력입니다.');
-					
-			// 개인url
-			o = f.find('input[name=username]');
-			if(empty(o.val()))
-				error(o, '필수 입력입니다.');
-			else if(!username_checked)
-				error(o, '이미 가입한 주소입니다.');
-		}
 	</script>
 	
 </fieldset>
