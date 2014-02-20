@@ -816,6 +816,7 @@ class Auth extends CI_Controller
             $return = $this->form_validation
             ->set_rules('username', '개인url', 'trim|required|alpha_dash|xss_clean|min_length['.$this->config->item('username_min_length','tank_auth').']|max_length['.$this->config->item('username_max_length','tank_auth').']')
             ;
+            var_export($return);
 
             if(!$return){
                 // 실패한 경우.
