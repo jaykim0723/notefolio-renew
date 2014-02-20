@@ -527,6 +527,7 @@ class work_model extends CI_Model {
     function get_hot_creators(){
         log_message('debug','--------- work_model > get_hot_creators ( params : '.print_r(get_defined_vars(),TRUE)).')';
         $result = $this->db
+            ->distinct();
             ->select('users.*, user_profiles.keywords as user_keywords')
             ->from('hot_creators')
             ->join('users', 'hot_creators.user_id=users.id', 'left')
