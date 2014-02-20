@@ -851,7 +851,7 @@ class Auth extends CI_Controller
             $email_useable = $this->users->is_email_available($email);
 
             if(!$email_useable){
-                $error = "'".$email."'은(는) 이미 사용 중입니다. 다른 문구를 입력해 주세요.";
+                $error = "'".$email."'은(는) 이미 사용 중입니다. 다른 이메일을 입력해 주세요.";
                 $return = false;
             }
         }
