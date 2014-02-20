@@ -847,7 +847,7 @@ var profileUtil = {
 			        label: 'Change',
 			        cssClass: 'btn-primary',
 			        action: function(dialog){
-			        	var value = $('#dialog-change-realname').find('input').val();
+			        	var value = $('#dialog-change-realname').find('input').val().trim('string');
 			        	if(value.length < 3){
 			        		msg.open('최소한 3글자 이상을 입력하셔야 합니다.');
 			        		return false;
