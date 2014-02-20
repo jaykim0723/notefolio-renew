@@ -64,6 +64,7 @@ echo form_open('', array(
                 }
 				
 			});
+			$('span','#form-username').text('↑ '+val);
 		})
 	});
 </script>
