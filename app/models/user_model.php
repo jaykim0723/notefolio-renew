@@ -502,7 +502,7 @@ class user_model extends CI_Model {
             $this->db->where('id', $params->id);
 
         try{
-            $info = $this->db->get()->row();
+            $info = $this->db->get('user_sns_fb')->row();
         }
         catch(Exception $e){
             error_log($e);
