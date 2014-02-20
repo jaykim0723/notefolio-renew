@@ -776,41 +776,63 @@ class Auth extends CI_Controller
      * @return bool
      */
 	function check_username_available ($username='') {
-		$this->load->model('api/auth_model');
-        
-		//echo 'y';
-        
-        //-- get from /app/config/user_restrict.php
-        $this->config->load('user_restrict', TRUE, TRUE);
-        
-        //-- get config data
-        $restrict_username  =$this->config->item('restrict_username', 'user_restrict');
-        
-        $return = true;
-        if($restrict_username!=false){
-            $restrict_username     =explode(',', $restrict_username);
-            foreach ($restrict_username as $rst){
-                $return = !preg_match('#'.$rst.'#', $username!='' ? $username : $this->input->get('username'));
-                if($return!=true) break;
+		if($this->input->post('username')){
+            $username = $this->input->post('username');
+        }
+        else {
+            $_POST['username'] = $username;
+        }
+
+        //-- username
+        if($this->session->userdata('username')!=$username){
+            $this->load->model('tank_auth/users');
+            $username_useable = $this->users->is_username_available($username);
+
+            if(!$username_useable){
+                $error = "'".$data['form']['username']."'은(는) 이미 사용 중입니다. 다른 문구를 입력해 주세요.";
+            }
+
+            $return = false;
+
+        }
+
+        if($return){
+            //-- get from /app/config/user_restrict.php
+            $this->config->load('user_restrict', TRUE, TRUE);
+            
+            //-- get config data
+            $restrict_username  =$this->config->item('restrict_username', 'user_restrict');
+            
+            $return = true;
+            if($restrict_username!=false){
+                $restrict_username     =explode(',', $restrict_username);
+                foreach ($restrict_username as $rst){
+                    $return = !preg_match('#'.$rst.'#', $username!='' ? $username : $this->input->get('username'));
+                    if($return!=true) break;
+                }
             }
         }
         
         if($return){
-            $return = $this->users->is_username_available($username);
+            $return = $this->form_validation
+            ->set_rules('username', '개인url', 'trim|required|alpha_dash|xss_clean|min_length['.$this->config->item('username_min_length','tank_auth').']|max_length['.$this->config->item('username_max_length','tank_auth').']')
+            ->run();
+
+            if(!$return){
+                // 실패한 경우.
+                if ($this->form_validation->error_string()!='') {
+                    $errors = $this->form_validation->error_array();
+
+                    $error = $error['username'];
+                }
+            }
         }
 
-        $this->form_validation
-            ->set_rules('username', '개인url', 'trim|required|alpha_dash|check_username_available|xss_clean|is_unique[users.username]|min_length['.$this->config->item('username_min_length','tank_auth').']|max_length['.$this->config->item('username_max_length','tank_auth').']')
-            ;
-        
-	    if ($return){
-	       $this->form_validation->set_message('check_username_available', '<b>'.$username.'</b>은(는) 사용할 수 없습니다.');
-	        
-	    } else {
-	        
-	    }
-        
-        return $return;
+        return json_encode(($return)?
+            array('status'=>'done')
+            :
+            array('status'=>'fali', 'error'=>$error)
+            );
 	}
 	
 	function check_email_available ($email='') {
