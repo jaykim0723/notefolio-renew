@@ -54,7 +54,7 @@
 				<div id="work-recent-works">
 					<h2 class="nofol-title2">Recent Works</h2>
 					<ul id="work-recent-list">
-						<?php if ($row->next!=0){ ?>
+						<?php if ($row->next_work_id!=0){ ?>
 						<a href="javascript:;" id="btn-prev-work" class="btn btn-block btn-more"><i class="spi spi-up">up</i> Previous</a>
 						<?php } ?>
 					</ul>
