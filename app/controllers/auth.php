@@ -461,19 +461,19 @@ class Auth extends CI_Controller
                 'mailing',
                 'fb_num_id',
             );
-        $param = array();
+        $params = array();
 
         foreach($data['form'] as $key=>$val){
             if(in_array($key, $allowed_user_key))
-                $param[$key] = $val;
+                $params[$key] = $val;
         }
 
-        if(!empty($param['year'])&&!empty($param['month'])&&!empty($param['day'])){
-            $param['birth'] = implode('-', array($param['year'],$param['month'],$param['day']));
-            unset($param['year'],$param['month'],$param['day']);
+        if(!empty($params['year'])&&!empty($params['month'])&&!empty($params['day'])){
+            $params['birth'] = implode('-', array($params['year'],$params['month'],$params['day']));
+            unset($params['year'],$params['month'],$params['day']);
         }
 
-        $this->user_model->put($param);
+        $this->user_model->put($params);
 
         
         $allowed_user_key = array(
@@ -482,15 +482,15 @@ class Auth extends CI_Controller
                 'fb_post_comment',
                 'fb_post_note',
             );
-        $param = array('user_id'=>$data['form']['id']);
+        $params = array('user_id'=>$data['form']['id']);
 
         foreach($data['form'] as $key=>$val){
             if(in_array($key, $allowed_user_key))
-                $param[($key=='fb_num_id')?$key:str_replace('fb_', '', $key)] = $val;
+                $params[($key=='fb_num_id')?$key:str_replace('fb_', '', $key)] = $val;
             
         }
-        if(count($param)>1)
-            $result = $this->user_model->put_sns_fb($param);
+        if(count($params)>1)
+            $result = $this->user_model->put_sns_fb($params);
         //-- end          
         
         //-- after process
