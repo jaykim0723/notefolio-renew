@@ -383,7 +383,7 @@ $(function() {
 	  	if(!empty(NFview.area) && (NFview.area=='work-info' || NFview.area=='work-form')){
 		  	var $o = $('#work-sidebar');
 		  	if(direction=='up')
-		  		$o.css({'position':'absolute', 'top':'20px'});
+		  		$o.css({'position':'absolute', 'top':'40px'});
 		  	else
 		  		$o.css({'position':'fixed', 'top':'80px'});
 	  	}
@@ -966,7 +966,7 @@ var workInfoUtil = {
 		$workRecentList.css('top', top);
 	},
 	initRecentList : function(){
-		var top = 40;
+		var top = $('#work-recent-works').offset().top - $('#work-sidebar').offset().top + $('#work-recent-works').outerHeight();
 		$('#work-recent-list').css('top', top);
 	}
 };
