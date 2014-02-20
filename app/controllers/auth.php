@@ -851,7 +851,7 @@ class Auth extends CI_Controller
             $email_useable = $this->users->is_email_available($email);
 
             if(!$email_useable){
-                $error = "'".$email."'은(는) 이미 사용 중입니다. 다른 이메일을 입력해 주세요.";
+                $error = "'".$email."'은(는) 이미 사용 중입니다. 다른 이메일 입력해 주세요.";
                 $return = false;
             }
         }
@@ -896,21 +896,6 @@ class Auth extends CI_Controller
             :
             array('status'=>'fali', 'error'=>$error)
             ));
-
-        
-        
-        if($return){
-            $return = $this->ci->users->is_email_available($email);
-        }
-        
-        if ($return){
-           $this->form_validation->set_message('check_email_available', '<b>'.$email.'</b>은(는) 사용할 수 없습니다.');
-            
-        } else {
-            
-        }
-        
-		return $email;
 	}	
 
 	/**
