@@ -508,7 +508,7 @@ class Auth extends CI_Controller
             $this->session->set_userdata('username', $data['form']['username']); //change session username 
         }
         //-- end
-        
+
         return $data;
     }
 
@@ -681,7 +681,7 @@ class Auth extends CI_Controller
                             TRUE,
                             TRUE)) {                                // success
 
-                        $this->session->set_flashdata('welcome_newmember',true); // 가입환영용
+                        $this->session->set_userdata('welcome_newmember',true); // 가입환영용
                         $this->session->set_userdata('tutorial', '(profile)(create)'); // 튜토리얼
                         
                         redirect('/'.$data['username']);
