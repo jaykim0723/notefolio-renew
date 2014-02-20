@@ -489,7 +489,8 @@ class Auth extends CI_Controller
                 $param[($key=='fb_num_id')?$key:str_replace('fb_', '', $key)] = $val;
             
         }
-        $result = $this->user_model->put_sns_fb($param);
+        if(count($param)>1)
+            $result = $this->user_model->put_sns_fb($param);
         //-- end          
         
         //-- after process
@@ -507,7 +508,6 @@ class Auth extends CI_Controller
             $this->session->set_userdata('username', $data['form']['username']); //change session username 
         }
         //-- end
-        exit();
 
         return $data;
     }
