@@ -333,6 +333,7 @@ class Gallery extends CI_Controller {
             exec($cmd . " > /dev/null &");  
             //$this->fbsdk->post_data($this->tank_auth->get_user_id(), array('type'=>'post_work', 'work_id'=>$result));
         }
+        exit();
     }
 
     function _set_cover($params=array()){
