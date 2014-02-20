@@ -438,6 +438,9 @@ html, body {
 	border-color: #fff;
 	color: #2ac5c6;
 }
+#gallery-search-form div {
+	overflow: hidden;
+}
 .thumbnail-list {
 	overflow: hidden;
 	position: relative;
