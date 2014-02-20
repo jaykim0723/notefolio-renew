@@ -1975,6 +1975,7 @@ p.desc {
 	border:9px solid rgba(255, 255, 255, 0.2);
 	width: 145px;
 	height: 145px;
+	overflow:hidden
 }
 @media \0screen {
 	#profile-image > img {
