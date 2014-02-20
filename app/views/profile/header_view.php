@@ -195,7 +195,7 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 </script>
 <?php
 	// /app/controller/auth.php line 653
-	//$this->session->set_flashdata('welcome_newmember',true); // 가입환영용
+	$this->session->set_flashdata('welcome_newmember',true); // 가입환영용
 	if($this->session->flashdata('welcome_newmember')){
 ?>
 <script type="text/javascript">
