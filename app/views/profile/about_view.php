@@ -8,7 +8,7 @@
 
 			<div id="about-container">
 				
-				<?php if(!empty($user->row->username) && $this->nf->get('user')->username == $user->row->username): ?>
+				<?php if(isset($user->row->username) && $this->nf->get('user')->username == $user->row->username): ?>
 				<a id="btn-update-about" class="pull-right btn btn-default">수정</a>
 				<?php endif; ?>
 
