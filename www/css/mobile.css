@@ -1969,8 +1969,8 @@ p.desc {
 	border-radius: 50%;
 	border:9px solid rgba(255, 255, 255, 0.2);
 }
-#profile-image > img,
-#mobile-menu-profile-image > img {
+#profile-image img,
+#mobile-menu-profile-image img {
 	display: block;
 	margin:0 auto;
 	width: 100%;
