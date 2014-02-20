@@ -127,8 +127,8 @@
                         <input type="radio" name="status" value="disabled" <?php echo $row->status=='disbaled' ? 'checked' : ''?>> 비공개
                     </label>
 				</div>
-
-
+				<?php echo $row->status ?>
+				
 
 
 				<h4 class="pad7">충실도 <a class="tip" href="/info/faq#discoverbility" target="_blank">자세히보기</a></h4>
