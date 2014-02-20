@@ -1,12 +1,12 @@
 <div id="top-menu" class="hidden-xs hidden-sm">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 windowsfuck">
 				<a href="/" class="clear-list"><i class="spi spi-topbar_home"></i></a>
 				<a href="http://magazine.notefolio.net" target="_blank" class="ml"><i class="spi spi-topbar_magazine"></i></a>
 				<!-- <a href="http://shop.notefolio.net" class="ml"><i class="spi spi-topbar_shop"></i></a> -->
 			</div>
-			<div class="col-md-6 righted">
+			<div class="col-md-6 righted windowsfuck">
 				<?php if (USER_ID==0): ?>
 					<a href="/auth/register"><i class="spi spi-topbar_register"></i></a> 
 				<?php else: ?>				
