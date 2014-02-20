@@ -415,7 +415,6 @@ html, body {
 		.searchword {
 			float:left !important;
 			width:80%;
-			padding-top: 15px;
 		}
 }
 @media (max-width: 767px) {
@@ -443,6 +442,7 @@ html, body {
 	padding: 9px 12px;
 	font-size: 13px;
 	border-color: #fff;
+	box-shadow: none !important;
 }
 #search_form .btn.dropdown-toggle:hover, #search_form .form-control:hover {
 	border-color: #fff;
@@ -1403,7 +1403,6 @@ html.auth body {
 @media (max-width: 991px) {
 	.search-center {
 		text-align: center;
-		padding-top: 15px;
 
 	}
 	.search-green {
