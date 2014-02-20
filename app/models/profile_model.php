@@ -702,7 +702,7 @@ class profile_model extends CI_Model {
                     ) w ON up.user_id = w.user_id
                 where up.user_id = ".$this->db->escape($params->user_id).";";
         $query = $this->db->query($sql);
-        error_log($this->db->last_query());
+        //error_log($this->db->last_query());
 
         $data = (object)array(
             'status' => 'done',
