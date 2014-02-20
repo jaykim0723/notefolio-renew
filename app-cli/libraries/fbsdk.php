@@ -59,6 +59,7 @@ class Fbsdk extends Facebook
     {
         if($user_id==0) return false;
         $this->ci->load->model('user_model');
+        echo('user_id: '.$user_id.PHP_EOF);
         $fb_info = $this->ci->user_model->get_info_sns_fb(array(
                 'id'=> $user_id
             ));
