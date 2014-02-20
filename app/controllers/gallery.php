@@ -326,14 +326,13 @@ class Gallery extends CI_Controller {
             $fb_query = http_build_query(array(
                 'user_id'=>USER_ID,
                 'post_type'=>'post_work',
-                'work_id'=>$result,
+                'work_id'=>$input['work_id'],
                 'base_url'=>$this->config->item('base_url')
                 ));
             $cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'/../app-cli/cli.php fbconnect post "'.$fb_query.'"';
             exec($cmd . " > /dev/null &");  
             //$this->fbsdk->post_data($this->tank_auth->get_user_id(), array('type'=>'post_work', 'work_id'=>$result));
         }
-        exit();
     }
 
     function _set_cover($params=array()){
