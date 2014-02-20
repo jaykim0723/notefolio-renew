@@ -66,9 +66,11 @@
 		</li>
 		<?php if (USER_ID>0): ?>
 		<li id="mobile-menu-profile" class="centered">
-			<a href="/<?php echo $this->nf->get('user')->username ?>">
-				<img src="/data/profiles/<?php echo $this->nf->get('user')->username ?>_face.jpg?_=<?php echo substr($this->nf->get('user')->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
-			</a>
+			<div id="mobile-menu-profile-image">
+				<a href="/<?php echo $this->nf->get('user')->username ?>">
+					<img src="/data/profiles/<?php echo $this->nf->get('user')->username ?>_face.jpg?_=<?php echo substr($this->nf->get('user')->modified,-2) ?>" alt="" onerror="this.src='/img/default_profile_face.png'">
+				</a>
+			</div>
 			<p class="username"><a href="/<?php echo $this->nf->get('user')->username ?>"><?php echo $this->nf->get('user')->realname ?></a></p>
 			<p class="follows">
 				<a href="/<?php echo $this->nf->get('user')->username ?>/followers">
