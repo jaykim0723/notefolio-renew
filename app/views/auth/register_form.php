@@ -288,6 +288,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 
 	$(function(){
 		$('input[type="text"]','#form-username').on('keyup keypress blur change', function(){
+			var val = $(this).val();
 			$.post('/auth/check_username_available', {username: val}, function(data, textStatus, xhr) {
 	            var response = $.parseJSON(data);
 	            if(response.status=='done'){
