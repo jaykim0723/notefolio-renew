@@ -50,4 +50,18 @@ echo form_open('', array(
 		document.register_form.submit();
 	});
 	
+	$(function(){
+		$('#form-username').on('keyup', function(){
+			var val = $(this).val();
+			$.post('/auth/check_username_available', {username: val}, function(data, textStatus, xhr) {
+                var response = $.parseJSON(data);
+                if(response.status=='done'){
+                	alert('반영 완료');
+                }else{
+                	alert('오류');
+                }
+				
+			});
+		});
+	});
 </script>
