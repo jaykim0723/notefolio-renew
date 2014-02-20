@@ -320,6 +320,19 @@ class Gallery extends CI_Controller {
             'work_id' => $input['work_id'],
             'user_A' => USER_ID,
             ));
+
+        if($input['status']=='enabled'&&$work->row->status==$input['status']){
+            //-- facebook post 
+            $fb_query = http_build_query(array(
+                'user_id'=>USER_ID,
+                'post_type'=>'post_work',
+                'work_id'=>$result,
+                'base_url'=>$this->config->item('base_url')
+                ));
+            $cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'/../app-cli/cli.php fbconnect post "'.$fb_query.'"';
+            exec($cmd . " > /dev/null &");  
+            //$this->fbsdk->post_data($this->tank_auth->get_user_id(), array('type'=>'post_work', 'work_id'=>$result));
+        }
     }
 
     function _set_cover($params=array()){
@@ -415,6 +428,16 @@ class Gallery extends CI_Controller {
                 'work_id' => $params->work_id,
                 'user_A' => $params->user_id,
                 ));
+
+            //-- facebook post 
+            $fb_query = http_build_query(array(
+                'user_id'=>$params->user_id, 
+                'post_type'=>'post_note', 
+                'work_id'=>$params->work_id, 
+                'base_url'=>$this->config->item('base_url')
+                ));
+            $cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'/../app-cli/cli.php fbconnect post "'.$fb_query.'"';
+            exec($cmd . " > /dev/null &");  
         }
 
         return $result;

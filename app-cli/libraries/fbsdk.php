@@ -58,7 +58,7 @@ class Fbsdk extends Facebook
     function post_data($user_id=0, $data=array())
     {
         if($user_id==0) return false;
-        $this->ci->load->model('api/user_model');
+        $this->ci->load->model('user_model');
         $fb_info = $this->ci->user_model->get_info_sns_fb(array(
                 'id'=> USER_ID
             ))->row;

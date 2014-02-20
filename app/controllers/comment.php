@@ -107,6 +107,18 @@ class Comment extends CI_Controller {
                 'parent_id' => $params['parent_id'],
                 'comment' => $params['content'],
                 ));
+            if($params['parent_id']==0){
+            	//-- facebook post 
+                $fb_query = http_build_query(array(
+                	'user_id'=>$this->tank_auth->get_user_id(), 
+                	'post_type'=>'post_comment', 
+                	'work_id'=>$this->input->post('work_id'), 
+                	'base_url'=>$this->config->item('base_url')
+                	));
+                $cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'/../app-cli/cli.php fbconnect post "'.$fb_query.'"';
+                exec($cmd . " > /dev/null &");  
+                //$this->fbsdk->post_data($this->tank_auth->get_user_id(), array('type'=>'post_comment', 'work_id'=>$this->input->post('work_id')));
+            }
         }
 	}
 
