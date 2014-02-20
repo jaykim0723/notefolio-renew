@@ -64,7 +64,20 @@ echo form_open('', array(
                 }
 				
 			});
-			$('span.example','#form-username').text(val);
-		})
+		});
+		$('input[type="text"]','#form-email').on('change', function(){
+			var val = $(this).val();
+			$.post('/auth/check_email_available', {email: val}, function(data, textStatus, xhr) {
+                var response = $.parseJSON(data);
+                if(response.status=='done'){
+                	$('#form-email').removeClass('error');
+                	$('.form-error','#form-email').text('');
+                }else{
+                	$('#form-email').addClass('error');
+                	$('.form-error','#form-email').text('↑ '+response.error);
+                }
+				
+			});
+		});
 	});
 </script>

@@ -837,21 +837,67 @@ class Auth extends CI_Controller
 	}
 	
 	function check_email_available ($email='') {
-        //-- get from /app/config/user_restrict.php
-        $this->config->load('user_restrict', TRUE, TRUE);
-        
-        //-- get config data
-        
-        $restrict_email     =$this->config->item('restrict_email',    'user_restrict');
-        
+        if($this->input->post('email')){
+            $email = $this->input->post('email');
+        }
+        else {
+            $_POST['email'] = $email;
+        }
+
         $return = true;
-        if($restrict_email!=false){
-            $restrict_email     =explode(',', $restrict_email);
-            foreach ($restrict_email as $rst){
-                $return = !preg_match('#'.$rst.'#', $email!='' ? $email : $this->input->get('email'));
-                if($return!=true) break;
+        //-- email
+        if($this->session->userdata('email')!=$email){
+            $this->load->model('tank_auth/users');
+            $email_useable = $this->users->is_email_available($email);
+
+            if(!$email_useable){
+                $error = "'".$email."'은(는) 이미 사용 중입니다. 다른 문구를 입력해 주세요.";
+                $return = false;
             }
         }
+
+        if($return){
+            //-- get from /app/config/user_restrict.php
+            $this->config->load('user_restrict', TRUE, TRUE);
+            
+            //-- get config data
+            
+            $restrict_email     =$this->config->item('restrict_email',    'user_restrict');
+            
+            $return = true;
+            if($restrict_email!=false){
+                $restrict_email     =explode(',', $restrict_email);
+                foreach ($restrict_email as $rst){
+                    $return = !preg_match('#'.$rst.'#', $email!='' ? $email : $this->input->get('email'));
+                    if($return!=true) break;
+                }
+            }
+        }
+
+        if($return){
+            $return = $this->form_validation
+            ->set_rules('email', '이메일', 'trim|required|valid_email|max_length[100]')
+            ->run();
+
+            if(!$return){
+                // 실패한 경우.
+                if ($this->form_validation->error_string()!='') {
+                    $errors = $this->form_validation->error_array();
+
+                    $error = $errors['email'];
+                }
+
+                $return = false;
+            }
+        }
+
+        exit(json_encode(($return)?
+            array('status'=>'done')
+            :
+            array('status'=>'fali', 'error'=>$error)
+            ));
+
+        
         
         if($return){
             $return = $this->ci->users->is_email_available($email);
