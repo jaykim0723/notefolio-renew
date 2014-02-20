@@ -214,11 +214,11 @@ html, body {
 
 
 .error .form-control {
-	border : 1px solid #2ac5c6;
+	border : 1px solid #ff3366;
 }
 .error .form-error {
 	margin:2px 0;
-	color: #2ac5c6;
+	color: #ff3366;
 	font-family: "NanumGothic" !important;
 	font-size: 11px;
 }
