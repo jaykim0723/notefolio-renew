@@ -12,7 +12,7 @@
 				  	<?php if($this->uri->segment(2)=="followings"){ ?>
 				  		<strong>아직 <?=($is_me)?'':$row->realname.'님이 ';?>팔로우하는 사람이 없습니다.</strong>
 				  	<?php } else if($this->uri->segment(2)=="followers"){ ?>
-				  		<strong>아직 <?=($is_me)?'나를 ':?$row->realname.'님을 ';?>팔로우 하는 사람이 없습니다.</strong>
+				  		<strong>아직 <?=($is_me)?'나를 ':$row->realname.'님을 ';?>팔로우 하는 사람이 없습니다.</strong>
 				  	<?php } else { ?>
 				  		<strong>응? 이걸 어떻게 보셨나요? <a href="/info/contact_us">알려주세요...</a></strong>
 				  	<?php } ?>
