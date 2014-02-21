@@ -57,7 +57,15 @@ $.fn.ajaxUploader = function(opts) {
 		onCancel: function(id, fileName){
 			var elem = $(this.element).closest('.uploader-wrapper');
 		    options.cancel(elem, id, fileName);
-		},         
+		},		
+        // messages                
+        messages: {
+            typeError: "{file} 은 업로드할 수 없는 파일입니다. 업로드 가능한 파일 포맷은 {extensions} 입니다.",
+            sizeError: "{file} 이 너무 큽니다. 업로드 가능한 이미지 사이즈는 최대 {sizeLimit} 입니다.",
+            minSizeError: "{file} 이 너무 작습니다. 업로드 가능한 이미지 사이즈는 최소 {minSizeLimit} 입니다.",
+            emptyError: "{file} 이 비어 있습니다. 이 파일을 제외하고 업로드해 주세요.",
+            onLeave: "파일을 업로드하고 있습니다. 이 창을 벗어나면 업로드가 중지됩니다."            
+        },       
 	});	
 
 	return $(this);
