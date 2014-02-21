@@ -169,6 +169,7 @@ site.popWorkList = function(opts){
 		        label: 'Select',
 		        cssClass: 'btn-primary',
 		        action: function(dialog){
+		        	console.log(dialog.getData('done'));
 		        	typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);
 		        }
 		    },{
