@@ -22,7 +22,7 @@
 					아직 작성한 소개가 없습니다.
 					<a href="javascript:$('#btn-update-about').trigger('click');">지금 작성해 보세요.</a>
 					<?php } else { ?>
-					아직 <span class="username"><?=$user->row->username?></span>님의 소개가 없습니다.
+					아직 <span class="username"><?=$user->row->realname?></span>님의 소개가 없습니다.
 					<?php } ?>
 				</div>
 				<?php } ?>
