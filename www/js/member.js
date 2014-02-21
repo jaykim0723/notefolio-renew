@@ -1365,6 +1365,7 @@ var profileUtil = {
 				$('#statistics-table-area').html(html).children('table').dataTable({
 					"oLanguage": {
 						"sEmptyTable": "아직 업로드한 작품이 없습니다.",
+						"sZeroRecords": "어이쿠! 검색 결과가 없습니다.",
 						"sSearch": "검색:"
 						},
 		"fnDrawCallback": function ( oSettings ) {
