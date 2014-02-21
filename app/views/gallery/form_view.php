@@ -156,7 +156,7 @@
 
 				<div id="work-submit-wrapper">
 					<button id="work-submit" type="submit" class="btn btn-pointgreen btn-block btn-lg">
-						업로
+						업로드
 					</button>
 				</div>
 			</div>
