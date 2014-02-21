@@ -18,7 +18,7 @@
   margin: 0;
   width: auto !important;
   max-width: inherit;
-  min-width:  30em !important;
+  min-width:  13em !important;
 }
 .bootstrap-tagsinput input:focus {
   border: none;
