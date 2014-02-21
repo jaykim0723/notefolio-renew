@@ -883,7 +883,7 @@ var profileUtil = {
 	},
 	changeKeywords : function(){
 		var dialog = new BootstrapDialog({
-		    title: '카테고리 변경',
+		    title: '카테고리 설',
 		    message: function(){
 		    	var currentKeywords = $('#profile-keywords').data('value').match(/.{1,2}/g);
 		    	if(currentKeywords==null)
@@ -894,7 +894,7 @@ var profileUtil = {
 		    	}
 				var $message = $(
 					'<div id="dialog-change-keywords">'+
-						'<label>최대 2개를 선택하여 주세요.</label>'+
+						'<label>최대 2개까지 선택 가능합니다.</label>'+
 						area + 
 					'</div>'
 					);
@@ -911,10 +911,10 @@ var profileUtil = {
 			        			value += $(this).val();
 			        	});
 			        	if(value.length < 2){
-			        		msg.open('카테고리를 하나 이상을 선택하셔야 합니다.', 'error');
+			        		msg.open('최소 1개 이상을 선택하셔야 합니다.', 'error');
 			        		return false;
 			        	}else if(value.length > 4){
-			        		msg.open('카테고리를 두개까지 선택하셔야 합니다.', 'error');
+			        		msg.open('최대 2개까지 선택 가능합니다.', 'error');
 			        		return false;
 			        	}
 			        	$.post('/profile/change_keywords', {
@@ -923,7 +923,7 @@ var profileUtil = {
 			        		if(responseJSON.status=='done'){
 				        		$('#profile-keywords').data('value', value).html('&nbsp;'+responseJSON.keywords_string);
 				        		dialog.close();
-				        		msg.open('변경이 완료되었습니다.', 'success', '#profile-keywords');
+				        		msg.open('설정이 완료 되었습니다.', 'success', '#profile-keywords');
 				        		if(typeof firstTimeHelper!='undefined'){
 				        			profileUtil.changeRealname();
 				        		}

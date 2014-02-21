@@ -32,19 +32,19 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 			<?php if($this->session->userdata('username')==$row->username): ?>
 			<div id="btn-edit-profile" class="pull-right btn-group">
 				<button type="button" class="btn btn-default btn-xs dropdown-toggle btn-profilemini" data-toggle="dropdown">
-				  <span class="text">정보 편집</span>
+				  <span class="text">프로필 설정</span>
 				  <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
-				  <li><a id="btn-upload-face" href="#3">사진 업로드</a></li>
-				  <li><a id="btn-select-face" href="#3">사진 작품 중 선택</a></li>
-				  <li><a id="btn-delete-face" href="#3">사진 삭제</a></li>
+				  <li><a id="btn-upload-face" href="#3">프로필 사진 업로드</a></li>
+				  <li><a id="btn-select-face" href="#3">작품 중 선택</a></li>
+				  <li><a id="btn-delete-face" href="#3">삭제</a></li>
 				  <li class="divider"></li>
 				  <li><a id="btn-change-color" href="#3">배경색 설정</a></li>
 				  <li class="divider"></li>
-				  <li><a id="btn-change-realname" href="#3">작가명 설정</a></li>
+				  <li><a id="btn-change-realname" href="#3">사용자명 설정</a></li>
 				  <li><a id="btn-change-keywords" href="#3">카테고리 설정</a></li>
-				  <li><a id="btn-change-sns" href="#3">소셜주소 설정</a></li>
+				  <li><a id="btn-change-sns" href="#3">SNS주소 설정</a></li>
 				</ul>
 			</div>
 			<?php endif; ?>
@@ -59,7 +59,7 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 					<a href="javascript:profileUtil.changeRealname();">
 					<?php
 						if(empty($row->realname)){
-							echo '작가명을 입력해주세요';
+							echo '사용자명을 입력해주세요';
 						} else {
 							echo $row->realname;
 						}
@@ -112,11 +112,11 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 	<div id="btn-edit-cover">
 		<div class="pull-right btn-group">
 			<button type="button" class="btn btn-default btn-xs dropdown-toggle btn-profilemini" data-toggle="dropdown">
-			  <span class="text">배경 편집</span>
+			  <span class="text">배경 설정</span>
 			  <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-			  <li><a id="btn-upload-bg" href="#3">사진 업로드</a></li>
+			  <li><a id="btn-upload-bg" href="#3">업로드</a></li>
 			  <li><a id="btn-select-bg" href="#3">작품 중 선택</a></li>
 			  <li><a id="btn-delete-bg" href="#3">삭제</a></li>
 			</ul>
