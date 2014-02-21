@@ -68,7 +68,7 @@
 <?php endif ?>
 				<ul id="gallery-list" class="thumbnail-list infinite-list">
 					<?php if (empty($rows)): ?>
-						<div class="centered" style="padding: 100px 0;">해당되는 작품이 없습니다.</div>
+						<div class="centered" style="padding: 100px 0;">어이쿠! 검색 결과가 없습니다.</div>
 					<?php else: ?>
 						<!-- list -->
 						<?php foreach ($rows as $key => $row): ?>
