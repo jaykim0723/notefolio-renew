@@ -632,7 +632,7 @@ var commentUtil = {
 			comment_id : $f.data('comment_id')
 		}
 		if(empty($.trim(params.content))){
-			msg.open('내용을 작성하여 주십시오.', 'error', $('textarea[name=content]', $f), 'y');
+			msg.open('내용을 작성해주세요.', 'error', $('textarea[name=content]', $f), 'y');
 			return false;
 		}
 
