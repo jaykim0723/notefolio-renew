@@ -62,7 +62,7 @@
 
 
 				<h4 class="hide-h2">태그</h4>
-				<input id="tags" name="tags" type="text" class="form-control" placeholder=" 태그입력(Tab, Enter로 구분)">
+				<input id="tags" name="tags" type="text" class="form-control" placeholder=" 태그입력(Tab, Enter로 구분)" size="30">
 
 
 
