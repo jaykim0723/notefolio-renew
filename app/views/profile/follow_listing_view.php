@@ -9,11 +9,11 @@
 				
 				<div class="alert alert-info" style="color:#7a7880;text-align:center;">
 					<?php $is_me = (isset($this->nf->get('user')->username) && $this->nf->get('user')->username == $row->username); ?>
-				  	<?php if($this->uri->segment(3)=="followings"){ ?>
+				  	<?php if($this->uri->segment(2)=="followings"){ ?>
 				  		<strong>아직 <?=($is_me)?$row->username.'님이 ':'';?>팔로우하는 사람이 없습니다.</strong>
-				  	<?php } else if($this->uri->segment(3)=="followers"){ ?>
+				  	<?php } else if($this->uri->segment(2)=="followers"){ ?>
 				  		<strong>아직 <?=($is_me)?$row->username.'님을 ':'나를 ';?>팔로우 하는 사람이 없습니다.</strong>
-				  	<?php //} else { ?>
+				  	<?php } else { ?>
 				  		<strong>응? 이걸 어떻게 보셨나요? <a href="/info/contact_us">알려주세요...</a></strong>
 				  	<?php } ?>
 				</div>
