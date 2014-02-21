@@ -319,13 +319,13 @@ var workUtil = {
 					done : function(dialog){
 						var $img = dialog.getModalBody().find('.selected').children('img');
 						if($img.length == 0){
-							msg.open('이미지를 선택해주세요.', 'error');
+							msg.open('작품을 선택해주세요.', 'error');
 							return;
 						}
 						var src = $img.attr('src');
 						var upload_id = $img.data('id');
 						if(typeof src=='undefined'){
-							msg.open('이미지를 선택해주세요.', 'error');
+							msg.open('작품을 선택해주세요.', 'error');
 							return;
 						}
 						dialog.close();
