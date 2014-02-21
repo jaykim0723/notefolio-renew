@@ -317,9 +317,9 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 				
 			});
 		});
-		$('input[type="text"]','#form-confirm-password').on('keyup keypress blur change', function(){
+		$('input[type="password"]','#form-confirm-password').on('keyup keypress blur change', function(){
 			var val = $(this).val();
-			if(val!=$('input[type="text"]','#form-password').val()){
+			if(val!=$('input[type="password"]','#form-password').val()){
             	$('#form-confirm-password').removeClass('error');
             	$('.form-error','#form-confirm-password').text('');
             }else{
