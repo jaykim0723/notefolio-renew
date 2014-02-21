@@ -842,7 +842,9 @@ textarea.comment-textarea {
 	margin-left: 100px;
 	min-width: 70%;
 }
-
+.comment-replies textarea.comment-textarea {
+	margin-left: 130px;
+}
 .comment-replies form.comment-block .comment-profile-area {
 	margin-left: 30px;
 }
