@@ -43,7 +43,6 @@
 
 <?php if ($page==1): ?>
 <script>
-	$.ajaxSetup({ cache: false });
 	$(function(){
 		$('.unread-feed').hide();
 		
@@ -106,6 +105,8 @@
 		};
 
 		site.restoreInifiniteScroll();
+
+		NFview.user_id = <?=number_format($user_id)?>;
 
 		$('.more-link, .activity-more-link').trigger('click');
 	});

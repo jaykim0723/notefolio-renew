@@ -254,6 +254,11 @@ site.restoreInifiniteScroll = function(target, target_button){
 		target = '.infinite-list';
 	if(typeof target_button=='undefined')
 		target_button = '.more-link';
+	if(getLocal('listing_user_id')!=NFview.user_id){
+		delLocal('listing_html');
+		delLocal('listing_url');
+		delLocal('listing_href');
+	}
 	if(getLocal('listing_url')!=location.href) return;
 	$(target_button).remove();
 	var $container = $(target);
@@ -284,6 +289,7 @@ $(function() {
 				$('.more-link', $response).insertAfter($container);
 				$lis.appendTo($container);
 				if(NFview.area!='work-info'){
+					setLocal('listing_user_id', parseInt(NFview.user_id));
 					setLocal('listing_html', $container.html());
 					setLocal('listing_url', location.href);
 					setLocal('listing_href', href);
