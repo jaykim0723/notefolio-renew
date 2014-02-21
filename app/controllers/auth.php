@@ -1037,6 +1037,14 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('confirm_new_password', '새 비밀번호 확인', 'trim|required|xss_clean|matches[new_password]');
 
 		$data['errors'] = array();
+        foreach($data['errors'] as $error_key=>$error_val){
+            if(in_array($error_key, array('confirm_new_password'))){
+                $data['errors'][$error_key] = str_replace(array('을(를)', '은(는)', '이(가)'), array('을', '은', '이'), $error_val);
+            }
+            if(in_array($error_key, array('new_password'))){
+                $data['errors'][$error_key] = str_replace(array('을(를)', '은(는)', '이(가)'), array('를', '는', '가'), $error_val);
+            }
+        }
 
 		if ($this->form_validation->run()) {								// validation ok
 			if (!is_null($data = $this->tank_auth->reset_password(
@@ -1100,6 +1108,15 @@ class Auth extends CI_Controller
                 }else{
                     // form validation failed
                     $data['errors'] = $this->form_validation->error_array();
+
+                    foreach($data['errors'] as $error_key=>$error_val){
+                        if(in_array($error_key, array('confirm_new_password'))){
+                            $data['errors'][$error_key] = str_replace(array('을(를)', '은(는)', '이(가)'), array('을', '은', '이'), $error_val);
+                        }
+                        if(in_array($error_key, array('old_password', 'new_password'))){
+                            $data['errors'][$error_key] = str_replace(array('을(를)', '은(는)', '이(가)'), array('를', '는', '가'), $error_val);
+                        }
+                    }
                 }
             }
             $this->layout->set_view('auth/change_password_form', $data)->render(); 
@@ -1122,8 +1139,8 @@ class Auth extends CI_Controller
             );
 
             if($this->input->post('submitting')){
-    			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-    			$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
+    			$this->form_validation->set_rules('password', '비밀번호', 'trim|required|xss_clean');
+    			$this->form_validation->set_rules('email', '이메일', 'trim|required|xss_clean|valid_email');
 
     			if ($this->form_validation->run()) {								// validation ok
     				if (!is_null($data = $this->tank_auth->set_new_email(
@@ -1144,6 +1161,15 @@ class Auth extends CI_Controller
     			}else{
                     // form validation failed
                     $data['errors'] = $this->form_validation->error_array();
+
+                    foreach($data['errors'] as $error_key=>$error_val){
+                        if(in_array($error_key, array('email'))){
+                            $data['errors'][$error_key] = str_replace(array('을(를)', '은(는)', '이(가)'), array('을', '은', '이'), $error_val);
+                        }
+                        if(in_array($error_key, array('password'))){
+                            $data['errors'][$error_key] = str_replace(array('을(를)', '은(는)', '이(가)'), array('를', '는', '가'), $error_val);
+                        }
+                    }
                 }
             }
             $this->layout->set_view('auth/change_email_form', $data)->render(); 
