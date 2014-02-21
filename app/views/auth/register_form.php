@@ -7,7 +7,7 @@ if ($use_username) {
 		'value' => set_value('username'),
 		'maxlength'	=> $this->config->item('username_max_length', 'tank_auth'),
 		'size'	=> 30,
-		'placeholder' => 'User name'
+		'placeholder' => 'URL'
 	);
 }
 $realname = array(
@@ -17,7 +17,7 @@ $realname = array(
 	'value' => set_value('realname'),
 	'maxlength'	=> 45,
 	'size'	=> 30,
-	'placeholder' => 'Screen name'
+	'placeholder' => 'User name'
 );
 $email = array(
 	'name'	=> 'email',
@@ -147,19 +147,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 	</div>
 
 
-<div class="biggroup">	
-	<?php if ($use_username) { ?>
-	<div id="form-username" class="form-group <?=isset($errors[$username['name']]) ? 'error' : ''?>">
-		<!--<?=form_label('Username', $username['id']); ?>-->
-		<?=form_input($username); ?>
-		<div class="form-error"><?=form_error($username['name']); ?></div>
-	</div>
-	<?php } ?>
-	<div class="form-group <?=isset($errors[$realname['name']]) ? 'error' : ''?>">
-		<!--<?=form_label('realname', $realname['id']); ?>-->
-		<?=form_input($realname); ?>
-		<div class="form-error"><?=form_error($realname['name']); ?></div>
-	</div>
+<div class="biggroup">
 	<div id="form-email" class="form-group <?=isset($errors[$email['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Email Address', $email['id']); ?>-->
 		<?=form_input($email); ?>
@@ -174,7 +162,20 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		<!--<?=form_label('Confirm Password', $confirm_password['id']); ?>-->
 		<?=form_password($confirm_password); ?>
 		<div class="form-error"><?=form_error($confirm_password['name']); ?></div>
+	</div>	
+	<div class="form-group <?=isset($errors[$realname['name']]) ? 'error' : ''?>">
+		<!--<?=form_label('realname', $realname['id']); ?>-->
+		<?=form_input($realname); ?>
+		<div class="form-error"><?=form_error($realname['name']); ?></div>
 	</div>
+	<?php if ($use_username) { ?>
+	<div id="form-username" class="form-group <?=isset($errors[$username['name']]) ? 'error' : ''?>">
+		<!--<?=form_label('Username', $username['id']); ?>-->
+		<p><?=$this->input->server('HTTP_HOST')?>/<span class="example" style="color: #333 !important;font-weight: bold;">URL</span></p>
+		<?=form_input($username); ?>
+		<div class="form-error"><?=form_error($username['name']); ?></div>
+	</div>
+	<?php } ?>
 	<div class="form-group <?=isset($errors['gender']) ? 'error' : ''?>">
 		<!--<label>성별</label><br/>-->
 		<label class="radio-inline">
