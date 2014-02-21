@@ -967,7 +967,7 @@ var profileUtil = {
 	},
 	changeSNS : function(){
 		var dialog = new BootstrapDialog({
-		    title: ' SNS주소 설정',
+		    title: 'SNS주소 설정',
 		    message: function(){
 		    	var area = '<label>해당사항이 있는 곳에 아이디를 지정해주세요.</label><br/><br/>';
 				$.each([
@@ -1011,7 +1011,7 @@ var profileUtil = {
 				        		msg.open('변경이 완료되었습니다.', 'success', '#profile-sns-link');
 
 				        		if(emptyCnt==$('#dialog-change-sns').find('input').length){
-				        			$('#profile-sns-link').html('자신의 소셜을 지정해주세요');
+				        			$('#profile-sns-link').html('SNS주소를 입력해주세요.');
 				        		}
 			        		}else{
 			        			msg.open(responseJSON.msg, 'error');
