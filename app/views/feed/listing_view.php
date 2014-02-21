@@ -23,7 +23,7 @@
 					<?php endforeach ?>
 					<?php if(($this->uri->segment(3)==FALSE || $this->uri->segment(3)==1) && count($rows)==0) { ?>
 					<li class="empty-list">
-						새로운 피드가 없습니다.
+						새로운 피드가 없습니다. 다른 회원을 팔로우해보세요.
 					</li>
 					<?php } ?>
 				</ul>
