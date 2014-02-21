@@ -967,7 +967,7 @@ var profileUtil = {
 	},
 	changeSNS : function(){
 		var dialog = new BootstrapDialog({
-		    title: '소셜주소 변경',
+		    title: ' SNS주소 설정',
 		    message: function(){
 		    	var area = '<label>해당사항이 있는 곳에 아이디를 지정해주세요.</label><br/><br/>';
 				$.each([
