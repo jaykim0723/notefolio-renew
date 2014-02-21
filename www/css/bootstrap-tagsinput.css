@@ -1,7 +1,7 @@
 .bootstrap-tagsinput {
   background-color: #fff;
   display: inline-block;
-  padding: 4px 6px 7px 15px;
+  padding: 4px 6px 7px 13px;
   margin-bottom: 10px;
   color: #555;
   vertical-align: middle;
@@ -18,7 +18,7 @@
   margin: 0;
   width: auto !important;
   max-width: inherit;
-  min-width:  30em;
+  min-width:  30em !important;
 }
 .bootstrap-tagsinput input:focus {
   border: none;
