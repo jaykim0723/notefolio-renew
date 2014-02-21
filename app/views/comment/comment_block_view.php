@@ -21,8 +21,6 @@
 						<li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-update-comment">edit</a></li>
 						<li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-delete-comment">delete</a></li>
 						<?php endif ?>
-						<!-- <?php if (USER_ID!=0): ?> -->
-						<!-- <li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-reply-comment"><i class="spi spi-reply">reply</i></a></li> -->
 					<?php endif ?>
 				</ul>
 			</div>
