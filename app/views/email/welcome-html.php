@@ -1,32 +1,56 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head><title>Welcome to <?php echo $site_name; ?>!</title></head>
+<head><title>안녕하세요. 노트폴리오입니다!</title></head>
 <body>
-<div style="max-width: 800px; margin: 0; padding: 30px 0;">
-<table width="80%" border="0" cellpadding="0" cellspacing="0">
-<tr>
-<td width="5%"></td>
-<td align="left" width="95%" style="font: 13px/18px Arial, Helvetica, sans-serif;">
-<h2 style="font: normal 20px/23px Arial, Helvetica, sans-serif; margin: 0; padding: 0 0 18px; color: black;">Welcome to <?php echo $site_name; ?>!</h2>
-Thanks for joining <?php echo $site_name; ?>. We listed your sign in details below, make sure you keep them safe.<br />
-To open your <?php echo $site_name; ?> homepage, please follow this link:<br />
-<br />
-<big style="font: 16px/18px Arial, Helvetica, sans-serif;"><b><a href="<?php echo site_url('/auth/login/'); ?>" style="color: #3366cc;">Go to <?php echo $site_name; ?> now!</a></b></big><br />
-<br />
-Link doesn't work? Copy the following link to your browser address bar:<br />
-<nobr><a href="<?php echo site_url('/auth/login/'); ?>" style="color: #3366cc;"><?php echo site_url('/auth/login/'); ?></a></nobr><br />
-<br />
-<br />
-<?php if (strlen($username) > 0) { ?>Your username: <?php echo $username; ?><br /><?php } ?>
-Your email address: <?php echo $email; ?><br />
-<?php /* Your password: <?php echo $password; ?><br /> */ ?>
-<br />
-<br />
-Have fun!<br />
-The <?php echo $site_name; ?> Team
-</td>
-</tr>
-</table>
+
+
+
+
+
+
+<div style="max-width:666px;padding-left:10px;margin-top:20px;padding-top:30px;line-height:1.4em;">
+
+<h3 style='font-size:10pt;margin-bottom:30px;'>안녕하세요. 노트폴리오입니다!</h3>
+
+<p style="font-size:10pt;margin-bottom:20px;">
+회원가입이 정상적으로 처리되었습니다.
+</p>
+<p style="font-size:10pt;margin-bottom:20px;">
+크리에이티브 네트워크 노트폴리오는<br/>
+여기저기 흩어져 있는 아티스트와 디자이너들이 한 곳에 모여<br/>
+자신의 작품을 공개하고 이야기하는 공간입니다.
+</p>
+
+<p style="color:#1DA8AC;font-weight:bold;font-size:10pt;margin-bottom:20px;">
+이 곳에서 여러분의 크리에이티브가 더욱 주목받길 바랍니다.
+</p>
+<p>
+ㅡ
+</p>
+
+<p style="font-size:10pt;margin:20px 0;">
+초기서비스는 초대장을 받은 분들에 한해 제한적으로 운영됩니다.<br/>
+모든 문의사항, 제안, 질문을 귀 기울여 듣겠습니다.<br/>
+<a href="http://www.facebook.com/groups/notefolio.creators" target="_blank">이 곳에서</a> 함께 참여해주세요!
+</p>
+
+
+<a style="font-size:10pt;" href="http://notefolio.net" target='_blank'>노트폴리오 바로가기</a>
+<br/><br/>
+<a style="font-size:10pt;" href="http://notefolio.net/info/about_us" target='_blank'>노트폴리오란?</a>
+<br/><br/>
+<a style="font-size:10pt;" href="http://notefolio.net/info/contact_us" target='_blank'>문의/제안</a>
+<br/>
+
+
+<p style="font-size:10pt;margin-top:30px;">
+노트폴리오 드림<br/>
+webmaster@notefolio.net
+</p>
+
+
+
 </div>
+
 </body>
 </html>
