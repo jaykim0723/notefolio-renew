@@ -107,6 +107,14 @@
 		site.restoreInifiniteScroll();
 
 		NFview.user_id = <?=number_format($user_id)?>;
+		
+		if(getLocal('listing_user_id')!=NFview.user_id){
+			delLocal('listing_html');
+			delLocal('listing_url');
+			delLocal('listing_href');
+		}
+
+		setLocal('listing_user_id', parseInt(NFview.user_id));
 
 		$('.more-link, .activity-more-link').trigger('click');
 	});
