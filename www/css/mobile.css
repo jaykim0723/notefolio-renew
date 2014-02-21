@@ -1169,6 +1169,15 @@ form.comment-block.create textarea {
 		margin-left: 100px;
 		width: 69%;
 	}
+	@media (min-width:400px) and (max-width:600px) {
+		textarea.comment-textarea {
+			width: 76%;
+		}
+		.comment-replies textarea.comment-textarea {
+			width: 60%;
+		}
+
+	}
 	.comment-control-area-mobile {
 		position: absolute;
 		top: 0;
