@@ -143,7 +143,7 @@ site.requireLogin = function(){
 };
 site.popWorkList = function(opts){
 	var defaults = {
-		title : 'Someone\'s gallery',
+		title : $.trim($('#profile-info > h2').text())+'님의 작품 목록',
 		username : '',
 		work_id : '',
 		sub : '',
