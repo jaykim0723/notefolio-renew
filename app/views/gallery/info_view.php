@@ -243,13 +243,13 @@
 								<div class="note-wrapper" data-id="<?php echo $row->work_id ?>">>
 									<div class="col-xs-12">
 										<div class="collect-question">
-											이 작품을 콜렉션에 담겠습니까?
+											이 작품을 콜렉트 하시겠습니까?
 											<a href="#">예</a>
 											/
 											<a href="#">아니오</a>
 										</div>
 										<div class="collect-collected">
-											콜렉션에 담았습니다.
+											콜렉트 하였습니다.
 											<a href="">취소</a>
 										</div>
 									</div>

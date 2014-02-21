@@ -647,7 +647,7 @@ var workUtil = {
 
 	'delete' : function(o){
 		var url = $(o).attr('href');
-		BootstrapDialog.confirm('정말 삭제하시겠습니까?', function(result){
+		BootstrapDialog.confirm('정말 삭제 하시겠습니까?', function(result){
 			if(result){
 				site.redirect(url);
 			}
@@ -1071,7 +1071,7 @@ var profileUtil = {
 		});
 		$('#btn-delete-face, #btn-delete-bg').on('click', function(){
 			var _actionTarget = this.id == 'btn-delete-bg' ? 'bg' : 'face';
-			BootstrapDialog.confirm('정말 삭제하시겠습니까?', function(result){
+			BootstrapDialog.confirm('정말 삭제 하시겠습니까?', function(result){
 				if(result){
 					$.post('/profile/delete_'+_actionTarget, {}, 'json').done(function(responseJSON){
 						if(_actionTarget=='face'){

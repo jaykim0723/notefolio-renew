@@ -591,7 +591,7 @@ var commentUtil = {
 			'mode' : 'delete',
 			'comment_id' : $(o).parents('.comment-block').data('id')
 		};
-		BootstrapDialog.confirm('Are you sure?', function(result){
+		BootstrapDialog.confirm('정말 삭제 하시겠습니까?', function(result){
 			if(result){
 				$.post(site.url+'comment/post/'+work_id, params, function(responseHTML){
 					$('#comment-'+params.comment_id).remove();
