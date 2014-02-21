@@ -1366,9 +1366,9 @@ var profileUtil = {
 					"oLanguage": {
 						"sEmptyTable": "아직 업로드한 작품이 없습니다.",
 						"sZeroRecords": "어이쿠! 검색 결과가 없습니다.",
-						"sInfo": "총 _TOTAL_개 중 _START_번부터 _END_번",
-						"sInfoEmpty": "총 0개 중 0번부터 0번",
-						"sInfoFiltered": "(총 _MAX_개 중에서 필터링 되었습니다)",
+						"sInfo": "전체 _TOTAL_작품 중 _START_-_END_번",
+						"sInfoEmpty": "전체 0작품 중 0-0번",
+						"sInfoFiltered": "(전체 _MAX_작품 중에서 필터링 하였습니다)",
 						"sSearch": "검색:",
 						"sLengthMenu" : "1페이지에 작품 _MENU_개씩 출력"
 						},
