@@ -267,7 +267,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 			    message: '<div class="loading" style="text-align:center;padding:50px 0;"><img src="/img/loading.gif"/></div>',
 			    buttons: [
 				    {
-				        label: 'Done',
+				        label: 'OK',
 				        cssClass: 'btn-primary',
 				        action: function(dialogRef){    
 				            dialogRef.close();
