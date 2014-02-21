@@ -1180,10 +1180,10 @@ form.comment-block.create textarea {
 	}
 	@media (min-width:401px) and (max-width:500px) {
 		textarea.comment-textarea {
-			width: 76%;
+			width: 70%;
 		}
 		.comment-replies textarea.comment-textarea {
-			width: 60%;
+			width: 50%;
 		}
 
 	}
