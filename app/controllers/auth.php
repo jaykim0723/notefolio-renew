@@ -702,6 +702,7 @@ class Auth extends CI_Controller
                             $data['errors'][$error_key] = preg_replace(array('을(를)', '은(는)', '이(가)'), array('를', '는', '가'), $error_val);
                         }
                     }
+                    exit();
                     //exit(json_encode(array_merge(array('status'=>'error', 'goStep'=>$error_stage), $error_data)));
                 }
 
