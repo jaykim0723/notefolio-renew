@@ -20,10 +20,10 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 <div id="profile-header" style="background-image:url(<?=$filename?>?_=<?php echo substr($row->modified,-2) ?>);">
 
 	<div id="profile-total">
-		<span>총 작품수  <span style="color:#fff"><?php echo number_format($total->work_cnt) ?></span></span>
-		<span>조회받은 수  <span style="color:#fff"><?php echo number_format($total->hit_cnt) ?></span></span>
-		<span>노트받은 수  <span style="color:#fff"><?php echo number_format($total->note_cnt) ?></span></span>
-		<span>콜렉트당한 수  <span style="color:#fff"><?php echo number_format($total->collect_cnt) ?></span></span>
+		<span>Works  <span style="color:#fff"><?php echo number_format($total->work_cnt) ?></span></span>
+		<span>Viewed  <span style="color:#fff"><?php echo number_format($total->hit_cnt) ?></span></span>
+		<span>Liked  <span style="color:#fff"><?php echo number_format($total->note_cnt) ?></span></span>
+		<span>Collected  <span style="color:#fff"><?php echo number_format($total->collect_cnt) ?></span></span>
 	</div>
 
 	<div id="profile-inner-wrapper" style="background-color:<?php echo $row->face_color ?>;<?php if (USER_ID!=$row->user_id){echo 'padding-top:25px'; } ?>">
@@ -131,10 +131,10 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 			<div class="col-md-12" style="padding:0px;">
 				<ul class="nav nav-pills pull-right fol">
 					<li id="profile_nav_followings">
-						<a href="/<?php echo $row->username ?>/followings" style="color: #7a7880;">followings&nbsp;&nbsp;<span style="font-weight:700"><?php echo number_format($total->following_cnt) ?></span></a>
+						<a href="/<?php echo $row->username ?>/followings" style="color: #7a7880;">Followings&nbsp;&nbsp;<span style="font-weight:700"><?php echo number_format($total->following_cnt) ?></span></a>
 					</li>
 					<li id="profile_nav_followers">
-						<a href="/<?php echo $row->username ?>/followers" style="color: #7a7880;"> followers&nbsp;&nbsp;<span style="font-weight:700"><?php echo number_format($total->follower_cnt) ?></span></a>
+						<a href="/<?php echo $row->username ?>/followers" style="color: #7a7880;"> Followers&nbsp;&nbsp;<span style="font-weight:700"><?php echo number_format($total->follower_cnt) ?></span></a>
 					</li>
 				</ul>
 				<div class="clearfix visible-xs"></div>

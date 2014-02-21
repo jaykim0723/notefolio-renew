@@ -938,7 +938,7 @@ var profileUtil = {
 			        action: function(dialog){
 			        	var value = '';
 			        	if($('#dialog-change-keywords').find(':checkbox:checked').length==0){
-			        		msg.open('카테고리를 하나 이상을 선택하셔야 합니다.', 'error');
+			        		msg.open('최소 1개 이상을 선택하셔야 합니다.', 'error');
 			        		return false;
 			        	}
 						NFview.popCrop = null;
@@ -950,7 +950,7 @@ var profileUtil = {
 		    	setTimeout(function(){
 		    		$(':checkbox', '#dialog-change-keywords').on('click.dialog', function(){
 			    		if($(':checkbox:checked', $('#dialog-change-keywords')).length>2){
-			        		msg.open('카테고리를 두개까지 선택하셔야 합니다.', 'error');
+			        		msg.open('최대 2개까지 선택 가능합니다.', 'error');
 			    			$(this).removeAttr('checked');
 			    		}
 			    	});
