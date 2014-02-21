@@ -1167,9 +1167,18 @@ form.comment-block.create textarea {
 	}
 	.comment-replies textarea.comment-textarea {
 		margin-left: 100px;
-		width: 69%;
+		width: 67%;
 	}
-	@media (min-width:400px) and (max-width:600px) {
+	@media (min-width:501px) and (max-width:600px) {
+		textarea.comment-textarea {
+			width: 76%;
+		}
+		.comment-replies textarea.comment-textarea {
+			width: 60%;
+		}
+
+	}
+	@media (min-width:401px) and (max-width:500px) {
 		textarea.comment-textarea {
 			width: 76%;
 		}
