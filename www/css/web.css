@@ -853,6 +853,9 @@ textarea.comment-textarea {
 	textarea.comment-textarea {
 		min-width: 72%;
 	}
+	.comment-replies textarea.comment-textarea {
+		min-width: 65%;
+	}
 	
 }
 
