@@ -161,19 +161,19 @@ var workUtil = {
 		var value = this.discoverbility();
 		// 필수 입력값에 대해서만 간단하게 검사
 		if(value.title==0){
-			msg.open('제목을 입력하여 주십시오.', 'error', '#title', 'y');
+			msg.open('제목을 입력해주세요.', 'error', '#title', 'y');
 			return;
 		}
 		if(value.contents.image + value.contents.video + value.contents.text == 0 ){
-			msg.open('내용을 생성하여 주십시오.', 'error');
+			msg.open('내용을 작성해주세요.', 'error');
 			return;
 		}
 		if(value.keywords == 0){
-			msg.open('카테고리를 선택하여 주십시오.', 'error', $('#keywords').next(), 'y');
+			msg.open('카테고리를 선택해주세요.', 'error', $('#keywords').next(), 'y');
 			return;
 		}
  		if(value.cover == 0){
-			msg.open('커버를 지정하여 주십시오.', 'error', '#btn-upload-cover-wrapper', 'y');
+			msg.open('커버를 지정해주세요.', 'error', '#btn-upload-cover-wrapper', 'y');
 			return;
 		}
 		
@@ -223,7 +223,7 @@ var workUtil = {
 		}).done(function(d){
 			blockPage.unblock();
 			if(d.status=='done'){
-				BootstrapDialog.confirm('전송이 성공되었습니다. 해당 작품으로 지금 이동하시겠습니까?', function(result){
+				BootstrapDialog.confirm('업로드를 완료하였습니다. 해당 작품으로 지금 이동하시겠습니까?', function(result){
 		            if(result) {
 		                site.redirect('/'+NFview.user.username+'/'+NFview.work_id);
 		            }else{
@@ -231,10 +231,10 @@ var workUtil = {
 		            }
 		        });
 			}else
-				formFeedback('', 'error', '전송에 실패하였습니다.');
+				formFeedback('', 'error', '업로드를 실패하였습니다.');
 		}).fail(function(e){
 			blockPage.unblock();
-			formFeedback('', 'error', '전송에 실패하였습니다.');
+			formFeedback('', 'error', '업로드를 실패하였습니다.');
 		});
 	},
 	content: {
@@ -427,7 +427,7 @@ var workUtil = {
 			window.onbeforeunload = function (e) {
 				if(site.redirecting)
 					return;
-			  var message = '수정사항을 전송하지 않고 나가면 정보들이 저장되지 않습니다.',
+			  var message = '수정 중에 페이지를 이동하면 업로드가 되지 않습니다.',
 			  e = e || window.event;
 			  // For IE and Firefox
 			  if (e) {

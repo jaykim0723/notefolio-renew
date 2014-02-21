@@ -156,7 +156,7 @@
 
 				<div id="work-submit-wrapper">
 					<button id="work-submit" type="submit" class="btn btn-pointgreen btn-block btn-lg">
-						전송
+						업로드
 					</button>
 				</div>
 			</div>
@@ -211,7 +211,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="alert alert-danger">
-					작품 수정에 관한 것은 웹에서만 할 수 있습니다.
+					모바일에서는 작품 업로드 및 수정이 불가능합니다.
 				</div>
 			</div>
 		</div>
