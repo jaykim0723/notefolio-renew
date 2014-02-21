@@ -33,7 +33,7 @@
 			<div id="work-sidebar-inner" class="col-md-3">
 
 				<h4 class="hide-h2">카테고리</h4>
-				<select name="keywords" id="keywords" multiple title="최대 2개까지 카테고리 선택">
+				<select name="keywords" id="keywords" multiple title="카테고리 선택 (최대 2개)">
 					<?php 
 					$this->load->config('keyword', TRUE);
 					$keyword_list = $this->config->item('keyword', 'keyword');
@@ -62,7 +62,7 @@
 
 
 				<h4 class="hide-h2">태그</h4>
-				<input id="tags" name="tags" type="text" class="form-control" placeholder="  태그 입력">
+				<input id="tags" name="tags" type="text" class="form-control" placeholder="태그입력(Tab, Enter로 구분)">
 
 
 
@@ -104,7 +104,7 @@
 				</div>
 
 
-				<h4 class="pad7" style="background: #fff;margin-bottom: 0;padding-top: 20px;padding-left: 15px;padding-bottom: 20px;">동영상여부</h4>
+				<h4 class="pad7" style="background: #fff;margin-bottom: 0;padding-top: 20px;padding-left: 15px;padding-bottom: 20px;">영상콘텐츠를 포함하고 있습니다.</h4>
 				<div class="control-group" style="background: #fff;margin-top: -38px;padding-right: 15px;float: right;">
                     <label class="notefolio-radio inline<?if($row->is_video=='y'){?> checked<?}?>">
                         <input type="radio" name="is_video" value="y" <?if($row->is_video=='y'){?> checked<?}?>> 예
@@ -156,7 +156,7 @@
 
 				<div id="work-submit-wrapper">
 					<button id="work-submit" type="submit" class="btn btn-pointgreen btn-block btn-lg">
-						업로드
+						업로
 					</button>
 				</div>
 			</div>
