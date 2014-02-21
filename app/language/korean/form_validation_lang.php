@@ -2,8 +2,8 @@
 
 $lang['required'] 			= "%s을(를) 입력해주세요.";
 $lang['isset']				= "%s은(는) 반드시 입력해주세요.";
-$lang['valid_email']		= "%s은(는) 올바른 이메일 형식이 아닙니다.";
-$lang['valid_emails'] 		= "%s은(는) 올바른 이메일 형식이 아닙니다.";
+$lang['valid_email']		= "올바른 %s 형식이 아닙니다.";
+$lang['valid_emails'] 		= "올바른 %s 형식이 아닙니다.";
 $lang['valid_url'] 			= "%s은(는) 올바른 URL이 아닙니다.";
 $lang['valid_ip'] 			= "%s은(는) 올바른 IP가 아닙니다.";
 $lang['min_length']			= "%s은(는) %s자 이상 입력해주세요.";
