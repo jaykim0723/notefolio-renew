@@ -153,12 +153,12 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		<?=form_input($email); ?>
 		<div class="form-error"><?=form_error($email['name']); ?></div>
 	</div>
-	<div class="form-group <?=isset($errors[$password['name']]) ? 'error' : ''?>">
+	<div id="form-password" class="form-group <?=isset($errors[$password['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Password', $password['id']); ?>-->
 		<?=form_password($password); ?>
 		<div class="form-error"><?=form_error($password['name']); ?></div>
 	</div>
-	<div class="form-group <?=isset($errors[$confirm_password['name']]) ? 'error' : ''?>">
+	<div id="form-confirm-password" class="form-group <?=isset($errors[$confirm_password['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Confirm Password', $confirm_password['id']); ?>-->
 		<?=form_password($confirm_password); ?>
 		<div class="form-error"><?=form_error($confirm_password['name']); ?></div>
@@ -316,6 +316,17 @@ if(isset($error)&&!empty($value['fb_num_id'])){
                 }
 				
 			});
+		});
+		$('input[type="text"]','#form-confirm-password').on('keyup keypress blur change', function(){
+			var val = $(this).val();
+			if(val!=$('input[type="text"]','#form-password').val()){
+            	$('#form-confirm-password').removeClass('error');
+            	$('.form-error','#form-confirm-password').text('');
+            }else{
+            	$('#form-confirm-password').addClass('error');
+            	$('.form-error','#form-confirm-password').text('↑ '+'비밀번호를 똑같이 입력해주세요.');
+            }
+			
 		});
 	});
 
