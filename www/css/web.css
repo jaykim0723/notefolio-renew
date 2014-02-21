@@ -840,21 +840,21 @@ li#trash-bin{
 
 textarea.comment-textarea {
 	margin-left: 100px;
-	min-width: 78%;
+	width: 78%;
 }
 .comment-replies textarea.comment-textarea {
 	margin-left: 130px;
-	min-width: 72%;
+	width: 72%;
 }
 .comment-replies form.comment-block .comment-profile-area {
 	margin-left: 30px;
 }
 @media (max-width:1199px) {
 	textarea.comment-textarea {
-		min-width: 72%;
+		width: 72%;
 	}
 	.comment-replies textarea.comment-textarea {
-		min-width: 65%;
+		width: 65%;
 	}
 	
 }
