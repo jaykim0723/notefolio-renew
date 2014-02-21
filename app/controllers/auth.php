@@ -831,6 +831,14 @@ class Auth extends CI_Controller
                 if ($this->form_validation->error_string()!='') {
                     $errors = $this->form_validation->error_array();
 
+                    foreach($errors as $error_key=>$error_val){
+                        if(in_array($error_key, array('email', 'confirm_password', 'realname', 'username', 'gender'))){
+                            $errors[$error_key] = str_replace(array('을(를)', '은(는)', '이(가)'), array('을', '은', '이'), $error_val);
+                        }
+                        if(in_array($error_key, array('password'))){
+                            $errors[$error_key] = str_replace(array('을(를)', '은(는)', '이(가)'), array('를', '는', '가'), $error_val);
+                        }
+                    }
                     $error = $errors['username'];
                 }
 
@@ -893,6 +901,14 @@ class Auth extends CI_Controller
                 if ($this->form_validation->error_string()!='') {
                     $errors = $this->form_validation->error_array();
 
+                    foreach($errors as $error_key=>$error_val){
+                        if(in_array($error_key, array('email', 'confirm_password', 'realname', 'username', 'gender'))){
+                            $errors[$error_key] = str_replace(array('을(를)', '은(는)', '이(가)'), array('을', '은', '이'), $error_val);
+                        }
+                        if(in_array($error_key, array('password'))){
+                            $errors[$error_key] = str_replace(array('을(를)', '은(는)', '이(가)'), array('를', '는', '가'), $error_val);
+                        }
+                    }
                     $error = $errors['email'];
                 }
 
