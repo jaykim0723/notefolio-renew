@@ -1185,7 +1185,14 @@ form.comment-block.create textarea {
 		.comment-replies textarea.comment-textarea {
 			width: 50%;
 		}
-
+	}
+	@media (max-width:400px) {
+		textarea.comment-textarea {
+			width: 70%;
+		}
+		.comment-replies textarea.comment-textarea {
+			width: 50%;
+		}
 	}
 	.comment-control-area-mobile {
 		position: absolute;
