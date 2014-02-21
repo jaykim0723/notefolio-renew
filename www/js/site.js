@@ -169,8 +169,13 @@ site.popWorkList = function(opts){
 		        label: 'Select',
 		        cssClass: 'btn-primary',
 		        action: function(dialog){
-		        	console.log(dialog.getModalBody().find('.selected').prop('id'));
-		        	typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);
+		        	if(typeof(dialog.getModalBody().find('.selected').prop('id')) == 'undefined'){
+		        		msg.open('작품을 선택해 주세요.', 'error');
+		        		return false;
+		        	}
+		        	else{
+		        		typeof dialog.getData('done') === 'function' && dialog.getData('done')(dialog);
+		        	}
 		        }
 		    },{
 		        label: 'Cancel',

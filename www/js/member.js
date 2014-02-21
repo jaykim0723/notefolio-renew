@@ -849,7 +849,7 @@ var profileUtil = {
 			        action: function(dialog){
 			        	var value = $.trim($('#dialog-change-realname').find('input').val());
 			        	if(value.length < 3){
-			        		msg.open('최소한 3글자 이상을 입력하셔야 합니다.');
+			        		msg.open('최소한 3글자 이상을 입력하셔야 합니다.', 'error');
 			        		return false;
 			        	}
 			        	$.post('/profile/change_realname', {
