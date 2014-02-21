@@ -1163,9 +1163,11 @@ form.comment-block.create textarea {
 		color: #000;
 		margin-top: 5px;
 		margin-left: 70px;
+		width: 80%;
 	}
 	.comment-replies textarea.comment-textarea {
 		margin-left: 100px;
+		width: 71%;
 	}
 	.comment-control-area-mobile {
 		position: absolute;
