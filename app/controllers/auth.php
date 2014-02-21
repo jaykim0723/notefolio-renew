@@ -695,10 +695,10 @@ class Auth extends CI_Controller
                     $data['error'] = var_export($this->form_validation->error_string(), true);
                     $data['errors'] = $this->form_validation->error_array();
                     foreach($data['errors'] as $error_key=>$error_val){
-                        if(in_array($error_val, array('email', 'realname', 'username', 'gender'))){
+                        if(in_array($error_key, array('email', 'realname', 'username', 'gender'))){
                             $data['errors'][$error_key] = preg_replace(array('을(를)', '은(는)', '이(가)'), array('을', '은', '이'), $error_val);
                         }
-                        if(in_array($error_val, array('password', 'confirm_password'))){
+                        if(in_array($error_key, array('password', 'confirm_password'))){
                             $data['errors'][$error_key] = preg_replace(array('을(를)', '은(는)', '이(가)'), array('를', '는', '가'), $error_val);
                         }
                     }
