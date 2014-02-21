@@ -155,11 +155,11 @@
 									</a>
 									<div class="add-collection centered <?php echo $row->collected=='y' ? 'collected' : '' ?>">
 										<div class="collect-question">
-											이 작품을 콜렉션하시겠습니까?
+											이 작품을 콜렉트 하시겠습니까?
 											<a href="javascript:;" onclick="collectUtil.add(this);">예</a> / <a href="javascript:;" onclick="collectUtil.hide(this);">아니오</a>
 										</div>
 										<div class="collect-collected">
-											콜렉션에 추가되었습니다.
+											콜렉트 하였습니다.
 											<a href="javascript:;" onclick="collectUtil.cancel(this);">취소</a>
 											
 										</div>
