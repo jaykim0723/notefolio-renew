@@ -20,7 +20,6 @@
 					<?php if (USER_ID!=0 && $row->user->user_id==USER_ID): ?>
 						<li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-update-comment">edit</a></li>
 						<li><a href="javascript:;" class="btn btn-nofol btn-no-border btn-delete-comment">delete</a></li>
-						<?php endif ?>
 					<?php endif ?>
 				</ul>
 			</div>
