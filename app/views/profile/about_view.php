@@ -18,9 +18,11 @@
 				</div>
 				<?php } else { ?>
 				<div id="about-cont" class="empty-about">
-					About을 작성하지 않았습니다. 
 					<?php if(isset($this->nf->get('user')->username) && $this->nf->get('user')->username == $user->row->username){ ?>
+					아직 작성한 소개가 없습니다.
 					<a href="javascript:$('#btn-update-about').trigger('click');">지금 작성해 보세요.</a>
+					<?php } else { ?>
+					아직 <span class="username"><?=$user->row->username?></span>님의 소개가 없습니다.
 					<?php } ?>
 				</div>
 				<?php } ?>

@@ -9,9 +9,7 @@
 				<?php if (empty($rows)): ?>
 				
 					<div class="alert alert-info">
-					  <strong>콜렉트 된 작품이 없습니다.</strong>
-					  <br/>
-					  작품을 콜렉트해주세요.
+					  <strong>아직 콜렉트 한 작품이 없습니다.</strong>
 					</div>
 
 				<?php else: ?>
