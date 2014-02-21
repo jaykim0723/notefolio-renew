@@ -151,29 +151,29 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 	<div id="form-email" class="form-group <?=isset($errors[$email['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Email Address', $email['id']); ?>-->
 		<?=form_input($email); ?>
-		<div class="form-error"><?=form_error($email['name']); ?></div>
+		<div class="form-error"><?=$errors[$email['name']]; ?></div>
 	</div>
 	<div id="form-password" class="form-group <?=isset($errors[$password['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Password', $password['id']); ?>-->
 		<?=form_password($password); ?>
-		<div class="form-error"><?=form_error($password['name']); ?></div>
+		<div class="form-error"><?=$errors[$password['name']]; ?></div>
 	</div>
 	<div id="form-confirm-password" class="form-group <?=isset($errors[$confirm_password['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Confirm Password', $confirm_password['id']); ?>-->
 		<?=form_password($confirm_password); ?>
-		<div class="form-error"><?=form_error($confirm_password['name']); ?></div>
+		<div class="form-error"><?=$errors[$confirm_password['name']]; ?></div>
 	</div>	
 	<div class="form-group <?=isset($errors[$realname['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('realname', $realname['id']); ?>-->
 		<?=form_input($realname); ?>
-		<div class="form-error"><?=form_error($realname['name']); ?></div>
+		<div class="form-error"><?=$errors[$realname['name']]; ?></div>
 	</div>
 	<?php if ($use_username) { ?>
 	<div id="form-username" class="form-group <?=isset($errors[$username['name']]) ? 'error' : ''?>">
 		<!--<?=form_label('Username', $username['id']); ?>-->
 		<p><?=$this->input->server('HTTP_HOST')?>/<span class="example" style="color: #333 !important;font-weight: bold;">URL</span></p>
 		<?=form_input($username); ?>
-		<div class="form-error"><?=form_error($username['name']); ?></div>
+		<div class="form-error"><?=$errors[$username['name']]; ?></div>
 	</div>
 	<?php } ?>
 	<div class="form-group <?=isset($errors['gender']) ? 'error' : ''?>">
@@ -184,7 +184,7 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		<label class="radio-inline">
 			<input type='radio' name='gender' value='m' <?=$gender['m']?> /> 남
 		</label>
-		<div class="form-error"><?=form_error('gender'); ?></div>
+		<div class="form-error"><?=$errors['gender']; ?></div>
 	</div>
 
 	<div class="form-group <?=isset($errors['year'])&&isset($errors['month'])&&isset($errors['day']) ? 'error' : ''?>">
