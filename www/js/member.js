@@ -16,7 +16,7 @@ var workUtil = {
 	saveCover : function(upload_id, src){
 		site.scroll.lock();
 		memberUtil.popCrop({
-			message : ['380x380 크기의 정사각형 썸네일을 지정해주세요.', '760x380의 직사각형 썸네일을 지정해주세요'],
+			message : ['정사각형 커버를 지정해주세요. (380x380)', '직사각형 커버를 지정해주세요. (760x380)'],
 			src : src,
 			width : [380, 760],
 			height: [380, 380],
@@ -883,7 +883,7 @@ var profileUtil = {
 	},
 	changeKeywords : function(){
 		var dialog = new BootstrapDialog({
-		    title: '카테고리 설',
+		    title: '카테고리 설정',
 		    message: function(){
 		    	var currentKeywords = $('#profile-keywords').data('value').match(/.{1,2}/g);
 		    	if(currentKeywords==null)
