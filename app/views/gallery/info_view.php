@@ -244,6 +244,8 @@
 									<div class="col-xs-12">
 										<div class="collect-question">
 											이 작품을 콜렉트 하시겠습니까?
+
+											ssss
 											<a href="#">예</a>
 											/
 											<a href="#">아니오</a>
