@@ -850,6 +850,9 @@ textarea.comment-textarea {
 	margin-left: 30px;
 }
 @media (max-width:1199px) {
+	textarea.comment-textarea {
+		min-width: 72%;
+	}
 	
 }
 
