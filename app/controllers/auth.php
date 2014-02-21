@@ -1071,7 +1071,7 @@ class Auth extends CI_Controller
 				$this->_show_message($this->lang->line('auth_message_new_password_failed'));
 			}
 		}
-		$this->load->view('auth/reset_password_form', $data);
+        $this->layout->set_view('auth/reset_password_form', $data)->render();
 	}
 
 	/**
