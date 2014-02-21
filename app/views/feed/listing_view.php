@@ -43,6 +43,7 @@
 
 <?php if ($page==1): ?>
 <script>
+	$.ajaxSetup({ cache: false });
 	$(function(){
 		$('.unread-feed').hide();
 		
