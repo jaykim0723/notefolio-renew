@@ -1369,7 +1369,8 @@ var profileUtil = {
 						"sInfo": "총 _TOTAL_개 중 _START_번부터 _END_번",
 						"sInfoEmpty": "총 0개 중 0번부터 0번",
 						"sInfoFiltered": "(총 _MAX_개 중에서 필터링 되었습니다)",
-						"sSearch": "검색:"
+						"sSearch": "검색:",
+						"sLengthMenu" : "1페이지에 작품 _MENU_개씩 출력"
 						},
 		"fnDrawCallback": function ( oSettings ) {
 			/* Need to redo the counters if filtered or sorted */
