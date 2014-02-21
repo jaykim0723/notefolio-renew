@@ -1188,10 +1188,10 @@ form.comment-block.create textarea {
 	}
 	@media (max-width:400px) {
 		textarea.comment-textarea {
-			width: 70%;
+			width: 63%;
 		}
 		.comment-replies textarea.comment-textarea {
-			width: 50%;
+			width: 39%;
 		}
 	}
 	.comment-control-area-mobile {
