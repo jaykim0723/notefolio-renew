@@ -382,7 +382,11 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($data->work_id).",
                 ".$this->db->escape($param->parent_id).",
                 ".$this->db->escape($param->user_id).",
-                ".$this->db->escape($param->content).",
+                ".$this->db->escape(trim(preg_replace(
+                                    array('/&amp;/', '/&lt;/', '/&gt;/', '/&quot;/', '/&nbsp;/'), 
+                                    array('&', '<', '>', '"', ' '), 
+                                    $param->content
+                                ))).",
                 ".$this->db->escape($param->regdate).",
                 ".$this->db->escape($param->moddate).",
                 0)
@@ -416,7 +420,7 @@ class migrate extends CI_Controller {
         echo('.');
 
         $sql = '';
-        foreach($data->views as $param){
+        foreach($data->view as $param){
             $sql .= (empty($sql)?'':',')."
                 (".$this->db->escape($data->work_id).",
                 ".$this->db->escape($param->user_id).",
@@ -439,7 +443,7 @@ class migrate extends CI_Controller {
         echo('.');
 
         $sql = '';
-        foreach($data->notes as $param){
+        foreach($data->note as $param){
             $sql .= (empty($sql)?'':',')."
                 (".$this->db->escape($data->work_id).",
                 ".$this->db->escape($param->user_id).",
@@ -637,8 +641,12 @@ class migrate extends CI_Controller {
 
             $data = array('t'=>$val->type);
             switch($val->type){
-                case "text":
                 case "video":
+                    $val->content = explode('|', $val->content);
+                    if(is_array($val->content)){
+                        $val->content = $val->content[0];
+                    }
+                case "text":
                     $data['c'] = trim(preg_replace(
                                     array('/&amp;/', '/&lt;/', '/&gt;/', '/&quot;/', '/&nbsp;/'), 
                                     array('&', '<', '>', '"', ' '), 
