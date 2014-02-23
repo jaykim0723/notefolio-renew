@@ -440,8 +440,7 @@ class migrate extends CI_Controller {
                 ".$this->db->escape($param->user_id).",
                 ".$this->db->escape($param->remote_addr).",
                 'migrate',
-                ".$this->db->escape($param->regdate).",
-                0)
+                ".$this->db->escape($param->regdate).")
                 ";
         }
         if(!empty($sql)){
