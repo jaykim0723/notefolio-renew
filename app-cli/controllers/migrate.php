@@ -134,6 +134,18 @@ class migrate extends CI_Controller {
             $this->db->query($sql);
             echo('.');
 
+            $sql = "INSERT INTO `user_about`
+                (`user_id`,
+                `contents`,
+                `moddate`)
+                VALUES
+                (".$this->db->escape($data->info->id).",
+                ".$this->db->escape($data->info->description).",
+                ".$this->db->escape($data->info->moddate).");
+                ";
+            $this->db->query($sql);
+            echo('.');
+
             if(count($data->sns_fb)>0){
                 $sql = "INSERT INTO `notefolio-renew`.`user_sns_fb`
                         (`id`,
