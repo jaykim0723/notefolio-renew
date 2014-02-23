@@ -39,6 +39,8 @@ class migrate extends CI_Controller {
         $this->db->query($sql);
         $sql = "TRUNCATE `user_profiles`;";
         $this->db->query($sql);
+        $sql = "TRUNCATE `user_about`;";
+        $this->db->query($sql);
         $sql = "TRUNCATE `user_sns_fb`;";
         $this->db->query($sql);
         $sql = "TRUNCATE `user_follows`;";
