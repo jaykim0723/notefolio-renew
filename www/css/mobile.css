@@ -58,6 +58,7 @@ html, body {
 	width: 100%;
 	overflow-x: hidden;
 	background: #efefef;
+	font-family: "Nanum Gothic";
 }
 
 @media (max-width:767px) {
