@@ -319,7 +319,7 @@ $(function() {
 	.on('click', '.go-profile-area', function(event){
 		event.preventDefault();
 		event.stopPropagation();
-		site.redirect($(this).data('username'));
+		site.redirect('/'+$(this).data('username'));
 	})
 	.on('click', '.btn-follow', function(){
 		if(site.user_id==0){
