@@ -78,7 +78,7 @@ notefolio.net
 
                 <div class='row'>
                     <div class='col-md-10'>
-                        <div class="well">
+                        <div class="well" style="margin-top: 0; margin-bottom: 0; padding-top:0; padding-bottom:0;">
                             <h2 style="line-height: 1.5em; padding: 0; margin: 0;"><img src='/img/info/about/4.png' title="노트폴리오와 함께 합니다." /></h2>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ notefolio.net
                         </div>
                     </div>
                 </div>
-                <div style="height: 400px;">
+                <div style="height: 400px;" style="margin-top: 0; margin-bottom: 0; padding-top:0; padding-bottom:0;">
                     <p class="well" style="margin-top: 0; margin-bottom: 0; padding-top:0; padding-bottom:0;">
                         노트폴리오는 누구에게나 열려 있습니다. 함께 할 수 있는 일이 있다면 언제든 얘기해주세요 :)
                     </p>
