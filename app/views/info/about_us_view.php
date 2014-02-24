@@ -81,7 +81,7 @@ notefolio.net
                         <h2 style="line-height: 1.5em; padding: 0; margin: 0;"><img src='/img/info/about/4.png' title="노트폴리오와 함께 합니다." /></h2>
                     </div>
                     <div class='col-md-3'>
-                        <a href='/info/contact_us'>제휴문의</a>
+                        <a style="line-height: 4em;" href='/info/contact_us'>제휴문의</a>
                     </div>
                 </div>
                 <div>
