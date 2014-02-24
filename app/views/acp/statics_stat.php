@@ -1,4 +1,23 @@
-<h2>현황</h2>
+<?php 
+
+?>
+<div class="main">
+  <div class="main-inner">
+      <div class="container">
+        <div class="widget ">
+          <div class="widget-header">
+            <i class="icon-picture"></i>
+            <h3>작품 목록</h3>
+          </div>
+          <!-- /widget-header -->
+          <div class="widget-content">
+            <div class="container">
+              <p>전체: <?=$all_count?>개</p>
+              <p>페이지: <?=$page?>/<?=$all_page?> 페이지</p>
+            </div>
+            <div class="table-responsive">
+
+              <h2>현황</h2>
 <?php
 $year = array();
 foreach(range(2012, date('Y')) as $v)
@@ -340,4 +359,9 @@ foreach(range(1, 12) as $v){
       <h4>토탈 성비 연령비</h4>
     </div>
   </div>
+</div>
+          </div>
+        </div>
+      </div> <!-- /container -->
+  </div> <!-- /main-inner -->
 </div>

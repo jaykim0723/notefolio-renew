@@ -1,4 +1,23 @@
-<h2>회원 동향 분석</h2>
+<?php 
+
+?>
+<div class="main">
+  <div class="main-inner">
+      <div class="container">
+        <div class="widget ">
+          <div class="widget-header">
+            <i class="icon-picture"></i>
+            <h3>작품 목록</h3>
+          </div>
+          <!-- /widget-header -->
+          <div class="widget-content">
+            <div class="container">
+              <p>전체: <?=$all_count?>개</p>
+              <p>페이지: <?=$page?>/<?=$all_page?> 페이지</p>
+            </div>
+            <div class="table-responsive">
+
+              <h2>회원 동향 분석</h2>
 <?php
 $hidden_field = array(
     'mode'  => isset($mode)?$mode:'user',
@@ -109,4 +128,9 @@ $date_to = array(
       <h4>마지막 로그인 현황</h4>
     </div>
   </div>
+</div>
+          </div>
+        </div>
+      </div> <!-- /container -->
+  </div> <!-- /main-inner -->
 </div>
