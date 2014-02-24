@@ -107,7 +107,7 @@
 				<h4 class="pad7" style="background: #fff;margin-bottom: 0;padding-top: 20px;padding-left: 15px;padding-bottom: 20px;">영상콘텐츠를 포함하고 있습니다.</h4>
 				<div class="control-group" style="background: #fff;margin-top: -38px;padding-right: 15px;float: right;">
                     <label class="notefolio-radio inline<?if($row->is_video=='y'){?> checked<?}?>">
-                        <input type="checkbox" name="is_video" value="y" <?if($row->is_video=='y'){?> checked<?}?>> 예
+                        <input type="checkbox" name="is_video" value="y" <?if($row->is_video=='y'){?> checked<?}?>>
                     </label>
 				</div>
 
