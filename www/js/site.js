@@ -194,31 +194,31 @@ site.popWorkList = function(opts){
 
 	// call list
 	$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+options.id_before, {}, function(d){return d;})).done(function(d){
-		dialog.getModalBody().html(
-			var button = $('<button class="btn btn-more btn-default btn-block">')
-				.html('more...')
-				.on('click', function(){
-					var id_before = $('li:last', '#'+options.id).prop('id').replace('work-recent-', '');
-					$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+id_before, {}, function(d){return d;})).done(function(d){
-						if(d==''){
-							$('button.btn-more', '#'+options.id).remove();
-						}else{
-							$(d).appendTo('#'+options.id+' ul');
-						}
-					});
+		var button = $('<button class="btn btn-more btn-default btn-block">')
+			.html('more...')
+			.on('click', function(){
+				var id_before = $('li:last', '#'+options.id).prop('id').replace('work-recent-', '');
+				$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+id_before, {}, function(d){return d;})).done(function(d){
+					if(d==''){
+						$('button.btn-more', '#'+options.id).remove();
+					}else{
+						$(d).appendTo('#'+options.id+' ul');
+					}
 				});
+			});
 
-			var list = $('<div>').addClass('dialog-work-list-wrapper').html(
-				$('<ul>')
-				.addClass('work-list-ul')
-				.addClass('dialog-work-list')
-				.html(
-					d
-				)
-			);
-			if(d.length>0)
-				list.append(button);
+		var list = $('<div>').addClass('dialog-work-list-wrapper').html(
+			$('<ul>')
+			.addClass('work-list-ul')
+			.addClass('dialog-work-list')
+			.html(
+				d
+			)
 		);
+		if(d.length>0)
+			list.append(button);
+
+		dialog.getModalBody().append(list);
 		return dialog;
 	});
 };
