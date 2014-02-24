@@ -76,7 +76,14 @@ notefolio.net
                     </div>
                 </div>
 
-                <h2>노트폴리오와 함께 합니다.</h2>
+                <div class='row-fluid'>
+                    <div class='col-md-13'>
+                        <img src='/images/info/about/4.png'/>
+                    </div>
+                    <div class='col-md-3 right'>
+                        <a href='/info/contact_us'>제휴문의</a>
+                    </div>
+                </div>
                 <p>
                     노트폴리오는 누구에게나 열려 있습니다. 함께 할 수 있는 일이 있다면 언제든 얘기해주세요 :)
                 </p>
