@@ -244,8 +244,8 @@ class Gallery extends CI_Controller {
         $work = $this->work_model->get_info(array(
             'work_id' => $input['work_id']
         ));
-        var_export(str_replace('\\\/', '\\',$input['contents']));
-        $input['contents'] = json_decode(preg_replace('/\\\//', '\\',$input['contents']));
+        var_export(preg_replace('|\\/|X', '\\',$input['contents']));
+        $input['contents'] = json_decode(preg_replace('|\\/|X', '\\',$input['contents']));
         $created_images = $deleted_images = array();
         $work_images = $input_images = array();
         exit(var_export($input['contents']));
