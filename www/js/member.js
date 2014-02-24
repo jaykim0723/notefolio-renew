@@ -6,7 +6,7 @@ var workUtil = {
          docCSSFile : '/css/cleditor.css'
 	},
 	defaultValue : {
-		image : '/img/thumb_wide4.jpg',
+		image : '/img/sample.png',
 		video : "//player.vimeo.com/video/87464814"
 	},
 	showCoverTip : function(){
