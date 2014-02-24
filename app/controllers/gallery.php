@@ -247,6 +247,7 @@ class Gallery extends CI_Controller {
         $input['contents'] = json_decode($input['contents']);
         $created_images = $deleted_images = array();
         $work_images = $input_images = array();
+        exit(var_export($input['contents']));
 
         if(count($input['contents'])==0){
             $this->layout->set_json((object)array(
@@ -315,7 +316,6 @@ class Gallery extends CI_Controller {
         $input['contents'] = serialize($input['contents']);
 
         if(!isset($input['is_video'])) $input['is_video'] = 'n';
-        exit();
 
         $data = $this->work_model->put_info($input);
         $this->layout->set_json($data)->render();
