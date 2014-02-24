@@ -105,7 +105,7 @@
             <li><a href="/acp/activity/feeds/">피드</a></li>
           </ul>
         </li>
-        <li id="menu-stat" class="dropdown<?=($this->uri->segment(2)=='stat')?' active':''?>">
+        <li id="menu-stat" class="dropdown<?=($this->uri->segment(2)=='statics')?' active':''?>">
         	<a href="/acp/stat" class="dropdown-toggle" data-toggle="dropdown">
         		<i class="icon-bar-chart"></i>
         		<span>통계</span>
