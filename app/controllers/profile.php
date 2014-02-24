@@ -293,7 +293,7 @@ class Profile extends CI_Controller {
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
 		$this->layout->set_header(array(
-            'keywords' => implode(', ', $this->nf->category_to_array($user->keywords)),
+            'keywords' => implode(', ', $this->nf->category_to_array($user->row->keywords)),
             'title' => $user->row->realname.'님의 작품 - '.implode(', ', $this->nf->category_to_array($user->row->keywords)),
         ))->set_view('profile/myworks_listing_view', $work_list)->render();
 	}
