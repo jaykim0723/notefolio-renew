@@ -44,11 +44,24 @@ class Gallery extends CI_Controller {
             'q' => $q,
         ));
 
+        
+        if(empty($data['q']))
+            $title = '갤러리';
+        else
+            $title = '갤러리 검색: '.strip_tags(preg_replace(array('/&amp;/', '/&lt;/', '/&gt;/', '/&quot;/'), array('&', '<', '>', '"'), $q));
+
+        if(count($work_categories)>0){
+            $title .= ' - '.implode(', ', $this->nf->category_to_array(implode('', $work_categories)));
+        }
+
         $work_list->work_categories = $work_categories;
         $work_list->q = $q;
         $work_list->order = $order;
         $work_list->from = $from;
-        $this->layout->set_view('gallery/listing_view', $work_list)->render();
+        $this->layout->set_header(array(
+            'keywords' => implode(', ', $this->nf->category_to_array(implode('', $work_categories))),
+            'title' => $title,
+        ))->set_view('gallery/listing_view', $work_list)->render();
     }
 
     /**
