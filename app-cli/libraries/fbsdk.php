@@ -66,7 +66,7 @@ class Fbsdk extends Facebook
         
         if(isset($fb_info->row)&&$fb_info->row->{$data['type']}=='Y') {
             if(count($data)>0&&isset($data['type'])){
-                $post['access_token'] = $fb_info['access_token'];
+                $post['access_token'] = $fb_info->row->access_token;
                 switch($data['type']){
                     case "post_work":
                         $target = ":upload";
