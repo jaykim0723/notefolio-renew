@@ -4,17 +4,17 @@
     <div class="container">
         <div class="row">
             <div id="content" class="col-md-9">
-                <div class="well" style="height: 100px;">
+                <div class="well">
                     <img src='/img/info/about/1.png' id='title_image'/>
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="well" style="height: 300px;">
+                    <div class="col-md-4">
+                        <div class="well">
                             <img src='/img/info/about/2.png'/>
                         </div>
                     </div>
-                    <div class="col-md-9">
-                        <div class="well" style="height: 300px;">
+                    <div class="col-md-8">
+                        <div class="well">
 note(주목하다) + portfolio(포트폴리오)
 
 크리에이티브 네트워크 노트폴리오는
@@ -35,7 +35,7 @@ notefolio.net
                         </div>
                     </div>
                 </div>
-                <div class="well" style="height: 400px;">
+                <div class="well">
                     <iframe src="http://player.vimeo.com/video/58331905" width="100%" height="410" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
                 </div>
 
