@@ -253,6 +253,7 @@ class Gallery extends CI_Controller {
                 'status' => 'fail',
                 'message' => '내용이 비어 있으면 저장할 수 없습니다.'
                 ))->render();
+            exit();
         }
 
         if(empty($work->row->contents)){
