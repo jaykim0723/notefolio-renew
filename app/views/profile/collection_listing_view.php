@@ -19,10 +19,10 @@
 					<?php $this->load->view('gallery/thumbnail_inc_view', array('row'=>$row)) ?>
 					<?php endforeach ?>
 				</ul>
-				<?php endif; ?>
 
 				<a href="/<?php echo $this->uri->segment(1); ?>/<?php echo $this->uri->segment(2); ?>/<?php echo ($page)?$page+1:2; ?>" class="more-link">more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
