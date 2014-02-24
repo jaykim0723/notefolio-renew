@@ -84,7 +84,7 @@ notefolio.net
                         <a class='pull-right' style="line-height: 3em;" href='/info/contact_us'>제휴문의</a>
                     </div>
                 </div>
-                <div>
+                <div class="well">
                     <p>
                         노트폴리오는 누구에게나 열려 있습니다. 함께 할 수 있는 일이 있다면 언제든 얘기해주세요 :)
                     </p>
