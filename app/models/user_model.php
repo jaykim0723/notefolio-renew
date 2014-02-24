@@ -514,7 +514,7 @@ class user_model extends CI_Model {
             return $data;
         }
 
-        if(count($user)<1){
+        if(count($info)<1){
             $data = (object)array(
                 'status' => 'fail',
                 'message' => 'no_data'
