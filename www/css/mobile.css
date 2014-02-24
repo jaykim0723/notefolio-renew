@@ -1638,6 +1638,7 @@ html.auth body {
 @media(max-width: 991px){
 	#contact_us_container, #about_us_container {
 		margin-bottom: -60px;
+		background: #ffffff;
 	}
 	#contact_us_container .container, #about_us_container .container {
 		padding: 0;
