@@ -248,6 +248,13 @@ class Gallery extends CI_Controller {
         $created_images = $deleted_images = array();
         $work_images = $input_images = array();
 
+        if(count($input['contents'])){
+            $this->layout->set_json((object)array(
+                'status' => 'fail',
+                'message' => '내용이 비어 있으면 저장할 수 없습니다.'
+                ))->render();
+        }
+
         if(empty($work->row->contents)){
             $old_contents = array();
         
