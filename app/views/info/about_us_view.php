@@ -51,7 +51,7 @@ notefolio.net
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="well" style="height: 300px;">
+                        <div style="height: 300px;">
                             <div>
                                 <img src='/img/info/about/artist/03_parksumi.jpg' title="박수미(Variety Sum)<br/>많은 작가들과 소통할 수 있는 스크랩 노트 같은 곳. 서로의 의견에 대해 코멘트를 적고 마음에 드는 건 스크랩하는 온라인 노트!"/>
                                 <img src='/img/info/about/artist/04_paeksujung.jpg' title="백수정<br/>아티스트로서 내가 계속 걸어가도록 응원해주는 친구 같아요! 주변의 다른 아티스트들을 바라보게 하고, 나 스스로를 돌아보게 하는 그런 공간이에요!"/>
@@ -80,7 +80,7 @@ notefolio.net
                 <p>
                     노트폴리오는 누구에게나 열려 있습니다. 함께 할 수 있는 일이 있다면 언제든 얘기해주세요 :)
                 </p>
-                <div class="well" style="height: 400px;">
+                <div style="height: 400px;">
                     <a target="_blank" href="http://www.studiogoindol.com"><img src='/img/info/about/cooperation/01_goindol.png'/></a>
                     <img src='/img/info/about/cooperation/02_KMU.png'/>
                     <a target="_blank" href="http://www.facebook.com/hardworkLAB?fref=ts"><img src='/img/info/about/cooperation/03_nodong.png'/></a>
