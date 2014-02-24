@@ -34,7 +34,7 @@
 			<span><?php echo $this->nf->print_time($row->moddate); ?></span>
 		</div>
 		<div class="comment-textarea">
-			<?php echo nl2br(htmlentities($row->content, ENT_COMPAT, 'UTF-8')); ?>
+			<?php echo nl2br(htmlentities($row->content, ENT_HTML5, 'UTF-8')); ?>
 		</div>
 	</div>
 
