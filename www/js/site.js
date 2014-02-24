@@ -194,8 +194,6 @@ site.popWorkList = function(opts){
 
 	// call list
 	$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+options.id_before, {}, function(d){return d;})).done(function(d){
-		console.log($('li', d).length);
-		console.log(d);
 		dialog.getModalBody().html(
 			$('<div>').addClass('dialog-work-list-wrapper').html(
 				$('<ul>')
@@ -210,7 +208,7 @@ site.popWorkList = function(opts){
 				.on('click', function(){
 					var id_before = $('li:last', '#'+options.id).prop('id').replace('work-recent-', '');
 					$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+id_before, {}, function(d){return d;})).done(function(d){
-						if(d==''){
+						if($(d).length == 0){
 							$('button.btn-more', '#'+options.id).remove();
 						}else{
 							$(d).appendTo('#'+options.id+' ul');
