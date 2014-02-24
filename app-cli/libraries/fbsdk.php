@@ -68,7 +68,7 @@ class Fbsdk extends Facebook
         if(isset($fb_info->row)&&$fb_info->row->{$data['type']}=='Y') {
             if(count($data)>0&&isset($data['type'])){
                 $post['access_token'] = $fb_info->row->access_token;
-                $work = $this->work_model->get_info(array(
+                $work = $this->ci->work_model->get_info(array(
                     'work_id' => $data['work_id'],
                 ));
                 if(isset($work->row)){
