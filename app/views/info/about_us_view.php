@@ -85,7 +85,7 @@ notefolio.net
                     </div>
                 </div>
                 <div style="height: 400px;">
-                    <p>
+                    <p class="row">
                         노트폴리오는 누구에게나 열려 있습니다. 함께 할 수 있는 일이 있다면 언제든 얘기해주세요 :)
                     </p>
                     <a target="_blank" href="http://www.studiogoindol.com"><img src='/img/info/about/cooperation/01_goindol.png'/></a>
