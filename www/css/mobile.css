@@ -1554,6 +1554,9 @@ html.auth body {
 	font-size:13px;
 	font-weight:700;
 }
+.work-small-profile > span.category {
+	margin-left: 3em;
+}
 .work-small-profile > * {
 	display: inline-block;
 	font-size: 12px;

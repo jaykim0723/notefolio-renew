@@ -77,7 +77,7 @@
 								<img src="/data/profiles/<?php echo $row->user->username ?>_face.jpg?_=<?php echo substr($row->user->modified,-2) ?>" onerror="this.src='/img/default_profile_face.png'"/>
 							</h2>
 							<h2><a href="<?php echo site_url($row->user->username) ?>"><?php echo $row->user->realname ?></a></h2>
-							<span><?php echo $this->nf->category_to_string($row->user->user_keywords, true); ?></span>
+							<span class="category"><?php echo $this->nf->category_to_string($row->user->user_keywords, true); ?></span>
 							<div class="work-url" style="display:none;"><?php echo site_url($row->user->username.'/'.$row->work_id); ?></div>
 						</div>
 						<?php endif ?>
