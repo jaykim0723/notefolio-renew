@@ -78,7 +78,7 @@ notefolio.net
 
                 <div class='row-fluid'>
                     <div class='col-md-13'>
-                        <img src='/images/info/about/4.png'/>
+                        <h2><img src='/img/info/about/4.png' title="노트폴리오와 함께 합니다." /></h2>
                     </div>
                     <div class='col-md-3 right'>
                         <a href='/info/contact_us'>제휴문의</a>
