@@ -702,6 +702,7 @@ var memberUtil = {
 		NFview.popCrop = [];
 		var dialog = new BootstrapDialog({
 		    title: options.title,
+            closable: false,
 		    message: function(){
 				var $message = $('<div id="crop-wrapper"></div>');
 				for(var i in options.message){
