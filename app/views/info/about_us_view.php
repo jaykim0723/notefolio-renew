@@ -41,7 +41,7 @@ notefolio.net
 
 
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="well" style="height: 300px;">
                             <img src='/img/info/about/3.png'/>
                             <br/><br/>
@@ -50,7 +50,7 @@ notefolio.net
                             이렇게 이야기합니다. 
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         <div class="well" style="height: 300px;">
                             <div>
                                 <img src='/img/info/about/artist/03_parksumi.jpg' title="박수미(Variety Sum)<br/>많은 작가들과 소통할 수 있는 스크랩 노트 같은 곳. 서로의 의견에 대해 코멘트를 적고 마음에 드는 건 스크랩하는 온라인 노트!"/>
