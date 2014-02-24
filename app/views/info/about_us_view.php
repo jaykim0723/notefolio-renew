@@ -83,12 +83,12 @@ notefolio.net
                         </div>
                     </div>
                     <div class='col-md-2 pull-right'>
-                        <div class="well">
+                        <div class="well" style="margin-top: 0; margin-bottom: 0; padding-top:0; padding-bottom:0;">
                             <a class='pull-right' style="line-height: 3em;" href='/info/contact_us'>제휴문의</a>
                         </div>
                     </div>
                 </div>
-                <div style="height: 400px;" style="margin-top: 0; margin-bottom: 0; padding-top:0; padding-bottom:0;">
+                <div style="height: 400px;">
                     <p class="well" style="margin-top: 0; margin-bottom: 0; padding-top:0; padding-bottom:0;">
                         노트폴리오는 누구에게나 열려 있습니다. 함께 할 수 있는 일이 있다면 언제든 얘기해주세요 :)
                     </p>
