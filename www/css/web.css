@@ -306,7 +306,7 @@ body {
 }
 .notefolio-radio {
 	font-size: 12px;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	color: #7a7880;
 	font-weight: normal;
 }
@@ -672,7 +672,7 @@ li#trash-bin{
 	background: #fff;
 	padding: 20px;
 	text-align: center;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	color: #7a7880;
 }
 #cover-preview .col-md-12 img {
