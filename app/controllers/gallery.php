@@ -306,6 +306,8 @@ class Gallery extends CI_Controller {
 
         $input['contents'] = serialize($input['contents']);
 
+        if(!isset($input['is_video'])) $input['is_video'] = 'n';
+
         $data = $this->work_model->put_info($input);
         $this->layout->set_json($data)->render();
 
