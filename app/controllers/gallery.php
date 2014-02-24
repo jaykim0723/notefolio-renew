@@ -45,7 +45,7 @@ class Gallery extends CI_Controller {
         ));
 
         
-        if(empty($data['q']))
+        if(empty($q))
             $title = '갤러리';
         else
             $title = '갤러리 검색: '.strip_tags(preg_replace(array('/&amp;/', '/&lt;/', '/&gt;/', '/&quot;/'), array('&', '<', '>', '"'), $q));
