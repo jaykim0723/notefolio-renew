@@ -7,7 +7,7 @@
                 <div class="well">
                     <img src='/img/info/about/1.png' id='title_image'/>
                 </div>
-                <div class="row">
+                <div class="row" id="info_explain">
                     <div class="col-md-4">
                         <div class="well" style="height: 300px;">
                             <img src='/img/info/about/2.png'/>
