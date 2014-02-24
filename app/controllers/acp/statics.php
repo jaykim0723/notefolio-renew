@@ -29,14 +29,7 @@ class Statics extends CI_Controller
      */
     function index()
     {
-        if ($message = $this->session->flashdata('message')) {
-            $this->load->view('auth/general_message', array('message' => $message));
-        } else if ($this->acp->is_elevated()>0) {     // logged in, elevated
-            redirect('/acp/statics/research/'); // temporary
-        } else {
-            redirect('/acp/auth/login/?go_to=/'.$this->uri->uri_string());
-        }
-        
+        redirect('/acp/statics/research/'); // temporary        
     }
     
     /*
@@ -48,9 +41,6 @@ class Statics extends CI_Controller
      */
     function research($mode='user')
     {
-        $this->data['acp_submenu_html'] =  $this->acp->get_submenu(strtolower($this->title), strtolower(__FUNCTION__));
-        $this->layout->title(__FUNCTION__." - ".$this->title);
-        $this->layout->coffee($this->layout_resource_path."coffee/research.coffee");
         
         $args = $this->uri->ruri_to_assoc(4);
         //var_export($args);
@@ -68,8 +58,6 @@ class Statics extends CI_Controller
                 break;
         }
         
-        $this->data['subtab'] = $this->acp->get_subtab(array("user"=>"회원", "work"=>"작품"), 
-                                                        $mode, strtolower(get_class($this)).'/'.strtolower(__FUNCTION__).'/');
         $this->data['form_attr'] = array('class' => 'form', 'id' => 'research_'.$mode.'_form');
         $this->layout->js('https://www.google.com/jsapi');
       	$this->layout->js($this->layout_resource_path.'js/chart.js');
