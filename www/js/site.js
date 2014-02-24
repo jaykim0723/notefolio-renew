@@ -195,6 +195,7 @@ site.popWorkList = function(opts){
 	// call list
 	$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+options.id_before, {}, function(d){return d;})).done(function(d){
 		console.log($('li', d).length);
+		console.log(d);
 		dialog.getModalBody().html(
 			$('<div>').addClass('dialog-work-list-wrapper').html(
 				$('<ul>')
