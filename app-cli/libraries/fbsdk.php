@@ -59,6 +59,7 @@ class Fbsdk extends Facebook
     {
         if($user_id==0) return false;
         $this->ci->load->model('user_model');
+        $this->ci->load->model('work_model');
         echo('user_id: '.$user_id.PHP_EOL);
         $fb_info = $this->ci->user_model->get_info_sns_fb(array(
                 'id'=> $user_id
@@ -67,24 +68,30 @@ class Fbsdk extends Facebook
         if(isset($fb_info->row)&&$fb_info->row->{$data['type']}=='Y') {
             if(count($data)>0&&isset($data['type'])){
                 $post['access_token'] = $fb_info->row->access_token;
-                switch($data['type']){
-                    case "post_work":
-                        $target = ":upload";
-                        $post['work'] = $data['base_url'].$data['work_uploader']."/".$data['work_id'];
-                        break;
-                    case "post_comment":
-                        $target = ":comment";
-                        $post['work'] = $data['base_url'].$data['work_uploader']."/".$data['work_id'];
-                        break;
-                    case "post_note":
-                        $target = ":note";
-                        $post['work'] = $data['base_url'].$data['work_uploader']."/".$data['work_id'];
-                        break;
-                    case "post_test":
-                        $target = ":test";
-                        $post['work'] = $data['base_url'].$data['work_uploader']."/".$data['work_id'];
-                        break;
+                $work = $this->work_model->get_info(array(
+                    'work_id' => $data['work_id'],
+                ));
+                if(isset($work->row)){
+                    switch($data['type']){
+                        case "post_work":
+                            $target = ":upload";
+                            $post['work'] = $data['base_url']."/".$work->row->user->username."/".$data['work_id'];
+                            break;
+                        case "post_comment":
+                            $target = ":comment";
+                            $post['work'] = $data['base_url']."/".$work->row->user->username."/".$data['work_id'];
+                            break;
+                        case "post_note":
+                            $target = ":note";
+                            $post['work'] = $data['base_url']."/".$work->row->user->username."/".$data['work_id'];
+                            break;
+                        case "post_test":
+                            $target = ":test";
+                            $post['work'] = $data['base_url']."/".$work->row->user->username."/".$data['work_id'];
+                            break;
+                    }
                 }
+
                 try {
                     $this->last_response = $this->api('/me/notefolio'.$target, 'POST', $post);
                 } catch (FacebookApiException $e) {
