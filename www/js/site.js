@@ -214,7 +214,7 @@ site.popWorkList = function(opts){
 							$(d).appendTo('#'+options.id+' ul');
 						}
 					});
-				})
+				}).trigger('click')
 			)
 		);
 		return dialog;
