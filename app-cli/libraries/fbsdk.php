@@ -63,8 +63,6 @@ class Fbsdk extends Facebook
         $fb_info = $this->ci->user_model->get_info_sns_fb(array(
                 'id'=> $user_id
             ));
-        var_export($fb_info);
-        exit();
         
         if ($fb_info[$data['type']]=='Y') {
             if(count($data)>0&&isset($data['type'])){
