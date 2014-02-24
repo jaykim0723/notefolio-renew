@@ -43,7 +43,7 @@
 							</div>
 						</div>
 
-						<div class="col-md-2"></div>
+						<div class="col-md-2 col-sm-6"></div>
 
 						<div class="col-md-4 col-sm-6">
 							<div class="col-md-10 col-sm-10 search-center pull-left">
