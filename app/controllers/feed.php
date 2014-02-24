@@ -7,7 +7,7 @@ class Feed extends CI_Controller {
         parent::__construct();
         $this->load->model('feed_model');
         $this->load->model('alarm_model');
-		$this->nf->_member_check(array('update','delete'));
+		$this->nf->_member_check(array('listing', 'activity_listing', 'update','delete'));
     }
 	
 	public function index()
