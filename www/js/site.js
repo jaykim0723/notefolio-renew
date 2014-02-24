@@ -215,7 +215,7 @@ site.popWorkList = function(opts){
 				d
 			)
 		);
-		if(d.length<24)
+		if(d.length==24)
 			list.append(button);
 
 		dialog.getModalBody().append(list);
