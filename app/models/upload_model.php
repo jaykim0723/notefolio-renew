@@ -182,20 +182,41 @@ class upload_model extends CI_Model {
             }
         }
 
-        //-- upload id is not for update
-        $upload_id = $input->id;
-        unset($input->id);
-
-        $this->db->where('id', $upload_id)
-                 ->where('user_id', USER_ID)
-                 ->update('uploads', $input);
-
-        $data = (object)array(
-            'status' => 'done'
-        );
-        if($this->db->affected_rows()==0){
-            $data->status = 'fail';
+        if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
+            $can_update = true;
         }
+        else { // 본인것인지 여부에 따라 message다르게 하기
+            $upload = $this->db->where('uploads.id', $upload_id)->get('uploads')->row();
+            $can_update = ($upload->user_id == USER_ID)?true:false; 
+        }
+
+        if($can_update){
+            $this->db->flush_cache(); //clear active record
+
+            $this->db->trans_start();
+            $this->db->where('id', @$data['id'])->update('uploads', $input); 
+            $this->db->trans_complete();
+
+            if($this->db->trans_status()){
+                $this->load->config('upload', TRUE);
+
+                
+                $data = (object)array(
+                    'status' => 'done'
+                );
+            } else {
+                $data = (object)array(
+                    'status' => 'fail',
+                    'message' => 'cannot_run_update_sel'
+                );
+            }
+        } else {
+            $data = (object)array(
+                'status' => 'fail',
+                'message' => 'no_permission_to_update'
+            );
+        }
+
         return $data;
     }
 
