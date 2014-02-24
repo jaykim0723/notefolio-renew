@@ -681,6 +681,7 @@ var memberUtil = {
 			width : [380, 760],
 			height : [380, 380],
 			src : '/img/dummy_big.jpg',
+            closable: false,
 			done : function(dialog){
 //				console.log('commonUtil > popCrop > done', dialog, NFview.popCrop);
 				NFview.popCrop = null;
