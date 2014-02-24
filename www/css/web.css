@@ -309,6 +309,7 @@ body {
 	font-family: "Nanum Gothic";
 	color: #7a7880;
 	font-weight: normal;
+	vertical-align: text-bottom;
 }
 #content-block-list > li {
 	position: relative;
