@@ -551,17 +551,17 @@ class Profile extends CI_Controller {
 			'page' => $page,
 			'user_id' => $this->user_id
 		));
+
 		
 		$profile_header = array(
 			'username'=>$user->row->username,
 			'is_follow'=>$user->row->is_follow,
 			'user_id'   =>$user->row->user_id,
 			);
-		if(!$this->input->is_ajax_request())
-			$this->layout->set_header(array(
-	            'keywords' => implode(', ', $this->nf->category_to_array($user->row->keywords)),
-	            'title' => $user->row->realname.'님의 팔로우 - '.implode(', ', $this->nf->category_to_array($user->row->keywords)),
-	        ))->set_header('profile', $profile_header)->set_view('profile/follow_listing_view', $followings_list)->render();
+		$this->layout->set_header(array(
+            'keywords' => implode(', ', $this->nf->category_to_array($user->row->keywords)),
+            'title' => $user->row->realname.'님의 팔로우 - '.implode(', ', $this->nf->category_to_array($user->row->keywords)),
+        ))->set_header('profile', $profile_header)->set_view('profile/follow_listing_view', $followings_list)->render();
 	}
 
 
@@ -584,12 +584,11 @@ class Profile extends CI_Controller {
 			'is_follow'=>$user->row->is_follow,
 			'user_id'   =>$user->row->user_id,
 			);
-		if(!$this->input->is_ajax_request())
-			$this->layout->set_header(array(
-	            'keywords' => implode(', ', $this->nf->category_to_array($user->row->keywords)),
-	            'title' => $user->row->realname.'님의 팔로워 - '.implode(', ', $this->nf->category_to_array($user->row->keywords)),
-	        ))->set_header('profile', $profile_header)->set_view('profile/follow_listing_view', $followers_list)->render();
-	}
+		$this->layout->set_header(array(
+            'keywords' => implode(', ', $this->nf->category_to_array($user->row->keywords)),
+            'title' => $user->row->realname.'님의 팔로워 - '.implode(', ', $this->nf->category_to_array($user->row->keywords)),
+        ))->set_header('profile', $profile_header)->set_view('profile/follow_listing_view', $followers_list)->render();
+}
 
 
 
