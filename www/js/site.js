@@ -218,6 +218,7 @@ site.popWorkList = function(opts){
 					})
 				)
 			);
+			$('.btn-more').trigger('click');
 		}
 		return dialog;
 	});
