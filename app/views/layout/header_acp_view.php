@@ -5,6 +5,7 @@
 <title><?=$title?> - Notefolio Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes"><link href="/css/normalize.css" rel="stylesheet"/>
+<script src="/js/libs/jquery-1.10.2.min.js"></script>
 <link href="/css/acp/bootstrap.min.css" rel="stylesheet">
 <link href="/css/acp/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"

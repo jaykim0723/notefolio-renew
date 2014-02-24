@@ -15,7 +15,6 @@
 <!-- Le javascript
 ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
-<script src="/js/libs/jquery-1.10.2.min.js"></script>
 <script src="/js/acp/excanvas.min.js"></script> 
 <script src="/js/acp/chart.min.js"></script> 
 <script src="/js/libs/bootstrap.js"></script>
