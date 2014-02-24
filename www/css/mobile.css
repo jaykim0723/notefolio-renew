@@ -402,7 +402,6 @@ html, body {
 /* normal gallery list */
 #gallery-search-form {
 	margin-bottom: 20px;
-	padding: 13px;
 	margin-top: 5px;
 }
 @media (max-width: 991px){
