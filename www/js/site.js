@@ -195,15 +195,7 @@ site.popWorkList = function(opts){
 	// call list
 	$.when($.get('/profile/my_pop_recent_works/'+options.username+'/'+options.id_before, {}, function(d){return d;})).done(function(d){
 		dialog.getModalBody().html(
-			$('<div>').addClass('dialog-work-list-wrapper').html(
-				$('<ul>')
-				.addClass('work-list-ul')
-				.addClass('dialog-work-list')
-				.html(
-					d
-				)
-			).append(
-				$('<button class="btn btn-more btn-default btn-block">')
+			var button = $('<button class="btn btn-more btn-default btn-block">')
 				.html('more...')
 				.on('click', function(){
 					var id_before = $('li:last', '#'+options.id).prop('id').replace('work-recent-', '');
@@ -214,8 +206,18 @@ site.popWorkList = function(opts){
 							$(d).appendTo('#'+options.id+' ul');
 						}
 					});
-				})
-			)
+				});
+
+			var list = $('<div>').addClass('dialog-work-list-wrapper').html(
+				$('<ul>')
+				.addClass('work-list-ul')
+				.addClass('dialog-work-list')
+				.html(
+					d
+				)
+			);
+			if(d.length>0)
+				list.append(button);
 		);
 		return dialog;
 	});
