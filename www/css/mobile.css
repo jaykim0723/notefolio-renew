@@ -1763,7 +1763,7 @@ html.auth body {
 #info_explain img {
 	margin-top:23px;	
 }
-#info_explain .col-md-8 {
+#info_explain .col-md-8 .well {
 	white-space: pre;
 	margin:0;
 	padding:0;
