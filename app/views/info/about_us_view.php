@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div id="content" class="col-md-9">
-                <div>
+                <div class="well">
                     <img src='/img/info/about/1.png' id='title_image'/>
                 </div>
                 <div class="row" id="info_explain">
@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="well" style="height: 400px;">
+                        <div style="height: 400px;">
 note(주목하다) + portfolio(포트폴리오)
 
 크리에이티브 네트워크 노트폴리오는
