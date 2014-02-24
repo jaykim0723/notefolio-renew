@@ -321,7 +321,10 @@ class Profile extends CI_Controller {
        }
 		$work_list = $this->work_model->get_list($params);
 		$work_list->username = $username;
-		$this->layout->set_view('profile/my_recent_works_listing_view', $work_list)->render();
+		$this->layout->set_header(array(
+            'keywords' => implode(', ', $this->nf->category_to_array($user->row->keywords)),
+            'title' => $user->row->realname.'님의 최근 작품 - '.implode(', ', $this->nf->category_to_array($user->row->keywords)),
+        ))->set_view('profile/my_recent_works_listing_view', $work_list)->render();
 	}
 
 	/**
@@ -348,7 +351,10 @@ class Profile extends CI_Controller {
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header);
-		$this->layout->set_view('profile/my_pop_recent_works_listing_view', $work_list)->render();
+		$this->layout->set_header(array(
+            'keywords' => implode(', ', $this->nf->category_to_array($user->row->keywords)),
+            'title' => $user->row->realname.'님의 최근 작품 - '.implode(', ', $this->nf->category_to_array($user->row->keywords)),
+        ))->set_view('profile/my_pop_recent_works_listing_view', $work_list)->render();
 	}
 
 	
@@ -374,7 +380,10 @@ class Profile extends CI_Controller {
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
 	
-		$this->layout->set_view('profile/about_view', $data)->render();
+		$this->layout->set_header(array(
+            'keywords' => implode(', ', $this->nf->category_to_array($user->row->keywords)),
+            'title' => $user->row->realname.'님의 정보 - '.implode(', ', $this->nf->category_to_array($user->row->keywords)),
+        ))->set_view('profile/about_view', $data)->render();
 	}
 
 	function update_about(){
@@ -424,7 +433,10 @@ class Profile extends CI_Controller {
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
-		$this->layout->set_view('profile/collection_listing_view', $collection_list)->render();
+		$this->layout->set_header(array(
+            'keywords' => implode(', ', $this->nf->category_to_array($user->row->keywords)),
+            'title' => $user->row->realname.'님의 컬렉트 - '.implode(', ', $this->nf->category_to_array($user->row->keywords)),
+        ))->set_view('profile/collection_listing_view', $collection_list)->render();
 	}
 
 	
@@ -452,7 +464,10 @@ class Profile extends CI_Controller {
 			);
 		if(!$this->input->is_ajax_request())
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
-		$this->layout->set_view('profile/statistics_view', $data)->render();
+		$this->layout->set_header(array(
+            'keywords' => implode(', ', $this->nf->category_to_array($user->row->keywords)),
+            'title' => $user->row->realname.'님의 통계 - '.implode(', ', $this->nf->category_to_array($user->row->keywords)),
+        ))->set_view('profile/statistics_view', $data)->render();
 	}
 	function _get_date_by_period($period){
 		$edate = date('Y-m-d', time());
