@@ -83,7 +83,7 @@
 					<h4 style="padding-top: 10px;color: #fff;height: 26px;">커버</h4>
 				</div>
 
-				<div class="row" id="cover-preview" style="margin-bottom: 20px;background: #fff;width: 263px;margin-left: 0px;padding-bottom: 10px;">
+				<div class="row" id="cover-preview" style="margin-bottom: 0px;background: #fff;width: 263px;margin-left: 0px;padding-bottom: 0px;">
 					<div class="col-md-12" style="display:none;">
 						<div>
 							커버업로드 버튼을 클릭해주세요
