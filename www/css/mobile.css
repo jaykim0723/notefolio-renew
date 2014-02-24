@@ -219,7 +219,7 @@ html, body {
 .error .form-error {
 	margin:2px 0;
 	color: #ff3366;
-	font-family: "NanumGothic" !important;
+	font-family: "Nanum Gothic" !important;
 	font-size: 11px;
 }
 
@@ -576,7 +576,7 @@ html, body {
 	color:#444;
 }
 .follow-list .follow-center p {
-	font-family: 'NanumGothic', Dotum;
+	font-family: 'Nanum Gothic', Dotum;
 	font-size: 12px;
 	color: #aaa;
 }
@@ -692,7 +692,7 @@ html, body {
 .feed-activity-list a small {
 	display: block;
 	margin-left: 64px;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	color:#999;
 	text-align: left;
 	margin-top: 6px;
@@ -701,7 +701,7 @@ html, body {
 	display: block;
 	margin-left: 64px;
 	margin-right: 28px;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	color:#222;
 	font-size: 12px;
 	line-height: 150%;
@@ -755,7 +755,7 @@ html, body {
 }
 
 #feed-tab li a {
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	color: #7a7880;
 }
 #feed-tab .active a {
@@ -895,13 +895,13 @@ html, body {
 }
 	.work-tags {
 		color: #7a7880;
-		font-family: 'NanumGothic', Dotum;
+		font-family: 'Nanum Gothic', Dotum;
 		font-size:12px;
 		margin-bottom: 20px;
 	}
 	.work-tags a {
 		color: #7a7880;
-		font-family: 'NanumGothic', Dotum;
+		font-family: 'Nanum Gothic', Dotum;
 		font-size:12px;
 	}
 	.work-tags a:hover {
@@ -1287,12 +1287,12 @@ html.auth body {
 	border-radius: 2em;
 	font-size: 13px;
 	line-height: 160%;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 }
 
 .bg-info a{
 	color:#fff !important;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 }
 
 .bg-info a:hover{
@@ -1438,7 +1438,7 @@ html.auth body {
 	padding: 10px 0px 5px;
 	width: 39px;
 	float: right;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	font-weight: normal;
 	margin-bottom: 0;
 	font-size: 13px;
@@ -1501,19 +1501,19 @@ html.auth body {
 
 .labeltext {
 	font-size: 13px;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	color: #7a7880;
 	margin-bottom: 10px;
 	font-weight: bold;
 }
 .labeltext2 {
 	font-size: 12px;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	color: #7a7880;
 }
 .labeltext3 {
 	font-size: 15px;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	color: #7a7880;
 	margin-bottom:20px;
 	border-bottom: 1px solid #ddd;
@@ -1538,7 +1538,7 @@ html.auth body {
 }
 .fb_check {
 	font-size: 12px;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	color: #7a7880;
 	margin-bottom: 20px;
 	width: 250px;
@@ -1630,7 +1630,7 @@ html.auth body {
 #term {
 	border:0;
 	background-color:white;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	font-size: 12px;
 	padding: 40px;
 }
@@ -1687,7 +1687,7 @@ html.auth body {
 	margin-bottom: 10px;
 }
 #side_about p {
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	font-size: 13px;
 }
 #faq_list {
@@ -1696,13 +1696,13 @@ html.auth body {
 #faq_list h2 {
 	font-size: 13px;
 	background: none;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	padding-left: 0;
 }
 #faq_search {
 	width: 90%;
 	margin-left: 5%;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	font-size: 12px;
 }
 .contact-select .btn-group.bootstrap-select {
@@ -1717,7 +1717,7 @@ html.auth body {
 }
 #contact_form .col-sm-3.control-label {
 	margin-left: -10%;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	font-size:12px;
 	color:#7a7880;
 }
@@ -1728,13 +1728,13 @@ html.auth body {
 	color: #7a7880;
 	background-color: #efefef;
 	border-color: #fff;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	font-size: 12px;
 	text-align: center;
 }
 #contact_form .alert-success h2 {
 	font-size: 15px;
-	font-family: "NanumGothic";
+	font-family: "Nanum Gothic";
 	font-weight: bold;
 }
 @media (max-width: 767px) {
@@ -1761,7 +1761,6 @@ html.auth body {
 	padding-top: 0px;
 }
 #info_explain img {
-	margin-top:23px;	
 }
 #info_explain .col-md-8 div {
 	white-space: pre;
@@ -2273,7 +2272,7 @@ input#mobile-search-field:-moz-placeholder {
 #mobile-menu-profile p.username {
 	font-weight: normal;
 	font-size: 23px;
-	font-family: 'NanumGothic', Dotum;
+	font-family: 'Nanum Gothic', Dotum;
 }
 
 
