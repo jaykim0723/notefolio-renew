@@ -69,7 +69,7 @@
 
 				
 
-				<div class="col-md-12">
+				<div class="row" style="margin-bottom: 20px;background: #fff;width: 263px;margin-left: 0px;padding-bottom: 10px;">
 					<div class="pull-right btn-group" style="padding-bottom:5px;">
 						<button id="btn-upload-cover-wrapper" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" style="height: 36px;padding: 1px 18px 1px 171px;border-color: #fff;">
 						 	커버업로드
