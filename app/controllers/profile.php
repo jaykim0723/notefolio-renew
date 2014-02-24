@@ -294,7 +294,7 @@ class Profile extends CI_Controller {
 			$this->layout->set_header('profile', $profile_header)->set_view('profile/header_view', $user);
 		$this->layout->set_header(array(
             'keywords' => implode(', ', $this->nf->category_to_array($user->keywords)),
-            'title' => $user->realname.'님의 작품 - '.implode(', ', $this->nf->category_to_array($user->keywords)),
+            'title' => $user->row->realname.'님의 작품 - '.implode(', ', $this->nf->category_to_array($user->row->keywords)),
         ))->set_view('profile/myworks_listing_view', $work_list)->render();
 	}
 
