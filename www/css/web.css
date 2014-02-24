@@ -309,6 +309,8 @@ body {
 	font-family: "Nanum Gothic";
 	color: #7a7880;
 	font-weight: normal;
+}
+.notefolio-radio > input[type='checkbox'] {
 	vertical-align: text-bottom;
 }
 #content-block-list > li {
