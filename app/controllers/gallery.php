@@ -247,7 +247,7 @@ class Gallery extends CI_Controller {
         $input['contents'] = json_decode($input['contents']);
         $created_images = $deleted_images = array();
         $work_images = $input_images = array();
-        exit(json_last_error());
+        exit(var_export($input['contents']));
 
         if(count($input['contents'])==0){
             $this->layout->set_json((object)array(
