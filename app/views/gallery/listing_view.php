@@ -8,7 +8,7 @@
 					<div class="row">
 
 
-						<div class="col-md-3 col-sm-6 gal-cate" style="border-bottom: 1px solid #efefef;">
+						<div class="col-md-4 col-sm-6 gal-cate" style="border-bottom: 1px solid #efefef;">
 							<select name="work_categories[]" id="work_categories" multiple title="카테고리 선택" onchange="$('#gallery-search-form').submit()">
 								<?php 
 								$this->load->config('keyword', TRUE);
@@ -45,7 +45,7 @@
 
 						
 
-						<div class="col-md-5 col-sm-6 searchword">
+						<div class="col-md-4 col-sm-6 searchword">
 							<input class="col-xs-2 form-control pull-left" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
 							<button type="submit" class="btn btn-pointgreen search-green pull-right"><i class="spi spi-search_white" style="margin-top: -3px;margin-bottom: 3px;">search_white</i></button>
 						</div>
