@@ -142,11 +142,11 @@
                             그룹은 현재 비공개로 운영 중이며, 노트폴리오에 속한 팀원 모두가 회원분들과 직접 함께 이야기하고 있습니다.
                         </div>
 
-                        <h2 class='h4 question sidebar' data-key="discoverbility">
-                            Discoverability는 무엇인가요?
+                        <h2 class='h4 question sidebar' data-key="likability">
+                            Likability는 무엇인가요?
                         </h2>
                         <div class='answer'>
-                            Discoverability는 업로드한 포트폴리오의 내용 및 설명이 얼마나 구체적인지를 시각적으로 보여주는 그래프로, 
+                            Likability는 업로드한 포트폴리오의 내용 및 설명이 얼마나 구체적인지를 시각적으로 보여주는 그래프로, 
                             작품 카테고리, 작품 이미지(또는 동영상) 업로드 수, 작품 관련 텍스트, 태그 등이 영향을 끼칩니다.
                             노트폴리오는 작품의 장르가 다양하여 별도의 부연 설명 없이는 간혹 작가의 작품관이나 의도를 바로 이해하기 어려운 경우가 있습니다.
                             때문에 회원분들이 서로의 작품을 보다 깊게 이해하고 감상하실 수 있도록 Discoverability 기능을 구현하였습니다. 

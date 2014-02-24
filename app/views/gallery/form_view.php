@@ -126,7 +126,7 @@
 				
 
 
-				<h4 class="pad7">충실도 <a class="tip" href="/info/faq#discoverbility" target="_blank">자세히보기</a></h4>
+				<h4 class="pad7">Likability <a class="tip" href="/info/faq#discoverbility" target="_blank">자세히보기</a></h4>
 				<div id="work-discoverbility"><span style="width:0%;"></span></div>
 
 
