@@ -9,12 +9,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="well">
+                        <div class="well" style="height: 300px;">
                             <img src='/img/info/about/2.png'/>
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="well">
+                        <div class="well" style="height: 300px;">
 note(주목하다) + portfolio(포트폴리오)
 
 크리에이티브 네트워크 노트폴리오는
