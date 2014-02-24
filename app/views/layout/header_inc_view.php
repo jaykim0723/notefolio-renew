@@ -9,7 +9,7 @@
 	<meta name="keywords" content="<?php echo $keywords ?>"/>
 	<meta name="description" content="<?php echo strip_tags($description) ?>"/>
 	<meta property="og:title" content="<?php echo $title ?>"/>
-	<meta property="og:type" content="article"/>
+	<meta property="og:type" content="notefolio:work"/>
 	<meta property="og:url" content="<?php echo $url ?>"/>
 	<meta property="og:image" content="<?php echo $image ?>"/>
 	<meta property="og:site_name" content="<?php echo $site_name ?>"/>
