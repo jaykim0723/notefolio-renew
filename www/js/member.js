@@ -204,7 +204,7 @@ var workUtil = {
     			break;
 
     			case 'text': 
-    				o.c = br2nl($(this).find('textarea').val()).replace(/"/gi, '\"');
+    				o.c = br2nl($(this).find('textarea').val()).replace(/&/gi, '\&').replace(/"/gi, '\"');
     			break;
 
     			case 'line':
