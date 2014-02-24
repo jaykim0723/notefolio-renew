@@ -176,11 +176,6 @@ var workUtil = {
 			msg.open('커버를 지정해주세요.', 'error', '#btn-upload-cover-wrapper', 'y');
 			return;
 		}
-		
-		var data = $(form).serialize();
-
-		// keywords에 관련해서는 지우고 다시 작업을 진행한다.
-		data = data.replace(/(&?keywords)=([A-Z7]{2})/g, '$1[]=$2');
 
 		var contents = [];
 		$('#content-block-list > li').each(function(index){
@@ -212,7 +207,15 @@ var workUtil = {
     		}
     		contents.push(o);
 		});
-		data += '&contents='+JSON.stringify(contents);
+
+		var contentField = $('<input type="hidden" name="contents">').val(JSON.stringify(contents)).appendTo($(form));
+
+		var data = $(form).serialize();
+
+		// keywords에 관련해서는 지우고 다시 작업을 진행한다.
+		data = data.replace(/(&?keywords)=([A-Z7]{2})/g, '$1[]=$2');
+
+		$(contentField).remove();
 
 		blockPage.block();
 		$.ajax({

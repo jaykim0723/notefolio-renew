@@ -244,37 +244,9 @@ class Gallery extends CI_Controller {
         $work = $this->work_model->get_info(array(
             'work_id' => $input['work_id']
         ));
-        var_export($input['contents']);
-        var_export(str_replace('\\/', '\\',$input['contents']));
-        $input['contents'] = json_decode(str_replace('\\/', '\\',$input['contents']));
+        $input['contents'] = json_decode($input['contents']);
         $created_images = $deleted_images = array();
         $work_images = $input_images = array();
-
-        switch (json_last_error()) {
-            case JSON_ERROR_NONE:
-                echo ' - No errors';
-            break;
-            case JSON_ERROR_DEPTH:
-                echo ' - Maximum stack depth exceeded';
-            break;
-            case JSON_ERROR_STATE_MISMATCH:
-                echo ' - Underflow or the modes mismatch';
-            break;
-            case JSON_ERROR_CTRL_CHAR:
-                echo ' - Unexpected control character found';
-            break;
-            case JSON_ERROR_SYNTAX:
-                echo ' - Syntax error, malformed JSON';
-            break;
-            case JSON_ERROR_UTF8:
-                echo ' - Malformed UTF-8 characters, possibly incorrectly encoded';
-            break;
-            default:
-                echo ' - Unknown error';
-            break;
-        }
-
-        exit(var_export($input['contents']));
 
         if(count($input['contents'])==0){
             $this->layout->set_json((object)array(
