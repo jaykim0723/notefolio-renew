@@ -76,7 +76,7 @@ notefolio.net
                     </div>
                 </div>
 
-                <div class='row-fluid'>
+                <div class='row'>
                     <div class='col-md-9'>
                         <h2><img src='/img/info/about/4.png' title="노트폴리오와 함께 합니다." /></h2>
                     </div>
@@ -84,9 +84,11 @@ notefolio.net
                         <a href='/info/contact_us'>제휴문의</a>
                     </div>
                 </div>
-                <p>
-                    노트폴리오는 누구에게나 열려 있습니다. 함께 할 수 있는 일이 있다면 언제든 얘기해주세요 :)
-                </p>
+                <div class='row'>
+                    <p>
+                        노트폴리오는 누구에게나 열려 있습니다. 함께 할 수 있는 일이 있다면 언제든 얘기해주세요 :)
+                    </p>
+                </div>
                 <div style="height: 400px;">
                     <a target="_blank" href="http://www.studiogoindol.com"><img src='/img/info/about/cooperation/01_goindol.png'/></a>
                     <img src='/img/info/about/cooperation/02_KMU.png'/>
