@@ -87,8 +87,8 @@ class Statics extends CI_Controller
 				$output['joinGender'] = $this->acp_statics->get_user_join_gender($args['date_from'],$args['date_to']);
 				$output['percentageAge'] = $this->acp_statics->get_user_percentage_age($args['date_from'],$args['date_to']);
 				$output['percentageGenderAge'] = $this->acp_statics->get_user_percentage_gender_age($args['date_from'],$args['date_to']);
-        $output['userActive'] = $this->acp_statics->get_user_active($args['date_from'],$args['date_to']);
-        $output['userLastLogin'] = $this->acp_statics->get_user_last_login($args['date_from'],$args['date_to']);
+                $output['userActive'] = $this->acp_statics->get_user_active($args['date_from'],$args['date_to']);
+                $output['userLastLogin'] = $this->acp_statics->get_user_last_login($args['date_from'],$args['date_to']);
             	break;
             case "work":
 				$output['workViewCount'] = $this->acp_statics->get_work_view_count($args['date_from'],$args['date_to']);
