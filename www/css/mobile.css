@@ -655,14 +655,13 @@ html, body {
 	}
 }
 #feed-activity-list a {
-	margin-left: 10px;
 	border-bottom: 1px solid #e6e6e6;
 }
 .feed-activity-list a {
 	display:block;
 	text-decoration: none;
 	color:black;
-	padding:15px 0px 19px;
+	padding:15px 0px 19px 15px;
 }
 .feed-activity-list a:hover {
 	color: #2ac5c6;
@@ -801,7 +800,7 @@ html, body {
 	color: #999;
 }
 	.work-info .work-info-title {
-		padding: 20px 10px 20px 37px;
+		padding: 13px 37px 20px 37px;
 	}
 	.work-info h2 {
 		font-size: 20px !important;
