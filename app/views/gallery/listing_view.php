@@ -45,12 +45,9 @@
 
 						
 
-						<div class="col-md-4 col-sm-6 searchword">
+						<div class="col-md-5 col-sm-6 searchword">
 							<input class="col-xs-2 form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
-						</div>
-
-						<div class="col-md-1 col-sm-12 search-center">
-							<button type="submit" class="btn btn-pointgreen search-green"><i class="spi spi-search_white" style="margin-top: -3px;margin-bottom: 3px;">search_white</i></button>
+							<button type="submit" class="btn btn-pointgreen search-green pull-right"><i class="spi spi-search_white" style="margin-top: -3px;margin-bottom: 3px;">search_white</i></button>
 						</div>
 					</div>
 
