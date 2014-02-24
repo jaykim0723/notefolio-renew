@@ -18,6 +18,7 @@
 <script src="/js/acp/excanvas.min.js"></script> 
 <script src="/js/acp/chart.min.js"></script> 
 <script src="/js/libs/bootstrap.js"></script>
+<script src="/js/libs/bootstrap-dialog.js"></script>
 <script src="/js/acp/full-calendar/fullcalendar.min.js"></script>
  
 <script src="/js/acp/base.js"></script> 
