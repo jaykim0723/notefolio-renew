@@ -41,4 +41,3 @@
 <?php endif ?>
 
 <?php endif; ?>
-<?php if ($this->input->is_ajax_request()) exit();?>
