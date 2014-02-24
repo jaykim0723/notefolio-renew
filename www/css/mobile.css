@@ -446,7 +446,7 @@ html, body {
 #search_form .form-control {
 	border:#fff;
 	height: 38px;
-	padding-left: 18px !important;
+	margin-left: 0;
 	float:right;
 }
 #search_form .btn.dropdown-toggle,  #search_form .form-control {
