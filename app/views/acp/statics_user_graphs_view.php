@@ -1,5 +1,4 @@
 <h2>회원 동향 분석</h2>
-<?php echo $subtab?>
 <?php
 $hidden_field = array(
     'mode'  => isset($mode)?$mode:'user',
@@ -21,6 +20,9 @@ $date_to = array(
     'data-date-format' => "yy-mm-dd",
 );
 ?>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="/js/acp/chart.js"></script>
+<script type="text/javascript" src="/js/acp/chart_user.js"></script>
 <script type="text/javascript">
     $(function() {
         $( "#date-from" )

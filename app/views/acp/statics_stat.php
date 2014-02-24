@@ -1,5 +1,4 @@
 <h2>현황</h2>
-<?php echo $subtab?>
 <?php
 $year = array();
 foreach(range(2012, date('Y')) as $v)
@@ -11,6 +10,9 @@ foreach(range(1, 12) as $v){
   $month[$v] = $v;
 }
 ?>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="/js/acp/chart.js"></script>
+<script type="text/javascript" src="/js/acp/chart_stat.js"></script>
 <script type="text/javascript">
     $(function() {
       $('.from-year, .from-month, .to-year, .to-month').on('change', function(){
