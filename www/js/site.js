@@ -220,6 +220,9 @@ site.popWorkList = function(opts){
 			);
 			setTimeout(function(){$('.btn-more').trigger('click');}, 500);
 		}
+		else{
+			$('.loading', dialog.getModalBody()).replaceWith($('<div class="no-more">작품이 없습니다.</div>'));
+		}
 		return dialog;
 	});
 };
