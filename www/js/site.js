@@ -218,7 +218,7 @@ site.popWorkList = function(opts){
 					})
 				)
 			);
-			$('.btn-more').trigger('click');
+			setTimeout(function(){$('.btn-more').trigger('click');}, 500);
 		}
 		return dialog;
 	});
