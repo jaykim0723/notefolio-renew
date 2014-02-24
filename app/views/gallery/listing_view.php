@@ -45,7 +45,7 @@
 
 						
 
-						<div class="col-md-5 col-sm-6 searchword">
+						<div class="col-md-5 col-sm-12 searchword">
 							<div class="col-md-10 col-sm-10 search-center pull-left">
 								<input class="col-xs-2 form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
 							</div>
