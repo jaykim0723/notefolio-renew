@@ -26,9 +26,9 @@
 					<?php $this->load->view('profile/follow_inc_view', array('row'=>$row)) ?>
 					<?php endforeach ?>
 				</ul>
-			<?php endif ?>
 				<a href="/<?php echo $this->uri->segment(1) ?>/<?php echo $mode ?>/<?php echo ($page)?$page+1:2; ?>" class="more-link btn btn-default btn-block btn-more" style="float:left;">more</a>
 <?php if (!$this->input->is_ajax_request()): ?>
+			<?php endif ?>
 			</div>
 		</div>
 	</div>
