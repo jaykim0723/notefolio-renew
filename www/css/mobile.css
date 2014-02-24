@@ -1651,7 +1651,7 @@ html.auth body {
 	}
 }
 
-#contact_us_container .container, #about_us_container .container {
+#about_us_container #content {
 	background: #ffffff;
 }
 
