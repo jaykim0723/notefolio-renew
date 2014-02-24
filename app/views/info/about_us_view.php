@@ -76,20 +76,22 @@ notefolio.net
                     </div>
                 </div>
 
-                <div class='well'>
+                <div class='row'>
                     <div class='col-md-10'>
-                        <h2 style="line-height: 1.5em; padding: 0; margin: 0;"><img src='/img/info/about/4.png' title="노트폴리오와 함께 합니다." /></h2>
+                        <div class="well">
+                            <h2 style="line-height: 1.5em; padding: 0; margin: 0;"><img src='/img/info/about/4.png' title="노트폴리오와 함께 합니다." /></h2>
+                        </div>
                     </div>
                     <div class='col-md-2 pull-right'>
-                        <a class='pull-right' style="line-height: 3em;" href='/info/contact_us'>제휴문의</a>
+                        <div class="well">
+                            <a class='pull-right' style="line-height: 3em;" href='/info/contact_us'>제휴문의</a>
+                        </div>
                     </div>
                 </div>
                 <div style="height: 400px;">
-                    <div class="row">
-                        <p>
-                            노트폴리오는 누구에게나 열려 있습니다. 함께 할 수 있는 일이 있다면 언제든 얘기해주세요 :)
-                        </p>
-                    </div>
+                    <p>
+                        노트폴리오는 누구에게나 열려 있습니다. 함께 할 수 있는 일이 있다면 언제든 얘기해주세요 :)
+                    </p>
                     <a target="_blank" href="http://www.studiogoindol.com"><img src='/img/info/about/cooperation/01_goindol.png'/></a>
                     <img src='/img/info/about/cooperation/02_KMU.png'/>
                     <a target="_blank" href="http://www.facebook.com/hardworkLAB?fref=ts"><img src='/img/info/about/cooperation/03_nodong.png'/></a>
