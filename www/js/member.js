@@ -7,7 +7,7 @@ var workUtil = {
 	},
 	defaultValue : {
 		image : '/img/thumb_wide4.jpg',
-		video : '//www.youtube.com/embed/wnnOf05WKEs'
+		video : "//player.vimeo.com/video/87464814"
 	},
 	showCoverTip : function(){
 		$('#cover-preview .col-md-12').show();
