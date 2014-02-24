@@ -204,7 +204,7 @@ var workUtil = {
     			break;
 
     			case 'text': 
-    				o.c = encodeURIComponent(br2nl($(this).find('textarea').val()).replace('"', '\"'));
+    				o.c = encodeURIComponent(br2nl($(this).find('textarea').val()).replace('"', '\\"'));
     			break;
 
     			case 'line':
