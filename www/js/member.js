@@ -203,8 +203,8 @@ var workUtil = {
     				o.c = $(this).children('iframe').attr('src').replace('?wmode=transparent', '');
     			break;
 
-    			case 'text':
-    				o.c = br2nl($(this).find('textarea').val());
+    			case 'text': 
+    				o.c = encodeURIComponent(br2nl($(this).find('textarea').val()));
     			break;
 
     			case 'line':

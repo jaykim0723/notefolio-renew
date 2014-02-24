@@ -45,25 +45,8 @@ class Statics extends CI_Controller
         $args = $this->uri->ruri_to_assoc(4);
         //var_export($args);
         
-        $viewLayout = 'error/http_404';
-
-        switch($mode) {
-            case "user":
-        		$viewLayout = 'acp/statics_user_graphs_view';
-            	break;
-            case "work":
-        		$viewLayout = 'acp/statics_work_graphs_view';
-            	break;
-            default:
-                break;
-        }
-        
         $this->data['form_attr'] = array('class' => 'form', 'id' => 'research_'.$mode.'_form');
-        $this->layout->set_header('title', '분석')->set_view('acp/work_works_'.$mode,$this->data)->render();
-        $this->layout->js('https://www.google.com/jsapi');
-      	$this->layout->js($this->layout_resource_path.'js/chart.js');
-      	$this->layout->js($this->layout_resource_path.'js/chart_'.$mode.'.js');
-      	$this->layout->view($viewLayout, $this->data);
+        $this->layout->set_header('title', '분석')->set_view('acp/statics_'.$mode.'_graphs_view',$this->data)->render();
     }
     
     /*
