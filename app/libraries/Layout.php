@@ -6,7 +6,7 @@ class Layout
 	protected	$views = array(); // set_view 파라미터를 통해서 미리 셋팅이 되는 변수
 	protected	$json_data = NULL;
 	protected   $header = array(
-		'title'       => '',
+		'title'       => 'Notefolio.net - 아티스트/디자이너의 크리에이티브 네트워크',
 		'description' => '',
 		'keywords'    => '',
 		'type'        => '',
