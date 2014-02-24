@@ -310,7 +310,7 @@ body {
 	color: #7a7880;
 	font-weight: normal;
 }
-.notefolio-radio > input[type='checkbox'] {
+.notefolio-radio > input[type='radio'] {
 	vertical-align: text-bottom;
 }
 #content-block-list > li {
