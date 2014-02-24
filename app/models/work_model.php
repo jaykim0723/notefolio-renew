@@ -107,6 +107,9 @@ class work_model extends CI_Model {
             case "featured":
                 $this->db->order_by('works.nofol_rank', 'desc');
             break;
+            case "comment_desc":
+                $this->db->order_by('works.comment_cnt', 'desc');
+            break;
             case "nofol_rank":
                 $params->view_rank_point = true;
                 $this->db->order_by('rank_point', 'desc');
