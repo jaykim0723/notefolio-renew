@@ -214,11 +214,7 @@ site.popWorkList = function(opts){
 							$(d).appendTo('#'+options.id+' ul');
 						}
 					});
-				}).when($.get('/profile/my_pop_recent_works/'+options.username+'/'+id_before, {}, function(d){return d;})).done(function(d){
-					if($(d).length == 0){
-						$('button.btn-more', '#'+options.id).remove();
-					}
-				});
+				}).trigger('click');
 			)
 		);
 		return dialog;
