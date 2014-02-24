@@ -448,7 +448,6 @@ html, body {
 	height: 38px;
 	padding-left: 18px !important;
 	float:right;
-	width:70%;
 }
 #search_form .btn.dropdown-toggle,  #search_form .form-control {
 	border-radius: 2em ;
