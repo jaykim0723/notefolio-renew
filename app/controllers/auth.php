@@ -440,7 +440,6 @@ class Auth extends CI_Controller
             $username_changed = true;
             var_export($username_available);
             var_export($username_changed);
-            exit();
         }
         else{
             if($data['form']['username'] != $this->session->userdata('username')){
@@ -448,6 +447,9 @@ class Auth extends CI_Controller
                 $data['form']['username'] = $this->session->userdata('username');
             }
             $username_changed = false;
+            var_export($username_available);
+            var_export($username_changed);
+            exit();
         }
         //--end
 
