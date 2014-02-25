@@ -12,7 +12,7 @@
 				<a id="btn-update-about" class="pull-right btn btn-default">수정</a>
 				<?php endif; ?>
 
-				<?php if(!isset($row->contents) && !empty($row->contents)){ ?>
+				<?php if(isset($row->contents) && !empty($row->contents)){ ?>
 				<div id="about-cont">
 					<?php echo nl2br($row->contents); ?>
 				</div>
