@@ -224,6 +224,9 @@ class file_save {
                 //-- end
 
                 $format = $image->getImageFormat();
+                if ($format == 'GIF') {
+                    $image = $image->coalesceImages();
+                }
 
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
                 if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
@@ -255,11 +258,9 @@ class file_save {
                     }
                     
                     if ($format == 'GIF') {
-                        $image = $image->coalesceImages();
-                        do {
+                        foreach ($image as $frame) { 
                             $image->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
-                        } while ($image->nextImage());
-                        $image = $image->deconstructImages();
+                        }
                     }
                     else{
                         $image->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
@@ -274,19 +275,21 @@ class file_save {
                     // Resize image using the lanczos resampling algorithm based on width
 
                         if ($format == 'GIF') {
-                            $image = $image->coalesceImages();
-                            do {
+                            foreach ($image as $frame) { 
                                 $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
-                            } while ($image->nextImage());
-                            $image = $image->deconstructImages();
+                            } 
                         }
                         else{
-                                $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+                            $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
                         }
                     }
                 }
 
                 if ($format == 'GIF') {
+                    foreach ($image as $frame) { 
+                        $frame->setImagePage($max_width,$max_height, 0, 0);
+                    } 
+                    $image=$image->deconstructImages();
                     $image->setImageFormat('gif');
                 }
                 else{
