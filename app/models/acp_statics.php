@@ -695,7 +695,7 @@ class Acp_statics extends CI_Model
             $all_first_count = round($row->all_count);   
         }
 
-        $output = array(array('날짜' , '모든 작품 총 노트수', '오늘 받은 총 노트수', '오늘 받은 평균 노트수'));
+        $output = array(array('날짜' , '모든 작품 총 추천수', '오늘 받은 총 추천수', '오늘 받은 평균 추천수'));
         $data = array();
         
         $sql = "SELECT 
@@ -931,7 +931,7 @@ class Acp_statics extends CI_Model
                         FROM works WHERE regdate >= ? and regdate <= ? group by work_date) works on notes.date=works.work_date;"; 
         $query = $this->db->query($sql, array('N', $from, $to, $from, $to));
         
-        $output = array(array('날짜' , '총 노트수', '평균 노트수', '월간 업로드'));
+        $output = array(array('날짜' , '총 추천수', '평균 추천수', '월간 업로드'));
         $i=1;
         foreach ($query->result() as $row)
         {
@@ -943,7 +943,7 @@ class Acp_statics extends CI_Model
         /*
         //---- dummy data
         $monthNum = floor((strtotime($to)-strtotime($from))/86400/30)+1;
-        $output = array(array('날짜' , '총 노트수', '평균 노트수'));
+        $output = array(array('날짜' , '총 추천수', '평균 추천수'));
         if($monthNum>0){
             for($i=1;$i<=$monthNum;$i++){
                 $date = date("Y년 m월",strtotime(($i-$monthNum)." month", strtotime($to)));

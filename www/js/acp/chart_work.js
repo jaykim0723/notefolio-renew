@@ -23,7 +23,7 @@ chart.work =  {
   },
   workNoteCount: function(data){
     var opt = {
-      title: '날짜별 노트수',
+      title: '날짜별 추천수',
       hAxis: {title: '날짜', titleTextStyle: {color: '#333333'}, showTextEvery: parseInt(data.length/7)},
       vAxis: {title: '모든 작품만 1/10'},
       data:data,

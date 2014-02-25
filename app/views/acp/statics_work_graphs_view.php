@@ -83,7 +83,7 @@ $date_to = array(
       <h4>날짜별 조회수</h4>
     </div>
     <div id="work-note-count" class="span6">
-      <h4>날짜별 노트수</h4>
+      <h4>날짜별 추천수</h4>
     </div>
   </div>
   <div class="row-fluid">

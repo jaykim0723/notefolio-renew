@@ -718,7 +718,7 @@ class profile_model extends CI_Model {
     }
 
     /**
-     * 특정 기간내의 작가별 조회수, 노트수, 콜렉트 수 반환
+     * 특정 기간내의 작가별 조회수, 추천수, 콜렉트 수 반환
      * @param  [type] $params [description]
      * @return [type]         [description]
      */
@@ -801,7 +801,7 @@ class profile_model extends CI_Model {
 
 
     /**
-     * 특정 기간내의 작가의 일자별 조회수나 노트수나 등등..
+     * 특정 기간내의 작가의 일자별 조회수나 추천수나 등등..
      * @param  [type] $params [description]
      * @return [type]         [description]
      */

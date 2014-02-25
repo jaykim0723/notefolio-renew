@@ -31,7 +31,7 @@
             <p>페이스북 Access Token:   <?=$row->access_token?></p>
             <p>글 공개 시 페이스북 등록:   <?=$row->post_work?></p>
             <p>댓글 시 페이스북 등록:     <?=$row->post_comment?></p>
-            <p>노트 시 페이스북 등록:     <?=$row->post_note?></p>
+            <p>추천 시 페이스북 등록:     <?=$row->post_note?></p>
             <hr />
 
             <p>

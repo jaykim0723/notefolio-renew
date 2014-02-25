@@ -25,7 +25,7 @@ chart.stat =  {
   },
   workNoteMonthCount: function(data){
     var opt = {
-      title: '월별 총 노트 수, 평균 노트 수',
+      title: '월별 총 추천 수, 평균 추천 수',
       hAxis: {title: '월', titleTextStyle: {color: '#333333'}, showTextEvery: 2},
       data:data,
       chartArea: {left:60, width: "70%", height: "70%"},

@@ -703,7 +703,7 @@ var noteUtil = {
 			note : 'y'
 		}, function(responseJSON){
 			if(responseJSON.status=='done'){
-				// msg.open('노트되었습니다.');
+				// msg.open('추천되었습니다.');
 				$work.data('noted', 'y'); 
 				$btnNote.addClass('noted').children('span').charUp();
 			}else
@@ -728,7 +728,7 @@ var noteUtil = {
 			note : 'n'
 		}, function(responseJSON){
 			if(responseJSON.status=='done'){
-				// msg.open('노트가 취소되었습니다.');
+				// msg.open('추천이 취소되었습니다.');
 				$work.data('noted', 'n'); // 취소 상태로 변경을 해준다.
 				$btnNote.removeClass('noted').children('span').charUp(-1);
 			}else

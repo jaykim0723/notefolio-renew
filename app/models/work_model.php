@@ -713,7 +713,7 @@ class work_model extends CI_Model {
 
         if($this->get_note($params)){
             $data->status = 'fail';
-            $data->message = '이미 노트되었습니다. ';
+            $data->message = '이미 추천되었습니다. ';
 
             return $data;
         }

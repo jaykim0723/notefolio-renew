@@ -16,7 +16,7 @@
 						<h4 id="statistics-header">
 							조회수 <span id="statistics-total-hit"></span>
 							/
-							노트수 <span id="statistics-total-note"></span>
+							추천수 <span id="statistics-total-note"></span>
 							/
 							콜렉트수 <span id="statistics-total-collect"></span>
 						</h4>
@@ -41,7 +41,7 @@
 							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li><a data-type="type" data-value="hit">조회수 변동</a></li>
-								<li><a data-type="type" data-value="note">노트수 변동</a></li>
+								<li><a data-type="type" data-value="note">추천수 변동</a></li>
 								<li><a data-type="type" data-value="collect">콜렉트수 변동</a></li>
 								<li><a data-type="type" data-value="work">작품수 변동</a></li>
 							</ul>

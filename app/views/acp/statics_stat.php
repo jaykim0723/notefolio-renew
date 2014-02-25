@@ -226,9 +226,9 @@ foreach(range(1, 12) as $v){
         </div>
       </li>
       <li id="total-note-count">
-        <p class="lead">총 노트 수: <span class="count">NaN</span>개</p>
+        <p class="lead">총 추천 수: <span class="count">NaN</span>개</p>
         <div id="total-note-by-month-count">
-          <h4>월별 총 노트 수, 평균 노트 수</h4>
+          <h4>월별 총 추천 수, 평균 추천 수</h4>
         </div>
       </li>
       <li id="total-comment-count">
