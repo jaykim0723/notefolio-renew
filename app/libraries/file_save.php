@@ -285,6 +285,9 @@ class file_save {
                 if ($format == 'GIF') {
                     $image->setImageBackgroundColor('none'); //This is important!
                     $image = $image->deconstructImages();
+
+                    // Set Image format
+                    $image->setImageFormat('gif');
                 }
                 else{
                     //-- transparent background to white
@@ -301,7 +304,7 @@ class file_save {
                 }
 
                 // Save
-                $image->writeImage((($format=='GIF')?'gif:':'jpg:').$name);
+                $image->writeImage($name);
                 $image->destroy();
                 unset($image);
 
