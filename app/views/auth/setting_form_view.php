@@ -21,7 +21,7 @@ echo form_open('', array(
 				<p>개인 정보를 변경하였습니다. <a id="status-close" href="javascript:$('#status').remove();">닫기</a></p>
 			</div>
 			<script type="text/javascript">
-				$('a#status-close').on('click', function(){ javascript:$('#status').remove(); });
+				$('a#status-close').on('click', function(e){ e.preventDefault(); e.stopPropagation(); javascript:$('#status').remove(); });
 			</script>
 		</div>
 	</div>
@@ -50,6 +50,7 @@ echo form_open('', array(
 	
 	$('#btnSubmit').click(function(e){ // submit클릭에 의해서만 전송된다.
 		e.preventDefault();
+		e.stopPropagation();
 		
 		document.register_form.submit();
 	});
