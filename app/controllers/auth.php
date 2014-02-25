@@ -433,21 +433,17 @@ class Auth extends CI_Controller
     function _setting_put($data=array()){
 
         //-- username
-        if($this->session->userdata('username')!=$data['form']['username']){
-            $this->load->model('tank_auth/users');
-            $username_available = $this->users->is_username_available($data['form']['username']);
+        $this->load->model('tank_auth/users');
+        $username_available = $this->users->is_username_available($data['form']['username']);
 
-            if($username_available===FALSE){
-                
-                $data['errors'] = array('username' => "'".$data['form']['username']."'은(는) 이미 사용 중입니다." );
-                $data['form']['username'] = $this->session->userdata('username');
-                $username_changed = false;
-            }
-            else{
-                $username_changed = true;
-            }
+        if($username_available){
+            $username_changed = true;
         }
         else{
+            if($data['form']['username'] != $this->session->userdata('username')){
+                $data['form']['username'] = $this->session->userdata('username');
+                $data['errors'] = array('username' => "'".$data['form']['username']."'은(는) 이미 사용 중입니다." );
+            }
             $username_changed = false;
         }
         //--end
