@@ -418,7 +418,6 @@ class Auth extends CI_Controller
             $param = $this->input->post();
             if(empty($param['id'])) $param['id'] = USER_ID;
             $data['form'] = $param;
-            exit();
             $data = $this->_setting_put($data);
         }
 
@@ -432,7 +431,7 @@ class Auth extends CI_Controller
      * @return array
      */
     function _setting_put($data=array()){
-
+        echo $this->session->userdata('username').'\\'.$data['form']['username']
         //-- username
         if($this->session->userdata('username')!=$data['form']['username']){
             $this->load->model('tank_auth/users');
