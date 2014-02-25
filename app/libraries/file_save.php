@@ -222,6 +222,12 @@ class file_save {
                 if ($format == 'GIF') {
                     $image = $image->coalesceImages();
                 }
+                else{
+                    //-- transparent background to white
+                    $image->setImageBackgroundColor('white'); 
+                    $image = $image->flattenImages(); 
+                    //-- end
+                }
 
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
                 if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
@@ -287,11 +293,6 @@ class file_save {
                     $image = $image->deconstructImages();
                 }
                 else{
-                    //-- transparent background to white
-                    $image->setImageBackgroundColor('white'); 
-                    $image = $image->flattenImages(); 
-                    //-- end
-
                     // Set Image format n quality
                     $image->setImageFormat((isset($opt['ext'])&&$opt['ext']!='')?$opt['ext']:'jpg');
                     //$image->setImageFormat('jpeg');
