@@ -264,7 +264,8 @@ class Profile extends CI_Controller {
 			'get_profile' => TRUE
 		));
 		if($user->status=='fail'||count($user->row)<1)
-			exit("redirect('/error_404');");
+			//exit("redirect('/error_404');");
+			redirect('/');
 		else
 			$this->user_id = $user->row->id;
 
