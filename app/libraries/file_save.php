@@ -218,20 +218,10 @@ class file_save {
                 $image->setResolution(300,300); 
                 $image->readImage($tmp_name);
 
-                var_export(strlen($image->getImagesBlob())); // int(4316519)
-                echo("|");
-                var_export(strlen($image->getImageBlob()));  // int(61413)
-                echo("|");
-
                 $format = $image->getImageFormat();
                 if ($format == 'GIF') {
                     $image = $image->coalesceImages();
                 }
-                
-                var_export(strlen($image->getImagesBlob())); // int(4316519)
-                echo("|");
-                var_export(strlen($image->getImageBlob()));  // int(61413)
-                echo("|");
 
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
                 if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
@@ -249,11 +239,6 @@ class file_save {
                     $image->profileImage('icc', $icc_rgb); 
                     unset($icc_rgb); 
                 }
-
-                var_export(strlen($image->getImagesBlob())); // int(4316519)
-                echo("|");
-                var_export(strlen($image->getImageBlob()));  // int(61413)
-                echo("|");
 
                 if(in_array('crop', $todo)){
                     // Crop Image. Resize is next block.
@@ -279,11 +264,6 @@ class file_save {
 
                 }
 
-                var_export(strlen($image->getImagesBlob())); // int(4316519)
-                echo("|");
-                var_export(strlen($image->getImageBlob()));  // int(61413)
-                echo("|");
-
                 //$image->resampleImage(200,200,imagick::FILTER_LANCZOS,1);
 
                 if(in_array('resize', $todo)){
@@ -302,11 +282,6 @@ class file_save {
                     }
                 }
 
-                var_export(strlen($image->getImagesBlob())); // int(4316519)
-                echo("|");
-                var_export(strlen($image->getImageBlob()));  // int(61413)
-                echo("|");
-
                 if ($format == 'GIF') {
                     $image->setImageBackgroundColor('none'); //This is important!
                     $image = $image->deconstructImages();
@@ -324,13 +299,6 @@ class file_save {
                     // Clean
                     $image->stripImage();
                 }
-
-                var_export(strlen($image->getImagesBlob())); // int(4316519)
-                echo("|");
-                var_export(strlen($image->getImageBlob()));  // int(61413)
-                echo("|");
-
-                exit();
 
                 // Save
                 $image->writeImages((($format=='GIF')?'gif:':'jpg:').$name, true);
