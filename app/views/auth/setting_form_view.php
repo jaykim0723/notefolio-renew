@@ -46,6 +46,7 @@ echo form_open('', array(
 	var workSpace = 'setting';
 	
 	$('#btnSubmit').click(function(e){ // submit클릭에 의해서만 전송된다.
+		e.preventDefault();
 		
 		document.register_form.submit();
 	});
