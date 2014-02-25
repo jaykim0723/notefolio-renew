@@ -281,7 +281,8 @@ class file_save {
                             foreach ($image as $frame) { 
                                 $frame->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
                                 echo('c');
-                            } 
+                            }
+                            $stoplease = true;
                         }
                         else{
                             $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
@@ -291,6 +292,9 @@ class file_save {
 
                 if ($format == 'GIF') {
                     $image = $image->deconstructImages();
+                    if(isset($stoplease)&&$stoplease){
+                        exit();
+                    }
                 }
                 else{
                     // Set Image format n quality
