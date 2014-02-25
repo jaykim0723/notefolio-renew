@@ -221,6 +221,7 @@ class file_save {
                 $format = $image->getImageFormat();
                 if ($format == 'GIF') {
                     $image = $image->coalesceImages();
+                    $count = count($image);
                 }
 
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
@@ -285,6 +286,7 @@ class file_save {
                 if ($format == 'GIF') {
                     $image->setImageBackgroundColor('none'); //This is important!
                     $image = $image->deconstructImages();
+                    if($count>1) exit($count);
                 }
                 else{
                     //-- transparent background to white
