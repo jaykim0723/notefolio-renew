@@ -221,6 +221,10 @@ class file_save {
                 $format = $image->getImageFormat();
                 if ($format == 'GIF') {
                     $image = $image->coalesceImages();
+                    foreach ($image as $frame) { 
+                        $frame->setImageBackgroundColor('none'); //This is important! 
+                        $frame = $frame->flattenImages(); 
+                    }
                 }
                 else{
                     //-- transparent background to white
