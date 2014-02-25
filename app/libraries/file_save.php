@@ -258,6 +258,7 @@ class file_save {
                     }
                     
                     if ($format == 'GIF') {
+                            echo('|');
                         foreach ($image as $frame) { 
                             $frame->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
                             echo('b');
@@ -276,6 +277,7 @@ class file_save {
                     // Resize image using the lanczos resampling algorithm based on width
 
                         if ($format == 'GIF') {
+                            echo('|');
                             foreach ($image as $frame) { 
                                 $frame->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
                                 echo('c');
