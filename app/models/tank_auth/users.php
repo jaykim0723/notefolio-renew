@@ -103,7 +103,7 @@ class Users extends CI_Model
 		$this->db->where('LOWER(username)=', strtolower($username));
 
 		$query = $this->db->get($this->table_name);
-		return $query->num_rows() == 0;
+		return ($query->num_rows() == 0)?TRUE:FALSE;
 	}
 
 	/**
@@ -118,7 +118,7 @@ class Users extends CI_Model
 		$this->db->where('LOWER(realname)=', strtolower($realname));
 
 		$query = $this->db->get($this->table_name);
-		return $query->num_rows() == 0;
+		return ($query->num_rows() == 0)?TRUE:FALSE;
 	}
 
 	/**
@@ -134,7 +134,7 @@ class Users extends CI_Model
 		$this->db->or_where('LOWER(new_email)=', strtolower($email));
 
 		$query = $this->db->get($this->table_name);
-		return $query->num_rows() == 0;
+		return ($query->num_rows() == 0)?TRUE:FALSE;
 	}
 
 	/**
