@@ -221,7 +221,6 @@ class file_save {
                 $format = $image->getImageFormat();
                 if ($format == 'GIF') {
                     $image = $image->coalesceImages();
-                    $count = count($image);
                 }
 
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
@@ -302,7 +301,7 @@ class file_save {
                 }
 
                 // Save
-                $image->writeImages($name, true);
+                $image->writeImages((($format=='GIF')?'gif:':'jpg:').$name, true);
                 $image->destroy();
                 unset($image);
 
