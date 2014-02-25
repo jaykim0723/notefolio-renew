@@ -289,7 +289,6 @@ class file_save {
                 else{
                     //-- transparent background to white
                     $image->setImageBackgroundColor('white'); 
-                    $image = $image->flattenImages(); 
                     //-- end
 
                     // Set Image format n quality
