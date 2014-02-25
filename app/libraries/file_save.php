@@ -218,10 +218,10 @@ class file_save {
                 $image->setResolution(300,300); 
                 $image->readImage($tmp_name);
 
-                //-- transparent background to white
-                $image->setImageBackgroundColor('white'); 
-                $image = $image->flattenImages(); 
-                //-- end
+                $format = $image->getImageFormat();
+                if ($format == 'GIF') {
+                    $image = $image->coalesceImages();
+                }
 
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
                 if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
@@ -251,8 +251,17 @@ class file_save {
                     }else{
                         $crop_to = $opt['crop_to'];
                     }
+                    
+                    if ($format == 'GIF') {
+                        foreach ($image as $frame) { 
+                            $frame->setImageBackgroundColor('none'); //This is important!
+                            $frame->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
+                        }
+                    }
+                    else{
+                        $image->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
+                    }
 
-                    $image->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
                 }
 
                 //$image->resampleImage(200,200,imagick::FILTER_LANCZOS,1);
@@ -260,19 +269,41 @@ class file_save {
                 if(in_array('resize', $todo)){
                     if(($image->getImageWidth() > $max_width)||(isset($opt['spanning'])&&$opt['spanning'])){
                     // Resize image using the lanczos resampling algorithm based on width
-                        $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+
+                        if ($format == 'GIF') {
+                            foreach ($image as $frame) {
+                                $frame->setImageBackgroundColor('none'); //This is important!
+                                $frame->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+                            }
+                        }
+                        else{
+                            $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+                        }
                     }
                 }
 
-                // Set Image format n quality
-                $image->setImageFormat((isset($opt['ext'])&&$opt['ext']!='')?$opt['ext']:'jpg');
-                //$image->setImageFormat('jpeg');
-                $image->setImageCompressionQuality((isset($opt['ext'])&&$opt['ext']!='jpg')?0:90);
-                
-                // Clean & Save
-                $image->stripImage();
-                $image->writeImage($name);
+                if ($format == 'GIF') {
+                    $image->setImageBackgroundColor('none'); //This is important!
+                    $image = $image->deconstructImages();
+                }
+                else{
+                    //-- transparent background to white
+                    $image->setImageBackgroundColor('white'); 
+                    $image = $image->flattenImages(); 
+                    //-- end
+
+                    // Set Image format n quality
+                    $image->setImageFormat((isset($opt['ext'])&&$opt['ext']!='')?$opt['ext']:'jpg');
+                    //$image->setImageFormat('jpeg');
+                    $image->setImageCompressionQuality((isset($opt['ext'])&&$opt['ext']!='jpg')?0:90);
+                    // Clean
+                    $image->stripImage();
+                }
+
+                // Save
+                $image->writeImages((($format=='GIF')?'gif:':'jpg:').$name, true);
                 $image->destroy();
+                unset($image);
 
                 return true;
             }
