@@ -278,6 +278,7 @@ class file_save {
                         if ($format == 'GIF') {
                             foreach ($image as $frame) {
                                 $frame->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+                                $frame->setImagePage($max_width,$max_height, 0, 0); 
                             }
                         }
                         else{
