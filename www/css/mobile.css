@@ -991,7 +991,8 @@ html, body {
 	padding: 15px 25px;
 }
 .work-contents > .block-line {
-	margin: 0 5px;
+	margin: 20px auto;
+	width: 800px;
 	height: 1px;
 	background-color: #f4f4f4;
 }
