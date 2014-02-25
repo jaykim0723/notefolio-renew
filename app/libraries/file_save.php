@@ -223,6 +223,8 @@ class file_save {
                 $image = $image->flattenImages(); 
                 //-- end
 
+                $format = $imagick->getImageFormat();
+
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
                 if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
                     $profiles = $image->getImageProfiles('*', false); 
@@ -251,8 +253,18 @@ class file_save {
                     }else{
                         $crop_to = $opt['crop_to'];
                     }
+                    
+                    if ($format == 'GIF') {
+                        $image = $image->coalesceImages();
+                        do {
+                            $image->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
+                        } while ($image->nextImage());
+                        $image = $image->deconstructImages();
+                    }
+                    else{
+                        $image->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
+                    }
 
-                    $image->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
                 }
 
                 //$image->resampleImage(200,200,imagick::FILTER_LANCZOS,1);
@@ -260,14 +272,30 @@ class file_save {
                 if(in_array('resize', $todo)){
                     if(($image->getImageWidth() > $max_width)||(isset($opt['spanning'])&&$opt['spanning'])){
                     // Resize image using the lanczos resampling algorithm based on width
-                        $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+
+                        if ($format == 'GIF') {
+                            $image = $image->coalesceImages();
+                            do {
+                                $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+                            } while ($image->nextImage());
+                            $image = $image->deconstructImages();
+                        }
+                        else{
+                                $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+                        }
                     }
                 }
 
-                // Set Image format n quality
-                $image->setImageFormat((isset($opt['ext'])&&$opt['ext']!='')?$opt['ext']:'jpg');
-                //$image->setImageFormat('jpeg');
-                $image->setImageCompressionQuality((isset($opt['ext'])&&$opt['ext']!='jpg')?0:90);
+                if ($format == 'GIF') {
+                    $image->setImageFormat('gif');
+                    $image->setImageCompressionQuality(0);
+                }
+                else{
+                    // Set Image format n quality
+                    $image->setImageFormat((isset($opt['ext'])&&$opt['ext']!='')?$opt['ext']:'jpg');
+                    //$image->setImageFormat('jpeg');
+                    $image->setImageCompressionQuality((isset($opt['ext'])&&$opt['ext']!='jpg')?0:90);
+                }
                 
                 // Clean & Save
                 $image->stripImage();
