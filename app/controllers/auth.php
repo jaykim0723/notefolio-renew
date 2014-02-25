@@ -431,12 +431,14 @@ class Auth extends CI_Controller
      * @return array
      */
     function _setting_put($data=array()){
-        echo $this->session->userdata('username').'\\'.$data['form']['username'];
-        exit();
+
         //-- username
         if($this->session->userdata('username')!=$data['form']['username']){
             $this->load->model('tank_auth/users');
             $username_available = $this->users->is_username_available($data['form']['username']);
+
+            echo $username_available;
+            exit();
 
             if(!$username_available){
                 exit();
