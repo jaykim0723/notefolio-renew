@@ -291,7 +291,6 @@ class file_save {
 
                 if ($format == 'GIF') {
                     $image = $image->deconstructImages();
-                    exit();
                 }
                 else{
                     // Set Image format n quality
