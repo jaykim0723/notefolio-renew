@@ -286,10 +286,7 @@ class file_save {
                 }
 
                 if ($format == 'GIF') {
-                    //foreach($image as $frame){ 
-                    //    $frame->setImagePage($max_width,$max_height, 0, 0); 
-                    //}
-                    $image = $image->optimizedImageLayers();
+                    $image = $image->deconstructImages();
                 }
                 else{
                     // Set Image format n quality
