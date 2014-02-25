@@ -300,7 +300,7 @@ class file_save {
                 }
 
                 // Save
-                $image->writeImage($name, true);
+                $image->writeImage($name);
                 $image->destroy();
                 unset($image);
 
