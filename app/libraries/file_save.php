@@ -223,7 +223,7 @@ class file_save {
                 $image = $image->flattenImages(); 
                 //-- end
 
-                $format = $imagick->getImageFormat();
+                $format = $image->getImageFormat();
 
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
                 if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
