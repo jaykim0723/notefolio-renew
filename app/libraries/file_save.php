@@ -218,15 +218,15 @@ class file_save {
                 $image->setResolution(300,300); 
                 $image->readImage($tmp_name);
 
-                //-- transparent background to white
-                $image->setImageBackgroundColor('white'); 
-                $image = $image->flattenImages(); 
-                //-- end
-
                 $format = $image->getImageFormat();
                 if ($format == 'GIF') {
                     $image = $image->coalesceImages();
                 }
+
+                //-- transparent background to white
+                $image->setImageBackgroundColor('white'); 
+                $image = $image->flattenImages(); 
+                //-- end
 
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
                 if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
