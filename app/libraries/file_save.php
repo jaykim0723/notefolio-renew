@@ -288,17 +288,17 @@ class file_save {
 
                 if ($format == 'GIF') {
                     $image->setImageFormat('gif');
-                    $image->setImageCompressionQuality(0);
                 }
                 else{
                     // Set Image format n quality
                     $image->setImageFormat((isset($opt['ext'])&&$opt['ext']!='')?$opt['ext']:'jpg');
                     //$image->setImageFormat('jpeg');
                     $image->setImageCompressionQuality((isset($opt['ext'])&&$opt['ext']!='jpg')?0:90);
+                    // Clean
+                    $image->stripImage();
                 }
-                
-                // Clean & Save
-                $image->stripImage();
+
+                // Save
                 $image->writeImage($name);
                 $image->destroy();
 
