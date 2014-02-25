@@ -226,8 +226,6 @@ class file_save {
                 $format = $image->getImageFormat();
                 if ($format == 'GIF') {
                     $image = $image->coalesceImages();
-                    echo(count($image));
-                    exit();
                 }
 
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
@@ -262,6 +260,7 @@ class file_save {
                     if ($format == 'GIF') {
                         foreach ($image as $frame) { 
                             $frame->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
+                            echo('b');
                         }
                     }
                     else{
@@ -279,6 +278,7 @@ class file_save {
                         if ($format == 'GIF') {
                             foreach ($image as $frame) { 
                                 $frame->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+                                echo('c');
                             } 
                         }
                         else{
@@ -289,6 +289,7 @@ class file_save {
 
                 if ($format == 'GIF') {
                     $image = $image->deconstructImages();
+                    exit();
                 }
                 else{
                     // Set Image format n quality
