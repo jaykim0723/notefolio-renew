@@ -786,10 +786,12 @@ class Auth extends CI_Controller
      */
 	function check_username_available ($username='') {
 		if($this->input->post('username')){
-            $username = $this->input->post('username');
+            $username = trim($this->input->post('username'));
+            $_POST['username'] = trim($username);
         }
         else {
-            $_POST['username'] = $username;
+            $_POST['username'] = trim($username);
+            $username = trim($username);
         }
 
         $return = true;
