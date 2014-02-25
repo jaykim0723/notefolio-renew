@@ -992,8 +992,8 @@ html, body {
 }
 .work-contents > .block-line {
 	margin: 0;
-	background: #f4f4f4;
-	height: 30px;
+	height: 0px;
+	border-top: #f4f4f4 3px dotted;
 }
 .work-contents > .block-line + .block-text,
 .work-contents > .block-line + .block-image,
@@ -1555,7 +1555,7 @@ html.auth body {
 	font-weight:700;
 }
 .work-small-profile > span.category {
-	margin-left: 0.7em;
+	margin-left: 0.7†em;
 }
 .work-small-profile > * {
 	display: inline-block;
