@@ -223,11 +223,6 @@ class file_save {
                     $image = $image->coalesceImages();
                 }
 
-                //-- transparent background to white
-                $image->setImageBackgroundColor('white'); 
-                $image = $image->flattenImages(); 
-                //-- end
-
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
                 if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
                     $profiles = $image->getImageProfiles('*', false); 
@@ -259,6 +254,7 @@ class file_save {
                     
                     if ($format == 'GIF') {
                         foreach ($image as $frame) { 
+                            $frame->setImageBackgroundColor('none'); //This is important!
                             $frame->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
                         }
                     }
@@ -275,7 +271,8 @@ class file_save {
                     // Resize image using the lanczos resampling algorithm based on width
 
                         if ($format == 'GIF') {
-                            foreach ($image as $frame) { 
+                            foreach ($image as $frame) {
+                                $frame->setImageBackgroundColor('none'); //This is important!
                                 $frame->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
                             }
                         }
@@ -286,9 +283,15 @@ class file_save {
                 }
 
                 if ($format == 'GIF') {
+                    $image->setImageBackgroundColor('none'); //This is important!
                     $image = $image->deconstructImages();
                 }
                 else{
+                    //-- transparent background to white
+                    $image->setImageBackgroundColor('white'); 
+                    $image = $image->flattenImages(); 
+                    //-- end
+
                     // Set Image format n quality
                     $image->setImageFormat((isset($opt['ext'])&&$opt['ext']!='')?$opt['ext']:'jpg');
                     //$image->setImageFormat('jpeg');
