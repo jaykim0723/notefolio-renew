@@ -220,7 +220,6 @@ class file_save {
 
                 $format = $image->getImageFormat();
                 if ($format == 'GIF') {
-                    $image = $image->flattenImages(); 
                     $image = $image->coalesceImages();
                 }
                 else{
