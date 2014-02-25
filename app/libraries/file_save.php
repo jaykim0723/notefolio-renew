@@ -301,7 +301,7 @@ class file_save {
                 }
 
                 // Save
-                $image->writeImage((($format=='GIF')?'gif':'jpg').$name);
+                $image->writeImage((($format=='GIF')?'gif:':'jpg:').$name);
                 $image->destroy();
                 unset($image);
 
