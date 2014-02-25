@@ -296,7 +296,7 @@ class file_save {
                     //$image->setImageFormat('jpeg');
                     $image->setImageCompressionQuality((isset($opt['ext'])&&$opt['ext']!='jpg')?0:90);
                 }
-                exit();
+                
                 // Clean & Save
                 $image->stripImage();
                 $image->writeImage($name);
