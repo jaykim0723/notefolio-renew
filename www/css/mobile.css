@@ -991,9 +991,9 @@ html, body {
 	padding: 15px 25px;
 }
 .work-contents > .block-line {
-	margin: 0;
-	height: 0px;
-	border-top: #f4f4f4 1px solid;
+	margin: 0 5px;
+	height: 1px;
+	background-color: #f4f4f4;
 }
 .work-contents > .block-line + .block-text,
 .work-contents > .block-line + .block-image,
