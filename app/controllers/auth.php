@@ -435,18 +435,16 @@ class Auth extends CI_Controller
         //-- username
         if($this->session->userdata('username')!=$data['form']['username']){
             $this->load->model('tank_auth/users');
-            $username_useable = $this->users->is_username_available($data['form']['username']);
+            $username_available = $this->users->is_username_available($data['form']['username']);
 
-            if(!$username_useable){
-                var_export($username_useable);
-                exit();
+            if($username_available){
                 $data['errors'] = array('username' => "'".$data['form']['username']."'은(는) 이미 사용 중입니다." );
                 $data['form']['username'] = $this->session->userdata('username');
             }
-
+            $username_changed = true;
         }
         else{
-            $username_useable = false;
+            $username_changed = false;
         }
         //--end
 
@@ -496,7 +494,7 @@ class Auth extends CI_Controller
         //-- end          
         
         //-- after process
-        if($result->status=='done' && $username_useable){
+        if($result->status=='done' && $username_changed){
             $this->load->config('upload', TRUE); //load upload config file
             
             $old_file = $this->config->item('profile_upload_path', 'upload').$this->session->userdata('username');
@@ -800,9 +798,9 @@ class Auth extends CI_Controller
         //-- username
         if($this->session->userdata('username')!=$username){
             $this->load->model('tank_auth/users');
-            $username_useable = $this->users->is_username_available($username);
+            $username_available = $this->users->is_username_available($username);
 
-            if(!$username_useable){
+            if(!$username_available){
                 $error = "'".$username."'은(는) 이미 사용 중입니다.";
                 $return = false;
             }
