@@ -437,8 +437,7 @@ class Auth extends CI_Controller
             $this->load->model('tank_auth/users');
             $username_available = $this->users->is_username_available($data['form']['username']);
 
-            exit($username_available);
-            if(!$username_available){
+            if($username_available===FALSE){
                 
                 $data['errors'] = array('username' => "'".$data['form']['username']."'은(는) 이미 사용 중입니다." );
                 $data['form']['username'] = $this->session->userdata('username');
