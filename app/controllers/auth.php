@@ -419,7 +419,6 @@ class Auth extends CI_Controller
             if(empty($param['id'])) $param['id'] = USER_ID;
             $data['form'] = $param;
             $data = $this->_setting_put($data);
-            exit();
         }
 
         return $this->_setting_form($data);
@@ -438,7 +437,6 @@ class Auth extends CI_Controller
             $this->load->model('tank_auth/users');
             $username_available = $this->users->is_username_available($data['form']['username']);
 
-            echo('a');
             if(!$username_available){
                 
                 $data['errors'] = array('username' => "'".$data['form']['username']."'은(는) 이미 사용 중입니다." );
