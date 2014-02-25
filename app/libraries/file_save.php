@@ -259,7 +259,7 @@ class file_save {
                     
                     if ($format == 'GIF') {
                         foreach ($image as $frame) { 
-                            $image->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
+                            $frame->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
                             $frame->setImagePage($max_width,$max_height, 0, 0);
                         }
                     }
@@ -277,7 +277,7 @@ class file_save {
 
                         if ($format == 'GIF') {
                             foreach ($image as $frame) { 
-                                $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
+                                $frame->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
                                 $frame->setImagePage($max_width,$max_height, 0, 0);
                             } 
                         }
@@ -302,6 +302,7 @@ class file_save {
                 // Save
                 $image->writeImage($name);
                 $image->destroy();
+                unset($image);
 
                 return true;
             }
