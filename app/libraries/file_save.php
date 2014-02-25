@@ -256,7 +256,6 @@ class file_save {
                         foreach ($image as $frame) { 
                             $frame->setImageBackgroundColor('none'); //This is important!
                             $frame->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
-                            $frame->setImagePage($crop_to['width'], $crop_to['height'], 0, 0); 
                         }
                     }
                     else{
@@ -275,8 +274,7 @@ class file_save {
                             foreach ($image as $frame) {
                                 $frame->setImageBackgroundColor('none'); //This is important!
                                 $frame->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
-                                $frame->setImagePage($max_width,$max_height, 0, 0); 
-                            }
+\                            }
                         }
                         else{
                             $image->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
@@ -303,7 +301,7 @@ class file_save {
                 }
 
                 // Save
-                $image->writeImage($name);
+                $image->writeImage((($format=='GIF')?'gif':'jpg').$name);
                 $image->destroy();
                 unset($image);
 
