@@ -103,6 +103,7 @@ class Users extends CI_Model
 		$this->db->where('LOWER(username)=', strtolower($username));
 
 		$query = $this->db->get($this->table_name);
+		var_export($query->num_rows());
 		return ($query->num_rows() == 0)?TRUE:FALSE;
 	}
 
