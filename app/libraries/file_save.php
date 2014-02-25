@@ -260,7 +260,6 @@ class file_save {
                     
                     if ($format == 'GIF') {
                         foreach ($image as $frame) { 
-                            $frame->setImageBackgroundColor('none'); //This is important!
                             $frame->cropImage($crop_to['width'], $crop_to['height'], $crop_to['pos_x'], $crop_to['pos_y']);
                         }
                     }
@@ -278,7 +277,6 @@ class file_save {
 
                         if ($format == 'GIF') {
                             foreach ($image as $frame) {
-                                $frame->setImageBackgroundColor('none'); //This is important!
                                 $frame->resizeImage($max_width,$max_height,Imagick::FILTER_LANCZOS,1);
                             }
                         }
