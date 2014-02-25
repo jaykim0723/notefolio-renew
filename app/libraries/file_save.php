@@ -227,6 +227,11 @@ class file_save {
                 if ($format == 'GIF') {
                     $image = $image->coalesceImages();
                 }
+                
+                var_export(strlen($image->getImagesBlob())); // int(4316519)
+                echo("|");
+                var_export(strlen($image->getImageBlob()));  // int(61413)
+                echo("|");
 
                 //$image->setImageColorspace(Imagick::COLORSPACE_SRGB); // color is inverted
                 if ($image->getImageColorspace() == Imagick::COLORSPACE_CMYK) { 
