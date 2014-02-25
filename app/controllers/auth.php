@@ -419,6 +419,7 @@ class Auth extends CI_Controller
             if(empty($param['id'])) $param['id'] = USER_ID;
             $data['form'] = $param;
             $data = $this->_setting_put($data);
+            exit();
         }
 
         return $this->_setting_form($data);
