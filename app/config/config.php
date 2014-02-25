@@ -18,7 +18,7 @@ $config['debug_tutorial']	= 'n'; // 튜토리얼 모드를 디버깅 할 때
 | path to your installation.
 |
 */
-$config['base_url']	= (($_SERVER['HTTP_HOST']==443)?"https://":"http://").$_SERVER['HTTP_HOST']."/";
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------
@@ -130,7 +130,7 @@ $config['subclass_prefix'] = 'MY_';
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
 */
-$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-+';
+$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 
 
 /*
@@ -184,7 +184,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 2;
+$config['log_threshold'] = 4;
 
 /*
 |--------------------------------------------------------------------------
@@ -270,7 +270,7 @@ $config['sess_time_to_update']	= 24*60*60;
 |
 */
 $config['cookie_prefix']	= "";
-$config['cookie_domain']	= '.'.(str_replace("www.", "", $_SERVER['HTTP_HOST']));
+$config['cookie_domain']	= "";
 $config['cookie_path']		= "/";
 $config['cookie_secure']	= FALSE;
 
