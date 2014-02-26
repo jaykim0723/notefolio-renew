@@ -993,7 +993,7 @@ html, body {
 }
 .work-contents > .block-line {
 	margin: 20px auto;
-	width: 800px;
+	width: 93%;
 	height: 2px;
 	background-color: #f4f4f4;
 }
@@ -1007,9 +1007,10 @@ html, body {
 		padding: 15px 0;
 	}
 	.work-contents > .block-line {
-		margin: 10px 0;
-		background: #ccc;
-		height: 1px;
+		margin: 20px auto;
+		width: 93%;
+		height: 2px;
+		background-color: #f4f4f4;
 	}
 }
 @media (max-width:767px) {
