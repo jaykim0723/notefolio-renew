@@ -930,7 +930,7 @@ var workInfoUtil = {
 			if(direction=='down'){
 				var work_id = this.id.replace('work-','');
 				workInfoUtil.selectRecentList(work_id);
-				History.replaceState(null, 'gallery-info', work_id); // pushState로 주소 바꾸기
+				History.replaceState(null, null, work_id); // pushState로 주소 바꾸기
 			}
 		}, {
 			offset: function() {
@@ -942,7 +942,7 @@ var workInfoUtil = {
 			if(direction=='up'){
 				var work_id = this.id.replace('work-','');
 				workInfoUtil.selectRecentList(work_id);
-				History.replaceState(null, 'gallery-info', work_id); // pushState로 주소 바꾸기
+				History.replaceState(null, null, work_id); // pushState로 주소 바꾸기
 			}
 
 		}, {
