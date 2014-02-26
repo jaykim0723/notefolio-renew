@@ -219,5 +219,3 @@
 <script src="/js/libs/jquery.Jcrop.min.js"></script>
 <script src="/js/libs/bootstrap-tagsinput.min.js"></script>
 <script src="/js/libs/cleditor/jquery.cleditor.js"></script>
-<script type="text/javascript" src="/js/libs/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="/js/libs/jquery.notebook.js"></script>
