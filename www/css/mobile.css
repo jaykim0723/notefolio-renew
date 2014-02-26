@@ -705,6 +705,9 @@ html, body {
 	line-height: 150%;
 	text-align: left;
 }
+#activity-list-wrapper {
+	margin-top:	0;
+}
 @media (max-width:991px) {
 	#activity-list-wrapper {
 		display: none;
