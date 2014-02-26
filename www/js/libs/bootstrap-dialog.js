@@ -291,7 +291,7 @@ var BootstrapDialog = null;
         createCloseButton: function() {
             var $container = $('<div></div>');
             $container.addClass(this.getNamespace('close-button'));
-            var $icon = $('<button class="close">×</button>');
+            var $icon = $('<button class="close" tabindex="-1">×</button>');
             $container.append($icon);
             $container.on('click', {dialog: this}, function(event) {
                 event.data.dialog.close();
