@@ -626,7 +626,7 @@ var workUtil = {
 					//$(target).append(textarea).find('textarea').cleditor(workUtil.clConf);
 					var content = $('<div class="text-content"></div>').html(nl2br(c));
 					$(target).append(content);
-					setTimeout(function(){ $(content).notebook(workUtil.notebookConf); }, 500);
+					setTimeout(function(){ $(content).notebook(); }, 500);
 				break;
 			}
 			return true;
