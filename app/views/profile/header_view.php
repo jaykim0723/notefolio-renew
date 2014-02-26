@@ -36,10 +36,10 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 				  <span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
-				  <li><a id="btn-upload-face" href="#3">프로필 사진 업로드</a></li>
-				  <li><a id="btn-select-face" href="#3">작품 중 선택</a></li>
-				  <li><a id="btn-delete-face" href="#3">삭제</a></li>
-				  <li class="divider"></li>
+				  <li><a id="btn-upload-face" class="hidden-xs hidden-sm" href="#3">프로필 사진 업로드</a></li>
+				  <li><a id="btn-select-face" class="hidden-xs hidden-sm" href="#3">작품 중 선택</a></li>
+				  <li><a id="btn-delete-face" class="hidden-xs hidden-sm" href="#3">삭제</a></li>
+				  <li class="divider hidden-xs hidden-sm"></li>
 				  <li><a id="btn-change-color" href="#3">배경색 설정</a></li>
 				  <li class="divider"></li>
 				  <li><a id="btn-change-realname" href="#3">사용자명 설정</a></li>
