@@ -621,7 +621,7 @@ var workUtil = {
 					if(c=='') c = "이곳을 눌러 내용을 입력하세요";
 					var content = $('<div class="text-content"></div>').html(nl2br(c));
 					$(target).append(content);
-					content.notebook();
+					$('.text-content', target).notebook();
 				break;
 			}
 			return true;
