@@ -7,9 +7,6 @@ var workUtil = {
 	},
 	notebookConf: {
 		autoFocus: true,
-		placeholder: '이곳을 눌러 내용을 입력하세요',
-		mode: 'multiline', // multiline or inline
-		modifiers: ['bold', 'italic', 'underline', 'h1', 'h2', 'ol', 'ul', 'anchor']
 	},
 	defaultValue : {
 		image : '/img/sample.png',
@@ -626,7 +623,7 @@ var workUtil = {
 					//$(target).append(textarea).find('textarea').cleditor(workUtil.clConf);
 					var content = $('<div class="text-content"></div>').html(nl2br(c));
 					$(target).append(content);
-					setTimeout(function(){ $(content).notebook(); }, 500);
+					setTimeout(function(){ $(content).notebook(workUtil.notebookConf); }, 500);
 				break;
 			}
 			return true;
