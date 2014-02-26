@@ -7,7 +7,7 @@
 				
 <?php endif ?>
 				<ul id="alarm-list" class="feed-activity-list alarm-list clearfix">
-					<div id="alarm-popup-title">Alarm</div>
+					<div id="alarm-popup-title">Notifications</div>
 					<!-- list -->
 					<?php foreach ($rows as $key => $row): ?>
 					<?php $this->load->view('feed/activity_inc_view', array('row'=>$row)) ?>
