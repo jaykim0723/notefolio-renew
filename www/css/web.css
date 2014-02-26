@@ -819,6 +819,16 @@ li#trash-bin{
 }
 
 
+/* profile myworks */
+.profile-thumbnail-list .thumbbox {
+	display: inline-block;
+	margin: 40px 0px;
+	vertical-align:top;	
+}
+.profile-thumbnail-list .thumbbox img {
+	width: 80%;
+}
+
 
 
 
