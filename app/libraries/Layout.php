@@ -8,7 +8,7 @@ class Layout
 	protected   $header = array(
 		'title'       => 'Notefolio.net - 아티스트/디자이너의 크리에이티브 네트워크',
 		'description' => '크리에이티브 네트워크 노트폴리오는 여기저기 흩어져 있는 아티스트와 디자이너들이 한 곳에 모여 자신의 작품을 공개하고 이야기하는 공간입니다.',
-		'keywords'    => '아티스트, 디자이너, 크리에이티브, 네트워크,',
+		'keywords'    => 'Notefolio, 노트폴리오, 아티스트, 디자이너, 크리에이티브, 네트워크, 갤러리, Gallery,',
 		'type'        => '',
 		'url'         => '',
 		'image'       => '',
