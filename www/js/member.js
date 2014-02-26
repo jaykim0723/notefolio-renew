@@ -177,7 +177,7 @@ var workUtil = {
 			return;
 		}
 		
-		var discoverblityField = $('<input type="hidden" name="discoverblity">')
+		var discoverbilityField = $('<input type="hidden" name="discoverbility">')
 			.val(( 100 * parseFloat($('#work-discoverbility > span').css('width')) / parseFloat($('#work-discoverbility > span').parent().css('width')) ))
 			.appendTo($(form));
 
@@ -222,7 +222,7 @@ var workUtil = {
 		data = data.replace(/(&?keywords)=([A-Z7]{2})/g, '$1[]=$2');
 
 		$(contentField).remove();
-		$(discoverblityField).remove();
+		$(discoverbilityField).remove();
 
 		blockPage.block();
 		$.ajax({
