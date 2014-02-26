@@ -624,9 +624,8 @@ var workUtil = {
 				default:
 					//var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(nl2br(c));
 					//$(target).append(textarea).find('textarea').cleditor(workUtil.clConf);
-					var content = $('<div class="text-content"></div>').html(nl2br(c));
+					var content = $('<div class="text-content"></div>').html(nl2br(c)).notebook(workUtil.notebookConf);
 					$(target).append(content);
-					content.notebook(workUtil.notebookConf);
 				break;
 			}
 			return true;
