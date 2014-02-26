@@ -45,7 +45,6 @@
 	
 	<script src="/js/libs/jquery-1.10.2.min.js"></script>
 	<script src="/js/util.js"></script>
-	<script src="/js/libs/jquery.placeholder.js"></script>
 	<script>
 		NFview = {};
 		var common_assets = '';
@@ -54,10 +53,6 @@
 		site.username = '<?php echo $this->session->userdata('username'); ?>';
 		site.url = '<?php echo site_url() ?>';
 		site.segment = ['<?php echo implode("','", $this->uri->segment_array()); ?>'];
-
-		$(function() {
-			 $('input, textarea').placeholder();
-			});
 	</script>
 	<script src="/js/site.js"></script>
 	<script>
