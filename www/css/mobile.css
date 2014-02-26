@@ -951,8 +951,8 @@ html, body {
 .add-collection.collected .collect-question {
 	display: none;
 }
-.btn-note {
-	margin-top: 30px;
+.btn-note-row {
+	margin: 50px 0;
 }
 .btn-note.noted {
 	background: #2ac5c6;

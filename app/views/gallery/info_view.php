@@ -146,7 +146,7 @@
 						</ul>
 
 						<div class="work-addinfo">
-							<div class="row">
+							<div class="row btn-note-row">
 								<div class="col-xs-12 centered">
 									<a href="javascript:;" class="btn btn-nofol2 btn-note <?php echo $row->noted=='y' ? 'noted' : '' ?>">
 										<i class="spi spi-love_point">love</i>
