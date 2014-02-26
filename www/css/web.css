@@ -133,17 +133,9 @@ body {
 #main-hot-creators-title {
 	padding: 24px 20px 23px 20px;
 }
-#main-hot-creators > li {
-	overflow: hidden;
-	max-height: 61px;
-}
 @media (min-width:1200px) { 
 	#main-hot-creators-title {
 		padding: 21px 20px 21px 20px;
-	}
-	#main-hot-creators > li {
-		overflow: hidden;
-		max-height: auto;
 	}
 }
 
