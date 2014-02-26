@@ -11,6 +11,12 @@
 <script src="/js/libs/jquery.hammer.min.js"></script>
 <script src="/js/libs/jquery.mmenu.min.all.js"></script>
 <script src="/js/libs/jquery.history.js"></script>
+<script src="/js/libs/jquery.placeholder.js"></script>
+<script>
+	$(function() {
+		 $('input, textarea').placeholder();
+		});
+</script>
 <script type="text/javascript">
 /* <![CDATA[ */
 var google_conversion_id = 999769175;
