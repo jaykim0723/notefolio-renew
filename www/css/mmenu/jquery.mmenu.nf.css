@@ -165,7 +165,7 @@ html.mm-blocking #mm-blocker {
     margin: 0; }
     .mm-list > li > a > i {
       margin: 0 0.3em;
-      margin-top: 2px;}
+    }
 .mm-list > li:not(.mm-subtitle):not(.mm-label):not(.mm-noresults)::after {
   content: '';
   border-bottom-width: 1px;
