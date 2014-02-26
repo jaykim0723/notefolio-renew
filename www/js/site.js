@@ -931,7 +931,7 @@ var workInfoUtil = {
 				var work_id = this.id.replace('work-','');
 				workInfoUtil.selectRecentList(work_id);
 				var title = $.trim($('class','#work-',work_id).text());
-				History.replaceState(null, text, work_id); // pushState로 주소 바꾸기
+				History.replaceState(null, title, work_id); // pushState로 주소 바꾸기
 			}
 		}, {
 			offset: function() {
@@ -944,7 +944,7 @@ var workInfoUtil = {
 				var work_id = this.id.replace('work-','');
 				workInfoUtil.selectRecentList(work_id);
 				var title = $.trim($('work-title','#work-',work_id).text());
-				History.replaceState(null, text, work_id); // pushState로 주소 바꾸기
+				History.replaceState(null, title, work_id); // pushState로 주소 바꾸기
 			}
 
 		}, {
