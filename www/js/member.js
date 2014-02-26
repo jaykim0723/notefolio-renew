@@ -176,6 +176,10 @@ var workUtil = {
 			msg.open('커버를 지정해주세요.', 'error', '#btn-upload-cover-wrapper', 'y');
 			return;
 		}
+		
+		var discoverblityField = $('<input type="hidden" name="discoverblity">')
+			.val(( 100 * parseFloat($('#work-discoverbility > span').css('width')) / parseFloat($('#work-discoverbility > span').parent().css('width')) ))
+			.appendTo($(form));
 
 		var contents = [];
 		$('#content-block-list > li').each(function(index){
@@ -210,10 +214,6 @@ var workUtil = {
 
 		var contentField = $('<input type="hidden" name="contents">')
 			.val(JSON.stringify(contents))
-			.appendTo($(form));
-		
-		var discoverblityField = $('<input type="hidden" name="discoverblity">')
-			.val(( 100 * parseFloat($('#work-discoverbility > span').css('width')) / parseFloat($('#work-discoverbility > span').parent().css('width')) ))
 			.appendTo($(form));
 
 		var data = $(form).serialize();
