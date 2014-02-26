@@ -35,7 +35,7 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 				  <span class="text">프로필 설정</span>
 				  <span class="caret"></span>
 				</button>
-				<ul class="dropdown-menu">
+				<ul class="dropdown-menu hidden-xs hidden-sm">
 				  <li><a id="btn-upload-face" class="hidden-xs hidden-sm" href="#3">프로필 사진 업로드</a></li>
 				  <li><a id="btn-select-face" class="hidden-xs hidden-sm" href="#3">작품 중 선택</a></li>
 				  <li><a id="btn-delete-face" class="hidden-xs hidden-sm" href="#3">삭제</a></li>
