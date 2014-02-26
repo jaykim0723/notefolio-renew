@@ -931,8 +931,8 @@ var workInfoUtil = {
 				var work_id = this.id.replace('work-','');
 				workInfoUtil.selectRecentList(work_id);
 				var title = $.trim($('.work-title','#work-'+work_id).text());
-				var category = $.trim($('.category','#work-'+4826).map(function(i, el){return $(el).text();}).get().join(', '));
-				title = title+' - '.category;
+				var category = $.trim($('.category','#work-'+work_id).map(function(i, el){return $(el).text();}).get().join(', '));
+				title = title+' - '+category;
 				History.replaceState(null, title, work_id); // pushState로 주소 바꾸기
 			}
 		}, {
@@ -946,8 +946,8 @@ var workInfoUtil = {
 				var work_id = this.id.replace('work-','');
 				workInfoUtil.selectRecentList(work_id);
 				var title = $.trim($('.work-title','#work-'+work_id).text());
-				var category = $.trim($('.category','#work-'+4826).map(function(i, el){return $(el).text();}).get().join(', '));
-				title = title+' - '.category;
+				var category = $.trim($('.category','#work-'+work_id).map(function(i, el){return $(el).text();}).get().join(', '));
+				title = title+' - '+category;
 				History.replaceState(null, title, work_id); // pushState로 주소 바꾸기
 			}
 
