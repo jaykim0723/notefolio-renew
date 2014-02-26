@@ -620,7 +620,8 @@ var workUtil = {
 					//$(target).append(textarea).find('textarea').cleditor(workUtil.clConf);
 					if(c=='') c = "이곳을 눌러 내용을 입력하세요";
 					var content = $('<div class="text-content"></div>').html(nl2br(c));
-					$(target).append(content).find('.text-content').notebook();
+					$(target).append(content);
+					content.notebook();
 				break;
 			}
 			return true;
