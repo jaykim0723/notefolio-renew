@@ -11,6 +11,16 @@
 <script src="/js/libs/jquery.hammer.min.js"></script>
 <script src="/js/libs/jquery.mmenu.min.all.js"></script>
 <script src="/js/libs/jquery.history.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 999769175;
+var google_conversion_label = "6jBVCLnY9QMQ14jd3AM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
 <script>
 	$('select:not(.no-jquery)').selectpicker();
 </script>
