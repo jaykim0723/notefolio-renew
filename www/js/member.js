@@ -5,6 +5,12 @@ var workUtil = {
           "alignleft center alignright justify | undo redo | ",
          docCSSFile : '/css/cleditor.css'
 	},
+	notebookConf: {
+		autoFocus: true,
+		placeholder: '이곳을 눌러 내용을 입력하세요',
+		mode: 'multiline', // multiline or inline
+		modifiers: ['bold', 'italic', 'underline', 'h1', 'h2', 'ol', 'ul', 'anchor']
+	},
 	defaultValue : {
 		image : '/img/sample.png',
 		video : "//player.vimeo.com/video/87464814"
@@ -616,11 +622,10 @@ var workUtil = {
 
 				case 'text':
 				default:
-					var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(nl2br(c));
-					$(target).append(textarea).find('textarea').cleditor(workUtil.clConf);
-					//if(c=='') c = "이곳을 눌러 내용을 입력하세요";
-					//var content = $('<div class="text-content"></div>').html(nl2br(c)).notebook();
-					//$(target).append(content);
+					//var textarea = $('<textarea placeholder="이곳을 눌러 내용을 입력하세요"></textarea>').val(nl2br(c));
+					//$(target).append(textarea).find('textarea').cleditor(workUtil.clConf);
+					var content = $('<div class="text-content"></div>').html(nl2br(c)).notebook();
+					$(target).append(content);
 				break;
 			}
 			return true;
