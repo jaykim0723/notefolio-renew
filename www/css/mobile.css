@@ -767,6 +767,7 @@ html, body {
 .work-wrapper {
 	overflow: hidden;
 	margin-bottom: 100px;
+	background-color: #ffffff;
 }
 #work-content-blockadder{
 	display: none;
