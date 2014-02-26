@@ -35,7 +35,7 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 				  <span class="text">프로필 설정</span>
 				  <span class="caret"></span>
 				</button>
-				<ul class="dropdown-menu hidden-xs hidden-sm">
+				<ul class="dropdown-menu">
 				  <li><a id="btn-upload-face" class="hidden-xs hidden-sm" href="#3">프로필 사진 업로드</a></li>
 				  <li><a id="btn-select-face" class="hidden-xs hidden-sm" href="#3">작품 중 선택</a></li>
 				  <li><a id="btn-delete-face" class="hidden-xs hidden-sm" href="#3">삭제</a></li>
@@ -109,7 +109,7 @@ if(!file_exists($this->input->server('DOCUMENT_ROOT').$filename)){
 		</div>
 	</div>
 	<?php if($this->session->userdata('username')==$row->username): ?>
-	<div id="btn-edit-cover">
+	<div id="btn-edit-cover" class="hidden-xs hidden-sm">
 		<div class="pull-right btn-group">
 			<button type="button" class="btn btn-default btn-xs dropdown-toggle btn-profilemini" data-toggle="dropdown">
 			  <span class="text">배경 설정</span>
