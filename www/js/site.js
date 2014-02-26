@@ -523,7 +523,7 @@ var commentUtil = {
 			type : 'get',
 			url : site.url+'comment/read_list/'+work_id,
 			data : {
-				id_before : (empty(idBefore) ? '': idBefore+1),
+				id_before : (empty(idBefore) ? '': idBefore),
 				delimiter : delimiter
 			}
 		});
