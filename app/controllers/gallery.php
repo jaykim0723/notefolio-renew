@@ -76,12 +76,12 @@ class Gallery extends CI_Controller {
             'get_next_prev'=>true
         ));
         if($work->status==='fail' // 없거나
-            or (!$this->nf->admin_is_elevated) // 관리자가 아니거나
+            or ($work->row->status!='enabled' && !$this->nf->admin_is_elevated) // 관리자가 아니거나
             or ($work->row->status=='disabled' && $work->row->user->id != USER_ID)
             or ($work->row->status=='deleted')
             ){
             alert('작품이 존재하지 않습니다.');
-            redirect(($this->agent->referrer()=='')?$this->agent->referrer():'/');
+            redirect((!empty($this->agent->referrer()))?$this->agent->referrer():'/');
         }   
 
         $work->row->hit_cnt++;
