@@ -89,6 +89,8 @@ class Gallery extends CI_Controller {
             or ($work->row->status=='deleted')
             */
             alert('작품이 존재하지 않습니다.');
+            var_export($this->agent->referrer());
+            exit();
             redirect(($this->agent->referrer()!='')?$this->agent->referrer():'/');
         }   
 
