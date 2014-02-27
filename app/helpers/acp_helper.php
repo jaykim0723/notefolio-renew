@@ -30,6 +30,7 @@ function get_paging($params=array()){
 
     $CI =& get_instance();
     $url_affix = $CI->uri->assoc_to_uri($params->url_affix);
+    $url_affix .= (empty($url_affix))?'':'/';
 
     $begin = ($params->now_page)-ceil((($params->print_max)-1)/2);
     $end = ($params->now_page)+floor((($params->print_max)-1)/2);
