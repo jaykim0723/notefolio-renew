@@ -84,7 +84,7 @@ class Gallery extends CI_Controller {
                 )){
             alert('작품이 존재하지 않습니다.');
 
-            redirect(($this->agent->referrer()!='')?$this->agent->referrer():'/');
+            redirect('/');
         }   
 
         $work->row->hit_cnt++;
