@@ -36,6 +36,7 @@ class work extends CI_Controller {
                 
         switch($mode) {
             case "list":
+                $data['args'] = $args;
                 if(!isset($args['page'])) $args['page'] = 1;
                 if(!isset($args['delimiter'])) $args['delimiter'] = 30;
                 if(!isset($args['keywords'])) $args['keywords'] = array();

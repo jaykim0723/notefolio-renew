@@ -81,7 +81,7 @@
                 </tbody>
               </table>
               <div class="row-fluid">
-                <?=get_paging($params=array('now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/work/works/list'))?>
+                <?=get_paging($params=array('now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/work/works/list', 'url_affix'=>$args))?>
               </div>
             </div>
           </div>
