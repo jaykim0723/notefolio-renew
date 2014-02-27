@@ -84,9 +84,6 @@ class Gallery extends CI_Controller {
                 )){
             alert('작품이 존재하지 않습니다.');
         }
-        else if($work->row->user->username!=$this->url->segment(1)){
-            redirect('/'.$work->row->user->username.'/'.$work->work_id);
-        }
 
         $work->row->hit_cnt++;
         $description = '';
