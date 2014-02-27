@@ -28,8 +28,8 @@ function get_paging($params=array()){
 
     if(isset($params->url_affix['page'])) unset($params->url_affix['page']); //중복방지
 
-    //$url_affix = $this->uri->assoc_to_uri($params->url_affix);
-    echo($this->uri->assoc_to_uri($params->url_affix));
+    $CI =& get_instance();
+    $url_affix = $CI->uri->assoc_to_uri($params->url_affix);
 
     $begin = ($params->now_page)-ceil((($params->print_max)-1)/2);
     $end = ($params->now_page)+floor((($params->print_max)-1)/2);
