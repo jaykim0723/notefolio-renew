@@ -75,7 +75,10 @@ class Gallery extends CI_Controller {
             'folder'  => '',
             'get_next_prev'=>true
         ));
-        if($work->status==='fail') alert('작품이 존재하지 않습니다.');
+        if($work->status==='fail' 
+            or (!$this->nf->admin_is_elevated)
+            or ($work->row->status!='enabled' && $work->row->user->id != USER_ID))
+            alert('작품이 존재하지 않습니다.');
 
         $work->row->hit_cnt++;
         $description = '';
