@@ -77,20 +77,13 @@ class Gallery extends CI_Controller {
         ));
         if($work->status==='fail' // 없거나
             or (
-                $work->row->status=='disabled' and !($work->row->user->id == USER_ID or $this->nf->admin_is_elevated)
+                $work->row->status=='disabled' and !($work->row->user->id == USER_ID or $this->nf->admin_is_elevated())
                 )
             or (
-                $work->row->status=='deleted' and !($this->nf->admin_is_elevated)
+                $work->row->status=='deleted' and !($this->nf->admin_is_elevated())
                 )){
-            /*
-             
-            or ($work->row->status!='enabled' && !$this->nf->admin_is_elevated) // 관리자가 아니거나
-            or ($work->row->status=='disabled' && $work->row->user->id != USER_ID)
-            or ($work->row->status=='deleted')
-            */
             alert('작품이 존재하지 않습니다.');
-            var_export($this->agent->referrer());
-            exit();
+
             redirect(($this->agent->referrer()!='')?$this->agent->referrer():'/');
         }   
 
