@@ -81,7 +81,7 @@ class Gallery extends CI_Controller {
             or ($work->row->status=='deleted'  && !$this->nf->admin_is_elevated)
             ){
             alert('작품이 존재하지 않습니다.');
-            redirect(($this->agent->referrer())?$this->agent->referrer():'/');
+            redirect(($this->agent->referrer()=='')?$this->agent->referrer():'/');
         }   
 
         $work->row->hit_cnt++;
