@@ -26,6 +26,9 @@ function get_paging($params=array()){
 			$params->{$key} = $value;
 	}
 
+
+    $url_affix = $this->uri->assoc_to_uri($params->url_affix);
+
     $begin = ($params->now_page)-ceil((($params->print_max)-1)/2);
     $end = ($params->now_page)+floor((($params->print_max)-1)/2);
     if ($begin<1) {
