@@ -161,28 +161,28 @@ class Log_user_active_db extends CI_Model
                                 works
                             where
                                 works.status = 'enabled' and
-                                date_format(regdate, '%Y-%m-%d') = date),
+                                date_format(moddate, '%Y-%m-%d') = date),
                         work_enabled_week = (select 
                                 count(distinct user_id)
                             from
                                 works
                             where
                                 works.status = 'enabled' and
-                                regdate between date_add(date, interval '-1' week) and date),
+                                moddate between date_add(date, interval '-1' week) and date),
                         work_enabled_month = (select 
                                 count(distinct user_id)
                             from
                                 works
                             where
                                 works.status = 'enabled' and
-                                regdate between date_add(date, interval '-1' month) and date),
+                                moddate between date_add(date, interval '-1' month) and date),
                         work_enabled_total = (select 
                                 count(distinct user_id)
                             from
                                 works
                             where
                                 works.status = 'enabled' and
-                                regdate <= date),
+                                moddate <= date),
                         logged_in_day = (SELECT 
                                 count(distinct id)
                             FROM
