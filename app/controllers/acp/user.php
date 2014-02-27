@@ -26,7 +26,6 @@ class User extends CI_Controller {
 	{
 		if($this->uri->segment(4)==FALSE) redirect('/acp/user/member/list');
 		$args = $this->uri->uri_to_assoc(5);
-        $data['args'] = $args;
 
 		switch($mode){
 			case "list":
@@ -45,6 +44,7 @@ class User extends CI_Controller {
 				exit('error');
 			break;
 		}
+        $data->args = $args;
 
 		$this->layout->set_header('title', '회원')->set_view('acp/user_member_'.$mode.'_view',$data)->render();
 	}
