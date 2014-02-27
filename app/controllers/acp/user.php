@@ -26,6 +26,7 @@ class User extends CI_Controller {
 	{
 		if($this->uri->segment(4)==FALSE) redirect('/acp/user/member/list');
 		$args = $this->uri->uri_to_assoc(5);
+        $data['args'] = $args;
 
 		switch($mode){
 			case "list":
