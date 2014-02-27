@@ -75,10 +75,7 @@ class Gallery extends CI_Controller {
             'folder'  => '',
             'get_next_prev'=>true
         ));
-        if($work->status==='fail'){
-            alert('작품이 존재하지 않습니다.');
-            redirect((!empty($this->agent->referrer()))?$this->agent->referrer():'/');
-        }   
+        if($work->status==='fail') alert('작품이 존재하지 않습니다.');
 
         $work->row->hit_cnt++;
         $description = '';
