@@ -264,7 +264,7 @@
 					<a href="/<?php echo $row->user->username; ?>/<?php echo $row->prev_work_id; ?>" class="more-link btn btn-default btn-block btn-more">more</a>
 				<?php elseif ($row->first_work_id!=0): ?>
 					<script>
-						$(function(){ $('#btn-prev-work').trigger('click'); });
+						setTimeout(function(){$('#btn-prev-work').trigger('click'); }, 500);
 					</script>
 					<a href="/<?php echo $row->user->username; ?>/<?php echo $row->first_work_id; ?>" class="more-link btn btn-default btn-block btn-more">more</a>
 				<?php endif ?>
