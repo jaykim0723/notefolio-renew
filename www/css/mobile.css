@@ -2115,6 +2115,9 @@ p.desc {
 #dialog-change-sns .modal-dialog {
     max-width: 380px;
 }
+#dialog-change-sns .sns-label {
+    line-height: 2.1em;
+}
 
 
 

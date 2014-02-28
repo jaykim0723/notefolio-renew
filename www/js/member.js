@@ -1008,7 +1008,7 @@ var profileUtil = {
 					area += '<div class="form-group row">'+
 						'<div class="col-xs-2 centered"><i class="pi pi-'+v+'"></i></div>'+
 						(	(socialUrl[v]!='')?
-							'<div class="col-xs-4">'+socialUrl[v]+'/</div><div class="col-xs-6"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>'
+							'<div class="col-xs-4 sns-label"><label for="'+v+'">'+socialUrl[v]+'/</label></div><div class="col-xs-6"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>'
 							:
 							'<div class="col-xs-10"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>'
 						)+
