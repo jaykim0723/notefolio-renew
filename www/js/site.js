@@ -979,12 +979,11 @@ var workInfoUtil = {
 	selectRecentList : function(work_id){
 		var $workRecentList = $('#work-recent-list');
 		if($workRecentList.children('li').length==0) return;
-		$workRecentList.children('.selected').removeClass('selected');
 		if($workRecentList.children('#work-recent-'+work_id).length==0){
 			$('#btn-prev-work').trigger('click');
 		}
-
 		setTimeout(function(){
+			$workRecentList.children('.selected').removeClass('selected');
 			$workRecentList.children('#work-recent-'+work_id).addClass('selected');
 			$workRecentList.scrollTo($workRecentList.children('#work-recent-'+work_id));
 			$workRecentList.css('top', top);
