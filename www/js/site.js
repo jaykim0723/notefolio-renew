@@ -980,7 +980,7 @@ var workInfoUtil = {
 		var $workRecentList = $('#work-recent-list');
 		if($workRecentList.children('li').length==0) return;
 		if($workRecentList.children('#work-recent-'+work_id).length==0){
-			$('#btn-prev-work').trigger('click');
+			workInfoUtil.getPrevRecentList();
 		}
 		setTimeout(function(){
 			$workRecentList.children('.selected').removeClass('selected');
