@@ -989,6 +989,7 @@ var workInfoUtil = {
 		}, 250);
 	},
 	initRecentList : function(){
+		var $workRecentList = $('#work-recent-list');
 		if($workRecentList.children('.selected').length==0){
 			var top = $('#work-recent-works').offset().top - $('#work-sidebar').offset().top + $('#work-recent-works').outerHeight();
 			$('#work-recent-list').css('top', top);
