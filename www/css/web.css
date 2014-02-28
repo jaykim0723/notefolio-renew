@@ -826,7 +826,7 @@ li#trash-bin{
 	vertical-align:top;	
 }
 .profile-thumbnail-list .thumbbox img {
-	/* width: 80%; */
+	max-width: 80%;
 }
 
 
