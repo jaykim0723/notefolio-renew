@@ -2116,7 +2116,9 @@ p.desc {
     max-width: 380px;
 }
 #dialog-change-sns .sns-label {
-    line-height: 2.1em;
+    height: 2.1em;
+    line-height: 2.5em;
+    overflow: hidden;
 }
 
 
