@@ -70,6 +70,16 @@ class Nf
     }
     function sns($service='', $id=''){
         $data = (object)array();
+        if(!empty($id) && $service != 'website'){
+            $id = explode('/', $id);
+
+            $i = 1;
+            while(empty($o_id)){
+                $o_id = $id[count($id)-$i];
+                $i++;
+            }
+            $id = $o_id;
+        }
         switch ($service) {
             case 'website':
                 $data->link = ((preg_match('/^http[s]*:\/\//mi', $id))?'':'http://').$id;
