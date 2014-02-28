@@ -366,6 +366,26 @@ class work_model extends CI_Model {
             $this->db->flush_cache();
 
             try{
+                $first = $this->db
+                    ->select('work_id')
+                    ->where('user_id', $user->id)
+                    ->where_not_in('works.status', array('disabled', 'deleted'))
+                    ->order_by('work_id', 'desc')
+                    ->limit(1)
+                    ->get('works')->row();
+                if(isset($first->work_id)){
+                    $first = $first->work_id;
+                }else{
+                    $first = 0;
+                }
+            }
+            catch(Exception $e){
+                $first = 0;
+            }
+            $data->row->first_work_id = $first;
+            $this->db->flush_cache();
+
+            try{
                 $next = $this->db
                     ->select('work_id')
                     ->where('work_id >', $data->row->work_id)
@@ -405,6 +425,26 @@ class work_model extends CI_Model {
                 $prev = 0;
             }
             $data->row->prev_work_id = $prev;
+            $this->db->flush_cache();
+
+            try{
+                $last = $this->db
+                    ->select('work_id')
+                    ->where('user_id', $user->id)
+                    ->where_not_in('works.status', array('disabled', 'deleted'))
+                    ->order_by('work_id', 'asc')
+                    ->limit(1)
+                    ->get('works')->row();
+                if(isset($last->work_id)){
+                    $last = $last->work_id;
+                }else{
+                    $last = 0;
+                }
+            }
+            catch(Exception $e){
+                $last = 0;
+            }
+            $data->row->last_work_id = $last;
             $this->db->flush_cache();
 
 
