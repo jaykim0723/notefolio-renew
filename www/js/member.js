@@ -991,6 +991,14 @@ var profileUtil = {
 		    title: 'SNS주소 설정',
 		    message: function(){
 		    	var area = '<label>해당사항이 있는 곳에 아이디를 지정해주세요.</label><br/><br/>';
+		    	socialUrl = {
+		    		'website': '',
+		    		'facebook': 'facebook.com',
+		    		'twitter': 'twitter.com',
+		    		'pinterest': 'pinterest.com',
+		    		'tumblr': 'tumblr.com',
+		    		'vimeo': 'vimeo.com'
+		    	};
 				$.each([
 					'website', 'facebook', 'twitter', 'pinterest', 'tumblr', 'vimeo'
 				], function(k, v){
@@ -999,7 +1007,11 @@ var profileUtil = {
 						value = '';
 					area += '<div class="form-group row">'+
 						'<div class="col-xs-2 centered"><i class="pi pi-'+v+'"></i></div>'+
-						'<div class="col-xs-10"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>'+
+						(	(socialUrl[v]!='')?
+							'<div class="col-xs-4">'+socialUrl[v]+'/</div><div class="col-xs-6"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>'
+							:
+							'<div class="col-xs-10"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>'
+						)+
 					'</div>';
 				});
 				var $message = $(
