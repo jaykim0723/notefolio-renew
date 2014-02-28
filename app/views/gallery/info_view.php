@@ -262,11 +262,6 @@
 
 				<?php if ($row->prev_work_id!=0): ?>
 					<a href="/<?php echo $row->user->username; ?>/<?php echo $row->prev_work_id; ?>" class="more-link btn btn-default btn-block btn-more">more</a>
-				<?php elseif ($row->next_work_id!=0): ?>
-					<script>
-						$('#btn-prev-work').trigger('click');
-					</script>
-					<a href="/<?php echo $row->user->username; ?>/<?php echo $row->next_work_id; ?>" class="more-link btn btn-default btn-block btn-more">more</a>
 				<?php endif ?>
 				
 
