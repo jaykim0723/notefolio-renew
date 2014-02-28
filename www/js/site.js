@@ -986,11 +986,16 @@ var workInfoUtil = {
 			$workRecentList.children('.selected').removeClass('selected');
 			$workRecentList.children('#work-recent-'+work_id).addClass('selected');
 			$workRecentList.scrollTo($workRecentList.children('#work-recent-'+work_id));
-			$workRecentList.css('top', top);
 		}, 250);
 	},
 	initRecentList : function(){
-		var top = $('#work-recent-works').offset().top - $('#work-sidebar').offset().top + $('#work-recent-works').outerHeight();
-		$('#work-recent-list').css('top', top);
+		if($workRecentList.children('.selected').length==0){
+			var top = $('#work-recent-works').offset().top - $('#work-sidebar').offset().top + $('#work-recent-works').outerHeight();
+			$('#work-recent-list').css('top', top);
+		}
+		else {
+			$workRecentList.scrollTo($workRecentList.children('.selected'));
+		}
+
 	}
 };
