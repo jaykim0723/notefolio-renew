@@ -978,9 +978,10 @@ var workInfoUtil = {
 	},
 	selectRecentList : function(work_id){
 		var $workRecentList = $('#work-recent-list');
+		if($workRecentList.children('li').length==0) return;
+		$workRecentList.children('.selected').removeClass('selected');
+		
 		$.when(function(){
-			if($workRecentList.children('li').length==0) return;
-			$workRecentList.children('.selected').removeClass('selected');
 			if($workRecentList.children('#work-recent-'+work_id).length==0){
 				$('#btn-prev-work').trigger('click');
 			}
