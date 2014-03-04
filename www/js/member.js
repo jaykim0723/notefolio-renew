@@ -183,8 +183,11 @@ var workUtil = {
 			return;
 		}
 		
+		var discoverbilityVal = ( 100 * parseFloat($('#work-discoverbility > span').css('width')) / parseFloat($('#work-discoverbility > span').parent().css('width')) );
+		if(discoverbilityVal>100) discoverbilityVal = 100;
+
 		var discoverbilityField = $('<input type="hidden" name="discoverbility">')
-			.val(( 100 * parseFloat($('#work-discoverbility > span').css('width')) / parseFloat($('#work-discoverbility > span').parent().css('width')) ))
+			.val(discoverbilityVal)
 			.appendTo($(form));
 
 		var contents = [];
