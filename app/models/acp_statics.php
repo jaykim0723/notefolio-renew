@@ -1520,7 +1520,7 @@ class Acp_statics extends CI_Model
         foreach ($query->result() as $row)
         {
             $output['data'][$i] = array(
-                                'id'=>$row->id,
+                                'id'=>$row->work_id,
                                 'user_id'=>$row->user_id,
                                 'title'=>$row->title,
                                 'realname'=>$row->realname,
