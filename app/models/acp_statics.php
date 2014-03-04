@@ -620,23 +620,24 @@ class Acp_statics extends CI_Model
         $sql = "SELECT count(id) as all_count from log_work_view WHERE regdate>?"; 
         $query = $this->db->query($sql, array($from));
         $all_count = 0;
-        foreach ($query->result() as $row)
-        {
-            $all_count = round($row->all_count);   
-            $all_first_count = round($row->all_count); 
-        }
+
+        $row = $query->row();
+        $all_count = round($row->all_count);   
+        $all_first_count = round($row->all_count); 
 
         $output = array(array('날짜' , '모든 작품 총 조회수', '오늘 받은 총 조회수', '오늘 받은 평균 조회수'));
         $data = array();
         
         $sql = "SELECT 
-                date_format(regdate, '%Y-%m-%d') as date,
-                count(id) as log_count,
-                count(distinct work_id) as work_count
+                date_format(log_work_view.regdate, '%Y-%m-%d') as date,
+                count(log_work_view.id) as log_count,
+                count(distinct log_work_view.work_id) as work_count
             from
-                log_work_view
+                works
+            left outer join log_work_view on works.work_id = log_work_view.work_id
             where
-                regdate between ? and ?
+                TIMESTAMPDIFF(SECOND, works.regdate, log_work_view.regdate) < 24*60*60  
+                log_work_view.regdate between ? and ?
             group by date"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
@@ -689,23 +690,24 @@ class Acp_statics extends CI_Model
         $sql = "SELECT count(id) as all_count from log_work_note where regdate>?"; 
         $query = $this->db->query($sql, array($from));
         $all_count = 0;
-        foreach ($query->result() as $row)
-        {
-            $all_count = round($row->all_count);   
-            $all_first_count = round($row->all_count);   
-        }
+        
+        $row = $query->row();
+        $all_count = round($row->all_count);   
+        $all_first_count = round($row->all_count); 
 
         $output = array(array('날짜' , '모든 작품 총 추천수', '오늘 받은 총 추천수', '오늘 받은 평균 추천수'));
         $data = array();
         
         $sql = "SELECT 
-                date_format(regdate, '%Y-%m-%d') as date,
-                count(id) as log_count,
-                count(distinct work_id) as work_count
+                date_format(log_work_note.regdate, '%Y-%m-%d') as date,
+                count(log_work_note.id) as log_count,
+                count(distinct log_work_note.work_id) as work_count
             from
-                log_work_note
+                works
+            left outer join log_work_note on works.work_id = log_work_note.work_id
             where
-                regdate between ? and ?
+                TIMESTAMPDIFF(SECOND, works.regdate, log_work_note.regdate) < 24*60*60  
+                log_work_note.regdate between ? and ?
             group by date"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
@@ -758,24 +760,25 @@ class Acp_statics extends CI_Model
         $sql = "SELECT count(id) as all_count from work_comments where regdate>?"; 
         $query = $this->db->query($sql, array($from));
         $all_count = 0;
-        foreach ($query->result() as $row)
-        {
-            $all_count = round($row->all_count);   
-            $all_first_count = round($row->all_count);
-        }
+        
+        $row = $query->row();
+        $all_count = round($row->all_count);   
+        $all_first_count = round($row->all_count); 
 
         $output = array(array('날짜' , '모든작품 총 댓글수', '오늘 받은 총 댓글수', '오늘 받은 평균 댓글수'));
         $data = array();
         
         $sql = "SELECT 
-                    date_format(regdate, '%Y-%m-%d') as date,
-                    count(id) as log_count,
-                    count(distinct work_id) as work_count
-                from
-                    work_comments
-                where
-                    regdate between ? and ?
-                group by date"; 
+                date_format(work_comments.regdate, '%Y-%m-%d') as date,
+                count(work_comments.id) as log_count,
+                count(distinct work_comments.work_id) as work_count
+            from
+                works
+            left outer join work_comments on works.work_id = work_comments.work_id
+            where
+                TIMESTAMPDIFF(SECOND, works.regdate, work_comments.regdate) < 24*60*60  
+                work_comments.regdate between ? and ?
+            group by date"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
