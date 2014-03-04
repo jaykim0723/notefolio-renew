@@ -1448,8 +1448,6 @@ class Acp_statics extends CI_Model
                     (SELECT user_id, ifnull(count(work_id),0) as work_count FROM works
                      group by user_id) works
                     on users.id = works.user_id
-                    left join (SELECT user_id, realname FROM user_profiles) profile
-                    on users.id = profile.user_id
                     WHERE work_count>=? order by work_count desc"; 
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
