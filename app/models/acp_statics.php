@@ -1494,7 +1494,11 @@ class Acp_statics extends CI_Model
     {
 
         //count for user upload
-        $sql = "SELECT count(work_id) as count FROM works left join
+        $sql = "SELECT 
+                    count(work_id) as count,
+                    work_id, 
+                    hit_cnt as view_count 
+                    FROM works
 
                     WHERE view_count>? "; 
         $query = $this->db->query($sql, array($count));
@@ -1507,14 +1511,10 @@ class Acp_statics extends CI_Model
 
         $i = 0;
         //user upload
-        $sql = "SELECT id, title, users.user_id, username, realname, regdate, view_count FROM works left join
-                    (SELECT work_id, hit_cnt as view_count FROM work_counts) work_views
-                    on works.id = work_views.work_id left join
-                    (SELECT id as user_id, username FROM users
+        $sql = "SELECT id, title, users.user_id, username, realname, regdate, hit_cnt as view_count FROM works left join
+                    (SELECT id as user_id, username, realname FROM users
                      group by user_id) users
                     on works.user_id = users.user_id 
-                    left join (SELECT user_id, realname FROM user_profiles) profile
-                    on works.user_id = profile.user_id
                     WHERE view_count>=? order by view_count desc"; 
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
