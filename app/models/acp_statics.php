@@ -1027,7 +1027,7 @@ class Acp_statics extends CI_Model
                 $sql .= " UNION ALL ";
             }
         }
-        $sql .= ") categories join (select count(work_id) as all_count where works) limit 0, ?";
+        $sql .= ") categories join (select count(work_id) as all_count From works ) w limit 0, ?";
 //join (select count(id) as all_count from work_categories) allCount group by category order by count desc 
         exit($sql); 
 
