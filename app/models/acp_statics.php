@@ -1021,7 +1021,7 @@ class Acp_statics extends CI_Model
         }
         $sql .= ") categories limit 0, ?";
 //join (select count(id) as all_count from work_categories) allCount group by category order by count desc 
-        exit(); 
+        exit($sql); 
 
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
