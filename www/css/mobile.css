@@ -990,6 +990,7 @@ html, body {
 }
 .work-contents > .block-text {
 	padding: 15px 25px;
+	text-align: left;
 }
 .work-contents > .block-line {
 	margin: 20px auto;
