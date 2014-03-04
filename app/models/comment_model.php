@@ -303,6 +303,7 @@ class comment_model extends CI_Model {
         
         if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
             $can_delete = true;
+            $comment = $this->db->where('work_comments.id', $comment_id)->get('work_comments')->row();
         }
         else { // 본인것인지 여부에 따라 message다르게 하기
             $comment = $this->db->where('work_comments.id', $comment_id)->get('work_comments')->row();
