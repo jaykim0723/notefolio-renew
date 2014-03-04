@@ -1032,7 +1032,7 @@ class Acp_statics extends CI_Model
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
         {
-            $output[$i] = array($]$row->category, $row->count);
+            $output[$i] = array($row->category, $row->count);
             $i++;
         }
 
