@@ -617,8 +617,8 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from log_work where type=? and regdate>?"; 
-        $query = $this->db->query($sql, array('V', $from));
+        $sql = "SELECT count(id) as all_count from log_work_view and regdate>?"; 
+        $query = $this->db->query($sql, array($from));
         $all_count = 0;
         foreach ($query->result() as $row)
         {
@@ -634,11 +634,11 @@ class Acp_statics extends CI_Model
                 count(id) as log_count,
                 count(distinct work_id) as work_count
             from
-                log_work
+                log_work_view
             where
-                type = ? and regdate between ? and ?
+                regdate between ? and ?
             group by date"; 
-        $query = $this->db->query($sql, array('V', $from, $to));
+        $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
             $data[$row->date] = array(round(round($all_count=$all_count+$row->log_count)/10, 2), round($row->log_count), round($row->log_count/$row->work_count, 2));
@@ -686,8 +686,8 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from log_work where type=? and regdate>?"; 
-        $query = $this->db->query($sql, array('N', $from));
+        $sql = "SELECT count(id) as all_count from log_work_note where regdate>?"; 
+        $query = $this->db->query($sql, array($from));
         $all_count = 0;
         foreach ($query->result() as $row)
         {
@@ -703,9 +703,9 @@ class Acp_statics extends CI_Model
                 count(id) as log_count,
                 count(distinct work_id) as work_count
             from
-                log_work
+                log_work_note
             where
-                type = ? and regdate between ? and ?
+                regdate between ? and ?
             group by date"; 
         $query = $this->db->query($sql, array('N', $from, $to));
         foreach ($query->result() as $row)
@@ -883,10 +883,10 @@ class Acp_statics extends CI_Model
         //total works note count by month
         $sql = "SELECT date, view_count, work_count 
                     FROM (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as date, count(id) as view_count 
-                        FROM log_work WHERE type=? and regdate >= ? and regdate <= ? group by date) views 
+                        FROM log_work_view WHERE regdate >= ? and regdate <= ? group by date) views 
                     left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(id) as work_count 
                         FROM works WHERE regdate >= ? and regdate <= ? group by work_date) works on views.date=works.work_date;"; 
-        $query = $this->db->query($sql, array('V', $from, $to, $from, $to));
+        $query = $this->db->query($sql, array($from, $to, $from, $to));
         
         $output = array(array('날짜' , '총 조회수', '평균 조회수', '월간 업로드'));
         $i=1;
@@ -926,10 +926,10 @@ class Acp_statics extends CI_Model
         //total works note count by month
         $sql = "SELECT date, note_count, work_count 
                     FROM (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as date, count(id) as note_count 
-                        FROM log_work WHERE type=? and regdate >= ? and regdate <= ? group by date) notes 
+                        FROM log_work_note WHERE regdate >= ? and regdate <= ? group by date) notes 
                     left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(id) as work_count 
                         FROM works WHERE regdate >= ? and regdate <= ? group by work_date) works on notes.date=works.work_date;"; 
-        $query = $this->db->query($sql, array('N', $from, $to, $from, $to));
+        $query = $this->db->query($sql, array($from, $to, $from, $to));
         
         $output = array(array('날짜' , '총 추천수', '평균 추천수', '월간 업로드'));
         $i=1;
@@ -1671,16 +1671,16 @@ class Acp_statics extends CI_Model
         */
 
         //total works view count
-        $sql = "SELECT count(id) as count FROM log_work WHERE type = ? and regdate >= ? and regdate <= ?"; 
-        $query = $this->db->query($sql, array('V', $from, $to));
+        $sql = "SELECT count(id) as count FROM log_work_view WHERE regdate >= ? and regdate <= ?"; 
+        $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
             $output['viewCount'] = $row->count;
         }
 
         //total works note count
-        $sql = "SELECT count(id) as count FROM log_work WHERE type = ? and regdate >= ? and regdate <= ?"; 
-        $query = $this->db->query($sql, array('N', $from, $to));
+        $sql = "SELECT count(id) as count FROM log_work_note WHERE regdate >= ? and regdate <= ?"; 
+        $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
             $output['noteCount'] = $row->count;
