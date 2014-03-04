@@ -631,12 +631,20 @@ class Acp_statics extends CI_Model
         $sql = "SELECT 
                 date_format(log_work_view.regdate, '%Y-%m-%d') as date,
                 count(log_work_view.id) as log_count,
-                count(distinct log_work_view.work_id) as work_count
+                allcount.work_count
             from
-                works
-            left outer join log_work_view on works.work_id = log_work_view.work_id
+                log_work_view
+                left join works as w on w.work_id = log_work_view.work_id
+                left join ( select
+                    date_format(regdate, '%Y-%m-%d') as work_date,
+                    count(work_id) as work_count
+                    from works
+                    group by work_date
+
+                    ) allcount on date_format(log_work_view.regdate, '%Y-%m-%d') = allcount.work_date
             where
-                TIMESTAMPDIFF(SECOND, works.regdate, log_work_view.regdate) < 24*60*60 and
+                works.status != 'deleted' and
+                TIMESTAMPDIFF(SECOND, w.regdate, log_work_view.regdate) < 24*60*60 and
                 log_work_view.regdate between ? and ?
             group by date"; 
         $query = $this->db->query($sql, array($from, $to));
@@ -701,14 +709,22 @@ class Acp_statics extends CI_Model
         $sql = "SELECT 
                 date_format(log_work_note.regdate, '%Y-%m-%d') as date,
                 count(log_work_note.id) as log_count,
-                count(distinct log_work_note.work_id) as work_count
+                allcount.work_count
             from
-                works
-            left outer join log_work_note on works.work_id = log_work_note.work_id
+                log_work_note
+                left join works as w on w.work_id = log_work_note.work_id
+                left join ( select
+                    date_format(regdate, '%Y-%m-%d') as work_date,
+                    count(work_id) as work_count
+                    from works
+                    group by work_date
+
+                    ) allcount on date_format(log_work_note.regdate, '%Y-%m-%d') = allcount.work_date
             where
-                TIMESTAMPDIFF(SECOND, works.regdate, log_work_note.regdate) < 24*60*60 and
+                works.status != 'deleted' and
+                TIMESTAMPDIFF(SECOND, w.regdate, log_work_note.regdate) < 24*60*60 and
                 log_work_note.regdate between ? and ?
-            group by date"; 
+            group by date";  
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
@@ -771,12 +787,20 @@ class Acp_statics extends CI_Model
         $sql = "SELECT 
                 date_format(work_comments.regdate, '%Y-%m-%d') as date,
                 count(work_comments.id) as log_count,
-                count(distinct work_comments.work_id) as work_count
+                allcount.work_count
             from
-                works
-            left outer join work_comments on works.work_id = work_comments.work_id
+                work_comments
+                left join works as w on w.work_id = work_comments.work_id
+                left join ( select
+                    date_format(regdate, '%Y-%m-%d') as work_date,
+                    count(work_id) as work_count
+                    from works
+                    group by work_date
+
+                    ) allcount on date_format(work_comments.regdate, '%Y-%m-%d') = allcount.work_date
             where
-                TIMESTAMPDIFF(SECOND, works.regdate, work_comments.regdate) < 24*60*60 and
+                works.status != 'deleted' and
+                TIMESTAMPDIFF(SECOND, w.regdate, work_comments.regdate) < 24*60*60 and
                 work_comments.regdate between ? and ?
             group by date"; 
         $query = $this->db->query($sql, array($from, $to));
