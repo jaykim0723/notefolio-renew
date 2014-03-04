@@ -40,12 +40,12 @@ $date_to = array(
 <script type="text/javascript">
     $(function() {
         $( "#date-from" )
-          .datepicker({format: 'yy-mm-dd'})
+          .datepicker({format: 'yyyy-mm-dd'})
           .on('changeDate', function(){
             drawChart();
           });   
         $( "#date-to"   )
-          .datepicker({format: 'yy-mm-dd'})
+          .datepicker({format: 'yyyy-mm-dd'})
           .on('changeDate', function(){
             drawChart();
           });
