@@ -146,7 +146,7 @@ class work_model extends CI_Model {
                     works) dp', 'works.work_id = dp.work_id', 'left');
             $this->db->select('dp.discoverbility_by_period');
 
-            $this->db->select('( case when (note_cnt = 0) ehen 0 else (discoverbility_by_period + ifnull(feedbacks.point, 0) + works.staffpoint) end ) as rank_point', FALSE);
+            $this->db->select('( case when (note_cnt = 0) then 0 else (discoverbility_by_period + ifnull(feedbacks.point, 0) + works.staffpoint) end ) as rank_point', FALSE);
         }
         
     }
