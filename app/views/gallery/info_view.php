@@ -262,7 +262,7 @@
 
 				<?php if ($row->prev_work_id!=0): ?>
 					<a href="/<?php echo $row->user->username; ?>/<?php echo $row->prev_work_id; ?>" class="more-link btn btn-default btn-block btn-more">more</a>
-				<?php elseif ($row->first_work_id!=0): ?>
+				<?php elseif ($row->first_work_id!=0 && $row->work_id==$row->first_work_id): ?>
 					<a href="/<?php echo $row->user->username; ?>/<?php echo $row->first_work_id; ?>" class="more-link btn btn-default btn-block btn-more">more</a>
 				<?php endif ?>
 				
