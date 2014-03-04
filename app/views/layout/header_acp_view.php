@@ -113,7 +113,8 @@
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
-            <li><a href="/acp/statics/research">분석</a></li>
+            <li><a href="/acp/statics/research/user">회원 분석</a></li>
+            <li><a href="/acp/statics/research/work">작품 분석</a></li>
             <li><a href="/acp/statics/stat">현황</a></li>
           </ul>
         </li>
