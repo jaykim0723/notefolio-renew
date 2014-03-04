@@ -1017,7 +1017,7 @@ class Acp_statics extends CI_Model
         $this->load->config('keyword', TRUE);
         $keyword_list = $this->config->item('keyword', 'keyword');
         foreach ($keyword_list as $key => $keyword) { 
-            $sql .= "Union SELECT '".$keyword."' as category, count(work_id) as count, 0 as all_count from works where keyword like '%".$key."%'";
+            $sql .= "(SELECT '".$keyword."' as category, count(work_id) as count, 0 as all_count from works where keyword like '%".$key."%') UNION ALL ";
         }
         $sql .= ") categories limit 0, ?";
 //join (select count(id) as all_count from work_categories) allCount group by category order by count desc 
