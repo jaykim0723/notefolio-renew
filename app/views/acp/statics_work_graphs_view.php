@@ -36,6 +36,7 @@ $date_to = array(
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="/js/acp/chart.js"></script>
 <script type="text/javascript" src="/js/acp/chart_work.js"></script>
+<script src="/js/libs/bootstrap-datepicker.js"></script>
 <script type="text/javascript">
     $(function() {
         $( "#date-from" )
