@@ -1500,7 +1500,7 @@ class Acp_statics extends CI_Model
                     hit_cnt as view_count 
                     FROM works
 
-                    WHERE view_count>? "; 
+                    WHERE hit_cnt>? "; 
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
         {
@@ -1515,7 +1515,7 @@ class Acp_statics extends CI_Model
                     (SELECT id as user_id, username, realname FROM users
                      group by user_id) users
                     on works.user_id = users.user_id 
-                    WHERE view_count>=? order by view_count desc"; 
+                    WHERE hit_cnt>=? order by hit_cnt desc"; 
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
         {
