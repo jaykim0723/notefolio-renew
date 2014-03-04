@@ -98,6 +98,9 @@ class comment_model extends CI_Model {
             if($row->children_cnt>0){
                 $children_params=$params;
                 $children_params->parent_id = $row->comment_id;
+                unset($children_params->id_before);
+                unset($children_params->id_after);
+
                 $row->children = $this->get_list($children_params)->rows;
             }
 
