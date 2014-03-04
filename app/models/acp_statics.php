@@ -886,9 +886,9 @@ class Acp_statics extends CI_Model
         //total works note count by month
         $sql = "SELECT date, view_count, work_count 
                     FROM (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as date, count(id) as view_count 
-                        FROM log_work_view WHERE regdate >= ? and regdate <= ? group by date) views 
+                        FROM log_work_view WHERE regdate between ? and ? group by date) views 
                     left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(work_id) as work_count 
-                        FROM works WHERE regdate >= ? and regdate <= ? group by work_date) works on views.date=works.work_date;"; 
+                        FROM works WHERE regdate between ? and ? group by work_date) works on views.date=works.work_date;"; 
         $query = $this->db->query($sql, array($from, $to, $from, $to));
         
         $output = array(array('날짜' , '총 조회수', '평균 조회수', '월간 업로드'));
@@ -929,9 +929,9 @@ class Acp_statics extends CI_Model
         //total works note count by month
         $sql = "SELECT date, note_count, work_count 
                     FROM (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as date, count(id) as note_count 
-                        FROM log_work_note WHERE regdate >= ? and regdate <= ? group by date) notes 
+                        FROM log_work_note WHERE regdate between ? and ? group by date) notes 
                     left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(work_id) as work_count 
-                        FROM works WHERE regdate >= ? and regdate <= ? group by work_date) works on notes.date=works.work_date;"; 
+                        FROM works WHERE regdate between ? and ? group by work_date) works on notes.date=works.work_date;"; 
         $query = $this->db->query($sql, array($from, $to, $from, $to));
         
         $output = array(array('날짜' , '총 추천수', '평균 추천수', '월간 업로드'));
@@ -973,9 +973,9 @@ class Acp_statics extends CI_Model
         //total works comment count by month
         $sql = "SELECT date, comment_count, work_count 
                     FROM (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as date, count(id) as comment_count 
-                        FROM work_comments WHERE regdate >= ? and regdate <= ? group by date) comments 
+                        FROM work_comments WHERE regdate between ? and ? group by date) comments 
                     left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(work_id) as work_count 
-                        FROM works WHERE regdate >= ? and regdate <= ? group by work_date) works on comments.date=works.work_date;"; 
+                        FROM works WHERE regdate between ? and ? group by work_date) works on comments.date=works.work_date;"; 
         $query = $this->db->query($sql, array($from, $to, $from, $to));
         
         $output = array(array('날짜' , '총 댓글수', '평균 댓글수', '월간 업로드'));
