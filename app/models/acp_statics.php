@@ -1091,7 +1091,7 @@ class Acp_statics extends CI_Model
                     from
                         users
                     left join (select 
-                        user_id, id as work_id, regdate
+                        user_id, work_id, regdate
                     from
                         works
                     group by user_id
@@ -1197,7 +1197,7 @@ class Acp_statics extends CI_Model
                         from
                             works,
                             (select 
-                                user_id, id as work_id_first, regdate
+                                user_id, work_id as work_id_first, regdate
                             from
                                 works
                             group by user_id
