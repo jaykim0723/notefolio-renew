@@ -1027,7 +1027,7 @@ class Acp_statics extends CI_Model
                 $sql .= " UNION ALL ";
             }
         }
-        $sql .= ") categories join (select count(work_id) as all_count from works ) w limit 0, ?";
+        $sql .= ") categories join (select count(work_id) as all_count from works ) w order by count desc limit 0, ?";
 
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
@@ -1066,7 +1066,7 @@ class Acp_statics extends CI_Model
                 $sql .= " UNION ALL ";
             }
         }
-        $sql .= ") categories join (select count(id) as all_count from users ) w limit 0, ?";
+        $sql .= ") categories join (select count(id) as all_count from users ) w order by count desc limit 0, ?";
 
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
@@ -1611,7 +1611,7 @@ class Acp_statics extends CI_Model
                 $sql .= " UNION ALL ";
             }
         }
-        $sql .= ") categories join (select count(work_id) as all_count from works ) w limit 0, ?";
+        $sql .= ") categories join (select count(work_id) as all_count from works ) w order by count desc limit 0, ?";
 
         $query = $this->db->query($sql, array($lineCount));
         foreach ($query->result() as $row)
@@ -1651,7 +1651,7 @@ class Acp_statics extends CI_Model
                 $sql .= " UNION ALL ";
             }
         }
-        $sql .= ") categories join (select count(id) as all_count from users ) w limit 0, ?";
+        $sql .= ") categories join (select count(id) as all_count from users ) w order by count desc limit 0, ?";
 
         $query = $this->db->query($sql, array($lineCount));
         foreach ($query->result() as $row)
