@@ -1630,7 +1630,7 @@ class Acp_statics extends CI_Model
 
         //total user upload
         $sql = "SELECT count(id) as count FROM users left join
-                    (SELECT user_id, ifnull(count(id),0) as work_count FROM works
+                    (SELECT user_id, ifnull(count(work_id),0) as work_count FROM works
                      where regdate >= ? and regdate <= ? group by user_id) works
                     on users.id = works.user_id
                     WHERE work_count>? and activated = ? and created >= ? and created <= ?"; 
