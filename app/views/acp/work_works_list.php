@@ -50,6 +50,7 @@
                       피드백총계 : <?=$v->nofol_rank?><br />
 
                       Likability  : <?=$v->discoverbility?><br />
+                      Likability기간계  : <?=$v->discoverbility_by_period?><br />
                       피드백기간계 : <?=$v->feedback_point?><br />
                       스탭점수 : <?=$v->staffpoint?><br />
                       랭크총계 : <?=$v->rank_point?><br />
