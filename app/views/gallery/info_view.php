@@ -9,6 +9,13 @@
 
 			// 사이드바 불러오기
 			workInfoUtil.getRecentList($work.data('id'));
+
+			if($('.more-link').length>0){
+				var moreLinkId = $('.more-link').attr('href').split('/')[2];
+				if(site.segment[1] == moreLinkId){
+					$('.more-link').remove();
+				}
+			}
 		}
 	};
 </script>
