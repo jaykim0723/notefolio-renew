@@ -134,13 +134,7 @@ class work_model extends CI_Model {
                 and regdate >= '.$this->db->escape($period['feedback']).'
                 group by work_id) feedbacks', 'works.work_id = feedbacks.work_id', 'left');
             $this->db->select('feedbacks.point as feedback_point');
-            $this->db->select('(
-                case when ( DATEDIFF(works.regdate, '.$this->db->escape($period['discoverbliity_full']).') >= 0 ) THEN works.discoverbility
-                    when ( DATEDIFF( works.regdate, '.$this->db->escape($period['discoverbliity_zero']).') >= 0 )  THEN works.discoverbility * DATEDIFF( works.regdate, '.$this->db->escape($period['discoverbliity_zero']).') / DATEDIFF('.$this->db->escape($period['discoverbliity_full']).', '.$this->db->escape($period['discoverbliity_zero']).')
-                    ELSE 0
-                END
-                ) as discoverbility_by_period');
-            $this->db->select('(discoverbility_by_period + ifnull(feedbacks.point, 0) + works.staffpoint) as rank_point', FALSE);
+            $this->db->select('(works.discoverbility + ifnull(feedbacks.point, 0) + works.staffpoint) as rank_point', FALSE);
         }
         
     }
