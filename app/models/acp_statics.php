@@ -1290,7 +1290,7 @@ class Acp_statics extends CI_Model
         //query
         $sql = "SELECT  user_count as works, 
                         count(user_count) as count 
-                    from (SELECT count(id) as user_count from works group by user_id) o 
+                    from (SELECT count(work_id) as user_count from works group by user_id) o 
                     group by works order by works asc "; 
         $query = $this->db->query($sql, array());
         foreach ($query->result() as $row)
