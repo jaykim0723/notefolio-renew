@@ -1494,9 +1494,7 @@ class Acp_statics extends CI_Model
     {
 
         //count for user upload
-        $sql = "SELECT count(id) as count FROM works left join
-                    (SELECT work_id, hit_cnt as view_count FROM work_counts) work_views
-                    on works.id = work_views.work_id
+        $sql = "SELECT count(work_id) as count FROM works left join
 
                     WHERE view_count>? "; 
         $query = $this->db->query($sql, array($count));
