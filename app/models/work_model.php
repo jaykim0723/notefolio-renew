@@ -139,7 +139,7 @@ class work_model extends CI_Model {
                     when ( DATEDIFF( works.regdate, '.$this->db->escape($period['discoverbliity_zero']).') >= 0 )  THEN works.discoverbility * DATEDIFF( works.regdate, '.$this->db->escape($period['discoverbliity_zero']).') / DATEDIFF('.$this->db->escape($period['discoverbliity_full']).', '.$this->db->escape($period['discoverbliity_zero']).')
                     ELSE 0
                 END
-                ) as discoverbility_by_period', FALSE);
+                ) as discoverbility_by_period');
             $this->db->select('(discoverbility_by_period + ifnull(feedbacks.point, 0) + works.staffpoint) as rank_point', FALSE);
         }
         
