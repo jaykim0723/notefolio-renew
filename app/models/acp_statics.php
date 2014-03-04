@@ -1641,7 +1641,7 @@ class Acp_statics extends CI_Model
         }
 
         //total works
-        $sql = "SELECT count(id) as count FROM works WHERE regdate >= ? and regdate <= ?"; 
+        $sql = "SELECT count(work_id) as count FROM works WHERE regdate >= ? and regdate <= ?"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
