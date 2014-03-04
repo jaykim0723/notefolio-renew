@@ -49,6 +49,16 @@ class work extends CI_Controller {
                 if(!isset($args['exclude_deleted'])) $args['exclude_deleted'] = false;
                 if(!isset($args['period'])) $args['period'] = 'all';
                 if(!isset($args['q'])) $args['q'] = '';
+
+                foreach(array('enabled', 'disabled', 'deleted') as $val){
+                    if(isset($args['only_'.$val]) && $args['only_'.$val] == true){
+                        $args['allow_enabled'] = false;
+                        $args['allow_disabled'] = false;
+                        $args['allow_deleted'] = false;
+
+                        $args['allow_'.$val] = true;
+                    }
+                }
                 
                 $page_info = $this->work_model->get_list_count(array(
                     'delimiter' => $args['delimiter'],
