@@ -224,12 +224,10 @@ class comment_model extends CI_Model {
             'comment_id' => $comment_id
         );
         if($this->db->trans_status()){
-            if($params->parent_id==0){
-                $this->db->query("UPDATE works 
-                    set comment_cnt = comment_cnt + {$affected} 
-                    where work_id = {$params->work_id};
-                    ");
-            }
+            $this->db->query("UPDATE works 
+                set comment_cnt = comment_cnt + {$affected} 
+                where work_id = {$params->work_id};
+                ");
 
         }else{
             $data->status = 'fail';
@@ -326,6 +324,7 @@ class comment_model extends CI_Model {
                 ->set('children_cnt', 'children_cnt-1', FALSE)
                 ->where('id', $comment->parent_id)
                 ->update('work_comments');
+            $affected += $this->db->affected_rows();
 
             $this->db->trans_complete();
 
