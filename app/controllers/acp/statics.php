@@ -113,19 +113,13 @@ class Statics extends CI_Controller
     function stat($mode='user')
     {
         $this->load->model('acp_statics');
-
-        $this->data['acp_submenu_html'] =  $this->acp->get_submenu(strtolower($this->title), strtolower(__FUNCTION__));
-        $this->layout->title(__FUNCTION__." - ".$this->title);
-        $this->layout->coffee($this->layout_resource_path."coffee/stat.coffee");
         
         $args = $this->uri->ruri_to_assoc(4);
         //var_export($args);
         
         $this->data['form_attr'] = array('class' => 'form', 'id' => 'research_stat_form');
-        $this->layout->js('https://www.google.com/jsapi');
-      	$this->layout->js($this->layout_resource_path.'js/chart.js');
-      	$this->layout->js($this->layout_resource_path.'js/chart_stat.js');
-      	$this->layout->view('acp/statics_stat', $this->data);
+        $this->layout->set_header('title', '분석')->set_view('acp/statics_stat_graphs_view',$this->data)->render();
+
     }
     
     /*
