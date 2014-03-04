@@ -118,7 +118,7 @@ class Statics extends CI_Controller
         //var_export($args);
         
         $this->data['form_attr'] = array('class' => 'form', 'id' => 'research_stat_form');
-        $this->layout->set_header('title', '분석')->set_view('acp/statics_stat_graphs_view',$this->data)->render();
+        $this->layout->set_header('title', '현황')->set_view('acp/statics_stat_graphs_view',$this->data)->render();
 
     }
     
