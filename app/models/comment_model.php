@@ -329,16 +329,14 @@ class comment_model extends CI_Model {
             $this->db->trans_complete();
 
             if($this->db->trans_status()){
-                if($comment->parent_id==0){
-                    $this->db->query("UPDATE works 
-                        set comment_cnt = comment_cnt - {$affected} 
-                        where work_id = {$comment->work_id};
-                        ");
-                    error_log("UPDATE works 
-                        set comment_cnt = comment_cnt - {$affected} 
-                        where work_id = {$comment->work_id};
-                        ");
-                }
+                $this->db->query("UPDATE works 
+                    set comment_cnt = comment_cnt - {$affected} 
+                    where work_id = {$comment->work_id};
+                    ");
+                error_log("UPDATE works 
+                    set comment_cnt = comment_cnt - {$affected} 
+                    where work_id = {$comment->work_id};
+                    ");
                 $data = (object)array(
                     'status' => 'done'
                 );
