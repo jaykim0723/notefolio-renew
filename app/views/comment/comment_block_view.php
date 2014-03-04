@@ -42,6 +42,9 @@
 	<div class="comment-replies">
 		<?php if($row->children_cnt > 0): ?>
 			<?php foreach ($row->children as $key => $child): ?>
+				<?php if (!$this->input->is_ajax_request()): ?>
+					<pre><?=var_export($row->children, true)?></pre>
+				<?php endif; ?>
 				<?php $this->load->view('comment/comment_block_view', array('row' => $child), FALSE); ?>
 			<?php endforeach ?>
 		<?php endif; ?>
