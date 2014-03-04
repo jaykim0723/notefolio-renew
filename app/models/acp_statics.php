@@ -636,7 +636,7 @@ class Acp_statics extends CI_Model
                 works
             left outer join log_work_view on works.work_id = log_work_view.work_id
             where
-                TIMESTAMPDIFF(SECOND, works.regdate, log_work_view.regdate) < 24*60*60  
+                TIMESTAMPDIFF(SECOND, works.regdate, log_work_view.regdate) < 24*60*60 and
                 log_work_view.regdate between ? and ?
             group by date"; 
         $query = $this->db->query($sql, array($from, $to));
@@ -706,7 +706,7 @@ class Acp_statics extends CI_Model
                 works
             left outer join log_work_note on works.work_id = log_work_note.work_id
             where
-                TIMESTAMPDIFF(SECOND, works.regdate, log_work_note.regdate) < 24*60*60  
+                TIMESTAMPDIFF(SECOND, works.regdate, log_work_note.regdate) < 24*60*60 and
                 log_work_note.regdate between ? and ?
             group by date"; 
         $query = $this->db->query($sql, array($from, $to));
@@ -776,7 +776,7 @@ class Acp_statics extends CI_Model
                 works
             left outer join work_comments on works.work_id = work_comments.work_id
             where
-                TIMESTAMPDIFF(SECOND, works.regdate, work_comments.regdate) < 24*60*60  
+                TIMESTAMPDIFF(SECOND, works.regdate, work_comments.regdate) < 24*60*60 and
                 work_comments.regdate between ? and ?
             group by date"; 
         $query = $this->db->query($sql, array($from, $to));
