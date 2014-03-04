@@ -334,10 +334,6 @@ class comment_model extends CI_Model {
                     set comment_cnt = comment_cnt - {$affected} 
                     where work_id = {$comment->work_id};
                     ");
-                error_log("UPDATE works 
-                    set comment_cnt = comment_cnt - {$affected} 
-                    where work_id = {$comment->work_id};
-                    ");
                 $data = (object)array(
                     'status' => 'done'
                 );
