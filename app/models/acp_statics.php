@@ -1205,7 +1205,7 @@ class Acp_statics extends CI_Model
                         where
                             works.user_id = work_first.user_id
                             and
-                            works.id != work_first.work_id_first
+                            works.work_id != work_first.work_id_first
                         group by works.user_id
                     ) work_second ON work_first.user_id = work_second.user_id
                 order by gap
