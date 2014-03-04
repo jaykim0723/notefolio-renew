@@ -639,11 +639,13 @@ class Acp_statics extends CI_Model
                     date_format(regdate, '%Y-%m-%d') as work_date,
                     count(work_id) as work_count
                     from works
+                    where
+                        works.status != 'deleted'
                     group by work_date
 
                     ) allcount on date_format(log_work_view.regdate, '%Y-%m-%d') = allcount.work_date
             where
-                works.status != 'deleted' and
+                w.status != 'deleted' and
                 TIMESTAMPDIFF(SECOND, w.regdate, log_work_view.regdate) < 24*60*60 and
                 log_work_view.regdate between ? and ?
             group by date"; 
@@ -717,11 +719,13 @@ class Acp_statics extends CI_Model
                     date_format(regdate, '%Y-%m-%d') as work_date,
                     count(work_id) as work_count
                     from works
+                    where
+                        works.status != 'deleted'
                     group by work_date
 
                     ) allcount on date_format(log_work_note.regdate, '%Y-%m-%d') = allcount.work_date
             where
-                works.status != 'deleted' and
+                w.status != 'deleted' and
                 TIMESTAMPDIFF(SECOND, w.regdate, log_work_note.regdate) < 24*60*60 and
                 log_work_note.regdate between ? and ?
             group by date";  
@@ -795,11 +799,13 @@ class Acp_statics extends CI_Model
                     date_format(regdate, '%Y-%m-%d') as work_date,
                     count(work_id) as work_count
                     from works
+                    where
+                        works.status != 'deleted'
                     group by work_date
 
                     ) allcount on date_format(work_comments.regdate, '%Y-%m-%d') = allcount.work_date
             where
-                works.status != 'deleted' and
+                w.status != 'deleted' and
                 TIMESTAMPDIFF(SECOND, w.regdate, work_comments.regdate) < 24*60*60 and
                 work_comments.regdate between ? and ?
             group by date"; 
