@@ -1010,10 +1010,19 @@ class Acp_statics extends CI_Model
         $output = array(array('키워드' , '선택수'));
 
         $i = 1;
+
         //work category
-        $sql = "SELECT category, count(id) as count, all_count FROM work_categories
-                join (select count(id) as all_count from work_categories) allCount
-                group by category order by count desc limit 0, ?"; 
+        $sql = "SELECT category, count, all_count from (";
+
+        $this->load->config('keyword', TRUE);
+        $keyword_list = $this->config->item('keyword', 'keyword');
+        foreach ($keyword_list as $key => $keyword) { 
+            $sql .= "Union SELECT '".$keyword."' as category, count(work_id) as count, 0 as all_count from works where keyword like '%".$key."%'";
+        }
+        $sql .= ") categories limit 0, ?";
+//join (select count(id) as all_count from work_categories) allCount group by category order by count desc 
+        exit(); 
+
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
         {
