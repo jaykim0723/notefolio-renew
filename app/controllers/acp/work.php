@@ -43,7 +43,7 @@ class work extends CI_Controller {
                 if(!isset($args['order'])) $args['order'] = 'idlarger';
                 if(!isset($args['allow_enabled'])) $args['allow_enabled'] = true;
                 if(!isset($args['allow_disabled'])) $args['allow_disabled'] = true;
-                if(!isset($args['allow_deleted'])) $args['allow_deleted'] = true;
+                if(!isset($args['allow_deleted'])) $args['allow_deleted'] = false;
                 if(!isset($args['exclude_enabled'])) $args['exclude_enabled'] = false;
                 if(!isset($args['exclude_disabled'])) $args['exclude_disabled'] = false;
                 if(!isset($args['exclude_deleted'])) $args['exclude_deleted'] = false;
