@@ -1067,12 +1067,11 @@ class Acp_statics extends CI_Model
             }
         }
         $sql .= ") categories join (select count(id) as all_count from users ) w limit 0, ?";
-exit($sql);
 
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
         {
-            $output[$i] = array($this->notefolio->print_keywords(array($row->category), FALSE), $row->count,);
+            $output[$i] = array($row->category, $row->count);
             $i++;
         }
 
