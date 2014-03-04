@@ -34,4 +34,8 @@
  		),
  	);
 
- $config['period'] = date('Y-m-d 00:00:00', strtotime('-1 week'));
+ $config['period'] = array( 
+ 	'feedback' => date('Y-m-d 00:00:00', strtotime('-3 days')),
+ 	'discoverbliity_full' => date('Y-m-d 00:00:00', strtotime('-3 days')),
+ 	'discoverbliity_zero' => date('Y-m-d 00:00:00', strtotime('-1 week'))
+ 	);
