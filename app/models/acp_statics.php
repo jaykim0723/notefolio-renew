@@ -98,10 +98,10 @@ class Acp_statics extends CI_Model
                 select 
                     users.id as user_id,
                     users.created as join_date,
-                    user_fb_info.regdate as fb_date
+                    user_sns_fb.regdate as fb_date
                 from
                     users
-                    left join user_fb_info on user_fb_info.id = users.id
+                    left join user_sns_fb on user_sns_fb.id = users.id
                 where 
                     users.id is not null
                     and users.activated =? and users.created between ? and ?
