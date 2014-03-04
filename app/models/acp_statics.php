@@ -1511,7 +1511,7 @@ class Acp_statics extends CI_Model
 
         $i = 0;
         //user upload
-        $sql = "SELECT id, title, users.user_id, username, realname, regdate, hit_cnt as view_count FROM works left join
+        $sql = "SELECT work_id, title, users.user_id, username, realname, regdate, hit_cnt as view_count FROM works left join
                     (SELECT id as user_id, username, realname FROM users
                      group by user_id) users
                     on works.user_id = users.user_id 
