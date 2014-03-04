@@ -617,7 +617,7 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from log_work_view and regdate>?"; 
+        $sql = "SELECT count(id) as all_count from log_work_view WHERE regdate>?"; 
         $query = $this->db->query($sql, array($from));
         $all_count = 0;
         foreach ($query->result() as $row)
