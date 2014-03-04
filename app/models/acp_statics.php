@@ -834,7 +834,7 @@ class Acp_statics extends CI_Model
                     (select 
                         date_format(regdate, '%Y-%m-%d') as date,
                             count(distinct user_id) as user_count,
-                            count(id) as work_count
+                            count(work_id) as work_count
                     from
                         works
                     WHERE regdate >= ? and regdate <= ?
