@@ -1005,7 +1005,7 @@ html, body {
 }
 @media (max-width:991px) {
 	.work-contents > .block-text {
-		padding: 15px 10px;
+		padding: 15px 15px;
 	}
 	.work-contents > .block-line {
 		margin: 20px auto;
