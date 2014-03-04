@@ -617,8 +617,8 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from log_work_view WHERE regdate between ? and ?"; 
-        $query = $this->db->query($sql, array($from, $to));
+        $sql = "SELECT count(id) as all_count from log_work_view WHERE regdate>?"; 
+        $query = $this->db->query($sql, array($from));
         $all_count = 0;
         foreach ($query->result() as $row)
         {
@@ -686,8 +686,8 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from log_work_note where regdate between ? and ?"; 
-        $query = $this->db->query($sql, array($from, $to));
+        $sql = "SELECT count(id) as all_count from log_work_note where regdate>?"; 
+        $query = $this->db->query($sql, array($from));
         $all_count = 0;
         foreach ($query->result() as $row)
         {
@@ -707,7 +707,7 @@ class Acp_statics extends CI_Model
             where
                 regdate between ? and ?
             group by date"; 
-        $query = $this->db->query($sql, array('N', $from, $to));
+        $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
             $data[$row->date] = array(round(round($all_count=$all_count+$row->log_count)/10, 2), round($row->log_count), round($row->log_count/$row->work_count, 2));
@@ -755,8 +755,8 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from work_comments where regdate between ? and ?"; 
-        $query = $this->db->query($sql, array($from, $to));
+        $sql = "SELECT count(id) as all_count from work_comments where regdate>?"; 
+        $query = $this->db->query($sql, array($from));
         $all_count = 0;
         foreach ($query->result() as $row)
         {
