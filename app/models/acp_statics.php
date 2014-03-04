@@ -1594,14 +1594,29 @@ class Acp_statics extends CI_Model
         $output = array('data'=>array());
 
         $i = 1;
+
         //work category
-        $sql = "SELECT category, count(id) as count, all_count FROM work_categories
-                join (select count(id) as all_count from work_categories) allCount
-                group by category order by count desc limit 0, ?"; 
+        $sql = "SELECT category, count, all_count from (";
+
+        $this->load->config('keyword', TRUE);
+        $keyword_list = $this->config->item('keyword', 'keyword');
+        foreach ($keyword_list as $key => $keyword) { 
+            $sql .= "(SELECT '".$keyword."' as category, count(work_id) as count from works where keywords like '%".$key."%')";
+
+            if($i == count($keyword_list)){
+                $i = 1;
+            }
+            else {
+                $i++;
+                $sql .= " UNION ALL ";
+            }
+        }
+        $sql .= ") categories join (select count(work_id) as all_count from works ) w limit 0, ?";
+
         $query = $this->db->query($sql, array($lineCount));
         foreach ($query->result() as $row)
         {
-            $output['data'][$i] = array('name'=>$this->notefolio->print_keywords(array($row->category), FALSE), 'count'=>$row->count, 'percent'=>round($row->count*100/$row->all_count,2)."%");
+            $output['data'][$i] = array('name'=>$row->category, 'count'=>$row->count, 'percent'=>round($row->count*100/$row->all_count,2)."%");
             $i++;
         }
 
@@ -1621,13 +1636,27 @@ class Acp_statics extends CI_Model
 
         $i = 1;
         //user category
-        $sql = "SELECT category, count(id) as count, all_count FROM user_categories
-                join (select count(id) as all_count from user_categories) allCount
-                group by category order by count desc limit 0, ?"; 
+        $sql = "SELECT category, count, all_count from (";
+
+        $this->load->config('keyword', TRUE);
+        $keyword_list = $this->config->item('keyword', 'keyword');
+        foreach ($keyword_list as $key => $keyword) { 
+            $sql .= "(SELECT '".$keyword."' as category, count(id) as count from user_profiles where keywords like '%".$key."%')";
+
+            if($i == count($keyword_list)){
+                $i = 1;
+            }
+            else {
+                $i++;
+                $sql .= " UNION ALL ";
+            }
+        }
+        $sql .= ") categories join (select count(id) as all_count from users ) w limit 0, ?";
+
         $query = $this->db->query($sql, array($lineCount));
         foreach ($query->result() as $row)
         {
-            $output['data'][$i] = array('name'=>$this->notefolio->print_keywords(array($row->category), FALSE), 'count'=>$row->count, 'percent'=>round($row->count*100/$row->all_count,2)."%");
+            $output['data'][$i] = array('name'=>$row->category, 'count'=>$row->count, 'percent'=>round($row->count*100/$row->all_count,2)."%");
             $i++;
         }
 
