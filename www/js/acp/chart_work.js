@@ -13,6 +13,7 @@ chart.work =  {
       title: '날짜별 조회수',
       hAxis: {title: '날짜', titleTextStyle: {color: '#333333'}, showTextEvery: parseInt(data.length/7)},
       vAxis: {title: '모든 작품만 1/10'},
+      height: 800,
       data:data,
       target:"#work-view-count",
       type:"LineChart"
@@ -26,6 +27,7 @@ chart.work =  {
       title: '날짜별 추천수',
       hAxis: {title: '날짜', titleTextStyle: {color: '#333333'}, showTextEvery: parseInt(data.length/7)},
       vAxis: {title: '모든 작품만 1/10'},
+      height: 800,
       data:data,
       target:"#work-note-count",
       type:"LineChart"
@@ -39,6 +41,7 @@ chart.work =  {
       title: '날짜별 댓글수',
       hAxis: {title: '날짜', titleTextStyle: {color: '#333333'}, showTextEvery: parseInt(data.length/7)},
       vAxis: {title: '모든 작품만 1/10'},
+      height: 800,
       data:data,
       target:"#work-comment-count",
       type:"LineChart"
