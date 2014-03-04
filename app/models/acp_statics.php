@@ -971,7 +971,7 @@ class Acp_statics extends CI_Model
         $sql = "SELECT date, comment_count, work_count 
                     FROM (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as date, count(id) as comment_count 
                         FROM work_comments WHERE regdate >= ? and regdate <= ? group by date) comments 
-                    left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(id) as work_count 
+                    left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(work_id) as work_count 
                         FROM works WHERE regdate >= ? and regdate <= ? group by work_date) works on comments.date=works.work_date;"; 
         $query = $this->db->query($sql, array($from, $to, $from, $to));
         
