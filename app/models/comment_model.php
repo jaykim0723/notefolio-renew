@@ -318,13 +318,13 @@ class comment_model extends CI_Model {
 
             // 하위 리플들도 모두 지워지도록 처리해주세요.
             $this->db->where('parent_id', $comment_id)->delete('work_comments'); 
+            $affected += $this->db->affected_rows();
             
             // parent_id의 children_cnt도 업데이트해주세요.
             $this->db
                 ->set('children_cnt', 'children_cnt-1', FALSE)
                 ->where('id', $comment->parent_id)
                 ->update('work_comments');
-            $affected += $this->db->affected_rows();
 
             $this->db->trans_complete();
 
