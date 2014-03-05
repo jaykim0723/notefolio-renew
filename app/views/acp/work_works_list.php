@@ -13,6 +13,17 @@
           <div class="widget-content">
             <div class="container">
               <div class="col-lg-2 col-sm-2" style="border-bottom: 1px solid #efefef;">
+                <h4>검색옵션</h4>
+              </div>
+              <div class="col-lg-10 col-sm-10" style="border-bottom: 1px solid #efefef;">
+                <input type="checkbox" name="sp_nz" id="sp_nz" 
+                  value="true"<?=(isset($args['sp_nz']) && filter_var($args['sp_nz'], FILTER_VALIDATE_BOOLEAN) )?' checked':''?>
+                  onchange="javascript:url_go_to('sp_nz', 'TRUE', !($(this).is(':checked')));">
+                <label for="sp_nz" style="display:inline-block;">Staffpoint 부여된 것만 보기</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </div>
+
+              <div class="col-lg-2 col-sm-2" style="border-bottom: 1px solid #efefef;">
                 <h4>카테고리</h4>
               </div>
               <div class="col-lg-10 col-sm-10" style="border-bottom: 1px solid #efefef;">
