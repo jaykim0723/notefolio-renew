@@ -23,6 +23,7 @@
                     <th>&nbsp;</th>
                     <th>작성자</th>
                     <th>공개여부</th>
+                    <th>조회추천댓글</th>
                     <th>노폴랭크</th>
                     <th>생성일</th>
                     <th>보기</th>
@@ -46,6 +47,12 @@
                       <?=$v->user->realname?>
                         </a></td>
                     <td><?=$v->status?></td>
+                    <td>
+                      조회  : <?=$v->hit_cnt?><br />
+                      추천  : <?=$v->note_cnt?><br />
+                      댓글  : <?=$v->comment_cnt?><br />
+                      콜렉트 : <?=$v->collect_cnt?><br />
+                    </td>
                     <td>
                       피드백총계 : <?=$v->nofol_rank?><br />
 
