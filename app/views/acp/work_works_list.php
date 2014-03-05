@@ -49,13 +49,13 @@
                 </div>
               </div>
 
-              <div class="col-lg-2 col-sm-6"></div>
+              <div class="col-lg-1 col-sm-6"></div>
 
-              <div class="col-lg-4 col-sm-6">
-                <div class="col-lg-10 col-sm-10 search-center pull-left">
+              <div class="col-lg-5 col-sm-6">
+                <div class="col-lg-8 col-sm-10 search-center pull-left">
                   <input class="form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
                 </div>
-                <div class="col-lg-2 col-sm-2 search-center pull-right">
+                <div class="col-lg-4 col-sm-2 search-center pull-right">
                   <button class="btn btn-info">검색</button>
                 </div>
               </div>
