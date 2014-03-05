@@ -47,6 +47,8 @@
 
               <div class="col-lg-3 col-sm-6" style="border-bottom: 1px solid #efefef;">
                 <select name="order" id="order" onchange="javascript:url_go_to('order', $(this).val());">
+                  <option value="newest"<?=($args['order']=="idlarger")?' selected':''?>>번호역순</option>
+                  <option value="newest"<?=($args['order']=="idsmaller")?' selected':''?>>번호순</option>
                   <option value="newest"<?=($args['order']=="newest")?' selected':''?>>최신순</option>
                   <option value="newest"<?=($args['order']=="oldest")?' selected':''?>>과거순</option>
                   <option value="noted"<?=($args['order']=="noted")?' selected':''?>>인기순</option>
