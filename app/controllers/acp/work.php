@@ -64,13 +64,10 @@ class work extends CI_Controller {
                 //-- category
                 $this->load->config('keyword', TRUE);
                 $keyword_list = $this->config->item('keyword', 'keyword');
-                $work_categories = array();
 
                 foreach ($keyword_list as $key => $val) {
-                    var_export((isset($args['cat_'.$key]) && filter_var($args['cat_'.$key], FILTER_VALIDATE_BOOLEAN)));
-                    exit();
                     if(isset($args['cat_'.$key]) && filter_var($args['cat_'.$key], FILTER_VALIDATE_BOOLEAN)){
-                        $work_categories[] = $key;
+                        $args['keywords'][] = $key;
                     }
                 }
                 //-- end category
