@@ -13,15 +13,13 @@
           <div class="widget-content">
             <div class="container">
               <div class="col-lg-2 col-sm-6 gal-cate" style="border-bottom: 1px solid #efefef;">
-              <select name="work_categories[]" id="work_categories" multiple title="카테고리 선택" onchange="$('#gallery-search-form').submit()">
-                <?php 
-                $this->load->config('keyword', TRUE);
-                $keyword_list = $this->config->item('keyword', 'keyword');
+              <?php 
+              $this->load->config('keyword', TRUE);
+              $keyword_list = $this->config->item('keyword', 'keyword');
 
-                foreach ($keyword_list as $key => $keyword) { ?>
-                  <checkbox name="work_categories[]" id="work_category_<?php echo $key?>" value="<?php echo $key?>"<?=(in_array($key, $work_categories))?' checked':''?>><label for="work_category_<?php echo $key?>"><?php echo $keyword;?></label>
-                <?php } ?>
-              </select>
+              foreach ($keyword_list as $key => $keyword) { ?>
+                <checkbox name="cat_<?php echo $key?>" id="cat_<?php echo $key?>" value="<?php echo $key?>"<?=(in_array($key, $work_categories))?' checked':''?>><label for="cat_<?php echo $key?>"><?php echo $keyword;?></label>
+              <?php } ?>
             </div>
 
             <div class="col-lg-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
