@@ -15,6 +15,11 @@ BBB님이 회원님을 팔로우합니다.
 BBB님이 회원님과 작품 "작품 제목"을 함께 만들었다고 알렸습니다.
 BBB님이 회원님의 방명록에 댓글을 남겼습니다.
 */
+
+if(empty($row->info->user_A['realname'])){
+    $row->info->user_A['realname'] = "비회원"ㅂ
+}
+
 switch($row->area){
     case "user":
         switch($row->type){
