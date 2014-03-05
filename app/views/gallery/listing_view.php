@@ -45,10 +45,10 @@
 						<div class="col-2"></div>
 
 						<div class="col-4">
-							<div class="col-md-10 col-sm-10 search-center pull-left">
+							<div class="col-10 search-center pull-left">
 								<input class="form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
 							</div>
-							<div class="col-md-2 col-sm-2 search-center pull-right">
+							<div class="col-2 search-center pull-right">
 								<button type="submit" class="btn btn-pointgreen search-green"><i class="spi spi-search_white" style="margin-top: -3px;margin-bottom: 3px;">search_white</i></button>
 							</div>
 						</div>
