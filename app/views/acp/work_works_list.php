@@ -12,15 +12,10 @@
           <!-- /widget-header -->
           <div class="widget-content">
             <div class="container">
-              <div class="col-lg-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
-                <select name="order" id="order" onchange="javascript:url_go_to('order', $(this).val());">
-                  <option value="newest"<?=($args['order']=="newest")?' selected':''?>>최신순</option>
-                  <option value="noted"<?=($args['order']=="noted")?' selected':''?>>인기순</option>
-                  <option value="viewed"<?=($args['order']=="viewed")?' selected':''?>>조회순</option>
-                  <option value="comment_desc"<?=($args['order']=="comment_desc")?' selected':''?>>댓글순</option>
-                </select>
+              <div class="col-lg-2 col-sm-2" style="border-bottom: 1px solid #efefef;">
+                <h4>카테고</h4>
               </div>
-              <div class="col-lg-11 col-sm-11" style="border-bottom: 1px solid #efefef;">
+              <div class="col-lg-10 col-sm-10" style="border-bottom: 1px solid #efefef;">
               <?php 
               $this->load->config('keyword', TRUE);
               $keyword_list = $this->config->item('keyword', 'keyword');
@@ -28,40 +23,42 @@
               foreach ($keyword_list as $key => $keyword) { ?>
                 <input type="checkbox" name="cat_<?php echo $key?>" id="cat_<?php echo $key?>" value="<?php echo $key?>"<?=(in_array($key, $work_categories))?' checked':''?>><label for="cat_<?php echo $key?>" style="display:inline-block;"><?php echo $keyword;?></label>
               <?php } ?>
-            </div>
+              </div>
 
-            <div class="col-lg-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
-              <select name="order" id="order" onchange="$('#gallery-search-form').submit()">
-                <option value="newest"<?=($order=="newest")?' selected':''?>>최신순</option>
-                <option value="noted"<?=($order=="noted")?' selected':''?>>인기순</option>
-                <option value="viewed"<?=($order=="viewed")?' selected':''?>>조회순</option>
-                <option value="comment_desc"<?=($order=="comment_desc")?' selected':''?>>댓글순</option>
-              </select>
-            </div>
-            
-            <div class="col-lg-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
-              <div class="input-group">
-                  <!-- <span class="input-group-addon"></span> -->
-                <select class="" name="from" id="from" onchange="$('#gallery-search-form').submit()">
-                  <option value="all"<?=($from=="all")?' selected':''?>>전체 기간</option>
-                  <option value="day"<?=($from=="day")?' selected':''?>>오늘</option>
-                  <option value="week"<?=($from=="week")?' selected':''?>>이번 주</option>
-                  <option value="month"<?=($from=="month")?' selected':''?>>이번 달</option>
-                  <option value="month3"<?=($from=="month3")?' selected':''?>>최근 3달</option>
+              <div class="col-lg-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
+                <select name="order" id="order" onchange="javascript:url_go_to('order', $(this).val());">
+                  <option value="newest"<?=($args['order']=="newest")?' selected':''?>>최신순</option>
+                  <option value="newest"<?=($args['order']=="oldest")?' selected':''?>>과거순</option>
+                  <option value="noted"<?=($args['order']=="noted")?' selected':''?>>인기순</option>
+                  <option value="viewed"<?=($args['order']=="viewed")?' selected':''?>>조회순</option>
+                  <option value="viewed"<?=($args['order']=="nofol_rank")?' selected':''?>>노폴랭크순</option>
+                  <option value="comment_desc"<?=($args['order']=="comment_desc")?' selected':''?>>댓글순</option>
                 </select>
               </div>
-            </div>
-
-            <div class="col-lg-2 col-sm-6"></div>
-
-            <div class="col-lg-4 col-sm-6">
-              <div class="col-lg-10 col-sm-10 search-center pull-left">
-                <input class="form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
+              
+              <div class="col-lg-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
+                <div class="input-group">
+                    <!-- <span class="input-group-addon"></span> -->
+                  <select class="" name="from" id="from" onchange="javascript:url_go_to('period', $(this).val());">
+                    <option value="all"<?=($from=="all")?' selected':''?>>전체 기간</option>
+                    <option value="day"<?=($from=="day")?' selected':''?>>오늘</option>
+                    <option value="week"<?=($from=="week")?' selected':''?>>이번 주</option>
+                    <option value="month"<?=($from=="month")?' selected':''?>>이번 달</option>
+                    <option value="month3"<?=($from=="month3")?' selected':''?>>최근 3달</option>
+                  </select>
+                </div>
               </div>
-              <div class="col-lg-2 col-sm-2 search-center pull-right">
-                <button type="submit" class="btn btn-pointgreen search-green"><i class="spi spi-search_white" style="margin-top: -3px;margin-bottom: 3px;">search_white</i></button>
+
+              <div class="col-lg-2 col-sm-6"></div>
+
+              <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-10 col-sm-10 search-center pull-left">
+                  <input class="form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
+                </div>
+                <div class="col-lg-2 col-sm-2 search-center pull-right">
+                  <button type="submit" class="btn btn-pointgreen search-green"><i class="spi spi-search_white" style="margin-top: -3px;margin-bottom: 3px;">search_white</i></button>
+                </div>
               </div>
-            </div>
             </div>
             <div class="container">
               <p>전체: <?=$all_count?>개</p>
