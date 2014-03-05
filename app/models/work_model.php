@@ -65,8 +65,8 @@ class work_model extends CI_Model {
                 break;
         }
         if($params->from!='all'){
-            $this->db->having("(works.regdate >= ".$this->db->escape($params->from).")", NULL, FALSE); // 모든 기준이 regdate로 하기 때문에
-            // $this->db->having("(works.regdate >= ".$this->db->escape($params->from)." or works.moddate >= ".$this->db->escape($from).")", NULL, FALSE);
+            $this->db->having("(works.regdate >= ".$this->db->escape($from).")", NULL, FALSE); // 모든 기준이 regdate로 하기 때문에
+            // $this->db->having("(works.regdate >= ".$this->db->escape($from)." or works.moddate >= ".$this->db->escape($from).")", NULL, FALSE);
         }
 
         if(count($params->keywords)>0){
