@@ -40,11 +40,11 @@
                 <div class="input-group">
                     <!-- <span class="input-group-addon"></span> -->
                   <select class="" name="from" id="from" onchange="javascript:url_go_to('period', $(this).val());">
-                    <option value="all"<?=($from=="all")?' selected':''?>>전체 기간</option>
-                    <option value="day"<?=($from=="day")?' selected':''?>>오늘</option>
-                    <option value="week"<?=($from=="week")?' selected':''?>>이번 주</option>
-                    <option value="month"<?=($from=="month")?' selected':''?>>이번 달</option>
-                    <option value="month3"<?=($from=="month3")?' selected':''?>>최근 3달</option>
+                    <option value="all"<?=($args['from']=="all")?' selected':''?>>전체 기간</option>
+                    <option value="day"<?=($args['from']=="day")?' selected':''?>>오늘</option>
+                    <option value="week"<?=($args['from']=="week")?' selected':''?>>이번 주</option>
+                    <option value="month"<?=($args['from']=="month")?' selected':''?>>이번 달</option>
+                    <option value="month3"<?=($args['from']=="month3")?' selected':''?>>최근 3달</option>
                   </select>
                 </div>
               </div>
