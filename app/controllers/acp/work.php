@@ -60,6 +60,18 @@ class work extends CI_Controller {
                         $args['allow_'.$val] = true;
                     }
                 }
+
+                //-- category
+                $this->load->config('keyword', TRUE);
+                $keyword_list = $this->config->item('keyword', 'keyword');
+                $work_categories = array();
+
+                foreach ($keyword_list as $key => $val) {
+                    if(isset($args['cat_'.$val]) && filter_var($args['cat_'.$key], FILTER_VALIDATE_BOOLEAN)){
+                        $work_categories[] = $key;
+                    }
+                }
+                //-- end category
                 
                 $page_info = $this->work_model->get_list_count(array(
                     'delimiter' => $args['delimiter'],
