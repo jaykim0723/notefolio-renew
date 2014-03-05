@@ -23,7 +23,7 @@
               foreach ($keyword_list as $key => $keyword) { ?>
                 <input type="checkbox" name="cat_<?php echo $key?>" id="cat_<?php echo $key?>" 
                   value="true"<?=(isset($args['cat_'.$key]) && filter_var($args['cat_'.$key], FILTER_VALIDATE_BOOLEAN) )?' checked':''?>
-                  onchange="javascript:url_go_to('cat_<?php echo $key?>', ($(this).val().length>0)?'TRUE':'FALSE');">
+                  onchange="javascript:url_go_to('cat_<?php echo $key?>', ($(this).is(':checked').length>0)?'TRUE':'FALSE');">
                 <label for="cat_<?php echo $key?>" style="display:inline-block;"><?php echo $keyword;?></label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <?php } ?>
