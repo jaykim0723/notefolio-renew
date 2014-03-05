@@ -21,6 +21,11 @@
                   onchange="javascript:url_go_to('sp_nz', 'TRUE', !($(this).is(':checked')));">
                 <label for="sp_nz" style="display:inline-block;">Staffpoint 부여된 것만 보기</label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="allow_deleted" id="allow-deleted" 
+                  value="true"<?=(isset($args['allow_deleted']) && filter_var($args['allow_deleted'], FILTER_VALIDATE_BOOLEAN) )?' checked':''?>
+                  onchange="javascript:url_go_to('allow_deleted', 'TRUE', !($(this).is(':checked')));">
+                <label for="allow_deleted" style="display:inline-block;">삭제된 것만 보기</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </div>
 
               <div class="col-lg-2 col-sm-2" style="border-bottom: 1px solid #efefef;">
