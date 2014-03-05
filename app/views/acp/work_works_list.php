@@ -23,7 +23,7 @@
               foreach ($keyword_list as $key => $keyword) { ?>
                 <input type="checkbox" name="cat_<?php echo $key?>" id="cat_<?php echo $key?>" 
                   value="<?php echo $key?>"<?=(isset($args['cat_'.$key]) && $args['cat_'.$key] )?' checked':''?>
-                  onchange="javascript:url_go_to('cat_<?php echo $key?>', ($(this).attr('checked')=='checked'));">
+                  onchange="javascript:setTimeout(function(){url_go_to('cat_<?php echo $key?>', ($(this).attr('checked')=='checked'))}, 500);">
                 <label for="cat_<?php echo $key?>" style="display:inline-block;"><?php echo $keyword;?></label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <?php } ?>
