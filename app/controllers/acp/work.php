@@ -47,6 +47,7 @@ class work extends CI_Controller {
                 if(!isset($args['exclude_enabled'])) $args['exclude_enabled'] = false;
                 if(!isset($args['exclude_disabled'])) $args['exclude_disabled'] = false;
                 if(!isset($args['exclude_deleted'])) $args['exclude_deleted'] = false;
+                if(!isset($args['sp_nz'])) $args['sp_nz'] = false;
                 if(!isset($args['period'])) $args['period'] = 'all';
                 if(!isset($args['q'])) $args['q'] = '';
 
@@ -70,7 +71,8 @@ class work extends CI_Controller {
                     'order_by' => $args['order'],
                     'from' => $args['period'],
                     'q' => $args['q'],
-                    'view_rank_point' => true
+                    'view_rank_point' => true,
+                    'only_staffpoint_not_zero' => $args['sp_nz']
                 ));
 
                 $this->load->config('activity_point', TRUE);
@@ -87,7 +89,8 @@ class work extends CI_Controller {
                     'order_by' => $args['order'],
                     'from' => $args['period'],
                     'q' => $args['q'],
-                    'view_rank_point' => true
+                    'view_rank_point' => true,
+                    'only_staffpoint_not_zero' => $args['sp_nz']
                 ));
 
                 $data['list'] = $works->rows;

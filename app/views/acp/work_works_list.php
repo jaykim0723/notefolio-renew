@@ -19,7 +19,7 @@
                 $keyword_list = $this->config->item('keyword', 'keyword');
 
                 foreach ($keyword_list as $key => $keyword) { ?>
-                  <option value="<?php echo $key?>"<?=(in_array($key, $work_categories))?' selected':''?>><?php echo $keyword;?></option>
+                  <checkbox name="work_categories[]" id="work_category_<?php echo $key?>" value="<?php echo $key?>"<?=(in_array($key, $work_categories))?' checked':''?>><label for="work_category_<?php echo $key?>"><?php echo $keyword;?></label>
                 <?php } ?>
               </select>
             </div>

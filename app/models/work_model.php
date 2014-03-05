@@ -148,6 +148,10 @@ class work_model extends CI_Model {
 
             $this->db->select('( case when (note_cnt = 0) then 0 else (discoverbility_by_period + ifnull(feedbacks.point, 0) + works.staffpoint) end ) as rank_point', FALSE);
         }
+
+        if($params->only_staffpoint_not_zero){
+            $this->db->where('staffpoint !=', 0);
+        }
         
     }
     
@@ -175,7 +179,8 @@ class work_model extends CI_Model {
             'exclude_enabled'   => false, // enabled 태그된 작품 제외
             'exclude_disabled'   => false, // disabled 태그된 작품 제외
             'exclude_deleted'   => true, // deleted 태그된 작품 제외
-            'view_rank_point'   => false, // deleted 태그된 작품 제외
+            'view_rank_point'   => false, // rank point보기
+            'only_staffpoint_not_zero'   => false, // staffpoint 0 아닌거 보기
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
@@ -257,7 +262,8 @@ class work_model extends CI_Model {
             'exclude_enabled'   => false, // enabled 태그된 작품 제외
             'exclude_disabled'   => false, // disabled 태그된 작품 제외
             'exclude_deleted'   => true, // deleted 태그된 작품 제외
-            'view_rank_point'   => false, // deleted 태그된 작품 제외
+            'view_rank_point'   => false, // rank point보기
+            'only_staffpoint_not_zero'   => false, // staffpoint 0 아닌거 보기
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
