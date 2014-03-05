@@ -70,7 +70,7 @@ class work extends CI_Controller {
                     'keywords' => $args['keywords'],
                     'order_by' => $args['order'],
                     'from' => $args['period'],
-                    'q' => $args['q'],
+                    'q' => urldecode($args['q']),
                     'view_rank_point' => true,
                     'only_staffpoint_not_zero' => $args['sp_nz']
                 ));
@@ -88,7 +88,7 @@ class work extends CI_Controller {
                     'keywords' => $args['keywords'],
                     'order_by' => $args['order'],
                     'from' => $args['period'],
-                    'q' => $args['q'],
+                    'q' => urldecode($args['q']),
                     'view_rank_point' => true,
                     'only_staffpoint_not_zero' => $args['sp_nz']
                 ));
