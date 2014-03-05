@@ -8,7 +8,7 @@
 					<div class="row">
 
 
-						<div class="col-2 gal-cate" style="border-bottom: 1px solid #efefef;">
+						<div class="col-md-2 col-sm-6 gal-cate" style="border-bottom: 1px solid #efefef;">
 							<select name="work_categories[]" id="work_categories" multiple title="카테고리 선택" onchange="$('#gallery-search-form').submit()">
 								<?php 
 								$this->load->config('keyword', TRUE);
@@ -20,7 +20,7 @@
 							</select>
 						</div>
 
-						<div class="col-2" style="border-bottom: 1px solid #efefef;">
+						<div class="col-md-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
 							<select name="order" id="order" onchange="$('#gallery-search-form').submit()">
 								<option value="newest"<?=($order=="newest")?' selected':''?>>최신순</option>
 								<option value="noted"<?=($order=="noted")?' selected':''?>>인기순</option>
@@ -29,7 +29,7 @@
 							</select>
 						</div>
 						
-						<div class="col-2" style="border-bottom: 1px solid #efefef;">
+						<div class="col-md-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
 							<div class="input-group">
 			  					<!-- <span class="input-group-addon"></span> -->
 								<select class="" name="from" id="from" onchange="$('#gallery-search-form').submit()">
@@ -42,13 +42,13 @@
 							</div>
 						</div>
 
-						<div class="col-2"></div>
+						<div class="col-md-2 col-sm-6"></div>
 
-						<div class="col-4">
-							<div class="col-10 search-center pull-left">
+						<div class="col-md-4 col-sm-6">
+							<div class="col-md-10 col-sm-10 search-center pull-left">
 								<input class="form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
 							</div>
-							<div class="col-2 search-center pull-right">
+							<div class="col-md-2 col-sm-2 search-center pull-right">
 								<button type="submit" class="btn btn-pointgreen search-green"><i class="spi spi-search_white" style="margin-top: -3px;margin-bottom: 3px;">search_white</i></button>
 							</div>
 						</div>
