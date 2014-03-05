@@ -71,7 +71,7 @@
 
   }
 
-function url_go_to(key, val){
+function url_go_to(key, val, pop){
     var url_args = window.location.href.split('/');
     var new_args = [];
     for (var i=0; i<url_args.length; i++){
@@ -83,8 +83,10 @@ function url_go_to(key, val){
             new_args.push(url_args[i]);
         }
     }
-    new_args.push(key);
-    new_args.push(val);
+    if(typeof(pop)=='undefined' && pop == false){
+        new_args.push(key);
+        new_args.push(val);
+    }
 
     window.location.href = new_args.join('/');
 }
