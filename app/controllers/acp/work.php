@@ -67,6 +67,7 @@ class work extends CI_Controller {
                 $work_categories = array();
 
                 foreach ($keyword_list as $key => $val) {
+                    var_export((isset($args['cat_'.$key]) && filter_var($args['cat_'.$key], FILTER_VALIDATE_BOOLEAN)));
                     if(isset($args['cat_'.$key]) && filter_var($args['cat_'.$key], FILTER_VALIDATE_BOOLEAN)){
                         $work_categories[] = $key;
                     }
