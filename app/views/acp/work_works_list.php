@@ -12,7 +12,15 @@
           <!-- /widget-header -->
           <div class="widget-content">
             <div class="container">
-              <div class="row" style="border-bottom: 1px solid #efefef;">
+              <div class="col-lg-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
+                <select name="order" id="order" onchange="javascript:window.location.href=window.location.href+'/order/'+$(this).value();">
+                  <option value="newest"<?=($order=="newest")?' selected':''?>>최신순</option>
+                  <option value="noted"<?=($order=="noted")?' selected':''?>>인기순</option>
+                  <option value="viewed"<?=($order=="viewed")?' selected':''?>>조회순</option>
+                  <option value="comment_desc"<?=($order=="comment_desc")?' selected':''?>>댓글순</option>
+                </select>
+              </div>
+              <div class="col-lg-11 col-sm-11" style="border-bottom: 1px solid #efefef;">
               <?php 
               $this->load->config('keyword', TRUE);
               $keyword_list = $this->config->item('keyword', 'keyword');
