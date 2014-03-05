@@ -108,7 +108,7 @@ class Gallery extends CI_Controller {
             'description' => $description,
             'site_name' => $this->config->item('website_name', 'tank_auth'),
             'url' => site_url($work->row->user->username.'/'.$work->row->work_id),
-            'image' => site_url('data/covers/'.$work->row->work_id.'_t2.jpg?_='.substr($work->row->moddate, -2)),
+            'image' => site_url('data/covers/'.$work->row->work_id.'_t3.jpg?_='.substr($work->row->moddate, -2)),
             'title' => $work->row->title.' - '.implode(', ', $this->nf->category_to_array($work->row->keywords)),
             'profile' => array(
                 'username'  => $work->row->user->username,
