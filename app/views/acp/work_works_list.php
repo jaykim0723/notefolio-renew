@@ -48,13 +48,15 @@
                   </select>
                 </div>
               </div>
-              
+
+              <div class="col-lg-2 col-sm-6"></div>
+
               <div class="col-lg-4 col-sm-6">
                 <div class="col-lg-10 col-sm-10 search-center pull-left">
                   <input class="form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
                 </div>
                 <div class="col-lg-2 col-sm-2 search-center pull-right">
-                  <button type="submit" class="btn btn-pointgreen search-green"><i class="spi spi-search_white" style="margin-top: -3px;margin-bottom: 3px;">search_white</i></button>
+                  <button class="btn btn-info">검색</button>
                 </div>
               </div>
             </div>
