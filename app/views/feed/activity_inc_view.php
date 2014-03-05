@@ -17,7 +17,7 @@ BBB님이 회원님의 방명록에 댓글을 남겼습니다.
 */
 
 if(empty($row->info->user_A['realname'])){
-    $row->info->user_A['realname'] = "비회원"ㅂ
+    $row->info->user_A['realname'] = "비회원";
 }
 
 switch($row->area){
