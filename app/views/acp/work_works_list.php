@@ -13,7 +13,7 @@
           <div class="widget-content">
             <div class="container">
               <div class="col-lg-2 col-sm-2" style="border-bottom: 1px solid #efefef;">
-                <h4>카테고</h4>
+                <h4>카테고리</h4>
               </div>
               <div class="col-lg-10 col-sm-10" style="border-bottom: 1px solid #efefef;">
               <?php 
@@ -25,7 +25,7 @@
               <?php } ?>
               </div>
 
-              <div class="col-lg-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
+              <div class="col-lg-3 col-sm-6" style="border-bottom: 1px solid #efefef;">
                 <select name="order" id="order" onchange="javascript:url_go_to('order', $(this).val());">
                   <option value="newest"<?=($args['order']=="newest")?' selected':''?>>최신순</option>
                   <option value="newest"<?=($args['order']=="oldest")?' selected':''?>>과거순</option>
@@ -36,7 +36,7 @@
                 </select>
               </div>
               
-              <div class="col-lg-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
+              <div class="col-lg-3 col-sm-6" style="border-bottom: 1px solid #efefef;">
                 <div class="input-group">
                     <!-- <span class="input-group-addon"></span> -->
                   <select class="" name="period" id="period" onchange="javascript:url_go_to('period', $(this).val());">
@@ -48,9 +48,7 @@
                   </select>
                 </div>
               </div>
-
-              <div class="col-lg-2 col-sm-6"></div>
-
+              
               <div class="col-lg-4 col-sm-6">
                 <div class="col-lg-10 col-sm-10 search-center pull-left">
                   <input class="form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
