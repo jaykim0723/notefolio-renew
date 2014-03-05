@@ -11,6 +11,52 @@
           </div>
           <!-- /widget-header -->
           <div class="widget-content">
+            <div class="container" id="search-form">
+              <div class="col-md-2 col-sm-6 gal-cate" style="border-bottom: 1px solid #efefef;">
+                <select name="work_categories[]" id="work_categories" multiple title="카테고리 선택" onchange="$('#gallery-search-form').submit()">
+                  <?php 
+                  $this->load->config('keyword', TRUE);
+                  $keyword_list = $this->config->item('keyword', 'keyword');
+
+                  foreach ($keyword_list as $key => $keyword) { ?>
+                    <option value="<?php echo $key?>"<?=(in_array($key, $work_categories))?' selected':''?>><?php echo $keyword;?></option>
+                  <?php } ?>
+                </select>
+              </div>
+
+              <div class="col-md-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
+                <select name="order" id="order" onchange="$('#gallery-search-form').submit()">
+                  <option value="newest"<?=($order=="newest")?' selected':''?>>최신순</option>
+                  <option value="noted"<?=($order=="noted")?' selected':''?>>인기순</option>
+                  <option value="viewed"<?=($order=="viewed")?' selected':''?>>조회순</option>
+                  <option value="comment_desc"<?=($order=="comment_desc")?' selected':''?>>댓글순</option>
+                </select>
+              </div>
+              
+              <div class="col-md-2 col-sm-6" style="border-bottom: 1px solid #efefef;">
+                <div class="input-group">
+                    <!-- <span class="input-group-addon"></span> -->
+                  <select class="" name="from" id="from" onchange="$('#gallery-search-form').submit()">
+                    <option value="all"<?=($from=="all")?' selected':''?>>전체 기간</option>
+                    <option value="day"<?=($from=="day")?' selected':''?>>오늘</option>
+                    <option value="week"<?=($from=="week")?' selected':''?>>이번 주</option>
+                    <option value="month"<?=($from=="month")?' selected':''?>>이번 달</option>
+                    <option value="month3"<?=($from=="month3")?' selected':''?>>최근 3달</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-2 col-sm-6"></div>
+
+              <div class="col-md-4 col-sm-6">
+                <div class="col-md-10 col-sm-10 search-center pull-left">
+                  <input class="form-control" type="text" name="q" placeholder="검색어" value="<?=$q?>"/>
+                </div>
+                <div class="col-md-2 col-sm-2 search-center pull-right">
+                  <button type="submit" class="btn btn-pointgreen search-green"><i class="spi spi-search_white" style="margin-top: -3px;margin-bottom: 3px;">search_white</i></button>
+                </div>
+              </div>
+            </div>
             <div class="container">
               <p>전체: <?=$all_count?>개</p>
               <p>페이지: <?=$page?>/<?=$all_page?> 페이지</p>
