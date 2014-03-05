@@ -12,7 +12,7 @@
           <!-- /widget-header -->
           <div class="widget-content">
             <div class="container">
-              <div class="col-lg-2 col-sm-6 gal-cate" style="border-bottom: 1px solid #efefef;">
+              <div class="row" style="border-bottom: 1px solid #efefef;">
               <?php 
               $this->load->config('keyword', TRUE);
               $keyword_list = $this->config->item('keyword', 'keyword');
