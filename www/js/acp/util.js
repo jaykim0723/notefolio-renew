@@ -70,7 +70,24 @@
     }
 
   }
-      
+
+function url_go_to(key, val){
+    var url_args = window.location.href.split('/');
+    var new_args = [];
+    for (var i=0; i<url_args.length; i++){
+        if(url_args[i]==key){
+            i++;
+            continue;
+        }
+        else{
+            new_args.push(url_args[i]);
+        }
+    }
+    new_args.push(key);
+    new_args.push(val);
+
+    window.location.href = new_args.join('/');
+}
   
   $(function(){
     $('.staffpoint-btn').on('click.staffpoint', function(e){

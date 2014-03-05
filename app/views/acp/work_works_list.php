@@ -20,25 +20,6 @@
                   <option value="comment_desc"<?=($args['order']=="comment_desc")?' selected':''?>>댓글순</option>
                 </select>
               </div>
-              <script type="text/javascript">
-                function url_go_to(key, val){
-                  var url_args = window.location.href.split('/');
-                  var new_args = [];
-                  for (var i=0; i<url_args.length; i++){
-                    if(url_args[i]==key){
-                      i++;
-                      continue;
-                    }
-                    else{
-                      new_args.push(url_args[i]);
-                    }
-                  }
-                  new_args.push(key);
-                  new_args.push(val);
-
-                  window.location.href = new_args.join('/');
-                }
-              </script>
               <div class="col-lg-11 col-sm-11" style="border-bottom: 1px solid #efefef;">
               <?php 
               $this->load->config('keyword', TRUE);
