@@ -74,7 +74,7 @@ class work_model extends CI_Model {
         }
 
         if(!empty($params->q)){
-            $this->db->where('works.title like \'%'.$this->db->escape_str($params->q).'%\' or works.keywords like \'%'.$this->db->escape_str($params->q).'%\' or users.username like \'%'.$this->db->escape_str($params->q).'%\' or users.realname like \'%'.$this->db->escape_str($params->q).'%\'  )', NULL, FALSE);
+            $this->db->where('(works.title like \'%'.$this->db->escape_str($params->q).'%\' or works.keywords like \'%'.$this->db->escape_str($params->q).'%\' or users.username like \'%'.$this->db->escape_str($params->q).'%\' or users.realname like \'%'.$this->db->escape_str($params->q).'%\'  )', NULL, FALSE);
         }
 
         if(!empty($params->user_id))
