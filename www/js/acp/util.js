@@ -83,7 +83,7 @@ function url_go_to(key, val, pop){
             new_args.push(url_args[i]);
         }
     }
-    if(typeof(pop)=='undefined' && pop == false){
+    if(typeof(pop)=='undefined' || pop == false){
         new_args.push(key);
         new_args.push(val);
     }
