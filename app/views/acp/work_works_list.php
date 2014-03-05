@@ -21,7 +21,10 @@
               $keyword_list = $this->config->item('keyword', 'keyword');
 
               foreach ($keyword_list as $key => $keyword) { ?>
-                <input type="checkbox" name="cat_<?php echo $key?>" id="cat_<?php echo $key?>" value="<?php echo $key?>"<?=(in_array($key, $work_categories))?' checked':''?>><label for="cat_<?php echo $key?>" style="display:inline-block;"><?php echo $keyword;?></label>
+                <input type="checkbox" name="cat_<?php echo $key?>" id="cat_<?php echo $key?>" 
+                  value="<?php echo $key?>"<?=(isset($args['cat_'.$key]) && $args['cat_'.$key] )?' checked':''?>
+                  onchange="javascript:url_go_to('cat_<?php echo $key?>', ($(this).attr('checked')=='')?FALSE:TRUE);">
+                <label for="cat_<?php echo $key?>" style="display:inline-block;"><?php echo $keyword;?></label>
               <?php } ?>
               </div>
 
