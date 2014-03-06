@@ -124,7 +124,7 @@
                       댓글  : <?=$v->comment_cnt?><br />
                       콜렉트 : <?=$v->collect_cnt?><br />
                     </td>
-                    <td>
+                    <td style="white-space: nowrap;">
                       피드백총계 : <?=$v->nofol_rank?><br />
 
                       Likability  : <?=$v->discoverbility?><br />
