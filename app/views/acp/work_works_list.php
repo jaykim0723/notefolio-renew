@@ -132,7 +132,8 @@
                       피드백기간계 : <?=round($v->feedback_point, 3)?><br />
                       스탭점수 : <?=$v->staffpoint?><br />
                       랭크총계 : <?=round($v->rank_point, 3)?><br />
-
+                      <br />
+                      <br />
                       스탭포인트 수정: <br/>
                       <input type="text" value="<?=$v->staffpoint?>" name="staffpoint" style="width: 4em;"  />
                       <a class="staffpoint-btn" href="#">
