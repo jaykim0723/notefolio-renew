@@ -53,7 +53,7 @@
                   <option value="oldest"<?=($args['order']=="oldest")?' selected':''?>>과거순</option>
                   <option value="noted"<?=($args['order']=="noted")?' selected':''?>>인기순</option>
                   <option value="viewed"<?=($args['order']=="viewed")?' selected':''?>>조회순</option>
-                  <option value="viewed"<?=($args['order']=="nofol_rank")?' selected':''?>>노폴랭크순</option>
+                  <option value="nofol_rank"<?=($args['order']=="nofol_rank")?' selected':''?>>노폴랭크순</option>
                   <option value="comment_desc"<?=($args['order']=="comment_desc")?' selected':''?>>댓글순</option>
                 </select>
               </div>
