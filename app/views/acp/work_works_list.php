@@ -135,10 +135,12 @@
                       <br />
                       <br />
                       스탭포인트 수정: <br/>
-                      <input type="text" value="<?=$v->staffpoint?>" name="staffpoint" style="width: 4em;"  />
-                      <a class="staffpoint-btn" href="#">
-                        <span class="btn btn-info">수정</span>
-                      </a>
+                      <p>
+                        <input type="text" value="<?=$v->staffpoint?>" name="staffpoint" style="width: 4em; height: 22px"  />
+                        <a class="staffpoint-btn" href="#">
+                          <span class="btn btn-info">수정</span>
+                        </a>
+                    </p>
                     </td>
                     <td><?=$v->regdate?></td>
                     <td><a class="btn" href="/acp/work/works/view/id/<?=$v->work_id?>">보기</a></td>
