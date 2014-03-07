@@ -39,9 +39,9 @@
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/jquery.notebook.css">
 	
-	<link href="https://s3.amazonaws.com/css_sprites/543/10543/ebc4aa8095.css" rel="stylesheet"/>
-	<link href="https://s3.amazonaws.com/css_sprites/713/10713/768bef68df.css" rel="stylesheet"/>
-	<link href="https://s3.amazonaws.com/css_sprites/055/11055/ac2157c77d.css" rel="stylesheet"/>
+	<link href="/sprites/ebc4aa8095.css" rel="stylesheet"/>
+	<link href="/sprites/768bef68df.css" rel="stylesheet"/>
+	<link href="/sprites/ac2157c77d.css" rel="stylesheet"/>
 	
 	<script src="/js/libs/jquery-1.10.2.min.js"></script>
 	<script src="/js/util.js"></script>
