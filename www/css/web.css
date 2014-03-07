@@ -666,7 +666,7 @@ li#trash-bin{
 	opacity: 0.01;
 }
 #gallery-search-form button:focus {
-	outline: none;
+	outline: none!important;
 }
 
 #work-form {
