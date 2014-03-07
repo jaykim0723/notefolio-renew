@@ -38,13 +38,11 @@
 		</div>
 	</div>
 
-	<?php if ($row->parent_id==0): ?>
+	<?php if ( ($row->parent_id==0) && ($row->children_cnt > 0) ): ?>
 	<div class="comment-replies">
-		<?php if($row->children_cnt > 0): ?>
 			<?php foreach ($row->children as $key => $child): ?>
 				<?php $this->load->view('comment/comment_block_view', array('row' => $child), FALSE); ?>
 			<?php endforeach ?>
-		<?php endif; ?>
 	</div>
 	<?php endif ?>
 </div>
