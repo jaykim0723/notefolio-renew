@@ -42,7 +42,7 @@ class user_model extends CI_Model {
         }
 
         if($params->get_profile && count($params->keywords)>0){
-            $this->db->where('(user_profiles.keywords like "%'.implode('%" or works.keywords like "%', $params->keywords).'%" )', NULL, FALSE);
+            $this->db->where('(user_profiles.keywords like "%'.implode('%" or users.keywords like "%', $params->keywords).'%" )', NULL, FALSE);
         }
 
         if(!empty($params->q)){
