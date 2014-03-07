@@ -28,7 +28,8 @@ class Gallery extends CI_Controller {
     function listing($page=1){
         $from = ($this->input->get_post('from'))?
                 $this->input->get_post('from'):'all';
-        $work_categories = ($this->input->get_post('work_categories'))?
+        $work_categories = ($this->input->get_post('work_categories')
+                &&$this->input->get_post('work_categories'!=''))?
                 $this->input->get_post('work_categories'):array();
         $q = ($this->input->get_post('q'))?
                 $this->input->get_post('q'):'';

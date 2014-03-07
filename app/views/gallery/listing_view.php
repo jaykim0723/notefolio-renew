@@ -10,6 +10,7 @@
 
 						<div class="col-md-2 col-sm-6 gal-cate" style="border-bottom: 1px solid #efefef;">
 							<select name="work_categories[]" id="work_categories" multiple title="카테고리 선택" onchange="$('#gallery-search-form').submit()">
+									<option value=""<?=((!isset($work_categories) || $work_categories==array()||$work_categories==''))?' selected':''?>>전체</option>
 								<?php 
 								$this->load->config('keyword', TRUE);
 								$keyword_list = $this->config->item('keyword', 'keyword');
