@@ -1208,7 +1208,6 @@ form.comment-block.create textarea {
 	.comment-replies > .comment-block {
 		padding-left: 30px;
 		padding-bottom: 0px;
-		margin-bottom: 8px;
 	}
 	.comment-replies .btn-reply-comment { /* 2차 댓글은 댓글을 더이상 달 수 없음 */
 		display: none;
