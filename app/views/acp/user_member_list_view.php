@@ -48,7 +48,7 @@
                 </select>
               </div>
               
-              <div class="col-lg-3 col-sm-6" style="border-bottom: 1px solid #efefef;">
+              <div class="col-lg-4 col-sm-6" style="border-bottom: 1px solid #efefef;">
                 <div class="input-group">가입일기준 
                     <!-- <span class="input-group-addon"></span> -->
                   <select class="" name="period" id="period" onchange="javascript:url_go_to('period', $(this).val());">
@@ -61,7 +61,6 @@
                 </div>
               </div>
 
-              <div class="col-lg-1 col-sm-6"></div>
 
               <div class="col-lg-5 col-sm-6">
                 <div class="col-lg-8 col-sm-10 search-center pull-left">
