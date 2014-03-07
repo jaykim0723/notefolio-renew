@@ -16,6 +16,9 @@ html {
 }
 body {
 }
+input:focus, button:focus {
+	outline: none!important;
+}
 #header {
 	height: 60px;
 }
@@ -664,9 +667,6 @@ li#trash-bin{
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
 	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=1);
 	opacity: 0.01;
-}
-#gallery-search-form button:focus {
-	outline: none!important;
 }
 
 #work-form {
