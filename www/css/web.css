@@ -846,6 +846,7 @@ li#trash-bin{
 }
 .comment-block .comment-inner {
 	padding:10px 30px 0;
+	overflow: hidden;
 }
 	.comment-control-area {
 		position: absolute;
