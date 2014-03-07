@@ -14,15 +14,7 @@
                 <h4>검색옵션</h4>
               </div>
               <div class="col-lg-10 col-sm-10" style="border-bottom: 1px solid #efefef;">
-                <input type="checkbox" name="sp_nz" id="sp_nz" 
-                  value="true"<?=(isset($args['sp_nz']) && filter_var($args['sp_nz'], FILTER_VALIDATE_BOOLEAN) )?' checked':''?>
-                  onchange="javascript:url_go_to('sp_nz', 'TRUE', !($(this).is(':checked')));">
-                <label for="sp_nz" style="display:inline-block;">Staffpoint 부여된 것만 보기</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="checkbox" name="only_deleted" id="only-deleted" 
-                  value="true"<?=(isset($args['only_deleted']) && filter_var($args['only_deleted'], FILTER_VALIDATE_BOOLEAN) )?' checked':''?>
-                  onchange="javascript:url_go_to('only_deleted', 'TRUE', !($(this).is(':checked')));">
-                <label for="only_deleted" style="display:inline-block;">삭제된 것만 보기</label>
+                -
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </div>
 
@@ -57,7 +49,7 @@
               </div>
               
               <div class="col-lg-3 col-sm-6" style="border-bottom: 1px solid #efefef;">
-                <div class="input-group">
+                <div class="input-group">가입일기준 
                     <!-- <span class="input-group-addon"></span> -->
                   <select class="" name="period" id="period" onchange="javascript:url_go_to('period', $(this).val());">
                     <option value="all"<?=($args['period']=="all")?' selected':''?>>전체 기간</option>
