@@ -883,7 +883,7 @@ var workInfoUtil = {
 			collectUtil.open(this);
 		}).on('click', '.btn-cancel-collect', function(){
 			collectUtil.close(this);
-		}).on('click', '.comment-textarea', function(){
+		}).on('click', '.comment-textform', function(){
 			if(site.user_id==0){
 				site.requireLogin();
 				$(this).blur();

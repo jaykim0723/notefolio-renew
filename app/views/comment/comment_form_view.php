@@ -11,5 +11,5 @@
 		<?php endif ?>
 		<!--[if lte IE 9]><i class="si si-face-medium"></i><![endif]-->
 	</a>
-	<textarea tabindex="1" name="content" class="comment-textarea"></textarea>
+	<textarea tabindex="1" name="content" class="comment-textarea comment-textform"></textarea>
 </form>
