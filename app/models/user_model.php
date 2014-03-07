@@ -37,8 +37,7 @@ class user_model extends CI_Model {
                 break;
         }
         if($params->from!='all'){
-            $this->db->where("(users.created >= ".$this->db->escape($from).")", NULL, FALSE); // 모든 기준이 regdate로 하기 때문에
-            // $this->db->having("(users.created >= ".$this->db->escape($from)." or works.moddate >= ".$this->db->escape($from).")", NULL, FALSE);
+            $this->db->where("(users.created >= ".$this->db->escape($from).")", NULL, FALSE); // 모든 기준이 create로 하기 때문에
         }
 
         if($params->get_profile && count($params->keywords)>0){
