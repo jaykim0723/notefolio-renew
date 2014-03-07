@@ -55,7 +55,7 @@ class User extends CI_Controller {
                     'keywords'  => $args['keywords'], // 
                     'get_profile' => $args['get_profile'], 
                     'period' => $args['period'],
-                    'q' => $args['q']
+                    'q' => urldecode($args['q']),
                     ) );
 			break;
 			case "write":
