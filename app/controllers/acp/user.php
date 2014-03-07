@@ -54,7 +54,7 @@ class User extends CI_Controller {
                     'order_by'  => $args['order'], // newest, oldest
                     'keywords'  => $args['keywords'], // 
                     'get_profile' => $args['get_profile'], 
-                    'period' => $args['period'],
+                    'from' => $args['period'],
                     'q' => urldecode($args['q']),
                     ) );
 			break;
