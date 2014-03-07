@@ -44,7 +44,7 @@ class User extends CI_Controller {
 				exit('error');
 			break;
 		}
-        $data->args = $args;
+        $data->args = $this->uri->uri_to_assoc(5);
 
 		$this->layout->set_header('title', '회원')->set_view('acp/user_member_'.$mode.'_view',$data)->render();
 	}
