@@ -888,6 +888,14 @@ textarea.comment-textarea {
 	}
 	
 }
+.comment-textarea {
+	margin-left: 70px;
+	margin-right: 58px;
+	border: 0;
+	color: #aaa;
+	font-size: 13px;
+	word-break: break-all;
+}
 
 
 
