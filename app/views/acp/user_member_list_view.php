@@ -62,7 +62,7 @@
               </div>
 
 
-              <div class="col-lg-5 col-sm-6">
+              <div class="col-lg-5 col-sm-12">
                 <div class="col-lg-8 col-sm-10 search-center pull-left">
                   <input class="form-control" type="text" name="q" id="search_q" placeholder="검색어" value="<?=urldecode($args['q'])?>"/>
                 </div>
