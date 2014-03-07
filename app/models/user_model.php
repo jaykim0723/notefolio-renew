@@ -98,33 +98,28 @@ class user_model extends CI_Model {
     		if(!isset($params->{$key}))
     			$params->{$key} = $value;
     	}
-        
+
+        $this->db->start_cache();
+        $this->get_list_prep($params);
+
         $this->db
-            ->select('count(id) as count, ceil(count(id)/'.$params->delimiter.') as page')
+            ->select('count(users.id) as count, ceil(count(users.id)/'.$params->delimiter.') as page')
             ->from('users'); //set
 
         if($params->get_profile){
             $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
         }
 
-        switch($params->order_by){
-            case "newest":
-                $this->db->order_by('created', 'desc');
-            break;
-            case "oldest":
-                $this->db->order_by('created', 'asc');
-            break;
-            default:
-                if(is_array($params->order_by))
-                    $this->db->order_by($params->order_by);
-            break;
-        }
-
+        $this->db->stop_cache();
         $count_data = $this->db->get()->row();
+        $this->db->flush_cache(); //clear active record
+
         $all_count = $count_data->count;
         $all_page = $count_data->page;
 
-        $this->db->flush_cache(); //clear active record
+
+        $this->db->start_cache();
+        $this->get_list_prep($params);
 
         $this->db->select('users.*');
 
@@ -144,8 +139,10 @@ class user_model extends CI_Model {
     	$this->db
     		->from('users')
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
-
-    	$users = $this->db->get();
+        
+        $this->db->stop_cache();
+        $users = $this->db->get();
+        $this->db->flush_cache();
 
     	$rows = array();
     	foreach ($users->result() as $row)
