@@ -16,7 +16,7 @@ html {
 }
 body {
 }
-input:focus, button:focus, .btn:focus {
+input:focus, button:focus, .bootstrap-select .btn:focus {
 	outline: none!important;
 }
 #header {
