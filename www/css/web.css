@@ -17,7 +17,7 @@ html {
 body {
 }
 input:focus, button:focus {
-	outline: none!important;
+	outline: none !important;
 }
 #header {
 	height: 60px;
