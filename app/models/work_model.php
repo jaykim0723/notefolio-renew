@@ -70,11 +70,12 @@ class work_model extends CI_Model {
         }
 
         if(count($params->keywords)>0){
-            $this->db->where('( works.keywords like "%'.implode('%" or works.keywords like "%', $params->keywords).'%" )', NULL, FALSE);
+            $this->db->where('( lower(works.keywords) like "%'.implode('%" or lower(works.keywords) like "%', $params->keywords).'%" )', NULL, FALSE);
         }
 
+        $params->q = strtolower($params->q);
         if(!empty($params->q)){
-            $this->db->where('(works.title like \'%'.$this->db->escape_str($params->q).'%\' or works.contents like \'%'.$this->db->escape_str($params->q).'%\' or works.keywords like \'%'.$this->db->escape_str($params->q).'%\' or users.username like \'%'.$this->db->escape_str($params->q).'%\' or users.realname like \'%'.$this->db->escape_str($params->q).'%\'  )', NULL, FALSE);
+            $this->db->where('( lower(works.title) like \'%'.$this->db->escape_str($params->q).'%\' or lower(works.contents) like \'%'.$this->db->escape_str($params->q).'%\' or lower(works.keywords) like \'%'.$this->db->escape_str($params->q).'%\' or lower(users.username) like \'%'.$this->db->escape_str($params->q).'%\' or lower(users.realname) like \'%'.$this->db->escape_str($params->q).'%\'  )', NULL, FALSE);
         }
 
         if(!empty($params->user_id))
