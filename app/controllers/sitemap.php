@@ -49,10 +49,12 @@ class Sitemap extends CI_Controller {
 				),
 			);
 
-		$data = array();
+		$data = array(
+			'list'=>array();
+			);
 
 		foreach($resource as $key=>$val){
-			$data[] = (object)array(
+			$data['list'][] = (object)array(
 				'loc'			=> $val->loc,
         		'lastmod'		=> date('c',$val->lastmod),
         		'changefreq'	=> $val->changefreq,
