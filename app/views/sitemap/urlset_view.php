@@ -8,7 +8,7 @@
 	foreach($list as $key=>$val) {
 ?>
     <url>
-        <loc><?$this->config->item('base_url')?><?=$val->loc?></loc>
+        <loc><?=$this->config->item('base_url')?><?=$val->loc?></loc>
         <lastmod><?=$val->lastmod?></lastmod>
         <changefreq><?=$val->changefreq?></changefreq>
         <priority><?=$val->priority?></priority>

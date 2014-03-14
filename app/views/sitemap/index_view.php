@@ -8,7 +8,7 @@
     foreach($list as $loc=>$lastmod) {
 ?>
     <sitemap>
-        <loc><?$this->config->item('base_url')?>sitemap/<?=$loc?></loc>
+        <loc><?=$this->config->item('base_url')?>sitemap/<?=$loc?></loc>
         <lastmod><?=$lastmod?></lastmod>
     </sitemap>
 <?
