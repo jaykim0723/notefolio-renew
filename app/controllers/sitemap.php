@@ -15,11 +15,26 @@ class Sitemap extends CI_Controller {
 	{	
 		$data = array(
 			'list'=> array(
-				'default' => date('c',time()),
+				'root' => date('c',time()),
 				'user' => date('c',time()),
 				),
 			);
 		$this->load->view('sitemap/index_view', $data);
+	}
+	
+    /**
+     * urlset of sitemap
+	 *
+	 */
+	public function root()
+	{	
+		$data = array(
+			'list'=> array(
+				'default' => date('c',time()),
+				'user' => date('c',time()),
+				),
+			);
+		$this->load->view('sitemap/urlset_view', $data);
 	}
 }
 
