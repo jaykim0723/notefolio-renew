@@ -8,4 +8,4 @@ Disallow: /fonts/
 Disallow: /img/
 Disallow: /js/
 Disallow: /sprites/
-# Sitemap: http://www.notefolio.net/sitemap
+Sitemap: http://www.notefolio.net/sitemap
