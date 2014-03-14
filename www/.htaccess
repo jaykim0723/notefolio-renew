@@ -11,7 +11,7 @@ DirectoryIndex index.php
   RewriteCond $1 !^/[^(captcha|css|doc|html|i|images|img|js|acp-rs|temp|profiles|thumbnails|fonts)]/(.*)
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.*)$ index.php?/$1 [R=301,L,PT]
+  RewriteRule ^(.*)$ index.php?/$1 [L,PT]
 </IfModule>
 
 <IfModule !mod_rewrite.c>
