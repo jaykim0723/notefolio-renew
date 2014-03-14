@@ -133,6 +133,73 @@ class Sitemap extends CI_Controller {
 	 */
 	public function user($username='')
 	{
+		$this->load->model('profile_model');
+		$resource = array();
+
+		function make_resource_profile($username){
+			$output = array();
+
+			$output[] = (object)array(
+				'loc'=>$username.'/myworks',
+				'lastmod'=>time(),
+				'changefreq'=>'always',
+				'priority'=>0.8
+				);
+			$output[] = (object)array(
+				'loc'=>$username.'/about',
+				'lastmod'=>time(),
+				'changefreq'=>'always',
+				'priority'=>0.8
+				);
+			$output[] = (object)array(
+				'loc'=>$username.'/collect',
+				'lastmod'=>time(),
+				'changefreq'=>'always',
+				'priority'=>0.8
+				);
+
+			return $output;
+		}
+
+		function make_resource_works($username, $total){
+			$output = array();
+
+			$work_list = $this->work_model->get_list(array(
+				'page' => $page,
+				'user_id' => $this->user_id
+			));
+
+			$output[] = (object)array(
+				'loc'=>$username.'/'.$work->row->,
+				'lastmod'=>time(),
+				'changefreq'=>'always',
+				'priority'=>1.0
+				);
+
+
+
+			return $output;
+		}
+
+		if(empty($username)){
+
+		} else {
+			$resource = array_merge(
+				(array)$resource, 
+				(array)make_resource_profile($username)
+				);
+
+			$user_id = $this->profile_model->get_user_id_from_username($username='');
+			$total = $this->profile_model->get_statistics_total(array('user_id'=>$user_id))->row;
+
+			$resource = array_merge(
+				(array)$resource, 
+				(array)make_resource_works($username)
+				);
+
+	        $this->load->model('work_model');
+		}
+
 
 		$data = array(
 			'list'=>$this->_make_url_list($resource),
