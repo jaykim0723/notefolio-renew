@@ -13,13 +13,14 @@ class sitemap extends CI_Controller {
 	 */
 	public function index()
 	{	
+		exit('a');
+
 		$data = array(
 			'list'=>array(
 				'default' => date('c',time()),
 				'user' => date('c',time()),
 				),
 			);
-		var_export($data);
 		$this->load->view('sitemap/index_view', $data);
 	}
 	
