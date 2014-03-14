@@ -177,28 +177,12 @@ class Sitemap extends CI_Controller {
 				'priority'=>1.0
 				);
 
-
-
 			return $output;
 		}
 
 		if(empty($username)){
 
 		} else {
-			$resource = array_merge(
-				(array)$resource, 
-				(array)$this->make_resource_profile($username)
-				);
-
-			$user_id = $this->profile_model->get_user_id_from_username($username);
-			$total = $this->profile_model->get_statistics_total(array('user_id'=>$user_id))->row;
-
-			$resource = array_merge(
-				(array)$resource, 
-				(array)$this->make_resource_works($username)
-				);
-
-	        $this->load->model('work_model');
 		}
 
 
