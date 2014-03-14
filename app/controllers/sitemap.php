@@ -28,26 +28,6 @@ class Sitemap extends CI_Controller {
 	 */
 	public function root()
 	{	
-		$resource = array(
-			(object)array(
-				'loc'=>'/',
-				'lastmod'=>time(),
-				'changefreq'=>'always'
-				'priority'=>0.7
-				),
-			(object)array(
-				'loc'=>'/auth/login',
-				'lastmod'=>time(),
-				'changefreq'=>'monthly'
-				'priority'=>0.3
-				),
-			(object)array(
-				'loc'=>'/auth/setting',
-				'lastmod'=>time(),
-				'changefreq'=>'monthly'
-				'priority'=>0.3
-				),
-			);
 	}
 }
 
