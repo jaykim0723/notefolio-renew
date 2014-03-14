@@ -175,7 +175,7 @@ class Sitemap extends CI_Controller {
 			));
 
 			$output[] = (object)array(
-				'loc'=>$username.'/'.$work->row->,
+				'loc'=>$username.'/'.$work->row->work_id,
 				'lastmod'=>time(),
 				'changefreq'=>'always',
 				'priority'=>1.0
