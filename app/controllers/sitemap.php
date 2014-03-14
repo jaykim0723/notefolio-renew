@@ -199,7 +199,7 @@ class Sitemap extends CI_Controller {
 
 			$user_id = $this->profile_model->get_user_id_from_username($username);
 			$total = $this->profile_model->get_statistics_total(array('user_id'=>$user_id))->row;
-			exit("make_resource_works($username, $user_id, $total->work_cnt)");
+			
 			$resource = array_merge(
 				(array)$resource, 
 				(array)make_resource_works($username, $user_id, $total->work_cnt)
