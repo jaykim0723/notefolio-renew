@@ -50,7 +50,7 @@ class Sitemap extends CI_Controller {
 			);
 
 		$data = array(
-			'list'=>array();
+			'list'=>array(),
 			);
 
 		foreach($resource as $key=>$val){
