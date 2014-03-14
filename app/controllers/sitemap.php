@@ -14,7 +14,7 @@ class Sitemap extends CI_Controller {
 	public function index()
 	{	
 		$data = array(
-			'list'=>array(
+			'list'=> array(
 				'default' => date('c',time()),
 				'user' => date('c',time()),
 				),
@@ -29,7 +29,7 @@ class Sitemap extends CI_Controller {
 	public function default()
 	{	
 		$data = array(
-			'list'=>array(
+			'list'=> array(
 				'default' => date('c',time()),
 				'user' => date('c',time()),
 				),
