@@ -165,7 +165,8 @@ class Sitemap extends CI_Controller {
 			$output = array();
 
 			$work_list = $this->work_model->get_list(array(
-				'page' => $page,
+				'page' => 1,
+				'delimiter' => $total,
 				'user_id' => $this->user_id
 			));
 
