@@ -161,6 +161,29 @@ class Sitemap extends CI_Controller {
 			return $output;
 		}
 
+		function make_resource_works($username, $total){
+			$output = array();
+
+			$CI =& get_instance();
+
+	        $CI->load->model('work_model');
+
+			$work_list = $CI->work_model->get_list(array(
+				'page' => 1,
+				'delimiter' => $total,
+				'user_id' => $CI->user_id
+			));
+
+			$output[] = (object)array(
+				'loc'=>$username.'/'.$work->row->,
+				'lastmod'=>time(),
+				'changefreq'=>'always',
+				'priority'=>1.0
+				);
+
+			return $output;
+		}
+
 		if(empty($username)){
 
 		} else {
