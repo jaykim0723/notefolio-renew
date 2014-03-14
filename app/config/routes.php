@@ -43,7 +43,7 @@ $route['404_override'] = '';
 
 //-- notefolio route
 
-$route['(auth|auth_other|admin|profile|upload|invite|info|main|feed|referrer|invite2|featured|active_user|alarm|fbauth)'] = "$1"; // auth결과 메시지를 출력한다.
+$route['(auth|auth_other|admin|profile|upload|invite|info|main|feed|referrer|invite2|featured|active_user|alarm|fbauth|sitemap)'] = "$1"; // auth결과 메시지를 출력한다.
 $route['(acp)'] = "$1/dashboard"; // acp 첫페이지.
 $route['(gallery)/(:num)'] = "$1/info/$2";
 $route['(gallery)/(:num)/(:any)'] = "$1/$3/$2";
