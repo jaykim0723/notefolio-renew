@@ -186,7 +186,7 @@ class Sitemap extends CI_Controller {
 		} else {
 			$resource = array_merge(
 				(array)$resource, 
-				(array)make_resource_profile($username)
+				(array)$this->make_resource_profile($username)
 				);
 
 			$user_id = $this->profile_model->get_user_id_from_username($username);
@@ -194,7 +194,7 @@ class Sitemap extends CI_Controller {
 
 			$resource = array_merge(
 				(array)$resource, 
-				(array)make_resource_works($username)
+				(array)$this->make_resource_works($username)
 				);
 
 	        $this->load->model('work_model');
