@@ -129,10 +129,16 @@ class Sitemap extends CI_Controller {
     /**
      * urlset of sitemap
 	 *
+	 * @param string $username
 	 */
-	public function user($username)
+	public function user($username='')
 	{
 
+		$data = array(
+			'list'=>$this->_make_url_list($resource),
+			);
+
+		$this->load->view('sitemap/urlset_view', $data);
 	}
 
 	
@@ -146,13 +152,15 @@ class Sitemap extends CI_Controller {
 	{
 		$list = array();
 
-		foreach($resource as $key=>$val){
-			$list[] = (object)array(
-				'loc'			=> $val->loc,
-        		'lastmod'		=> date('c',$val->lastmod),
-        		'changefreq'	=> $val->changefreq,
-        		'priority'		=> $val->priority,
-				);
+		if(count($resource)>0){
+			foreach($resource as $key=>$val){
+				$list[] = (object)array(
+					'loc'			=> $val->loc,
+	        		'lastmod'		=> date('c',$val->lastmod),
+	        		'changefreq'	=> $val->changefreq,
+	        		'priority'		=> $val->priority,
+					);
+			}
 		}
 
 		return $list;
@@ -173,7 +181,7 @@ class Sitemap extends CI_Controller {
 		));
 		if($user->status=='fail'||count($user->row)<1)
 			$user = false;
-		
+
 		return $user;
 	}
 }
