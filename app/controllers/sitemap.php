@@ -133,6 +133,40 @@ class Sitemap extends CI_Controller {
 	 */
 	public function user($username='')
 	{
+		if(empty($username)){
+            $user_list = $this->db
+            	->select('users.id, users.username')
+            	->from('users')
+            	->get();
+
+            $resource = array();
+            foreach($user_list->result() as $row){
+            	$resource = array_merge(
+					(array)$resource, 
+					(array)$this->make_user_resource($row->username)
+					);
+            }
+
+		} else {
+			$resource = $this->make_user_resource($username);
+		}
+
+
+		$data = array(
+			'list'=>$this->_make_url_list($resource),
+			);
+
+		$this->load->view('sitemap/urlset_view', $data);
+	}
+	
+    /**
+     * make user resource
+	 *
+	 * @param string $username
+	 * @return array $resource (incl. object)
+	 */
+	public function make_user_resource($username='')
+	{
 		$this->load->model('profile_model');
 		$resource = array();
 
@@ -190,9 +224,7 @@ class Sitemap extends CI_Controller {
 			return $output;
 		}
 
-		if(empty($username)){
-
-		} else {
+		if(!empty($username)){
 			$user_id = $this->profile_model->get_user_id_from_username($username);
 			if($user_id>0){
 				$resource = array_merge(
@@ -209,12 +241,7 @@ class Sitemap extends CI_Controller {
 			}
 		}
 
-
-		$data = array(
-			'list'=>$this->_make_url_list($resource),
-			);
-
-		$this->load->view('sitemap/urlset_view', $data);
+		return $resource;
 	}
 
 	
