@@ -161,7 +161,7 @@ class Sitemap extends CI_Controller {
 			return $output;
 		}
 
-		function make_resource_works($username, $total){
+		function make_resource_works($username, $user_id, $total){
 			$output = array();
 
 			$CI =& get_instance();
@@ -200,7 +200,7 @@ class Sitemap extends CI_Controller {
 
 			$resource = array_merge(
 				(array)$resource, 
-				(array)make_resource_works($username, $total->work_cnt)
+				(array)make_resource_works($username, $user_id, $total->work_cnt)
 				);
 		}
 
