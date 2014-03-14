@@ -170,7 +170,7 @@ class Sitemap extends CI_Controller {
 			$work_list = $CI->work_model->get_list(array(
 				'page' => 1,
 				'delimiter' => $total,
-				'user_id' => $CI->user_id,
+				'user_id' => $user_id,
 	            'exclude_disabled'   => true, // disabled 태그된 작품 제외
 	            'exclude_deleted'   => true, // deleted 태그된 작품 제외
 			));
@@ -199,7 +199,7 @@ class Sitemap extends CI_Controller {
 
 			$user_id = $this->profile_model->get_user_id_from_username($username);
 			$total = $this->profile_model->get_statistics_total(array('user_id'=>$user_id))->row;
-			
+
 			$resource = array_merge(
 				(array)$resource, 
 				(array)make_resource_works($username, $user_id, $total->work_cnt)
