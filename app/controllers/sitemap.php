@@ -22,6 +22,7 @@ class Sitemap extends CI_Controller {
 
         $user_list = $this->db
         	->select('users.id, users.username')
+            ->order_by('last_login', 'desc');
         	->from('users')
         	->get();
 
