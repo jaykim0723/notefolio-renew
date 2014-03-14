@@ -103,7 +103,6 @@ class Sitemap extends CI_Controller {
 				'changefreq'=>'always',
 				'priority'=>0.3
 				),
-			);
 			(object)array(
 				'loc'=>'/gallery/update',
 				'lastmod'=>time(),
