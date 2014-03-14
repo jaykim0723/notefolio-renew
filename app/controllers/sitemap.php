@@ -31,19 +31,19 @@ class Sitemap extends CI_Controller {
 		$resource = array(
 			(object)array(
 				'loc'=>'/',
-				'lastmod'=>date('c',time()),
+				'lastmod'=>time(),
 				'changefreq'=>'always'
 				'priority'=>0.7
 				),
 			(object)array(
 				'loc'=>'/auth/login',
-				'lastmod'=>date('c',time()),
+				'lastmod'=>time(),
 				'changefreq'=>'monthly'
 				'priority'=>0.3
 				),
 			(object)array(
 				'loc'=>'/auth/setting',
-				'lastmod'=>date('c',time()),
+				'lastmod'=>time(),
 				'changefreq'=>'monthly'
 				'priority'=>0.3
 				),
