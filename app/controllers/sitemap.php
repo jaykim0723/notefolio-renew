@@ -17,9 +17,17 @@ class Sitemap extends CI_Controller {
 		$data = array(
 			'list'=> array(
 				'root' => date('c',time()),
-				'user' => date('c',time()),
 				),
 			);
+
+        $user_list = $this->db
+        	->select('users.id, users.username')
+        	->from('users')
+        	->get();
+
+        foreach($user_list->result() as $row){
+        	$data['list']['user/'.$row->username] = date('c',time());
+        }
 		$this->load->view('sitemap/index_view', $data);
 	}
 	
