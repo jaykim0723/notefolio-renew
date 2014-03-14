@@ -128,7 +128,7 @@ class Sitemap extends CI_Controller {
 				'loc'			=> $val->loc,
         		'lastmod'		=> date('c',$val->lastmod),
         		'changefreq'	=> $val->changefreq,
-        		'priority'		=> $val->priorty,
+        		'priority'		=> $val->priority,
 				);
 		}
 
