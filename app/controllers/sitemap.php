@@ -13,8 +13,6 @@ class sitemap extends CI_Controller {
 	 */
 	public function index()
 	{	
-		exit('a');
-
 		$data = array(
 			'list'=>array(
 				'default' => date('c',time()),
