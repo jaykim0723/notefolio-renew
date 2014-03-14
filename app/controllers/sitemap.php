@@ -32,13 +32,13 @@ class Sitemap extends CI_Controller {
 		$resource = array(
 			//-- main
 			(object)array(
-				'loc'=>'/',
+				'loc'=>'',
 				'lastmod'=>time(),
 				'changefreq'=>'always',
 				'priority'=>0.7
 				),
 			(object)array(
-				'loc'=>'/main',
+				'loc'=>'main',
 				'lastmod'=>time(),
 				'changefreq'=>'always',
 				'priority'=>0.7
@@ -46,13 +46,13 @@ class Sitemap extends CI_Controller {
 
 			//-- auth
 			(object)array(
-				'loc'=>'/auth/login',
+				'loc'=>'auth/login',
 				'lastmod'=>time(),
 				'changefreq'=>'monthly',
 				'priority'=>0.3
 				),
 			(object)array(
-				'loc'=>'/auth/setting',
+				'loc'=>'auth/setting',
 				'lastmod'=>time(),
 				'changefreq'=>'monthly',
 				'priority'=>0.3
@@ -60,31 +60,31 @@ class Sitemap extends CI_Controller {
 
 			//-- info
 			(object)array(
-				'loc'=>'/info/about_us',
+				'loc'=>'info/about_us',
 				'lastmod'=>time(),
 				'changefreq'=>'monthly',
 				'priority'=>0.3
 				),
 			(object)array(
-				'loc'=>'/info/contact_us',
+				'loc'=>'info/contact_us',
 				'lastmod'=>time(),
 				'changefreq'=>'monthly',
 				'priority'=>0.3
 				),
 			(object)array(
-				'loc'=>'/info/faq',
+				'loc'=>'info/faq',
 				'lastmod'=>time(),
 				'changefreq'=>'monthly',
 				'priority'=>0.3
 				),
 			(object)array(
-				'loc'=>'/info/privacy',
+				'loc'=>'info/privacy',
 				'lastmod'=>time(),
 				'changefreq'=>'monthly',
 				'priority'=>0.3
 				),
 			(object)array(
-				'loc'=>'/info/terms',
+				'loc'=>'info/terms',
 				'lastmod'=>time(),
 				'changefreq'=>'monthly',
 				'priority'=>0.3
@@ -92,19 +92,19 @@ class Sitemap extends CI_Controller {
 
 			//-- gallery
 			(object)array(
-				'loc'=>'/gallery/listing',
+				'loc'=>'gallery/listing',
 				'lastmod'=>time(),
 				'changefreq'=>'always',
 				'priority'=>0.7
 				),
 			(object)array(
-				'loc'=>'/gallery/create',
+				'loc'=>'gallery/create',
 				'lastmod'=>time(),
 				'changefreq'=>'always',
 				'priority'=>0.3
 				),
 			(object)array(
-				'loc'=>'/gallery/update',
+				'loc'=>'gallery/update',
 				'lastmod'=>time(),
 				'changefreq'=>'always',
 				'priority'=>0.3
@@ -112,7 +112,7 @@ class Sitemap extends CI_Controller {
 
 			//-- feed
 			(object)array(
-				'loc'=>'/feed/listing',
+				'loc'=>'feed/listing',
 				'lastmod'=>time(),
 				'changefreq'=>'always',
 				'priority'=>0.3
