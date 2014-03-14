@@ -120,11 +120,34 @@ class Sitemap extends CI_Controller {
 			);
 
 		$data = array(
-			'list'=>array(),
+			'list'=>$this->_make_url_list($resource),
 			);
 
+		$this->load->view('sitemap/urlset_view', $data);
+	}
+	
+    /**
+     * urlset of sitemap
+	 *
+	 */
+	public function user($username)
+	{
+
+	}
+
+	
+    /**
+     * make url list for sitemap
+     *
+     * @param array $resource (incl object)
+	 * @return array (incl object)
+	 */
+	public function _make_url_list($resource)
+	{
+		$list = array();
+
 		foreach($resource as $key=>$val){
-			$data['list'][] = (object)array(
+			$list[] = (object)array(
 				'loc'			=> $val->loc,
         		'lastmod'		=> date('c',$val->lastmod),
         		'changefreq'	=> $val->changefreq,
@@ -132,7 +155,26 @@ class Sitemap extends CI_Controller {
 				);
 		}
 
-		$this->load->view('sitemap/urlset_view', $data);
+		return $list;
+	}
+
+	/**
+	 * get user info
+	 * 
+	 * @param string $username
+	 * 
+	 * @return object
+	 */
+	function _get_user_info($username){
+		$this->load->model('user_model');
+		$user = $this->user_model->get_info(array(
+			'username'=>$username,
+			'get_profile' => TRUE
+		));
+		if($user->status=='fail'||count($user->row)<1)
+			$user = false;
+		
+		return $user;
 	}
 }
 

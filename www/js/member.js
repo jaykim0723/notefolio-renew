@@ -413,6 +413,7 @@ var workUtil = {
 				start: function(event, ui){
 					posTop = $(ui.helper).position().top;
 					console.log($(ui.helper).position().top);
+					$(ui.helper).css('position', 'fixed');
 
 					/*var posOrig = $(ui.helper).offset().top();
 
