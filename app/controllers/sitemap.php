@@ -136,6 +136,30 @@ class Sitemap extends CI_Controller {
 		$this->load->model('profile_model');
 		$resource = array();
 
+		function make_resource_profile($username){
+			$output = array();
+
+			$output[] = (object)array(
+				'loc'=>$username.'/myworks',
+				'lastmod'=>time(),
+				'changefreq'=>'always',
+				'priority'=>0.8
+				);
+			$output[] = (object)array(
+				'loc'=>$username.'/about',
+				'lastmod'=>time(),
+				'changefreq'=>'always',
+				'priority'=>0.8
+				);
+			$output[] = (object)array(
+				'loc'=>$username.'/collect',
+				'lastmod'=>time(),
+				'changefreq'=>'always',
+				'priority'=>0.8
+				);
+
+			return $output;
+		}
 		if(empty($username)){
 
 		} else {
