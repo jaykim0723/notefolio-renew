@@ -47,6 +47,36 @@ class Sitemap extends CI_Controller {
 				'changefreq'=>'monthly',
 				'priority'=>0.3
 				),
+			(object)array(
+				'loc'=>'/info/about_us',
+				'lastmod'=>time(),
+				'changefreq'=>'monthly',
+				'priority'=>0.3
+				),
+			(object)array(
+				'loc'=>'/info/contact_us',
+				'lastmod'=>time(),
+				'changefreq'=>'monthly',
+				'priority'=>0.3
+				),
+			(object)array(
+				'loc'=>'/info/faq',
+				'lastmod'=>time(),
+				'changefreq'=>'monthly',
+				'priority'=>0.3
+				),
+			(object)array(
+				'loc'=>'/info/privacy',
+				'lastmod'=>time(),
+				'changefreq'=>'monthly',
+				'priority'=>0.3
+				),
+			(object)array(
+				'loc'=>'/info/terms',
+				'lastmod'=>time(),
+				'changefreq'=>'monthly',
+				'priority'=>0.3
+				),
 			);
 
 		$data = array(
