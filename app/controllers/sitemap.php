@@ -28,12 +28,39 @@ class Sitemap extends CI_Controller {
 	 */
 	public function root()
 	{	
-		$data = array(
-			'list'=> array(
-				'default' => date('c',time()),
-				'user' => date('c',time()),
+		$resource = array(
+			array(
+				'loc'=>'/',
+				'lastmod'=>date('c',time()),
+				'changefreq'=>'always'
+				'priority'=>0.7
 				),
+			array(
+				'loc'=>'/auth/login',
+				'lastmod'=>date('c',time()),
+				'changefreq'=>'monthly'
+				'priority'=>0.3
+				),
+			array(
+				'loc'=>'/auth/setting',
+				'lastmod'=>date('c',time()),
+				'changefreq'=>'monthly'
+				'priority'=>0.3
+				),
+
 			);
+
+		$data = array();
+
+		foreach($resource as $key=>$val){
+			$data[] = (object)array(
+				'loc'			=> $val->loc,
+        		'lastmod'		=> date('c',$val->lastmod),
+        		'changefreq'	=> $val->changefreq,
+        		'priority'		=> $val->priorty,
+				);
+		}
+
 		$this->load->view('sitemap/urlset_view', $data);
 	}
 }
