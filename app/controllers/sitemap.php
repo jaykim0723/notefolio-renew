@@ -165,7 +165,6 @@ class Sitemap extends CI_Controller {
 			$output = array();
 
 			$CI =& get_instance();
-
 	        $CI->load->model('work_model');
 
 			$work_list = $CI->work_model->get_list(array(
@@ -174,12 +173,16 @@ class Sitemap extends CI_Controller {
 				'user_id' => $CI->user_id
 			));
 
-			$output[] = (object)array(
-				'loc'=>$username.'/'.$work->row->work_id,
-				'lastmod'=>time(),
-				'changefreq'=>'always',
-				'priority'=>1.0
-				);
+			if($work_list->status=="done"){
+				foreach($work_list->rows as $row){
+					$output[] = (object)array(
+						'loc'=>$username.'/'.$row->work_id,
+						'lastmod'=>strtotime($row->moddate),
+						'changefreq'=>'daily',
+						'priority'=>1.0
+						);
+				}
+			}
 
 			return $output;
 		}
@@ -197,7 +200,7 @@ class Sitemap extends CI_Controller {
 
 			$resource = array_merge(
 				(array)$resource, 
-				(array)make_resource_works($username)
+				(array)make_resource_works($username, $total->work_cnt)
 				);
 		}
 
