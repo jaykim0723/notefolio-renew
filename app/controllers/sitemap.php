@@ -173,6 +173,7 @@ class Sitemap extends CI_Controller {
 				'user_id' => $user_id,
 	            'exclude_disabled'   => true, // disabled 태그된 작품 제외
 	            'exclude_deleted'   => true, // deleted 태그된 작품 제외
+	            'order_by'  => 'nofol_rank',
 			));
 
 			if($work_list->status=="done"){
@@ -192,18 +193,20 @@ class Sitemap extends CI_Controller {
 		if(empty($username)){
 
 		} else {
-			$resource = array_merge(
-				(array)$resource, 
-				(array)make_resource_profile($username)
-				);
-
 			$user_id = $this->profile_model->get_user_id_from_username($username);
-			$total = $this->profile_model->get_statistics_total(array('user_id'=>$user_id))->row;
+			if($user_id>0){
+				$resource = array_merge(
+					(array)$resource, 
+					(array)make_resource_profile($username)
+					);
 
-			$resource = array_merge(
-				(array)$resource, 
-				(array)make_resource_works($username, $user_id, $total->work_cnt)
-				);
+				$total = $this->profile_model->get_statistics_total(array('user_id'=>$user_id))->row;
+
+				$resource = array_merge(
+					(array)$resource, 
+					(array)make_resource_works($username, $user_id, $total->work_cnt)
+					);
+			}
 		}
 
 
