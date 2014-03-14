@@ -19,6 +19,7 @@ class sitemap extends CI_Controller {
 				'user' => date('c',time()),
 				),
 			);
+		var_export($data);
 		$this->load->view('sitemap/index_view', $data);
 	}
 	
