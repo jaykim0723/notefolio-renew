@@ -30,12 +30,21 @@ class Sitemap extends CI_Controller {
 	public function root()
 	{	
 		$resource = array(
+			//-- main
 			(object)array(
 				'loc'=>'/',
 				'lastmod'=>time(),
 				'changefreq'=>'always',
 				'priority'=>0.7
 				),
+			(object)array(
+				'loc'=>'/main',
+				'lastmod'=>time(),
+				'changefreq'=>'always',
+				'priority'=>0.7
+				),
+
+			//-- auth
 			(object)array(
 				'loc'=>'/auth/login',
 				'lastmod'=>time(),
@@ -48,6 +57,8 @@ class Sitemap extends CI_Controller {
 				'changefreq'=>'monthly',
 				'priority'=>0.3
 				),
+
+			//-- info
 			(object)array(
 				'loc'=>'/info/about_us',
 				'lastmod'=>time(),
@@ -76,6 +87,35 @@ class Sitemap extends CI_Controller {
 				'loc'=>'/info/terms',
 				'lastmod'=>time(),
 				'changefreq'=>'monthly',
+				'priority'=>0.3
+				),
+
+			//-- gallery
+			(object)array(
+				'loc'=>'/gallery/listing',
+				'lastmod'=>time(),
+				'changefreq'=>'always',
+				'priority'=>0.7
+				),
+			(object)array(
+				'loc'=>'/gallery/create',
+				'lastmod'=>time(),
+				'changefreq'=>'always',
+				'priority'=>0.3
+				),
+			);
+			(object)array(
+				'loc'=>'/gallery/update',
+				'lastmod'=>time(),
+				'changefreq'=>'always',
+				'priority'=>0.3
+				),
+
+			//-- feed
+			(object)array(
+				'loc'=>'/feed/listing',
+				'lastmod'=>time(),
+				'changefreq'=>'always',
 				'priority'=>0.3
 				),
 			);
