@@ -6,6 +6,21 @@ class Sitemap extends CI_Controller {
     {
         parent::__construct();
     }
+	
+    /**
+     * index of sitemap
+	 *
+	 */
+	public function index()
+	{	
+		$data = array(
+			'list'=> array(
+				'default' => date('c',time()),
+				'user' => date('c',time()),
+				),
+			);
+		$this->load->view('sitemap/index_view', $data);
+	}
 }
 
 /* End of file sitemap.php */
