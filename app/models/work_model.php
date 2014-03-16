@@ -197,7 +197,7 @@ class work_model extends CI_Model {
             // ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
             ->from('works')
             ->join('users', 'users.id = works.user_id', 'left')
-            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)+(((($params->page)-1)!=0)?$params->correct_count:0)); //set
+            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)+((($params->page)>1)?$params->correct_count:0)); //set
 
         $this->db->stop_cache();
         $works = $this->db->get();
