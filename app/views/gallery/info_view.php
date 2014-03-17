@@ -105,7 +105,7 @@
 										</div> -->
 
 										<!-- 제목 -->
-										<h2 class="work-title"><?php echo $row->title; ?>
+										<h1 class="work-title"><?php echo $row->title; ?>
 											<?php if (USER_ID==$row->user_id): ?>
 											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/update" class="work-btn btn-update-work">
 												edit ·
@@ -115,7 +115,7 @@
 											</a>
 											<?php endif ?>
 											
-										</h2>
+										</h1>
 										<div class="work-info-time">
 											<?php echo $this->nf->print_time($row->regdate) ?>
 											/
