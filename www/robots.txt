@@ -1,5 +1,5 @@
 User-agent: *
-Crawl-delay: 30
+# Crawl-delay: 30
 Disallow: 
 Disallow: /acp/
 Disallow: /captcha/
