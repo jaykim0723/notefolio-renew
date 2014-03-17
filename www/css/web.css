@@ -307,6 +307,7 @@ input:focus, button:focus, .bootstrap-select .btn:focus {
 	padding: 20px 10px 20px 37px;
 }
 
+.work-info h1,
 .work-info h2,
 #work-form h4 {
 	font-family: 'Nanum Gothic', '나눔고딕';

@@ -800,6 +800,7 @@ html, body {
 	.work-info .work-info-title {
 		padding: 13px 37px 20px 37px;
 	}
+	.work-info h1,
 	.work-info h2 {
 		font-size: 20px !important;
 		margin-top: 7px;
