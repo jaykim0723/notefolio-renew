@@ -116,12 +116,14 @@
 				Magazine
 			</a>
 		</li>
+		<?php /* ?>
 		<li>
 			<a class="clear-list" href="/info/about_us/">
 				<i class="spi spi-info_white"></i>
 				Notefolio info
 			</a>
 		</li>
+		<?php */ ?>
 		<?php if (USER_ID==0): ?>
 		<li class="guestmenu">
 			<a href="/auth/login">
