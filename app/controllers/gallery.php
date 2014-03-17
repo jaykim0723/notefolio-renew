@@ -17,7 +17,7 @@ class Gallery extends CI_Controller {
     }
     function random(){
         $work = $this->work_model->get_random_work_info();
-        redirect($work->username.'/'.$work->work_id);
+        redirect($work->username.'/'.$work->work_id, 'location', 301);
     }
 
     /**
@@ -85,7 +85,7 @@ class Gallery extends CI_Controller {
             alert('작품이 존재하지 않습니다.');
         }
         else if($work->row->user->username!=$this->uri->segment(1)){
-            redirect('/'.$work->row->user->username.'/'.$this->uri->segment(2));
+            redirect('/'.$work->row->user->username.'/'.$this->uri->segment(2), 'location', 302);
         }
 
         $work->row->hit_cnt++;
@@ -154,10 +154,10 @@ class Gallery extends CI_Controller {
             'user_A' => USER_ID,
             ));
 
-        redirect($this->session->userdata('username').'/'.$work_id.'/update');
+        redirect($this->session->userdata('username').'/'.$work_id.'/update', 'location', 302);
     }
     function upload(){ // 기존의 주소를 보전하기 위하여
-        redirect('gallery/create');
+        redirect('gallery/create', 'location', 301);
     }
 
 
@@ -417,7 +417,7 @@ class Gallery extends CI_Controller {
         if($result->status==='fail')
             alert($result->message);
 
-        redirect('/'.$this->tank_auth->get_username());
+        redirect('/'.$this->tank_auth->get_username(), 'location', 302);
     }
 
 
