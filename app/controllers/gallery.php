@@ -82,7 +82,6 @@ class Gallery extends CI_Controller {
             or (
                 $work->row->status=='deleted' and !($this->nf->admin_is_elevated())
                 )){
-            $this->output->set_status_header('404');
             alert('작품이 존재하지 않습니다.');
         }
         else if($work->row->user->username!=$this->uri->segment(1)){
