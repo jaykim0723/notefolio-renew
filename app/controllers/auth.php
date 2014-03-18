@@ -82,9 +82,6 @@ class Auth extends CI_Controller
                 $data['errors'] = $this->form_validation->error_array();
             }
             
-            if(preg_match('%', $go_to)){
-                $go_to = urldecode($go_to);
-            }
             $data['go_to'] = $go_to;
 
             return $this->_login_form($data, $login);
