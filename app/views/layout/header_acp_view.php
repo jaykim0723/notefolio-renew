@@ -71,7 +71,8 @@
           <ul class="dropdown-menu">
             <li><a href="/acp/site/keywords">키워드</a></li>
             <li><a href="/acp/site/main_banner">메인배너</a></li>
-            <li><a href="/acp/site/access_log">접속로그</a></li>
+            <li><a href="/acp/site/access_log/list/">접속로그</a></li>
+            <li><a href="/acp/site/access_log/list/search/only_outside/">접속로그(외부)</a></li>
           </ul>
         </li>
         <li id="menu-user" class="dropdown<?=($this->uri->segment(2)=='user')?' active':''?>">
