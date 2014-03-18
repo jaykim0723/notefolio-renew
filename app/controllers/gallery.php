@@ -570,7 +570,9 @@ class Gallery extends CI_Controller {
         return $result;
     }
 
-
+    function comment_list($id=''){ //for redirect
+        return redirect('/gallery/'.$this->uri->segment(3), 'location', 301);
+    }
 
 }
 
