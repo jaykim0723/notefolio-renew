@@ -107,6 +107,11 @@ class Info extends CI_Controller
 			->render();
 	}
 
+
+	function term(){ //for redirect
+		return redirect('/info/terms/', 'location', 301);
+	}
+
 	function terms()
 	{
 		$this->layout
