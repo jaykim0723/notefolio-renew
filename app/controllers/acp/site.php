@@ -80,7 +80,7 @@ class site extends CI_Controller {
                 if(isset($args['search']['only_outside'])){
                     unset($args['search']['only_outside']);
                     $only_outside = true;
-                    $args['search']['(to_access not like "/feed/check_unread%" and remote_addr != "127.0.0.1" and referer is not null and referer not like "%.notefolio.net%" and referer not like "%.localhost%")'] = null;
+                    $args['search']['(to_access not like "/feed/check_unread%" and remote_addr != "127.0.0.1" and referer is not null and referer not like "%.notefolio.net%" and referer not like "%//notefolio.net%" and referer not like "%.localhost%")'] = null;
                     $data['search_url'] = '/search/only_outside';
                 }
                 if(isset($args['search']['to_access'])){
