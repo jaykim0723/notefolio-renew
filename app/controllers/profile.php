@@ -272,11 +272,9 @@ class Profile extends CI_Controller {
 		return $user;
 	}
 
-
-	function gallery($username){ //for redirect
+	function gallery($username='', $page=1){ //for redirect
 		return redirect('/'.$this->uri->segment(1).'/myworks/'.$this->uri->segment(3), 'location', 301);
 	}
-
 
 	function myworks($username='', $page=1){
 		log_message('debug','--------- profile.php > myworks ( params : '.print_r(get_defined_vars(),TRUE)).')';
