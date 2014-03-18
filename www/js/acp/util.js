@@ -91,21 +91,27 @@ function url_go_to(key, val, pop){
     window.location.href = new_args.join('/');
 }
   
-  $(function(){
-    $('.staffpoint-btn').on('click.staffpoint', function(e){
-      var $root = $(this).closest('tr');
-      e.preventDefault();
-      var staffpoint = $('input[name="staffpoint"]', $root).val();
-      var work_id = $root.data('id');
-      $.post('/acp/work/works/proc/staffpoint', 
-            {mode: 'staffpoint', work_id: work_id, staffpoint: staffpoint}, 
-            function(data, textStatus, xhr) {
-              var response = $.parseJSON(data);
-              if(response.status=='done'){
-                alert('반영 완료');
-              }else{
-                alert('오류');
-              }
-            });
-    });
-  }); 
+$(function(){
+  $('.staffpoint-btn').on('click.staffpoint', function(e){
+    var $root = $(this).closest('tr');
+    e.preventDefault();
+    var staffpoint = $('input[name="staffpoint"]', $root).val();
+    var work_id = $root.data('id');
+    $.post('/acp/work/works/proc/staffpoint', 
+          {mode: 'staffpoint', work_id: work_id, staffpoint: staffpoint}, 
+          function(data, textStatus, xhr) {
+            var response = $.parseJSON(data);
+            if(response.status=='done'){
+              alert('반영 완료');
+            }else{
+              alert('오류');
+            }
+          });
+  });
+
+  $('#search_q').keydown(function (e){
+      if(e.keyCode == 13){
+          $('#search_btn').trigger('click');
+      }
+  });
+}); 

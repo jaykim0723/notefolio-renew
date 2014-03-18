@@ -63,7 +63,7 @@
                   <input class="form-control" type="text" name="q" id="search_q" placeholder="검색어" value="<?=urldecode($args['q'])?>"/>
                 </div>
                 <div class="col-lg-4 col-sm-2 search-center pull-right">
-                  <button class="btn btn-info" onclick="javascript:url_go_to('q', encodeURIComponent($('#search_q').val()));">검색</button>
+                  <button class="btn btn-info" id="search_btn" onclick="javascript:url_go_to('q', encodeURIComponent($('#search_q').val()));">검색</button>
                 </div>
               </div>
             </div>
