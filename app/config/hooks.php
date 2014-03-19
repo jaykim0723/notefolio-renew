@@ -10,7 +10,7 @@
 |
 */
 
-
+/*
 $hook['post_system'][] = array(
      'class'    => 'AccessLogHook',
      'function' => 'post',
@@ -18,6 +18,7 @@ $hook['post_system'][] = array(
      'filepath' => 'hooks',
      'params'   => null
  );
+ */
 $hook['post_system'][] = array(
     'class' => 'LogQueryHook',
     'function' => 'log_queries',
