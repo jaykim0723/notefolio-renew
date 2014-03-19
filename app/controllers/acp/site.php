@@ -97,7 +97,7 @@ class site extends CI_Controller {
                 $page_info = $this->db
                     ->select('count(*) as count, ceil(count(*)/'.$args['delimiter'].') as all_page')
                     ->get('log_access')->result_array();
-                error_log($this->db->last_query());
+                //error_log($this->db->last_query());
 
 
                 if(is_array($args['search'])&&count($args['search'])>0){
@@ -118,7 +118,7 @@ class site extends CI_Controller {
                     ->select('*')
                     ->limit($limit[1],($limit[0]-1)*$limit[1])
                     ->get('log_access')->result_array();
-                error_log($this->db->last_query());
+                //error_log($this->db->last_query());
 
                 $data['all_count'] = isset($page_info[0])?$page_info[0]['count']:0;
                 $data['all_page'] = isset($page_info[0])?$page_info[0]['all_page']:1;
