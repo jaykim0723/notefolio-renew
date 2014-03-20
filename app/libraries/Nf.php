@@ -16,6 +16,10 @@ class Nf
             if(!defined('USER_ID'))
                 define('USER_ID', 0);
         }
+
+        if(!$this->ci->input->is_ajax_request() && $this->ci->input->get('profiler')){
+            $this->ci->output->enable_profiler(TRUE);
+        }
 	}
     function get($key){
         if($key=='' OR !isset($this->nf_global[$key])) return '';
