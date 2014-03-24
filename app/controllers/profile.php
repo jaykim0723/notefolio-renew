@@ -137,7 +137,7 @@ class Profile extends CI_Controller {
 		if(empty($upload_id)){
 			$json = array(
 				'status'=>'fail',
-				'msg'=>'변경에 실패하였습니다.'
+				'msg'=>'변경에 실패하였습니다.<br>커버 사진을 가져올 수 없습니다.<br>새로 올리고 난 뒤에도 문제가 발생하면 관리자에게 알려주세요.'
 				);
 			return $this->layout->set_json($json)->render();
 		}
