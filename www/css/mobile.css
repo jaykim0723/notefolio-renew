@@ -1206,6 +1206,10 @@ form.comment-block.create textarea {
 		overflow: hidden;
 		margin: 10px 0 0 0;
 	}
+	.comment-replies.blank {
+		overflow: hidden;
+		margin: 0;
+	}
 	.comment-replies > .comment-block {
 		padding-left: 30px;
 		padding-bottom: 0px;
