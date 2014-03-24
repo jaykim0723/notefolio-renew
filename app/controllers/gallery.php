@@ -386,7 +386,7 @@ class Gallery extends CI_Controller {
             $this->load->config('upload', TRUE);
             
             $this->db
-                ->set('work_id', 0)
+                ->set('type', 'work')
                 ->where('type', 'cover')
                 ->where('work_id', $params->work_id)
                 ->update('uploads');
