@@ -137,11 +137,9 @@ class Profile extends CI_Controller {
 		if(empty($upload_id)){
 			$json = array(
 				'status'=>'fail',
-				'msg'=>'변경에 실패하였습니다.',
+				'msg'=>'변경에 실패하였습니다.'
 				);
-			exit($json);
-			$this->layout->set_json($json)->render();
-			exit();
+			return $this->layout->set_json($json)->render();
 		}
 
 		$upload = $this->upload_model->get(array('id'=>$upload_id));
