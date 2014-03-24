@@ -169,7 +169,7 @@ class upload_model extends CI_Model {
 
         $input->moddate = date('Y-m-d H:i:s'); // 무조건 수정이 발생하게 하기 위하여 현재 타임스탬프로 임의로 찍어준다.
         $id = $input->id;
-        unset($id);
+        unset($input->id);
 
         foreach($input as $key=>$val){
             if(in_array(
