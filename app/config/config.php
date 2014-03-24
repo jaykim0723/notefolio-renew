@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-$config['disabled_cover']	= '2014-02-24 14:30:00'; // 작품이 새로 등록되는 시점으로 적어둔다.
+$config['disabled_cover']	= '2014-03-24 14:08:00'; // 작품이 새로 등록되는 시점으로 적어둔다.
 $config['debug_tutorial']	= 'n'; // 튜토리얼 모드를 디버깅 할 때
 
 /*
