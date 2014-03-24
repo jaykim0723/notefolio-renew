@@ -195,6 +195,7 @@ class upload_model extends CI_Model {
 
             $this->db->trans_start();
             $this->db->where('id', @$data['id'])->update('uploads', $input); 
+            error_log($this->db->last_query());
             $this->db->trans_complete();
 
             if($this->db->trans_status()){
