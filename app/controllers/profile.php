@@ -134,6 +134,15 @@ class Profile extends CI_Controller {
 			$username = $this->tank_auth->get_username();
 		}
 
+		if(empty($upload_id)){
+			$json = array(
+				'status'=>'fail',
+				'msg'=>'변경에 실패하였습니다.',
+				);
+			$this->layout->set_json($json)->render();
+			exit();
+		}
+
 		$upload = $this->upload_model->get(array('id'=>$upload_id));
 		if($upload->status=='done')
 			$upload = $upload->row;

@@ -840,8 +840,12 @@ var profileUtil = {
 			blockPage.unblock();
 //			console.log('crop profile bg done > responseJSON', responseJSON);
 			// 프로필 배경을 응답받은 주소로 갱신을 해준다.
-			msg.open('적용이 완료되었습니다.');
-			$('#profile-header').css('background-image', 'url('+responseJSON.src+')');
+    		if(responseJSON.status=='done'){
+    			msg.open('적용이 완료되었습니다.', 'success');
+    			$('#profile-header').css('background-image', 'url('+responseJSON.src+')');
+			}else{
+    			msg.open(responseJSON.msg, 'error');
+    		}
 		});
 	},
 	changeRealname : function(){
