@@ -139,6 +139,7 @@ class Profile extends CI_Controller {
 				'status'=>'fail',
 				'msg'=>'변경에 실패하였습니다.',
 				);
+			exit($json);
 			$this->layout->set_json($json)->render();
 			exit();
 		}
