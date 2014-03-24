@@ -44,5 +44,8 @@
 				<?php $this->load->view('comment/comment_block_view', array('row' => $child), FALSE); ?>
 			<?php endforeach ?>
 	</div>
+	<?php else: ?>
+	<div class="comment-replies blank">
+	</div>
 	<?php endif ?>
 </div>
