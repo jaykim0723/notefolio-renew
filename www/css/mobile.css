@@ -2052,11 +2052,13 @@ p.desc {
 	margin-top: 12px;
 	font-size: 24px;
 	font-weight: 300;
+	text-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 #profile-info h4 {
 	font-size: 12px;
 	font-weight: normal;
 	font-family: 'Nanum Gothic', '나눔고딕', Dotum !important;
+	text-shadow: 0 0 4px rgba(0,0,0,0.4);
 }
 #profile-info .centered a {
 	color: #2ac5c6;
