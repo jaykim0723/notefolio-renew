@@ -65,7 +65,8 @@ $birth = array(
 $value['gender'] = set_value('gender');
 $gender = array(
 	'm' => set_radio('gender', 'm', ''),
-	'f'	=> set_radio('gender', 'f', '')
+	'f'	=> set_radio('gender', 'f', ''),
+	'x'	=> set_radio('gender', 'x', '')
 );
 
 $mailing = isset($error)?set_checkbox('mailing', '1', ''):"checked=\"checked\"";
