@@ -184,6 +184,9 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		<label class="radio-inline">
 			<input type='radio' name='gender' value='m' <?=$gender['m']?> /> 남
 		</label>
+		<label class="radio-inline">
+			<input type='radio' name='gender' value='x' <?=$gender['x']?> /> 선택안함
+		</label>
 		<div class="form-error"><?=isset($errors['gender'])?$errors['gender']:''; ?></div>
 	</div>
 

@@ -16,6 +16,9 @@
 		<label class="radio-inline">
 			<input type='radio' name='gender' value='m'/> 남
 		</label>
+		<label class="radio-inline">
+			<input type='radio' name='gender' value='x'/> 선택안함
+		</label>
 		<script>
 			$('#auth_basic :radio[name=gender]').filter('input[value=<?php echo $gender?>]').attr('checked', true).trigger('change');
 		</script>
