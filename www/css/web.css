@@ -561,7 +561,9 @@ input:focus, button:focus, .bootstrap-select .btn:focus {
 	display: block;
 }
 
-.work-editing .ui-sortable-placeholder i {
+.work-editing .block-text  > i,
+.work-editing .block-video > i,
+.work-editing .block-image > i {
 	display: none!important;
 }
 
