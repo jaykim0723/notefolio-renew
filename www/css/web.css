@@ -548,7 +548,7 @@ input:focus, button:focus, .bootstrap-select .btn:focus {
 */
 
 #content-block-list .spi{
-	display: none;
+	display: none!important;
 }
 
 .work-contents {
