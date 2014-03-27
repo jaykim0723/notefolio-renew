@@ -546,6 +546,11 @@ input:focus, button:focus, .bootstrap-select .btn:focus {
 	position: relative;
 }
 */
+
+#content-block-list .spi{
+	display: none;
+}
+
 .work-contents {
 	padding-top:25px;
 }
@@ -559,10 +564,6 @@ input:focus, button:focus, .bootstrap-select .btn:focus {
 }
 .work-contents > .block-text:hover .wysihtml5-toolbar {
 	display: block;
-}
-
-.work-editing i.spi {
-	display: none!important;
 }
 
 #content-block-list .block-text iframe {
