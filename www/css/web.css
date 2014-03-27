@@ -546,11 +546,6 @@ input:focus, button:focus, .bootstrap-select .btn:focus {
 	position: relative;
 }
 */
-
-#content-block-list .spi{
-	display: none!important;
-}
-
 .work-contents {
 	padding-top:25px;
 }
@@ -595,13 +590,16 @@ div.upload-guide{
 	font-size: 40px;
 	z-index: 10;
 }
-#work-content-blockadder li{
-	cursor: pointer;
+#work-content-blockadder li.ui-draggable-dragging{
+	width: 40px!important;
 }
 #work-content-blockadder li.block-video {
 	padding-top: 0;
 	padding-bottom: 0;
 	height: auto;
+}
+#work-content-blockadder li.{
+	cursor: pointer;
 }
 li#trash-bin{
 	display: block;
