@@ -560,6 +560,13 @@ input:focus, button:focus, .bootstrap-select .btn:focus {
 .work-contents > .block-text:hover .wysihtml5-toolbar {
 	display: block;
 }
+
+.work-editing > .block-text  > i,
+.work-editing > .block-video > i,
+.work-editing > .block-image > i {
+	display: none!important;
+}
+
 #content-block-list .block-text iframe {
 	min-height: 200px!important;
 	border-color: #f0f0f0!important;
