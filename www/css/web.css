@@ -592,6 +592,7 @@ div.upload-guide{
 }
 #work-content-blockadder li.ui-draggable-dragging{
 	width: 40px!important;
+	height:57px!important;
 }
 #work-content-blockadder li.block-video {
 	padding-top: 0;
