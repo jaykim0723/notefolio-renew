@@ -590,7 +590,7 @@ div.upload-guide{
 	font-size: 40px;
 	z-index: 10;
 }
-#work-content-blockadder li.ui-draggable-dragging{
+#work-content-blockadder li.ui-sortable-helper{
 	width: 40px!important;
 	height:57px!important;
 	padding-top: 200px;
