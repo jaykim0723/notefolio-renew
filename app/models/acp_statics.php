@@ -622,8 +622,8 @@ class Acp_statics extends CI_Model
         $all_count = 0;
 
         $row = $query->row();
-        $all_count = round($row->all_count);   
-        $all_first_count = round($row->all_count); 
+        $all_count = $row->all_count;   
+        $all_first_count = $row->all_count; 
 
         $output = array(array('날짜' , '모든 작품 총 조회수', '오늘 받은 총 조회수', '오늘 받은 평균 조회수'));
         $data = array();
@@ -652,7 +652,9 @@ class Acp_statics extends CI_Model
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
-            $data[$row->date] = array(round(round($all_count=$all_count+$row->log_count)/10, 2), round($row->log_count), round($row->log_count/$row->work_count, 2));
+            var_export($all_count);
+            $all_count = $all_count+$row->log_count;
+            $data[$row->date] = array(round(($all_count)/10, 2), round($row->log_count), round($row->log_count/$row->work_count, 2));
         }
 
         $i = 1;
