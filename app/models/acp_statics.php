@@ -657,7 +657,12 @@ class Acp_statics extends CI_Model
 
         $i = 1;
         foreach ($period as $date) {
-            $output[$i] = array($date->format((($printYear)?'Y년 ':'').' m월 d일'), isset($data[$date->format('Y-m-d')][0])?$data[$date->format('Y-m-d')][0]:round((($i-1==0)?$all_first_count:$output[$i-1][1])/100, 3), isset($data[$date->format('Y-m-d')][1])?$data[$date->format('Y-m-d')][1]:0, isset($data[$date->format('Y-m-d')][2])?$data[$date->format('Y-m-d')][2]:0);
+            $output[$i] = array(
+                            $date->format((($printYear)?'Y년 ':'').' m월 d일'),
+                            round((isset($data[$date->format('Y-m-d')][0])?$data[$date->format('Y-m-d')][0]:(($i-1==0)?$all_first_count:$output[$i-1][1]))/100, 3),
+                            isset($data[$date->format('Y-m-d')][1])?$data[$date->format('Y-m-d')][1]:0,
+                            isset($data[$date->format('Y-m-d')][2])?$data[$date->format('Y-m-d')][2]:0
+                            );
             $i++;
         }
 
@@ -737,7 +742,12 @@ class Acp_statics extends CI_Model
 
         $i = 1;
         foreach ($period as $date) {
-            $output[$i] = array($date->format((($printYear)?'Y년 ':'').' m월 d일'), isset($data[$date->format('Y-m-d')][0])?$data[$date->format('Y-m-d')][0]:round((($i-1==0)?$all_first_count:$output[$i-1][1])/100, 3), isset($data[$date->format('Y-m-d')][1])?$data[$date->format('Y-m-d')][1]:0, isset($data[$date->format('Y-m-d')][2])?$data[$date->format('Y-m-d')][2]:0);
+            $output[$i] = array(
+                            $date->format((($printYear)?'Y년 ':'').' m월 d일'),
+                            round((isset($data[$date->format('Y-m-d')][0])?$data[$date->format('Y-m-d')][0]:(($i-1==0)?$all_first_count:$output[$i-1][1]))/100, 3),
+                            isset($data[$date->format('Y-m-d')][1])?$data[$date->format('Y-m-d')][1]:0,
+                            isset($data[$date->format('Y-m-d')][2])?$data[$date->format('Y-m-d')][2]:0
+                            );
             $i++;
         }
 
@@ -817,7 +827,12 @@ class Acp_statics extends CI_Model
 
         $i = 1;
         foreach ($period as $date) {
-            $output[$i] = array($date->format((($printYear)?'Y년 ':'').' m월 d일'), isset($data[$date->format('Y-m-d')][0])?$data[$date->format('Y-m-d')][0]:round((($i-1==0)?$all_first_count:$output[$i-1][1])/100, 3), isset($data[$date->format('Y-m-d')][1])?$data[$date->format('Y-m-d')][1]:0, isset($data[$date->format('Y-m-d')][2])?$data[$date->format('Y-m-d')][2]:0);
+            $output[$i] = array(
+                            $date->format((($printYear)?'Y년 ':'').' m월 d일'),
+                            round((isset($data[$date->format('Y-m-d')][0])?$data[$date->format('Y-m-d')][0]:(($i-1==0)?$all_first_count:$output[$i-1][1]))/100, 3),
+                            isset($data[$date->format('Y-m-d')][1])?$data[$date->format('Y-m-d')][1]:0,
+                            isset($data[$date->format('Y-m-d')][2])?$data[$date->format('Y-m-d')][2]:0
+                            );
             $i++;
         }
 
