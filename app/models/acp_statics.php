@@ -617,7 +617,7 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from log_work_view WHERE regdate>?"; 
+        $sql = "SELECT count(id) as all_count from log_work_view WHERE regdate<?"; 
         $query = $this->db->query($sql, array($from));
         $all_count = 0;
 
@@ -697,7 +697,7 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from log_work_note where regdate>?"; 
+        $sql = "SELECT count(id) as all_count from log_work_note where regdate<?"; 
         $query = $this->db->query($sql, array($from));
         $all_count = 0;
         
@@ -777,7 +777,7 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from work_comments where regdate>?"; 
+        $sql = "SELECT count(id) as all_count from work_comments where regdate<?"; 
         $query = $this->db->query($sql, array($from));
         $all_count = 0;
         
@@ -870,7 +870,7 @@ class Acp_statics extends CI_Model
                             count(work_id) as work_count
                     from
                         works
-                    WHERE regdate >= ? and regdate <= ?
+                    WHERE regdate between ? and ?
                     group by date) work"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
@@ -1722,7 +1722,7 @@ class Acp_statics extends CI_Model
         //total user upload
         $sql = "SELECT count(id) as count FROM users left join
                     (SELECT user_id, ifnull(count(work_id),0) as work_count FROM works
-                     where regdate >= ? and regdate <= ? group by user_id) works
+                     where regdate between ? and ? group by user_id) works
                     on users.id = works.user_id
                     WHERE work_count>? and activated = ? and created >= ? and created <= ?"; 
         $query = $this->db->query($sql, array($from, $to, 0, 1, $from, $to));
@@ -1732,7 +1732,7 @@ class Acp_statics extends CI_Model
         }
 
         //total works
-        $sql = "SELECT count(work_id) as count FROM works WHERE regdate >= ? and regdate <= ?"; 
+        $sql = "SELECT count(work_id) as count FROM works WHERE regdate between ? and ?"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
@@ -1758,7 +1758,7 @@ class Acp_statics extends CI_Model
         */
 
         //total works view count
-        $sql = "SELECT count(id) as count FROM log_work_view WHERE regdate >= ? and regdate <= ?"; 
+        $sql = "SELECT count(id) as count FROM log_work_view WHERE regdate between ? and ?"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
@@ -1766,7 +1766,7 @@ class Acp_statics extends CI_Model
         }
 
         //total works note count
-        $sql = "SELECT count(id) as count FROM log_work_note WHERE regdate >= ? and regdate <= ?"; 
+        $sql = "SELECT count(id) as count FROM log_work_note WHERE regdate between ? and ?"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
@@ -1774,7 +1774,7 @@ class Acp_statics extends CI_Model
         }
 
         //total works comment count
-        $sql = "SELECT count(id) as count FROM work_comments WHERE regdate >= ? and regdate <= ?"; 
+        $sql = "SELECT count(id) as count FROM work_comments WHERE regdate between ? and ?"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
