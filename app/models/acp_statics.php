@@ -652,7 +652,8 @@ class Acp_statics extends CI_Model
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
-            $data[$row->date] = array(round($all_count+=($row->log_count)), round($row->log_count), round($row->log_count/$row->work_count, 2));
+            $all_count+=($row->log_count);
+            $data[$row->date] = array(round($all_count), round($row->log_count), round($row->log_count/$row->work_count, 2));
         }
 
         $i = 1;
@@ -737,7 +738,8 @@ class Acp_statics extends CI_Model
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
-            $data[$row->date] = array(round($all_count+=($row->log_count)), round($row->log_count), round($row->log_count/$row->work_count, 2));
+            $all_count+=($row->log_count);
+            $data[$row->date] = array(round($all_count), round($row->log_count), round($row->log_count/$row->work_count, 2));
         }
 
         $i = 1;
@@ -822,7 +824,8 @@ class Acp_statics extends CI_Model
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
-            $data[$row->date] = array(round($all_count+=($row->log_count)), round($row->log_count), round($row->log_count/$row->work_count, 2));
+            $all_count+=($row->log_count);
+            $data[$row->date] = array(round($all_count), round($row->log_count), round($row->log_count/$row->work_count, 2));
         }
 
         $i = 1;
