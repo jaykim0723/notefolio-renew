@@ -617,7 +617,14 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from log_work_view WHERE regdate<?"; 
+        $sql = "SELECT 
+                count(log_work_view.id) as all_count
+            from
+                log_work_view
+                left join works as w on w.work_id = log_work_view.work_id
+            where
+                w.status != 'deleted' and
+                log_work_view.regdate < ?"; 
         $query = $this->db->query($sql, array($from));
         $all_count = 0;
 
@@ -702,7 +709,14 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from log_work_note where regdate<?"; 
+        $sql = "SELECT 
+                count(log_work_note.id) as all_count
+            from
+                log_work_view
+                left join works as w on w.work_id = log_work_note.work_id
+            where
+                w.status != 'deleted' and
+                log_work_note.regdate < ?"; 
         $query = $this->db->query($sql, array($from));
         $all_count = 0;
         
@@ -787,7 +801,14 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from work_comments where regdate<?"; 
+        $sql = "SELECT 
+                count(work_comments.id) as all_count
+            from
+                work_comments
+                left join works as w on w.work_id = log_work_note.work_id
+            where
+                w.status != 'deleted' and
+                work_comments.regdate < ?"; 
         $query = $this->db->query($sql, array($from));
         $all_count = 0;
         
