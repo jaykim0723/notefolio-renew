@@ -805,7 +805,7 @@ class Acp_statics extends CI_Model
                 count(work_comments.id) as all_count
             from
                 work_comments
-                left join works as w on w.work_id = log_work_note.work_id
+                left join works as w on w.work_id = work_comments.work_id
             where
                 w.status != 'deleted' and
                 work_comments.regdate < ?"; 
