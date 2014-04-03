@@ -653,6 +653,7 @@ class Acp_statics extends CI_Model
                     ) allcount on date_format(log_work_view.regdate, '%Y-%m-%d') = allcount.work_date
             where
                 w.status != 'deleted' and
+                TIMESTAMPDIFF(SECOND, w.regdate, log_work_view.regdate) < 24*60*60 and
                 log_work_view.regdate between ? and ?
             group by date"; 
         $query = $this->db->query($sql, array($from, $to));
@@ -744,6 +745,7 @@ class Acp_statics extends CI_Model
                     ) allcount on date_format(log_work_note.regdate, '%Y-%m-%d') = allcount.work_date
             where
                 w.status != 'deleted' and
+                TIMESTAMPDIFF(SECOND, w.regdate, log_work_note.regdate) < 24*60*60 and
                 log_work_note.regdate between ? and ?
             group by date";  
         $query = $this->db->query($sql, array($from, $to));
@@ -835,6 +837,7 @@ class Acp_statics extends CI_Model
                     ) allcount on date_format(work_comments.regdate, '%Y-%m-%d') = allcount.work_date
             where
                 w.status != 'deleted' and
+                TIMESTAMPDIFF(SECOND, w.regdate, work_comments.regdate) < 24*60*60 and
                 work_comments.regdate between ? and ?
             group by date"; 
         $query = $this->db->query($sql, array($from, $to));
