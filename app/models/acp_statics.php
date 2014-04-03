@@ -712,7 +712,7 @@ class Acp_statics extends CI_Model
         $sql = "SELECT 
                 count(log_work_note.id) as all_count
             from
-                log_work_view
+                log_work_note
                 left join works as w on w.work_id = log_work_note.work_id
             where
                 w.status != 'deleted' and
