@@ -74,11 +74,11 @@
 			<p class="username"><a href="/<?php echo $this->nf->get('user')->username ?>"><?php echo $this->nf->get('user')->realname ?></a></p>
 			<p class="follows">
 				<a href="/<?php echo $this->nf->get('user')->username ?>/followers">
-					<span class="count"><?php echo $this->nf->get('user')->following_cnt ?></span>
+					<span class="count"><?php echo $this->nf->get('user')->follower_cnt ?></span>
 					followers 
 				</a>
 				<a href="/<?php echo $this->nf->get('user')->username ?>/followings">
-					<span class="count"><?php echo $this->nf->get('user')->follower_cnt ?></span>
+					<span class="count"><?php echo $this->nf->get('user')->following_cnt ?></span>
 					followings 
 				</a>
 			</p>
