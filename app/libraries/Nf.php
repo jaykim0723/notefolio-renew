@@ -77,12 +77,17 @@ class Nf
         if(!empty($id) && $service != 'website'){
             $id = explode('/', $id);
 
-            $i = 1;
-            while(empty($o_id)){
-                $o_id = $id[count($id)-$i];
-                $i++;
+            if($service == "tumblr"){
+                $id = str_replace('.tumblr.com', '', $id[2]);
             }
-            $id = $o_id;
+            else{
+                $i = 1;
+                while(empty($o_id)){
+                    $o_id = $id[count($id)-$i];
+                    $i++;
+                }
+                $id = $o_id;
+            }
         }
         switch ($service) {
             case 'website':
@@ -98,7 +103,7 @@ class Nf
                 $data->link = 'http://pinterest.com/'.$id;
                 break;
             case 'tumblr':
-                $data->link = 'http://tumblr.com/'.$id;
+                $data->link = 'http://'.$id.'.tumblr.com';
                 break;
             case 'vimeo':
                 $data->link = 'http://vimeo.com/'.$id;
