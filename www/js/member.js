@@ -1002,14 +1002,17 @@ var profileUtil = {
 					var value = $('#profile-sns-link > a.'+v).data('value');
 					if(empty(value))
 						value = '';
-					area += '<div class="form-group row">'+
-						'<div class="col-xs-2 centered"><i class="pi pi-'+v+'"></i></div>'+
-						(	(socialUrl[v]!='')?
-							'<div class="col-xs-4 sns-label"><label for="'+v+'">'+socialUrl[v]+'/</label></div><div class="col-xs-6"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>'
-							:
-							'<div class="col-xs-10"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>'
-						)+
-					'</div>';
+					area += '<div class="form-group row">';
+					area += '<div class="col-xs-2 centered"><i class="pi pi-'+v+'"></i></div>';
+					
+					if(socialUrl[v]== '') //website
+						area += '<div class="col-xs-10"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>';
+					else if(socialUrl[v]=='tumblr.com')
+						area += '<div class="col-xs-6"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div><div class="col-xs-4 sns-label"><label for="'+v+'">.'+socialUrl[v]+'/</label></div>';
+					else
+						area += '<div class="col-xs-4 sns-label"><label for="'+v+'">'+socialUrl[v]+'/</label></div><div class="col-xs-6"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>';
+					
+					area += '</div>';
 				});
 				var $message = $(
 					'<div id="dialog-change-sns">'+
