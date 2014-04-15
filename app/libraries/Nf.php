@@ -78,7 +78,7 @@ class Nf
             $id = explode('/', $id);
 
             if($service == "tumblr"){
-                $id = str_replace('.tumblr.com', '', $id[2]);
+                $id = str_replace('.tumblr.com', '', $id[(in_array($id[0], array('http', 'https')))?2:0]);
             }
             else{
                 $i = 1;
