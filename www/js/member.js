@@ -1008,7 +1008,7 @@ var profileUtil = {
 					if(socialUrl[v]== '') //website
 						area += '<div class="col-xs-10"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>';
 					else if(socialUrl[v]=='tumblr.com')
-						area += '<div class="col-xs-4"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div><div class="col-xs-6 sns-label"><label for="'+v+'">.'+socialUrl[v]+'</label></div>';
+						area += '<div class="col-xs-5"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div><div class="col-xs-5 sns-label"><label for="'+v+'">.'+socialUrl[v]+'</label></div>';
 					else
 						area += '<div class="col-xs-4 sns-label"><label for="'+v+'">'+socialUrl[v]+'/</label></div><div class="col-xs-6"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>';
 					
