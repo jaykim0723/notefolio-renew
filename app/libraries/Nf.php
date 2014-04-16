@@ -16,6 +16,10 @@ class Nf
             if(!defined('USER_ID'))
                 define('USER_ID', 0);
         }
+
+        if(!$this->ci->input->is_ajax_request() && $this->ci->input->get('profiler')){
+            $this->ci->output->enable_profiler(TRUE);
+        }
 	}
     function get($key){
         if($key=='' OR !isset($this->nf_global[$key])) return '';
@@ -70,6 +74,21 @@ class Nf
     }
     function sns($service='', $id=''){
         $data = (object)array();
+        if(!empty($id) && $service != 'website'){
+            $id = explode('/', $id);
+
+            if($service == "tumblr"){
+                $id = str_replace('.tumblr.com', '', $id[(in_array($id[0], array('http', 'https')))?2:0]);
+            }
+            else{
+                $i = 1;
+                while(empty($o_id)){
+                    $o_id = $id[count($id)-$i];
+                    $i++;
+                }
+                $id = $o_id;
+            }
+        }
         switch ($service) {
             case 'website':
                 $data->link = ((preg_match('/^http[s]*:\/\//mi', $id))?'':'http://').$id;
@@ -84,7 +103,7 @@ class Nf
                 $data->link = 'http://pinterest.com/'.$id;
                 break;
             case 'tumblr':
-                $data->link = 'http://tumblr.com/'.$id;
+                $data->link = 'http://'.$id.'.tumblr.com';
                 break;
             case 'vimeo':
                 $data->link = 'http://vimeo.com/'.$id;

@@ -134,6 +134,14 @@ class Profile extends CI_Controller {
 			$username = $this->tank_auth->get_username();
 		}
 
+		if(empty($upload_id)){
+			$json = array(
+				'status'=>'fail',
+				'msg'=>'변경에 실패하였습니다.<br>커버 사진을 가져올 수 없습니다.<br>새로 올리고 난 뒤에도 문제가 발생하면<br>관리자에게 알려주세요.'
+				);
+			return $this->layout->set_json($json)->render();
+		}
+
 		$upload = $this->upload_model->get(array('id'=>$upload_id));
 		if($upload->status=='done')
 			$upload = $upload->row;
@@ -265,14 +273,17 @@ class Profile extends CI_Controller {
 		));
 		if($user->status=='fail'||count($user->row)<1)
 			//exit("redirect('/error_404');");
-			redirect('/');
+			
+			redirect('/', 'location', 302);
 		else
 			$this->user_id = $user->row->id;
 
 		return $user;
 	}
 
-
+	function gallery($username='', $page=1){ //for redirect
+		return redirect('/'.$this->uri->segment(1).'/myworks/'.$this->uri->segment(3), 'location', 301);
+	}
 
 	function myworks($username='', $page=1){
 		log_message('debug','--------- profile.php > myworks ( params : '.print_r(get_defined_vars(),TRUE)).')';

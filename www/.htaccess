@@ -6,6 +6,8 @@ DirectoryIndex index.php
 
 <IfModule mod_rewrite.c>
   RewriteEngine on
+  RewriteCond %{HTTP_HOST} !^www\.(.*)$ [NC]
+  RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
   RewriteBase /
   RewriteCond $1 !^/(index\.php|favicon\.ico|robots\.txt)
   RewriteCond $1 !^/[^(captcha|css|doc|html|i|images|img|js|acp-rs|temp|profiles|thumbnails|fonts)]/(.*)

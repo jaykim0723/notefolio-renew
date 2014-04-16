@@ -36,19 +36,42 @@ class work extends CI_Controller {
                 
         switch($mode) {
             case "list":
+                $data['args'] = $args;
                 if(!isset($args['page'])) $args['page'] = 1;
                 if(!isset($args['delimiter'])) $args['delimiter'] = 30;
                 if(!isset($args['keywords'])) $args['keywords'] = array();
                 if(!isset($args['order'])) $args['order'] = 'idlarger';
                 if(!isset($args['allow_enabled'])) $args['allow_enabled'] = true;
                 if(!isset($args['allow_disabled'])) $args['allow_disabled'] = true;
-                if(!isset($args['allow_deleted'])) $args['allow_deleted'] = true;
+                if(!isset($args['allow_deleted'])) $args['allow_deleted'] = false;
                 if(!isset($args['exclude_enabled'])) $args['exclude_enabled'] = false;
                 if(!isset($args['exclude_disabled'])) $args['exclude_disabled'] = false;
                 if(!isset($args['exclude_deleted'])) $args['exclude_deleted'] = false;
+                if(!isset($args['sp_nz'])) $args['sp_nz'] = false;
                 if(!isset($args['period'])) $args['period'] = 'all';
                 if(!isset($args['q'])) $args['q'] = '';
-                
+
+                foreach(array('enabled', 'disabled', 'deleted') as $val){
+                    if(isset($args['only_'.$val]) && $args['only_'.$val] == true){
+                        $args['allow_enabled'] = false;
+                        $args['allow_disabled'] = false;
+                        $args['allow_deleted'] = false;
+
+                        $args['allow_'.$val] = true;
+                    }
+                }
+
+                //-- category
+                $this->load->config('keyword', TRUE);
+                $keyword_list = $this->config->item('keyword', 'keyword');
+
+                foreach ($keyword_list as $key => $val) {
+                    if(isset($args['cat_'.$key]) && filter_var($args['cat_'.$key], FILTER_VALIDATE_BOOLEAN)){
+                        $args['keywords'][] = $key;
+                    }
+                }
+                //-- end category
+
                 $page_info = $this->work_model->get_list_count(array(
                     'delimiter' => $args['delimiter'],
                     'allow_enabled'=> $args['allow_enabled'],
@@ -58,8 +81,9 @@ class work extends CI_Controller {
                     'keywords' => $args['keywords'],
                     'order_by' => $args['order'],
                     'from' => $args['period'],
-                    'q' => $args['q'],
-                    'view_rank_point' => true
+                    'q' => urldecode($args['q']),
+                    'view_rank_point' => true,
+                    'only_staffpoint_not_zero' => $args['sp_nz']
                 ));
 
                 $this->load->config('activity_point', TRUE);
@@ -75,8 +99,9 @@ class work extends CI_Controller {
                     'keywords' => $args['keywords'],
                     'order_by' => $args['order'],
                     'from' => $args['period'],
-                    'q' => $args['q'],
-                    'view_rank_point' => true
+                    'q' => urldecode($args['q']),
+                    'view_rank_point' => true,
+                    'only_staffpoint_not_zero' => $args['sp_nz']
                 ));
 
                 $data['list'] = $works->rows;

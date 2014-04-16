@@ -98,6 +98,9 @@ class comment_model extends CI_Model {
             if($row->children_cnt>0){
                 $children_params=$params;
                 $children_params->parent_id = $row->comment_id;
+                unset($children_params->id_before);
+                unset($children_params->id_after);
+
                 $row->children = $this->get_list($children_params)->rows;
             }
 
@@ -224,12 +227,10 @@ class comment_model extends CI_Model {
             'comment_id' => $comment_id
         );
         if($this->db->trans_status()){
-            if($params->parent_id==0){
-                $this->db->query("UPDATE works 
-                    set comment_cnt = comment_cnt + {$affected} 
-                    where work_id = {$params->work_id};
-                    ");
-            }
+            $this->db->query("UPDATE works 
+                set comment_cnt = comment_cnt + {$affected} 
+                where work_id = {$params->work_id};
+                ");
 
         }else{
             $data->status = 'fail';
@@ -305,6 +306,7 @@ class comment_model extends CI_Model {
         
         if($this->nf->admin_is_elevated()){ // 관리자는 전지전능하심. 
             $can_delete = true;
+            $comment = $this->db->where('work_comments.id', $comment_id)->get('work_comments')->row();
         }
         else { // 본인것인지 여부에 따라 message다르게 하기
             $comment = $this->db->where('work_comments.id', $comment_id)->get('work_comments')->row();
@@ -320,6 +322,7 @@ class comment_model extends CI_Model {
 
             // 하위 리플들도 모두 지워지도록 처리해주세요.
             $this->db->where('parent_id', $comment_id)->delete('work_comments'); 
+            $affected += $this->db->affected_rows();
             
             // parent_id의 children_cnt도 업데이트해주세요.
             $this->db
@@ -330,12 +333,10 @@ class comment_model extends CI_Model {
             $this->db->trans_complete();
 
             if($this->db->trans_status()){
-                if($comment->parent_id==0){
-                    $this->db->query("UPDATE works 
-                        set comment_cnt = comment_cnt - {$affected} 
-                        where work_id = {$comment->work_id};
-                        ");
-                }
+                $this->db->query("UPDATE works 
+                    set comment_cnt = comment_cnt - {$affected} 
+                    where work_id = {$comment->work_id};
+                    ");
                 $data = (object)array(
                     'status' => 'done'
                 );

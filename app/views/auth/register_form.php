@@ -65,7 +65,8 @@ $birth = array(
 $value['gender'] = set_value('gender');
 $gender = array(
 	'm' => set_radio('gender', 'm', ''),
-	'f'	=> set_radio('gender', 'f', '')
+	'f'	=> set_radio('gender', 'f', ''),
+	'x'	=> set_radio('gender', 'x', '')
 );
 
 $mailing = isset($error)?set_checkbox('mailing', '1', ''):"checked=\"checked\"";
@@ -183,6 +184,9 @@ if(isset($error)&&!empty($value['fb_num_id'])){
 		</label>
 		<label class="radio-inline">
 			<input type='radio' name='gender' value='m' <?=$gender['m']?> /> 남
+		</label>
+		<label class="radio-inline">
+			<input type='radio' name='gender' value='x' <?=$gender['x']?> /> 선택안함
 		</label>
 		<div class="form-error"><?=isset($errors['gender'])?$errors['gender']:''; ?></div>
 	</div>

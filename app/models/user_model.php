@@ -14,6 +14,70 @@ class user_model extends CI_Model {
     }
 
     /**
+     * 미리 설정하는 환경설정.
+     * @param object $params
+     */
+    function get_list_prep($params){
+        switch($params->from){
+            case 'day':
+                $from = date('Y-m-d');
+                break;
+            case 'week':
+                $from = date('Y-m-d', strtotime('-1 week'));
+                break;
+            case 'month':
+                $from = date('Y-m-d', strtotime('-1 month'));
+                break;
+            case 'month3':
+                $from = date('Y-m-d', strtotime('-3 month'));
+                break;
+            case 'all':
+            default:
+                $params->from = 'all';
+                break;
+        }
+        if($params->from!='all'){
+            $this->db->where("(users.created >= ".$this->db->escape($from).")", NULL, FALSE); // 모든 기준이 create로 하기 때문에
+        }
+
+        if($params->get_profile && count($params->keywords)>0){
+            $this->db->where('(user_profiles.keywords like "%'.implode('%" or user_profiles.keywords like "%', $params->keywords).'%" )', NULL, FALSE);
+        }
+
+        if(!empty($params->q)){
+            $this->db->where('(users.username like \'%'.$this->db->escape_str($params->q).'%\' or users.realname like \'%'.$this->db->escape_str($params->q).'%\' )', NULL, FALSE);
+        }
+
+        if(!empty($params->user_id))
+            $this->db->where('user_id', $params->user_id);
+        if(!empty($params->id_before)   &&$params->id_before!=0)
+            $this->db->where('users.id <', $params->id_before);
+
+        if(!empty($params->id_after)    &&$params->id_after!=0)
+            $this->db->where('users.id >', $params->id_after);
+        
+        switch($params->order_by){
+            case "idlarger":
+                $this->db->order_by('users.id', 'desc');
+            break;
+            case "idsmaller":
+                $this->db->order_by('users.id', 'asc');
+            break;
+            case "newest":
+                $this->db->order_by('users.created', 'desc');
+            break;
+            case "oldest":
+                $this->db->order_by('users.created', 'asc');
+            break;
+            default:
+                if(is_array($params->order_by))
+                    $this->db->order_by($params->order_by);
+            break;
+        }
+        
+    }
+
+    /**
      * 사용자 리스트를 불러온다.
      * @param  array  $params 
      * @return object          상태와 데이터값을 반환한다
@@ -24,40 +88,37 @@ class user_model extends CI_Model {
             'page'      => 1, // 불러올 페이지
             'delimiter' => 30, // 한 페이지당 작품 수
             'order_by'  => 'newest', // newest, oldest
-            'keywords'  => '', // *plain으로 들어오고 이곳 모델에서 코드로 변형을 해준다.
+            'keywords'  => '', // 
             'get_profile' => false,
+            'from'  => 'all', // 조회기간
+            'q'  => '', 
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
     			$params->{$key} = $value;
     	}
-        
+
+        $this->db->start_cache();
+        $this->get_list_prep($params);
+
         $this->db
-            ->select('count(id) as count, ceil(count(id)/'.$params->delimiter.') as page')
+            ->select('count(users.id) as count, ceil(count(users.id)/'.$params->delimiter.') as page')
             ->from('users'); //set
 
         if($params->get_profile){
             $this->db->join('user_profiles', 'users.id=user_profiles.user_id', 'left');
         }
 
-        switch($params->order_by){
-            case "newest":
-                $this->db->order_by('created', 'desc');
-            break;
-            case "oldest":
-                $this->db->order_by('created', 'asc');
-            break;
-            default:
-                if(is_array($params->order_by))
-                    $this->db->order_by($params->order_by);
-            break;
-        }
-
+        $this->db->stop_cache();
         $count_data = $this->db->get()->row();
+        $this->db->flush_cache(); //clear active record
+
         $all_count = $count_data->count;
         $all_page = $count_data->page;
 
-        $this->db->flush_cache(); //clear active record
+
+        $this->db->start_cache();
+        $this->get_list_prep($params);
 
         $this->db->select('users.*');
 
@@ -73,26 +134,14 @@ class user_model extends CI_Model {
             $this->db->join($table, 'users.id='.$table.'.user_id', 'left');
             unset($table, $fields, $field);
         }
-        //TODO: keywords : [‘파인아트’,’동영상’]
 
     	$this->db
     		->from('users')
     		->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
-
-    	switch($params->order_by){
-    		case "newest":
-    			$this->db->order_by('created', 'desc');
-    		break;
-    		case "oldest":
-    			$this->db->order_by('created', 'asc');
-    		break;
-    		default:
-    			if(is_array($params->order_by))
-    				$this->db->order_by($params->order_by);
-    		break;
-    	}
-
-    	$users = $this->db->get();
+        
+        $this->db->stop_cache();
+        $users = $this->db->get();
+        $this->db->flush_cache();
 
     	$rows = array();
     	foreach ($users->result() as $row)

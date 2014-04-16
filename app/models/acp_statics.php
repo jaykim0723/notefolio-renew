@@ -98,10 +98,10 @@ class Acp_statics extends CI_Model
                 select 
                     users.id as user_id,
                     users.created as join_date,
-                    user_fb_info.regdate as fb_date
+                    user_sns_fb.regdate as fb_date
                 from
                     users
-                    left join user_fb_info on user_fb_info.id = users.id
+                    left join user_sns_fb on user_sns_fb.id = users.id
                 where 
                     users.id is not null
                     and users.activated =? and users.created between ? and ?
@@ -617,36 +617,59 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from log_work where type=? and regdate>?"; 
-        $query = $this->db->query($sql, array('V', $from));
+        $sql = "SELECT 
+                count(log_work_view.id) as all_count
+            from
+                log_work_view
+                left join works as w on w.work_id = log_work_view.work_id
+            where
+                w.status != 'deleted' and
+                log_work_view.regdate < ?"; 
+        $query = $this->db->query($sql, array($from));
         $all_count = 0;
-        foreach ($query->result() as $row)
-        {
-            $all_count = round($row->all_count);   
-            $all_first_count = round($row->all_count); 
-        }
+
+        $row = $query->row();
+        $all_count = round($row->all_count);   
+        $all_first_count = round($row->all_count); 
 
         $output = array(array('날짜' , '모든 작품 총 조회수', '오늘 받은 총 조회수', '오늘 받은 평균 조회수'));
         $data = array();
         
         $sql = "SELECT 
-                date_format(regdate, '%Y-%m-%d') as date,
-                count(id) as log_count,
-                count(distinct work_id) as work_count
+                date_format(log_work_view.regdate, '%Y-%m-%d') as date,
+                count(log_work_view.id) as all_log_count,
+                sum(if( (TIMESTAMPDIFF(SECOND, w.regdate, log_work_view.regdate) < 24*60*60), 1, 0 )) as log_count,
+                allcount.work_count
             from
-                log_work
+                log_work_view
+                left join works as w on w.work_id = log_work_view.work_id
+                left join ( select
+                    date_format(regdate, '%Y-%m-%d') as work_date,
+                    count(work_id) as work_count
+                    from works
+                    where
+                        works.status != 'deleted'
+                    group by work_date
+
+                    ) allcount on date_format(log_work_view.regdate, '%Y-%m-%d') = allcount.work_date
             where
-                type = ? and regdate between ? and ?
+                w.status != 'deleted' and
+                log_work_view.regdate between ? and ?
             group by date"; 
-        $query = $this->db->query($sql, array('V', $from, $to));
+        $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
-            $data[$row->date] = array(round(round($all_count=$all_count+$row->log_count)/10, 2), round($row->log_count), round($row->log_count/$row->work_count, 2));
+            $data[$row->date] = array(round($all_count+=($row->all_log_count)), round($row->log_count), round($row->log_count/$row->work_count, 2));
         }
 
         $i = 1;
         foreach ($period as $date) {
-            $output[$i] = array($date->format((($printYear)?'Y년 ':'').' m월 d일'), isset($data[$date->format('Y-m-d')][0])?$data[$date->format('Y-m-d')][0]:(($i-1==0)?$all_first_count:$output[$i-1][1]), isset($data[$date->format('Y-m-d')][1])?$data[$date->format('Y-m-d')][1]:0, isset($data[$date->format('Y-m-d')][2])?$data[$date->format('Y-m-d')][2]:0);
+            $output[$i] = array(
+                            $date->format((($printYear)?'Y년 ':'').' m월 d일'),
+                            isset($data[$date->format('Y-m-d')][0])?round($data[$date->format('Y-m-d')][0]/100, 3):(($i-1==0)?round($all_first_count/100, 3):$output[$i-1][1]),
+                            isset($data[$date->format('Y-m-d')][1])?$data[$date->format('Y-m-d')][1]:0,
+                            isset($data[$date->format('Y-m-d')][2])?$data[$date->format('Y-m-d')][2]:0
+                            );
             $i++;
         }
 
@@ -686,36 +709,59 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from log_work where type=? and regdate>?"; 
-        $query = $this->db->query($sql, array('N', $from));
+        $sql = "SELECT 
+                count(log_work_note.id) as all_count
+            from
+                log_work_note
+                left join works as w on w.work_id = log_work_note.work_id
+            where
+                w.status != 'deleted' and
+                log_work_note.regdate < ?"; 
+        $query = $this->db->query($sql, array($from));
         $all_count = 0;
-        foreach ($query->result() as $row)
-        {
-            $all_count = round($row->all_count);   
-            $all_first_count = round($row->all_count);   
-        }
+        
+        $row = $query->row();
+        $all_count = round($row->all_count);   
+        $all_first_count = round($row->all_count); 
 
         $output = array(array('날짜' , '모든 작품 총 추천수', '오늘 받은 총 추천수', '오늘 받은 평균 추천수'));
         $data = array();
         
         $sql = "SELECT 
-                date_format(regdate, '%Y-%m-%d') as date,
-                count(id) as log_count,
-                count(distinct work_id) as work_count
+                date_format(log_work_note.regdate, '%Y-%m-%d') as date,
+                count(log_work_note.id) as all_log_count,
+                sum(if( (TIMESTAMPDIFF(SECOND, w.regdate, log_work_note.regdate) < 24*60*60), 1, 0 )) as log_count,
+                allcount.work_count
             from
-                log_work
+                log_work_note
+                left join works as w on w.work_id = log_work_note.work_id
+                left join ( select
+                    date_format(regdate, '%Y-%m-%d') as work_date,
+                    count(work_id) as work_count
+                    from works
+                    where
+                        works.status != 'deleted'
+                    group by work_date
+
+                    ) allcount on date_format(log_work_note.regdate, '%Y-%m-%d') = allcount.work_date
             where
-                type = ? and regdate between ? and ?
-            group by date"; 
-        $query = $this->db->query($sql, array('N', $from, $to));
+                w.status != 'deleted' and
+                log_work_note.regdate between ? and ?
+            group by date";  
+        $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
-            $data[$row->date] = array(round(round($all_count=$all_count+$row->log_count)/10, 2), round($row->log_count), round($row->log_count/$row->work_count, 2));
+            $data[$row->date] = array(round($all_count+=($row->all_log_count)), round($row->log_count), round($row->log_count/$row->work_count, 2));
         }
 
         $i = 1;
         foreach ($period as $date) {
-            $output[$i] = array($date->format((($printYear)?'Y년 ':'').' m월 d일'), isset($data[$date->format('Y-m-d')][0])?$data[$date->format('Y-m-d')][0]:(($i-1==0)?$all_first_count:$output[$i-1][1]), isset($data[$date->format('Y-m-d')][1])?$data[$date->format('Y-m-d')][1]:0, isset($data[$date->format('Y-m-d')][2])?$data[$date->format('Y-m-d')][2]:0);
+            $output[$i] = array(
+                            $date->format((($printYear)?'Y년 ':'').' m월 d일'),
+                            isset($data[$date->format('Y-m-d')][0])?round($data[$date->format('Y-m-d')][0]/100, 3):(($i-1==0)?round($all_first_count/100, 3):$output[$i-1][1]),
+                            isset($data[$date->format('Y-m-d')][1])?$data[$date->format('Y-m-d')][1]:0,
+                            isset($data[$date->format('Y-m-d')][2])?$data[$date->format('Y-m-d')][2]:0
+                            );
             $i++;
         }
 
@@ -755,36 +801,59 @@ class Acp_statics extends CI_Model
              new DateTime($to)
         );
 
-        $sql = "SELECT count(id) as all_count from work_comments where regdate>?"; 
+        $sql = "SELECT 
+                count(work_comments.id) as all_count
+            from
+                work_comments
+                left join works as w on w.work_id = work_comments.work_id
+            where
+                w.status != 'deleted' and
+                work_comments.regdate < ?"; 
         $query = $this->db->query($sql, array($from));
         $all_count = 0;
-        foreach ($query->result() as $row)
-        {
-            $all_count = round($row->all_count);   
-            $all_first_count = round($row->all_count);
-        }
+        
+        $row = $query->row();
+        $all_count = round($row->all_count);   
+        $all_first_count = round($row->all_count); 
 
         $output = array(array('날짜' , '모든작품 총 댓글수', '오늘 받은 총 댓글수', '오늘 받은 평균 댓글수'));
         $data = array();
         
         $sql = "SELECT 
-                    date_format(regdate, '%Y-%m-%d') as date,
-                    count(id) as log_count,
-                    count(distinct work_id) as work_count
-                from
-                    work_comments
-                where
-                    regdate between ? and ?
-                group by date"; 
+                date_format(work_comments.regdate, '%Y-%m-%d') as date,
+                count(work_comments.id) as all_log_count,
+                sum(if( (TIMESTAMPDIFF(SECOND, w.regdate, work_comments.regdate) < 24*60*60), 1, 0 )) as log_count,
+                allcount.work_count
+            from
+                work_comments
+                left join works as w on w.work_id = work_comments.work_id
+                left join ( select
+                    date_format(regdate, '%Y-%m-%d') as work_date,
+                    count(work_id) as work_count
+                    from works
+                    where
+                        works.status != 'deleted'
+                    group by work_date
+
+                    ) allcount on date_format(work_comments.regdate, '%Y-%m-%d') = allcount.work_date
+            where
+                w.status != 'deleted' and
+                work_comments.regdate between ? and ?
+            group by date"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
-            $data[$row->date] = array(round(round($all_count=$all_count+$row->log_count)/10, 2), round($row->log_count), round($row->log_count/$row->work_count, 2));
+            $data[$row->date] = array(round($all_count+=($row->all_log_count)), round($row->log_count), round($row->log_count/$row->work_count, 2));
         }
 
         $i = 1;
         foreach ($period as $date) {
-            $output[$i] = array($date->format((($printYear)?'Y년 ':'').' m월 d일'), isset($data[$date->format('Y-m-d')][0])?$data[$date->format('Y-m-d')][0]:(($i-1==0)?$all_first_count:$output[$i-1][1]), isset($data[$date->format('Y-m-d')][1])?$data[$date->format('Y-m-d')][1]:0, isset($data[$date->format('Y-m-d')][2])?$data[$date->format('Y-m-d')][2]:0);
+            $output[$i] = array(
+                            $date->format((($printYear)?'Y년 ':'').' m월 d일'),
+                            isset($data[$date->format('Y-m-d')][0])?round($data[$date->format('Y-m-d')][0]/100, 3):(($i-1==0)?round($all_first_count/100, 3):$output[$i-1][1]),
+                            isset($data[$date->format('Y-m-d')][1])?$data[$date->format('Y-m-d')][1]:0,
+                            isset($data[$date->format('Y-m-d')][2])?$data[$date->format('Y-m-d')][2]:0
+                            );
             $i++;
         }
 
@@ -834,10 +903,10 @@ class Acp_statics extends CI_Model
                     (select 
                         date_format(regdate, '%Y-%m-%d') as date,
                             count(distinct user_id) as user_count,
-                            count(id) as work_count
+                            count(work_id) as work_count
                     from
                         works
-                    WHERE regdate >= ? and regdate <= ?
+                    WHERE regdate between ? and ?
                     group by date) work"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
@@ -883,10 +952,10 @@ class Acp_statics extends CI_Model
         //total works note count by month
         $sql = "SELECT date, view_count, work_count 
                     FROM (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as date, count(id) as view_count 
-                        FROM log_work WHERE type=? and regdate >= ? and regdate <= ? group by date) views 
-                    left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(id) as work_count 
-                        FROM works WHERE regdate >= ? and regdate <= ? group by work_date) works on views.date=works.work_date;"; 
-        $query = $this->db->query($sql, array('V', $from, $to, $from, $to));
+                        FROM log_work_view WHERE regdate between ? and ? group by date) views 
+                    left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(work_id) as work_count 
+                        FROM works WHERE regdate between ? and ? group by work_date) works on views.date=works.work_date;"; 
+        $query = $this->db->query($sql, array($from, $to, $from, $to));
         
         $output = array(array('날짜' , '총 조회수', '평균 조회수', '월간 업로드'));
         $i=1;
@@ -926,10 +995,10 @@ class Acp_statics extends CI_Model
         //total works note count by month
         $sql = "SELECT date, note_count, work_count 
                     FROM (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as date, count(id) as note_count 
-                        FROM log_work WHERE type=? and regdate >= ? and regdate <= ? group by date) notes 
-                    left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(id) as work_count 
-                        FROM works WHERE regdate >= ? and regdate <= ? group by work_date) works on notes.date=works.work_date;"; 
-        $query = $this->db->query($sql, array('N', $from, $to, $from, $to));
+                        FROM log_work_note WHERE regdate between ? and ? group by date) notes 
+                    left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(work_id) as work_count 
+                        FROM works WHERE regdate between ? and ? group by work_date) works on notes.date=works.work_date;"; 
+        $query = $this->db->query($sql, array($from, $to, $from, $to));
         
         $output = array(array('날짜' , '총 추천수', '평균 추천수', '월간 업로드'));
         $i=1;
@@ -970,9 +1039,9 @@ class Acp_statics extends CI_Model
         //total works comment count by month
         $sql = "SELECT date, comment_count, work_count 
                     FROM (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as date, count(id) as comment_count 
-                        FROM work_comments WHERE regdate >= ? and regdate <= ? group by date) comments 
-                    left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(id) as work_count 
-                        FROM works WHERE regdate >= ? and regdate <= ? group by work_date) works on comments.date=works.work_date;"; 
+                        FROM work_comments WHERE regdate between ? and ? group by date) comments 
+                    left join (SELECT DATE_FORMAT(regdate, '%Y년 %m월') as work_date, count(work_id) as work_count 
+                        FROM works WHERE regdate between ? and ? group by work_date) works on comments.date=works.work_date;"; 
         $query = $this->db->query($sql, array($from, $to, $from, $to));
         
         $output = array(array('날짜' , '총 댓글수', '평균 댓글수', '월간 업로드'));
@@ -1010,14 +1079,29 @@ class Acp_statics extends CI_Model
         $output = array(array('키워드' , '선택수'));
 
         $i = 1;
+
         //work category
-        $sql = "SELECT category, count(id) as count, all_count FROM work_categories
-                join (select count(id) as all_count from work_categories) allCount
-                group by category order by count desc limit 0, ?"; 
+        $sql = "SELECT category, count, all_count from (";
+
+        $this->load->config('keyword', TRUE);
+        $keyword_list = $this->config->item('keyword', 'keyword');
+        foreach ($keyword_list as $key => $keyword) { 
+            $sql .= "(SELECT '".$keyword."' as category, count(work_id) as count from works where keywords like '%".$key."%')";
+
+            if($i == count($keyword_list)){
+                $i = 1;
+            }
+            else {
+                $i++;
+                $sql .= " UNION ALL ";
+            }
+        }
+        $sql .= ") categories join (select count(work_id) as all_count from works ) w order by count desc limit 0, ?";
+
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
         {
-            $output[$i] = array($this->notefolio->print_keywords(array($row->category), FALSE), $row->count,);
+            $output[$i] = array($row->category, $row->count);
             $i++;
         }
 
@@ -1036,13 +1120,27 @@ class Acp_statics extends CI_Model
 
         $i = 1;
         //user category
-        $sql = "SELECT category, count(id) as count, all_count FROM user_categories
-                join (select count(id) as all_count from user_categories) allCount
-                group by category order by count desc limit 0, ?"; 
+        $sql = "SELECT category, count, all_count from (";
+
+        $this->load->config('keyword', TRUE);
+        $keyword_list = $this->config->item('keyword', 'keyword');
+        foreach ($keyword_list as $key => $keyword) { 
+            $sql .= "(SELECT '".$keyword."' as category, count(id) as count from user_profiles where keywords like '%".$key."%')";
+
+            if($i == count($keyword_list)){
+                $i = 1;
+            }
+            else {
+                $i++;
+                $sql .= " UNION ALL ";
+            }
+        }
+        $sql .= ") categories join (select count(id) as all_count from users ) w order by count desc limit 0, ?";
+
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
         {
-            $output[$i] = array($this->notefolio->print_keywords(array($row->category), FALSE), $row->count,);
+            $output[$i] = array($row->category, $row->count);
             $i++;
         }
 
@@ -1091,7 +1189,7 @@ class Acp_statics extends CI_Model
                     from
                         users
                     left join (select 
-                        user_id, id as work_id, regdate
+                        user_id, work_id, regdate
                     from
                         works
                     group by user_id
@@ -1197,7 +1295,7 @@ class Acp_statics extends CI_Model
                         from
                             works,
                             (select 
-                                user_id, id as work_id_first, regdate
+                                user_id, work_id as work_id_first, regdate
                             from
                                 works
                             group by user_id
@@ -1205,7 +1303,7 @@ class Acp_statics extends CI_Model
                         where
                             works.user_id = work_first.user_id
                             and
-                            works.id != work_first.work_id_first
+                            works.work_id != work_first.work_id_first
                         group by works.user_id
                     ) work_second ON work_first.user_id = work_second.user_id
                 order by gap
@@ -1290,7 +1388,7 @@ class Acp_statics extends CI_Model
         //query
         $sql = "SELECT  user_count as works, 
                         count(user_count) as count 
-                    from (SELECT count(id) as user_count from works group by user_id) o 
+                    from (SELECT count(work_id) as user_count from works group by user_id) o 
                     group by works order by works asc "; 
         $query = $this->db->query($sql, array());
         foreach ($query->result() as $row)
@@ -1430,7 +1528,7 @@ class Acp_statics extends CI_Model
 
         //count for user upload
         $sql = "SELECT count(id) as count FROM users left join
-                    (SELECT user_id, ifnull(count(id),0) as work_count FROM works
+                    (SELECT user_id, ifnull(count(work_id),0) as work_count FROM works
                      group by user_id) works
                     on users.id = works.user_id
                     WHERE work_count>? "; 
@@ -1445,11 +1543,9 @@ class Acp_statics extends CI_Model
         $i = 0;
         //user upload
         $sql = "SELECT id, username, realname, created, work_count FROM users left join
-                    (SELECT user_id, ifnull(count(id),0) as work_count FROM works
+                    (SELECT user_id, ifnull(count(work_id),0) as work_count FROM works
                      group by user_id) works
                     on users.id = works.user_id
-                    left join (SELECT user_id, realname FROM user_profiles) profile
-                    on users.id = profile.user_id
                     WHERE work_count>=? order by work_count desc"; 
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
@@ -1496,11 +1592,13 @@ class Acp_statics extends CI_Model
     {
 
         //count for user upload
-        $sql = "SELECT count(id) as count FROM works left join
-                    (SELECT work_id, hit_cnt as view_count FROM work_counts) work_views
-                    on works.id = work_views.work_id
+        $sql = "SELECT 
+                    count(work_id) as count,
+                    work_id, 
+                    hit_cnt as view_count 
+                    FROM works
 
-                    WHERE view_count>? "; 
+                    WHERE hit_cnt>? "; 
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
         {
@@ -1511,20 +1609,16 @@ class Acp_statics extends CI_Model
 
         $i = 0;
         //user upload
-        $sql = "SELECT id, title, users.user_id, username, realname, regdate, view_count FROM works left join
-                    (SELECT work_id, hit_cnt as view_count FROM work_counts) work_views
-                    on works.id = work_views.work_id left join
-                    (SELECT id as user_id, username FROM users
+        $sql = "SELECT work_id, title, users.user_id, username, realname, regdate, hit_cnt as view_count FROM works left join
+                    (SELECT id as user_id, username, realname FROM users
                      group by user_id) users
                     on works.user_id = users.user_id 
-                    left join (SELECT user_id, realname FROM user_profiles) profile
-                    on works.user_id = profile.user_id
-                    WHERE view_count>=? order by view_count desc"; 
+                    WHERE hit_cnt>=? order by hit_cnt desc"; 
         $query = $this->db->query($sql, array($count));
         foreach ($query->result() as $row)
         {
             $output['data'][$i] = array(
-                                'id'=>$row->id,
+                                'id'=>$row->work_id,
                                 'user_id'=>$row->user_id,
                                 'title'=>$row->title,
                                 'realname'=>$row->realname,
@@ -1569,14 +1663,29 @@ class Acp_statics extends CI_Model
         $output = array('data'=>array());
 
         $i = 1;
+
         //work category
-        $sql = "SELECT category, count(id) as count, all_count FROM work_categories
-                join (select count(id) as all_count from work_categories) allCount
-                group by category order by count desc limit 0, ?"; 
+        $sql = "SELECT category, count, all_count from (";
+
+        $this->load->config('keyword', TRUE);
+        $keyword_list = $this->config->item('keyword', 'keyword');
+        foreach ($keyword_list as $key => $keyword) { 
+            $sql .= "(SELECT '".$keyword."' as category, count(work_id) as count from works where keywords like '%".$key."%')";
+
+            if($i == count($keyword_list)){
+                $i = 1;
+            }
+            else {
+                $i++;
+                $sql .= " UNION ALL ";
+            }
+        }
+        $sql .= ") categories join (select count(work_id) as all_count from works ) w order by count desc limit 0, ?";
+
         $query = $this->db->query($sql, array($lineCount));
         foreach ($query->result() as $row)
         {
-            $output['data'][$i] = array('name'=>$this->notefolio->print_keywords(array($row->category), FALSE), 'count'=>$row->count, 'percent'=>round($row->count*100/$row->all_count,2)."%");
+            $output['data'][$i] = array('name'=>$row->category, 'count'=>$row->count, 'percent'=>round($row->count*100/$row->all_count,2)."%");
             $i++;
         }
 
@@ -1596,13 +1705,27 @@ class Acp_statics extends CI_Model
 
         $i = 1;
         //user category
-        $sql = "SELECT category, count(id) as count, all_count FROM user_categories
-                join (select count(id) as all_count from user_categories) allCount
-                group by category order by count desc limit 0, ?"; 
+        $sql = "SELECT category, count, all_count from (";
+
+        $this->load->config('keyword', TRUE);
+        $keyword_list = $this->config->item('keyword', 'keyword');
+        foreach ($keyword_list as $key => $keyword) { 
+            $sql .= "(SELECT '".$keyword."' as category, count(id) as count from user_profiles where keywords like '%".$key."%')";
+
+            if($i == count($keyword_list)){
+                $i = 1;
+            }
+            else {
+                $i++;
+                $sql .= " UNION ALL ";
+            }
+        }
+        $sql .= ") categories join (select count(id) as all_count from users ) w order by count desc limit 0, ?";
+
         $query = $this->db->query($sql, array($lineCount));
         foreach ($query->result() as $row)
         {
-            $output['data'][$i] = array('name'=>$this->notefolio->print_keywords(array($row->category), FALSE), 'count'=>$row->count, 'percent'=>round($row->count*100/$row->all_count,2)."%");
+            $output['data'][$i] = array('name'=>$row->category, 'count'=>$row->count, 'percent'=>round($row->count*100/$row->all_count,2)."%");
             $i++;
         }
 
@@ -1634,8 +1757,8 @@ class Acp_statics extends CI_Model
 
         //total user upload
         $sql = "SELECT count(id) as count FROM users left join
-                    (SELECT user_id, ifnull(count(id),0) as work_count FROM works
-                     where regdate >= ? and regdate <= ? group by user_id) works
+                    (SELECT user_id, ifnull(count(work_id),0) as work_count FROM works
+                     where regdate between ? and ? group by user_id) works
                     on users.id = works.user_id
                     WHERE work_count>? and activated = ? and created >= ? and created <= ?"; 
         $query = $this->db->query($sql, array($from, $to, 0, 1, $from, $to));
@@ -1645,7 +1768,7 @@ class Acp_statics extends CI_Model
         }
 
         //total works
-        $sql = "SELECT count(id) as count FROM works WHERE regdate >= ? and regdate <= ?"; 
+        $sql = "SELECT count(work_id) as count FROM works WHERE regdate between ? and ?"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
@@ -1671,23 +1794,23 @@ class Acp_statics extends CI_Model
         */
 
         //total works view count
-        $sql = "SELECT count(id) as count FROM log_work WHERE type = ? and regdate >= ? and regdate <= ?"; 
-        $query = $this->db->query($sql, array('V', $from, $to));
+        $sql = "SELECT count(id) as count FROM log_work_view WHERE regdate between ? and ?"; 
+        $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
             $output['viewCount'] = $row->count;
         }
 
         //total works note count
-        $sql = "SELECT count(id) as count FROM log_work WHERE type = ? and regdate >= ? and regdate <= ?"; 
-        $query = $this->db->query($sql, array('N', $from, $to));
+        $sql = "SELECT count(id) as count FROM log_work_note WHERE regdate between ? and ?"; 
+        $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {
             $output['noteCount'] = $row->count;
         }
 
         //total works comment count
-        $sql = "SELECT count(id) as count FROM work_comments WHERE regdate >= ? and regdate <= ?"; 
+        $sql = "SELECT count(id) as count FROM work_comments WHERE regdate between ? and ?"; 
         $query = $this->db->query($sql, array($from, $to));
         foreach ($query->result() as $row)
         {

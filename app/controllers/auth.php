@@ -38,7 +38,10 @@ class Auth extends CI_Controller
     {
         $is_ajax = $this->input->is_ajax_request();
         $go_to = $this->input->post('go_to')?$this->input->post('go_to'):'/'; # get url to go after login
- 
+        
+        if($this->input->get_post('magazine_login')!==FALSE){
+            $go_to = 'http://magazine.notefolio.net';
+        }
 
         if ($this->_login_check($go_to)) {
             $data['login_by_username'] = ($this->config->item('login_by_username', 'tank_auth') AND

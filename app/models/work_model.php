@@ -65,7 +65,7 @@ class work_model extends CI_Model {
                 break;
         }
         if($params->from!='all'){
-            $this->db->having("(works.regdate >= ".$this->db->escape($from).")", NULL, FALSE); // 모든 기준이 regdate로 하기 때문에
+            $this->db->where("(works.regdate >= ".$this->db->escape($from).")", NULL, FALSE); // 모든 기준이 regdate로 하기 때문에
             // $this->db->having("(works.regdate >= ".$this->db->escape($from)." or works.moddate >= ".$this->db->escape($from).")", NULL, FALSE);
         }
 
@@ -73,8 +73,9 @@ class work_model extends CI_Model {
             $this->db->where('( works.keywords like "%'.implode('%" or works.keywords like "%', $params->keywords).'%" )', NULL, FALSE);
         }
 
+        $params->q = strtolower($params->q);
         if(!empty($params->q)){
-            $this->db->where('(MATCH (works.title, works.tags) AGAINST ('.$this->db->escape($params->q).') or users.username like \'%'.$this->db->escape_str($params->q).'%\' or users.realname like \'%'.$this->db->escape_str($params->q).'%\'  )', NULL, FALSE);
+            $this->db->where('( lower(works.title) like \'%'.$this->db->escape_str($params->q).'%\' or lower(works.contents) like \'%'.$this->db->escape_str($params->q).'%\' or lower(works.keywords) like \'%'.$this->db->escape_str($params->q).'%\' or lower(users.username) like \'%'.$this->db->escape_str($params->q).'%\' or lower(users.realname) like \'%'.$this->db->escape_str($params->q).'%\'  )', NULL, FALSE);
         }
 
         if(!empty($params->user_id))
@@ -123,15 +124,34 @@ class work_model extends CI_Model {
 
         if($params->view_rank_point){
             $this->load->config('activity_point', TRUE);
+
+            $period = $this->config->item('period', 'activity_point');
+
             $this->db->join('(SELECT
                 ref_id as work_id,
                 ifnull(sum(point_get), 0) as point 
                 FROM `notefolio-renew`.log_activity
                 where area=\'work\' 
-                and regdate >= '.$this->db->escape($this->config->item('period', 'activity_point')).'
+                and regdate >= '.$this->db->escape($period['feedback']).'
                 group by work_id) feedbacks', 'works.work_id = feedbacks.work_id', 'left');
             $this->db->select('feedbacks.point as feedback_point');
-            $this->db->select('(works.discoverbility + ifnull(feedbacks.point, 0) + works.staffpoint) as rank_point', FALSE);
+
+            $this->db->join('(select
+                    work_id,
+                    (case
+                        when (DATEDIFF(works.regdate, '.$this->db->escape($period['discoverbliity_full']).') >= 0) THEN works.discoverbility
+                        when (DATEDIFF(works.regdate, '.$this->db->escape($period['discoverbliity_zero']).') >= 0) THEN works.discoverbility * DATEDIFF(works.regdate, '.$this->db->escape($period['discoverbliity_zero']).') / DATEDIFF('.$this->db->escape($period['discoverbliity_full']).', '.$this->db->escape($period['discoverbliity_zero']).')
+                        ELSE 0
+                    END) as discoverbility_by_period
+                from
+                    works) dp', 'works.work_id = dp.work_id', 'left');
+            $this->db->select('dp.discoverbility_by_period');
+
+            $this->db->select('( case when (note_cnt = 0) then 0 else (discoverbility_by_period + ifnull(feedbacks.point, 0) + works.staffpoint) end ) as rank_point', FALSE);
+        }
+
+        if($params->only_staffpoint_not_zero){
+            $this->db->where('staffpoint !=', 0);
         }
         
     }
@@ -148,6 +168,7 @@ class work_model extends CI_Model {
             'id_after'  => 0, // call by...
             'page'      => 1, // 불러올 페이지
             'delimiter' => 24, // 한 페이지당 작품 수
+            'correct_count' => 0, // 보정계수
             'from'  => 'all', // 조회기간
             'order_by'  => 'newest', // newest, oldest
             'keywords'  => array(), 
@@ -160,7 +181,8 @@ class work_model extends CI_Model {
             'exclude_enabled'   => false, // enabled 태그된 작품 제외
             'exclude_disabled'   => false, // disabled 태그된 작품 제외
             'exclude_deleted'   => true, // deleted 태그된 작품 제외
-            'view_rank_point'   => false, // deleted 태그된 작품 제외
+            'view_rank_point'   => false, // rank point보기
+            'only_staffpoint_not_zero'   => false, // staffpoint 0 아닌거 보기
         );
         foreach($default_params as $key => $value){
             if(!isset($params->{$key}))
@@ -175,7 +197,7 @@ class work_model extends CI_Model {
             // ->select('work_id, title, realname, regdate, keywords, tags, user_id, folder, contents, moddate, hit_cnt, note_cnt, comment_cnt, collect_cnt, ccl, discoverbility')
             ->from('works')
             ->join('users', 'users.id = works.user_id', 'left')
-            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)); //set
+            ->limit($params->delimiter, ((($params->page)-1)*$params->delimiter)+((($params->page)>1)?$params->correct_count:0)); //set
 
         $this->db->stop_cache();
         $works = $this->db->get();
@@ -242,7 +264,8 @@ class work_model extends CI_Model {
             'exclude_enabled'   => false, // enabled 태그된 작품 제외
             'exclude_disabled'   => false, // disabled 태그된 작품 제외
             'exclude_deleted'   => true, // deleted 태그된 작품 제외
-            'view_rank_point'   => false, // deleted 태그된 작품 제외
+            'view_rank_point'   => false, // rank point보기
+            'only_staffpoint_not_zero'   => false, // staffpoint 0 아닌거 보기
     	);
     	foreach($default_params as $key => $value){
     		if(!isset($params->{$key}))
@@ -253,7 +276,7 @@ class work_model extends CI_Model {
         $this->get_list_prep($params);
 
         $this->db
-            ->select('count(*) as count, ceil(count(*)/'.$params->delimiter.') as all_page')
+            ->select('count(*) as count, ceil(count(*)/'.$params->delimiter.') as all_page, works.regdate')
             ->from('works')
             ->join('users', 'users.id = works.user_id', 'left'); //set
 
@@ -366,6 +389,26 @@ class work_model extends CI_Model {
             $this->db->flush_cache();
 
             try{
+                $first = $this->db
+                    ->select('work_id')
+                    ->where('user_id', $user->id)
+                    ->where_not_in('works.status', array('disabled', 'deleted'))
+                    ->order_by('work_id', 'desc')
+                    ->limit(1)
+                    ->get('works')->row();
+                if(isset($first->work_id)){
+                    $first = $first->work_id;
+                }else{
+                    $first = 0;
+                }
+            }
+            catch(Exception $e){
+                $first = 0;
+            }
+            $data->row->first_work_id = $first;
+            $this->db->flush_cache();
+
+            try{
                 $next = $this->db
                     ->select('work_id')
                     ->where('work_id >', $data->row->work_id)
@@ -405,6 +448,26 @@ class work_model extends CI_Model {
                 $prev = 0;
             }
             $data->row->prev_work_id = $prev;
+            $this->db->flush_cache();
+
+            try{
+                $last = $this->db
+                    ->select('work_id')
+                    ->where('user_id', $user->id)
+                    ->where_not_in('works.status', array('disabled', 'deleted'))
+                    ->order_by('work_id', 'asc')
+                    ->limit(1)
+                    ->get('works')->row();
+                if(isset($last->work_id)){
+                    $last = $last->work_id;
+                }else{
+                    $last = 0;
+                }
+            }
+            catch(Exception $e){
+                $last = 0;
+            }
+            $data->row->last_work_id = $last;
             $this->db->flush_cache();
 
 

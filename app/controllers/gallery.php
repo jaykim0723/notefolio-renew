@@ -17,7 +17,7 @@ class Gallery extends CI_Controller {
     }
     function random(){
         $work = $this->work_model->get_random_work_info();
-        redirect($work->username.'/'.$work->work_id);
+        redirect($work->username.'/'.$work->work_id, 'location', 301);
     }
 
     /**
@@ -77,22 +77,17 @@ class Gallery extends CI_Controller {
         ));
         if($work->status==='fail' // 없거나
             or (
-                $work->row->status=='disabled' and !($work->row->user->id == USER_ID or $this->nf->admin_is_elevated)
+                $work->row->status=='disabled' and !($work->row->user->id == USER_ID or $this->nf->admin_is_elevated())
                 )
             or (
-                $work->row->status=='deleted' and !($this->nf->admin_is_elevated)
+                $work->row->status=='deleted' and !($this->nf->admin_is_elevated())
                 )){
-            /*
-             
-            or ($work->row->status!='enabled' && !$this->nf->admin_is_elevated) // 관리자가 아니거나
-            or ($work->row->status=='disabled' && $work->row->user->id != USER_ID)
-            or ($work->row->status=='deleted')
-            */
+            $this->output->set_status_header('404');
             alert('작품이 존재하지 않습니다.');
-            var_export($this->agent->referrer());
-            exit();
-            redirect(($this->agent->referrer()!='')?$this->agent->referrer():'/');
-        }   
+        }
+        else if($work->row->user->username!=$this->uri->segment(1)){
+            redirect('/'.$work->row->user->username.'/'.$this->uri->segment(2), 'location', 301);
+        }
 
         $work->row->hit_cnt++;
         $description = '';
@@ -114,7 +109,7 @@ class Gallery extends CI_Controller {
             'description' => $description,
             'site_name' => $this->config->item('website_name', 'tank_auth'),
             'url' => site_url($work->row->user->username.'/'.$work->row->work_id),
-            'image' => site_url('data/covers/'.$work->row->work_id.'_t2.jpg?_='.substr($work->row->moddate, -2)),
+            'image' => site_url('data/covers/'.$work->row->work_id.'_t3.jpg?_='.substr($work->row->moddate, -2)),
             'title' => $work->row->title.' - '.implode(', ', $this->nf->category_to_array($work->row->keywords)),
             'profile' => array(
                 'username'  => $work->row->user->username,
@@ -160,10 +155,10 @@ class Gallery extends CI_Controller {
             'user_A' => USER_ID,
             ));
 
-        redirect($this->session->userdata('username').'/'.$work_id.'/update');
+        redirect($this->session->userdata('username').'/'.$work_id.'/update', 'location', 302);
     }
     function upload(){ // 기존의 주소를 보전하기 위하여
-        redirect('gallery/create');
+        redirect('gallery/create', 'location', 301);
     }
 
 
@@ -371,7 +366,7 @@ class Gallery extends CI_Controller {
                 ));
             $cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'/../app-cli/cli.php Fbconnect post "'.$fb_query.'"';
             exec($cmd . " > /dev/null &");  
-            error_log($cmd);
+            //error_log($cmd);
             //$this->fbsdk->post_data($this->tank_auth->get_user_id(), array('type'=>'post_work', 'work_id'=>$result));
         }
     }
@@ -391,7 +386,7 @@ class Gallery extends CI_Controller {
             $this->load->config('upload', TRUE);
             
             $this->db
-                ->set('work_id', 0)
+                ->set('type', 'work')
                 ->where('type', 'cover')
                 ->where('work_id', $params->work_id)
                 ->update('uploads');
@@ -423,7 +418,7 @@ class Gallery extends CI_Controller {
         if($result->status==='fail')
             alert($result->message);
 
-        redirect('/'.$this->tank_auth->get_username());
+        redirect('/'.$this->tank_auth->get_username(), 'location', 302);
     }
 
 
@@ -479,7 +474,7 @@ class Gallery extends CI_Controller {
                 ));
             $cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'/../app-cli/cli.php Fbconnect post "'.$fb_query.'"';
             exec($cmd . " > /dev/null &");  
-            error_log($cmd);
+            //error_log($cmd);
         }
 
         return $result;
@@ -576,7 +571,9 @@ class Gallery extends CI_Controller {
         return $result;
     }
 
-
+    function comment_list($id=''){ //for redirect
+        return redirect('/gallery/'.$this->uri->segment(3), 'location', 301);
+    }
 
 }
 

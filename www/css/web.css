@@ -16,6 +16,9 @@ html {
 }
 body {
 }
+input:focus, button:focus, .bootstrap-select .btn:focus {
+	outline: none!important;
+}
 #header {
 	height: 60px;
 }
@@ -304,6 +307,7 @@ body {
 	padding: 20px 10px 20px 37px;
 }
 
+.work-info h1,
 .work-info h2,
 #work-form h4 {
 	font-family: 'Nanum Gothic', '나눔고딕';
@@ -556,6 +560,7 @@ body {
 .work-contents > .block-text:hover .wysihtml5-toolbar {
 	display: block;
 }
+
 #content-block-list .block-text iframe {
 	min-height: 200px!important;
 	border-color: #f0f0f0!important;
@@ -585,13 +590,18 @@ div.upload-guide{
 	font-size: 40px;
 	z-index: 10;
 }
-#work-content-blockadder li{
-	cursor: pointer;
+#work-content-blockadder li.ui-sortable-helper{
+	width: 40px!important;
+	height:57px!important;
+	padding-top: 200px;
 }
 #work-content-blockadder li.block-video {
 	padding-top: 0;
 	padding-bottom: 0;
 	height: auto;
+}
+#work-content-blockadder li.{
+	cursor: pointer;
 }
 li#trash-bin{
 	display: block;
@@ -665,6 +675,7 @@ li#trash-bin{
 	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=1);
 	opacity: 0.01;
 }
+
 #work-form {
 	position: relative;
 }
@@ -826,7 +837,7 @@ li#trash-bin{
 	vertical-align:top;	
 }
 .profile-thumbnail-list .thumbbox img {
-	width: 80%;
+	max-width: 80%;
 }
 
 
@@ -841,7 +852,8 @@ li#trash-bin{
 .comment-block {
 }
 .comment-block .comment-inner {
-	padding:10px 30px 0;
+	padding:10px 30px;
+	overflow: hidden;
 }
 	.comment-control-area {
 		position: absolute;
@@ -882,6 +894,14 @@ textarea.comment-textarea {
 		width: 65%;
 	}
 	
+}
+.comment-textarea {
+	margin-left: 70px;
+	margin-right: 58px;
+	border: 0;
+	color: #aaa;
+	font-size: 13px;
+	word-break: break-all;
 }
 
 

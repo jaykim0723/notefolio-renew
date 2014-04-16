@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes"><link href="/css/normalize.css" rel="stylesheet"/>
 <script src="/js/libs/jquery-1.10.2.min.js"></script>
+<link href="/css/acp/bootstrap.css" rel="stylesheet">
 <link href="/css/acp/bootstrap.min.css" rel="stylesheet">
 <link href="/css/acp/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
@@ -70,7 +71,8 @@
           <ul class="dropdown-menu">
             <li><a href="/acp/site/keywords">키워드</a></li>
             <li><a href="/acp/site/main_banner">메인배너</a></li>
-            <li><a href="/acp/site/access_log">접속로그</a></li>
+            <li><a href="/acp/site/access_log/list/">접속로그</a></li>
+            <li><a href="/acp/site/access_log/list/search/only_outside/">접속로그(외부)</a></li>
           </ul>
         </li>
         <li id="menu-user" class="dropdown<?=($this->uri->segment(2)=='user')?' active':''?>">
@@ -113,7 +115,8 @@
         		<b class="caret"></b>
         	</a>
           <ul class="dropdown-menu">
-            <li><a href="/acp/statics/research">분석</a></li>
+            <li><a href="/acp/statics/research/user">회원 분석</a></li>
+            <li><a href="/acp/statics/research/work">작품 분석</a></li>
             <li><a href="/acp/statics/stat">현황</a></li>
           </ul>
         </li>

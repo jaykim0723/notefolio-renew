@@ -117,7 +117,7 @@ class Comment extends CI_Controller {
                 	));
                 $cmd = 'php '.$this->input->server('DOCUMENT_ROOT').'/../app-cli/cli.php Fbconnect post "'.$fb_query.'"';
                 exec($cmd . " > /dev/null &");  
-                error_log($cmd);
+                //error_log($cmd);
                 //$this->fbsdk->post_data($this->tank_auth->get_user_id(), array('type'=>'post_comment', 'work_id'=>$this->input->post('work_id')));
             }
         }

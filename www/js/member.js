@@ -183,8 +183,11 @@ var workUtil = {
 			return;
 		}
 		
+		var discoverbilityVal = ( 100 * parseFloat($('#work-discoverbility > span').css('width')) / parseFloat($('#work-discoverbility > span').parent().css('width')) );
+		if(discoverbilityVal>100) discoverbilityVal = 100;
+
 		var discoverbilityField = $('<input type="hidden" name="discoverbility">')
-			.val(( 100 * parseFloat($('#work-discoverbility > span').css('width')) / parseFloat($('#work-discoverbility > span').parent().css('width')) ))
+			.val(discoverbilityVal)
 			.appendTo($(form));
 
 		var contents = [];
@@ -408,19 +411,9 @@ var workUtil = {
     			scrollSensitivity: 10,
     			tolerance: "pointer",
 				start: function(event, ui){
-					posTop = $(ui.helper).position().top;
-					console.log($(ui.helper).position().top);
-
-					/*var posOrig = $(ui.helper).offset().top();
-
-                    $(window).scroll(function() {
-						var pos = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
-						$(ui.helper).stop().scrollTop(position+posOrig);
-					});*/
+					$(ui.helper).css('position', 'fixed');
 				},
 				sort: function(event, ui){
-					//$(ui.helper).css('top', (posTop+$(document).scrollTop()-$('#content-block-list').offset().top+100)+"px");
-					console.log($(ui.helper).position().top);
 				},
 				stop: function(event, ui){
 					$(this).css("height","auto");
@@ -847,8 +840,12 @@ var profileUtil = {
 			blockPage.unblock();
 //			console.log('crop profile bg done > responseJSON', responseJSON);
 			// 프로필 배경을 응답받은 주소로 갱신을 해준다.
-			msg.open('적용이 완료되었습니다.');
-			$('#profile-header').css('background-image', 'url('+responseJSON.src+')');
+    		if(responseJSON.status=='done'){
+    			msg.open('적용이 완료되었습니다.', 'success');
+    			$('#profile-header').css('background-image', 'url('+responseJSON.src+')');
+			}else{
+    			msg.open(responseJSON.msg, 'error');
+    		}
 		});
 	},
 	changeRealname : function(){
@@ -991,16 +988,31 @@ var profileUtil = {
 		    title: 'SNS주소 설정',
 		    message: function(){
 		    	var area = '<label>해당사항이 있는 곳에 아이디를 지정해주세요.</label><br/><br/>';
+		    	socialUrl = {
+		    		'website': '',
+		    		'facebook': 'facebook.com',
+		    		'twitter': 'twitter.com',
+		    		'pinterest': 'pinterest.com',
+		    		'tumblr': 'tumblr.com',
+		    		'vimeo': 'vimeo.com'
+		    	};
 				$.each([
 					'website', 'facebook', 'twitter', 'pinterest', 'tumblr', 'vimeo'
 				], function(k, v){
 					var value = $('#profile-sns-link > a.'+v).data('value');
 					if(empty(value))
 						value = '';
-					area += '<div class="form-group row">'+
-						'<div class="col-xs-2 centered"><i class="pi pi-'+v+'"></i></div>'+
-						'<div class="col-xs-10"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>'+
-					'</div>';
+					area += '<div class="form-group row">';
+					area += '<div class="col-xs-2 centered"><i class="pi pi-'+v+'"></i></div>';
+					
+					if(socialUrl[v]== '') //website
+						area += '<div class="col-xs-10"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>';
+					else if(socialUrl[v]=='tumblr.com')
+						area += '<div class="col-xs-5"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div><div class="col-xs-5 sns-label"><label for="'+v+'">.'+socialUrl[v]+'</label></div>';
+					else
+						area += '<div class="col-xs-4 sns-label"><label for="'+v+'">'+socialUrl[v]+'/</label></div><div class="col-xs-6"><input type="text" class="form-control" name="'+v+'" value="'+value+'"/></div>';
+					
+					area += '</div>';
 				});
 				var $message = $(
 					'<div id="dialog-change-sns">'+

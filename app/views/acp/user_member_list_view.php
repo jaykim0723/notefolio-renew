@@ -10,6 +10,64 @@
           <!-- /widget-header -->
           <div class="widget-content">
             <div class="container">
+              <div class="col-lg-2 col-sm-2" style="border-bottom: 1px solid #efefef;">
+                <h4>검색옵션</h4>
+              </div>
+              <div class="col-lg-10 col-sm-10" style="border-bottom: 1px solid #efefef;">
+                -
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </div>
+
+              <div class="col-lg-2 col-sm-2" style="border-bottom: 1px solid #efefef;">
+                <h4>카테고리</h4>
+              </div>
+              <div class="col-lg-10 col-sm-10" style="border-bottom: 1px solid #efefef;">
+              <?php 
+              $this->load->config('keyword', TRUE);
+              $keyword_list = $this->config->item('keyword', 'keyword');
+
+              foreach ($keyword_list as $key => $keyword) { ?>
+                <input type="checkbox" name="cat_<?php echo $key?>" id="cat_<?php echo $key?>" 
+                  value="true"<?=(isset($args['cat_'.$key]) && filter_var($args['cat_'.$key], FILTER_VALIDATE_BOOLEAN) )?' checked':''?>
+                  onchange="javascript:url_go_to('cat_<?php echo $key?>', 'TRUE', !($(this).is(':checked')));">
+                <label for="cat_<?php echo $key?>" style="display:inline-block;"><?php echo $keyword;?></label>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <?php } ?>
+              </div>
+
+              <div class="col-lg-3 col-sm-6" style="border-bottom: 1px solid #efefef;">
+                <select name="order" id="order" onchange="javascript:url_go_to('order', $(this).val());">
+                  <option value="idlarger"<?=($args['order']=="idlarger")?' selected':''?>>번호역순</option>
+                  <option value="idsmaller"<?=($args['order']=="idsmaller")?' selected':''?>>번호순</option>
+                  <option value="newest"<?=($args['order']=="newest")?' selected':''?>>최신순</option>
+                  <option value="oldest"<?=($args['order']=="oldest")?' selected':''?>>과거순</option>
+                </select>
+              </div>
+              
+              <div class="col-lg-4 col-sm-6" style="border-bottom: 1px solid #efefef;">
+                <div class="input-group">가입일기준 
+                    <!-- <span class="input-group-addon"></span> -->
+                  <select class="" name="period" id="period" onchange="javascript:url_go_to('period', $(this).val());">
+                    <option value="all"<?=($args['period']=="all")?' selected':''?>>전체 기간</option>
+                    <option value="day"<?=($args['period']=="day")?' selected':''?>>오늘</option>
+                    <option value="week"<?=($args['period']=="week")?' selected':''?>>이번 주</option>
+                    <option value="month"<?=($args['period']=="month")?' selected':''?>>이번 달</option>
+                    <option value="month3"<?=($args['period']=="month3")?' selected':''?>>최근 3달</option>
+                  </select>
+                </div>
+              </div>
+
+
+              <div class="col-lg-5 col-sm-12">
+                <div class="col-lg-8 col-sm-10 search-center pull-left">
+                  <input class="form-control" type="text" name="q" id="search_q" placeholder="검색어" value="<?=urldecode($args['q'])?>"/>
+                </div>
+                <div class="col-lg-4 col-sm-2 search-center pull-right">
+                  <button class="btn btn-info" id="search_btn" onclick="javascript:url_go_to('q', encodeURIComponent($('#search_q').val()));">검색</button>
+                </div>
+              </div>
+            </div>
+            <div class="container">
               <p>전체: <?=$all_count?>개</p>
               <p>페이지: <?=$page?>/<?=$all_page?> 페이지</p>
             </div>
@@ -49,7 +107,7 @@
                 </table>
               </div>
               <!-- /table-responsive -->
-              <?=get_paging($params=array('now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/user/member/list'))?>
+              <?=get_paging($params=array('now_page'=>$page, 'last_page'=>$all_page, 'url'=> '/user/member/list', 'url_affix'=>$args))?>
             </div>
           </div>
           <!-- /widget-content -->

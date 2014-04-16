@@ -1,0 +1,12 @@
+User-agent: *
+# Crawl-delay: 30
+Disallow: 
+Disallow: /acp/
+Disallow: /captcha/
+Disallow: /css/
+Disallow: /data/
+Disallow: /fonts/
+Disallow: /img/
+Disallow: /js/
+Disallow: /sprites/
+Sitemap: http://www.notefolio.net/sitemap

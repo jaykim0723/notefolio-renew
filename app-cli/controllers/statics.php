@@ -13,7 +13,7 @@ class Statics extends CI_Controller {
 			$date = date("Y-m-d");
 		echo("Date: $date".PHP_EOL);
 
-		$this->load->model('db/log_user_active_db');
+		$this->load->model('log_user_active_db');
 
 		$this->db->trans_start();
 		$this->log_user_active_db->_insert(array('date'=>$date));

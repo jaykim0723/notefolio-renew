@@ -9,6 +9,13 @@
 
 			// 사이드바 불러오기
 			workInfoUtil.getRecentList($work.data('id'));
+
+			if($('.more-link').length>0){
+				var moreLinkId = $('.more-link').attr('href').split('/')[2];
+				if(site.segment[1] == moreLinkId){
+					$('.more-link').remove();
+				}
+			}
 		}
 	};
 </script>
@@ -98,7 +105,7 @@
 										</div> -->
 
 										<!-- 제목 -->
-										<h2 class="work-title"><?php echo $row->title; ?>
+										<h1 class="work-title"><?php echo $row->title; ?>
 											<?php if (USER_ID==$row->user_id): ?>
 											<a href="/<?php echo $row->user->username ?>/<?php echo $row->work_id ?>/update" class="work-btn btn-update-work">
 												edit ·
@@ -108,7 +115,7 @@
 											</a>
 											<?php endif ?>
 											
-										</h2>
+										</h1>
 										<div class="work-info-time">
 											<?php echo $this->nf->print_time($row->regdate) ?>
 											/
@@ -262,6 +269,8 @@
 
 				<?php if ($row->prev_work_id!=0): ?>
 					<a href="/<?php echo $row->user->username; ?>/<?php echo $row->prev_work_id; ?>" class="more-link btn btn-default btn-block btn-more">more</a>
+				<?php elseif ($row->first_work_id!=0 && $row->work_id!=$row->first_work_id): ?>
+					<a href="/<?php echo $row->user->username; ?>/<?php echo $row->first_work_id; ?>" class="more-link btn btn-default btn-block btn-more">more</a>
 				<?php endif ?>
 				
 

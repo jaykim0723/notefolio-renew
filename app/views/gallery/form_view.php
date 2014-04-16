@@ -22,7 +22,7 @@
 				<input id="title" name="title" type="text" class="form-control input-lg col-md-12" style="border-color: #fff;box-shadow: none !important;"placeholder="Title"/>
 				<br>
 				<h4 class="hide-h2">내용</h4>
-				<ul style="margin-top:0;" id="content-block-list" class="work-info list-unstyled work-contents">
+				<ul style="margin-top:0;" id="content-block-list" class="work-info list-unstyled work-contents work-editing">
 				</ul>
 				<div id="content-multiple">
 					<img src="/img/uploadcont2.png" alt=""/>

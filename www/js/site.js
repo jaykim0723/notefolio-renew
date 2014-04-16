@@ -883,7 +883,7 @@ var workInfoUtil = {
 			collectUtil.open(this);
 		}).on('click', '.btn-cancel-collect', function(){
 			collectUtil.close(this);
-		}).on('click', '.comment-textarea', function(){
+		}).on('click', '.comment-textform', function(){
 			if(site.user_id==0){
 				site.requireLogin();
 				$(this).blur();
@@ -946,7 +946,7 @@ var workInfoUtil = {
 				var work_id = this.id.replace('work-','');
 				workInfoUtil.selectRecentList(work_id);
 				var title = $.trim($('.work-title','#work-'+work_id).text());
-				var category = $.trim($('.category','#work-'+work_id).map(function(i, el){return $(el).text();}).get().join(', '));
+				var category = $.trim($('.work-info .category','#work-'+work_id).map(function(i, el){return $(el).text();}).get().join(', '));
 				title = title+' - '+category;
 				History.replaceState(null, title, work_id); // pushState로 주소 바꾸기
 			}
@@ -979,13 +979,24 @@ var workInfoUtil = {
 	selectRecentList : function(work_id){
 		var $workRecentList = $('#work-recent-list');
 		if($workRecentList.children('li').length==0) return;
-		$workRecentList.children('.selected').removeClass('selected');
-		$workRecentList.children('#work-recent-'+work_id).addClass('selected');
-		$workRecentList.scrollTo($workRecentList.children('#work-recent-'+work_id));
-		$workRecentList.css('top', top);
+		if($workRecentList.children('#work-recent-'+work_id).length==0){
+			workInfoUtil.getPrevRecentList();
+		}
+		setTimeout(function(){
+			$workRecentList.children('.selected').removeClass('selected');
+			$workRecentList.children('#work-recent-'+work_id).addClass('selected');
+			$workRecentList.scrollTo($workRecentList.children('#work-recent-'+work_id));
+		}, 250);
 	},
 	initRecentList : function(){
-		var top = $('#work-recent-works').offset().top - $('#work-sidebar').offset().top + $('#work-recent-works').outerHeight();
-		$('#work-recent-list').css('top', top);
+		var $workRecentList = $('#work-recent-list');
+		if($workRecentList.children('.selected').length==0){
+			var top = $('#work-recent-works').offset().top - $('#work-sidebar').offset().top + $('#work-recent-works').outerHeight();
+			$('#work-recent-list').css('top', top);
+		}
+		else {
+			$workRecentList.scrollTo($workRecentList.children('.selected'));
+		}
+
 	}
 };

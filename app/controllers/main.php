@@ -22,6 +22,7 @@ class Main extends CI_Controller {
 			'allow_enabled' => true,
 			'page'      => $page,
 			'delimiter' => $page==1 ? 17 : 16 , // 처음일 때에는 하나를 따로 뺀다
+			'correct_count' => 1,
 			'order_by' => 'nofol_rank'
 		));
 		
