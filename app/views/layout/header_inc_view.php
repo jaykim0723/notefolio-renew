@@ -17,6 +17,7 @@
 
 
 	<link href="/css/bootstrap.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="/css/style.css" type="text/css"> <!--닷 스타일시트 -->
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -24,7 +25,7 @@
 	<![endif]-->
 	<link href="/css/bootstrap-dialog.css" rel="stylesheet"/>
 	<link href="/css/bootstrap-select.css" rel="stylesheet"/>
-	<link href="/css/flick/jquery-ui-view-1.10.4.custom.min.css" rel="stylesheet"/>
+<!--	<link href="/css/flick/jquery-ui-view-1.10.4.custom.min.css" rel="stylesheet"/>	-->
 	<link href="/css/util.css" rel="stylesheet"/>
 	<link href="/css/mmenu/jquery.mmenu.nf.css" rel="stylesheet" /><!-- jQuery.mmenu -->
 	<link href="/css/mobile.css" rel="stylesheet"/>
@@ -32,17 +33,17 @@
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="/css/web.css" type="text/css" media="screen"/>
 	<![endif]-->
+	<link href='//fonts.googleapis.com/css?family=Exo:400,500,600,700,500italic,400italic,600italic' rel='stylesheet' type='text/css'>
+	
+	<link href='//fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'/>
+	<link href='//fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'/>
 
-	<link href='http://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'/>
-	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'/>
-
-	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/jquery.notebook.css">
 	
 	<link href="/sprites/ebc4aa8095.css" rel="stylesheet"/>
 	<link href="/sprites/768bef68df.css" rel="stylesheet"/>
 	<link href="/sprites/ac2157c77d.css" rel="stylesheet"/>
-	
 	<script src="/js/libs/jquery-1.10.2.min.js"></script>
 	<script src="/js/util.js"></script>
 	<script>
@@ -51,6 +52,7 @@
 		var site = {};
 		site.user_id = <?php echo USER_ID ?>;
 		site.username = '<?php echo $this->session->userdata('username'); ?>';
+		site.realname = '<?php echo $this->nf->get('user')->realname; ?>';
 		site.url = '<?php echo site_url() ?>';
 		site.segment = ['<?php echo implode("','", $this->uri->segment_array()); ?>'];
 	</script>

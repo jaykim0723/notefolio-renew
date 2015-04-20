@@ -10,7 +10,7 @@
 <script src="/js/libs/jquery.history.js"></script>
 <script src="/js/libs/jquery.hammer.min.js"></script>
 <script src="/js/libs/jquery.mmenu.min.all.js"></script>
-<script src="/js/libs/jquery.history.js"></script>
+<!--<script src="/js/libs/jquery.history.js"></script> /*Duplication*/-->
 <script src="/js/libs/jquery.placeholder.js"></script>
 <script>
 	$(function() {

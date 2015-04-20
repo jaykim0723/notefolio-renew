@@ -1,4 +1,8 @@
 <?php if (!$this->input->is_ajax_request()): ?>
+	<div style= "background: url(http://notefolio.net/img/headbanner.jpg); background-repeat: no-repeat; background-position: center top; padding-bottom:10px;" />
+    <center><a href="http://goo.gl/Ak26hg" style="display:block;width:1140px;height: 50px;" target="_blank;" /></a></center>
+</div>
+
 <section class="listing">
 	<div class="container">
 		<div class="row">
